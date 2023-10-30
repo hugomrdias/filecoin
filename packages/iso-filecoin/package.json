@@ -4,7 +4,7 @@
   "version": "3.0.1",
   "description": "Isomorphic filecoin abstractions for RPC, signatures, address, token and wallet",
   "author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
-  "license": "MIT",
+  "license": "(Apache-2.0 AND MIT)",
   "homepage": "https://github.com/fission-codes/filecoin/tree/main/packages/iso-filecoin",
   "repository": {
     "url": "fission-codes/filecoin",

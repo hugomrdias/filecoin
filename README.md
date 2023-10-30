@@ -9,7 +9,7 @@
 
 </div>
 
-This monorepo contains packages for interacting with Filecoin.
+This monorepo contains packages to interact with the Filecoin blockchain.
 
 ## Packages
 
