@@ -4,10 +4,18 @@
     "emitDeclarationOnly": true,
     "outDir": "dist"
   },
-  "include": ["src", "test"],
+  "include": ["src", "scripts", "test", "package.json"],
   "exclude": ["node_modules", "dist", "out"],
   "typedocOptions": {
-    "entryPoints": ["src/index.js", "src/module1.js"],
+    "entryPoints": [
+      "src/wallet.js",
+      "src/token.js",
+      "src/address.js",
+      "src/message.js",
+      "src/rpc.js",
+      "src/signature.js",
+      "src/utils.js"
+    ],
     "includeVersion": true,
     "excludeExternals": true,
     "internalModule": "<internal>"

@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/logo.png" alt="fission Logo" width="100"></img>
 
-  <h1 align="center">Fission JS Template</h1>
+  <h1 align="center">Fission Filecoin</h1>
 
 [![Built by FISSION](https://img.shields.io/badge/built_by-⌘_Fission-purple.svg)](https://fission.codes)
 [![Discord](https://img.shields.io/discord/478735028319158273?logo=discord&color=mediumslateblue)](https://discord.gg/zAQBDEq)
@@ -9,68 +9,11 @@
 
 </div>
 
-## Usage (remove this section)
-
-This section describes how to use this template. Remove this section from your README after you have read it.
-
-### Features
-
-- Github workflows, templates, Code of Conduct, Contributing guidelines, Security Policy, Dependabot config, Codeowners and license.
-- Dev container for Github Codespaces
-- JS setup with ESLint, prettier, depcheck, typescript, typedoc, mocha and playwright-test.
-- Documentation generated with typedoc and published with Github pages.
-- Changelog, versioning and release management with [Release Please](https://github.com/googleapis/release-please).
-- Optional pre-commit hooks with lint-staged and simple-git-hooks.
-- VS Code settings and extensions.
-- Examples and packages setup with pnpm workspaces.
-- Codesandbox setup for examples.
-
-### Instructions
-
-- Add `GH_TOKEN` and `NPM_TOKEN` to secrets for CI workflows.
-- Select _Github Actions_ for Github pages publishing. [Docs](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow)
-- You may need to change workflow permissions to read/write to be able to publish pages with github actions. Go to Settings > Actions > General > Workflow permissions.
-- You should enable <https://socket.dev/> on the repo
-- Check the markdown files inside `.github` folder and update them with your information. Codeowners and issue templates assignees should be updated with your team members.
-
-#### Typescript
-
-Override the `tsconfig.json` in the package with the following:
-
-```json
-{
-  "compilerOptions": {
-    "noEmit": true, // for apps or anything that is not published to npm
-    "emitDeclarationOnly": true, // for TS with JSDocs
-    "module": "NodeNext", // for TS packages
-    "moduleResolution": "NodeNext" // for TS packages
-  }
-}
-```
+This monorepo contains packages for interacting with Filecoin.
 
 ## Packages
 
-- [package1](https://github.com/fission-codes/js-template/tree/master/packages/package1) - description
-- [package2](https://github.com/fission-codes/js-template/tree/master/packages/package2) - description
-
-## Examples
-
-- [`demo`](https://github.com/fission-codes/js-template/tree/master/examples/demo) - description
-
-### Checkout examples
-
-You can use Codesandbox <https://githubbox.com/fission-codes/js-template/tree/master/examples/demo> and start hacking right away.
-
-To clone it locally:
-
-```bash
-npx tiged fission-codes/js-template/examples/demo demo
-cd demo
-pnpm install
-pnpm dev
-```
-
-You can try any of the examples by replacing `demo` with the name of the example you want to try.
+- [iso-filecoin](https://github.com/fission-codes/filecoin/tree/master/packages/iso-filecoin) - Isomorphic filecoin abstractions for RPC, signatures, address, token and wallet. Used by the [Metamask Filecoin Wallet](https://github.com/filecoin-project/filsnap).
 
 ## Contributing
 

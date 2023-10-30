@@ -1,0 +1,141 @@
+{
+  "name": "iso-filecoin",
+  "type": "module",
+  "version": "3.0.1",
+  "description": "Isomorphic filecoin abstractions for RPC, signatures, address, token and wallet",
+  "author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
+  "license": "MIT",
+  "homepage": "https://github.com/fission-codes/filecoin/tree/main/packages/iso-filecoin",
+  "repository": {
+    "url": "fission-codes/filecoin",
+    "directory": "packages/iso-filecoin"
+  },
+  "keywords": [
+    "token",
+    "filecoin",
+    "crypto",
+    "wallet"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./wallet": {
+      "types": "./dist/src/wallet.d.ts",
+      "import": "./src/wallet.js"
+    },
+    "./token": {
+      "types": "./dist/src/token.d.ts",
+      "import": "./src/token.js"
+    },
+    "./address": {
+      "types": "./dist/src/address.d.ts",
+      "import": "./src/address.js"
+    },
+    "./rpc": {
+      "types": "./dist/src/rpc.d.ts",
+      "import": "./src/rpc.js"
+    },
+    "./signature": {
+      "types": "./dist/src/signature.d.ts",
+      "import": "./src/signature.js"
+    },
+    "./message": {
+      "types": "./dist/src/message.d.ts",
+      "import": "./src/message.js"
+    },
+    "./utils": {
+      "types": "./dist/src/utils.d.ts",
+      "import": "./src/utils.js"
+    },
+    "./types": {
+      "types": "./dist/src/types.d.ts"
+    }
+  },
+  "main": "src/index.js",
+  "types": "dist/src/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "address": [
+        "dist/src/address"
+      ],
+      "message": [
+        "dist/src/message"
+      ],
+      "rpc": [
+        "dist/src/rpc"
+      ],
+      "signature": [
+        "dist/src/signature"
+      ],
+      "token": [
+        "dist/src/token"
+      ],
+      "wallet": [
+        "dist/src/wallet"
+      ],
+      "types": [
+        "dist/src/types"
+      ],
+      "utils": [
+        "dist/src/utils"
+      ]
+    }
+  },
+  "files": [
+    "src",
+    "dist/src/*.d.ts",
+    "dist/src/*.d.ts.map"
+  ],
+  "scripts": {
+    "lint": "tsc --build && eslint . && prettier --check '**/*.{js,ts,yml,json}' --ignore-path ../../.gitignore",
+    "test": "tsc --build && pnpm run test:node && pnpm run test:browser",
+    "test:node": "mocha 'test/**/!(*.browser).test.js'",
+    "test:browser": "playwright-test 'test/**/!(*.node).test.js'"
+  },
+  "dependencies": {
+    "@ipld/dag-cbor": "^9.0.6",
+    "@noble/curves": "^1.2.0",
+    "@noble/hashes": "^1.3.2",
+    "@scure/bip32": "^1.3.2",
+    "@scure/bip39": "^1.2.1",
+    "bignumber.js": "^9.1.2",
+    "iso-base": "^2.0.1",
+    "iso-web": "^0.1.5",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/assert": "^1.5.8",
+    "@types/mocha": "^10.0.3",
+    "@types/node": "^20.8.9",
+    "assert": "^2.1.0",
+    "mocha": "^10.2.0",
+    "playwright-test": "^12.4.3",
+    "typescript": "5.2.2"
+  },
+  "publishConfig": {
+    "provenance": true
+  },
+  "eslintConfig": {
+    "extends": [
+      "@fission-codes"
+    ],
+    "env": {
+      "mocha": true
+    },
+    "ignorePatterns": [
+      "dist"
+    ]
+  },
+  "depcheck": {
+    "specials": [
+      "bin"
+    ],
+    "ignores": [
+      "@types/*",
+      "hd-scripts",
+      "assert"
+    ]
+  }
+}
