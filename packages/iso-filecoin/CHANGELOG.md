@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/fission-codes/filecoin/compare/iso-filecoin-v3.0.1...iso-filecoin-v3.0.2) (2023-10-30)
+
+
+### Bug Fixes
+
+* move iso-filecoin to fission org ([e64de20](https://github.com/fission-codes/filecoin/commit/e64de20ab1e677a92f47ac7b77b7dbed5da766f4))
+
 ## [3.0.1](https://github.com/hugomrdias/iso-repo/compare/iso-filecoin-v3.0.0...iso-filecoin-v3.0.1) (2023-09-21)
 
 
