@@ -25,7 +25,7 @@ import { Wallet } from 'iso-filecoin/wallet'
 
 ## Docs
 
-Check <https://fission-codes.github.io/filecoin/modules/iso_filecoin.html>
+Check <https://fission-codes.github.io/filecoin>
 
 ## Contributing
 
