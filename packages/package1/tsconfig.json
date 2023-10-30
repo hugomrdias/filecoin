@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "outDir": "dist"
+  },
+  "include": ["src", "test"],
+  "exclude": ["node_modules", "dist", "out"],
+  "typedocOptions": {
+    "entryPoints": ["src/index.js", "src/module1.js"],
+    "includeVersion": true,
+    "excludeExternals": true,
+    "internalModule": "<internal>"
+  }
+}
