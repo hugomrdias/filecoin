@@ -19,7 +19,7 @@ This monorepo contains packages for interacting with Filecoin.
 
 Read contributing guidelines [here](.github/CONTRIBUTING.md).
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/hd-template/examples)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/fission-codes/filecoin)
 
 ## License
 
