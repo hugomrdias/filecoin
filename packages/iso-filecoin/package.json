@@ -149,7 +149,8 @@
     "ignores": [
       "@types/*",
       "hd-scripts",
-      "assert"
+      "assert",
+      "rimraf"
     ]
   }
 }
