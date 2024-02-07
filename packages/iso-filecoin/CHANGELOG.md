@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/fission-codes/filecoin/compare/iso-filecoin-v3.0.3...iso-filecoin-v4.0.0) (2024-02-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* support commonjs, all deps are vendored and transpile
+
+### Features
+
+* support commonjs, all deps are vendored and transpile ([3265f49](https://github.com/fission-codes/filecoin/commit/3265f4928ca7c155f3784bb3452a651ab41872af))
+
 ## [3.0.3](https://github.com/fission-codes/filecoin/compare/iso-filecoin-v3.0.2...iso-filecoin-v3.0.3) (2023-10-30)
 
 
