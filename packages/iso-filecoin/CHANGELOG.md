@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/fission-codes/filecoin/compare/iso-filecoin-v4.0.0...iso-filecoin-v4.0.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* add cjs files to npm ([c794f35](https://github.com/fission-codes/filecoin/commit/c794f357c52f9041848e6d86cd0c1e11b4fa6e8c))
+
 ## [4.0.0](https://github.com/fission-codes/filecoin/compare/iso-filecoin-v3.0.3...iso-filecoin-v4.0.0) (2024-02-07)
 
 
