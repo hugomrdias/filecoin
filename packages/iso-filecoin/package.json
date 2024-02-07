@@ -19,35 +19,43 @@
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
-      "import": "./src/index.js"
+      "import": "./src/index.js",
+      "require": "./dist/cjs/src/index.cjs"
     },
     "./wallet": {
       "types": "./dist/src/wallet.d.ts",
-      "import": "./src/wallet.js"
+      "import": "./src/wallet.js",
+      "require": "./dist/cjs/src/wallet.cjs"
     },
     "./token": {
       "types": "./dist/src/token.d.ts",
-      "import": "./src/token.js"
+      "import": "./src/token.js",
+      "require": "./dist/cjs/src/token.cjs"
     },
     "./address": {
       "types": "./dist/src/address.d.ts",
-      "import": "./src/address.js"
+      "import": "./src/address.js",
+      "require": "./dist/cjs/src/address.cjs"
     },
     "./rpc": {
       "types": "./dist/src/rpc.d.ts",
-      "import": "./src/rpc.js"
+      "import": "./src/rpc.js",
+      "require": "./dist/cjs/src/rpc.cjs"
     },
     "./signature": {
       "types": "./dist/src/signature.d.ts",
-      "import": "./src/signature.js"
+      "import": "./src/signature.js",
+      "require": "./dist/cjs/src/signature.cjs"
     },
     "./message": {
       "types": "./dist/src/message.d.ts",
-      "import": "./src/message.js"
+      "import": "./src/message.js",
+      "require": "./dist/cjs/src/message.cjs"
     },
     "./utils": {
       "types": "./dist/src/utils.d.ts",
-      "import": "./src/utils.js"
+      "import": "./src/utils.js",
+      "require": "./dist/cjs/src/utils.cjs"
     },
     "./types": {
       "types": "./dist/src/types.d.ts"
@@ -89,6 +97,7 @@
     "dist/src/*.d.ts.map"
   ],
   "scripts": {
+    "build": "rimraf 'dist/cjs' && rollup --config rollup.config.js",
     "lint": "tsc --build && eslint . && prettier --check '**/*.{js,ts,yml,json}' --ignore-path ../../.gitignore",
     "test": "tsc --build && pnpm run test:node && pnpm run test:browser",
     "test:node": "mocha 'test/**/!(*.browser).test.js'",
@@ -106,12 +115,17 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/assert": "^1.5.9",
     "@types/mocha": "^10.0.4",
     "@types/node": "^20.9.0",
     "assert": "^2.1.0",
+    "glob": "^10.3.10",
     "mocha": "^10.2.0",
     "playwright-test": "^12.6.0",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.9.6",
     "typescript": "5.2.2"
   },
   "publishConfig": {

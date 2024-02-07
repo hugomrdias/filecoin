@@ -1,0 +1,29 @@
+{
+  "name": "iso-filecoin-cjs",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "iso-filecoin": "workspace:^"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@fission-codes"
+    ],
+    "rules": {
+      "unicorn/prefer-module": "off"
+    },
+    "parserOptions": {
+      "sourceType": "commonjs"
+    },
+    "ignorePatterns": [
+      "docs"
+    ]
+  }
+}

@@ -30,3 +30,6 @@ kv-data
 *.njsproj
 *.sln
 *.sw?
+
+# Extras
+docs
