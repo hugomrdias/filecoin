@@ -94,7 +94,7 @@
   "files": [
     "src",
     "dist/src/**/*.d.ts",
-    "dist/src/**/*.cjs",
+    "dist/cjs/**/*.cjs",
     "dist/src/**/*.d.ts.map"
   ],
   "scripts": {
