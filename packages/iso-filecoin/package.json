@@ -123,7 +123,7 @@
     "@types/node": "^20.11.19",
     "assert": "^2.1.0",
     "glob": "^10.3.10",
-    "mocha": "^10.2.0",
+    "mocha": "^10.3.0",
     "playwright-test": "^14.1.1",
     "rimraf": "^5.0.5",
     "rollup": "^4.12.0",
