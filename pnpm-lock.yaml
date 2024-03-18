@@ -21,8 +21,8 @@ importers:
         specifier: 3.2.5
         version: 3.2.5
       simple-git-hooks:
-        specifier: ^2.9.0
-        version: 2.9.0
+        specifier: ^2.11.0
+        version: 2.11.0
       typedoc:
         specifier: ^0.25.12
         version: 0.25.12(typescript@5.3.3)
@@ -4585,8 +4585,8 @@ packages:
     engines: {node: '>=14'}
     dev: true
 
-  /simple-git-hooks@2.9.0:
-    resolution: {integrity: sha512-waSQ5paUQtyGC0ZxlHmcMmD9I1rRXauikBwX31bX58l5vTOhCEcBC5Bi+ZDkPXTjDnZAF8TbCqKBY+9+sVPScw==}
+  /simple-git-hooks@2.11.0:
+    resolution: {integrity: sha512-Wab2uzjGJEL8Kx+2UY8waUSfkiolt2RbaAJWvPCjaAEXrrKoS7JqPk4STiIVl/yt3asZRUzFoK2ryhwvgh5rYw==}
     hasBin: true
     requiresBuild: true
     dev: true
