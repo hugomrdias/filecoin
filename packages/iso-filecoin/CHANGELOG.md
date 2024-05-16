@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.0.5](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v4.0.4...iso-filecoin-v4.0.5) (2024-05-16)
+
+
+### Bug Fixes
+
+* deps updates ([6ab647a](https://github.com/hugomrdias/filecoin/commit/6ab647a9b61bac07e73ae7b2295270e67318f062))
+* provinance ([8e184ea](https://github.com/hugomrdias/filecoin/commit/8e184eaa777cd8bfb0a3bd6532ecca5d3b3390d0))
+* provinance ([a471c2f](https://github.com/hugomrdias/filecoin/commit/a471c2fbc670f2ea309f5db692a987dc1f8521a3))
+
 ## [4.0.4](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v4.0.3...iso-filecoin-v4.0.4) (2024-05-16)
 
 
