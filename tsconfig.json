@@ -1,5 +1,5 @@
 {
-  "extends": "@fission-codes/eslint-config/tsconfig.json",
+  "extends": "@hugomrdias/configs/tsconfig",
   "typedocOptions": {
     "entryPointStrategy": "packages",
     "entryPoints": ["packages/iso-filecoin"],

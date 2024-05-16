@@ -11,19 +11,5 @@
   },
   "dependencies": {
     "iso-filecoin": "workspace:^"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@fission-codes"
-    ],
-    "rules": {
-      "unicorn/prefer-module": "off"
-    },
-    "parserOptions": {
-      "sourceType": "commonjs"
-    },
-    "ignorePatterns": [
-      "docs"
-    ]
   }
 }

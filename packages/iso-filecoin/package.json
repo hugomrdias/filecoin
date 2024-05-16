@@ -99,10 +99,11 @@
   ],
   "scripts": {
     "build": "rimraf 'dist/cjs' && rollup --config rollup.config.js",
-    "lint": "tsc --build && eslint . && prettier --check '**/*.{js,ts,yml,json}' --ignore-path ../../.gitignore",
+    "lint": "tsc --build && biome check --no-errors-on-unmatched --files-ignore-unknown=true .",
     "test": "tsc --build && pnpm run test:node && pnpm run test:browser",
     "test:node": "mocha 'test/**/!(*.browser).test.js'",
-    "test:browser": "playwright-test 'test/**/!(*.node).test.js'"
+    "test:browser": "playwright-test 'test/**/!(*.node).test.js'",
+    "check": "biome check --no-errors-on-unmatched --files-ignore-unknown=true ."
   },
   "dependencies": {
     "@ipld/dag-cbor": "^9.2.0",
@@ -132,24 +133,12 @@
   "publishConfig": {
     "provenance": true
   },
-  "eslintConfig": {
-    "extends": [
-      "@fission-codes"
-    ],
-    "env": {
-      "mocha": true
-    },
-    "ignorePatterns": [
-      "dist"
-    ]
-  },
   "depcheck": {
     "specials": [
       "bin"
     ],
     "ignores": [
       "@types/*",
-      "hd-scripts",
       "assert",
       "rimraf"
     ]
