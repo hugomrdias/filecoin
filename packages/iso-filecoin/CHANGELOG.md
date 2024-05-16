@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.4](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v4.0.3...iso-filecoin-v4.0.4) (2024-05-16)
+
+
+### Bug Fixes
+
+* use biome and release from new repo ([92b6b2e](https://github.com/hugomrdias/filecoin/commit/92b6b2e3e309f61406299d11feabbeb7ebd5ef82))
+
 ## [4.0.3](https://github.com/fission-codes/filecoin/compare/iso-filecoin-v4.0.2...iso-filecoin-v4.0.3) (2024-02-08)
 
 
