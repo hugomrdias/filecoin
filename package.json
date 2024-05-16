@@ -20,19 +20,19 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.7.3",
-    "@hugomrdias/configs": "^0.1.5",
+    "@hugomrdias/configs": "^0.1.7",
     "depcheck": "^1.4.7",
     "lint-staged": "^15.2.2",
-    "simple-git-hooks": "^2.9.0",
-    "typedoc": "^0.25.12",
+    "simple-git-hooks": "^2.11.1",
+    "typedoc": "^0.25.13",
     "typedoc-plugin-missing-exports": "^2.2.0",
     "typedoc-plugin-zod": "^1.1.2",
-    "typescript": "5.3.3"
+    "typescript": "5.4.5"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-  "*": "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+    "*": "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
   }
 }
