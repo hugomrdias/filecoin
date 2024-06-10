@@ -117,7 +117,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/assert": "^1.5.10",
     "@types/mocha": "^10.0.6",
