@@ -1,8 +1,13 @@
 import { blake2b } from '@noble/hashes/blake2b'
 import * as leb128 from 'iso-base/leb128'
-import { base16, base32 } from 'iso-base/rfc4648'
+import { base16, base32, hex } from 'iso-base/rfc4648'
 import { concat, equals, isBufferSource, u8 } from 'iso-base/utils'
-import { NETWORKS, checkNetworkPrefix, getNetwork } from './utils.js'
+import {
+  NETWORKS,
+  checkNetworkPrefix,
+  checksumEthAddress,
+  getNetwork,
+} from './utils.js'
 
 /**
  * @typedef {import('./types.js').Address} IAddress
@@ -45,10 +50,28 @@ function validateChecksum(actual, expected) {
 /**
  * Check if string is valid Ethereum address
  *
+ * Based on viem implementation  {@link https://github.com/wevm/viem/blob/main/src/utils/address/isAddress.ts}
+ *
  * @param {string} address
  */
 export function isEthAddress(address) {
-  return /^0x[\dA-Fa-f]{40}$/.test(address)
+  if (!/^0x[a-fA-F0-9]{40}$/.test(address)) return false
+  if (address.toLowerCase() === address) return true
+  return checksumEthAddress(address) === address
+}
+
+/**
+ * Checks if address is an Ethereum ID mask address
+ *
+ * @param {string} address
+ */
+export function isIdMaskAddress(address) {
+  if (!isEthAddress(address)) {
+    return false
+  }
+  const bytes = hex.decode(address.substring(2))
+  const idMaskPrefix = new Uint8Array(12).fill(255, 0, 1)
+  return equals(bytes.slice(0, 12), idMaskPrefix)
 }
 
 /**
@@ -59,11 +82,10 @@ export function isEthAddress(address) {
  * @returns {IAddress}
  */
 export function fromEthAddress(address, network) {
-  return new AddressDelegated(
-    10,
-    base16.decode(address.slice(2).toUpperCase()),
-    network
-  )
+  if (isIdMaskAddress(address)) {
+    return AddressId.fromEthAddress(address, network)
+  }
+  return AddressDelegated.fromEthAddress(address, network)
 }
 
 /**
@@ -72,12 +94,16 @@ export function fromEthAddress(address, network) {
  * @param {IAddress} address
  */
 export function toEthAddress(address) {
-  if (address.protocol !== PROTOCOL_INDICATOR.DELEGATED) {
-    throw new Error(
-      `Invalid protocol indicator: ${address.protocol}. Only Delegated Adresses are supported.`
-    )
+  if (address.protocol === PROTOCOL_INDICATOR.ID) {
+    return /** @type {AddressId} */ (address).toEthAddress()
   }
-  return `0x${base16.encode(address.payload).toLowerCase()}`
+
+  if (address.protocol === PROTOCOL_INDICATOR.DELEGATED) {
+    return /** @type {AddressDelegated} */ (address).toEthAddress()
+  }
+  throw new Error(
+    `Invalid protocol indicator: ${address.protocol}. Only Delegated ad ID Addresses are supported.`
+  )
 }
 
 /**
@@ -303,13 +329,52 @@ export class AddressId extends Address {
    *
    * @param {Uint8Array} bytes
    * @param {import('./types.js').Network} network
-   * @returns
    */
   static fromBytes(bytes, network) {
     if (bytes[0] !== PROTOCOL_INDICATOR.ID) {
       throw new Error(`Invalid protocol indicator: ${bytes[0]}`)
     }
     return new AddressId(bytes.subarray(1), network)
+  }
+
+  /**
+   * Create ID address from ethereum address
+   *
+   * @param {string} address
+   * @param {import('./types.js').Network} network
+   */
+  static fromEthAddress(address, network) {
+    if (!isEthAddress(address)) {
+      throw new Error(`Invalid Ethereum address: ${address}`)
+    }
+
+    if (!isIdMaskAddress(address)) {
+      throw new Error(`Invalid Ethereum ID mask address: ${address}`)
+    }
+
+    const bytes = hex.decode(address.slice(2))
+
+    if (bytes.length !== 20) {
+      throw new Error(
+        `Invalid Ethereum payload length: ${bytes.length} should be 20.`
+      )
+    }
+    const dataview = new DataView(bytes.buffer)
+    const idBigInt = dataview.getBigUint64(12, false)
+    const leb128Id = leb128.unsigned.encode(idBigInt)
+
+    return new AddressId(leb128Id, network)
+  }
+
+  /**
+   * Convert address to ethereum address
+   */
+  toEthAddress() {
+    const buf = new ArrayBuffer(20)
+    const dataview = new DataView(buf)
+    dataview.setUint8(0, 255)
+    dataview.setBigUint64(12, this.id, false)
+    return checksumEthAddress(`0x${hex.encode(new Uint8Array(buf))}`)
   }
 
   toString() {
@@ -636,6 +701,43 @@ export class AddressDelegated extends Address {
       bytes.subarray(1 + size),
       network
     )
+  }
+
+  /**
+   * Create delegated address from ethereum address
+   *
+   * @param {string} address
+   * @param {import('./types.js').Network} network
+   */
+  static fromEthAddress(address, network) {
+    if (!isEthAddress(address)) {
+      throw new Error(`Invalid Ethereum address: ${address}`)
+    }
+
+    if (isIdMaskAddress(address)) {
+      throw new Error(`Cannot convert Ethereum ID mask address: ${address}`)
+    }
+
+    const bytes = base16.decode(address.slice(2).toUpperCase())
+    if (bytes.length !== 20) {
+      throw new Error(
+        `Invalid Ethereum payload length: ${bytes.length} should be 20.`
+      )
+    }
+
+    return new AddressDelegated(10, bytes, network)
+  }
+
+  /**
+   * Convert address to ethereum address
+   */
+  toEthAddress() {
+    if (this.payload.length > 20) {
+      throw new Error(
+        `Invalid payload length: ${this.payload.length} should be 20.`
+      )
+    }
+    return checksumEthAddress(`0x${hex.encode(this.payload)}`)
   }
 
   toString() {

@@ -1,3 +1,6 @@
+import { keccak_256 } from '@noble/hashes/sha3'
+import { utf8 } from 'iso-base/utf8'
+
 /**
  * @typedef {import('./types').NetworkPrefix} NetworkPrefix
  */
@@ -130,4 +133,27 @@ export function parseDerivationPath(path) {
   }
 
   return { purpose, coinType, account, change, addressIndex }
+}
+
+/**
+ * Checksum ethereum address
+ *
+ * @param {string} address
+ */
+export function checksumEthAddress(address) {
+  const hexAddress = address.substring(2).toLowerCase()
+  const hash = keccak_256(utf8.decode(hexAddress))
+  const addressArr = hexAddress.split('')
+
+  for (let i = 0; i < 40; i += 2) {
+    if (hash[i >> 1] >> 4 >= 8 && addressArr[i]) {
+      addressArr[i] = addressArr[i].toUpperCase()
+    }
+    if ((hash[i >> 1] & 0x0f) >= 8 && addressArr[i + 1]) {
+      addressArr[i + 1] = addressArr[i + 1].toUpperCase()
+    }
+  }
+
+  const result = `0x${addressArr.join('')}`
+  return result
 }

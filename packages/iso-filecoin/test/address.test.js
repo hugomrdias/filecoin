@@ -1,6 +1,8 @@
-import assert from 'assert'
+import assert from 'assert/strict'
 import { base16, base64pad } from 'iso-base/rfc4648'
 import {
+  AddressDelegated,
+  AddressId,
   from,
   fromBytes,
   fromContractDestination,
@@ -9,6 +11,7 @@ import {
   fromString,
   isAddress,
   isEthAddress,
+  isIdMaskAddress,
   toEthAddress,
 } from '../src/address.js'
 
@@ -228,44 +231,15 @@ describe('address', () => {
     })
   }
 
-  it('is eth address', () => {
-    assert.ok(isEthAddress('0xd388ab098ed3e84c0d808776440b48f685198498'))
-  })
-
-  it('should convert from eth address', () => {
-    const f4 = fromEthAddress(
-      '0xd388ab098ed3e84c0d808776440b48f685198498',
+  it('should convert from f1 address to contract destination and back on testnet', () => {
+    const t1 = fromString('t1wbxhu3ypkuo6eyp6hjx6davuelxaxrvwb2kuwva')
+    const contractDestination = t1.toContractDestination()
+    const t1FromContractDestination = fromContractDestination(
+      contractDestination,
       'testnet'
     )
 
-    assert.strictEqual(
-      f4.toString(),
-      't410f2oekwcmo2pueydmaq53eic2i62crtbeyuzx2gmy'
-    )
-  })
-
-  it('should convert from eth address with "from" ', () => {
-    const f4 = from('0xd388ab098ed3e84c0d808776440b48f685198498', 'testnet')
-
-    assert.strictEqual(
-      f4.toString(),
-      't410f2oekwcmo2pueydmaq53eic2i62crtbeyuzx2gmy'
-    )
-  })
-
-  it('should convert from f4 to eth address', () => {
-    const f4 = fromString('f410f2oekwcmo2pueydmaq53eic2i62crtbeyuzx2gmy')
-
-    assert.strictEqual(
-      toEthAddress(f4),
-      '0xd388ab098ed3e84c0d808776440b48f685198498'
-    )
-  })
-
-  it('should fail convert from f1 to eth address', () => {
-    const f1 = fromString('f1wbxhu3ypkuo6eyp6hjx6davuelxaxrvwb2kuwva')
-
-    assert.throws(() => toEthAddress(f1))
+    assert.strictEqual(t1.toString(), t1FromContractDestination.toString())
   })
 
   it('should convert from f1 address to contract destination and back', () => {
@@ -278,15 +252,157 @@ describe('address', () => {
 
     assert.strictEqual(f1.toString(), f1FromContractDestination.toString())
   })
+})
 
-  it('should convert from f1 address to contract destination and back on testnet', () => {
-    const t1 = fromString('t1wbxhu3ypkuo6eyp6hjx6davuelxaxrvwb2kuwva')
-    const contractDestination = t1.toContractDestination()
-    const t1FromContractDestination = fromContractDestination(
-      contractDestination,
+describe('address ethereum', () => {
+  it('is eth address', () => {
+    assert.ok(isEthAddress('0xb959b6fF9ED21CfD15EEC2BEC15d1C5b87df7F42'))
+    assert.ok(isEthAddress('0xa0cf798816d4b9b9866b5330eea46a18382f251e'))
+    assert.ok(isEthAddress('0x52963EF50e27e06D72D59fcB4F3c2a687BE3cfEf'))
+    // Id addresses
+    assert.ok(isEthAddress('0xff00000000000000000000000000000000000001'))
+    assert.ok(isEthAddress('0xff00000000000000000000000000000000000064'))
+    assert.ok(isEthAddress('0xff000000000000000000000000000000000013e0'))
+
+    assert.ok(isEthAddress('x') === false)
+    assert.ok(isEthAddress('0xa') === false)
+    // invalid checksum
+    assert.ok(
+      isEthAddress('0xa5cc3c03994db5b0d9a5eEdD10Cabab0813678ac') === false
+    )
+    assert.ok(
+      isEthAddress('0xa5cc3c03994db5b0d9a5eEdD10Cabab0813678az') === false
+    )
+    assert.ok(
+      isEthAddress('0xa5cc3c03994db5b0d9a5eEdD10Cabab0813678aff') === false
+    )
+    assert.ok(
+      isEthAddress('a5cc3c03994db5b0d9a5eEdD10Cabab0813678ac') === false
+    )
+    assert.ok(
+      isEthAddress('0x8Ba1f109551bD432803012645Ac136ddd64DBa72') === false
+    )
+    // icap
+    assert.ok(isEthAddress('XE65GB6LDNXYOFTX0NSV3FUWKOWIXAMJK36') === false)
+  })
+
+  it('is ID mask eth address', () => {
+    assert.ok(isIdMaskAddress('0xff00000000000000000000000000000000000001'))
+    assert.ok(isIdMaskAddress('0xff00000000000000000000000000000000000064'))
+    assert.ok(isIdMaskAddress('0xff000000000000000000000000000000000013e0'))
+
+    assert.ok(
+      isIdMaskAddress('0x52963EF50e27e06D72D59fcB4F3c2a687BE3cfEf') === false
+    )
+  })
+
+  it('should convert eth to f4 address', () => {
+    const f4 = fromEthAddress(
+      '0xd388ab098ed3e84c0d808776440b48f685198498',
       'testnet'
     )
 
-    assert.strictEqual(t1.toString(), t1FromContractDestination.toString())
+    assert.strictEqual(
+      f4.toString(),
+      't410f2oekwcmo2pueydmaq53eic2i62crtbeyuzx2gmy'
+    )
+    assert.equal(f4.protocol, 4)
+    assert.ok(f4 instanceof AddressDelegated)
+  })
+
+  it('should convert from eth  to f0 address', () => {
+    const address = '0xff000000000000000000000000000000000013e0'
+    const id = fromEthAddress(address, 'mainnet')
+
+    assert.ok(id instanceof AddressId)
+    assert.ok(id.id === 5088n)
+
+    assert.ok(
+      fromEthAddress('0xff00000000000000000000000000000000000001', 'testnet')
+        .id === 1n
+    )
+
+    assert.ok(
+      fromEthAddress('0xff00000000000000000000000000000000000064', 'testnet')
+        .id === 100n
+    )
+  })
+
+  it('should convert from eth address with "from" ', () => {
+    const f4 = from('0xd388ab098ed3e84c0d808776440b48f685198498', 'testnet')
+
+    assert.strictEqual(
+      f4.toString(),
+      't410f2oekwcmo2pueydmaq53eic2i62crtbeyuzx2gmy'
+    )
+  })
+
+  it('should convert from f0 to eth address', () => {
+    assert.strictEqual(
+      AddressId.fromString('f01').toEthAddress(),
+      '0xff00000000000000000000000000000000000001'
+    )
+    assert.strictEqual(
+      AddressId.fromString('f0100').toEthAddress(),
+      '0xff00000000000000000000000000000000000064'
+    )
+    assert.strictEqual(
+      AddressId.fromString('f05088').toEthAddress(),
+      '0xff000000000000000000000000000000000013e0'
+    )
+
+    assert.strictEqual(
+      AddressId.fromString('f01024').toEthAddress(),
+      '0xfF00000000000000000000000000000000000400'
+    )
+
+    assert.strictEqual(
+      toEthAddress(fromString('f01024')),
+      '0xfF00000000000000000000000000000000000400'
+    )
+  })
+
+  it('should convert from f4 to eth address', () => {
+    assert.equal(
+      AddressDelegated.fromString(
+        'f410f2oekwcmo2pueydmaq53eic2i62crtbeyuzx2gmy'
+      ).toEthAddress(),
+      '0xd388aB098ed3E84c0D808776440B48F685198498'
+    )
+
+    assert.equal(
+      AddressDelegated.fromString(
+        't410fkkld55ioe7qg24wvt7fu6pbknb56ht7pt4zamxa'
+      ).toEthAddress(),
+      '0x52963EF50e27e06D72D59fcB4F3c2a687BE3cfEf'
+    )
+
+    assert.equal(
+      toEthAddress(fromString('t410fkkld55ioe7qg24wvt7fu6pbknb56ht7pt4zamxa')),
+      '0x52963EF50e27e06D72D59fcB4F3c2a687BE3cfEf'
+    )
+  })
+
+  it('should fail to convert f411 to eth address', () => {
+    assert.throws(
+      () => {
+        AddressDelegated.fromString(
+          'f411fkkld55ioe7qg24wvt7fu6pbknb56ht7pt4zamxa'
+        ).toEthAddress()
+      },
+      {
+        message:
+          'Invalid namespace: 11. Only Ethereum Address Manager (EAM) is supported.',
+      }
+    )
+  })
+
+  it('should fail convert from f1 to eth address', () => {
+    const f1 = fromString('f1wbxhu3ypkuo6eyp6hjx6davuelxaxrvwb2kuwva')
+
+    assert.throws(() => toEthAddress(f1), {
+      message:
+        'Invalid protocol indicator: 1. Only Delegated ad ID Addresses are supported.',
+    })
   })
 })
