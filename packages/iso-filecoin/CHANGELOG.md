@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v4.0.5...iso-filecoin-v4.1.0) (2024-06-25)
+
+
+### Features
+
+* improve eth&lt;&gt;fil address translation ([b86981d](https://github.com/hugomrdias/filecoin/commit/b86981d3958e8ac06ec2cf6ddcbc17a5dfa1892f))
+* upgrade to ts 5.5 and other deps updates ([b332463](https://github.com/hugomrdias/filecoin/commit/b3324631c891023800cdd3b795ca052b1da8f0fc))
+
+
+### Bug Fixes
+
+* update readme ([f35875f](https://github.com/hugomrdias/filecoin/commit/f35875f8a62a9a18fd7455f946d90cb16db4b7b0))
+
 ## [4.0.5](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v4.0.4...iso-filecoin-v4.0.5) (2024-05-16)
 
 
