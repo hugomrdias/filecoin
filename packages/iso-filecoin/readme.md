@@ -22,14 +22,14 @@ import { Wallet } from 'iso-filecoin/wallet'
 
 ## Docs
 
-Check <https://fission-codes.github.io/filecoin>
+Check <https://hugomrdias.github.io/filecoin>
 
 ## Contributing
 
-Read contributing guidelines [here](.github/CONTRIBUTING.md).
+Read contributing guidelines [here](../../.github/CONTRIBUTING.md).
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/hugomrdias/filecoin)
 
 ## License
 
-[MIT](./license) © [Hugo Dias](http://hugodias.me)
+[MIT](../../license) © [Hugo Dias](http://hugodias.me)
