@@ -1,4 +1,4 @@
-import assert from 'assert/strict'
+import assert from 'assert'
 import { base16, base64pad } from 'iso-base/rfc4648'
 import {
   AddressDelegated,
