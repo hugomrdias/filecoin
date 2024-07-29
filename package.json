@@ -27,7 +27,7 @@
     "typedoc": "^0.26.3",
     "typedoc-plugin-missing-exports": "^3.0.0",
     "typedoc-plugin-zod": "^1.2.0",
-    "typescript": "5.5.2"
+    "typescript": "5.5.4"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
