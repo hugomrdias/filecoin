@@ -1,11 +1,14 @@
+import { bls12_381 as bls } from '@noble/curves/bls12-381'
 import { secp256k1 as secp } from '@noble/curves/secp256k1'
 import { blake2b } from '@noble/hashes/blake2b'
 import { HDKey } from '@scure/bip32'
 import * as bip39 from '@scure/bip39'
 import { wordlist } from '@scure/bip39/wordlists/english'
+import { base64pad } from 'iso-base/rfc4648'
 import { concat } from 'iso-base/utils'
 import { fromPublicKey } from './address.js'
 import { Message } from './message.js'
+import { Signature } from './signature.js'
 import { getNetworkFromPath } from './utils.js'
 
 /**
@@ -44,33 +47,25 @@ export function accountFromMnemonic(mnemonic, type, path, password, network) {
  * @param {import('./types.js').Network} [network]
  */
 export function accountFromSeed(seed, type, path, network) {
-  switch (type) {
-    case 'SECP256K1': {
-      const masterKey = HDKey.fromMasterSeed(seed)
-      const privateKey = masterKey.derive(path).privateKey
+  const masterKey = HDKey.fromMasterSeed(seed)
+  const privateKey = masterKey.derive(path).privateKey
 
-      if (!privateKey) {
-        throw new Error('Private key could not be generated.')
-      }
+  if (!privateKey) {
+    throw new Error('Private key could not be generated.')
+  }
 
-      if (!network) {
-        network = getNetworkFromPath(path)
-      }
+  if (!network) {
+    network = getNetworkFromPath(path)
+  }
 
-      const { address, pubKey } = getPublicKey(privateKey, network)
+  const { address, pubKey } = getPublicKey(privateKey, network, type)
 
-      return {
-        type,
-        privateKey,
-        pubKey,
-        address,
-        path,
-      }
-    }
-
-    default: {
-      throw new Error('Not supported.')
-    }
+  return {
+    type,
+    privateKey,
+    pubKey,
+    address,
+    path,
   }
 }
 
@@ -83,39 +78,51 @@ export function accountFromSeed(seed, type, path, network) {
  * @param {string} [path]
  */
 export function accountFromPrivateKey(privateKey, type, network, path) {
-  switch (type) {
-    case 'SECP256K1': {
-      if (privateKey.length !== 32) {
-        throw new Error('Private key should be 32 bytes.')
-      }
+  if (privateKey.length !== 32) {
+    throw new Error('Private key should be 32 bytes.')
+  }
 
-      const { address, pubKey } = getPublicKey(privateKey, network)
+  const { address, pubKey } = getPublicKey(privateKey, network, type)
 
-      return {
-        type,
-        privateKey,
-        pubKey,
-        address,
-        path,
-      }
-    }
-
-    default: {
-      throw new Error('Not supported.')
-    }
+  return {
+    type,
+    privateKey,
+    pubKey,
+    address,
+    path,
   }
 }
 
 /**
+ * Get public key from private key
+ *
  * @param {Uint8Array} privateKey
  * @param {import('./types.js').Network} network
+ * @param {import('./types.js').SignatureType} type
  */
-export function getPublicKey(privateKey, network) {
-  const publicKey = secp.getPublicKey(privateKey, false)
+export function getPublicKey(privateKey, network, type) {
+  switch (type) {
+    case 'SECP256K1': {
+      const publicKey = secp.getPublicKey(privateKey, false)
 
-  return {
-    pubKey: publicKey,
-    address: fromPublicKey(publicKey, network, 'SECP256K1'),
+      return {
+        pubKey: publicKey,
+        address: fromPublicKey(publicKey, network, 'SECP256K1'),
+      }
+    }
+    case 'BLS': {
+      const publicKey = bls.getPublicKey(privateKey)
+
+      return {
+        pubKey: publicKey,
+        address: fromPublicKey(publicKey, network, 'BLS'),
+      }
+    }
+    default: {
+      throw new Error(
+        `getPublicKey does not support "${type}" type. Use SECP256K1 or BLS.`
+      )
+    }
   }
 }
 
@@ -129,40 +136,94 @@ export function getPublicKey(privateKey, network) {
  */
 export function signMessage(privateKey, type, message) {
   const msg = new Message(message).serialize()
-  return sign(privateKey, type, msg)
-}
-
-/**
- * Sign message
- *
- * @param {Uint8Array} privateKey
- * @param {import('./types.js').SignatureType} type
- * @param {string | Uint8Array} message
- * @returns
- */
-export function sign(privateKey, type, message) {
   const cid = concat([
+    // cidv1 1byte + dag-cbor 1byte + blake2b-256 4bytes
     Uint8Array.from([0x01, 0x71, 0xa0, 0xe4, 0x02, 0x20]),
-    blake2b(message, {
+    blake2b(msg, {
       dkLen: 32,
     }),
   ])
 
-  const digest = blake2b(cid, {
-    dkLen: 32,
-  })
+  return sign(privateKey, type, cid)
+}
 
+/**
+ * Sign arbitary bytes similar to `lotus wallet sign`
+ *
+ * Lotus private key is little endian so you need to reverse the byte order. Use `lotusBlsPrivateKeyToBytes` to convert.
+ *
+ * @param {Uint8Array} privateKey
+ * @param {import('./types.js').SignatureType} type
+ * @param {string | Uint8Array} message
+ */
+export function sign(privateKey, type, message) {
   switch (type) {
     case 'SECP256K1': {
-      const signature = secp.sign(digest, privateKey)
-      return concat([
-        signature.toCompactRawBytes(),
-        // @ts-ignore
-        Uint8Array.from([signature.recovery]),
-      ])
+      const signature = secp.sign(
+        blake2b(message, {
+          dkLen: 32,
+        }),
+        privateKey
+      )
+
+      return new Signature({
+        type: 'SECP256K1',
+        data: concat([
+          signature.toCompactRawBytes(),
+          Uint8Array.from([signature.recovery]),
+        ]),
+      })
+    }
+
+    case 'BLS': {
+      const signature = bls.sign(message, privateKey)
+      return new Signature({
+        type: 'BLS',
+        data: signature,
+      })
     }
     default: {
-      throw new Error('Not supported.')
+      throw new Error(
+        `Sign does not support "${type}" type. Use SECP256K1 or BLS.`
+      )
     }
   }
+}
+
+/**
+ *
+ * @param {import('./signature.js').Signature} signature
+ * @param {Uint8Array} message
+ * @param {Uint8Array} publicKey
+ */
+export function verify(signature, message, publicKey) {
+  switch (signature.type) {
+    case 'SECP256K1': {
+      return secp.verify(
+        secp.Signature.fromCompact(signature.data.subarray(0, 64)),
+        blake2b(message, {
+          dkLen: 32,
+        }),
+        publicKey
+      )
+    }
+
+    case 'BLS': {
+      return bls.verify(signature.data, message, publicKey)
+    }
+    default: {
+      throw new Error(
+        `Verify does not support "${signature.type}" type. Use SECP256K1 or BLS.`
+      )
+    }
+  }
+}
+
+/**
+ * Lotus BLS private key to bytes
+ * Lotus private key is little endian so you need to reverse the byte order.
+ * @param {string} priv
+ */
+export function lotusBlsPrivateKeyToBytes(priv) {
+  return base64pad.decode(priv).reverse()
 }
