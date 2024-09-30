@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.0.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v4.1.0...iso-filecoin-v5.0.0) (2024-09-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* sign and signMessage now return `Signature` instance instead of the raw bytes
+
+### Features
+
+* add bls support, verify and changed sign return to wallet([#130](https://github.com/hugomrdias/filecoin/issues/130)) ([3508d54](https://github.com/hugomrdias/filecoin/commit/3508d54ce870144d0f2176c5709efacc44539e49))
+
 ## [4.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v4.0.5...iso-filecoin-v4.1.0) (2024-06-25)
 
 
