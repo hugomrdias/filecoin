@@ -186,7 +186,7 @@ describe('lotus rpc', function () {
       msg: message,
       signature: {
         type: 'SECP256K1',
-        data: Wallet.signMessage(account.privateKey, 'SECP256K1', message),
+        data: Wallet.signMessage(account.privateKey, 'SECP256K1', message).data,
       },
     })
     if (balance.error) {
@@ -217,7 +217,7 @@ describe('lotus rpc', function () {
       msg: message,
       signature: {
         type: 'SECP256K1',
-        data: Wallet.signMessage(account.privateKey, 'SECP256K1', message),
+        data: Wallet.signMessage(account.privateKey, 'SECP256K1', message).data,
       },
     })
     if (balance.error) {
