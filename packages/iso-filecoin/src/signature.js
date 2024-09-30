@@ -4,12 +4,12 @@ import { z } from 'zod'
 
 export const SIGNATURE_TYPE = /** @type {const} */ ({
   SECP256K1: 1,
-  BLS: 3,
+  BLS: 2,
 })
 
 export const SIGNATURE_CODE = /** @type {const} */ ({
   1: 'SECP256K1',
-  3: 'BLS',
+  2: 'BLS',
 })
 
 /** @type {import("zod").ZodType<BufferSource>} */
@@ -25,11 +25,11 @@ const zBuf = _zBufferSource.transform((value) => u8(value))
 
 export const Schemas = {
   lotusSignature: z.object({
-    Type: z.literal(1).or(z.literal(3)),
+    Type: z.literal(1).or(z.literal(2)),
     Data: z.string(),
   }),
   signature: z.object({
-    type: z.enum([SIGNATURE_CODE[1], SIGNATURE_CODE[3]]),
+    type: z.enum([SIGNATURE_CODE[1], SIGNATURE_CODE[2]]),
     data: zBuf,
   }),
 }

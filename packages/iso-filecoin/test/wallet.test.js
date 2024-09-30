@@ -126,7 +126,8 @@ describe('wallet', () => {
     )
   })
 
-  it.skip('should sign message with bls', async () => {
+  it('should sign message with bls', async function () {
+    this.timeout(10_000)
     const type = 'BLS'
     const API = 'https://api.calibration.node.glif.io'
     const account = Wallet.accountFromPrivateKey(
@@ -143,8 +144,6 @@ describe('wallet', () => {
       "m/44'/1'/0'/0/0"
     )
 
-    console.log(account.address.toString())
-    console.log(account2.address.toString())
     const rpc = new RPC({ api: API, network: 'testnet' })
 
     const message = await new Message({
@@ -158,15 +157,9 @@ describe('wallet', () => {
       signature: Wallet.signMessage(account.privateKey, type, message),
     })
     if (balance.error) {
-      console.log(
-        '🚀 ~ file: wallet.test.js:161 ~ it.only ~ balance.error:',
-        balance.error
-      )
-
       return assert.fail(balance.error.message)
     }
-
-    console.log(balance.result)
+    assert.ok(typeof balance.result['/'] === 'string')
   })
 
   it('should sign', () => {

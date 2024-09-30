@@ -135,10 +135,6 @@ export function getPublicKey(privateKey, network, type) {
  * @returns
  */
 export function signMessage(privateKey, type, message) {
-  if (type === 'BLS') {
-    throw new Error('BLS message signing is not supported')
-  }
-
   const msg = new Message(message).serialize()
   const cid = concat([
     // cidv1 1byte + dag-cbor 1byte + blake2b-256 4bytes
