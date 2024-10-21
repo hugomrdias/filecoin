@@ -168,12 +168,121 @@ export class RPC {
   }
 
   /**
+   * Converts any Filecoin address to an EthAddress.
+   *
+   * @see https://github.com/filecoin-project/lotus/blob/471819bf1ef8a4d5c7c0476a38ce9f5e23c59bfc/api/api_full.go#L743-L768
+   * @param {import('./types.js').FilecoinAddressToEthAddressParams} params
+   */
+  async filecoinAddressToEthAddress(params, fetchOptions = {}) {
+    return await /** @type {typeof this.call<string>} */ (this.call)(
+      {
+        method: 'Filecoin.FilecoinAddressToEthAddress',
+        params: [params.address, params.blockNumber],
+      },
+      fetchOptions
+    )
+  }
+
+  /**
+   * Public key address of the given ID address.
+   *
+   * @see https://github.com/filecoin-project/lotus/blob/master/documentation/en/api-v0-methods.md#StateAccountKey
+   *
+   *
+   * @param {import('./types.js').StateAccountKeyParams} params
+   */
+  async stateAccountKey(params, fetchOptions = {}) {
+    const r = await /** @type {typeof this.call<string>} */ (this.call)(
+      {
+        method: 'Filecoin.StateAccountKey',
+        params: [
+          params.address,
+          params === undefined ? null : params.tipSetKey,
+        ],
+      },
+      fetchOptions
+    )
+
+    if (r.error) {
+      return r
+    }
+
+    return {
+      result:
+        this.network === 'testnet' ? r.result.replace('f', 't') : r.result,
+      error: undefined,
+    }
+  }
+
+  /**
+   * Public key address of the given non-account ID address.
+   *
+   * @see https://github.com/filecoin-project/lotus/blob/master/documentation/en/api-v0-methods.md#StateLookupRobustAddress
+   *
+   *
+   * @param {import('./types.js').StateAccountKeyParams} params
+   */
+  async stateLookupRobustAddress(params, fetchOptions = {}) {
+    const r = await /** @type {typeof this.call<string>} */ (this.call)(
+      {
+        method: 'Filecoin.StateLookupRobustAddress',
+        params: [
+          params.address,
+          params === undefined ? null : params.tipSetKey,
+        ],
+      },
+      fetchOptions
+    )
+
+    if (r.error) {
+      return r
+    }
+
+    return {
+      result:
+        this.network === 'testnet' ? r.result.replace('f', 't') : r.result,
+      error: undefined,
+    }
+  }
+
+  /**
+   * Retrieves the ID address of the given address
+   *
+   * @see https://github.com/filecoin-project/lotus/blob/master/documentation/en/api-v0-methods.md#statelookupid
+   *
+   *
+   * @param {import('./types.js').StateAccountKeyParams} params
+   */
+  async stateLookupID(params, fetchOptions = {}) {
+    const r = await /** @type {typeof this.call<string>} */ (this.call)(
+      {
+        method: 'Filecoin.StateLookupID',
+        params: [
+          params.address,
+          params === undefined ? null : params.tipSetKey,
+        ],
+      },
+      fetchOptions
+    )
+
+    if (r.error) {
+      return r
+    }
+
+    return {
+      result:
+        this.network === 'testnet' ? r.result.replace('f', 't') : r.result,
+      error: undefined,
+    }
+  }
+
+  /**
    * Generic method to call any method on the lotus rpc api.
    *
    * @template R
    * @param {import('./types.js').RpcOptions} rpcOptions
    * @param {import('./types.js').FetchOptions} [fetchOptions]
-   * @returns {Promise<R | import('./types.js').RpcError>}
+   * @returns {Promise<import('./types.js').LotusResponse<R>>}
    */
 
   async call(rpcOptions, fetchOptions = {}) {
@@ -208,7 +317,7 @@ export class RPC {
             },
           })
         }
-        return /** @type {R} */ ({ result: json.result })
+        return { result: /** @type {R} */ (json.result), error: undefined }
       }
       const text = await res.text()
       let json

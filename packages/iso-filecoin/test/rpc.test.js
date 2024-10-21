@@ -226,6 +226,59 @@ describe('lotus rpc', function () {
 
     assert.ok(typeof balance.result['/'] === 'string')
   })
+
+  it('get ID from f1 unsafe', async () => {
+    const rpc = new RPC({ api: API, network: 'testnet' })
+
+    const balance = await rpc.stateLookupID({
+      address: 't1jzly7yqqff5fignjddktuo2con2pjoz5yajemli',
+    })
+    if (balance.error) {
+      return assert.fail(balance.error.message)
+    }
+
+    assert.strictEqual(balance.result, 't023576')
+  })
+
+  it('get ID from f1 safe', async () => {
+    const rpc = new RPC({ api: API, network: 'testnet' })
+
+    const balance = await rpc.filecoinAddressToEthAddress({
+      address: 't1jzly7yqqff5fignjddktuo2con2pjoz5yajemli',
+    })
+    if (balance.error) {
+      return assert.fail(balance.error.message)
+    }
+
+    assert.strictEqual(
+      Address.fromEthAddress(balance.result, 'testnet').toString(),
+      't023576'
+    )
+  })
+
+  it('get f4 from ID', async () => {
+    const rpc = new RPC({ api: API, network: 'testnet' })
+
+    const idAddress = await rpc.stateLookupID({
+      address: 't410fpzfl2y5hzayuzqunhcbqgrzdkpmij4uswh5uumi',
+    })
+    if (idAddress.error) {
+      return assert.fail(idAddress.error.message)
+    }
+
+    assert.strictEqual(idAddress.result, 't025575')
+
+    const fAddress = await rpc.stateAccountKey({
+      address: idAddress.result,
+    })
+    if (fAddress.error) {
+      return assert.fail(fAddress.error.message)
+    }
+    assert.strictEqual(
+      fAddress.result,
+      't410fpzfl2y5hzayuzqunhcbqgrzdkpmij4uswh5uumi'
+    )
+  })
 })
 
 describe('lotus rpc aborts', function () {

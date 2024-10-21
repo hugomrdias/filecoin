@@ -1,7 +1,8 @@
 import type BigNumber from 'bignumber.js'
 import type { z } from 'zod'
-import type { PROTOCOL_INDICATOR } from './address'
+import type { AddressId, PROTOCOL_INDICATOR } from './address'
 import type { Schemas as MessageSchemas } from './message'
+import type { RPC } from './rpc'
 import type { SIGNATURE_TYPE, Schemas as SignatureSchemas } from './signature'
 
 export type ProtocolIndicator = typeof PROTOCOL_INDICATOR
@@ -22,6 +23,7 @@ export interface Address {
   toBytes: () => Uint8Array
   toContractDestination: () => `0x${string}`
   checksum: () => Uint8Array
+  toID: (rpc: RPC) => Promise<AddressId>
 }
 
 export interface DerivationPathComponents {
@@ -166,6 +168,24 @@ export interface waitMsgParams {
    * @default 100
    */
   lookback?: number
+}
+
+export interface StateAccountKeyParams {
+  address: string
+  tipSetKey?: CID[] | null
+}
+export type BlockNumber = '0x${string}'
+export interface FilecoinAddressToEthAddressParams {
+  /**
+   * The Filecoin address to convert.
+   */
+  address: string
+  /**
+   * The block number or state for the conversion.
+   * Defaults to "finalized" for maximum safety.
+   * Possible values: "pending", "latest", "finalized", "safe", or a specific block number represented as hex.
+   */
+  blockNumber?: 'pending' | 'latest' | 'finalized' | 'safe' | BlockNumber
 }
 
 // Token types

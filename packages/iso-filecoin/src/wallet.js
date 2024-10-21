@@ -28,6 +28,8 @@ export function mnemonicToSeed(mnemonic, password) {
 }
 
 /**
+ * Get account from mnemonic
+ *
  * @param {string} mnemonic
  * @param {import('./types.js').SignatureType} type
  * @param {string} path
@@ -40,6 +42,7 @@ export function accountFromMnemonic(mnemonic, type, path, password, network) {
 }
 
 /**
+ * Get account from seed
  *
  * @param {Uint8Array} seed
  * @param {import('./types.js').SignatureType} type
@@ -70,7 +73,7 @@ export function accountFromSeed(seed, type, path, network) {
 }
 
 /**
- * Account from private key
+ * Get account from private key
  *
  * @param {Uint8Array} privateKey
  * @param {import('./types.js').SignatureType} type
@@ -90,6 +93,29 @@ export function accountFromPrivateKey(privateKey, type, network, path) {
     pubKey,
     address,
     path,
+  }
+}
+
+/**
+ * Create account
+ *
+ * @param {import('./types.js').SignatureType} type
+ * @param {import('./types.js').Network} network
+ */
+export function create(type, network) {
+  switch (type) {
+    case 'SECP256K1': {
+      return accountFromPrivateKey(secp.utils.randomPrivateKey(), type, network)
+    }
+
+    case 'BLS': {
+      return accountFromPrivateKey(bls.utils.randomPrivateKey(), type, network)
+    }
+    default: {
+      throw new Error(
+        `Create does not support "${type}" type. Use SECP256K1 or BLS.`
+      )
+    }
   }
 }
 

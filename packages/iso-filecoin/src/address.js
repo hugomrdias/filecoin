@@ -9,6 +9,8 @@ import {
   getNetwork,
 } from './utils.js'
 
+export { checksumEthAddress } from './utils.js'
+
 /**
  * @typedef {import('./types.js').Address} IAddress
  * @typedef { string | IAddress | BufferSource} Value
@@ -35,6 +37,46 @@ const symbol = Symbol.for('filecoin-address')
  */
 export function isAddress(val) {
   return Boolean(val?.[symbol])
+}
+
+/**
+ * Check if object is a {@link AddressSecp256k1} instance
+ *
+ * @param {any} val
+ * @returns {val is AddressSecp256k1}
+ */
+export function isAddressSecp256k1(val) {
+  return Boolean(val?.[symbol]) && val.protocol === PROTOCOL_INDICATOR.SECP256K1
+}
+
+/**
+ * Check if object is a {@link AddressBLS} instance
+ *
+ * @param {any} val
+ * @returns {val is AddressBLS}
+ */
+export function isAddressBls(val) {
+  return Boolean(val?.[symbol]) && val.protocol === PROTOCOL_INDICATOR.BLS
+}
+
+/**
+ * Check if object is a {@link AddressId} instance
+ *
+ * @param {any} val
+ * @returns {val is AddressId}
+ */
+export function isAddressId(val) {
+  return Boolean(val?.[symbol]) && val.protocol === PROTOCOL_INDICATOR.ID
+}
+
+/**
+ * Check if object is a {@link AddressDelegated} instance
+ *
+ * @param {any} val
+ * @returns {val is AddressDelegated}
+ */
+export function isAddressDelegated(val) {
+  return Boolean(val?.[symbol]) && val.protocol === PROTOCOL_INDICATOR.DELEGATED
 }
 
 /**
@@ -276,6 +318,41 @@ class Address {
       dkLen: 4,
     })
   }
+
+  /**
+   *
+   * @param {import('./rpc.js').RPC} rpc
+   */
+  async toID(rpc) {
+    if (rpc.network !== this.network) {
+      throw new Error(
+        `Network mismatch. RPC network: ${rpc.network} Address network: ${this.network}`
+      )
+    }
+
+    if (this.protocol === 0) {
+      return AddressId.fromString(this.toString())
+    }
+
+    if (this.protocol === 4) {
+      throw new Error(
+        `Cannot convert delegated address to ID: ${this.toString()}`
+      )
+    }
+    const r = await rpc.filecoinAddressToEthAddress({
+      address: this.toString(),
+    })
+
+    if (r.error) {
+      throw new Error(r.error.message)
+    }
+
+    if (isIdMaskAddress(r.result)) {
+      return AddressId.fromEthAddress(r.result, this.network)
+    }
+
+    throw new Error(`Invalid ID address: ${r.result}`)
+  }
 }
 
 /**
@@ -379,6 +456,25 @@ export class AddressId extends Address {
 
   toString() {
     return `${this.networkPrefix}${this.protocol}${this.id}`
+  }
+
+  /**
+   *
+   * @param {import('./rpc.js').RPC} rpc
+   */
+  async toRobust(rpc) {
+    if (rpc.network !== this.network) {
+      throw new Error(
+        `Network mismatch. RPC network: ${rpc.network} Address network: ${this.network}`
+      )
+    }
+
+    const r = await rpc.stateAccountKey({ address: this.toString() })
+    if (r.error) {
+      throw new Error(r.error.message)
+    }
+
+    return fromString(r.result)
   }
 }
 

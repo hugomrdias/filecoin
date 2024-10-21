@@ -3,6 +3,7 @@ import { base16, base64pad } from 'iso-base/rfc4648'
 import {
   AddressDelegated,
   AddressId,
+  checksumEthAddress,
   from,
   fromBytes,
   fromContractDestination,
@@ -10,10 +11,18 @@ import {
   fromPublicKey,
   fromString,
   isAddress,
+  isAddressDelegated,
   isEthAddress,
   isIdMaskAddress,
   toEthAddress,
 } from '../src/address.js'
+
+import { RPC } from '../src/rpc.js'
+
+const rpc = new RPC({
+  api: 'https://api.node.glif.io',
+  network: 'mainnet',
+})
 
 const secp = [
   [
@@ -251,6 +260,115 @@ describe('address', () => {
     )
 
     assert.strictEqual(f1.toString(), f1FromContractDestination.toString())
+  })
+
+  it('should convert from f0 address to ID and back to robust f3', async () => {
+    const f0 = fromString('f01024')
+    const id = await f0.toID(rpc)
+
+    assert.strictEqual(id.toString(), 'f01024')
+
+    const f3 = await id.toRobust(rpc)
+    assert.strictEqual(
+      f3.toString(),
+      'f3wx7w6ns5prguedyc5tqhebmyqlpw77lizxokqxuu63rcwaxcxtsnfumxhvygtoxbeyntywbveipyinwvxguq'
+    )
+  })
+
+  it('should convert from f1 address to ID and back to robust', async () => {
+    const f11 = fromString('f17uoq6tp427uzv7fztkbsnn64iwotfrristwpryy')
+    const id = await f11.toID(rpc)
+
+    assert.strictEqual(id.toString(), 'f09854')
+
+    const f1 = await id.toRobust(rpc)
+    assert.strictEqual(
+      f1.toString(),
+      'f17uoq6tp427uzv7fztkbsnn64iwotfrristwpryy'
+    )
+  })
+
+  it('should convert from f2 address to ID and fail back to robust because its a storage miner', async () => {
+    const f2 = fromString('f2ptl534yxh7tpuyydlpnuchgpvy3ex2khzfzicgi')
+    const id = await f2.toID(rpc)
+
+    assert.strictEqual(id.toString(), 'f01729')
+
+    await assert.rejects(() => id.toRobust(rpc), {
+      message:
+        'RPC_ERROR: failed to get account actor state for f01729: actor code is not account: storageminer',
+    })
+  })
+
+  it('should convert from f3 address to ID and back to robust', async () => {
+    const rpc = new RPC({
+      api: 'https://api.calibration.node.glif.io',
+      network: 'testnet',
+    })
+    const f11 = fromString(
+      't3uwh4pjnqr6f2xljil55isug7nkmijouu6nf3n7z6xjk4fibqsp3mbotipdii6eufmskkqnmp2j65m2o25qnq'
+    )
+    const id = await f11.toID(rpc)
+
+    assert.strictEqual(id.toString(), 't0142115')
+
+    const f1 = await id.toRobust(rpc)
+    assert.strictEqual(
+      f1.toString(),
+      't3uwh4pjnqr6f2xljil55isug7nkmijouu6nf3n7z6xjk4fibqsp3mbotipdii6eufmskkqnmp2j65m2o25qnq'
+    )
+  })
+
+  it('should fail convert from f4 address to ID', async () => {
+    const rpc = new RPC({
+      api: 'https://api.calibration.node.glif.io',
+      network: 'testnet',
+    })
+    const f11 = fromString('t410fpzfl2y5hzayuzqunhcbqgrzdkpmij4uswh5uumi')
+
+    await assert.rejects(() => f11.toID(rpc), {
+      message:
+        'Cannot convert delegated address to ID: t410fpzfl2y5hzayuzqunhcbqgrzdkpmij4uswh5uumi',
+    })
+  })
+
+  it('should fail convert from 0x address to ID', async () => {
+    const rpc = new RPC({
+      api: 'https://api.calibration.node.glif.io',
+      network: 'testnet',
+    })
+    const f11 = from('0x7e4abd63a7c8314cc28d388303472353d884f292', 'testnet')
+
+    await assert.rejects(() => f11.toID(rpc), {
+      message:
+        'Cannot convert delegated address to ID: t410fpzfl2y5hzayuzqunhcbqgrzdkpmij4uswh5uumi',
+    })
+  })
+
+  it('should convert from f0 eth address to f4 robust and 0x', async () => {
+    const rpc = new RPC({
+      api: 'https://api.calibration.node.glif.io',
+      network: 'testnet',
+    })
+    const f11 = AddressId.fromString('t025575')
+    const robust = await f11.toRobust(rpc)
+
+    // const r = await rpc.stateLookupID({
+    //   address: 't410fpzfl2y5hzayuzqunhcbqgrzdkpmij4uswh5uumi',
+    // })
+    // console.log('🚀 ~ file: address.test.js:374 ~ it ~ r:', r)
+
+    assert.strictEqual(
+      robust.toString(),
+      't410fpzfl2y5hzayuzqunhcbqgrzdkpmij4uswh5uumi'
+    )
+
+    if (isAddressDelegated(robust)) {
+      assert.strictEqual(
+        robust.toEthAddress(),
+        checksumEthAddress('0x7e4abd63a7c8314cc28d388303472353d884f292')
+      )
+    }
   })
 })
 
