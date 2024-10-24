@@ -349,7 +349,7 @@ class Address {
     }
 
     const cached = await /** @type {typeof cache.get<string>}*/ (cache.get)(key)
-    if (cached) {
+    if (cached && options.safety === 'finalized') {
       return AddressId.fromString(cached)
     }
 
@@ -371,7 +371,9 @@ class Address {
       )
     }
 
-    await cache.set(key, idAddress.toString())
+    if (options.safety === 'finalized') {
+      await cache.set(key, idAddress.toString())
+    }
     return idAddress
   }
 
@@ -392,7 +394,7 @@ class Address {
     const cache = getCache(options.cache)
     const key = ['0x', this.toString()]
     const cached = await /** @type {typeof cache.get<string>}*/ (cache.get)(key)
-    if (cached) {
+    if (cached && options.safety === 'finalized') {
       return cached
     }
 
@@ -410,7 +412,9 @@ class Address {
       throw new Error(`Invalid ID masked 0x address: ${r.result}`)
     }
 
-    await cache.set(key, r.result)
+    if (options.safety === 'finalized') {
+      await cache.set(key, r.result)
+    }
     return r.result
   }
 }
