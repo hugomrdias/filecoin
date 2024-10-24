@@ -1,12 +1,23 @@
-import { anySignal } from 'iso-web/signals'
+import { request } from 'iso-web/http'
 import { Message } from './message.js'
 import { Signature } from './signature.js'
 import { getNetworkPrefix } from './utils.js'
 
+/**
+ * @import {ChainGetTipSetByHeightParams,  FilecoinAddressToEthAddressParams, GasEstimateMessageGasResponse, GasEstimateParams, MpoolGetNonceResponse, MpoolPushResponse, Options, PushMessageParams, RpcOptions, Safety, StateAccountKeyParams, StateNetworkNameResponse, TipSet, VersionResponse, waitMsgParams, WalletBalanceResponse} from './types.js'
+ */
+
+/**
+ * @typedef {import('iso-web/types').RequestOptions} RequestOptions
+ */
+
+/**
+ * RPC
+ */
 export class RPC {
   /**
-   * @param {import("./types.js").Options} options
-   * @param {import('./types.js').FetchOptions} [fetchOptions]
+   * @param {Options} options
+   * @param {RequestOptions} [fetchOptions]
    */
   constructor(
     {
@@ -31,24 +42,24 @@ export class RPC {
   /**
    * Version returns the version of the Filecoin node.
    *
-   * @param {import('./types.js').FetchOptions} [fetchOptions]
+   * @param {RequestOptions} [fetchOptions]
    */
   async version(fetchOptions = {}) {
-    return /** @type {import('./types.js').VersionResponse} */ (
-      await this.call({ method: 'Filecoin.Version' }, fetchOptions)
+    return await /** @type {typeof this.call<VersionResponse>}*/ (this.call)(
+      { method: 'Filecoin.Version' },
+      fetchOptions
     )
   }
 
   /**
    * NetworkName returns the name of the network the node is synced to.
    *
-   * @param {import('./types.js').FetchOptions} [fetchOptions]
-   * @returns
+   * @param {RequestOptions} [fetchOptions]
    */
   async networkName(fetchOptions = {}) {
-    return /** @type {import("./types.js").StateNetworkNameResponse} */ (
-      await this.call({ method: 'Filecoin.StateNetworkName' }, fetchOptions)
-    )
+    return await /** @type {typeof this.call<StateNetworkNameResponse>}*/ (
+      this.call
+    )({ method: 'Filecoin.StateNetworkName' }, fetchOptions)
   }
 
   /**
@@ -56,25 +67,25 @@ export class RPC {
    *
    * @see https://lotus.filecoin.io/reference/lotus/gas/#gasestimatemessagegas
    *
-   * @param {import('./types.js').GasEstimateParams} params
-   * @param {import('./types.js').FetchOptions} [fetchOptions]
+   * @param {GasEstimateParams} params
+   * @param {RequestOptions} [fetchOptions]
    */
   async gasEstimate(params, fetchOptions = {}) {
     this.#validateNetwork(params.msg.from)
     this.#validateNetwork(params.msg.to)
 
-    return /** @type {import("./types.js").GasEstimateMessageGasResponse} */ (
-      await this.call(
-        {
-          method: 'Filecoin.GasEstimateMessageGas',
-          params: [
-            new Message(params.msg).toLotus(),
-            { MaxFee: params.maxFee ?? '0' },
-            undefined,
-          ],
-        },
-        fetchOptions
-      )
+    return await /** @type {typeof this.call<GasEstimateMessageGasResponse>}*/ (
+      this.call
+    )(
+      {
+        method: 'Filecoin.GasEstimateMessageGas',
+        params: [
+          new Message(params.msg).toLotus(),
+          { MaxFee: params.maxFee ?? '0' },
+          undefined,
+        ],
+      },
+      fetchOptions
     )
   }
 
@@ -84,16 +95,13 @@ export class RPC {
    * @see https://lotus.filecoin.io/reference/lotus/wallet/#walletbalance
    *
    * @param {string} address
-   * @param {import('./types.js').FetchOptions} [fetchOptions]
+   * @param {RequestOptions} [fetchOptions]
    */
   async balance(address, fetchOptions = {}) {
     address = this.#validateNetwork(address)
-    return /** @type {import("./types.js").WalletBalanceResponse} */ (
-      await this.call(
-        { method: 'Filecoin.WalletBalance', params: [address] },
-        fetchOptions
-      )
-    )
+    return await /** @type {typeof this.call<WalletBalanceResponse>}*/ (
+      this.call
+    )({ method: 'Filecoin.WalletBalance', params: [address] }, fetchOptions)
   }
 
   /**
@@ -101,16 +109,13 @@ export class RPC {
    *
    * @see https://lotus.filecoin.io/reference/lotus/mpool/#mpoolgetnonce
    * @param {string} address
-   * @param {import('./types.js').FetchOptions} [fetchOptions]
+   * @param {RequestOptions} [fetchOptions]
    */
   async nonce(address, fetchOptions = {}) {
     address = this.#validateNetwork(address)
-    return /** @type {import("./types.js").MpoolGetNonceResponse} */ (
-      await this.call(
-        { method: 'Filecoin.MpoolGetNonce', params: [address] },
-        fetchOptions
-      )
-    )
+    return await /** @type {typeof this.call<MpoolGetNonceResponse>}*/ (
+      this.call
+    )({ method: 'Filecoin.MpoolGetNonce', params: [address] }, fetchOptions)
   }
 
   /**
@@ -118,26 +123,24 @@ export class RPC {
    *
    * @see https://lotus.filecoin.io/reference/lotus/mpool/#mpoolpush
    *
-   * @param {import('./types.js').PushMessageParams} params
-   * @param {import('./types.js').FetchOptions} [fetchOptions]
+   * @param {PushMessageParams} params
+   * @param {RequestOptions} [fetchOptions]
    */
   async pushMessage(params, fetchOptions = {}) {
     this.#validateNetwork(params.msg.from)
     this.#validateNetwork(params.msg.to)
 
-    return /** @type {import("./types.js").MpoolPushResponse} */ (
-      await this.call(
-        {
-          method: 'Filecoin.MpoolPush',
-          params: [
-            {
-              Message: new Message(params.msg).toLotus(),
-              Signature: new Signature(params.signature).toLotus(),
-            },
-          ],
-        },
-        fetchOptions
-      )
+    return await /** @type {typeof this.call<MpoolPushResponse>}*/ (this.call)(
+      {
+        method: 'Filecoin.MpoolPush',
+        params: [
+          {
+            Message: new Message(params.msg).toLotus(),
+            Signature: new Signature(params.signature).toLotus(),
+          },
+        ],
+      },
+      fetchOptions
     )
   }
 
@@ -147,23 +150,21 @@ export class RPC {
    * Timeout is increased to 60s instead of the default 5s.
    *
    * @see https://lotus.filecoin.io/reference/lotus/state/#statewaitmsg
-   * @param {import('./types.js').waitMsgParams} params
-   * @param {import('./types.js').FetchOptions} [fetchOptions]
+   * @param {waitMsgParams} params
+   * @param {RequestOptions} [fetchOptions]
    */
   async waitMsg(params, fetchOptions = {}) {
-    return /** @type {import('./types.js').WaitMsgResponse} */ (
-      await this.call(
-        {
-          method: 'Filecoin.StateWaitMsg',
-          params: [
-            params.cid,
-            params.confidence ?? 2,
-            params.lookback ?? 100,
-            false,
-          ],
-        },
-        { timeout: 60_000, ...fetchOptions }
-      )
+    return await /** @type {typeof this.call<MpoolPushResponse>}*/ (this.call)(
+      {
+        method: 'Filecoin.StateWaitMsg',
+        params: [
+          params.cid,
+          params.confidence ?? 2,
+          params.lookback ?? 100,
+          false,
+        ],
+      },
+      { timeout: 60_000, ...fetchOptions }
     )
   }
 
@@ -171,7 +172,8 @@ export class RPC {
    * Converts any Filecoin address to an EthAddress.
    *
    * @see https://github.com/filecoin-project/lotus/blob/471819bf1ef8a4d5c7c0476a38ce9f5e23c59bfc/api/api_full.go#L743-L768
-   * @param {import('./types.js').FilecoinAddressToEthAddressParams} params
+   * @param {FilecoinAddressToEthAddressParams} params
+   * @param {RequestOptions} [fetchOptions]
    */
   async filecoinAddressToEthAddress(params, fetchOptions = {}) {
     return await /** @type {typeof this.call<string>} */ (this.call)(
@@ -189,7 +191,8 @@ export class RPC {
    * @see https://github.com/filecoin-project/lotus/blob/master/documentation/en/api-v0-methods.md#StateAccountKey
    *
    *
-   * @param {import('./types.js').StateAccountKeyParams} params
+   * @param {StateAccountKeyParams} params
+   * @param {RequestOptions} [fetchOptions]
    */
   async stateAccountKey(params, fetchOptions = {}) {
     const r = await /** @type {typeof this.call<string>} */ (this.call)(
@@ -197,7 +200,7 @@ export class RPC {
         method: 'Filecoin.StateAccountKey',
         params: [
           params.address,
-          params === undefined ? null : params.tipSetKey,
+          params.tipSetKey === undefined ? null : params.tipSetKey,
         ],
       },
       fetchOptions
@@ -220,7 +223,8 @@ export class RPC {
    * @see https://github.com/filecoin-project/lotus/blob/master/documentation/en/api-v0-methods.md#StateLookupRobustAddress
    *
    *
-   * @param {import('./types.js').StateAccountKeyParams} params
+   * @param {StateAccountKeyParams} params
+   * @param {RequestOptions} [fetchOptions]
    */
   async stateLookupRobustAddress(params, fetchOptions = {}) {
     const r = await /** @type {typeof this.call<string>} */ (this.call)(
@@ -228,7 +232,7 @@ export class RPC {
         method: 'Filecoin.StateLookupRobustAddress',
         params: [
           params.address,
-          params === undefined ? null : params.tipSetKey,
+          params.tipSetKey === undefined ? null : params.tipSetKey,
         ],
       },
       fetchOptions
@@ -251,7 +255,8 @@ export class RPC {
    * @see https://github.com/filecoin-project/lotus/blob/master/documentation/en/api-v0-methods.md#statelookupid
    *
    *
-   * @param {import('./types.js').StateAccountKeyParams} params
+   * @param {StateAccountKeyParams} params
+   * @param {RequestOptions} [fetchOptions]
    */
   async stateLookupID(params, fetchOptions = {}) {
     const r = await /** @type {typeof this.call<string>} */ (this.call)(
@@ -259,7 +264,7 @@ export class RPC {
         method: 'Filecoin.StateLookupID',
         params: [
           params.address,
-          params === undefined ? null : params.tipSetKey,
+          params.tipSetKey === undefined ? null : params.tipSetKey,
         ],
       },
       fetchOptions
@@ -277,12 +282,129 @@ export class RPC {
   }
 
   /**
+   * The current head of the chain.
+   *
+   * @see https://github.com/filecoin-project/filecoin-docs/blob/main/reference/json-rpc/chain.md#chainhead
+   *
+   *
+   * @param {RequestOptions} [fetchOptions]
+   */
+  async chainHead(fetchOptions = {}) {
+    const r = await /** @type {typeof this.call<TipSet>} */ (this.call)(
+      {
+        method: 'Filecoin.ChainHead',
+      },
+      fetchOptions
+    )
+
+    return r
+  }
+
+  /**
+   * Get tipset at the specified epoch (height). If there are no blocks at the specified epoch, a tipset at an earlier epoch will be returned.
+   *
+   * @see https://github.com/filecoin-project/filecoin-docs/blob/main/reference/json-rpc/chain.md#chaingettipsetbyheight
+   *
+   * @param {ChainGetTipSetByHeightParams} params
+   * @param {RequestOptions} [fetchOptions]
+   */
+  async getTipSetByHeight(params, fetchOptions = {}) {
+    const r = await /** @type {typeof this.call<TipSet>} */ (this.call)(
+      {
+        method: 'Filecoin.ChainGetTipSetByHeight',
+        params: [
+          params.height,
+          params.tipSetKey === undefined ? null : params.tipSetKey,
+        ],
+      },
+      fetchOptions
+    )
+
+    return r
+  }
+
+  /**
+   * Looks back from latest height for a tipset
+   *
+   * @param {number} lookback - Chain epoch to look back to
+   * @param {RequestOptions} [fetchOptions]
+   */
+  async lookBackTipSet(lookback, fetchOptions = {}) {
+    const head = await this.chainHead(fetchOptions)
+
+    if (head.error) {
+      return head
+    }
+
+    const wallTime = Math.floor(Date.now() / 1000)
+    const filTime = head.result.Blocks[0].Timestamp
+
+    // https://github.com/ribasushi/go-toolbox-interplanetary/blob/master/fil/time.go#L50-L61
+    if (wallTime < filTime - 3 || wallTime > filTime + 10 + 4 * 30) {
+      return {
+        result: undefined,
+        error: {
+          code: 0,
+          message: 'Chain is not synced',
+        },
+      }
+    }
+
+    if (lookback === 0) {
+      return head
+    }
+
+    const height = head.result.Height - 1 - lookback
+    return this.getTipSetByHeight(
+      {
+        height,
+        tipSetKey: head.result.Cids,
+      },
+      fetchOptions
+    )
+  }
+
+  /**
+   * Get the ID address for an address with different safety guarantees
+   *
+   * @param {{address: string, safety?: Safety}} params
+   * @param {RequestOptions} [fetchOptions]
+   */
+  async getIDAddress(params, fetchOptions = {}) {
+    const safety = params.safety ?? 'finalized'
+
+    let tipSetKey
+
+    if (safety === 'finalized' || safety === 'safe') {
+      const ts = await this.lookBackTipSet(
+        safety === 'finalized' ? 900 : 30,
+        fetchOptions
+      )
+      tipSetKey = ts.result?.Cids
+      if (ts.error) {
+        return ts
+      }
+    }
+
+    if (safety === 'latest') {
+      tipSetKey = null
+    }
+
+    return this.stateLookupID(
+      {
+        address: params.address,
+        tipSetKey,
+      },
+      fetchOptions
+    )
+  }
+
+  /**
    * Generic method to call any method on the lotus rpc api.
    *
    * @template R
-   * @param {import('./types.js').RpcOptions} rpcOptions
-   * @param {import('./types.js').FetchOptions} [fetchOptions]
-   * @returns {Promise<import('./types.js').LotusResponse<R>>}
+   * @param {RpcOptions} rpcOptions
+   * @param {RequestOptions} [fetchOptions]
    */
 
   async call(rpcOptions, fetchOptions = {}) {
@@ -290,75 +412,39 @@ export class RPC {
       ...this.fetchOptions,
       ...fetchOptions,
     }
-    try {
-      const res = await this.fetch(this.api, {
-        method: 'POST',
+
+    const r =
+      await /** @type {typeof request.json.post<{result: R, error: {code: number, message: string}}>} */ (
+        request.json.post
+      )(this.api, {
+        ...opts,
         headers: this.headers,
-        body: JSON.stringify({
+        body: {
           jsonrpc: '2.0',
           method: rpcOptions.method,
           params: rpcOptions.params,
           id: 1,
-        }),
-        signal: anySignal([
-          opts.signal,
-          AbortSignal.timeout(opts.timeout ?? 5000),
-        ]),
-      })
-
-      if (res.ok) {
-        const json = await res.json()
-        // eslint-disable-next-line unicorn/prefer-ternary
-        if (json.result === undefined) {
-          return /** @type {import("./types.js").RpcError} */ ({
-            error: {
-              code: json.error.code,
-              message: `RPC_ERROR: ${json.error.message}`,
-            },
-          })
-        }
-        return { result: /** @type {R} */ (json.result), error: undefined }
-      }
-      const text = await res.text()
-      let json
-      try {
-        json = JSON.parse(text)
-      } catch {
-        // ignore
-      }
-
-      if (json?.error) {
-        return /** @type {import("./types.js").RpcError} */ ({
-          error: {
-            code: json.error.code,
-            message: `RPC_ERROR: ${json.error.message}`,
-          },
-        })
-      }
-      if (!json || !json.error) {
-        return /** @type {import("./types.js").RpcError} */ ({
-          error: {
-            code: res.status,
-            message: `HTTP_ERROR: ${res.statusText} ${text ? `- ${text}` : ''}`,
-          },
-        })
-      }
-    } catch (error) {
-      const err = /** @type {Error} */ (error)
-      return /** @type {import("./types.js").RpcError} */ ({
-        error: {
-          code: 0,
-          message: `FETCH_ERROR: ${err.message}`,
         },
       })
+
+    if (r.error) {
+      let message = r.error.message
+      if (r.error.cause) {
+        message += ` [${r.error.cause.toString()}]`
+      }
+      return {
+        result: undefined,
+        error: { code: 0, message },
+      }
     }
 
-    return /** @type {import("./types.js").RpcError} */ ({
-      error: {
-        code: 0,
-        message: 'ERROR: unknown error',
-      },
-    })
+    if (r.result.error) {
+      return {
+        result: undefined,
+        error: { code: r.result.error.code, message: r.result.error.message },
+      }
+    }
+    return { result: r.result.result, error: undefined }
   }
 
   /**
