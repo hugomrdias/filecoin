@@ -1,4 +1,5 @@
 import type BigNumber from 'bignumber.js'
+import type { Driver } from 'iso-kv'
 import type { z } from 'zod'
 import type { AddressId, PROTOCOL_INDICATOR } from './address'
 import type { Schemas as MessageSchemas } from './message'
@@ -12,6 +13,16 @@ export interface CID {
   '/': string
 }
 
+export type Safety = 'safe' | 'finalized' | 'latest'
+export type Cache = boolean | Driver | undefined
+export interface AddressRpcOptions {
+  rpc: RPC
+  cache?: Cache
+}
+export interface AddressRpcSafetyOptions extends AddressRpcOptions {
+  safety?: Safety
+}
+
 export interface Address {
   protocol: ProtocolIndicatorCode
   payload: Uint8Array
@@ -19,11 +30,20 @@ export interface Address {
   networkPrefix: NetworkPrefix
   namespace?: number
   id?: bigint
+  checksum: () => Uint8Array
+  toContractDestination: () => `0x${string}`
   toString: () => string
   toBytes: () => Uint8Array
-  toContractDestination: () => `0x${string}`
-  checksum: () => Uint8Array
-  toID: (rpc: RPC) => Promise<AddressId>
+  /**
+   * Convert to ID address
+   */
+  toIdAddress: (options: AddressRpcOptions) => Promise<AddressId>
+  /**
+   * Converts any address to a 0x address, either id masked address or eth address depending on the address type.
+   * Delegated addresses convert to eth address, f1, f2, f3 convert to id masked address
+   * and f0 depends on the underline address type
+   */
+  to0x: (options: AddressRpcOptions) => Promise<string>
 }
 
 export interface DerivationPathComponents {
@@ -53,9 +73,7 @@ export interface LotusMessage {
   GasPremium: string
   Method: number
   Params: string
-  CID?: {
-    '/': string
-  }
+  CID?: CID
 }
 
 // Signature types
@@ -68,14 +86,6 @@ export type LotusSignature = z.infer<
 export type SignatureObj = z.infer<(typeof SignatureSchemas)['signature']>
 
 // RPC types
-export interface RpcError {
-  error: {
-    code: number
-    message: string
-  }
-  result?: undefined
-}
-
 export interface Options {
   token?: string
   api: string | URL
@@ -88,49 +98,93 @@ export interface RpcOptions {
   params?: unknown[]
 }
 
-export interface FetchOptions {
-  signal?: AbortSignal
-  keepalive?: boolean
-  timeout?: number
-}
-
 export interface MsgReceipt {
   ExitCode: number
   Return: string | null
   GasUsed: number
   EventsRoot: CID | null
 }
+
+export type TipSetKey = CID[]
 export interface MsgLookup {
   Height: number
   Message: CID
   Receipt: MsgReceipt
   ReturnDec: unknown | null
-  TipSet: CID[]
+  TipSet: TipSetKey
 }
+
+export interface Block {
+  BLSAggregate: {
+    Data: string
+    Type: 2
+  }
+  BeaconEntries: {
+    Data: string
+    Round: number
+  }[]
+  BlockSig: {
+    Data: string
+    Type: 2
+  }
+  ElectionProof: {
+    VRFProof: string
+    WinCount: number
+  }
+  ForkSignaling: number
+  Height: number
+  Messages: CID
+  /**
+   * The miner address of the block.
+   */
+  Miner: string
+  ParentBaseFee: string
+  ParentMessageReceipts: CID
+  ParentStateRoot: CID
+  /**
+   * BitInt as a string
+   */
+  ParentWeight: string
+  Parents: CID[]
+  Ticket: {
+    VRFProof: string
+  }
+  Timestamp: number
+  WinPoStProof: {
+    PoStProof: number
+    ProofBytes: string
+  }[]
+}
+
+export interface TipSet {
+  Cids: CID[]
+  Height: number
+  Blocks: Block[]
+}
+
 /**
  * Lotus API responses
  *
  * @see https://filecoin-shipyard.github.io/js-lotus-client/api/api.html
  */
 
-export type LotusResponse<T> = { result: T; error: undefined } | RpcError
-export type VersionResponse = LotusResponse<{
+export type VersionResponse = {
   Version: string
   APIVersion: number
   BlockDelay: number
-}>
-export type StateNetworkNameResponse = LotusResponse<Network>
-export type MpoolGetNonceResponse = LotusResponse<number>
-export type GasEstimateMessageGasResponse = LotusResponse<LotusMessage>
+}
+export type StateNetworkNameResponse = Network
+export type MpoolGetNonceResponse = number
+export type GasEstimateMessageGasResponse = LotusMessage
 
 /**
  * Wallet balance in attoFIL
  *
  * @example '99999927137190925849'
  */
-export type WalletBalanceResponse = LotusResponse<string>
-export type MpoolPushResponse = LotusResponse<CID>
-export type WaitMsgResponse = LotusResponse<MsgLookup>
+export type WalletBalanceResponse = string
+export type MpoolPushResponse = CID
+export type WaitMsgResponse = MsgLookup
 
 // RPC methods params
 
@@ -172,7 +226,7 @@ export interface waitMsgParams {
 
 export interface StateAccountKeyParams {
   address: string
-  tipSetKey?: CID[] | null
+  tipSetKey?: TipSetKey | null
 }
 export type BlockNumber = '0x${string}'
 export interface FilecoinAddressToEthAddressParams {
@@ -186,6 +240,11 @@ export interface FilecoinAddressToEthAddressParams {
    * Possible values: "pending", "latest", "finalized", "safe", or a specific block number represented as hex.
    */
   blockNumber?: 'pending' | 'latest' | 'finalized' | 'safe' | BlockNumber
+}
+
+export interface ChainGetTipSetByHeightParams {
+  height: number
+  tipSetKey?: TipSetKey | null
 }
 
 // Token types

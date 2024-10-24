@@ -13,6 +13,7 @@ describe('lotus rpc', function () {
     const rpc = new RPC({ api: API })
 
     const version = await rpc.version()
+
     if (version.error) {
       return assert.fail(version.error.message)
     }
@@ -31,6 +32,49 @@ describe('lotus rpc', function () {
     }
 
     assert.equal(version.result, 'calibrationnet')
+  })
+
+  it('chainHead', async () => {
+    const rpc = new RPC({ api: API })
+
+    const head = await rpc.chainHead()
+    if (head.error) {
+      return assert.fail(head.error.message)
+    }
+
+    assert.ok(head.result)
+  })
+
+  it('getTipSetByHeight', async () => {
+    const rpc = new RPC({ api: API })
+
+    const head = await rpc.chainHead()
+    if (head.error) {
+      return assert.fail(head.error.message)
+    }
+
+    const tipSet = await rpc.getTipSetByHeight({
+      height: head.result.Height,
+      tipSetKey: head.result.Cids,
+    })
+
+    if (tipSet.error) {
+      return assert.fail(tipSet.error.message)
+    }
+
+    assert.ok(tipSet.result)
+  })
+
+  it('getTipSet', async () => {
+    const rpc = new RPC({ api: API })
+
+    const head = await rpc.lookBackTipSet(30)
+
+    if (head.error) {
+      return assert.fail(head.error.message)
+    }
+
+    assert.ok(head.result)
   })
 
   it('nonce', async () => {
@@ -227,7 +271,7 @@ describe('lotus rpc', function () {
     assert.ok(typeof balance.result['/'] === 'string')
   })
 
-  it('get ID from f1 unsafe', async () => {
+  it('stateLookupID from f1 unsafe', async () => {
     const rpc = new RPC({ api: API, network: 'testnet' })
 
     const balance = await rpc.stateLookupID({
@@ -238,6 +282,34 @@ describe('lotus rpc', function () {
     }
 
     assert.strictEqual(balance.result, 't023576')
+  })
+
+  it('getIDAddress from f1 safe ', async () => {
+    const rpc = new RPC({ api: API, network: 'testnet' })
+
+    const balance = await rpc.getIDAddress({
+      address: 't1jzly7yqqff5fignjddktuo2con2pjoz5yajemli',
+    })
+    if (balance.error) {
+      return assert.fail(balance.error.message)
+    }
+
+    assert.strictEqual(balance.result, 't023576')
+  })
+
+  it('should fail getIDAddress from new account', async () => {
+    const rpc = new RPC({ api: API, network: 'testnet' })
+    const account = Wallet.create('SECP256K1', 'testnet')
+
+    const balance = await rpc.getIDAddress({
+      address: account.address.toString(),
+      safety: 'latest',
+    })
+    if (balance.result) {
+      return assert.fail('should fail to get id address from new account')
+    }
+
+    return assert.equal(balance.error?.message, 'actor not found')
   })
 
   it('get ID from f1 safe', async () => {
@@ -281,31 +353,25 @@ describe('lotus rpc', function () {
   })
 })
 
-describe('lotus rpc aborts', function () {
-  this.retries(3)
-  this.timeout(10_000)
+describe('lotus rpc aborts', () => {
   it('timeout', async () => {
     const rpc = new RPC({ api: API }, { timeout: 100 })
-
     const version = await rpc.version()
 
     assert.ok(version.error)
-
-    assert.ok(version.error.message.includes('FETCH_ERROR'))
+    assert.ok(version.error.message.includes('Request timed out after 100ms'))
   })
 
   it('timeout on method', async () => {
     const rpc = new RPC({ api: API }, { timeout: 100 })
-
     const version = await rpc.version({ timeout: 10 })
 
     assert.ok(version.error)
-    assert.ok(version.error.message.includes('FETCH_ERROR'))
+    assert.ok(version.error.message.includes('Request timed out after 10ms'))
   })
 
   it('timeout default', async () => {
     const rpc = new RPC({ api: API })
-
     const version = await rpc.version()
 
     assert.ok(version.result)
@@ -313,24 +379,20 @@ describe('lotus rpc aborts', function () {
 
   it('aborted', async () => {
     const rpc = new RPC({ api: API }, { signal: AbortSignal.abort() })
-
     const version = await rpc.version()
-
     assert.ok(version.error)
-
-    assert.ok(version.error.message.includes('FETCH_ERROR'))
+    assert.ok(version.error.message.includes('Request aborted'))
   })
 
   it('abort', async () => {
     const controller = new AbortController()
     const rpc = new RPC({ api: API })
-
     const version = rpc.version({ signal: controller.signal })
     controller.abort()
 
     const rsp = await version
     assert.ok(rsp.error)
 
-    assert.ok(rsp.error.message.includes('FETCH_ERROR'))
+    assert.ok(rsp.error.message.includes('Request aborted'))
   })
 })

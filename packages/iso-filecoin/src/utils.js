@@ -1,5 +1,7 @@
 import { keccak_256 } from '@noble/hashes/sha3'
 import { utf8 } from 'iso-base/utf8'
+import { KV } from 'iso-kv'
+import { MemoryDriver } from 'iso-kv/drivers/memory.js'
 
 /**
  * @typedef {import('./types').NetworkPrefix} NetworkPrefix
@@ -156,4 +158,28 @@ export function checksumEthAddress(address) {
 
   const result = `0x${addressArr.join('')}`
   return result
+}
+
+const defaultDriver = new MemoryDriver()
+
+/**
+ *
+ * @param {import('./types').Cache} cache
+ */
+export function getCache(cache) {
+  let kv
+  if (cache === true || cache === undefined) {
+    kv = new KV({ driver: defaultDriver })
+  }
+
+  if (
+    typeof cache === 'object' &&
+    'get' in cache &&
+    'has' in cache &&
+    'set' in cache
+  ) {
+    kv = new KV({ driver: cache })
+  }
+
+  return kv ?? new KV({ driver: new MemoryDriver() })
 }

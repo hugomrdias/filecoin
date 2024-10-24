@@ -6,10 +6,15 @@ import {
   NETWORKS,
   checkNetworkPrefix,
   checksumEthAddress,
+  getCache,
   getNetwork,
 } from './utils.js'
 
 export { checksumEthAddress } from './utils.js'
+
+/**
+ * @import {AddressRpcOptions, AddressRpcSafetyOptions} from './types.js'
+ */
 
 /**
  * @typedef {import('./types.js').Address} IAddress
@@ -131,13 +136,13 @@ export function fromEthAddress(address, network) {
 }
 
 /**
- * Ethereum address from address
+ * Ethereum address from f0 or f4 addresses
  *
  * @param {IAddress} address
  */
 export function toEthAddress(address) {
   if (address.protocol === PROTOCOL_INDICATOR.ID) {
-    return /** @type {AddressId} */ (address).toEthAddress()
+    return /** @type {AddressId} */ (address).toIdMaskAddress()
   }
 
   if (address.protocol === PROTOCOL_INDICATOR.DELEGATED) {
@@ -241,7 +246,8 @@ export function fromBytes(bytes, network) {
 }
 
 /**
- * Create address from bytes
+ * Create address from public key bytes
+ * Only for f1 SECP256K1 and f3 BLS
  *
  * @param {Uint8Array} bytes
  * @param {import('./types.js').Network} network
@@ -267,7 +273,7 @@ export function fromPublicKey(bytes, network, type) {
 /**
  * Create an `Address` instance from a 0x-prefixed hex string address returned by `Address.toContractDestination()`.
  *
- * @param {`0x${string}`} address - The 0x-prefixed hex string address returned by `Address.toContractDestination()`.
+ * @param {`0x${string}`} address - The 0x-prefixed hex string address.
  * @param {import("./types.js").Network} network - The network the address is on.
  */
 export function fromContractDestination(address, network) {
@@ -278,7 +284,7 @@ export function fromContractDestination(address, network) {
 }
 
 /**
- * Secp256k1 address
+ * Generic address class
  *
  * @implements {IAddress}
  */
@@ -320,38 +326,92 @@ class Address {
   }
 
   /**
+   * Convert to ID Address
    *
-   * @param {import('./rpc.js').RPC} rpc
+   * @param {AddressRpcSafetyOptions} options
+   * @returns {Promise<AddressId>}
    */
-  async toID(rpc) {
+  async toIdAddress(options) {
+    const { rpc } = options
     if (rpc.network !== this.network) {
       throw new Error(
         `Network mismatch. RPC network: ${rpc.network} Address network: ${this.network}`
       )
     }
 
-    if (this.protocol === 0) {
-      return AddressId.fromString(this.toString())
+    const cache = getCache(options.cache)
+    const key = ['id', this.toString()]
+
+    let idAddress
+
+    if (isAddressId(this)) {
+      idAddress = /** @type {AddressId} */ (this)
     }
 
-    if (this.protocol === 4) {
-      throw new Error(
-        `Cannot convert delegated address to ID: ${this.toString()}`
+    const cached = await /** @type {typeof cache.get<string>}*/ (cache.get)(key)
+    if (cached) {
+      return AddressId.fromString(cached)
+    }
+
+    if (isAddressDelegated(this)) {
+      const id = await rpc.getIDAddress({
+        address: this.toString(),
+        safety: options.safety ?? 'finalized',
+      })
+      if (id.error) {
+        throw new Error(id.error.message)
+      }
+
+      idAddress = AddressId.fromString(id.result)
+    } else {
+      // f1,f2 and f3 uses the faster endpoint
+      idAddress = AddressId.fromEthAddress(
+        await this.to0x(options),
+        this.network
       )
     }
+
+    await cache.set(key, idAddress.toString())
+    return idAddress
+  }
+
+  /**
+   * Convert to Eth Address
+   *
+   * @param {AddressRpcSafetyOptions} options
+   * @returns {Promise<string>}
+   */
+  async to0x(options) {
+    const { rpc } = options
+    if (rpc.network !== this.network) {
+      throw new Error(
+        `Network mismatch. RPC network: ${rpc.network} Address network: ${this.network}`
+      )
+    }
+
+    const cache = getCache(options.cache)
+    const key = ['0x', this.toString()]
+    const cached = await /** @type {typeof cache.get<string>}*/ (cache.get)(key)
+    if (cached) {
+      return cached
+    }
+
+    // f1,f2 and f3 uses the faster endpoint
     const r = await rpc.filecoinAddressToEthAddress({
       address: this.toString(),
+      blockNumber: options.safety ?? 'finalized',
     })
 
     if (r.error) {
       throw new Error(r.error.message)
     }
 
-    if (isIdMaskAddress(r.result)) {
-      return AddressId.fromEthAddress(r.result, this.network)
+    if (!isIdMaskAddress(r.result)) {
+      throw new Error(`Invalid ID masked 0x address: ${r.result}`)
     }
 
-    throw new Error(`Invalid ID address: ${r.result}`)
+    await cache.set(key, r.result)
+    return r.result
   }
 }
 
@@ -415,16 +475,12 @@ export class AddressId extends Address {
   }
 
   /**
-   * Create ID address from ethereum address
+   * Create ID address from ID masked 0x address
    *
    * @param {string} address
    * @param {import('./types.js').Network} network
    */
   static fromEthAddress(address, network) {
-    if (!isEthAddress(address)) {
-      throw new Error(`Invalid Ethereum address: ${address}`)
-    }
-
     if (!isIdMaskAddress(address)) {
       throw new Error(`Invalid Ethereum ID mask address: ${address}`)
     }
@@ -444,9 +500,11 @@ export class AddressId extends Address {
   }
 
   /**
-   * Convert address to ethereum address
+   * Convert address to ID masked 0x address
+   *
+   * To convert to an eth address you problably should use {@link to0x}
    */
-  toEthAddress() {
+  toIdMaskAddress() {
     const buf = new ArrayBuffer(20)
     const dataview = new DataView(buf)
     dataview.setUint8(0, 255)
@@ -459,22 +517,61 @@ export class AddressId extends Address {
   }
 
   /**
+   * Get robust address from public key address
    *
-   * @param {import('./rpc.js').RPC} rpc
+   * @param {AddressRpcOptions} options
    */
-  async toRobust(rpc) {
+  async toRobust(options) {
+    const { rpc } = options
     if (rpc.network !== this.network) {
       throw new Error(
         `Network mismatch. RPC network: ${rpc.network} Address network: ${this.network}`
       )
     }
 
+    const cache = getCache(options.cache)
+    const key = ['robust', this.toString()]
+    const cached = await /** @type {typeof cache.get<string>}*/ (cache.get)(key)
+    if (cached) {
+      return fromString(cached)
+    }
+
     const r = await rpc.stateAccountKey({ address: this.toString() })
+
     if (r.error) {
       throw new Error(r.error.message)
     }
 
-    return fromString(r.result)
+    const robust = fromString(r.result)
+    await cache.set(key, robust.toString())
+
+    return robust
+  }
+  /**
+   *
+   * @param {AddressRpcOptions} options
+   * @returns {Promise<string>}
+   */
+  async to0x(options) {
+    const { rpc } = options
+    if (rpc.network !== this.network) {
+      throw new Error(
+        `Network mismatch. RPC network: ${rpc.network} Address network: ${this.network}`
+      )
+    }
+
+    const cache = getCache(options.cache)
+    const key = ['0x', this.toString()]
+    const cached = await /** @type {typeof cache.get<string>}*/ (cache.get)(key)
+    if (cached) {
+      return cached
+    }
+
+    const robust = await this.toRobust(options)
+    const eth = await robust.to0x(options)
+    await cache.set(key, eth)
+
+    return eth
   }
 }
 
@@ -826,6 +923,18 @@ export class AddressDelegated extends Address {
 
   /**
    * Convert address to ethereum address
+   *
+   * @param {AddressRpcOptions} _rpc
+   * @returns {Promise<string>}
+   */
+  to0x(_rpc) {
+    return Promise.resolve(this.toEthAddress())
+  }
+
+  /**
+   * Converts to 0x eth address, it's similar to {@link to0x} but sync
+   * because f4s dont need to check the chain to get the address
+   *
    */
   toEthAddress() {
     if (this.payload.length > 20) {
@@ -833,6 +942,7 @@ export class AddressDelegated extends Address {
         `Invalid payload length: ${this.payload.length} should be 20.`
       )
     }
+
     return checksumEthAddress(`0x${hex.encode(this.payload)}`)
   }
 
