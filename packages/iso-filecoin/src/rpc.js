@@ -179,7 +179,7 @@ export class RPC {
     return await /** @type {typeof this.call<string>} */ (this.call)(
       {
         method: 'Filecoin.FilecoinAddressToEthAddress',
-        params: [params.address, params.blockNumber],
+        params: [params.address, params.blockNumber ?? 'finalized'],
       },
       fetchOptions
     )
