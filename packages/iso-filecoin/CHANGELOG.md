@@ -1,5 +1,27 @@
 # Changelog
 
+## [5.0.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v4.1.0...iso-filecoin-v5.0.0) (2024-10-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* new methods to convert fs to 0x and to ids
+* Some error messages may be different with the new http client and there more options for fetch.
+* sign and signMessage now return `Signature` instance instead of the raw bytes
+
+### Features
+
+* add bls support, verify and changed sign return to wallet([#130](https://github.com/hugomrdias/filecoin/issues/130)) ([3508d54](https://github.com/hugomrdias/filecoin/commit/3508d54ce870144d0f2176c5709efacc44539e49))
+* added new http client and methods ([6e13265](https://github.com/hugomrdias/filecoin/commit/6e13265c046f66ecc425edf02c2d0cd7adda5cd7))
+* new methods to convert fs to 0x and to ids ([687eba6](https://github.com/hugomrdias/filecoin/commit/687eba667413b55ced88a33e8d114f29d66041e1))
+* support f1/f2/f3 to ID and back to robust expect for f4 ([f3d5e5f](https://github.com/hugomrdias/filecoin/commit/f3d5e5f77e7e3525d1cd53dae374b1708b52f479))
+
+
+### Bug Fixes
+
+* default FilecoinAddressToEthAddress blockNumber to finalized ([12585ad](https://github.com/hugomrdias/filecoin/commit/12585ad90de5b8f54549102c790d7d778c8788ed))
+* **rpc:** only cache lookups when finalized ([73051aa](https://github.com/hugomrdias/filecoin/commit/73051aae15a7a485d11742a2b917d1734fec5483))
+
 ## [4.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v4.0.5...iso-filecoin-v4.1.0) (2024-06-25)
 
 
