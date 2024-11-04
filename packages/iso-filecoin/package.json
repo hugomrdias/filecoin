@@ -125,7 +125,7 @@
     "@types/node": "^22.8.1",
     "assert": "^2.1.0",
     "glob": "^11.0.0",
-    "mocha": "^10.7.3",
+    "mocha": "^10.8.2",
     "playwright-test": "^14.1.6",
     "rimraf": "^6.0.1",
     "rollup": "^4.24.3",
