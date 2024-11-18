@@ -1,5 +1,5 @@
 import { encode } from '@ipld/dag-cbor'
-import { base64 } from 'iso-base/rfc4648'
+import { base64pad } from 'iso-base/rfc4648'
 import { z } from 'zod'
 
 import * as Address from './address.js'
@@ -20,6 +20,9 @@ const MessageSchema = z.object({
   gasFeeCap: z.string().default('0'),
   gasPremium: z.string().default('0'),
   method: z.number().nonnegative().safe().default(0),
+  /**
+   * base64pad encoded
+   */
   params: z.string().default(''),
 })
 
@@ -135,7 +138,7 @@ export class Message {
       Token.fromAttoFIL(this.gasFeeCap).toBytes(),
       Token.fromAttoFIL(this.gasPremium).toBytes(),
       this.method,
-      base64.decode(this.params),
+      base64pad.decode(this.params),
     ]
 
     return encode(msg)
