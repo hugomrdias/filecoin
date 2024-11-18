@@ -6,5 +6,5 @@
     "resolveJsonModule": false,
     "outDir": "dist"
   },
-  "include": ["*.js"]
+  "include": ["index.js"]
 }

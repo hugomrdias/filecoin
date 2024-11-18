@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "ES2022",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    // Type Checking
+    "strict": true,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    // Advanced
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "types": ["vite/client"],
+    "allowImportingTsExtensions": true
+  },
+  "references": [
+    {
+      "path": "../../packages/iso-filecoin"
+    }
+  ],
+  "exclude": ["node_modules", "dist", "out"]
+}
