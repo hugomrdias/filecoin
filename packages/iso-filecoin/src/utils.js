@@ -1,5 +1,7 @@
+import { blake2b } from '@noble/hashes/blake2b'
 import { keccak_256 } from '@noble/hashes/sha3'
 import { utf8 } from 'iso-base/utf8'
+import { concat } from 'iso-base/utils'
 import { KV } from 'iso-kv'
 import { MemoryDriver } from 'iso-kv/drivers/memory.js'
 
@@ -182,4 +184,19 @@ export function getCache(cache) {
   }
 
   return kv ?? new KV({ driver: new MemoryDriver() })
+}
+
+/**
+ * Create a Lotus CID from a BufferSource
+ *
+ * @param {Uint8Array} data
+ */
+export function lotusCid(data) {
+  return concat([
+    // cidv1 1byte + dag-cbor 1byte + blake2b-256 4bytes
+    Uint8Array.from([0x01, 0x71, 0xa0, 0xe4, 0x02, 0x20]),
+    blake2b(data, {
+      dkLen: 32,
+    }),
+  ])
 }

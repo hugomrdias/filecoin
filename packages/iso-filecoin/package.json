@@ -57,6 +57,11 @@
       "import": "./src/utils.js",
       "require": "./dist/cjs/src/utils.cjs"
     },
+    "./ledger": {
+      "types": "./dist/src/ledger.d.ts",
+      "import": "./src/ledger.js",
+      "require": "./dist/cjs/src/ledger.cjs"
+    },
     "./types": {
       "types": "./dist/src/types.d.ts"
     }
@@ -88,6 +93,9 @@
       ],
       "utils": [
         "dist/src/utils"
+      ],
+      "ledger": [
+        "dist/src/ledger"
       ]
     }
   },
@@ -101,7 +109,7 @@
     "build": "rimraf 'dist/cjs' && rollup --config rollup.config.js",
     "lint": "tsc --build && biome check --no-errors-on-unmatched --files-ignore-unknown=true .",
     "test": "tsc --build && pnpm run test:node && pnpm run test:browser",
-    "test:node": "mocha 'test/**/!(*.browser).test.js'",
+    "test:node": "mocha 'test/**/!(*.browser).test.js' --require ./test/setup.js",
     "test:browser": "playwright-test 'test/**/!(*.node).test.js'",
     "check": "biome check --no-errors-on-unmatched --files-ignore-unknown=true ."
   },
@@ -118,11 +126,13 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+	  "@ledgerhq/hw-transport": "^6.31.4",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.9",
     "@types/node": "^22.8.1",
+	  "@zondax/zemu": "^0.51.0",
     "assert": "^2.1.0",
     "glob": "^11.0.0",
     "mocha": "^10.7.3",

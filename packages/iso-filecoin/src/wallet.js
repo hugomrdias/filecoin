@@ -9,7 +9,7 @@ import { concat } from 'iso-base/utils'
 import { fromPublicKey } from './address.js'
 import { Message } from './message.js'
 import { Signature } from './signature.js'
-import { getNetworkFromPath } from './utils.js'
+import { getNetworkFromPath, lotusCid } from './utils.js'
 
 /**
  *
@@ -28,7 +28,7 @@ export function mnemonicToSeed(mnemonic, password) {
 }
 
 /**
- * Get account from mnemonic
+ * Get HD account from mnemonic
  *
  * @param {string} mnemonic
  * @param {import('./types.js').SignatureType} type
@@ -42,7 +42,7 @@ export function accountFromMnemonic(mnemonic, type, path, password, network) {
 }
 
 /**
- * Get account from seed
+ * Get HD account from seed
  *
  * @param {Uint8Array} seed
  * @param {import('./types.js').SignatureType} type
@@ -74,6 +74,8 @@ export function accountFromSeed(seed, type, path, network) {
 
 /**
  * Get account from private key
+ *
+ * Lotus BLS private key is little endian so you need to reverse the byte order. Use `lotusBlsPrivateKeyToBytes` to convert.
  *
  * @param {Uint8Array} privateKey
  * @param {import('./types.js').SignatureType} type
@@ -162,13 +164,7 @@ export function getPublicKey(privateKey, network, type) {
  */
 export function signMessage(privateKey, type, message) {
   const msg = new Message(message).serialize()
-  const cid = concat([
-    // cidv1 1byte + dag-cbor 1byte + blake2b-256 4bytes
-    Uint8Array.from([0x01, 0x71, 0xa0, 0xe4, 0x02, 0x20]),
-    blake2b(msg, {
-      dkLen: 32,
-    }),
-  ])
+  const cid = lotusCid(msg)
 
   return sign(privateKey, type, cid)
 }
@@ -176,17 +172,17 @@ export function signMessage(privateKey, type, message) {
 /**
  * Sign arbitary bytes similar to `lotus wallet sign`
  *
- * Lotus private key is little endian so you need to reverse the byte order. Use `lotusBlsPrivateKeyToBytes` to convert.
+ * Lotus BLS private key is little endian so you need to reverse the byte order. Use `lotusBlsPrivateKeyToBytes` to convert.
  *
  * @param {Uint8Array} privateKey
  * @param {import('./types.js').SignatureType} type
- * @param {string | Uint8Array} message
+ * @param {Uint8Array} data
  */
-export function sign(privateKey, type, message) {
+export function sign(privateKey, type, data) {
   switch (type) {
     case 'SECP256K1': {
       const signature = secp.sign(
-        blake2b(message, {
+        blake2b(data, {
           dkLen: 32,
         }),
         privateKey
@@ -202,7 +198,7 @@ export function sign(privateKey, type, message) {
     }
 
     case 'BLS': {
-      const signature = bls.sign(message, privateKey)
+      const signature = bls.sign(data, privateKey)
       return new Signature({
         type: 'BLS',
         data: signature,
@@ -217,17 +213,18 @@ export function sign(privateKey, type, message) {
 }
 
 /**
+ * Verify signatures
  *
  * @param {import('./signature.js').Signature} signature
- * @param {Uint8Array} message
+ * @param {Uint8Array} data
  * @param {Uint8Array} publicKey
  */
-export function verify(signature, message, publicKey) {
+export function verify(signature, data, publicKey) {
   switch (signature.type) {
     case 'SECP256K1': {
       return secp.verify(
         secp.Signature.fromCompact(signature.data.subarray(0, 64)),
-        blake2b(message, {
+        blake2b(data, {
           dkLen: 32,
         }),
         publicKey
@@ -235,7 +232,7 @@ export function verify(signature, message, publicKey) {
     }
 
     case 'BLS': {
-      return bls.verify(signature.data, message, publicKey)
+      return bls.verify(signature.data, data, publicKey)
     }
     default: {
       throw new Error(
@@ -246,8 +243,9 @@ export function verify(signature, message, publicKey) {
 }
 
 /**
- * Lotus BLS private key to bytes
+ * Lotus BLS base64 private key to bytes
  * Lotus private key is little endian so you need to reverse the byte order.
+ *
  * @param {string} priv
  */
 export function lotusBlsPrivateKeyToBytes(priv) {

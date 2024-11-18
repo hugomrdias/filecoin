@@ -1,3 +1,4 @@
+import type _LedgerTransport from '@ledgerhq/hw-transport/lib-es/Transport'
 import type BigNumber from 'bignumber.js'
 import type { Driver } from 'iso-kv'
 import type { z } from 'zod'
@@ -8,6 +9,7 @@ import type { SIGNATURE_TYPE, Schemas as SignatureSchemas } from './signature'
 
 export type ProtocolIndicator = typeof PROTOCOL_INDICATOR
 export type ProtocolIndicatorCode = ProtocolIndicator[keyof ProtocolIndicator]
+export type Transport = _LedgerTransport
 
 export interface CID {
   '/': string
