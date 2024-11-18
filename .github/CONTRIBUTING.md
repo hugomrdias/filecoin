@@ -67,7 +67,10 @@ We squash and merge all PRs. Orderly, well-written commits will help us during r
 If your change alters existing code, please run the test suites:
 
 ```sh
+
 pnpm run lint
+
+# needs docker installed
 pnpm run test
 
 # node tests can use native watch mode
