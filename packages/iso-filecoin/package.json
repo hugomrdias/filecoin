@@ -1,7 +1,7 @@
 {
   "name": "iso-filecoin",
   "type": "module",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Isomorphic filecoin abstractions for RPC, signatures, address, token and wallet",
   "author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
   "license": "MIT",
@@ -126,13 +126,13 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-	  "@ledgerhq/hw-transport": "^6.31.4",
+    "@ledgerhq/hw-transport": "^6.31.4",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.9",
     "@types/node": "^22.8.1",
-	  "@zondax/zemu": "^0.51.0",
+    "@zondax/zemu": "^0.51.0",
     "assert": "^2.1.0",
     "glob": "^11.0.0",
     "mocha": "^10.7.3",
