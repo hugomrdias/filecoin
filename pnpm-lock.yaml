@@ -30,8 +30,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2(typedoc@0.26.11(typescript@5.6.3))
       typedoc-plugin-zod:
-        specifier: ^1.2.1
-        version: 1.2.1(typedoc@0.26.11(typescript@5.6.3))
+        specifier: ^1.3.0
+        version: 1.3.0(typedoc@0.26.11(typescript@5.6.3))
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -2740,7 +2740,7 @@ packages:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
 
   concat-map@0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   conf@12.0.0:
     resolution: {integrity: sha512-fIWyWUXrJ45cHCIQX+Ck1hrZDIf/9DR0P0Zewn3uNht28hbt5OfGUq8rRWsxi96pZWPyBEd0eY9ama01JTaknA==}
@@ -3001,7 +3001,7 @@ packages:
     engines: {bun: '>=1', deno: '>=2', node: '>=16'}
 
   ee-first@1.1.1:
-    resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
+    resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
   electron-to-chromium@1.5.50:
     resolution: {integrity: sha512-eMVObiUQ2LdgeO1F/ySTXsvqvxb6ZH2zPGaMYsWzRDdOddUa77tdmI0ltg+L16UpbWdhPmuF3wIQYyQq65WfZw==}
@@ -5317,10 +5317,10 @@ packages:
     peerDependencies:
       typedoc: 0.26.x
 
-  typedoc-plugin-zod@1.2.1:
-    resolution: {integrity: sha512-oPo0PhcryKNR9UYZ6F4LFqDpQEBtNRQe6CpRTOUGrdqZOeoIZtJBVVZnSn/pBJiBU+Y6iZ/HsPESLZn1BPeLkw==}
+  typedoc-plugin-zod@1.3.0:
+    resolution: {integrity: sha512-WOz8qqOn1Yfa80rXonrfRJL7WolWkDBwUy42wsrLOPTW74fOo+/D4cy9FR4wZbnbQ1ssZWYRVawbpOCiQjLoKA==}
     peerDependencies:
-      typedoc: 0.23.x || 0.24.x || 0.25.x || 0.26.x
+      typedoc: 0.23.x || 0.24.x || 0.25.x || 0.26.x || 0.27.x
 
   typedoc@0.26.11:
     resolution: {integrity: sha512-sFEgRRtrcDl2FxVP58Ze++ZK2UQAEvtvvH8rRlig1Ja3o7dDaMHmaBfvJmdGnNEFaLTpQsN8dpvZaTqJSu/Ugw==}
@@ -8526,7 +8526,7 @@ snapshots:
 
   asn1.js@4.10.1:
     dependencies:
-      bn.js: 4.12.0
+      bn.js: 4.12.1
       inherits: 2.0.4
       minimalistic-assert: 1.0.1
 
@@ -9324,7 +9324,7 @@ snapshots:
 
   elliptic@6.6.0:
     dependencies:
-      bn.js: 4.12.0
+      bn.js: 4.12.1
       brorand: 1.1.0
       hash.js: 1.1.7
       hmac-drbg: 1.0.1
@@ -10727,7 +10727,7 @@ snapshots:
 
   miller-rabin@4.0.1:
     dependencies:
-      bn.js: 4.12.0
+      bn.js: 4.12.1
       brorand: 1.1.0
 
   mime-db@1.52.0: {}
@@ -12028,7 +12028,7 @@ snapshots:
     dependencies:
       typedoc: 0.26.11(typescript@5.6.3)
 
-  typedoc-plugin-zod@1.2.1(typedoc@0.26.11(typescript@5.6.3)):
+  typedoc-plugin-zod@1.3.0(typedoc@0.26.11(typescript@5.6.3)):
     dependencies:
       typedoc: 0.26.11(typescript@5.6.3)
 
