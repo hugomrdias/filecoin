@@ -1,6 +1,6 @@
 import { blake2b } from '@noble/hashes/blake2b'
 import * as leb128 from 'iso-base/leb128'
-import { base16, base32, hex } from 'iso-base/rfc4648'
+import { base32, hex } from 'iso-base/rfc4648'
 import { concat, equals, isBufferSource, u8 } from 'iso-base/utils'
 import {
   NETWORKS,
@@ -280,7 +280,7 @@ export function fromContractDestination(address, network) {
   if (!address.startsWith('0x')) {
     throw new Error(`Expected 0x prefixed hex, instead got: '${address}'`)
   }
-  return fromBytes(base16.decode(address.slice(2)), network)
+  return fromBytes(hex.decode(address.slice(2).toLowerCase()), network)
 }
 
 /**
@@ -312,11 +312,11 @@ class Address {
   }
 
   toBytes() {
-    return concat([base16.decode(`0${this.protocol}`), this.payload])
+    return concat([hex.decode(`0${this.protocol}`), this.payload])
   }
 
   toContractDestination() {
-    return /** @type {`0x${string}`} */ (`0x${base16.encode(this.toBytes())}`)
+    return /** @type {`0x${string}`} */ (`0x${hex.encode(this.toBytes())}`)
   }
 
   checksum() {
@@ -915,7 +915,7 @@ export class AddressDelegated extends Address {
       throw new Error(`Cannot convert Ethereum ID mask address: ${address}`)
     }
 
-    const bytes = base16.decode(address.slice(2).toUpperCase())
+    const bytes = hex.decode(address.slice(2).toLowerCase())
     if (bytes.length !== 20) {
       throw new Error(
         `Invalid Ethereum payload length: ${bytes.length} should be 20.`
