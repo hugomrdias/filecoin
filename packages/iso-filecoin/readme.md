@@ -17,7 +17,24 @@ pnpm install iso-filecoin
 
 ```js
 import { Token } from 'iso-filecoin/token'
-import { Wallet } from 'iso-filecoin/wallet'
+import * as Wallet  from 'iso-filecoin/wallet'
+
+Token.fromFIL(1).toPicoFIL().toString() // '1000000000000'
+
+const mnemonic = Wallet.generateMnemonic()
+const seed = Wallet.mnemonicToSeed(mnemonic)
+const account = Wallet.accountFromSeed(
+    seed,
+    'SECP256K1',
+    "m/44'/461'/0'/0/0"
+)
+const account = Wallet.accountFromMnemonic(
+    mnemonic,
+    'SECP256K1',
+    "m/44'/461'/0'/0/0"
+)
+
+const address = account.address.toString() // 'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i'
 ```
 
 ## Docs
