@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.1.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v5.1.0...iso-filecoin-v5.1.1) (2024-12-30)
+
+
+### Bug Fixes
+
+* fix publish ([a6c0648](https://github.com/hugomrdias/filecoin/commit/a6c0648e5f7e202034c5313a736da19861c4c679))
+
 ## [5.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v5.0.0...iso-filecoin-v5.1.0) (2024-12-30)
 
 
