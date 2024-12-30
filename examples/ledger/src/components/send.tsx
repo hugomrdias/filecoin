@@ -1,9 +1,6 @@
 import { useFilsnap } from 'filsnap-adapter-react'
 import { Token } from 'iso-filecoin/token'
 import type { JSX } from 'preact'
-/* eslint-disable unicorn/no-useless-undefined */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { useEffect, useState } from 'preact/hooks'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
@@ -103,10 +100,7 @@ function Send(): JSX.Element {
     <div class="Box Cell100">
       <h3>Send ⨎ </h3>
       {error != null && <code data-testid="error">{error}</code>}
-      <form
-        // @ts-expect-error - preact */
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <label for="recipient" id="recipient">
           Recipient
         </label>

@@ -54,11 +54,7 @@ function Forward(): JSX.Element {
   return (
     <div class="Box Cell100">
       <h3>Forward ⨎ </h3>
-      <form
-        /*
-      // @ts-expect-error - preact */
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <label for="recipient" id="recipient">
           Recipient
         </label>
