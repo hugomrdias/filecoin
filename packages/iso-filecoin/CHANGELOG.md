@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v5.0.0...iso-filecoin-v5.1.0) (2024-12-30)
+
+
+### Features
+
+* add ledger support ([38eb8dd](https://github.com/hugomrdias/filecoin/commit/38eb8dd5b0aa2dab7f442c5c8b987315a06300c8))
+
+
+### Bug Fixes
+
+* changed tx params field from base64 to base64pad encoding ([5c0df5f](https://github.com/hugomrdias/filecoin/commit/5c0df5fd1460a37f1c1f5491aa95afda570add42))
+* only use hex for address parsing and encoding base16 removed ([8039c98](https://github.com/hugomrdias/filecoin/commit/8039c9865de3b2db7961d0409084c424e117ba06))
+
 ## [5.0.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v4.1.0...iso-filecoin-v5.0.0) (2024-10-29)
 
 
