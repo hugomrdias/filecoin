@@ -23,7 +23,6 @@ const account = Wallet.accountFromMnemonic(
 
 const FILECOIN_APP_VERSION = '1.0.0'
 
-// biome-ignore lint/complexity/useArrowFunction: <explanation>
 describe('ledger', function () {
   this.timeout(20000)
 

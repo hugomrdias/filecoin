@@ -5,6 +5,9 @@ import { z } from 'zod'
 import * as Address from './address.js'
 import { Token } from './token.js'
 
+/**
+ * Validation schema for a message
+ */
 const MessageSchema = z.object({
   version: z.literal(0).default(0),
   to: z.string(),
@@ -141,6 +144,6 @@ export class Message {
       base64pad.decode(this.params),
     ]
 
-    return encode(msg)
+    return /** @type {Uint8Array}*/ (encode(msg))
   }
 }
