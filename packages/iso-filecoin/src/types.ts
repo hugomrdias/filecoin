@@ -1,17 +1,20 @@
 import type _LedgerTransport from '@ledgerhq/hw-transport/lib-es/Transport'
 import type BigNumber from 'bignumber.js'
 import type { Driver } from 'iso-kv'
+import type { JsonValue } from 'type-fest'
 import type { z } from 'zod'
 import type { AddressId, PROTOCOL_INDICATOR } from './address'
 import type { Schemas as MessageSchemas } from './message'
 import type { RPC } from './rpc'
 import type { SIGNATURE_TYPE, Schemas as SignatureSchemas } from './signature'
 
+export type { MaybeResult } from 'iso-web/types'
+
 export type ProtocolIndicator = typeof PROTOCOL_INDICATOR
 export type ProtocolIndicatorCode = ProtocolIndicator[keyof ProtocolIndicator]
 export type Transport = _LedgerTransport
 
-export interface CID {
+export type CID = {
   '/': string
 }
 
@@ -87,6 +90,39 @@ export type LotusSignature = z.infer<
 >
 export type SignatureObj = z.infer<(typeof SignatureSchemas)['signature']>
 
+/**
+ * JSON-RPC 2.0
+ */
+
+export interface JsonRpcError {
+  code: number
+  message: string
+  data?: JsonValue
+}
+export interface JsonRpcRequest {
+  jsonrpc: '2.0'
+  id?: number | string | null
+  /**
+   * A String containing the name of the method to be invoked. Method names that begin with the word rpc followed by a period character (U+002E or ASCII 46) are reserved for rpc-internal methods and extensions and MUST NOT be used for anything else.
+   */
+  method: string
+  params?: JsonValue
+}
+
+export type JsonRpcResponse =
+  | {
+      jsonrpc: '2.0'
+      id: number | string | null
+      result: JsonValue
+      error?: undefined
+    }
+  | {
+      jsonrpc: '2.0'
+      id: number | string | null
+      error: JsonRpcError
+      result?: undefined
+    }
+
 // RPC types
 export interface Options {
   token?: string
@@ -97,7 +133,7 @@ export interface Options {
 
 export interface RpcOptions {
   method: `Filecoin.${string}`
-  params?: unknown[]
+  params?: JsonValue
 }
 
 export interface MsgReceipt {

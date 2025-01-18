@@ -6,6 +6,10 @@ import { KV } from 'iso-kv'
 import { MemoryDriver } from 'iso-kv/drivers/memory.js'
 
 /**
+ * @import {ZodError} from 'zod'
+ */
+
+/**
  * @typedef {import('./types').NetworkPrefix} NetworkPrefix
  */
 
@@ -183,7 +187,7 @@ export function getCache(cache) {
     kv = new KV({ driver: cache })
   }
 
-  return kv ?? new KV({ driver: new MemoryDriver() })
+  return kv ?? new KV({ driver: defaultDriver })
 }
 
 /**
@@ -199,4 +203,19 @@ export function lotusCid(data) {
       dkLen: 32,
     }),
   ])
+}
+
+/**
+ * Check if an error is a ZodError
+ *
+ * @param {unknown} err
+ * @returns {err is ZodError}
+ */
+export function isZodErrorLike(err) {
+  return (
+    err instanceof Error &&
+    err.name === 'ZodError' &&
+    'issues' in err &&
+    Array.isArray(err.issues)
+  )
 }

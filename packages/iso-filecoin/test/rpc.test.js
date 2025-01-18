@@ -1,7 +1,8 @@
 import assert from 'assert'
+import { ZodError } from 'zod'
 import { Address } from '../src/index.js'
 import { Message } from '../src/message.js'
-import { RPC } from '../src/rpc.js'
+import { RPC, ValidationRpcError } from '../src/rpc.js'
 import * as Wallet from '../src/wallet.js'
 
 const API = 'https://api.calibration.node.glif.io'
@@ -86,14 +87,6 @@ describe('lotus rpc', function () {
     }
 
     assert.ok(Number.isInteger(version.result))
-  })
-
-  it('nonce fail with wrong network', async () => {
-    const rpc = new RPC({ api: API, network: 'testnet' })
-
-    await assert.rejects(() =>
-      rpc.nonce('f1jbnosztqwadgh4smvsnojdvwjgqxsmtzy5n5imi')
-    )
   })
 
   it('gas estimate', async () => {
@@ -353,7 +346,7 @@ describe('lotus rpc', function () {
   })
 })
 
-describe('lotus rpc aborts', () => {
+describe('lotus rpc errors', () => {
   it('timeout', async () => {
     const rpc = new RPC({ api: API }, { timeout: 100 })
     const version = await rpc.version()
@@ -394,5 +387,49 @@ describe('lotus rpc aborts', () => {
     assert.ok(rsp.error)
 
     assert.ok(rsp.error.message.includes('Request aborted'))
+  })
+
+  it('validate network error', async () => {
+    const rpc = new RPC({ api: API, network: 'mainnet' })
+    const nonce = await rpc.balance('t1pc2apytmdas3sn5ylwhfa32jfpx7ez7ykieelna')
+
+    if (nonce.error) {
+      assert.equal(
+        nonce.error.message,
+        'Address t1pc2apytmdas3sn5ylwhfa32jfpx7ez7ykieelna does not belong to mainnet'
+      )
+    } else {
+      assert.fail('should fail')
+    }
+  })
+
+  it('zod validation error', async () => {
+    const rpc = new RPC({ api: API, network: 'testnet' })
+
+    const nonce = await rpc.nonce('t1pc2apytmdas3sn5ylwhfa32jfpx7ez7ykieelna')
+    if (nonce.error) {
+      return assert.fail(nonce.error.message)
+    }
+
+    const msg = {
+      from: 't1pc2apytmdas3sn5ylwhfa32jfpx7ez7ykieelna',
+      to: 't1sfizuhpgjqyl4yjydlebncvecf3q2cmeeathzwi',
+      nonce: nonce.result,
+      value: 111,
+    }
+
+    // @ts-expect-error - testing zod validation
+    const estimate = await rpc.gasEstimate({ msg })
+
+    if (estimate.error) {
+      assert.ok(estimate.error instanceof ValidationRpcError)
+      assert.ok(estimate.error.cause instanceof ZodError)
+      assert.deepEqual(
+        estimate.error.message,
+        'Expected string, received number at "value"'
+      )
+      return
+    }
+    assert.fail('should fail')
   })
 })

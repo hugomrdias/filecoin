@@ -1,15 +1,123 @@
 import { request } from 'iso-web/http'
+import { fromError } from 'zod-validation-error'
 import { Message } from './message.js'
 import { Signature } from './signature.js'
-import { getNetworkPrefix } from './utils.js'
+import { getNetworkPrefix, isZodErrorLike } from './utils.js'
+
+export {
+  AbortError,
+  HttpError,
+  JsonError,
+  NetworkError,
+  RequestError,
+  RetryError,
+  TimeoutError,
+} from 'iso-web/http'
 
 /**
- * @import {ChainGetTipSetByHeightParams,  FilecoinAddressToEthAddressParams, GasEstimateMessageGasResponse, GasEstimateParams, MpoolGetNonceResponse, MpoolPushResponse, Options, PushMessageParams, RpcOptions, Safety, StateAccountKeyParams, StateNetworkNameResponse, TipSet, VersionResponse, waitMsgParams, WalletBalanceResponse} from './types.js'
+ * @import {ChainGetTipSetByHeightParams,  FilecoinAddressToEthAddressParams, GasEstimateMessageGasResponse, GasEstimateParams, JsonRpcResponse, MaybeResult, MpoolGetNonceResponse, MpoolPushResponse, Options, PushMessageParams, RpcOptions, Safety, StateAccountKeyParams, StateNetworkNameResponse, TipSet, VersionResponse, waitMsgParams, WalletBalanceResponse} from './types.js'
  */
 
 /**
  * @typedef {import('iso-web/types').RequestOptions} RequestOptions
+ * @typedef {import('iso-web/http').Errors | import('iso-web/http').JsonError} RequestErrors
  */
+
+/**
+ * Error symbol
+ */
+const symbol = Symbol.for('rpc-error')
+
+/**
+ * Check if a value is a RpcError
+ *
+ * @param {unknown} value
+ * @returns {value is RpcError}
+ */
+export function isRpcError(value) {
+  return value instanceof Error && symbol in value
+}
+
+export class RpcError extends Error {
+  /** @type {boolean} */
+  [symbol] = true
+
+  name = 'RpcError'
+
+  /** @type {unknown} */
+  cause
+
+  /**
+   *
+   * @param {string} message
+   * @param {ErrorOptions} [options]
+   */
+  constructor(message, options = {}) {
+    super(message, options)
+
+    this.cause = options.cause
+  }
+  /**
+   * Check if a value is a RequestError
+   *
+   * @param {unknown} value
+   * @returns {value is RpcError}
+   */
+  static is(value) {
+    return isRpcError(value) && value.name === 'RpcError'
+  }
+}
+
+export class JsonRpcError extends RpcError {
+  name = 'JsonRpcError'
+
+  /** @type {import('./types.js').JsonRpcError} */
+  cause
+
+  /**
+   *
+   * @param {import('./types.js').JsonRpcError} cause
+   */
+  constructor(cause) {
+    super(cause.message, { cause })
+    this.cause = cause
+  }
+  /**
+   * Check if a value is a JsonRpcError
+   *
+   * @param {unknown} value
+   * @returns {value is JsonRpcError}
+   */
+  static is(value) {
+    return isRpcError(value) && value.name === 'JsonRpcError'
+  }
+}
+
+export class ValidationRpcError extends RpcError {
+  name = 'ValidationRpcError'
+
+  /** @type {import('zod').ZodError} */
+  cause
+
+  /**
+   *
+   * @param {import('zod').ZodError} cause
+   */
+  constructor(cause) {
+    const message = fromError(cause).message.replace('Validation error: ', '')
+    super(message, { cause })
+    this.cause = cause
+  }
+  /**
+   * Check if a value is a ValidationRpcError
+   *
+   * @param {unknown} value
+   * @returns {value is ValidationRpcError}
+   */
+  static is(value) {
+    return isRpcError(value) && value.name === 'ValidationRpcError'
+  }
+}
 
 /**
  * RPC
@@ -69,24 +177,42 @@ export class RPC {
    *
    * @param {GasEstimateParams} params
    * @param {RequestOptions} [fetchOptions]
+   * @return {Promise<MaybeResult<GasEstimateMessageGasResponse, RequestErrors | JsonRpcError | RpcError | ValidationRpcError>>}
    */
   async gasEstimate(params, fetchOptions = {}) {
-    this.#validateNetwork(params.msg.from)
-    this.#validateNetwork(params.msg.to)
+    const isFromValid = this.#isInvalidNetwork(params.msg.from)
+    if (isFromValid.error) {
+      return isFromValid
+    }
+    const isToValid = this.#isInvalidNetwork(params.msg.to)
 
-    return await /** @type {typeof this.call<GasEstimateMessageGasResponse>}*/ (
-      this.call
-    )(
-      {
-        method: 'Filecoin.GasEstimateMessageGas',
-        params: [
-          new Message(params.msg).toLotus(),
-          { MaxFee: params.maxFee ?? '0' },
-          undefined,
-        ],
-      },
-      fetchOptions
-    )
+    if (isToValid.error) {
+      return isToValid
+    }
+
+    try {
+      const msg = new Message(params.msg)
+      return await /** @type {typeof this.call<GasEstimateMessageGasResponse>}*/ (
+        this.call
+      )(
+        {
+          method: 'Filecoin.GasEstimateMessageGas',
+          params: [msg.toLotus(), { MaxFee: params.maxFee ?? '0' }, null],
+        },
+        fetchOptions
+      )
+    } catch (error) {
+      if (isZodErrorLike(error)) {
+        return {
+          result: undefined,
+          error: new ValidationRpcError(error),
+        }
+      }
+      return {
+        result: undefined,
+        error: new RpcError('Failed to estimate gas', { cause: error }),
+      }
+    }
   }
 
   /**
@@ -96,9 +222,13 @@ export class RPC {
    *
    * @param {string} address
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<WalletBalanceResponse, RequestErrors | JsonRpcError | RpcError>>}
    */
   async balance(address, fetchOptions = {}) {
-    address = this.#validateNetwork(address)
+    const isValid = this.#isInvalidNetwork(address)
+    if (isValid.error) {
+      return isValid
+    }
     return await /** @type {typeof this.call<WalletBalanceResponse>}*/ (
       this.call
     )({ method: 'Filecoin.WalletBalance', params: [address] }, fetchOptions)
@@ -110,9 +240,13 @@ export class RPC {
    * @see https://lotus.filecoin.io/reference/lotus/mpool/#mpoolgetnonce
    * @param {string} address
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<MpoolGetNonceResponse, RequestErrors | JsonRpcError | RpcError>>}
    */
   async nonce(address, fetchOptions = {}) {
-    address = this.#validateNetwork(address)
+    const isValid = this.#isInvalidNetwork(address)
+    if (isValid.error) {
+      return isValid
+    }
     return await /** @type {typeof this.call<MpoolGetNonceResponse>}*/ (
       this.call
     )({ method: 'Filecoin.MpoolGetNonce', params: [address] }, fetchOptions)
@@ -125,23 +259,45 @@ export class RPC {
    *
    * @param {PushMessageParams} params
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<MpoolPushResponse, RequestErrors | JsonRpcError | RpcError | ValidationRpcError>>}
    */
   async pushMessage(params, fetchOptions = {}) {
-    this.#validateNetwork(params.msg.from)
-    this.#validateNetwork(params.msg.to)
+    const isFromValid = this.#isInvalidNetwork(params.msg.from)
+    if (isFromValid.error) {
+      return isFromValid
+    }
+    const isToValid = this.#isInvalidNetwork(params.msg.to)
+    if (isToValid.error) {
+      return isToValid
+    }
 
-    return await /** @type {typeof this.call<MpoolPushResponse>}*/ (this.call)(
-      {
-        method: 'Filecoin.MpoolPush',
-        params: [
-          {
-            Message: new Message(params.msg).toLotus(),
-            Signature: new Signature(params.signature).toLotus(),
-          },
-        ],
-      },
-      fetchOptions
-    )
+    try {
+      return await /** @type {typeof this.call<MpoolPushResponse>}*/ (
+        this.call
+      )(
+        {
+          method: 'Filecoin.MpoolPush',
+          params: [
+            {
+              Message: new Message(params.msg).toLotus(),
+              Signature: new Signature(params.signature).toLotus(),
+            },
+          ],
+        },
+        fetchOptions
+      )
+    } catch (error) {
+      if (isZodErrorLike(error)) {
+        return {
+          result: undefined,
+          error: new ValidationRpcError(error),
+        }
+      }
+      return {
+        result: undefined,
+        error: new RpcError('Failed to push message', { cause: error }),
+      }
+    }
   }
 
   /**
@@ -152,6 +308,7 @@ export class RPC {
    * @see https://lotus.filecoin.io/reference/lotus/state/#statewaitmsg
    * @param {waitMsgParams} params
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<MpoolPushResponse, RequestErrors | JsonRpcError>>}
    */
   async waitMsg(params, fetchOptions = {}) {
     return await /** @type {typeof this.call<MpoolPushResponse>}*/ (this.call)(
@@ -174,8 +331,14 @@ export class RPC {
    * @see https://github.com/filecoin-project/lotus/blob/471819bf1ef8a4d5c7c0476a38ce9f5e23c59bfc/api/api_full.go#L743-L768
    * @param {FilecoinAddressToEthAddressParams} params
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<string, RequestErrors | JsonRpcError | RpcError>>}
    */
   async filecoinAddressToEthAddress(params, fetchOptions = {}) {
+    const isValid = this.#isInvalidNetwork(params.address)
+    if (isValid.error) {
+      return isValid
+    }
+
     return await /** @type {typeof this.call<string>} */ (this.call)(
       {
         method: 'Filecoin.FilecoinAddressToEthAddress',
@@ -193,8 +356,13 @@ export class RPC {
    *
    * @param {StateAccountKeyParams} params
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<string, RequestErrors | JsonRpcError | RpcError>>}
    */
   async stateAccountKey(params, fetchOptions = {}) {
+    const isValid = this.#isInvalidNetwork(params.address)
+    if (isValid.error) {
+      return isValid
+    }
     const r = await /** @type {typeof this.call<string>} */ (this.call)(
       {
         method: 'Filecoin.StateAccountKey',
@@ -225,8 +393,14 @@ export class RPC {
    *
    * @param {StateAccountKeyParams} params
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<string, RequestErrors | JsonRpcError | RpcError>>}
    */
   async stateLookupRobustAddress(params, fetchOptions = {}) {
+    const isValid = this.#isInvalidNetwork(params.address)
+    if (isValid.error) {
+      return isValid
+    }
+
     const r = await /** @type {typeof this.call<string>} */ (this.call)(
       {
         method: 'Filecoin.StateLookupRobustAddress',
@@ -250,13 +424,15 @@ export class RPC {
   }
 
   /**
-   * Retrieves the ID address of the given address
+   * Retrieves the ID address of the given address for a tipset.
+   * If you dont have a specific tipset in mind, better to use {@link getIDAddress}.
    *
    * @see https://github.com/filecoin-project/lotus/blob/master/documentation/en/api-v0-methods.md#statelookupid
    *
    *
    * @param {StateAccountKeyParams} params
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<string, RequestErrors | JsonRpcError >>}
    */
   async stateLookupID(params, fetchOptions = {}) {
     const r = await /** @type {typeof this.call<string>} */ (this.call)(
@@ -288,6 +464,7 @@ export class RPC {
    *
    *
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<TipSet, RequestErrors | JsonRpcError >>}
    */
   async chainHead(fetchOptions = {}) {
     const r = await /** @type {typeof this.call<TipSet>} */ (this.call)(
@@ -307,6 +484,7 @@ export class RPC {
    *
    * @param {ChainGetTipSetByHeightParams} params
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<TipSet, RequestErrors | JsonRpcError >>}
    */
   async getTipSetByHeight(params, fetchOptions = {}) {
     const r = await /** @type {typeof this.call<TipSet>} */ (this.call)(
@@ -328,6 +506,7 @@ export class RPC {
    *
    * @param {number} lookback - Chain epoch to look back to
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<TipSet, RequestErrors | JsonRpcError | RpcError>>}
    */
   async lookBackTipSet(lookback, fetchOptions = {}) {
     const head = await this.chainHead(fetchOptions)
@@ -343,10 +522,7 @@ export class RPC {
     if (wallTime < filTime - 3 || wallTime > filTime + 10 + 4 * 30) {
       return {
         result: undefined,
-        error: {
-          code: 0,
-          message: 'Chain is not synced',
-        },
+        error: new RpcError('Chain is not synced'),
       }
     }
 
@@ -369,6 +545,7 @@ export class RPC {
    *
    * @param {{address: string, safety?: Safety}} params
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<string, RequestErrors | JsonRpcError | RpcError>>}
    */
   async getIDAddress(params, fetchOptions = {}) {
     const safety = params.safety ?? 'finalized'
@@ -405,6 +582,7 @@ export class RPC {
    * @template R
    * @param {RpcOptions} rpcOptions
    * @param {RequestOptions} [fetchOptions]
+   * @returns {Promise<MaybeResult<R, RequestErrors | JsonRpcError>>}
    */
 
   async call(rpcOptions, fetchOptions = {}) {
@@ -413,52 +591,54 @@ export class RPC {
       ...fetchOptions,
     }
 
-    const r =
-      await /** @type {typeof request.json.post<{result: R, error: {code: number, message: string}}>} */ (
-        request.json.post
-      )(this.api, {
-        ...opts,
-        headers: this.headers,
-        body: {
-          jsonrpc: '2.0',
-          method: rpcOptions.method,
-          params: rpcOptions.params,
-          id: 1,
-        },
-      })
+    const r = await /** @type {typeof request.json.post<JsonRpcResponse>} */ (
+      request.json.post
+    )(this.api, {
+      ...opts,
+      headers: this.headers,
+      body: {
+        jsonrpc: '2.0',
+        method: rpcOptions.method,
+        params: rpcOptions.params,
+        id: 1,
+      },
+    })
 
+    // normal request error
     if (r.error) {
-      let message = r.error.message
-      if (r.error.cause) {
-        message += ` [${r.error.cause.toString()}]`
-      }
       return {
         result: undefined,
-        error: { code: 0, message },
+        error: r.error,
       }
     }
 
+    // json rpc error
     if (r.result.error) {
       return {
         result: undefined,
-        error: { code: r.result.error.code, message: r.result.error.message },
+        error: new JsonRpcError(r.result.error),
       }
     }
-    return { result: r.result.result, error: undefined }
+    return { result: /** @type {R} */ (r.result.result), error: undefined }
   }
 
   /**
+   * Check address against network
+   *
    * @param {string} address
+   * @returns {MaybeResult<undefined, RpcError>}
    */
-  #validateNetwork(address) {
+  #isInvalidNetwork(address) {
     const prefix = getNetworkPrefix(this.network)
 
     if (!address.startsWith(prefix)) {
-      throw new TypeError(
-        `Address ${address} does not belong to ${this.network}`
-      )
+      return {
+        result: undefined,
+        error: new RpcError(
+          `Address ${address} does not belong to ${this.network}`
+        ),
+      }
     }
-
-    return address
+    return { result: undefined, error: undefined }
   }
 }

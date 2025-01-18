@@ -123,7 +123,8 @@
     "iso-base": "^4.0.0",
     "iso-kv": "^3.0.3",
     "iso-web": "^1.0.6",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
     "@ledgerhq/hw-transport": "^6.31.4",
@@ -139,6 +140,7 @@
     "playwright-test": "^14.1.6",
     "rimraf": "^6.0.1",
     "rollup": "^4.24.3",
+    "type-fest": "^4.32.0",
     "typescript": "5.6.3"
   },
   "publishConfig": {
