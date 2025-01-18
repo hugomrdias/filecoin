@@ -1,5 +1,21 @@
 # Changelog
 
+## [6.0.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v5.1.1...iso-filecoin-v6.0.0) (2025-01-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* changed rpc from json rpc error object to always return a `RpcError`
+
+### Features
+
+* changed rpc from json rpc error object to always return a `RpcError` ([efe050d](https://github.com/hugomrdias/filecoin/commit/efe050d4d08e8cb145307df728258ee17a536513))
+
+
+### Bug Fixes
+
+* update deps and fix message types ([0138970](https://github.com/hugomrdias/filecoin/commit/0138970e548f124aa051bbbe4cf5227156f14571))
+
 ## [5.1.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v5.1.0...iso-filecoin-v5.1.1) (2024-12-30)
 
 
