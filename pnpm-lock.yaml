@@ -109,8 +109,8 @@ importers:
         specifier: ^0.1.9
         version: 0.1.9(@biomejs/biome@1.9.4)
       '@preact/preset-vite':
-        specifier: ^2.9.4
-        version: 2.9.4(@babel/core@7.26.0)(preact@10.25.4)(vite@5.4.11(@types/node@22.10.7))
+        specifier: ^2.10.0
+        version: 2.10.0(@babel/core@7.26.0)(preact@10.25.4)(vite@5.4.11(@types/node@22.10.7))
       '@types/node':
         specifier: ^22.10.7
         version: 22.10.7
@@ -971,8 +971,8 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
-  '@preact/preset-vite@2.9.4':
-    resolution: {integrity: sha512-PpPnUlKUsbWZ2oBuAkAMnezhIYGsR7xi2EZcPjeTAjF1DhGl00IcPD1ZeXRFKp38i7Hk4kEdFlwpJ1525cAzpg==}
+  '@preact/preset-vite@2.10.0':
+    resolution: {integrity: sha512-U49rFSfF5h4rL1IYSmtiCe+lHDave9es3JzVnCMKoKF5ZW3Adua34/pkU2bT5vKQ02ek142RUjTwLhwLSgFp6g==}
     peerDependencies:
       '@babel/core': 7.x
       vite: 2.x || 3.x || 4.x || 5.x || 6.x
@@ -2738,10 +2738,6 @@ packages:
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
 
-  magic-string@0.30.5:
-    resolution: {integrity: sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==}
-    engines: {node: '>=12'}
-
   make-dir@4.0.0:
     resolution: {integrity: sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==}
     engines: {node: '>=10'}
@@ -3452,6 +3448,9 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
+  simple-code-frame@1.3.0:
+    resolution: {integrity: sha512-MB4pQmETUBlNs62BBeRjIFGeuy/x6gGKh7+eRUemn1rCFhqo7K+4slPqsyizCbcbYLnaYqaoZ2FWsZ/jN06D8w==}
+
   simple-git-hooks@2.11.1:
     resolution: {integrity: sha512-tgqwPUMDcNDhuf1Xf6KTUsyeqGdgKMhzaH4PAZZuzguOgTl5uuyeYe/8mWgAr6IBxB5V06uqEf6Dy37gIWDtDg==}
     hasBin: true
@@ -3864,6 +3863,9 @@ packages:
     resolution: {integrity: sha512-F+G3LjiGbG8QpbH9bZ//GSBr9i1InSTkaulfUHFa9jkLqVGORFBoqc2A/Yu5Mmh1kNAbiAeKeK+6aaQUf3x0JA==}
     peerDependencies:
       vite: ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
+
+  vite-prerender-plugin@0.5.3:
+    resolution: {integrity: sha512-l/9FFDEO2xK+g0z6X/YCi28Q+uDdrYct6Qqsp46pPxl+tnpPrLBsa4J/t0iwOFCqvi6oBmjRTiob7wsKBJtOOg==}
 
   vite@5.4.11:
     resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
@@ -4918,9 +4920,8 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@preact/preset-vite@2.9.4(@babel/core@7.26.0)(preact@10.25.4)(vite@5.4.11(@types/node@22.10.7))':
+  '@preact/preset-vite@2.10.0(@babel/core@7.26.0)(preact@10.25.4)(vite@5.4.11(@types/node@22.10.7))':
     dependencies:
-      '@babel/code-frame': 7.26.2
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-jsx': 7.25.9(@babel/core@7.26.0)
       '@babel/plugin-transform-react-jsx-development': 7.25.9(@babel/core@7.26.0)
@@ -4929,11 +4930,8 @@ snapshots:
       babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.26.0)
       debug: 4.4.0(supports-color@8.1.1)
       kolorist: 1.8.0
-      magic-string: 0.30.5
-      node-html-parser: 6.1.13
-      source-map: 0.7.4
-      stack-trace: 1.0.0-pre2
       vite: 5.4.11(@types/node@22.10.7)
+      vite-prerender-plugin: 0.5.3
     transitivePeerDependencies:
       - preact
       - supports-color
@@ -7225,10 +7223,6 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  magic-string@0.30.5:
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.0
-
   make-dir@4.0.0:
     dependencies:
       semver: 7.6.3
@@ -8020,6 +8014,10 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
+  simple-code-frame@1.3.0:
+    dependencies:
+      kolorist: 1.8.0
+
   simple-git-hooks@2.11.1: {}
 
   sirv@2.0.4:
@@ -8375,6 +8373,14 @@ snapshots:
       vite: 5.4.11(@types/node@22.10.7)
     transitivePeerDependencies:
       - rollup
+
+  vite-prerender-plugin@0.5.3:
+    dependencies:
+      magic-string: 0.30.17
+      node-html-parser: 6.1.13
+      simple-code-frame: 1.3.0
+      source-map: 0.7.4
+      stack-trace: 1.0.0-pre2
 
   vite@5.4.11(@types/node@22.10.7):
     dependencies:

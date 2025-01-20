@@ -63,7 +63,7 @@
     "@babel/core": "^7.26.0",
     "@biomejs/biome": "^1.9.4",
     "@hugomrdias/configs": "^0.1.9",
-    "@preact/preset-vite": "^2.9.4",
+    "@preact/preset-vite": "^2.10.0",
     "@types/node": "^22.10.7",
     "@types/w3c-web-hid": "^1.0.6",
     "tiny-git-rev-sync": "^0.1.0",
