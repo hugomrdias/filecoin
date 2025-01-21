@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v6.0.0...iso-filecoin-v6.0.1) (2025-01-21)
+
+
+### Bug Fixes
+
+* use partial message type instead of partial schema ([a8f357d](https://github.com/hugomrdias/filecoin/commit/a8f357d1aad2f2625d697a87893de877d1fdfad4))
+
 ## [6.0.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v5.1.1...iso-filecoin-v6.0.0) (2025-01-18)
 
 
