@@ -64,9 +64,17 @@ export type NetworkPrefix = 'f' | 't'
 
 // Message types
 export type MessageObj = z.infer<(typeof MessageSchemas)['message']>
-export type PartialMessageObj = z.infer<
-  (typeof MessageSchemas)['messagePartial']
+export type PartialMessageObj = import('type-fest').SetOptional<
+  MessageObj,
+  | 'version'
+  | 'nonce'
+  | 'gasLimit'
+  | 'gasFeeCap'
+  | 'gasPremium'
+  | 'method'
+  | 'params'
 >
+
 export interface LotusMessage {
   Version: 0
   To: string

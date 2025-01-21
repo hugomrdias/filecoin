@@ -13,6 +13,9 @@ const MessageSchema = z.object({
   to: z.string(),
   from: z.string(),
   nonce: z.number().nonnegative().safe().default(0),
+  /**
+   * Value in attoFIL
+   */
   value: z
     .string()
     .min(1)
@@ -24,7 +27,7 @@ const MessageSchema = z.object({
   gasPremium: z.string().default('0'),
   method: z.number().nonnegative().safe().default(0),
   /**
-   * base64pad encoded
+   * Params encoded as base64pad
    */
   params: z.string().default(''),
 })
@@ -46,7 +49,7 @@ export const Schemas = {
 export class Message {
   /**
    *
-   * @param {z.infer<typeof MessageSchemaPartial>} msg
+   * @param {import('./types').PartialMessageObj} msg
    */
   constructor(msg) {
     const _msg = MessageSchema.parse(msg)
