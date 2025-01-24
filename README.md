@@ -12,6 +12,8 @@ Read contributing guidelines [here](.github/CONTRIBUTING.md).
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/hugomrdias/filecoin)
 
+[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/hugomrdias/filecoin)
+
 ## License
 
 [MIT](./license) © [Hugo Dias](http://hugodias.me)
