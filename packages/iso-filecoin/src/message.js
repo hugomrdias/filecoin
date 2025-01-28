@@ -6,13 +6,23 @@ import * as Address from './address.js'
 import { Token } from './token.js'
 
 /**
- * Validation schema for a message
+ * @typedef {z.infer<typeof MessageSchema>} MessageObj
+ *
+ * @typedef {import('type-fest').SetOptional<MessageObj, 'version' | 'nonce' | 'gasLimit' | 'gasFeeCap' | 'gasPremium' | 'method' | 'params'>} PartialMessageObj
  */
-const MessageSchema = z.object({
+
+/**
+ * Message validation schema
+ */
+export const MessageSchema = z.object({
   version: z.literal(0).default(0),
+  nonce: z.number().nonnegative().safe().default(0),
+  gasLimit: z.number().nonnegative().safe().default(0),
+  gasFeeCap: z.string().default('0'),
+  gasPremium: z.string().default('0'),
+  method: z.number().nonnegative().safe().default(0),
   to: z.string(),
   from: z.string(),
-  nonce: z.number().nonnegative().safe().default(0),
   /**
    * Value in attoFIL
    */
@@ -22,34 +32,23 @@ const MessageSchema = z.object({
     .refine((v) => !v.startsWith('-'), {
       message: 'value must not be negative',
     }),
-  gasLimit: z.number().nonnegative().safe().default(0),
-  gasFeeCap: z.string().default('0'),
-  gasPremium: z.string().default('0'),
-  method: z.number().nonnegative().safe().default(0),
   /**
    * Params encoded as base64pad
    */
   params: z.string().default(''),
 })
 
-const MessageSchemaPartial = MessageSchema.partial({
-  version: true,
-  nonce: true,
-  gasLimit: true,
-  gasFeeCap: true,
-  gasPremium: true,
-  method: true,
-  params: true,
-})
 export const Schemas = {
   message: MessageSchema,
-  messagePartial: MessageSchemaPartial,
 }
 
+/**
+ * Message class
+ */
 export class Message {
   /**
    *
-   * @param {import('./types').PartialMessageObj} msg
+   * @param {PartialMessageObj} msg
    */
   constructor(msg) {
     const _msg = MessageSchema.parse(msg)
@@ -65,6 +64,9 @@ export class Message {
     this.params = _msg.params
   }
 
+  /**
+   * Convert message to Lotus message
+   */
   toLotus() {
     return {
       Version: this.version,
@@ -81,10 +83,12 @@ export class Message {
   }
 
   /**
+   * Create message from Lotus message
    *
    * @param {import('./types').LotusMessage} json
    */
   static fromLotus(json) {
+    /** @type {MessageObj} */
     const obj = {
       version: json.Version,
       to: json.To,
@@ -102,6 +106,7 @@ export class Message {
   }
 
   /**
+   * Prepare message for signing with nonce and gas estimation
    *
    * @param {import('./rpc.js').RPC} rpc
    */
@@ -133,6 +138,9 @@ export class Message {
     return this
   }
 
+  /**
+   * Serialize message using dag-cbor
+   */
   serialize() {
     const msg = [
       this.version,
