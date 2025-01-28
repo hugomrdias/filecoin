@@ -17,7 +17,7 @@ export { checksumEthAddress } from './utils.js'
  */
 
 /**
- * @typedef {import('./types.js').Address} IAddress
+ * @typedef {import('./types.js').IAddress} IAddress
  * @typedef { string | IAddress | BufferSource} Value
  */
 
@@ -326,8 +326,7 @@ class Address {
   }
 
   /**
-   * Convert to ID Address
-   *
+   * @inheritdoc IAddress.toIdAddress
    * @param {AddressRpcSafetyOptions} options
    * @returns {Promise<AddressId>}
    */
@@ -378,8 +377,7 @@ class Address {
   }
 
   /**
-   * Convert to Eth Address
-   *
+   * @inheritdoc IAddress.to0x
    * @param {AddressRpcSafetyOptions} options
    * @returns {Promise<string>}
    */
@@ -551,10 +549,9 @@ export class AddressId extends Address {
 
     return robust
   }
+
   /**
-   *
    * @param {AddressRpcOptions} options
-   * @returns {Promise<string>}
    */
   async to0x(options) {
     const { rpc } = options
@@ -644,10 +641,8 @@ export class AddressSecp256k1 extends Address {
   }
 
   /**
-   *
    * @param {Uint8Array} publicKey
    * @param {import('./types.js').Network} network
-   * @returns
    */
   static fromPublicKey(publicKey, network) {
     if (publicKey.length !== 65) {
@@ -799,7 +794,6 @@ export class AddressBLS extends Address {
    *
    * @param {Uint8Array} publicKey
    * @param {import('./types.js').Network} network
-   * @returns
    */
   static fromPublicKey(publicKey, network) {
     if (publicKey.length !== 48) {
@@ -858,8 +852,6 @@ export class AddressDelegated extends Address {
     if (Number.parseInt(protocolIndicator) !== PROTOCOL_INDICATOR.DELEGATED) {
       throw new Error(`Invalid protocol indicator: ${protocolIndicator}`)
     }
-
-    // t410f2oekwcmo2pueydmaq53eic2i62crtbeyuzx2gmy
 
     const namespace = address.slice(2, address.indexOf('f', 2))
     const dataEncoded = address.slice(address.indexOf('f', 2) + 1)
