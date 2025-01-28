@@ -131,6 +131,7 @@
     "iso-base": "^4.0.0",
     "iso-kv": "^3.0.3",
     "iso-web": "^1.0.6",
+    "typescript-event-target": "^1.1.1",
     "zod": "^3.24.1",
     "zod-validation-error": "^3.4.0"
   },

@@ -12,13 +12,17 @@ import { Token } from './token.js'
  */
 
 /**
- * Validation schema for a message
+ * Message validation schema
  */
-const MessageSchema = z.object({
+export const MessageSchema = z.object({
   version: z.literal(0).default(0),
+  nonce: z.number().nonnegative().safe().default(0),
+  gasLimit: z.number().nonnegative().safe().default(0),
+  gasFeeCap: z.string().default('0'),
+  gasPremium: z.string().default('0'),
+  method: z.number().nonnegative().safe().default(0),
   to: z.string(),
   from: z.string(),
-  nonce: z.number().nonnegative().safe().default(0),
   /**
    * Value in attoFIL
    */
@@ -28,10 +32,6 @@ const MessageSchema = z.object({
     .refine((v) => !v.startsWith('-'), {
       message: 'value must not be negative',
     }),
-  gasLimit: z.number().nonnegative().safe().default(0),
-  gasFeeCap: z.string().default('0'),
-  gasPremium: z.string().default('0'),
-  method: z.number().nonnegative().safe().default(0),
   /**
    * Params encoded as base64pad
    */
@@ -50,7 +50,7 @@ const MessageSchemaPartial = MessageSchema.partial({
 
 export const Schemas = {
   message: MessageSchema,
-  messagePartial: MessageSchemaPartial,
+  messsagePartial: MessageSchemaPartial,
 }
 
 /**
@@ -99,6 +99,7 @@ export class Message {
    * @param {import('./types').LotusMessage} json
    */
   static fromLotus(json) {
+    /** @type {MessageObj} */
     const obj = {
       version: json.Version,
       to: json.To,

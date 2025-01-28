@@ -162,6 +162,9 @@ importers:
       iso-web:
         specifier: ^1.0.6
         version: 1.0.6
+      typescript-event-target:
+        specifier: ^1.1.1
+        version: 1.1.1
       zod:
         specifier: ^3.24.1
         version: 3.24.1
@@ -3666,6 +3669,9 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x || 5.6.x || 5.7.x
+
+  typescript-event-target@1.1.1:
+    resolution: {integrity: sha512-dFSOFBKV6uwaloBCCUhxlD3Pr/P1a/tJdcmPrTXCHlEFD3faj0mztjcGn6VBAhQ0/Bdy8K3VWrrqwbt/ffsYsg==}
 
   typescript@5.7.3:
     resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
@@ -8188,6 +8194,8 @@ snapshots:
       minimatch: 9.0.5
       typescript: 5.7.3
       yaml: 2.7.0
+
+  typescript-event-target@1.1.1: {}
 
   typescript@5.7.3: {}
 
