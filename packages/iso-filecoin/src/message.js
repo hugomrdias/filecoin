@@ -6,6 +6,12 @@ import * as Address from './address.js'
 import { Token } from './token.js'
 
 /**
+ * @typedef {z.infer<typeof MessageSchema>} MessageObj
+ *
+ * @typedef {import('type-fest').SetOptional<MessageObj, 'version' | 'nonce' | 'gasLimit' | 'gasFeeCap' | 'gasPremium' | 'method' | 'params'>} PartialMessageObj
+ */
+
+/**
  * Validation schema for a message
  */
 const MessageSchema = z.object({
@@ -32,24 +38,17 @@ const MessageSchema = z.object({
   params: z.string().default(''),
 })
 
-const MessageSchemaPartial = MessageSchema.partial({
-  version: true,
-  nonce: true,
-  gasLimit: true,
-  gasFeeCap: true,
-  gasPremium: true,
-  method: true,
-  params: true,
-})
 export const Schemas = {
   message: MessageSchema,
-  messagePartial: MessageSchemaPartial,
 }
 
+/**
+ * Message class
+ */
 export class Message {
   /**
    *
-   * @param {import('./types').PartialMessageObj} msg
+   * @param {PartialMessageObj} msg
    */
   constructor(msg) {
     const _msg = MessageSchema.parse(msg)
@@ -65,6 +64,9 @@ export class Message {
     this.params = _msg.params
   }
 
+  /**
+   * Convert message to Lotus message
+   */
   toLotus() {
     return {
       Version: this.version,
@@ -81,6 +83,7 @@ export class Message {
   }
 
   /**
+   * Create message from Lotus message
    *
    * @param {import('./types').LotusMessage} json
    */
@@ -102,6 +105,7 @@ export class Message {
   }
 
   /**
+   * Prepare message for signing with nonce and gas estimation
    *
    * @param {import('./rpc.js').RPC} rpc
    */
@@ -133,6 +137,9 @@ export class Message {
     return this
   }
 
+  /**
+   * Serialize message using dag-cbor
+   */
   serialize() {
     const msg = [
       this.version,

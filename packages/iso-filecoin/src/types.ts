@@ -4,11 +4,12 @@ import type { Driver } from 'iso-kv'
 import type { JsonValue } from 'type-fest'
 import type { z } from 'zod'
 import type { AddressId, PROTOCOL_INDICATOR } from './address'
-import type { Schemas as MessageSchemas } from './message'
+import type { MessageObj, PartialMessageObj } from './message.js'
 import type { RPC } from './rpc'
 import type { SIGNATURE_TYPE, Schemas as SignatureSchemas } from './signature'
 
 export type { MaybeResult } from 'iso-web/types'
+export * from './message.js'
 
 export type ProtocolIndicator = typeof PROTOCOL_INDICATOR
 export type ProtocolIndicatorCode = ProtocolIndicator[keyof ProtocolIndicator]
@@ -27,6 +28,23 @@ export interface AddressRpcOptions {
 }
 export interface AddressRpcSafetyOptions extends AddressRpcOptions {
   safety?: Safety
+}
+
+/**
+ * Lotus message
+ */
+export interface LotusMessage {
+  Version: 0
+  To: string
+  From: string
+  Nonce: number
+  Value: string
+  GasLimit: number
+  GasFeeCap: string
+  GasPremium: string
+  Method: number
+  Params: string
+  CID?: CID
 }
 
 export interface Address {
