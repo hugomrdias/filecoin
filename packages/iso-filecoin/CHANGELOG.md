@@ -1,5 +1,17 @@
 # Changelog
 
+## [6.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v6.0.1...iso-filecoin-v6.1.0) (2025-01-28)
+
+
+### Features
+
+* add chains module ([105ba42](https://github.com/hugomrdias/filecoin/commit/105ba42746f52ca2cede9bbb4da4f9c1ba3f661a))
+
+
+### Bug Fixes
+
+* more types and docs for message ([0e70763](https://github.com/hugomrdias/filecoin/commit/0e70763d6703321db69916010c30b8d662dd1edf))
+
 ## [6.0.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v6.0.0...iso-filecoin-v6.0.1) (2025-01-21)
 
 
