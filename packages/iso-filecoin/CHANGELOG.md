@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.1.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v6.1.0...iso-filecoin-v6.1.1) (2025-01-28)
+
+
+### Bug Fixes
+
+* revert message partial schema removal ([c72785a](https://github.com/hugomrdias/filecoin/commit/c72785ac4a63bf994042be93c0383d4b168e7757))
+
 ## [6.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v6.0.1...iso-filecoin-v6.1.0) (2025-01-28)
 
 
