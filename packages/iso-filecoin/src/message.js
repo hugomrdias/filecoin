@@ -38,8 +38,19 @@ const MessageSchema = z.object({
   params: z.string().default(''),
 })
 
+const MessageSchemaPartial = MessageSchema.partial({
+  version: true,
+  nonce: true,
+  gasLimit: true,
+  gasFeeCap: true,
+  gasPremium: true,
+  method: true,
+  params: true,
+})
+
 export const Schemas = {
   message: MessageSchema,
+  messagePartial: MessageSchemaPartial,
 }
 
 /**
