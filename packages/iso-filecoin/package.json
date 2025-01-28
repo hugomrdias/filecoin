@@ -62,6 +62,11 @@
       "import": "./src/ledger.js",
       "require": "./dist/cjs/src/ledger.cjs"
     },
+    "./chains": {
+      "types": "./dist/src/chains.d.ts",
+      "import": "./src/chains.js",
+      "require": "./dist/cjs/src/chains.cjs"
+    },
     "./types": {
       "types": "./dist/src/types.d.ts"
     }
@@ -96,6 +101,9 @@
       ],
       "ledger": [
         "dist/src/ledger"
+      ],
+      "chains": [
+        "dist/src/chains"
       ]
     }
   },

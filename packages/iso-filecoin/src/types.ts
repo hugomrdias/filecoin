@@ -14,6 +14,7 @@ export type ProtocolIndicator = typeof PROTOCOL_INDICATOR
 export type ProtocolIndicatorCode = ProtocolIndicator[keyof ProtocolIndicator]
 export type Transport = _LedgerTransport
 
+export type HexAddress = `0x${string}`
 export type CID = {
   '/': string
 }
@@ -62,31 +63,71 @@ export interface DerivationPathComponents {
 export type Network = 'mainnet' | 'testnet'
 export type NetworkPrefix = 'f' | 't'
 
-// Message types
-export type MessageObj = z.infer<(typeof MessageSchemas)['message']>
-export type PartialMessageObj = import('type-fest').SetOptional<
-  MessageObj,
-  | 'version'
-  | 'nonce'
-  | 'gasLimit'
-  | 'gasFeeCap'
-  | 'gasPremium'
-  | 'method'
-  | 'params'
->
+export type ChainRpcUrls = {
+  http: string[]
+  webSocket?: string[] | undefined
+}
+export type ChainBlockExplorer = {
+  name: string
+  url: string
+  apiUrl?: string | undefined
+}
 
-export interface LotusMessage {
-  Version: 0
-  To: string
-  From: string
-  Nonce: number
-  Value: string
-  GasLimit: number
-  GasFeeCap: string
-  GasPremium: string
-  Method: number
-  Params: string
-  CID?: CID
+export type ChainContract = {
+  address: HexAddress
+  blockCreated?: number | undefined
+}
+
+export interface Chain {
+  id: number
+  name: string
+  testnet?: boolean
+  nativeCurrency: {
+    name: string
+    symbol: string
+    decimals: number
+  }
+  rpcUrls: {
+    [key: string]: ChainRpcUrls
+    default: ChainRpcUrls
+  }
+  blockExplorers?: {
+    [key: string]: ChainBlockExplorer
+    default: ChainBlockExplorer
+  }
+  contracts?: {
+    [key: string]: ChainContract
+  }
+  /**
+   * CAIP-2 chain ID
+   */
+  caipId: `${string}:${string}`
+  /**
+   * Chain ID 0x prefixed hex string
+   */
+  chainId: string
+  iconUrls?: string[]
+}
+
+/**
+ * Ethereum chain type (Metamask)
+ */
+export type EthereumChain = {
+  /** A 0x-prefixed hexadecimal string */
+  chainId: string
+  /** The chain name. */
+  chainName: string
+  /** Native currency for the chain. */
+  nativeCurrency?:
+    | {
+        name: string
+        symbol: string
+        decimals: number
+      }
+    | undefined
+  rpcUrls: string[]
+  blockExplorerUrls?: string[] | undefined
+  iconUrls?: string[] | undefined
 }
 
 // Signature types
