@@ -69,8 +69,8 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3
       filsnap-adapter:
-        specifier: ^2.0.2
-        version: 2.0.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)(zod@3.24.1)
+        specifier: ^2.0.4
+        version: 2.0.4(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)(zod@3.24.1)
       filsnap-adapter-react:
         specifier: ^2.0.1
         version: 2.0.1(bufferutil@4.0.9)(react@18.3.1)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)(zod@3.24.1)
@@ -855,16 +855,20 @@ packages:
   '@metamask/sdk@0.31.5':
     resolution: {integrity: sha512-i7wteqO/fU2JWQrMZz+addHokYThHYznp4nYXviv+QysdxGVgAYvcW/PBA+wpeP3veX7QGfNqMPgSsZbBrASYw==}
 
-  '@metamask/snaps-sdk@6.16.0':
-    resolution: {integrity: sha512-Zj4ZE9Ctmr7Qz1Wd92OY07Z00GzcdpUwB3lrtGQOuEb+hplqMdFOziWSzVm89pplx13RJxd8k5IlWj3EmfK0rg==}
+  '@metamask/snaps-sdk@6.13.0':
+    resolution: {integrity: sha512-WXNt0XZSnmgbwgETL0RiRvl0CMa78ZA1zLS0olK8QR/+9zcPCSrh68v1lVAa+LcctvzpRJ8NiRAar2fRBthqyw==}
     engines: {node: ^18.16 || >=20}
 
   '@metamask/superstruct@3.1.0':
     resolution: {integrity: sha512-N08M56HdOgBfRKkrgCMZvQppkZGcArEop3kixNEtVbJKm6P9Cfg0YkI6X0s1g78sNrj2fWUwvJADdZuzJgFttA==}
     engines: {node: '>=16.0.0'}
 
-  '@metamask/utils@11.0.1':
-    resolution: {integrity: sha512-tZlBvEJ6VhhfEiMV+Ad8rWRMjHKpbMogG01YU22JlsIeJptgIdZX1G8jJzhZH0Gxrixa2BeARh7m9lZWQo6rMg==}
+  '@metamask/utils@10.0.1':
+    resolution: {integrity: sha512-zHgAitJtRwviVVFnRUA2PLRMaAwatr3jiHgiH7mPicJaeSK4ma01aGR4fHy0iy5tlVo1ZiioTmJ1Hbp8FZ6pSg==}
+    engines: {node: ^18.18 || ^20.14 || >=22}
+
+  '@metamask/utils@11.1.0':
+    resolution: {integrity: sha512-lhR3sEZisT6hVBrnS3Ftgg9FRUFca0/5fcxDA+5paqLo4YYE6euV7622l0Qi3yMwy4mlgrrDTBiPSTXtCUKrdg==}
     engines: {node: ^18.18 || ^20.14 || >=22}
 
   '@metamask/utils@5.0.2':
@@ -2197,11 +2201,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
 
-  filsnap-adapter@2.0.3:
-    resolution: {integrity: sha512-v77LUPInBi5dZ5babxbs65yZ0Vn14fGUJu0JaYzeAPW6Z2LOVWzb+bdoxpx+mk5rOlohVlOcGlDIkLYHwzV4Zg==}
+  filsnap-adapter@2.0.4:
+    resolution: {integrity: sha512-Bvv5hpq++qbVqNhp/gB/tYpCQiP9UCyc1SfuHCpxnfU7uwGdLv7OSnwrL1A25hJPkQZBjzumQ+7SyBSeP6UZtg==}
 
-  filsnap@1.4.1:
-    resolution: {integrity: sha512-iNNEhyDTAucs30f+6pX5Od2I1SGROq8N7+qvRYq/4Ud3HJQAOujyq24+NzY4vC44JtObhR4FdiUk3TIsfXvIEw==}
+  filsnap@1.4.4:
+    resolution: {integrity: sha512-5RgOMRQUFZColZ3E2VkLhm4O4E9TfeUZp8p7ztzoQopCZTLP6v/ro/xczDfE+4EHlcLlV1wvzopxeo7t7XguTg==}
 
   filter-obj@1.1.0:
     resolution: {integrity: sha512-8rXg1ZnX7xzy2NGDVkBVaAy+lSlPNwad13BtgSlLuxfIslyt5Vg64U7tFcCt4WS1R0hvtnQybT/IyCkGZ3DpXQ==}
@@ -2532,8 +2536,8 @@ packages:
   iso-base@4.0.0:
     resolution: {integrity: sha512-Vf+6r7XlP+LQD0HSR0ZBLSj/mwuP+59ElbgMKT+iFSnkBW2RzRohQScgKfPCYbaGZAjEdbi40eYq28E/RAnrVA==}
 
-  iso-filecoin@6.0.1:
-    resolution: {integrity: sha512-Oy6mtJCLMqZVzQlN1h6uYnKL2K41BB7wrmLcw1HKV9qtJKXxRZCel1OF5zgrv+/wHN685Xes5xPvGrD2ogMMXw==}
+  iso-filecoin@6.1.1:
+    resolution: {integrity: sha512-1oyaD7AZQFK5+W+j9ngRI8LnPigPJS5enYkEulUMkUSTPEBX+oStQr6avflRJFIEHqtREmsxMcxGnbayTxLWpw==}
 
   iso-kv@3.0.3:
     resolution: {integrity: sha512-NVW7TJGiTbDlfBclLJeGqGLvZhgMu02tPId6ghLEygCVgitp3946TM6HJordcSbyJbD0wRzByilRYK/GY8dKlw==}
@@ -2675,6 +2679,7 @@ packages:
 
   lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
@@ -3373,6 +3378,11 @@ packages:
 
   semver@7.6.3:
     resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
+    engines: {node: '>=10'}
+    hasBin: true
+
+  semver@7.7.0:
+    resolution: {integrity: sha512-DrfFnPzblFmNrIZzg5RzHegbiRWg7KMR7btwi2yjHwx06zsUbO5g613sVwEV7FTwmzJu+Io0lJe2GJ3LxqpvBQ==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -4548,14 +4558,14 @@ snapshots:
     dependencies:
       '@metamask/base-controller': 7.1.1
       '@metamask/rpc-errors': 7.0.2
-      '@metamask/utils': 11.0.1
+      '@metamask/utils': 11.1.0
       nanoid: 3.3.8
     transitivePeerDependencies:
       - supports-color
 
   '@metamask/base-controller@7.1.1':
     dependencies:
-      '@metamask/utils': 11.0.1
+      '@metamask/utils': 11.1.0
       immer: 9.0.21
     transitivePeerDependencies:
       - supports-color
@@ -4572,7 +4582,7 @@ snapshots:
     dependencies:
       '@metamask/rpc-errors': 7.0.2
       '@metamask/safe-event-emitter': 3.1.2
-      '@metamask/utils': 11.0.1
+      '@metamask/utils': 11.1.0
     transitivePeerDependencies:
       - supports-color
 
@@ -4605,7 +4615,7 @@ snapshots:
     dependencies:
       '@metamask/json-rpc-engine': 10.0.2
       '@metamask/safe-event-emitter': 3.1.2
-      '@metamask/utils': 11.0.1
+      '@metamask/utils': 11.1.0
       readable-stream: 3.6.2
     transitivePeerDependencies:
       - supports-color
@@ -4613,7 +4623,7 @@ snapshots:
   '@metamask/key-tree@10.0.2':
     dependencies:
       '@metamask/scure-bip39': 2.1.1
-      '@metamask/utils': 11.0.1
+      '@metamask/utils': 11.1.0
       '@noble/curves': 1.8.1
       '@noble/hashes': 1.7.1
       '@scure/base': 1.2.4
@@ -4653,7 +4663,7 @@ snapshots:
       '@metamask/object-multiplex': 2.1.0
       '@metamask/rpc-errors': 7.0.2
       '@metamask/safe-event-emitter': 3.1.2
-      '@metamask/utils': 11.0.1
+      '@metamask/utils': 11.1.0
       detect-browser: 5.3.0
       extension-port-stream: 4.2.0(webextension-polyfill@0.10.0)
       fast-deep-equal: 3.1.3
@@ -4672,7 +4682,7 @@ snapshots:
 
   '@metamask/rpc-errors@7.0.2':
     dependencies:
-      '@metamask/utils': 11.0.1
+      '@metamask/utils': 11.1.0
       fast-safe-stringify: 2.1.1
     transitivePeerDependencies:
       - supports-color
@@ -4732,20 +4742,20 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@metamask/snaps-sdk@6.16.0(webextension-polyfill@0.10.0)':
+  '@metamask/snaps-sdk@6.13.0(webextension-polyfill@0.10.0)':
     dependencies:
       '@metamask/key-tree': 10.0.2
       '@metamask/providers': 18.3.1(webextension-polyfill@0.10.0)
       '@metamask/rpc-errors': 7.0.2
       '@metamask/superstruct': 3.1.0
-      '@metamask/utils': 11.0.1
+      '@metamask/utils': 10.0.1
     transitivePeerDependencies:
       - supports-color
       - webextension-polyfill
 
   '@metamask/superstruct@3.1.0': {}
 
-  '@metamask/utils@11.0.1':
+  '@metamask/utils@10.0.1':
     dependencies:
       '@ethereumjs/tx': 4.2.0
       '@metamask/superstruct': 3.1.0
@@ -4754,7 +4764,21 @@ snapshots:
       '@types/debug': 4.1.12
       debug: 4.4.0(supports-color@8.1.1)
       pony-cause: 2.1.11
-      semver: 7.6.3
+      semver: 7.7.0
+      uuid: 9.0.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@metamask/utils@11.1.0':
+    dependencies:
+      '@ethereumjs/tx': 4.2.0
+      '@metamask/superstruct': 3.1.0
+      '@noble/hashes': 1.7.1
+      '@scure/base': 1.2.4
+      '@types/debug': 4.1.12
+      debug: 4.4.0(supports-color@8.1.1)
+      pony-cause: 2.1.11
+      semver: 7.7.0
       uuid: 9.0.1
     transitivePeerDependencies:
       - supports-color
@@ -4764,7 +4788,7 @@ snapshots:
       '@ethereumjs/tx': 4.2.0
       '@types/debug': 4.1.12
       debug: 4.4.0(supports-color@8.1.1)
-      semver: 7.6.3
+      semver: 7.7.0
       superstruct: 1.0.4
     transitivePeerDependencies:
       - supports-color
@@ -4778,7 +4802,7 @@ snapshots:
       '@types/debug': 4.1.12
       debug: 4.4.0(supports-color@8.1.1)
       pony-cause: 2.1.11
-      semver: 7.6.3
+      semver: 7.7.0
       uuid: 9.0.1
     transitivePeerDependencies:
       - supports-color
@@ -4792,7 +4816,7 @@ snapshots:
       '@types/debug': 4.1.12
       debug: 4.4.0(supports-color@8.1.1)
       pony-cause: 2.1.11
-      semver: 7.6.3
+      semver: 7.7.0
       uuid: 9.0.1
     transitivePeerDependencies:
       - supports-color
@@ -6602,7 +6626,7 @@ snapshots:
 
   filsnap-adapter-react@2.0.1(bufferutil@4.0.9)(react@18.3.1)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)(zod@3.24.1):
     dependencies:
-      filsnap-adapter: 2.0.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)(zod@3.24.1)
+      filsnap-adapter: 2.0.4(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)(zod@3.24.1)
       react: 18.3.1
     transitivePeerDependencies:
       - bufferutil
@@ -6612,12 +6636,12 @@ snapshots:
       - webextension-polyfill
       - zod
 
-  filsnap-adapter@2.0.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)(zod@3.24.1):
+  filsnap-adapter@2.0.4(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)(zod@3.24.1):
     dependencies:
       '@metamask/approval-controller': 7.1.2
-      '@metamask/snaps-sdk': 6.16.0(webextension-polyfill@0.10.0)
-      filsnap: 1.4.1(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)
-      iso-filecoin: 6.0.1
+      '@metamask/snaps-sdk': 6.13.0(webextension-polyfill@0.10.0)
+      filsnap: 1.4.4(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)
+      iso-filecoin: 6.1.1
       viem: 2.22.16(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1)
     transitivePeerDependencies:
       - bufferutil
@@ -6627,14 +6651,14 @@ snapshots:
       - webextension-polyfill
       - zod
 
-  filsnap@1.4.1(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0):
+  filsnap@1.4.4(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0):
     dependencies:
       '@metamask/key-tree': 10.0.2
-      '@metamask/snaps-sdk': 6.16.0(webextension-polyfill@0.10.0)
+      '@metamask/snaps-sdk': 6.13.0(webextension-polyfill@0.10.0)
       '@paulmillr/qr': 0.3.0
       dequal: 2.0.3
       iso-base: 4.0.0
-      iso-filecoin: 6.0.1
+      iso-filecoin: 6.1.1
       merge-options: 3.0.4
       viem: 2.22.16(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1)
       zod: 3.24.1
@@ -6955,7 +6979,7 @@ snapshots:
       base-x: 4.0.0
       bigint-mod-arith: 3.3.1
 
-  iso-filecoin@6.0.1:
+  iso-filecoin@6.1.1:
     dependencies:
       '@ipld/dag-cbor': 9.2.2
       '@noble/curves': 1.8.1
@@ -7164,7 +7188,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.6.3
+      semver: 7.7.0
 
   markdown-it@14.1.0:
     dependencies:
@@ -7892,6 +7916,8 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.6.3: {}
+
+  semver@7.7.0: {}
 
   serialize-javascript@6.0.2:
     dependencies:
