@@ -1,6 +1,6 @@
 # iso-filecoin
 
-[![npm (scoped)](https://img.shields.io/npm/v/iso-filecoin.svg)](https://www.npmjs.com/package/package/iso-filecoin)
+[![npm (scoped)](https://img.shields.io/npm/v/iso-filecoin.svg)](https://www.npmjs.com/package/iso-filecoin)
 [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/fission-codes/filecoin/iso-filecoin.yml)](https://github.com/fission-codes/filecoin/actions/workflows/iso-filecoin.yml)
 
 Isomorphic filecoin abstractions for RPC, signatures, address, token and wallet.
