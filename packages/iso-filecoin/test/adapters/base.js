@@ -84,40 +84,24 @@ export const fixtures = {
  * @param {(() => any) } [options.afterHook] - After hook
  * @param {(() => any) } [options.beforeHook] - Before hook
  * @param {()=> Promise<void>} options.afterEachHook - After each hook
- * @param {()=> Promise<import('../../src/types.js').WalletAdapter>} options.beforeEachHook - Before each hook
+ * @param {()=> Promise<{wallet: import('../../src/types.js').WalletAdapter, sim?: import('@zondax/zemu').default}>} options.beforeEachHook - Before each hook
  */
-export function connectorTests({
-  walletName,
-  afterHook,
-  beforeHook,
-  afterEachHook,
-  beforeEachHook,
-}) {
+export function connectorTests({ walletName, afterEachHook, beforeEachHook }) {
   describe(`Wallet Adapter ${walletName}`, () => {
-    /** @type {import('@zondax/zemu').default} */
+    /** @type {import('@zondax/zemu').default | undefined} */
     let sim
     /** @type {import('../../src/types.js').WalletAdapter} */
     let wallet
     beforeEach(async () => {
       if (beforeEachHook) {
-        wallet = await beforeEachHook()
+        const r = await beforeEachHook()
+        wallet = r.wallet
+        sim = r.sim
       }
     })
     afterEach(async () => {
       if (afterEachHook) {
         await afterEachHook()
-      }
-    })
-    after(async () => {
-      if (afterHook) {
-        await afterHook()
-      }
-    })
-
-    before(async () => {
-      if (beforeHook) {
-        const r = await beforeHook()
-        sim = r.sim
       }
     })
 
@@ -257,6 +241,9 @@ export function connectorTests({
       this.timeout(10_000)
       await wallet.connect()
       assert.strictEqual(wallet.connected, true)
+      if (sim) {
+        await sim.toggleExpertMode()
+      }
 
       const sigPromise = wallet.sign(utf8.decode('hello world'))
       if (sim) {
@@ -271,6 +258,9 @@ export function connectorTests({
         sig.toLotusHex(),
         fixtures[wallet.name][`${wallet.network}`].sig
       )
+      if (sim) {
+        await sim.toggleExpertMode()
+      }
     })
     it('should sign message', async function () {
       this.timeout(10_000)

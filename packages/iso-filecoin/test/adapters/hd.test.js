@@ -13,7 +13,7 @@ connectorTests({
       mnemonic: MNEMONIC,
       index: 0,
     })
-    return wallet
+    return { wallet }
   },
   afterEachHook: async () => {
     if (wallet) {
@@ -33,7 +33,7 @@ connectorTests({
       mnemonic: MNEMONIC,
       index: 0,
     })
-    return wallet
+    return { wallet }
   },
   afterEachHook: async () => {
     if (wallet) {

@@ -18,23 +18,15 @@ for (const model of models) {
   let wallet
   connectorTests({
     walletName: `LEDGER ${model.name}`,
-    beforeHook: async () => {
+    beforeEachHook: async () => {
       sim = new Zemu(model.path)
       await sim.start({
         ...DEFAULT_OPTIONS,
         model: model.name,
         custom: `-s "${MNEMONIC}"`,
       })
-      return { sim }
-    },
-    afterHook: async () => {
-      await sim.close()
-    },
-    beforeEachHook: async () => {
-      await sim.toggleExpertMode()
-
       const transport = sim.getTransport()
-      return new WalletAdapterLedger({
+      wallet = new WalletAdapterLedger({
         transport: {
           create: async () => transport,
           isSupported: async () => true,
@@ -43,10 +35,14 @@ for (const model of models) {
         signatureType: 'SECP256K1',
         index: 0,
       })
+      return { wallet, sim }
     },
     afterEachHook: async () => {
       if (wallet) {
         await wallet.disconnect()
+      }
+      if (sim) {
+        await sim.close()
       }
       wallet = undefined
     },

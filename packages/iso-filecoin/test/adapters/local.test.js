@@ -13,7 +13,7 @@ connectorTests({
       signatureType: 'SECP256K1',
       privateKey: base64pad.decode(PRIVATE_KEY),
     })
-    return wallet
+    return { wallet }
   },
   afterEachHook: async () => {
     if (wallet) {
@@ -32,7 +32,7 @@ connectorTests({
       signatureType: 'SECP256K1',
       privateKey: base64pad.decode(PRIVATE_KEY),
     })
-    return wallet
+    return { wallet }
   },
   afterEachHook: async () => {
     if (wallet) {
