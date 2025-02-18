@@ -1,39 +1,43 @@
 import './styles/index.css'
+import TransportWebHID from '@ledgerhq/hw-transport-webhid'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { FilsnapProvider } from 'filsnap-adapter-react'
-import { render } from 'preact'
+import { WalletProvider, mainnet, testnet } from 'iso-filecoin-react'
+import { WalletAdapterFilsnap } from 'iso-filecoin/adapters/filsnap.js'
+import { WalletAdapterHd } from 'iso-filecoin/adapters/hd.js'
+import { WalletAdapterLedger } from 'iso-filecoin/adapters/ledger.js'
+import { WalletAdapterLocal } from 'iso-filecoin/adapters/local.js'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './app.jsx'
+import { toast } from './components/toast.jsx'
 
-import { WagmiProvider } from 'wagmi'
-import { App } from './app.jsx'
-import { configWagmi } from './config.js'
-
-const queryClient = new QueryClient()
-
-/** @type {Partial<import('filsnap-adapter-react').FilsnapProviderProps['config']>} */
-const config = {
-  network: 'testnet',
-}
-
-const SNAP_ID = 'npm:filsnap'
-
-// eslint-disable-next-line unicorn/prefer-query-selector
 const appEl = document.getElementById('app')
+const queryClient = new QueryClient()
+const wallets = [
+  new WalletAdapterLedger({
+    transport: TransportWebHID,
+  }),
+  new WalletAdapterFilsnap(),
+  WalletAdapterHd.fromMnemonic({
+    mnemonic:
+      'already turtle birth enroll since owner keep patch skirt drift any dinner',
+  }),
+  WalletAdapterLocal.create(),
+]
 
 if (appEl) {
-  render(
-    <WagmiProvider config={configWagmi}>
+  createRoot(appEl).render(
+    <StrictMode>
       <QueryClientProvider client={queryClient}>
-        <FilsnapProvider
-          snapId={SNAP_ID}
-          snapVersion=">=0.5.0"
-          config={config}
-          reconnectOnMount={true}
-          syncWithProvider={true}
+        <WalletProvider
+          adapters={wallets}
+          onError={(error) => toast.error(error)}
+          network="testnet"
+          chains={{ mainnet, testnet }}
         >
           <App />
-        </FilsnapProvider>
+        </WalletProvider>
       </QueryClientProvider>
-    </WagmiProvider>,
-    appEl
+    </StrictMode>
   )
 }

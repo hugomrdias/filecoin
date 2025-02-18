@@ -67,6 +67,11 @@
       "import": "./src/chains.js",
       "require": "./dist/cjs/src/chains.cjs"
     },
+    "./adapters/*": {
+      "types": "./dist/src/adapters/*",
+      "import": "./src/adapters/*",
+      "require": "./dist/cjs/src/adapters/*"
+    },
     "./types": {
       "types": "./dist/src/types.d.ts"
     }
@@ -104,6 +109,9 @@
       ],
       "chains": [
         "dist/src/chains"
+      ],
+      "adapters/*": [
+        "dist/src/adapters/*"
       ]
     }
   },
@@ -123,15 +131,17 @@
   },
   "dependencies": {
     "@ipld/dag-cbor": "^9.2.1",
+    "@ledgerhq/errors": "^6.19.1",
     "@noble/curves": "^1.8.0",
     "@noble/hashes": "^1.7.1",
     "@scure/bip32": "^1.6.1",
     "@scure/bip39": "^1.5.1",
     "bignumber.js": "^9.1.2",
-    "iso-base": "^4.0.0",
+    "filsnap-adapter": "^2.0.2",
+    "iso-base": "^4.0.2",
     "iso-kv": "^3.0.3",
-    "iso-web": "^1.0.6",
-    "zod": "^3.24.1",
+    "iso-web": "^1.1.0",
+    "zod": "^3.24.2",
     "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
@@ -140,15 +150,16 @@
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.10.7",
-    "@zondax/zemu": "^0.53.0",
+    "@types/node": "^22.13.4",
+    "@zondax/zemu": "^0.54.0",
     "assert": "^2.1.0",
     "glob": "^11.0.1",
     "mocha": "^11.0.1",
-    "playwright-test": "^14.1.7",
+    "p-defer": "^4.0.1",
+    "playwright-test": "^14.1.9",
     "rimraf": "^6.0.1",
-    "rollup": "^4.30.1",
-    "type-fest": "^4.33.0",
+    "rollup": "^4.34.8",
+    "type-fest": "^4.35.0",
     "typescript": "5.7.3"
   },
   "publishConfig": {

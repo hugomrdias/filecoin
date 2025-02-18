@@ -1,53 +1,80 @@
-import type _LedgerTransport from '@ledgerhq/hw-transport/lib-es/Transport'
 import type BigNumber from 'bignumber.js'
 import type { Driver } from 'iso-kv'
 import type { JsonValue } from 'type-fest'
-import type { z } from 'zod'
+import type { WalletSupport as _WalletSupport } from './adapters/common'
 import type { AddressId, PROTOCOL_INDICATOR } from './address'
 import type { MessageObj, PartialMessageObj } from './message.js'
 import type { RPC } from './rpc'
-import type { SIGNATURE_TYPE, Schemas as SignatureSchemas } from './signature'
+import type { SignatureObj, SignatureType } from './signature'
 
 export type { MaybeResult } from 'iso-web/types'
-export * from './message.js'
+export type * from './message.js'
+export type {
+  LotusSignature,
+  Signature,
+  SignatureCode,
+  SignatureObj,
+  SignatureType,
+} from './signature.js'
+export type * from './adapters/types'
 
 export type ProtocolIndicator = typeof PROTOCOL_INDICATOR
 export type ProtocolIndicatorCode = ProtocolIndicator[keyof ProtocolIndicator]
-export type Transport = _LedgerTransport
 
 export type HexAddress = `0x${string}`
 export type CID = {
   '/': string
 }
 
-export type Safety = 'safe' | 'finalized' | 'latest'
 export type Cache = boolean | Driver | undefined
+
+/**
+ * Account types
+ */
+
+/**
+ * Account interface
+ */
+
+export interface IAccount {
+  type: SignatureType
+  address: IAddress
+  publicKey: Uint8Array
+  /**
+   * Derivation path - only for HD wallets
+   */
+  path?: string
+  /**
+   * Private key - only for RAW and HD wallets
+   */
+  privateKey?: Uint8Array
+}
+
+/**
+ * Address types
+ */
+
+/**
+ * Options for RPC-based address methods
+ */
 export interface AddressRpcOptions {
   rpc: RPC
   cache?: Cache
 }
+
+export type Safety = 'safe' | 'finalized' | 'latest'
+
+/**
+ * Options for RPC-based address methods with safety
+ */
 export interface AddressRpcSafetyOptions extends AddressRpcOptions {
   safety?: Safety
 }
 
 /**
- * Lotus message
+ * Address interface
  */
-export interface LotusMessage {
-  Version: 0
-  To: string
-  From: string
-  Nonce: number
-  Value: string
-  GasLimit: number
-  GasFeeCap: string
-  GasPremium: string
-  Method: number
-  Params: string
-  CID?: CID
-}
-
-export interface Address {
+export interface IAddress {
   protocol: ProtocolIndicatorCode
   payload: Uint8Array
   network: Network
@@ -55,7 +82,7 @@ export interface Address {
   namespace?: number
   id?: bigint
   checksum: () => Uint8Array
-  toContractDestination: () => `0x${string}`
+  toContractDestination: () => HexAddress
   toString: () => string
   toBytes: () => Uint8Array
   /**
@@ -64,7 +91,7 @@ export interface Address {
   toIdAddress: (options: AddressRpcOptions) => Promise<AddressId>
   /**
    * Converts any address to a 0x address, either id masked address or eth address depending on the address type.
-   * Delegated addresses convert to eth address, f1, f2, f3 convert to id masked address
+   * Delegated addresses convert to eth address and f1, f2, f3 convert to id masked address
    * and f0 depends on the underline address type
    */
   to0x: (options: AddressRpcOptions) => Promise<string>
@@ -147,15 +174,6 @@ export type EthereumChain = {
   blockExplorerUrls?: string[] | undefined
   iconUrls?: string[] | undefined
 }
-
-// Signature types
-export type SignatureType = keyof typeof SIGNATURE_TYPE
-export type SignatureCode = (typeof SIGNATURE_TYPE)[SignatureType]
-
-export type LotusSignature = z.infer<
-  (typeof SignatureSchemas)['lotusSignature']
->
-export type SignatureObj = z.infer<(typeof SignatureSchemas)['signature']>
 
 /**
  * JSON-RPC 2.0
@@ -272,6 +290,23 @@ export interface TipSet {
  *
  * @see https://filecoin-shipyard.github.io/js-lotus-client/api/api.html
  */
+
+/**
+ * Lotus message
+ */
+export interface LotusMessage {
+  Version: 0
+  To: string
+  From: string
+  Nonce: number
+  Value: string
+  GasLimit: number
+  GasFeeCap: string
+  GasPremium: string
+  Method: number
+  Params: string
+  CID?: CID
+}
 
 export type VersionResponse = {
   Version: string

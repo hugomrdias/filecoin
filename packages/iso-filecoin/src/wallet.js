@@ -4,22 +4,43 @@ import { blake2b } from '@noble/hashes/blake2b'
 import { HDKey } from '@scure/bip32'
 import * as bip39 from '@scure/bip39'
 import { wordlist } from '@scure/bip39/wordlists/english'
-import { base64pad } from 'iso-base/rfc4648'
+import { base64pad, hex } from 'iso-base/rfc4648'
+import { utf8 } from 'iso-base/utf8'
 import { concat } from 'iso-base/utils'
+import { z } from 'zod'
 import { fromPublicKey } from './address.js'
 import { Message } from './message.js'
 import { Signature } from './signature.js'
-import { getNetworkFromPath, lotusCid } from './utils.js'
+import { getNetworkFromPath } from './utils.js'
 
 /**
- *
- * @returns
+ * @import {SetRequired} from 'type-fest'
+ */
+
+/**
+ * Schemas
+ */
+export const Schemas = {
+  lotusPrivateKey: z.object({
+    Type: z.union([z.literal('bls'), z.literal('secp256k1')]),
+    /**
+     * Lotus BLS private key is little endian so you need to reverse the byte order.
+     * base64pad(private-key)
+     */
+    PrivateKey: z.string(),
+  }),
+}
+
+/**
+ * Generate mnemonic
  */
 export function generateMnemonic() {
   return bip39.generateMnemonic(wordlist, 256)
 }
 
 /**
+ * Get seed from mnemonic
+ *
  * @param {string} mnemonic
  * @param {string} [password]
  */
@@ -48,6 +69,7 @@ export function accountFromMnemonic(mnemonic, type, path, password, network) {
  * @param {import('./types.js').SignatureType} type
  * @param {string} path
  * @param {import('./types.js').Network} [network]
+ * @returns {SetRequired<import('./types.js').IAccount, 'privateKey' | 'path'>}
  */
 export function accountFromSeed(seed, type, path, network) {
   const masterKey = HDKey.fromMasterSeed(seed)
@@ -61,12 +83,12 @@ export function accountFromSeed(seed, type, path, network) {
     network = getNetworkFromPath(path)
   }
 
-  const { address, pubKey } = getPublicKey(privateKey, network, type)
+  const { address, publicKey } = getPublicKey(privateKey, network, type)
 
   return {
     type,
     privateKey,
-    pubKey,
+    publicKey,
     address,
     path,
   }
@@ -81,21 +103,47 @@ export function accountFromSeed(seed, type, path, network) {
  * @param {import('./types.js').SignatureType} type
  * @param {import('./types.js').Network} network
  * @param {string} [path]
+ * @returns {SetRequired<import('./types.js').IAccount, 'privateKey'>}
  */
 export function accountFromPrivateKey(privateKey, type, network, path) {
   if (privateKey.length !== 32) {
     throw new Error('Private key should be 32 bytes.')
   }
 
-  const { address, pubKey } = getPublicKey(privateKey, network, type)
+  const { address, publicKey } = getPublicKey(privateKey, network, type)
 
   return {
     type,
     privateKey,
-    pubKey,
+    publicKey,
     address,
     path,
   }
+}
+
+/**
+ * Get account from lotus private key export
+ *
+ * @param {string} lotusHex - Lotus hex encoded private key .ie hex({"Type":"bls","PrivateKey":"base64pad(private-key)"})
+ * @param {import('./types.js').Network} network - Network
+ * @returns {import('./types.js').IAccount}
+ */
+export function accountFromLotus(lotusHex, network) {
+  const lotusJson = Schemas.lotusPrivateKey.parse(
+    JSON.parse(utf8.encode(hex.decode(lotusHex)))
+  )
+  if (lotusJson.Type === 'bls') {
+    return accountFromPrivateKey(
+      lotusBlsPrivateKeyToBytes(lotusJson.PrivateKey),
+      'BLS',
+      network
+    )
+  }
+  return accountFromPrivateKey(
+    base64pad.decode(lotusJson.PrivateKey),
+    'SECP256K1',
+    network
+  )
 }
 
 /**
@@ -103,6 +151,7 @@ export function accountFromPrivateKey(privateKey, type, network, path) {
  *
  * @param {import('./types.js').SignatureType} type
  * @param {import('./types.js').Network} network
+ * @returns {SetRequired<import('./types.js').IAccount, 'privateKey'>}
  */
 export function create(type, network) {
   switch (type) {
@@ -127,6 +176,7 @@ export function create(type, network) {
  * @param {Uint8Array} privateKey
  * @param {import('./types.js').Network} network
  * @param {import('./types.js').SignatureType} type
+ * @returns {import('./types.js').IAccount}
  */
 export function getPublicKey(privateKey, network, type) {
   switch (type) {
@@ -134,7 +184,8 @@ export function getPublicKey(privateKey, network, type) {
       const publicKey = secp.getPublicKey(privateKey, false)
 
       return {
-        pubKey: publicKey,
+        type: 'SECP256K1',
+        publicKey,
         address: fromPublicKey(publicKey, network, 'SECP256K1'),
       }
     }
@@ -142,7 +193,8 @@ export function getPublicKey(privateKey, network, type) {
       const publicKey = bls.getPublicKey(privateKey)
 
       return {
-        pubKey: publicKey,
+        type: 'BLS',
+        publicKey,
         address: fromPublicKey(publicKey, network, 'BLS'),
       }
     }
@@ -163,8 +215,7 @@ export function getPublicKey(privateKey, network, type) {
  * @returns
  */
 export function signMessage(privateKey, type, message) {
-  const msg = new Message(message).serialize()
-  const cid = lotusCid(msg)
+  const cid = new Message(message).cidBytes()
 
   return sign(privateKey, type, cid)
 }
@@ -244,10 +295,66 @@ export function verify(signature, data, publicKey) {
 
 /**
  * Lotus BLS base64 private key to bytes
- * Lotus private key is little endian so you need to reverse the byte order.
+ * Lotus BLS private key is little endian so you need to reverse the byte order.
  *
  * @param {string} priv
  */
 export function lotusBlsPrivateKeyToBytes(priv) {
   return base64pad.decode(priv).reverse()
+}
+
+/**
+ *
+ * @param {Signature} signature
+ * @param {Uint8Array} data
+ */
+export function recoverPublicKey(signature, data) {
+  if (signature.type === 'BLS') {
+    throw new Error('Recover public key is not supported for BLS')
+  }
+
+  const hash = blake2b(data, {
+    dkLen: 32,
+  })
+  return secp.Signature.fromCompact(signature.data.subarray(0, 64))
+    .addRecoveryBit(signature.data[64])
+    .recoverPublicKey(hash)
+    .toRawBytes(false)
+}
+
+/**
+ *
+ * @param {Signature} signature
+ * @param {Uint8Array} data
+ * @param {import('./types.js').Network} network
+ */
+export function recoverAddress(signature, data, network) {
+  const publicKey = recoverPublicKey(signature, data)
+  return fromPublicKey(publicKey, network, 'SECP256K1')
+}
+
+/**
+ * Export account to lotus private key export format (hex)
+ *
+ * @param {import('./types.js').IAccount} account
+ */
+export function accountToLotus(account) {
+  if (account.privateKey == null) {
+    throw new Error('Private key not found')
+  }
+
+  if (account.type === 'BLS') {
+    return hex.encode(
+      JSON.stringify({
+        Type: 'bls',
+        PrivateKey: base64pad.encode(account.privateKey?.reverse()),
+      })
+    )
+  }
+  return hex.encode(
+    JSON.stringify({
+      Type: 'secp256k1',
+      PrivateKey: base64pad.encode(account.privateKey),
+    })
+  )
 }

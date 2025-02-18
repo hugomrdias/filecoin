@@ -4,6 +4,7 @@ import { z } from 'zod'
 
 import * as Address from './address.js'
 import { Token } from './token.js'
+import { lotusCid } from './utils.js'
 
 /**
  * @typedef {z.infer<typeof MessageSchema>} MessageObj
@@ -12,13 +13,17 @@ import { Token } from './token.js'
  */
 
 /**
- * Validation schema for a message
+ * Message validation schema
  */
-const MessageSchema = z.object({
+export const MessageSchema = z.object({
   version: z.literal(0).default(0),
+  nonce: z.number().nonnegative().safe().default(0),
+  gasLimit: z.number().nonnegative().safe().default(0),
+  gasFeeCap: z.string().default('0'),
+  gasPremium: z.string().default('0'),
+  method: z.number().nonnegative().safe().default(0),
   to: z.string(),
   from: z.string(),
-  nonce: z.number().nonnegative().safe().default(0),
   /**
    * Value in attoFIL
    */
@@ -28,10 +33,6 @@ const MessageSchema = z.object({
     .refine((v) => !v.startsWith('-'), {
       message: 'value must not be negative',
     }),
-  gasLimit: z.number().nonnegative().safe().default(0),
-  gasFeeCap: z.string().default('0'),
-  gasPremium: z.string().default('0'),
-  method: z.number().nonnegative().safe().default(0),
   /**
    * Params encoded as base64pad
    */
@@ -50,13 +51,19 @@ const MessageSchemaPartial = MessageSchema.partial({
 
 export const Schemas = {
   message: MessageSchema,
-  messagePartial: MessageSchemaPartial,
+  messsagePartial: MessageSchemaPartial,
 }
 
 /**
- * Message class
+ * Filecoin Message class
  */
 export class Message {
+  /** @type {Uint8Array | undefined} */
+  #bytes
+
+  /** @type {Uint8Array | undefined} */
+  #cidBytes
+
   /**
    *
    * @param {PartialMessageObj} msg
@@ -99,6 +106,7 @@ export class Message {
    * @param {import('./types').LotusMessage} json
    */
   static fromLotus(json) {
+    /** @type {MessageObj} */
     const obj = {
       version: json.Version,
       to: json.To,
@@ -152,6 +160,10 @@ export class Message {
    * Serialize message using dag-cbor
    */
   serialize() {
+    if (this.#bytes) {
+      return this.#bytes
+    }
+
     const msg = [
       this.version,
       Address.fromString(this.to).toBytes(),
@@ -165,6 +177,18 @@ export class Message {
       base64pad.decode(this.params),
     ]
 
-    return /** @type {Uint8Array}*/ (encode(msg))
+    this.#bytes = /** @type {Uint8Array}*/ (encode(msg))
+    return this.#bytes
+  }
+
+  /**
+   * CID bytes of the filecoin message
+   */
+  cidBytes() {
+    if (this.#cidBytes) {
+      return this.#cidBytes
+    }
+    this.#cidBytes = lotusCid(this.serialize())
+    return this.#cidBytes
   }
 }

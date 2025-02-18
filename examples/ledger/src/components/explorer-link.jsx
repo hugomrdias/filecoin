@@ -1,52 +1,53 @@
-import { useFilsnap } from 'filsnap-adapter-react'
-import * as Address from 'iso-filecoin/address'
+import { useWallet } from 'iso-filecoin-react'
 import { CopyIcon } from './icons'
 
 /**
  *
  * @param {object} param0
  * @param {string} [param0.address]
- * @param {'filecoin' | 'ethereum'} [param0.chain]
+ * @param {'filecoin' | 'ethereum' | 'id'} [param0.chain]
  */
 export default function ExplorerLink({ address, chain }) {
-  const { account } = useFilsnap()
+  const { chain: _chain } = useWallet()
 
-  if (!address) return null
-
+  /**
+   * @param {string} address
+   */
   function onCopy(address) {
     navigator.clipboard.writeText(address)
   }
 
-  if (chain === 'filecoin') {
-    const fAddress = Address.from(address, account?.config.network).toString()
+  let icon
+  switch (chain) {
+    case 'filecoin':
+      icon = '⨎'
+      break
+    case 'ethereum':
+      icon = 'Ξ'
+      break
+    case 'id':
+      icon = '#'
+      break
+    default:
+      icon = '⨎'
+      break
+  }
+  if (!address)
     return (
       <div>
-        ⨎{' '}
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href={`https://explorer.glif.io/address/${fAddress}/?network=${
-            account?.config.network === 'mainnet' ? 'mainnet' : 'calibrationnet'
-          }`}
-        >
-          {fAddress || 'unknown'}
-        </a>{' '}
-        <CopyIcon width={16} height={16} onClick={() => onCopy(fAddress)} />
+        {icon} <small>...</small>
       </div>
     )
-  }
 
   return (
     <div>
-      Ξ{' '}
+      {icon}{' '}
       <a
         target="_blank"
         rel="noreferrer"
-        href={`https://explorer.glif.io/address/${address}/?network=${
-          account?.config.network === 'mainnet' ? 'mainnet' : 'calibrationnet'
-        }`}
+        href={`${_chain.blockExplorers?.default?.url}/address/${address}`}
       >
-        {address || 'unknown'}
+        {address}
       </a>{' '}
       <CopyIcon width={16} height={16} onClick={() => onCopy(address)} />
     </div>

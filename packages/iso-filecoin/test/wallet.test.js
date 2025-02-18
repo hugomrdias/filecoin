@@ -76,7 +76,43 @@ describe('wallet', () => {
     )
   })
 
-  it('should sign bytes with bls', () => {
+  it('should generate account from bls lotus private key export', () => {
+    const accountBls = Wallet.accountFromLotus(
+      '7b2254797065223a22626c73222c22507269766174654b6579223a224c65514775344b7449484777312b58433534426e4c36514776434d332b6145534b55515972796477546c593d227d',
+      'mainnet'
+    )
+
+    assert.strictEqual(
+      accountBls.address.toString(),
+      'f3uwh4pjnqr6f2xljil55isug7nkmijouu6nf3n7z6xjk4fibqsp3mbotipdii6eufmskkqnmp2j65m2o25qnq'
+    )
+
+    const hexLotus = Wallet.accountToLotus(accountBls)
+    assert.strictEqual(
+      hexLotus,
+      '7b2254797065223a22626c73222c22507269766174654b6579223a224c65514775344b7449484777312b58433534426e4c36514776434d332b6145534b55515972796477546c593d227d'
+    )
+  })
+
+  it('should generate account from secp lotus private key export', () => {
+    const accountBls = Wallet.accountFromLotus(
+      '7b2254797065223a22736563703235366b31222c22507269766174654b6579223a224c7a6a735a4558437936744457417863466975373649525177486b6f68577673564b31542b3251354e66593d227d',
+      'mainnet'
+    )
+
+    assert.strictEqual(
+      accountBls.address.toString(),
+      'f1drv36h2ldc4xzhjfiwicxsq6rgkl6z5vhit2roq'
+    )
+
+    const hexLotus = Wallet.accountToLotus(accountBls)
+    assert.strictEqual(
+      hexLotus,
+      '7b2254797065223a22736563703235366b31222c22507269766174654b6579223a224c7a6a735a4558437936744457417863466975373649525177486b6f68577673564b31542b3251354e66593d227d'
+    )
+  })
+
+  it('should sign/verify bytes with bls', () => {
     const accountBls = Wallet.accountFromPrivateKey(
       Wallet.lotusBlsPrivateKeyToBytes(
         'LeQGu4KtIHGw1+XC54BnL6QGvCM3+aESKUQYrydwTlY='
@@ -91,14 +127,15 @@ describe('wallet', () => {
       hex.decode('68656c6c6f')
     )
 
-    const lotusSig = Signature.fromLotusHex(
+    const lotusHex =
       '02b509cf25efa1035691a06ab40db59830e4e271dc144b6add2dc812365afc637e5f0710424d4d697a3cf9c6ea30c681ac077bd8ac0f3cf149336df246428644db722ec8d13a04c1dd4512ebd1c42723eafa14382f9dd77387c3f5c5f1d7ff0775'
-    )
+    const lotusSig = Signature.fromLotusHex(lotusHex)
 
     assert.deepStrictEqual(signature.data, lotusSig.data)
+    assert.deepStrictEqual(signature.toLotusHex(), lotusHex)
 
     assert.ok(
-      Wallet.verify(lotusSig, hex.decode('68656c6c6f'), accountBls.pubKey)
+      Wallet.verify(lotusSig, hex.decode('68656c6c6f'), accountBls.publicKey)
     )
   })
 
@@ -115,14 +152,15 @@ describe('wallet', () => {
       hex.decode('68656c6c6f')
     )
 
-    const lotusSig = Signature.fromLotusHex(
+    const lotusHex =
       '015322ea74a2985bb1a91be635bad133b4505b566b7aed97276ece9a26bab344340e0b602cf68ca9259766d81ad9d4bfe15a0d5efa2398cab1c18b1f160dd8682600'
-    )
+    const lotusSig = Signature.fromLotusHex(lotusHex)
 
     assert.deepStrictEqual(signature.data, lotusSig.data)
+    assert.deepStrictEqual(signature.toLotusHex(), lotusHex)
 
     assert.ok(
-      Wallet.verify(lotusSig, hex.decode('68656c6c6f'), accountSecp.pubKey)
+      Wallet.verify(lotusSig, hex.decode('68656c6c6f'), accountSecp.publicKey)
     )
   })
 
@@ -170,7 +208,7 @@ describe('wallet', () => {
     )
 
     assert.deepEqual(
-      base64pad.encode(account.pubKey),
+      base64pad.encode(account.publicKey),
       'BLW+ZCazhsVWEuuwxt5DEcSyXnmpJGxFBizYf/pSiBKlXz9qgW9d4yN0Vm6WJ+D5G9c7WxWAO+mBL3RpjVEYR6E='
     )
     assert.deepEqual(

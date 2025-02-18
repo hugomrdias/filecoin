@@ -11,7 +11,7 @@
   },
   "scripts": {
     "format": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true .",
-    "clean": "rm -rf docs node_modules pnpm-lock.yaml packages/*/{pnpm-lock.yaml,coverage,.nyc_output,dist,node_modules} packages/*/{pnpm-lock.yaml,coverage,.nyc_output,dist,node_modules}",
+    "clean": "rm -rf docs node_modules pnpm-lock.yaml packages/*/{pnpm-lock.yaml,coverage,.nyc_output,dist,node_modules} examples/*/{pnpm-lock.yaml,coverage,.nyc_output,dist,node_modules,.wireit}",
     "lint": "pnpm -r --if-present run lint",
     "test": "pnpm -r --if-present run test",
     "check": "pnpm -r --if-present run check",
@@ -24,7 +24,7 @@
     "depcheck": "^1.4.7",
     "lint-staged": "^15.4.1",
     "simple-git-hooks": "^2.11.1",
-    "typedoc": "^0.27.6",
+    "typedoc": "^0.27.7",
     "typedoc-plugin-missing-exports": "^3.1.0",
     "typedoc-plugin-zod": "^1.3.1",
     "typescript": "5.7.3"
@@ -34,5 +34,12 @@
   },
   "lint-staged": {
     "*": "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "esbuild",
+      "simple-git-hooks"
+    ]
   }
 }
