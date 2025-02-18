@@ -2,6 +2,7 @@
   "separate-pull-requests": true,
   "release-type": "node",
   "packages": {
-    "packages/iso-filecoin": {}
+    "packages/iso-filecoin": {},
+    "packages/iso-filecoin-react": {}
   }
 }

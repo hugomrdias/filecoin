@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "emitDeclarationOnly": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src", "test"],
+  "exclude": ["node_modules", "dist", "out"],
+
+  "references": [{ "path": "../iso-filecoin" }],
+  "typedocOptions": {
+    "entryPointStrategy": "resolve",
+    "entryPoints": ["src/wallet-provider.js"],
+    "includeVersion": true,
+    "excludeExternals": true,
+    "internalModule": "<internal>"
+  }
+}
