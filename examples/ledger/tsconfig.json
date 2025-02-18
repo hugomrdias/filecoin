@@ -11,6 +11,9 @@
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
+    /* JavaScript Support */
+    "allowJs": true,
+    "checkJs": true,
     // Type Checking
     "strict": true,
     "noImplicitReturns": false,
@@ -21,14 +24,17 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "preact",
     "types": ["vite/client"],
     "allowImportingTsExtensions": true
   },
   "references": [
     {
       "path": "../../packages/iso-filecoin"
+    },
+    {
+      "path": "../../packages/iso-filecoin-react"
     }
   ],
+  "include": ["src"],
   "exclude": ["node_modules", "dist", "out"]
 }

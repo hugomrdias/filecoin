@@ -4,7 +4,10 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "resolveJsonModule": false,
-    "outDir": "dist"
+    "outDir": "dist",
+    /* JavaScript Support */
+    "allowJs": true,
+    "checkJs": true
   },
   "include": ["index.js"]
 }

@@ -1,8 +1,6 @@
 /**
  *
- * @param {object} param0
- * @param {number} [param0.width]
- * @param {number} [param0.height]
+ * @param {React.ComponentProps<'svg'>} param0
  */
 export function CopyIcon({ width = 24, height = 24, ...rest }) {
   return (
