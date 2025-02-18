@@ -4,6 +4,7 @@ import { z } from 'zod'
 
 import * as Address from './address.js'
 import { Token } from './token.js'
+import { lotusCid } from './utils.js'
 
 /**
  * @typedef {z.infer<typeof MessageSchema>} MessageObj
@@ -54,9 +55,15 @@ export const Schemas = {
 }
 
 /**
- * Message class
+ * Filecoin Message class
  */
 export class Message {
+  /** @type {Uint8Array | undefined} */
+  #bytes
+
+  /** @type {Uint8Array | undefined} */
+  #cidBytes
+
   /**
    *
    * @param {PartialMessageObj} msg
@@ -153,6 +160,10 @@ export class Message {
    * Serialize message using dag-cbor
    */
   serialize() {
+    if (this.#bytes) {
+      return this.#bytes
+    }
+
     const msg = [
       this.version,
       Address.fromString(this.to).toBytes(),
@@ -166,6 +177,18 @@ export class Message {
       base64pad.decode(this.params),
     ]
 
-    return /** @type {Uint8Array}*/ (encode(msg))
+    this.#bytes = /** @type {Uint8Array}*/ (encode(msg))
+    return this.#bytes
+  }
+
+  /**
+   * CID bytes of the filecoin message
+   */
+  cidBytes() {
+    if (this.#cidBytes) {
+      return this.#cidBytes
+    }
+    this.#cidBytes = lotusCid(this.serialize())
+    return this.#cidBytes
   }
 }
