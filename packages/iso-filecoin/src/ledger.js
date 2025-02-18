@@ -1,11 +1,13 @@
+import { StatusCodes } from '@ledgerhq/errors'
 import { secp256k1 as secp } from '@noble/curves/secp256k1'
 import { hex } from 'iso-base/rfc4648'
 import { utf8 } from 'iso-base/utf8'
-import { buf, concat } from 'iso-base/utils'
+import { buf, concat, u8 } from 'iso-base/utils'
 import * as varint from 'iso-base/varint'
 
 import { blake2b } from '@noble/hashes/blake2b'
-import { lotusCid, parseDerivationPath } from './utils.js'
+import { AddressSecp256k1 } from './address.js'
+import { getNetworkFromPath, lotusCid, parseDerivationPath } from './utils.js'
 
 /**
  * @typedef {import('./types.js').Transport} Transport
@@ -16,20 +18,83 @@ import { lotusCid, parseDerivationPath } from './utils.js'
  * Filecoin App APDU return messages
  *
  * @see https://github.com/Zondax/ledger-filecoin/blob/main/docs/APDUSPEC.md#return-codes
- *
  * @type {Record<string, string>}
+ *
  */
 const RETURN_MSGS = {
-  6400: 'Execution Error',
-  6982: 'Empty buffer',
-  6983: 'Output buffer too small',
-  6984: 'Data is invalid',
-  6986: 'Command not allowed',
-  '6a80': 'Bad key handle',
-  '6d00': 'INS not supported',
-  '6e00': 'CLA not supported',
-  '6f00': 'Unknown',
-  9000: 'Success',
+  0x9000: 'Success',
+  0x9001: 'Busy',
+  0x6400: 'Execution Error',
+  0x6700: 'Wrong Length',
+  0x6982: 'Empty buffer',
+  0x6983: 'Output buffer too small',
+  0x6984: 'Data is invalid',
+  0x6985: 'Conditions not satisfied',
+  0x6986: 'Command rejected',
+  0x6a80: 'Bad key handle',
+  0x6b00: 'Invalid parameter(s)',
+  0x6d00: 'Instriction not supported',
+  0x6e00: 'Application not supported',
+  0x6e01: 'Filecoin app not open',
+  0x6f00: 'Unknown',
+  0x6f01: 'Sign/verify error',
+}
+
+/**
+ * APDU codes
+ *
+ * @see https://github.com/tendermint/ledger-validator-app/blob/master/deps/ledger-zxlib/include/apdu_codes.h
+ */
+export const APDU_CODES = {
+  // ledger supports
+  OK: 0x9000,
+  BUSY: 0x9001,
+
+  EXECUTION_ERROR: 0x6400,
+
+  // ledger supports
+  WRONG_LENGTH: 0x6700,
+
+  /**
+   * Ledger name is SECURITY_STATUS_NOT_SATISFIED
+   *
+   * @see https://github.com/LedgerHQ/ledger-live/blob/d376d5f165ac2b322f7eb3fceb6106c41e04191b/libs/ledgerjs/packages/errors/src/index.ts#L286
+   */
+  EMPTY_BUFFER: 0x6982,
+  OUTPUT_BUFFER_TOO_SMALL: 0x6983,
+  DATA_INVALID: 0x6984,
+  /**
+   * ledger supports
+   *
+   * @see https://github.com/LedgerHQ/ledger-live/blob/d376d5f165ac2b322f7eb3fceb6106c41e04191b/libs/ledgerjs/packages/errors/src/index.ts#L258
+   */
+  CONDITIONS_NOT_SATISFIED: 0x6985,
+  COMMAND_NOT_ALLOWED: 0x6986,
+
+  /**
+   * Ledger name is INCORRECT_DATA
+   *
+   * @see https://github.com/LedgerHQ/ledger-live/blob/d376d5f165ac2b322f7eb3fceb6106c41e04191b/libs/ledgerjs/packages/errors/src/index.ts#L268
+   */
+  BAD_KEY_HANDLE: 0x6a80,
+
+  /**
+   * ledger supports
+   *
+   * @see https://github.com/LedgerHQ/ledger-live/blob/d376d5f165ac2b322f7eb3fceb6106c41e04191b/libs/ledgerjs/packages/errors/src/index.ts#L270
+   */
+  INVALIDP1P2: 0x6b00,
+  // ledger supports
+  INS_NOT_SUPPORTED: 0x6d00,
+  // ledger supports
+  CLA_NOT_SUPPORTED: 0x6e00,
+
+  // ledger supports
+  UNKNOWN: 0x6f00,
+
+  SIGN_VERIFY_ERROR: 0x6f01,
+
+  APP_NOT_OPEN: 0x6e01,
 }
 
 export const EIP191_PREFIX = 'Filecoin Sign Bytes:\n'
@@ -79,23 +144,54 @@ function serializeDerivationPath(path) {
 }
 
 /**
+ * Filecoin app error
+ */
+export class FilecoinAppError extends Error {
+  name = 'FilecoinAppError'
+  /** @type {number} */
+  statusCode
+
+  /**
+   * @param {number} statusCode The error status code coming from a Transport implementation
+   * @param {string} [data] The error message coming from a instruction call
+   */
+  constructor(statusCode, data) {
+    const statusCodeStr = statusCode.toString(16)
+    const message = `Filecoin App: ${RETURN_MSGS[statusCode]}${data ? ` ${data}` : ''} (0x${statusCodeStr})`
+
+    super(message)
+
+    this.statusCode = statusCode
+  }
+}
+
+/**
+ * Check for error returned in the APDU response
+ *
  * @param {Buffer} output
  */
 function checkError(output) {
   const errorCodeData = output.subarray(-2)
   const code = hex.encode(errorCodeData)
+  const intCode = Number.parseInt(code, 16)
 
-  if (code === '6984') {
-    return new Error(
-      `${RETURN_MSGS[code]} ${output.subarray(0, output.length - 2).toString('ascii')}`
+  if (
+    intCode === APDU_CODES.DATA_INVALID ||
+    intCode === APDU_CODES.BAD_KEY_HANDLE
+  ) {
+    return new FilecoinAppError(
+      intCode,
+      output.subarray(0, output.length - 2).toString('ascii')
     )
   }
-  if (code !== '9000') {
-    return new Error(RETURN_MSGS[code] || 'Unknown')
+  if (intCode !== APDU_CODES.OK) {
+    return new FilecoinAppError(intCode)
   }
 }
 
 /**
+ * Sign chunk of data
+ *
  * @param {Transport} transport - Ledger transport
  * @param {number} index
  * @param {number} size
@@ -117,7 +213,13 @@ async function signChunk(transport, index, size, data, instruction = 0x02) {
     payloadDesc,
     0,
     buf(data),
-    [0x9000, 0x6984, 0x6a80, 0x6986]
+    [
+      StatusCodes.OK,
+      APDU_CODES.BAD_KEY_HANDLE,
+      APDU_CODES.DATA_INVALID,
+      APDU_CODES.APP_NOT_OPEN,
+      APDU_CODES.COMMAND_NOT_ALLOWED,
+    ]
   )
 
   const err = checkError(out)
@@ -174,7 +276,14 @@ export class LedgerFilecoin {
    *
    */
   async getVersion() {
-    const out = await this.transport.send(CLA, INS.GET_VERSION, 0, 0)
+    const out = await this.transport.send(
+      CLA,
+      INS.GET_VERSION,
+      0,
+      0,
+      undefined,
+      [StatusCodes.OK, APDU_CODES.APP_NOT_OPEN]
+    )
     const err = checkError(out)
     if (err) {
       throw err
@@ -190,6 +299,7 @@ export class LedgerFilecoin {
    *
    * @param {string} path - Derivation path
    * @param {boolean} [showOnDevice=false] - Whether to show the address on the device
+   * @returns {Promise<import('./types.js').IAccount>}
    */
   async getAddress(path, showOnDevice = false) {
     const out = await this.transport.send(
@@ -197,31 +307,33 @@ export class LedgerFilecoin {
       INS.GET_ADDR_SECP256K1,
       showOnDevice ? 0x01 : 0x00,
       0x00,
-      serializeDerivationPath(path)
+      serializeDerivationPath(path),
+      [StatusCodes.OK, APDU_CODES.APP_NOT_OPEN, APDU_CODES.COMMAND_NOT_ALLOWED]
     )
+
     const err = checkError(out)
     if (err) {
       throw err
     }
 
-    const byteLen = out.subarray(65, 66)
-    const addressStringLength = out.subarray(
-      66 + byteLen[0],
-      66 + byteLen[0] + 1
-    )
-    const addressString = out.subarray(
-      66 + byteLen[0] + 1,
-      66 + byteLen[0] + 1 + addressStringLength[0]
-    )
+    const publicKey = u8(out.subarray(0, 65))
 
-    return addressString.toString()
+    return {
+      type: 'SECP256K1',
+      address: AddressSecp256k1.fromPublicKey(
+        publicKey,
+        getNetworkFromPath(path)
+      ),
+      publicKey,
+      path,
+    }
   }
 
   /**
    * Sign a message
    *
    * @param {string} path - Derivation path
-   * @param {Uint8Array} message - Message to sign
+   * @param {Uint8Array} message - Message to sign in bytes
    * @param {SignatureType} [type=SECP256K1] - Signature type
    */
   async sign(path, message, type = 'SECP256K1') {
@@ -267,5 +379,12 @@ export class LedgerFilecoin {
     const data = concat([varint.encode(prefixed.length)[0], prefixed])
 
     return this.sign(path, data, 'RAW_BYTES')
+  }
+
+  /**
+   * Close the transport
+   */
+  close() {
+    return this.transport.close()
   }
 }

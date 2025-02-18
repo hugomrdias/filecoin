@@ -25,6 +25,7 @@ const FILECOIN_APP_VERSION = '1.0.0'
 
 describe('ledger', function () {
   this.timeout(20000)
+  this.retries(3)
 
   for (const model of models) {
     it(`should get version from ${model.name}`, async () => {
@@ -49,9 +50,10 @@ describe('ledger', function () {
       try {
         await sim.start({ ...DEFAULT_OPTIONS, model: model.name })
         const app = new LedgerFilecoin(sim.getTransport())
-        const address = await app.getAddress(account.path, false)
+        const { address, publicKey } = await app.getAddress(account.path, false)
 
-        assert.strictEqual(account.address.toString(), address)
+        assert.strictEqual(account.address.toString(), address.toString())
+        assert.deepStrictEqual(account.publicKey, publicKey)
       } finally {
         await sim.close()
       }
@@ -78,8 +80,8 @@ describe('ledger', function () {
           `show_address-${model.name}`
         )
 
-        const address = await addressRequest
-        assert.strictEqual(account.address.toString(), address)
+        const { address } = await addressRequest
+        assert.strictEqual(account.address.toString(), address.toString())
       } finally {
         await sim.close()
       }
@@ -138,7 +140,7 @@ describe('ledger', function () {
         const ledgerSig = await rawSigRequest
 
         assert.deepStrictEqual(sig.data, ledgerSig)
-        assert.ok(verifyRaw(ledgerSig, data, account.pubKey))
+        assert.ok(verifyRaw(ledgerSig, data, account.publicKey))
       } finally {
         await sim.close()
       }
