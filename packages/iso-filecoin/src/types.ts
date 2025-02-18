@@ -1,26 +1,25 @@
-import type _LedgerTransport from '@ledgerhq/hw-transport/lib-es/Transport'
 import type BigNumber from 'bignumber.js'
 import type { Driver } from 'iso-kv'
 import type { JsonValue } from 'type-fest'
-import type { TypedEventTarget } from 'typescript-event-target'
-import type { z } from 'zod'
+import type { WalletSupport as _WalletSupport } from './adapters/common'
 import type { AddressId, PROTOCOL_INDICATOR } from './address'
 import type { MessageObj, PartialMessageObj } from './message.js'
 import type { RPC } from './rpc'
-import type {
-  SIGNATURE_TYPE,
-  Signature,
-  Schemas as SignatureSchemas,
-} from './signature'
-
-export * from './message.js'
+import type { SignatureObj, SignatureType } from './signature'
 
 export type { MaybeResult } from 'iso-web/types'
-export * from './message.js'
+export type * from './message.js'
+export type {
+  LotusSignature,
+  Signature,
+  SignatureCode,
+  SignatureObj,
+  SignatureType,
+} from './signature.js'
+export type * from './adapters/types'
 
 export type ProtocolIndicator = typeof PROTOCOL_INDICATOR
 export type ProtocolIndicatorCode = ProtocolIndicator[keyof ProtocolIndicator]
-export type Transport = _LedgerTransport
 
 export type HexAddress = `0x${string}`
 export type CID = {
@@ -28,89 +27,6 @@ export type CID = {
 }
 
 export type Cache = boolean | Driver | undefined
-
-export type WalletEvents = {
-  accountChanged: CustomEvent<IAccount>
-  networkChanged: CustomEvent<{ network: Network; account: IAccount }>
-  disconnect: Event
-  connect: CustomEvent<IAccount>
-}
-
-export interface WalletConfig {
-  /**
-   * Network
-   * @default mainnet
-   */
-  network?: Network
-  /**
-   * Signature type
-   * @default SECP256K1
-   */
-  signatureType?: SignatureType
-}
-export interface WalletHDConfig extends WalletConfig {
-  /**
-   * Derivation path address index
-   * @default 0
-   */
-  index?: number
-  seed: Uint8Array
-}
-export interface WalletHDMnemonicConfig extends Omit<WalletHDConfig, 'seed'> {
-  mnemonic: string
-  password?: string
-}
-
-export interface WalletLedgerConfig extends WalletConfig {
-  /**
-   * Derivation path address index
-   * @default 0
-   */
-  index?: number
-  transport: Transport
-}
-
-export type WalletType = 'RAW' | 'HD' | 'FILSNAP' | 'LEDGER'
-
-export interface IWallet extends TypedEventTarget<WalletEvents> {
-  type: WalletType
-  network: Network
-  isConnected: boolean
-  signatureType: SignatureType
-  account: () => IAccount
-  connect: () => Promise<IAccount>
-  disconnect: () => Promise<void>
-  deriveAccount: (index: number) => Promise<IAccount>
-  changeNetwork: (
-    network: Network
-  ) => Promise<{ network: Network; account: IAccount }>
-
-  /**
-   * Sign raw bytes
-   *
-   * @param data - raw bytes to sign
-   */
-  sign(data: Uint8Array): Promise<Signature>
-
-  /**
-   * Sign filecoin message
-   *
-   * @param message - Filecoin message to sign
-   */
-  signMessage: (message: MessageObj) => Promise<Signature>
-
-  /**
-   * Verify signature using the current account
-   *
-   * @param signature - Signature to verify
-   */
-  verify(signature: Signature, data: Uint8Array): Promise<boolean>
-
-  /**
-   * Verify filecoin message
-   */
-  verifyMessage: (signature: Signature, message: MessageObj) => Promise<boolean>
-}
 
 /**
  * Account types
@@ -132,18 +48,6 @@ export interface IAccount {
    * Private key - only for RAW and HD wallets
    */
   privateKey?: Uint8Array
-
-  /**
-   * Signs data using [EIP-191](https://eips.ethereum.org/EIPS/eip-191) adapted to Filecoin
-   *
-   * `blake2b256("\x19Filecoin Signed Message:\n" + len(message) + message))`
-   */
-  // signMessage(data: Uint8Array): Promise<Uint8Array>
-
-  /**
-   * Sign a filecoin transaction
-   */
-  // signTransaction(transaction: MessageObj): Promise<Uint8Array>
 }
 
 /**
@@ -165,23 +69,6 @@ export type Safety = 'safe' | 'finalized' | 'latest'
  */
 export interface AddressRpcSafetyOptions extends AddressRpcOptions {
   safety?: Safety
-}
-
-/**
- * Lotus message
- */
-export interface LotusMessage {
-  Version: 0
-  To: string
-  From: string
-  Nonce: number
-  Value: string
-  GasLimit: number
-  GasFeeCap: string
-  GasPremium: string
-  Method: number
-  Params: string
-  CID?: CID
 }
 
 /**
@@ -287,21 +174,6 @@ export type EthereumChain = {
   blockExplorerUrls?: string[] | undefined
   iconUrls?: string[] | undefined
 }
-
-/**
- * Signature types
- */
-
-/**
- * Signature type
- */
-export type SignatureType = keyof typeof SIGNATURE_TYPE
-export type SignatureCode = (typeof SIGNATURE_TYPE)[SignatureType]
-
-export type LotusSignature = z.infer<
-  (typeof SignatureSchemas)['lotusSignature']
->
-export type SignatureObj = z.infer<(typeof SignatureSchemas)['signature']>
 
 /**
  * JSON-RPC 2.0
@@ -414,6 +286,12 @@ export interface TipSet {
 }
 
 /**
+ * Lotus API responses
+ *
+ * @see https://filecoin-shipyard.github.io/js-lotus-client/api/api.html
+ */
+
+/**
  * Lotus message
  */
 export interface LotusMessage {
@@ -429,12 +307,6 @@ export interface LotusMessage {
   Params: string
   CID?: CID
 }
-
-/**
- * Lotus API responses
- *
- * @see https://filecoin-shipyard.github.io/js-lotus-client/api/api.html
- */
 
 export type VersionResponse = {
   Version: string
