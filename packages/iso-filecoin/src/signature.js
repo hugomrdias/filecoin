@@ -19,10 +19,6 @@ const _zBufferSource = z.custom((value) => {
 
 const zBuf = _zBufferSource.transform((value) => u8(value))
 
-/**
- * @typedef {z.infer<typeof zBuf>} LotusSignature
- */
-
 export const Schemas = {
   lotusSignature: z.object({
     Type: z.literal(1).or(z.literal(2)),
@@ -34,10 +30,20 @@ export const Schemas = {
   }),
 }
 
+/**
+ * @typedef {keyof typeof SIGNATURE_TYPE} SignatureType
+ * @typedef {(typeof SIGNATURE_TYPE)[SignatureType]} SignatureCode
+ * @typedef {z.infer<typeof Schemas.lotusSignature>} LotusSignature
+ * @typedef {z.infer<typeof Schemas.signature>} SignatureObj
+ */
+
+/**
+ * Signature Class
+ */
 export class Signature {
   /**
    *
-   * @param {z.infer<typeof Schemas.signature>} sig
+   * @param {SignatureObj} sig
    */
   constructor(sig) {
     sig = Schemas.signature.parse(sig)
@@ -51,7 +57,7 @@ export class Signature {
 
   /**
    *
-   * @param {z.infer<typeof Schemas.lotusSignature>} json
+   * @param {LotusSignature} json
    */
   static fromLotus(json) {
     json = Schemas.lotusSignature.parse(json)
@@ -64,7 +70,7 @@ export class Signature {
   /**
    * Encodes the signature as a JSON object in the Lotus RPC format.
    *
-   * @returns {import("./types.js").LotusSignature}
+   * @returns {LotusSignature}
    */
   toLotus() {
     return {
