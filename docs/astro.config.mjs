@@ -33,15 +33,7 @@ export default defineConfig({
         typeDocSidebarGroup,
       ],
       expressiveCode: {
-        plugins: [
-          ecTwoSlash({
-            twoslashOptions: {
-              compilerOptions: {
-                composite: true,
-              },
-            },
-          }),
-        ],
+        plugins: [ecTwoSlash()],
       },
       plugins: [
         starlightLlmsTxt(),

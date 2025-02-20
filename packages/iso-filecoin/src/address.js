@@ -48,7 +48,7 @@ const symbol = Symbol.for('filecoin-address')
  * import { isAddress, fromString } from 'iso-filecoin/address'
  *
  * const address = isAddress(fromString('f1...')) // true
- * // @log: ↓ false
+
  * const notAddress = isAddress('f1...') // falseeeeeee
  * ```
  *
