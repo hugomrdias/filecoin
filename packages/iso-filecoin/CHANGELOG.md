@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.0.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.0.0...iso-filecoin-v7.0.1) (2025-02-20)
+
+
+### Bug Fixes
+
+* **message:** fix messagePartial typo ([05630a0](https://github.com/hugomrdias/filecoin/commit/05630a08774e1a801122e0432dfe6b97df0523b4))
+
 ## [7.0.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v6.1.1...iso-filecoin-v7.0.0) (2025-02-18)
 
 
