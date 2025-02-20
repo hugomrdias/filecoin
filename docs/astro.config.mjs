@@ -6,7 +6,7 @@ import starlightTypeDoc, { typeDocSidebarGroup } from 'starlight-typedoc'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://hugomrdias.github.io/filecoin',
+  site: 'https://filecoin.hugomrdias.dev',
   integrations: [
     starlight({
       title: 'iso-filecoin',
