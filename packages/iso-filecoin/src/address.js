@@ -1,3 +1,9 @@
+/**
+ * Filecoin address
+ *
+ * @module
+ */
+
 import { blake2b } from '@noble/hashes/blake2b'
 import * as leb128 from 'iso-base/leb128'
 import { base32, hex } from 'iso-base/rfc4648'
@@ -35,7 +41,16 @@ export const PROTOCOL_INDICATOR = /** @type {const} */ ({
 const symbol = Symbol.for('filecoin-address')
 
 /**
- * Check if object is a {@link IAddress} instance
+ * Asserts that the given value is an {@link IAddress} instance.
+ *
+ * @example
+ * ```ts twoslash
+ * import { isAddress, fromString } from 'iso-filecoin/address'
+ *
+ * const address = isAddress(fromString('f1...')) // true
+ * // @log: ↓ false
+ * const notAddress = isAddress('f1...') // falseeeeeee
+ * ```
  *
  * @param {any} val
  * @returns {val is IAddress}
@@ -810,7 +825,6 @@ export class AddressBLS extends Address {
  *
  * @see https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0048.md
  *
- * @example t410f2oekwcmo2pueydmaq53eic2i62crtbeyuzx2gmy
  * @implements {IAddress}
  */
 export class AddressDelegated extends Address {

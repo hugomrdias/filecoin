@@ -11,9 +11,10 @@
   "references": [{ "path": "../iso-filecoin" }],
   "typedocOptions": {
     "entryPointStrategy": "resolve",
-    "entryPoints": ["src/wallet-provider.js"],
+    "entryPoints": ["src/index.js"],
     "includeVersion": true,
     "excludeExternals": true,
-    "internalModule": "<internal>"
+    "placeInternalsInOwningModule": true,
+    "groupOrder": ["Functions", "Classes"]
   }
 }

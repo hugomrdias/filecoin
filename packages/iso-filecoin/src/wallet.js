@@ -124,7 +124,7 @@ export function accountFromPrivateKey(privateKey, type, network, path) {
 /**
  * Get account from lotus private key export
  *
- * @param {string} lotusHex - Lotus hex encoded private key .ie hex({"Type":"bls","PrivateKey":"base64pad(private-key)"})
+ * @param {string} lotusHex - Lotus hex encoded private key .ie `hex({"Type":"bls","PrivateKey":"base64pad(private-key)"})`
  * @param {import('./types.js').Network} network - Network
  * @returns {import('./types.js').IAccount}
  */

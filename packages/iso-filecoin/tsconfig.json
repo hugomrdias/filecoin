@@ -9,16 +9,22 @@
   "typedocOptions": {
     "entryPointStrategy": "resolve",
     "entryPoints": [
-      "src/wallet.js",
-      "src/token.js",
+      "src/adapters/*.js",
       "src/address.js",
+      "src/chains.js",
+      "src/ledger.js",
       "src/message.js",
       "src/rpc.js",
       "src/signature.js",
-      "src/utils.js"
+      "src/token.js",
+      "src/utils.js",
+      "src/wallet.js",
+      "src/types.ts"
     ],
     "includeVersion": true,
     "excludeExternals": true,
-    "internalModule": "<internal>"
+    "excludeReferences": true,
+    "placeInternalsInOwningModule": true,
+    "groupOrder": ["Functions", "Classes", "Variables", "Interfaces"]
   }
 }

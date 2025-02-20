@@ -26,6 +26,7 @@ BigNumber.config({
 })
 
 /**
+ * @noImplicitAny: false
  * @typedef {number | string | BigNumber.Instance | bigint | Token} Value
  */
 
