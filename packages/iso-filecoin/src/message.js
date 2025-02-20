@@ -50,7 +50,7 @@ const MessageSchemaPartial = MessageSchema.partial({
 
 export const Schemas = {
   message: MessageSchema,
-  messsagePartial: MessageSchemaPartial,
+  messagePartial: MessageSchemaPartial,
 }
 
 /**
