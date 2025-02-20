@@ -34,7 +34,8 @@ const account = Wallet.accountFromMnemonic(
     "m/44'/461'/0'/0/0"
 )
 
-const address = account.address.toString() // 'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i'
+const address = account.address.toString() 
+// 'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i'
 ```
 
 ## Docs
