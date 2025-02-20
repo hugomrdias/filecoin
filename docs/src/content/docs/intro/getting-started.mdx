@@ -1,0 +1,45 @@
+---
+title: Getting Started
+description: A guide in my new Starlight docs site.
+---
+
+iso-filecoin is a **Filecoin Standard Library** that provides a set of lightweight, performant and type-safe Javascript modules. 
+
+It provides core utilities, abstractions and types for primitives such as: RPC, Signature, Address, Token, Chain, Wallet and more. 
+
+Used by the [Metamask Filecoin Wallet](https://github.com/filecoin-project/filsnap) and [Ledger Live Filecoin app](https://www.ledger.com/coin/wallet/filecoin).
+
+## Installation 
+
+Install the required packages.
+
+```bash
+pnpm add iso-filecoin
+```
+
+---
+
+## Usage
+
+```ts twoslash
+import { Message } from 'iso-filecoin/message'
+import { Token } from 'iso-filecoin/token'
+import * as Wallet  from 'iso-filecoin/wallet'
+
+
+const mnemonic = Wallet.generateMnemonic()
+const account = Wallet.accountFromMnemonic(
+    mnemonic,
+    'SECP256K1',
+    "m/44'/461'/0'/0/0"
+)
+
+const address = account.address.toString() 
+// 'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i'
+
+const msg = new Message({
+   from: address,
+   to: 'f4...',
+   value: Token.fromFIL(1).toAttoFIL().toString() 
+})
+```

@@ -1,0 +1,29 @@
+---
+editUrl: false
+next: true
+prev: true
+title: "getPublicKey"
+---
+
+```ts
+function getPublicKey(
+   privateKey: Uint8Array<ArrayBufferLike>, 
+   network: Network, 
+   type: "SECP256K1" | "BLS"): IAccount
+```
+
+Defined in: [packages/iso-filecoin/src/wallet.js:181](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/wallet.js#L181)
+
+Get public key from private key
+
+## Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `privateKey` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\> |  |
+| `network` | [`Network`](/api/adapters/filsnap/type-aliases/network/) |  |
+| `type` | `"SECP256K1"` \| `"BLS"` |  |
+
+## Returns
+
+[`IAccount`](/api/adapters/filsnap/interfaces/iaccount/)
