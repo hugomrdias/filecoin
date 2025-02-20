@@ -18,7 +18,7 @@ export default defineConfig({
           tag: 'meta',
           attrs: {
             property: 'og:image',
-            content: new URL('corgi.jpg?v=1', site).href,
+            content: new URL('og.jpg?v=1', site).href,
           },
         },
         {
