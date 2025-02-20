@@ -14,7 +14,6 @@ title: "iso-filecoin"
 - [adapters/local](/api/adapters/local/readme/)
 - [address](/api/address/readme/)
 - [chains](/api/chains/readme/)
-- [index](/api/index/readme/)
 - [ledger](/api/ledger/readme/)
 - [message](/api/message/readme/)
 - [rpc](/api/rpc/readme/)
