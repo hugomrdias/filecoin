@@ -9,7 +9,7 @@ title: "fromContractDestination"
 function fromContractDestination(address: `0x${string}`, network: Network): IAddress
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:294](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L294)
+Defined in: [packages/iso-filecoin/src/address.js:294](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L294)
 
 Create an `Address` instance from a 0x-prefixed hex string address returned by `Address.toContractDestination()`.
 

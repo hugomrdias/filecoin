@@ -5,7 +5,7 @@ prev: true
 title: "WalletAdapterLedger"
 ---
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:27](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L27)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:27](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L27)
 
 Ledger wallet implementation
 
@@ -25,7 +25,7 @@ Ledger wallet implementation
 get app(): undefined | LedgerFilecoin
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:76](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L76)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:76](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L76)
 
 ##### Returns
 
@@ -41,7 +41,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:76](https://github.com
 get connected(): boolean
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:72](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L72)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L72)
 
 ##### Returns
 
@@ -57,7 +57,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:72](https://github.com
 get connecting(): boolean
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:68](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L68)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:68](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L68)
 
 ##### Returns
 
@@ -73,7 +73,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:68](https://github.com
 get support(): "NotChecked" | "Detected" | "NotDetected" | "NotSupported"
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:80](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L80)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:80](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L80)
 
 ##### Returns
 
@@ -87,7 +87,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:80](https://github.com
 new WalletAdapterLedger(config: WalletLedgerConfig): WalletAdapterLedger
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:57](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L57)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:57](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L57)
 
 #### Parameters
 
@@ -116,7 +116,7 @@ changeNetwork(network: Network): Promise<{
 }>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:142](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L142)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:142](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L142)
 
 #### Parameters
 
@@ -139,7 +139,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:142](https://github.co
 checkSupport(): Promise<void>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:84](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L84)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:84](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L84)
 
 #### Returns
 
@@ -153,7 +153,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:84](https://github.com
 connect(): Promise<void>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:99](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L99)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:99](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L99)
 
 #### Returns
 
@@ -167,7 +167,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:99](https://github.com
 deriveAccount(index: number): Promise<IAccount>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:167](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L167)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:167](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L167)
 
 #### Parameters
 
@@ -187,7 +187,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:167](https://github.co
 disconnect(): Promise<void>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:125](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L125)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:125](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L125)
 
 #### Returns
 
@@ -201,7 +201,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:125](https://github.co
 sign(data: Uint8Array<ArrayBufferLike>): Promise<Signature>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:187](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L187)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:187](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L187)
 
 #### Parameters
 
@@ -232,7 +232,7 @@ signMessage(message: {
 }): Promise<Signature>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:213](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L213)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:213](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L213)
 
 #### Parameters
 
@@ -262,7 +262,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:213](https://github.co
 account: undefined | IAccount = undefined;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:34](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L34)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:34](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L34)
 
 ***
 
@@ -272,7 +272,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:34](https://github.com
 icon: string = 'data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20147%20128%22%20fill%3D%22white%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%222em%22%3E%3Cpath%20d%3D%22M0%2091.655V128h55.293v-8.06H8.056V91.655zm138.944%200v28.285H91.707v8.058H147V91.655zm-83.57-55.31v55.308h36.333v-7.269H63.43V36.345zM0%200v36.345h8.056V8.058h47.237V0zm91.707%200v8.058h47.237v28.287H147V0z%22%2F%3E%3C%2Fsvg%3E';
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:30](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L30)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:30](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L30)
 
 ***
 
@@ -282,7 +282,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:30](https://github.com
 name: string = 'Ledger';
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:28](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L28)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:28](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L28)
 
 ***
 
@@ -292,7 +292,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:28](https://github.com
 network: Network;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:63](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L63)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:63](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L63)
 
 ***
 
@@ -302,7 +302,7 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:63](https://github.com
 signatureType: "SECP256K1" | "BLS";
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:64](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L64)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:64](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L64)
 
 ***
 
@@ -312,4 +312,4 @@ Defined in: [packages/iso-filecoin/src/adapters/ledger.js:64](https://github.com
 url: string = 'https://ledger.com';
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/ledger.js:29](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/ledger.js#L29)
+Defined in: [packages/iso-filecoin/src/adapters/ledger.js:29](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/ledger.js#L29)

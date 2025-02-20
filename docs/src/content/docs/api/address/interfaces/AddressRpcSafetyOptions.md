@@ -5,7 +5,7 @@ prev: true
 title: "AddressRpcSafetyOptions"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:83](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L83)
+Defined in: [packages/iso-filecoin/src/types.ts:83](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L83)
 
 Options for RPC-based address methods with safety
 
@@ -21,7 +21,7 @@ Options for RPC-based address methods with safety
 optional cache: Cache;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:75](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L75)
+Defined in: [packages/iso-filecoin/src/types.ts:75](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L75)
 
 #### Inherited from
 
@@ -35,7 +35,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:75](https://github.com/hugomrdia
 rpc: RPC;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:74](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L74)
+Defined in: [packages/iso-filecoin/src/types.ts:74](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L74)
 
 #### Inherited from
 
@@ -49,4 +49,4 @@ Defined in: [packages/iso-filecoin/src/types.ts:74](https://github.com/hugomrdia
 optional safety: Safety;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:84](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L84)
+Defined in: [packages/iso-filecoin/src/types.ts:84](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L84)

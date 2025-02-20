@@ -5,7 +5,7 @@ prev: true
 title: "Message"
 ---
 
-Defined in: [packages/iso-filecoin/src/message.js:59](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L59)
+Defined in: [packages/iso-filecoin/src/message.js:59](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L59)
 
 Filecoin Message class
 
@@ -28,7 +28,7 @@ new Message(msg: {
  }): Message
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:70](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L70)
+Defined in: [packages/iso-filecoin/src/message.js:70](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L70)
 
 #### Parameters
 
@@ -58,7 +58,7 @@ Defined in: [packages/iso-filecoin/src/message.js:70](https://github.com/hugomrd
 cidBytes(): Uint8Array<ArrayBufferLike>
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:186](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L186)
+Defined in: [packages/iso-filecoin/src/message.js:186](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L186)
 
 CID bytes of the filecoin message
 
@@ -74,7 +74,7 @@ CID bytes of the filecoin message
 prepare(rpc: RPC): Promise<Message>
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:130](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L130)
+Defined in: [packages/iso-filecoin/src/message.js:130](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L130)
 
 Prepare message for signing with nonce and gas estimation
 
@@ -96,7 +96,7 @@ Prepare message for signing with nonce and gas estimation
 serialize(): Uint8Array<ArrayBufferLike>
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:161](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L161)
+Defined in: [packages/iso-filecoin/src/message.js:161](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L161)
 
 Serialize message using dag-cbor
 
@@ -123,7 +123,7 @@ toLotus(): {
 }
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:87](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L87)
+Defined in: [packages/iso-filecoin/src/message.js:87](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L87)
 
 Convert message to Lotus message
 
@@ -212,7 +212,7 @@ Version: 0;
 static fromLotus(json: LotusMessage): Message
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:107](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L107)
+Defined in: [packages/iso-filecoin/src/message.js:107](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L107)
 
 Create message from Lotus message
 
@@ -234,7 +234,7 @@ Create message from Lotus message
 from: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:74](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L74)
+Defined in: [packages/iso-filecoin/src/message.js:74](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L74)
 
 ***
 
@@ -244,7 +244,7 @@ Defined in: [packages/iso-filecoin/src/message.js:74](https://github.com/hugomrd
 gasFeeCap: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:78](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L78)
+Defined in: [packages/iso-filecoin/src/message.js:78](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L78)
 
 ***
 
@@ -254,7 +254,7 @@ Defined in: [packages/iso-filecoin/src/message.js:78](https://github.com/hugomrd
 gasLimit: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:77](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L77)
+Defined in: [packages/iso-filecoin/src/message.js:77](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L77)
 
 ***
 
@@ -264,7 +264,7 @@ Defined in: [packages/iso-filecoin/src/message.js:77](https://github.com/hugomrd
 gasPremium: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:79](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L79)
+Defined in: [packages/iso-filecoin/src/message.js:79](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L79)
 
 ***
 
@@ -274,7 +274,7 @@ Defined in: [packages/iso-filecoin/src/message.js:79](https://github.com/hugomrd
 method: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:80](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L80)
+Defined in: [packages/iso-filecoin/src/message.js:80](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L80)
 
 ***
 
@@ -284,7 +284,7 @@ Defined in: [packages/iso-filecoin/src/message.js:80](https://github.com/hugomrd
 nonce: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:75](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L75)
+Defined in: [packages/iso-filecoin/src/message.js:75](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L75)
 
 ***
 
@@ -294,7 +294,7 @@ Defined in: [packages/iso-filecoin/src/message.js:75](https://github.com/hugomrd
 params: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:81](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L81)
+Defined in: [packages/iso-filecoin/src/message.js:81](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L81)
 
 ***
 
@@ -304,7 +304,7 @@ Defined in: [packages/iso-filecoin/src/message.js:81](https://github.com/hugomrd
 to: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:73](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L73)
+Defined in: [packages/iso-filecoin/src/message.js:73](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L73)
 
 ***
 
@@ -314,7 +314,7 @@ Defined in: [packages/iso-filecoin/src/message.js:73](https://github.com/hugomrd
 value: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:76](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L76)
+Defined in: [packages/iso-filecoin/src/message.js:76](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L76)
 
 ***
 
@@ -324,4 +324,4 @@ Defined in: [packages/iso-filecoin/src/message.js:76](https://github.com/hugomrd
 version: 0;
 ```
 
-Defined in: [packages/iso-filecoin/src/message.js:72](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/message.js#L72)
+Defined in: [packages/iso-filecoin/src/message.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L72)

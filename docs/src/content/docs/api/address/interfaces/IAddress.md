@@ -5,7 +5,7 @@ prev: true
 title: "IAddress"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:90](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L90)
+Defined in: [packages/iso-filecoin/src/types.ts:90](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L90)
 
 Address interface
 
@@ -17,7 +17,7 @@ Address interface
 checksum: () => Uint8Array;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:97](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L97)
+Defined in: [packages/iso-filecoin/src/types.ts:97](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L97)
 
 #### Returns
 
@@ -31,7 +31,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:97](https://github.com/hugomrdia
 optional id: bigint;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:96](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L96)
+Defined in: [packages/iso-filecoin/src/types.ts:96](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L96)
 
 ***
 
@@ -41,7 +41,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:96](https://github.com/hugomrdia
 optional namespace: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:95](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L95)
+Defined in: [packages/iso-filecoin/src/types.ts:95](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L95)
 
 ***
 
@@ -51,7 +51,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:95](https://github.com/hugomrdia
 network: Network;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:93](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L93)
+Defined in: [packages/iso-filecoin/src/types.ts:93](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L93)
 
 ***
 
@@ -61,7 +61,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:93](https://github.com/hugomrdia
 networkPrefix: NetworkPrefix;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:94](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L94)
+Defined in: [packages/iso-filecoin/src/types.ts:94](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L94)
 
 ***
 
@@ -71,7 +71,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:94](https://github.com/hugomrdia
 payload: Uint8Array;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:92](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L92)
+Defined in: [packages/iso-filecoin/src/types.ts:92](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L92)
 
 ***
 
@@ -81,7 +81,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:92](https://github.com/hugomrdia
 protocol: ProtocolIndicatorCode;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:91](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L91)
+Defined in: [packages/iso-filecoin/src/types.ts:91](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L91)
 
 ***
 
@@ -91,7 +91,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:91](https://github.com/hugomrdia
 to0x: (options: AddressRpcOptions) => Promise<string>;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:110](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L110)
+Defined in: [packages/iso-filecoin/src/types.ts:110](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L110)
 
 Converts any address to a 0x address, either id masked address or eth address depending on the address type.
 Delegated addresses convert to eth address and f1, f2, f3 convert to id masked address
@@ -115,7 +115,7 @@ and f0 depends on the underline address type
 toBytes: () => Uint8Array;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:100](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L100)
+Defined in: [packages/iso-filecoin/src/types.ts:100](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L100)
 
 #### Returns
 
@@ -129,7 +129,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:100](https://github.com/hugomrdi
 toContractDestination: () => `0x${string}`;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:98](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L98)
+Defined in: [packages/iso-filecoin/src/types.ts:98](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L98)
 
 #### Returns
 
@@ -143,7 +143,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:98](https://github.com/hugomrdia
 toIdAddress: (options: AddressRpcOptions) => Promise<AddressId>;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:104](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L104)
+Defined in: [packages/iso-filecoin/src/types.ts:104](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L104)
 
 Convert to ID address
 
@@ -165,7 +165,7 @@ Convert to ID address
 toString: () => string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:99](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L99)
+Defined in: [packages/iso-filecoin/src/types.ts:99](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L99)
 
 #### Returns
 

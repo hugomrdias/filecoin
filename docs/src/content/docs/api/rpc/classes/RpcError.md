@@ -5,7 +5,7 @@ prev: true
 title: "RpcError"
 ---
 
-Defined in: [packages/iso-filecoin/src/rpc.js:41](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L41)
+Defined in: [packages/iso-filecoin/src/rpc.js:41](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L41)
 
 ## Extends
 
@@ -24,7 +24,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:41](https://github.com/hugomrdias/
 new RpcError(message: string, options?: ErrorOptions): RpcError
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:55](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L55)
+Defined in: [packages/iso-filecoin/src/rpc.js:55](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L55)
 
 #### Parameters
 
@@ -51,7 +51,7 @@ Error.constructor
 static is(value: unknown): value is RpcError
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:66](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L66)
+Defined in: [packages/iso-filecoin/src/rpc.js:66](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L66)
 
 Check if a value is a RequestError
 
@@ -73,7 +73,7 @@ Check if a value is a RequestError
 [symbol]: boolean = true;
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L43)
+Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L43)
 
 ***
 
@@ -83,7 +83,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/
 cause: unknown;
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:48](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L48)
+Defined in: [packages/iso-filecoin/src/rpc.js:48](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L48)
 
 #### Overrides
 
@@ -99,7 +99,7 @@ Error.cause
 name: string = 'RpcError';
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:45](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L45)
+Defined in: [packages/iso-filecoin/src/rpc.js:45](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L45)
 
 #### Overrides
 

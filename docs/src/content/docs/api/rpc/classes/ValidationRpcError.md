@@ -5,7 +5,7 @@ prev: true
 title: "ValidationRpcError"
 ---
 
-Defined in: [packages/iso-filecoin/src/rpc.js:96](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L96)
+Defined in: [packages/iso-filecoin/src/rpc.js:96](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L96)
 
 ## Extends
 
@@ -19,7 +19,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:96](https://github.com/hugomrdias/
 new ValidationRpcError(cause: ZodError<any>): ValidationRpcError
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:106](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L106)
+Defined in: [packages/iso-filecoin/src/rpc.js:106](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L106)
 
 #### Parameters
 
@@ -43,7 +43,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:106](https://github.com/hugomrdias
 static is(value: unknown): value is ValidationRpcError
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:117](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L117)
+Defined in: [packages/iso-filecoin/src/rpc.js:117](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L117)
 
 Check if a value is a ValidationRpcError
 
@@ -69,7 +69,7 @@ Check if a value is a ValidationRpcError
 [symbol]: boolean = true;
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L43)
+Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L43)
 
 #### Inherited from
 
@@ -83,7 +83,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/
 cause: ZodError<any>;
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:100](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L100)
+Defined in: [packages/iso-filecoin/src/rpc.js:100](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L100)
 
 #### Overrides
 
@@ -97,7 +97,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:100](https://github.com/hugomrdias
 name: string = 'ValidationRpcError';
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:97](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L97)
+Defined in: [packages/iso-filecoin/src/rpc.js:97](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L97)
 
 #### Overrides
 

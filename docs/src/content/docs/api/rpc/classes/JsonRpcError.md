@@ -5,7 +5,7 @@ prev: true
 title: "JsonRpcError"
 ---
 
-Defined in: [packages/iso-filecoin/src/rpc.js:71](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L71)
+Defined in: [packages/iso-filecoin/src/rpc.js:71](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L71)
 
 ## Extends
 
@@ -19,7 +19,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:71](https://github.com/hugomrdias/
 new JsonRpcError(cause: JsonRpcError): JsonRpcError
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:81](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L81)
+Defined in: [packages/iso-filecoin/src/rpc.js:81](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L81)
 
 #### Parameters
 
@@ -43,7 +43,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:81](https://github.com/hugomrdias/
 static is(value: unknown): value is JsonRpcError
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:91](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L91)
+Defined in: [packages/iso-filecoin/src/rpc.js:91](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L91)
 
 Check if a value is a JsonRpcError
 
@@ -69,7 +69,7 @@ Check if a value is a JsonRpcError
 [symbol]: boolean = true;
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L43)
+Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L43)
 
 #### Inherited from
 
@@ -83,7 +83,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/
 cause: JsonRpcError;
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:75](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L75)
+Defined in: [packages/iso-filecoin/src/rpc.js:75](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L75)
 
 #### Overrides
 
@@ -97,7 +97,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:75](https://github.com/hugomrdias/
 name: string = 'JsonRpcError';
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:72](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L72)
+Defined in: [packages/iso-filecoin/src/rpc.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L72)
 
 #### Overrides
 

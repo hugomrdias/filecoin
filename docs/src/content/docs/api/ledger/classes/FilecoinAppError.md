@@ -5,7 +5,7 @@ prev: true
 title: "FilecoinAppError"
 ---
 
-Defined in: [packages/iso-filecoin/src/ledger.js:149](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L149)
+Defined in: [packages/iso-filecoin/src/ledger.js:149](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L149)
 
 Filecoin app error
 
@@ -21,7 +21,7 @@ Filecoin app error
 new FilecoinAppError(statusCode: number, data?: string): FilecoinAppError
 ```
 
-Defined in: [packages/iso-filecoin/src/ledger.js:158](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L158)
+Defined in: [packages/iso-filecoin/src/ledger.js:158](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L158)
 
 #### Parameters
 
@@ -48,7 +48,7 @@ Error.constructor
 name: string = 'FilecoinAppError';
 ```
 
-Defined in: [packages/iso-filecoin/src/ledger.js:150](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L150)
+Defined in: [packages/iso-filecoin/src/ledger.js:150](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L150)
 
 #### Overrides
 
@@ -64,4 +64,4 @@ Error.name
 statusCode: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/ledger.js:152](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L152)
+Defined in: [packages/iso-filecoin/src/ledger.js:152](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L152)

@@ -5,7 +5,7 @@ prev: true
 title: "PushMessageParams"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:359](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L359)
+Defined in: [packages/iso-filecoin/src/types.ts:359](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L359)
 
 ## Properties
 
@@ -26,7 +26,7 @@ msg: {
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:360](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L360)
+Defined in: [packages/iso-filecoin/src/types.ts:360](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L360)
 
 #### from
 
@@ -103,7 +103,7 @@ signature: {
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:361](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L361)
+Defined in: [packages/iso-filecoin/src/types.ts:361](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L361)
 
 #### data
 

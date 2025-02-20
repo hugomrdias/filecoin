@@ -5,7 +5,7 @@ prev: true
 title: "LedgerFilecoin"
 ---
 
-Defined in: [packages/iso-filecoin/src/ledger.js:258](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L258)
+Defined in: [packages/iso-filecoin/src/ledger.js:258](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L258)
 
 Ledger Filecoin app client
 
@@ -17,7 +17,7 @@ Ledger Filecoin app client
 new LedgerFilecoin(transport: Transport): LedgerFilecoin
 ```
 
-Defined in: [packages/iso-filecoin/src/ledger.js:263](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L263)
+Defined in: [packages/iso-filecoin/src/ledger.js:263](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L263)
 
 #### Parameters
 
@@ -37,7 +37,7 @@ Defined in: [packages/iso-filecoin/src/ledger.js:263](https://github.com/hugomrd
 close(): Promise<void>
 ```
 
-Defined in: [packages/iso-filecoin/src/ledger.js:387](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L387)
+Defined in: [packages/iso-filecoin/src/ledger.js:387](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L387)
 
 Close the transport
 
@@ -53,7 +53,7 @@ Close the transport
 getAddress(path: string, showOnDevice?: boolean): Promise<IAccount>
 ```
 
-Defined in: [packages/iso-filecoin/src/ledger.js:304](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L304)
+Defined in: [packages/iso-filecoin/src/ledger.js:304](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L304)
 
 Get the secp256k1 address for a given derivation path
 
@@ -80,7 +80,7 @@ https://github.com/LedgerHQ/app-filecoin/blob/develop/docs/APDUSPEC.md#ins_get_a
 getVersion(): Promise<string>
 ```
 
-Defined in: [packages/iso-filecoin/src/ledger.js:278](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L278)
+Defined in: [packages/iso-filecoin/src/ledger.js:278](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L278)
 
 Get the version of the Filecoin app
 
@@ -103,7 +103,7 @@ sign(
 type?: "SECP256K1" | "DATA_CAP" | "CLIENT_DEAL" | "RAW_BYTES"): Promise<Uint8Array<ArrayBufferLike>>
 ```
 
-Defined in: [packages/iso-filecoin/src/ledger.js:339](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L339)
+Defined in: [packages/iso-filecoin/src/ledger.js:339](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L339)
 
 Sign a message
 
@@ -127,7 +127,7 @@ Sign a message
 signRaw(path: string, message: Uint8Array<ArrayBufferLike>): Promise<Uint8Array<ArrayBufferLike>>
 ```
 
-Defined in: [packages/iso-filecoin/src/ledger.js:376](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L376)
+Defined in: [packages/iso-filecoin/src/ledger.js:376](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L376)
 
 Sign raw bytes using prefixed message similar to EIP-191
 
@@ -150,4 +150,4 @@ Sign raw bytes using prefixed message similar to EIP-191
 transport: Transport;
 ```
 
-Defined in: [packages/iso-filecoin/src/ledger.js:264](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/ledger.js#L264)
+Defined in: [packages/iso-filecoin/src/ledger.js:264](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L264)

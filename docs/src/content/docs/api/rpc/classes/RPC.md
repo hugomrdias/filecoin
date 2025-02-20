@@ -5,7 +5,7 @@ prev: true
 title: "RPC"
 ---
 
-Defined in: [packages/iso-filecoin/src/rpc.js:125](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L125)
+Defined in: [packages/iso-filecoin/src/rpc.js:125](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L125)
 
 RPC
 
@@ -17,7 +17,7 @@ RPC
 new RPC(options: Options, fetchOptions?: RequestOptions): RPC
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:130](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L130)
+Defined in: [packages/iso-filecoin/src/rpc.js:130](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L130)
 
 #### Parameters
 
@@ -41,7 +41,7 @@ balance(address: string, fetchOptions?: RequestOptions): Promise<MaybeResult<str
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:227](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L227)
+Defined in: [packages/iso-filecoin/src/rpc.js:227](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L227)
 
 WalletBalance returns the balance of the given address at the current head of the chain.
 
@@ -73,7 +73,7 @@ call<R>(rpcOptions: RpcOptions, fetchOptions?: RequestOptions): Promise<MaybeRes
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:588](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L588)
+Defined in: [packages/iso-filecoin/src/rpc.js:588](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L588)
 
 Generic method to call any method on the lotus rpc api.
 
@@ -106,7 +106,7 @@ chainHead(fetchOptions?: RequestOptions): Promise<MaybeResult<TipSet,
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:469](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L469)
+Defined in: [packages/iso-filecoin/src/rpc.js:469](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L469)
 
 The current head of the chain.
 
@@ -137,7 +137,7 @@ filecoinAddressToEthAddress(params: FilecoinAddressToEthAddressParams, fetchOpti
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:336](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L336)
+Defined in: [packages/iso-filecoin/src/rpc.js:336](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L336)
 
 Converts any Filecoin address to an EthAddress.
 
@@ -171,7 +171,7 @@ gasEstimate(params: GasEstimateParams, fetchOptions?: RequestOptions): Promise<M
 | ValidationRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:182](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L182)
+Defined in: [packages/iso-filecoin/src/rpc.js:182](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L182)
 
 GasEstimateMessageGas estimates gas values for unset message gas fields
 
@@ -208,7 +208,7 @@ getIDAddress(params: {
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:550](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L550)
+Defined in: [packages/iso-filecoin/src/rpc.js:550](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L550)
 
 Get the ID address for an address with different safety guarantees
 
@@ -238,7 +238,7 @@ getTipSetByHeight(params: ChainGetTipSetByHeightParams, fetchOptions?: RequestOp
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:489](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L489)
+Defined in: [packages/iso-filecoin/src/rpc.js:489](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L489)
 
 Get tipset at the specified epoch (height). If there are no blocks at the specified epoch, a tipset at an earlier epoch will be returned.
 
@@ -270,7 +270,7 @@ lookBackTipSet(lookback: number, fetchOptions?: RequestOptions): Promise<MaybeRe
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:511](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L511)
+Defined in: [packages/iso-filecoin/src/rpc.js:511](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L511)
 
 Looks back from latest height for a tipset
 
@@ -298,7 +298,7 @@ networkName(fetchOptions?: RequestOptions): Promise<MaybeResult<Network,
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:167](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L167)
+Defined in: [packages/iso-filecoin/src/rpc.js:167](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L167)
 
 NetworkName returns the name of the network the node is synced to.
 
@@ -325,7 +325,7 @@ nonce(address: string, fetchOptions?: RequestOptions): Promise<MaybeResult<numbe
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:245](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L245)
+Defined in: [packages/iso-filecoin/src/rpc.js:245](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L245)
 
 MpoolGetNonce gets next nonce for the specified sender. Note that this method may not be atomic. Use MpoolPushMessage instead.
 
@@ -359,7 +359,7 @@ pushMessage(params: PushMessageParams, fetchOptions?: RequestOptions): Promise<M
 | ValidationRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:264](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L264)
+Defined in: [packages/iso-filecoin/src/rpc.js:264](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L264)
 
 MpoolPush pushes a signed message to mempool.
 
@@ -393,7 +393,7 @@ stateAccountKey(params: StateAccountKeyParams, fetchOptions?: RequestOptions): P
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:361](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L361)
+Defined in: [packages/iso-filecoin/src/rpc.js:361](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L361)
 
 Public key address of the given ID address.
 
@@ -425,7 +425,7 @@ stateLookupID(params: StateAccountKeyParams, fetchOptions?: RequestOptions): Pro
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:437](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L437)
+Defined in: [packages/iso-filecoin/src/rpc.js:437](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L437)
 
 Retrieves the ID address of the given address for a tipset.
 If you dont have a specific tipset in mind, better to use [getIDAddress](../../../../../../../api/rpc/classes/rpc/#getidaddress).
@@ -458,7 +458,7 @@ stateLookupRobustAddress(params: StateAccountKeyParams, fetchOptions?: RequestOp
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:398](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L398)
+Defined in: [packages/iso-filecoin/src/rpc.js:398](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L398)
 
 Public key address of the given non-account ID address.
 
@@ -490,7 +490,7 @@ version(fetchOptions?: RequestOptions): Promise<MaybeResult<VersionResponse,
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:155](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L155)
+Defined in: [packages/iso-filecoin/src/rpc.js:155](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L155)
 
 Version returns the version of the Filecoin node.
 
@@ -516,7 +516,7 @@ waitMsg(params: waitMsgParams, fetchOptions?: RequestOptions): Promise<MaybeResu
 | JsonRpcError>>
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:313](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L313)
+Defined in: [packages/iso-filecoin/src/rpc.js:313](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L313)
 
 StateWaitMsg looks back in the chain for a message. If not found, it blocks until the message arrives on chain, and gets to the indicated confidence depth.
 
@@ -547,7 +547,7 @@ https://lotus.filecoin.io/reference/lotus/state/#statewaitmsg
 api: URL;
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:140](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L140)
+Defined in: [packages/iso-filecoin/src/rpc.js:140](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L140)
 
 ***
 
@@ -560,7 +560,7 @@ fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>(input
 | Request, init?: RequestInit) => Promise<Response>;
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:139](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L139)
+Defined in: [packages/iso-filecoin/src/rpc.js:139](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L139)
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch)
 
@@ -596,7 +596,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:139](https://github.com/hugomrdias
 fetchOptions: RequestOptions;
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:147](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L147)
+Defined in: [packages/iso-filecoin/src/rpc.js:147](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L147)
 
 ***
 
@@ -609,7 +609,7 @@ headers: {
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:142](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L142)
+Defined in: [packages/iso-filecoin/src/rpc.js:142](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L142)
 
 #### Authorization?
 
@@ -631,4 +631,4 @@ Content-Type: string = 'application/json';
 network: Network;
 ```
 
-Defined in: [packages/iso-filecoin/src/rpc.js:141](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/rpc.js#L141)
+Defined in: [packages/iso-filecoin/src/rpc.js:141](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L141)

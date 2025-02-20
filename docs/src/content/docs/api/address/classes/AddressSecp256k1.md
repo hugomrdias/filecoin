@@ -5,7 +5,7 @@ prev: true
 title: "AddressSecp256k1"
 ---
 
-Defined in: [packages/iso-filecoin/src/address.js:601](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L601)
+Defined in: [packages/iso-filecoin/src/address.js:601](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L601)
 
 Secp256k1 address f1..
 
@@ -27,7 +27,7 @@ https://spec.filecoin.io/appendix/address/#section-appendix.address.protocol-1-l
 new AddressSecp256k1(payload: Uint8Array<ArrayBufferLike>, network: Network): AddressSecp256k1
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:607](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L607)
+Defined in: [packages/iso-filecoin/src/address.js:607](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L607)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ Defined in: [packages/iso-filecoin/src/address.js:607](https://github.com/hugomr
 checksum(): Uint8Array<ArrayBufferLike>
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:337](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L337)
+Defined in: [packages/iso-filecoin/src/address.js:337](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L337)
 
 #### Returns
 
@@ -70,7 +70,7 @@ Defined in: [packages/iso-filecoin/src/address.js:337](https://github.com/hugomr
 to0x(options: AddressRpcSafetyOptions): Promise<string>
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:399](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L399)
+Defined in: [packages/iso-filecoin/src/address.js:399](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L399)
 
 Converts any address to a 0x address, either id masked address or eth address depending on the address type.
 Delegated addresses convert to eth address and f1, f2, f3 convert to id masked address
@@ -98,7 +98,7 @@ and f0 depends on the underline address type
 toBytes(): Uint8Array<ArrayBuffer>
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:329](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L329)
+Defined in: [packages/iso-filecoin/src/address.js:329](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L329)
 
 #### Returns
 
@@ -116,7 +116,7 @@ Defined in: [packages/iso-filecoin/src/address.js:329](https://github.com/hugomr
 toContractDestination(): `0x${string}`
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:333](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L333)
+Defined in: [packages/iso-filecoin/src/address.js:333](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L333)
 
 #### Returns
 
@@ -134,7 +134,7 @@ Defined in: [packages/iso-filecoin/src/address.js:333](https://github.com/hugomr
 toIdAddress(options: AddressRpcSafetyOptions): Promise<AddressId>
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:348](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L348)
+Defined in: [packages/iso-filecoin/src/address.js:348](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L348)
 
 Convert to ID address
 
@@ -160,7 +160,7 @@ Convert to ID address
 toString(): string
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:323](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L323)
+Defined in: [packages/iso-filecoin/src/address.js:323](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L323)
 
 #### Returns
 
@@ -178,7 +178,7 @@ Defined in: [packages/iso-filecoin/src/address.js:323](https://github.com/hugomr
 static fromBytes(bytes: Uint8Array<ArrayBufferLike>, network: Network): AddressSecp256k1
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:651](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L651)
+Defined in: [packages/iso-filecoin/src/address.js:651](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L651)
 
 Create address from bytes
 
@@ -201,7 +201,7 @@ Create address from bytes
 static fromPublicKey(publicKey: Uint8Array<ArrayBufferLike>, network: Network): AddressSecp256k1
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:662](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L662)
+Defined in: [packages/iso-filecoin/src/address.js:662](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L662)
 
 #### Parameters
 
@@ -222,7 +222,7 @@ Defined in: [packages/iso-filecoin/src/address.js:662](https://github.com/hugomr
 static fromString(address: string): AddressSecp256k1
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:621](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L621)
+Defined in: [packages/iso-filecoin/src/address.js:621](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L621)
 
 Create address from string
 
@@ -244,7 +244,7 @@ Create address from string
 [symbol]: boolean = true;
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:308](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L308)
+Defined in: [packages/iso-filecoin/src/address.js:308](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L308)
 
 #### Inherited from
 
@@ -258,7 +258,7 @@ Defined in: [packages/iso-filecoin/src/address.js:308](https://github.com/hugomr
 network: Network;
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:317](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L317)
+Defined in: [packages/iso-filecoin/src/address.js:317](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L317)
 
 #### Inherited from
 
@@ -272,7 +272,7 @@ Defined in: [packages/iso-filecoin/src/address.js:317](https://github.com/hugomr
 networkPrefix: "f" | "t";
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:318](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L318)
+Defined in: [packages/iso-filecoin/src/address.js:318](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L318)
 
 #### Inherited from
 
@@ -286,7 +286,7 @@ Defined in: [packages/iso-filecoin/src/address.js:318](https://github.com/hugomr
 payload: Uint8Array<ArrayBufferLike>;
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:316](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L316)
+Defined in: [packages/iso-filecoin/src/address.js:316](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L316)
 
 #### Inherited from
 
@@ -300,7 +300,7 @@ Defined in: [packages/iso-filecoin/src/address.js:316](https://github.com/hugomr
 protocol: 1;
 ```
 
-Defined in: [packages/iso-filecoin/src/address.js:609](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/address.js#L609)
+Defined in: [packages/iso-filecoin/src/address.js:609](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L609)
 
 #### Inherited from
 

@@ -5,7 +5,7 @@ prev: true
 title: "WalletHDMnemonicConfig"
 ---
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:41](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L41)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:41](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L41)
 
 ## Extends
 
@@ -19,7 +19,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:41](https://github.com/
 optional index: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:38](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L38)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:38](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L38)
 
 Derivation path address index
 
@@ -43,7 +43,7 @@ Omit.index
 mnemonic: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:42](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L42)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:42](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L42)
 
 ***
 
@@ -53,7 +53,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:42](https://github.com/
 optional network: Network;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:26](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L26)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:26](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L26)
 
 Network
 
@@ -77,7 +77,7 @@ Omit.network
 optional password: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:43](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L43)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L43)
 
 ***
 
@@ -87,7 +87,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:43](https://github.com/
 optional signatureType: "SECP256K1" | "BLS";
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:31](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L31)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L31)
 
 Signature type
 

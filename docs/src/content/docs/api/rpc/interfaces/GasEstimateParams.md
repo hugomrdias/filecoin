@@ -5,7 +5,7 @@ prev: true
 title: "GasEstimateParams"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:344](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L344)
+Defined in: [packages/iso-filecoin/src/types.ts:344](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L344)
 
 ## Properties
 
@@ -15,7 +15,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:344](https://github.com/hugomrdi
 optional maxFee: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:356](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L356)
+Defined in: [packages/iso-filecoin/src/types.ts:356](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L356)
 
 Max fee to pay for gas (attoFIL/gas units)
 
@@ -44,7 +44,7 @@ msg: {
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:350](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L350)
+Defined in: [packages/iso-filecoin/src/types.ts:350](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L350)
 
 Message to estimate gas for
 

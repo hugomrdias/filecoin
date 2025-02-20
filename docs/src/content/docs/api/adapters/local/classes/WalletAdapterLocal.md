@@ -5,7 +5,7 @@ prev: true
 title: "WalletAdapterLocal"
 ---
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:43](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L43)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L43)
 
 Local wallet implementation
 
@@ -25,7 +25,7 @@ Local wallet implementation
 get connected(): boolean
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:106](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L106)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:106](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L106)
 
 ##### Returns
 
@@ -41,7 +41,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:106](https://github.com
 get connecting(): boolean
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:102](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L102)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:102](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L102)
 
 ##### Returns
 
@@ -57,7 +57,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:102](https://github.com
 get support(): "NotChecked" | "Detected" | "NotDetected" | "NotSupported"
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:109](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L109)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:109](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L109)
 
 ##### Returns
 
@@ -73,7 +73,7 @@ new WalletAdapterLocal(config: WalletConfig & {
  }): WalletAdapterLocal
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:62](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L62)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:62](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L62)
 
 #### Parameters
 
@@ -102,7 +102,7 @@ changeNetwork(network: Network): Promise<{
 }>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:128](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L128)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:128](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L128)
 
 #### Parameters
 
@@ -125,7 +125,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:128](https://github.com
 checkSupport(): Promise<void>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:114](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L114)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:114](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L114)
 
 #### Returns
 
@@ -139,7 +139,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:114](https://github.com
 connect(): Promise<void>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:87](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L87)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:87](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L87)
 
 #### Returns
 
@@ -153,7 +153,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:87](https://github.com/
 deriveAccount(_index: number): Promise<IAccount>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:151](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L151)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:151](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L151)
 
 #### Parameters
 
@@ -173,7 +173,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:151](https://github.com
 disconnect(): Promise<void>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:119](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L119)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:119](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L119)
 
 #### Returns
 
@@ -187,7 +187,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:119](https://github.com
 sign(data: Uint8Array<ArrayBufferLike>): Promise<Signature>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:162](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L162)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:162](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L162)
 
 #### Parameters
 
@@ -218,7 +218,7 @@ signMessage(message: {
 }): Promise<Signature>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:174](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L174)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:174](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L174)
 
 #### Parameters
 
@@ -248,7 +248,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:174](https://github.com
 static create(): WalletAdapterLocal
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:78](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L78)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:78](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L78)
 
 #### Returns
 
@@ -262,7 +262,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:78](https://github.com/
 account: undefined | IAccount = undefined;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:50](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L50)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:50](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L50)
 
 ***
 
@@ -272,7 +272,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:50](https://github.com/
 icon: string = 'data:image/svg+xml,%3Csvg%20width%3D%2234%22%20height%3D%2234%22%20viewBox%3D%22-5%200%2034%2034%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M23.555%2025.1A11.979%2011.979%200%200%201%200%2021.857a7.9%207.9%200%200%201%20.485-2.924C1.643%2011.595%208.785%2011.063%204.8%200c0%200%206.65%201.727%208%2012.143%200%200%204.919-.163%201.6-7.286A21.31%2021.31%200%200%201%2024%2020c.027%201.71-.122%203.42-.445%205.1%22%20fill%3D%22%23FF6E6E%22%2F%3E%3Cpath%20d%3D%22M19%2026.5a7.5%207.5%200%200%201-14.975.484L4%2027s-.075-3.272%200-4c.684-6.611%202.6-9.563%205-14%20.067-2.639-1.115%207.273%205%2010a8.19%208.19%200%200%201%205%207.5%22%20fill%3D%22%230C0058%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E';
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:46](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L46)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:46](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L46)
 
 ***
 
@@ -282,7 +282,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:46](https://github.com/
 name: string = 'Local';
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:44](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L44)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:44](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L44)
 
 ***
 
@@ -292,7 +292,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:44](https://github.com/
 network: Network;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:65](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L65)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:65](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L65)
 
 ***
 
@@ -302,7 +302,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:65](https://github.com/
 privateKey: Uint8Array<ArrayBufferLike>;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:67](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L67)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:67](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L67)
 
 ***
 
@@ -312,7 +312,7 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:67](https://github.com/
 signatureType: "SECP256K1" | "BLS";
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:66](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L66)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:66](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L66)
 
 ***
 
@@ -322,4 +322,4 @@ Defined in: [packages/iso-filecoin/src/adapters/local.js:66](https://github.com/
 url: string = 'https://filecoin.io';
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/local.js:45](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/local.js#L45)
+Defined in: [packages/iso-filecoin/src/adapters/local.js:45](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/local.js#L45)

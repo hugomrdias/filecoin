@@ -5,7 +5,7 @@ prev: true
 title: "WalletAdapter"
 ---
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:61](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L61)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:61](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L61)
 
 Wallet adapter interface
 
@@ -21,7 +21,7 @@ Wallet adapter interface
 sign(data: Uint8Array): Promise<Signature>
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:83](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L83)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:83](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L83)
 
 Sign raw bytes
 
@@ -43,7 +43,7 @@ Sign raw bytes
 account: undefined | IAccount;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:69](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L69)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:69](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L69)
 
 ***
 
@@ -56,7 +56,7 @@ changeNetwork: (network: Network) => Promise<{
 }>;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:74](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L74)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:74](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L74)
 
 #### Parameters
 
@@ -79,7 +79,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:74](https://github.com/
 checkSupport: () => Promise<void>;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:70](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L70)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:70](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L70)
 
 #### Returns
 
@@ -93,7 +93,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:70](https://github.com/
 connect: () => Promise<void>;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:71](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L71)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:71](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L71)
 
 #### Returns
 
@@ -107,7 +107,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:71](https://github.com/
 readonly connected: boolean;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:68](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L68)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:68](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L68)
 
 ***
 
@@ -117,7 +117,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:68](https://github.com/
 readonly connecting: boolean;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:67](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L67)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:67](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L67)
 
 ***
 
@@ -127,7 +127,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:67](https://github.com/
 deriveAccount: (index: number) => Promise<IAccount>;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:73](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L73)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:73](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L73)
 
 #### Parameters
 
@@ -147,7 +147,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:73](https://github.com/
 disconnect: () => Promise<void>;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:72](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L72)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L72)
 
 #### Returns
 
@@ -161,7 +161,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:72](https://github.com/
 icon: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:64](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L64)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:64](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L64)
 
 ***
 
@@ -171,7 +171,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:64](https://github.com/
 name: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:62](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L62)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:62](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L62)
 
 ***
 
@@ -181,7 +181,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:62](https://github.com/
 network: Network;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:65](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L65)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:65](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L65)
 
 ***
 
@@ -202,7 +202,7 @@ signMessage: (message: {
 }) => Promise<Signature>;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:90](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L90)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:90](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L90)
 
 Sign filecoin message
 
@@ -234,7 +234,7 @@ Sign filecoin message
 readonly support: "NotChecked" | "Detected" | "NotDetected" | "NotSupported";
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:66](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L66)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:66](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L66)
 
 ***
 
@@ -244,4 +244,4 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:66](https://github.com/
 url: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:63](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L63)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:63](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L63)

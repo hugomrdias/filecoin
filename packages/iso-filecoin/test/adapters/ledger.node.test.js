@@ -92,7 +92,6 @@ for (const model of models) {
       })
       await transport.close()
       await sim.close()
-      console.log('snapshot')
       await deferred.promise
     })
   })

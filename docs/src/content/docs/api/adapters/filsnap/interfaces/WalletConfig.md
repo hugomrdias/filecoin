@@ -5,7 +5,7 @@ prev: true
 title: "WalletConfig"
 ---
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:21](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L21)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:21](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L21)
 
 ## Extended by
 
@@ -20,7 +20,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:21](https://github.com/
 optional network: Network;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:26](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L26)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:26](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L26)
 
 Network
 
@@ -38,7 +38,7 @@ mainnet
 optional signatureType: "SECP256K1" | "BLS";
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:31](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L31)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L31)
 
 Signature type
 

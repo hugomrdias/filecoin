@@ -12,7 +12,7 @@ function sign(
    data: Uint8Array<ArrayBufferLike>): Signature
 ```
 
-Defined in: [packages/iso-filecoin/src/wallet.js:232](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/wallet.js#L232)
+Defined in: [packages/iso-filecoin/src/wallet.js:232](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L232)
 
 Sign arbitary bytes similar to `lotus wallet sign`
 

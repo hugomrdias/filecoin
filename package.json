@@ -11,12 +11,12 @@
   },
   "scripts": {
     "format": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true .",
-    "clean": "rm -rf docs node_modules pnpm-lock.yaml packages/*/{pnpm-lock.yaml,coverage,.nyc_output,dist,node_modules} examples/*/{pnpm-lock.yaml,coverage,.nyc_output,dist,node_modules,.wireit}",
+    "clean": "rm -rf node_modules pnpm-lock.yaml packages/*/{pnpm-lock.yaml,coverage,.nyc_output,dist,node_modules} examples/*/{pnpm-lock.yaml,coverage,.nyc_output,dist,node_modules,.wireit} website/*/{pnpm-lock.yaml,.astro,dist,node_modules}",
     "lint": "pnpm -r --if-present run lint",
     "test": "pnpm -r --if-present run test",
     "check": "pnpm -r --if-present run check",
     "build": "pnpm -r --if-present run build",
-    "docs": "typedoc --out docs --plugin typedoc-plugin-missing-exports --plugin typedoc-plugin-zod --plugin typedoc-plugin-markdown"
+    "docs": "pnpm -r --filter website run build"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

@@ -5,7 +5,7 @@ prev: true
 title: "IAccount"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:52](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L52)
+Defined in: [packages/iso-filecoin/src/types.ts:52](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L52)
 
 Account interface
 
@@ -17,7 +17,7 @@ Account interface
 address: IAddress;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:54](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L54)
+Defined in: [packages/iso-filecoin/src/types.ts:54](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L54)
 
 ***
 
@@ -27,7 +27,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:54](https://github.com/hugomrdia
 optional path: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:59](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L59)
+Defined in: [packages/iso-filecoin/src/types.ts:59](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L59)
 
 Derivation path - only for HD wallets
 
@@ -39,7 +39,7 @@ Derivation path - only for HD wallets
 optional privateKey: Uint8Array<ArrayBufferLike>;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:63](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L63)
+Defined in: [packages/iso-filecoin/src/types.ts:63](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L63)
 
 Private key - only for RAW and HD wallets
 
@@ -51,7 +51,7 @@ Private key - only for RAW and HD wallets
 publicKey: Uint8Array;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:55](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L55)
+Defined in: [packages/iso-filecoin/src/types.ts:55](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L55)
 
 ***
 
@@ -61,4 +61,4 @@ Defined in: [packages/iso-filecoin/src/types.ts:55](https://github.com/hugomrdia
 type: "SECP256K1" | "BLS";
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:53](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L53)
+Defined in: [packages/iso-filecoin/src/types.ts:53](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L53)

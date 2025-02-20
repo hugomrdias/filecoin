@@ -5,7 +5,7 @@ prev: true
 title: "WalletHDConfig"
 ---
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:33](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L33)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L33)
 
 ## Extends
 
@@ -19,7 +19,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:33](https://github.com/
 optional index: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:38](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L38)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:38](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L38)
 
 Derivation path address index
 
@@ -37,7 +37,7 @@ Derivation path address index
 optional network: Network;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:26](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L26)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:26](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L26)
 
 Network
 
@@ -59,7 +59,7 @@ mainnet
 seed: Uint8Array;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:39](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L39)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:39](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L39)
 
 ***
 
@@ -69,7 +69,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:39](https://github.com/
 optional signatureType: "SECP256K1" | "BLS";
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:31](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L31)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L31)
 
 Signature type
 

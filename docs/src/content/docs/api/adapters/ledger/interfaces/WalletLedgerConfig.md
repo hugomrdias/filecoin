@@ -5,7 +5,7 @@ prev: true
 title: "WalletLedgerConfig"
 ---
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:46](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L46)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:46](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L46)
 
 ## Extends
 
@@ -19,7 +19,7 @@ Defined in: [packages/iso-filecoin/src/adapters/types.ts:46](https://github.com/
 optional index: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:51](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L51)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:51](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L51)
 
 Derivation path address index
 
@@ -37,7 +37,7 @@ Derivation path address index
 optional network: Network;
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:26](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L26)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:26](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L26)
 
 Network
 
@@ -59,7 +59,7 @@ mainnet
 optional signatureType: "SECP256K1" | "BLS";
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:31](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L31)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L31)
 
 Signature type
 
@@ -84,7 +84,7 @@ transport: {
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/adapters/types.ts:52](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/adapters/types.ts#L52)
+Defined in: [packages/iso-filecoin/src/adapters/types.ts:52](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/adapters/types.ts#L52)
 
 #### create()
 

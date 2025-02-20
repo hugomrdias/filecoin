@@ -7,7 +7,6 @@ import starlightTypeDoc, { typeDocSidebarGroup } from 'starlight-typedoc'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://hugomrdias.github.io/filecoin',
-  markdown: {},
   integrations: [
     starlight({
       title: 'iso-filecoin',
@@ -34,21 +33,31 @@ export default defineConfig({
         typeDocSidebarGroup,
       ],
       expressiveCode: {
-        plugins: [ecTwoSlash()],
+        plugins: [
+          ecTwoSlash({
+            twoslashOptions: {
+              compilerOptions: {
+                composite: true,
+              },
+            },
+          }),
+        ],
       },
       plugins: [
         starlightLlmsTxt(),
         starlightTypeDoc({
+          pagination: true,
           sidebar: {
             label: 'API Reference',
             collapsed: false,
           },
-          pagination: true,
           entryPoints: [
             '../packages/iso-filecoin/src/*.js',
             '../packages/iso-filecoin/src/adapters/*.js',
           ],
           typeDoc: {
+            githubPages: true,
+            gitRevision: 'main',
             plugin: [
               'typedoc-plugin-missing-exports',
               'typedoc-plugin-zod',

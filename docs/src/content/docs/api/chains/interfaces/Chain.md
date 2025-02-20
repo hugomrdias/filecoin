@@ -5,7 +5,7 @@ prev: true
 title: "Chain"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:139](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L139)
+Defined in: [packages/iso-filecoin/src/types.ts:139](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L139)
 
 ## Properties
 
@@ -17,7 +17,7 @@ optional blockExplorers: {
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:152](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L152)
+Defined in: [packages/iso-filecoin/src/types.ts:152](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L152)
 
 #### Index Signature
 
@@ -39,7 +39,7 @@ default: ChainBlockExplorer;
 caipId: `${string}:${string}`;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:162](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L162)
+Defined in: [packages/iso-filecoin/src/types.ts:162](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L162)
 
 CAIP-2 chain ID
 
@@ -51,7 +51,7 @@ CAIP-2 chain ID
 chainId: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:166](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L166)
+Defined in: [packages/iso-filecoin/src/types.ts:166](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L166)
 
 Chain ID 0x prefixed hex string
 
@@ -63,7 +63,7 @@ Chain ID 0x prefixed hex string
 optional contracts: {};
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:156](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L156)
+Defined in: [packages/iso-filecoin/src/types.ts:156](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L156)
 
 #### Index Signature
 
@@ -79,7 +79,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:156](https://github.com/hugomrdi
 optional iconUrls: string[];
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:167](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L167)
+Defined in: [packages/iso-filecoin/src/types.ts:167](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L167)
 
 ***
 
@@ -89,7 +89,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:167](https://github.com/hugomrdi
 id: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:140](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L140)
+Defined in: [packages/iso-filecoin/src/types.ts:140](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L140)
 
 ***
 
@@ -99,7 +99,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:140](https://github.com/hugomrdi
 name: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:141](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L141)
+Defined in: [packages/iso-filecoin/src/types.ts:141](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L141)
 
 ***
 
@@ -113,7 +113,7 @@ nativeCurrency: {
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:143](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L143)
+Defined in: [packages/iso-filecoin/src/types.ts:143](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L143)
 
 #### decimals
 
@@ -143,7 +143,7 @@ rpcUrls: {
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:148](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L148)
+Defined in: [packages/iso-filecoin/src/types.ts:148](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L148)
 
 #### Index Signature
 
@@ -165,4 +165,4 @@ default: ChainRpcUrls;
 optional testnet: boolean;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:142](https://github.com/hugomrdias/filecoin/blob/785c3411e0df74cabd3b2718e9d4a52c466ba914/packages/iso-filecoin/src/types.ts#L142)
+Defined in: [packages/iso-filecoin/src/types.ts:142](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L142)
