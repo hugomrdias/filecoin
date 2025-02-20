@@ -4,20 +4,37 @@ import ecTwoSlash from 'expressive-code-twoslash'
 import starlightLlmsTxt from 'starlight-llms-txt'
 import starlightTypeDoc, { typeDocSidebarGroup } from 'starlight-typedoc'
 
+const site = 'https://filecoin.hugomrdias.dev'
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://filecoin.hugomrdias.dev',
+  site,
   integrations: [
     starlight({
       title: 'iso-filecoin',
-      logo: { src: './public/filecoin-logo.svg' },
+      logo: { src: './public/filecoin-logo.svg', alt: 'iso-filecoin' },
       favicon: 'filecoin-logo.svg',
+      head: [
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:image',
+            content: new URL('corgi.jpg?v=1', site).href,
+          },
+        },
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:image:alt',
+            content: 'Connect apps to the Filecoin blockhain with iso-filecoin',
+          },
+        },
+      ],
       social: {
         github: 'https://github.com/hugomrdias/filecoin',
         'x.com': 'https://x.com/hugomrdias',
       },
       editLink: {
-        baseUrl: 'https://github.com/hugomrdias/filecoin/edit/main/website/',
+        baseUrl: 'https://github.com/hugomrdias/filecoin/edit/main/docs/',
       },
       lastUpdated: true,
       sidebar: [
@@ -44,7 +61,16 @@ export default defineConfig({
             collapsed: false,
           },
           entryPoints: [
-            '../packages/iso-filecoin/src/*.js',
+            '../packages/iso-filecoin/src/address.js',
+            '../packages/iso-filecoin/src/chains.js',
+            '../packages/iso-filecoin/src/ledger.js',
+            '../packages/iso-filecoin/src/message.js',
+            '../packages/iso-filecoin/src/rpc.js',
+            '../packages/iso-filecoin/src/signature.js',
+            '../packages/iso-filecoin/src/token.js',
+            '../packages/iso-filecoin/src/types.js',
+            '../packages/iso-filecoin/src/utils.js',
+            '../packages/iso-filecoin/src/wallet.js',
             '../packages/iso-filecoin/src/adapters/*.js',
           ],
           typeDoc: {
