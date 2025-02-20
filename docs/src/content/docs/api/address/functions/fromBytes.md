@@ -1,0 +1,25 @@
+---
+editUrl: false
+next: true
+prev: true
+title: "fromBytes"
+---
+
+```ts
+function fromBytes(bytes: Uint8Array<ArrayBufferLike>, network: Network): IAddress
+```
+
+Defined in: [packages/iso-filecoin/src/address.js:237](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L237)
+
+Create address from bytes
+
+## Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `bytes` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\> |  |
+| `network` | [`Network`](/api/adapters/filsnap/type-aliases/network/) |  |
+
+## Returns
+
+[`IAddress`](/api/address/interfaces/iaddress/)

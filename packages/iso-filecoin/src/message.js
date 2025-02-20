@@ -7,9 +7,8 @@ import { Token } from './token.js'
 import { lotusCid } from './utils.js'
 
 /**
- * @typedef {z.infer<typeof MessageSchema>} MessageObj
- *
- * @typedef {import('type-fest').SetOptional<MessageObj, 'version' | 'nonce' | 'gasLimit' | 'gasFeeCap' | 'gasPremium' | 'method' | 'params'>} PartialMessageObj
+ * @typedef {import('./types.js').MessageObj} MessageObj
+ * @typedef {import('./types.js').PartialMessageObj} PartialMessageObj
  */
 
 /**

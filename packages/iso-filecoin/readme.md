@@ -39,7 +39,7 @@ const address = account.address.toString() // 'f17levgrkmq7jeloew44ixqokvl4qdozv
 
 ## Docs
 
-Check <https://hugomrdias.github.io/filecoin>
+Check [docs website](https://filecoin.hugomrdias.dev)
 
 ## Contributing
 

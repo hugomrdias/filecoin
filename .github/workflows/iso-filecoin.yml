@@ -28,6 +28,7 @@ jobs:
           node-version: lts/*
           cache: pnpm
       - run: pnpm install
+      - run: pnpm run lint
       - run: pnpm run build
       - run: pnpm -r --filter iso-filecoin run lint
       - run: pnpm -r --filter iso-filecoin run test

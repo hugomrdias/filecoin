@@ -2,7 +2,7 @@
   "extends": "@hugomrdias/configs/tsconfig",
   "typedocOptions": {
     "entryPointStrategy": "packages",
-    "entryPoints": ["packages/iso-filecoin", "packages/iso-filecoin-react"],
+    "entryPoints": ["packages/*"],
     "excludeExternals": true,
     "darkHighlightTheme": "github-dark",
     "sourceLinkExternal": true,

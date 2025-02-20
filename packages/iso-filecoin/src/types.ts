@@ -1,9 +1,10 @@
 import type BigNumber from 'bignumber.js'
 import type { Driver } from 'iso-kv'
-import type { JsonValue } from 'type-fest'
+import type { JsonValue, SetOptional } from 'type-fest'
+import type { z } from 'zod'
 import type { WalletSupport as _WalletSupport } from './adapters/common'
 import type { AddressId, PROTOCOL_INDICATOR } from './address'
-import type { MessageObj, PartialMessageObj } from './message.js'
+import type { MessageSchema } from './message.js'
 import type { RPC } from './rpc'
 import type { SignatureObj, SignatureType } from './signature'
 
@@ -17,6 +18,18 @@ export type {
   SignatureType,
 } from './signature.js'
 export type * from './adapters/types'
+
+export type MessageObj = z.infer<typeof MessageSchema>
+export type PartialMessageObj = SetOptional<
+  MessageObj,
+  | 'version'
+  | 'nonce'
+  | 'gasLimit'
+  | 'gasFeeCap'
+  | 'gasPremium'
+  | 'method'
+  | 'params'
+>
 
 export type ProtocolIndicator = typeof PROTOCOL_INDICATOR
 export type ProtocolIndicatorCode = ProtocolIndicator[keyof ProtocolIndicator]

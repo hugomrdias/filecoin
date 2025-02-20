@@ -52,7 +52,7 @@ Check out the [demo](../../examples/demo) for a working example and the [API](ht
 
 ## Docs
 
-Check <https://hugomrdias.github.io/filecoin>
+Check the [docs website](https://hugomrdias.github.io/filecoin)
 
 ## Contributing
 
