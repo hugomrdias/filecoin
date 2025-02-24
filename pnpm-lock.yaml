@@ -24,20 +24,20 @@ importers:
         specifier: ^2.11.1
         version: 2.11.1
       typedoc:
-        specifier: ^0.27.7
-        version: 0.27.7(typescript@5.7.3)
+        specifier: ^0.27.8
+        version: 0.27.8(typescript@5.7.3)
       typedoc-plugin-markdown:
         specifier: ^4.4.2
-        version: 4.4.2(typedoc@0.27.7(typescript@5.7.3))
+        version: 4.4.2(typedoc@0.27.8(typescript@5.7.3))
       typedoc-plugin-mdn-links:
         specifier: ^4.0.13
-        version: 4.0.13(typedoc@0.27.7(typescript@5.7.3))
+        version: 4.0.13(typedoc@0.27.8(typescript@5.7.3))
       typedoc-plugin-missing-exports:
         specifier: ^3.1.0
-        version: 3.1.0(typedoc@0.27.7(typescript@5.7.3))
+        version: 3.1.0(typedoc@0.27.8(typescript@5.7.3))
       typedoc-plugin-zod:
         specifier: ^1.3.1
-        version: 1.3.1(typedoc@0.27.7(typescript@5.7.3))
+        version: 1.3.1(typedoc@0.27.8(typescript@5.7.3))
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -58,13 +58,13 @@ importers:
         version: 0.4.1(@astrojs/starlight@0.32.1(astro@5.3.0(@types/node@22.13.4)(idb-keyval@6.2.1)(rollup@4.34.8)(typescript@5.7.3)(yaml@2.7.0)))(astro@5.3.0(@types/node@22.13.4)(idb-keyval@6.2.1)(rollup@4.34.8)(typescript@5.7.3)(yaml@2.7.0))
       starlight-typedoc:
         specifier: ^0.19.0
-        version: 0.19.0(@astrojs/starlight@0.32.1(astro@5.3.0(@types/node@22.13.4)(idb-keyval@6.2.1)(rollup@4.34.8)(typescript@5.7.3)(yaml@2.7.0)))(typedoc-plugin-markdown@4.4.2(typedoc@0.27.7(typescript@5.7.3)))(typedoc@0.27.7(typescript@5.7.3))
+        version: 0.19.0(@astrojs/starlight@0.32.1(astro@5.3.0(@types/node@22.13.4)(idb-keyval@6.2.1)(rollup@4.34.8)(typescript@5.7.3)(yaml@2.7.0)))(typedoc-plugin-markdown@4.4.2(typedoc@0.27.8(typescript@5.7.3)))(typedoc@0.27.8(typescript@5.7.3))
       typedoc:
-        specifier: ^0.27.7
-        version: 0.27.7(typescript@5.7.3)
+        specifier: ^0.27.8
+        version: 0.27.8(typescript@5.7.3)
       typedoc-plugin-markdown:
         specifier: ^4.4.2
-        version: 4.4.2(typedoc@0.27.7(typescript@5.7.3))
+        version: 4.4.2(typedoc@0.27.8(typescript@5.7.3))
     devDependencies:
       iso-filecoin:
         specifier: workspace:^
@@ -4156,8 +4156,8 @@ packages:
     peerDependencies:
       typedoc: 0.23.x || 0.24.x || 0.25.x || 0.26.x || 0.27.x
 
-  typedoc@0.27.7:
-    resolution: {integrity: sha512-K/JaUPX18+61W3VXek1cWC5gwmuLvYTOXJzBvD9W7jFvbPnefRnCHQCEPw7MSNrP/Hj7JJrhZtDDLKdcYm6ucg==}
+  typedoc@0.27.8:
+    resolution: {integrity: sha512-q0/2TUunNEDmWkn23ULKGXieK8cgGuAmBUXC/HcZ/rgzMI9Yr4Nq3in1K1vT1NZ9zx6M78yTk3kmIPbwJgK5KA==}
     engines: {node: '>= 18'}
     hasBin: true
     peerDependencies:
@@ -9161,12 +9161,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  starlight-typedoc@0.19.0(@astrojs/starlight@0.32.1(astro@5.3.0(@types/node@22.13.4)(idb-keyval@6.2.1)(rollup@4.34.8)(typescript@5.7.3)(yaml@2.7.0)))(typedoc-plugin-markdown@4.4.2(typedoc@0.27.7(typescript@5.7.3)))(typedoc@0.27.7(typescript@5.7.3)):
+  starlight-typedoc@0.19.0(@astrojs/starlight@0.32.1(astro@5.3.0(@types/node@22.13.4)(idb-keyval@6.2.1)(rollup@4.34.8)(typescript@5.7.3)(yaml@2.7.0)))(typedoc-plugin-markdown@4.4.2(typedoc@0.27.8(typescript@5.7.3)))(typedoc@0.27.8(typescript@5.7.3)):
     dependencies:
       '@astrojs/starlight': 0.32.1(astro@5.3.0(@types/node@22.13.4)(idb-keyval@6.2.1)(rollup@4.34.8)(typescript@5.7.3)(yaml@2.7.0))
       github-slugger: 2.0.0
-      typedoc: 0.27.7(typescript@5.7.3)
-      typedoc-plugin-markdown: 4.4.2(typedoc@0.27.7(typescript@5.7.3))
+      typedoc: 0.27.8(typescript@5.7.3)
+      typedoc-plugin-markdown: 4.4.2(typedoc@0.27.8(typescript@5.7.3))
 
   stdin-discarder@0.2.2: {}
 
@@ -9329,23 +9329,23 @@ snapshots:
 
   type-fest@4.35.0: {}
 
-  typedoc-plugin-markdown@4.4.2(typedoc@0.27.7(typescript@5.7.3)):
+  typedoc-plugin-markdown@4.4.2(typedoc@0.27.8(typescript@5.7.3)):
     dependencies:
-      typedoc: 0.27.7(typescript@5.7.3)
+      typedoc: 0.27.8(typescript@5.7.3)
 
-  typedoc-plugin-mdn-links@4.0.13(typedoc@0.27.7(typescript@5.7.3)):
+  typedoc-plugin-mdn-links@4.0.13(typedoc@0.27.8(typescript@5.7.3)):
     dependencies:
-      typedoc: 0.27.7(typescript@5.7.3)
+      typedoc: 0.27.8(typescript@5.7.3)
 
-  typedoc-plugin-missing-exports@3.1.0(typedoc@0.27.7(typescript@5.7.3)):
+  typedoc-plugin-missing-exports@3.1.0(typedoc@0.27.8(typescript@5.7.3)):
     dependencies:
-      typedoc: 0.27.7(typescript@5.7.3)
+      typedoc: 0.27.8(typescript@5.7.3)
 
-  typedoc-plugin-zod@1.3.1(typedoc@0.27.7(typescript@5.7.3)):
+  typedoc-plugin-zod@1.3.1(typedoc@0.27.8(typescript@5.7.3)):
     dependencies:
-      typedoc: 0.27.7(typescript@5.7.3)
+      typedoc: 0.27.8(typescript@5.7.3)
 
-  typedoc@0.27.7(typescript@5.7.3):
+  typedoc@0.27.8(typescript@5.7.3):
     dependencies:
       '@gerrit0/mini-shiki': 1.27.2
       lunr: 2.3.9
