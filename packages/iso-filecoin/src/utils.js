@@ -4,10 +4,7 @@ import { utf8 } from 'iso-base/utf8'
 import { concat } from 'iso-base/utils'
 import { KV } from 'iso-kv'
 import { MemoryDriver } from 'iso-kv/drivers/memory.js'
-
-/**
- * @import {ZodError} from 'zod'
- */
+import { mainnet, testnet } from './chains.js'
 
 /**
  * @typedef {import('./types').NetworkPrefix} NetworkPrefix
@@ -60,6 +57,28 @@ export function getNetworkFromPath(path) {
     return 'testnet'
   }
   return 'mainnet'
+}
+
+/**
+ * Get network from any chain designation
+ *
+ * @param {number | string} chainId
+ */
+export function getNetworkFromChainId(chainId) {
+  switch (chainId) {
+    case testnet.id:
+    case testnet.chainId:
+    case testnet.caipId:
+    case 'testnet':
+      return 'testnet'
+    case mainnet.id:
+    case mainnet.chainId:
+    case mainnet.caipId:
+    case 'mainnet':
+      return 'mainnet'
+    default:
+      throw new Error(`Unknown chain id: ${chainId}`)
+  }
 }
 
 /**
