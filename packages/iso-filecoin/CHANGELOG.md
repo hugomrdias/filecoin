@@ -1,5 +1,19 @@
 # Changelog
 
+## [7.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.0.2...iso-filecoin-v7.1.0) (2025-02-25)
+
+
+### Features
+
+* **utils:** add new method `getNetworkFromChainId` ([f95f14a](https://github.com/hugomrdias/filecoin/commit/f95f14a51ad01104e3bacbbf4bf29e006bdce10d))
+
+
+### Bug Fixes
+
+* add base64 validation to message schema ([4bd8cbe](https://github.com/hugomrdias/filecoin/commit/4bd8cbe9619fb260ab1b625b277a24dc816b2cf2))
+* use base64pad in signature ([5e1fb2d](https://github.com/hugomrdias/filecoin/commit/5e1fb2dae3449aa958125814f77850108c6002d9))
+* **utils:** fix types ([11da5e3](https://github.com/hugomrdias/filecoin/commit/11da5e3c2306f5071c5f3de09f55afdadc56db7b))
+
 ## [7.0.2](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.0.1...iso-filecoin-v7.0.2) (2025-02-20)
 
 
