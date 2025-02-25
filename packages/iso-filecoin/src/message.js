@@ -35,7 +35,7 @@ export const MessageSchema = z.object({
   /**
    * Params encoded as base64pad
    */
-  params: z.string().default(''),
+  params: z.string().base64().default(''),
 })
 
 const MessageSchemaPartial = MessageSchema.partial({
