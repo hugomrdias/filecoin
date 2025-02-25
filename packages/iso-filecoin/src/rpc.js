@@ -124,6 +124,10 @@ export class ValidationRpcError extends RpcError {
  */
 export class RPC {
   /**
+   *
+   * TODO: remove fetch from Options and use fetch from RequestOptions
+   * TODO: either remove token or merge this.headers with fetchOptions.headers
+   *
    * @param {Options} options
    * @param {RequestOptions} [fetchOptions]
    */

@@ -1,4 +1,4 @@
-import { base64, hex } from 'iso-base/rfc4648'
+import { base64pad, hex } from 'iso-base/rfc4648'
 import { concat, isBufferSource, u8 } from 'iso-base/utils'
 import { z } from 'zod'
 
@@ -63,7 +63,7 @@ export class Signature {
     json = Schemas.lotusSignature.parse(json)
     return new Signature({
       type: SIGNATURE_CODE[json.Type],
-      data: base64.decode(json.Data),
+      data: base64pad.decode(json.Data),
     })
   }
 
@@ -75,7 +75,7 @@ export class Signature {
   toLotus() {
     return {
       Type: this.code,
-      Data: base64.encode(this.data, true),
+      Data: base64pad.encode(this.data),
     }
   }
 
