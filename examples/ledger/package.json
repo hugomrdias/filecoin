@@ -33,7 +33,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@hugomrdias/configs": "^0.1.9",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@types/w3c-web-hid": "^1.0.6",
