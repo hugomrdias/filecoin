@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.1.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.1.0...iso-filecoin-v7.1.1) (2025-03-13)
+
+
+### Bug Fixes
+
+* remove adapters ([6b2846d](https://github.com/hugomrdias/filecoin/commit/6b2846dca7ce94367389b4409c19fc71783b5245))
+
 ## [7.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.0.2...iso-filecoin-v7.1.0) (2025-02-25)
 
 
