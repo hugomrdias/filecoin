@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v1.0.0...iso-filecoin-react-v1.0.1) (2025-03-13)
+
+
+### Bug Fixes
+
+* **react:** use adapters and update deps ([00b6809](https://github.com/hugomrdias/filecoin/commit/00b680997c102a0797c322379f7c56228d9de3e6))
+
 ## [1.0.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v0.0.1...iso-filecoin-react-v1.0.0) (2025-02-18)
 
 
