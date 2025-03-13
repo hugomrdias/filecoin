@@ -1,8 +1,8 @@
 {
   "name": "iso-filecoin-wallets",
   "type": "module",
-  "version": "0.0.1",
-  "description": "Filecoin Wallet Adapters.", 
+  "version": "0.0.2",
+  "description": "Filecoin Wallet Adapters.",
   "author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
   "license": "MIT",
   "homepage": "https://github.com/hugomrdias/filecoin/tree/main/packages/iso-filecoin-wallets",
