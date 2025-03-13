@@ -1,13 +1,3 @@
 {
-  "extends": "@hugomrdias/configs/tsconfig",
-  "typedocOptions": {
-    "entryPointStrategy": "packages",
-    "entryPoints": ["packages/*"],
-    "excludeExternals": true,
-    "darkHighlightTheme": "github-dark",
-    "sourceLinkExternal": true,
-    "navigationLinks": {
-      "Github": "https://github.com/hugomrdias/filecoin"
-    }
-  }
+  "extends": "@hugomrdias/configs/tsconfig"
 }

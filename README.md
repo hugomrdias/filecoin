@@ -1,4 +1,4 @@
-# Filecoin Monorepo
+# Filecoin Javascripts Packages
 
 This monorepo contains javascript packages to interact with the Filecoin blockchain.
 
