@@ -1,0 +1,121 @@
+{
+  "name": "iso-filecoin-wallets",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Filecoin Wallet Adapters.", 
+  "author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
+  "license": "MIT",
+  "homepage": "https://github.com/hugomrdias/filecoin/tree/main/packages/iso-filecoin-wallets",
+  "repository": {
+    "url": "hugomrdias/filecoin",
+    "directory": "packages/iso-filecoin-wallets"
+  },
+  "keywords": [
+    "token",
+    "filecoin",
+    "crypto",
+    "wallet",
+    "ledger",
+    "metamask",
+    "adapter",
+    "snap",
+    "filsnap"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./src/index.js",
+      "require": "./dist/cjs/src/index.cjs"
+    },
+    "./filsnap": {
+      "types": "./dist/src/filsnap.d.ts",
+      "import": "./src/filsnap.js",
+      "require": "./dist/cjs/src/filsnap.cjs"
+    },
+    "./ledger": {
+      "types": "./dist/src/ledger.d.ts",
+      "import": "./src/ledger.js",
+      "require": "./dist/cjs/src/ledger.cjs"
+    },
+    "./hd": {
+      "types": "./dist/src/hd.d.ts",
+      "import": "./src/hd.js",
+      "require": "./dist/cjs/src/hd.cjs"
+    },
+    "./local": {
+      "types": "./dist/src/local.d.ts",
+      "import": "./src/local.js",
+      "require": "./dist/cjs/src/local.cjs"
+    },
+    "./types": {
+      "types": "./dist/src/types.d.ts"
+    }
+  },
+  "main": "src/index.js",
+  "types": "dist/src/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "filsnap": [
+        "dist/src/filsnap"
+      ],
+      "ledger": [
+        "dist/src/ledger"
+      ],
+      "hd": [
+        "dist/src/hd"
+      ],
+      "local": [
+        "dist/src/local"
+      ],
+      "types": [
+        "dist/src/types"
+      ]
+    }
+  },
+  "files": [
+    "src",
+    "dist/src/**/*.d.ts",
+    "dist/src/**/*.d.ts.map"
+  ],
+  "scripts": {
+    "lint": "tsc --build && biome check --no-errors-on-unmatched --files-ignore-unknown=true .",
+    "test": "tsc --build && pnpm run test:node && pnpm run test:browser",
+    "test:node": "mocha 'test/**/!(*.browser).test.js' --require ./test/setup.js",
+    "test:browser": "playwright-test 'test/**/!(*.node).test.js' --runner mocha",
+    "check": "biome check --no-errors-on-unmatched --files-ignore-unknown=true ."
+  },
+  "dependencies": {
+    "filsnap-adapter": "~3.0.2",
+    "iso-base": "^4.0.2",
+    "iso-web": "^1.1.0"
+  },
+  "devDependencies": {
+    "@ledgerhq/hw-transport": "^6.31.4",
+    "@types/assert": "^1.5.11",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.13.10",
+    "@zondax/zemu": "^0.54.0",
+    "assert": "^2.1.0",
+    "mocha": "^11.0.1",
+    "p-defer": "^4.0.1",
+    "playwright-test": "^14.1.9",
+    "rimraf": "^6.0.1",
+    "typescript": "5.8.2"
+  },
+  "peerDependencies": {
+    "iso-filecoin": "workspace:*"
+  },
+  "publishConfig": {
+    "provenance": true
+  },
+  "depcheck": {
+    "specials": [
+      "bin"
+    ],
+    "ignores": [
+      "@types/*",
+      "assert",
+      "rimraf"
+    ]
+  }
+}
