@@ -23,7 +23,7 @@
     "@ledgerhq/logs": "^6.12.0",
     "@tanstack/react-query": "^5.67.3",
     "clsx": "^2.1.0",
-    "iso-filecoin": "workspace:*",
+    "iso-filecoin": "workspace:^",
     "iso-filecoin-react": "workspace:*",
     "iso-filecoin-wallets": "workspace:*",
     "react-dom": "^19.0.0",
