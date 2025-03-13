@@ -1,10 +1,12 @@
-# Filecoin Javascripts Packages
+# Filecoin Javascript Packages
 
 This monorepo contains javascript packages to interact with the Filecoin blockchain.
 
 ## Packages
 
-- [iso-filecoin](https://github.com/hugomrdias/filecoin/tree/main/packages/iso-filecoin) - Isomorphic filecoin abstractions for RPC, signatures, address, token and wallet. Used by the [Metamask Filecoin Wallet](https://github.com/filecoin-project/filsnap) and [Ledger Live Filecoin app](https://www.ledger.com/coin/wallet/filecoin).
+- [iso-filecoin](https://github.com/hugomrdias/filecoin/tree/main/packages/iso-filecoin) - Filecoin Javascript Standard Library. Used by the [Metamask Filecoin Wallet](https://github.com/filecoin-project/filsnap) and [Ledger Live Filecoin app](https://www.ledger.com/coin/wallet/filecoin).
+- [iso-filecoin-react](https://github.com/hugomrdias/filecoin/tree/main/packages/iso-filecoin-react) - React hooks and context for Filecoin wallets.
+- [iso-filecoin-wallets](https://github.com/hugomrdias/filecoin/tree/main/packages/iso-filecoin-wallets) - Filecoin Wallet Adapters.
 
 ## Docs
 
