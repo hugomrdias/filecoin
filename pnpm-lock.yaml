@@ -236,9 +236,6 @@ importers:
       mocha:
         specifier: ^11.0.1
         version: 11.1.0
-      p-defer:
-        specifier: ^4.0.1
-        version: 4.0.1
       playwright-test:
         specifier: ^14.1.9
         version: 14.1.9
@@ -305,7 +302,7 @@ importers:
     dependencies:
       filsnap-adapter:
         specifier: ~3.0.2
-        version: 3.0.2(typescript@5.8.2)(webextension-polyfill@0.12.0)
+        version: 3.0.2(iso-filecoin@packages+iso-filecoin)(typescript@5.8.2)(webextension-polyfill@0.12.0)
       iso-base:
         specifier: ^4.0.2
         version: 4.0.2
@@ -6814,10 +6811,11 @@ snapshots:
     dependencies:
       to-regex-range: 5.0.1
 
-  filsnap-adapter@3.0.2(typescript@5.8.2)(webextension-polyfill@0.12.0):
+  filsnap-adapter@3.0.2(iso-filecoin@packages+iso-filecoin)(typescript@5.8.2)(webextension-polyfill@0.12.0):
     dependencies:
-      filsnap: 1.5.4(typescript@5.8.2)(webextension-polyfill@0.12.0)
+      filsnap: 1.5.4(iso-filecoin@packages+iso-filecoin)(typescript@5.8.2)(webextension-polyfill@0.12.0)
       iso-base: 4.0.2
+      iso-filecoin: link:packages/iso-filecoin
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -6825,13 +6823,14 @@ snapshots:
       - utf-8-validate
       - webextension-polyfill
 
-  filsnap@1.5.4(typescript@5.8.2)(webextension-polyfill@0.12.0):
+  filsnap@1.5.4(iso-filecoin@packages+iso-filecoin)(typescript@5.8.2)(webextension-polyfill@0.12.0):
     dependencies:
       '@metamask/key-tree': 10.1.0
       '@metamask/snaps-sdk': 6.17.1(webextension-polyfill@0.12.0)
       '@paulmillr/qr': 0.3.0
       dequal: 2.0.3
       iso-base: 4.0.2
+      iso-filecoin: link:packages/iso-filecoin
       merge-options: 3.0.4
       viem: 2.23.10(typescript@5.8.2)(zod@3.24.2)
       zod: 3.24.2
