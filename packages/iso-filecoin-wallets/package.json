@@ -2,7 +2,7 @@
   "name": "iso-filecoin-wallets",
   "type": "module",
   "version": "0.0.1",
-  "description": "Filecoin Wallet Adapters.", 
+  "description": "Filecoin Wallet Adapters.",
   "author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
   "license": "MIT",
   "homepage": "https://github.com/hugomrdias/filecoin/tree/main/packages/iso-filecoin-wallets",
@@ -94,7 +94,7 @@
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.13.10",
-    "@zondax/zemu": "^0.54.0",
+    "@zondax/zemu": "^0.55.0",
     "assert": "^2.1.0",
     "mocha": "^11.0.1",
     "p-defer": "^4.0.1",
@@ -103,7 +103,7 @@
     "typescript": "5.8.2"
   },
   "peerDependencies": {
-    "iso-filecoin": "workspace:*"
+    "iso-filecoin": "workspace:^"
   },
   "publishConfig": {
     "provenance": true

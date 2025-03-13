@@ -61,7 +61,7 @@
 	},
 	"peerDependencies": {
 		"@tanstack/react-query": ">=5.0.0",
-		"iso-filecoin": "workspace:*",
+		"iso-filecoin": "workspace:^",
 		"react": ">=18"
 	},
 	"dependencies": {
