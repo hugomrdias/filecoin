@@ -1,7 +1,7 @@
 {
   "name": "iso-filecoin",
   "type": "module",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "description": "Isomorphic filecoin abstractions for RPC, signatures, address, token and wallet",
   "author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
   "license": "MIT",
@@ -154,7 +154,6 @@
     "assert": "^2.1.0",
     "glob": "^11.0.1",
     "mocha": "^11.0.1",
-    "p-defer": "^4.0.1",
     "playwright-test": "^14.1.9",
     "rimraf": "^6.0.1",
     "rollup": "^4.35.0",
