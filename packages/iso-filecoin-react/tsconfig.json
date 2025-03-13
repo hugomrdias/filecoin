@@ -8,7 +8,10 @@
   "include": ["src", "test"],
   "exclude": ["node_modules", "dist", "out"],
 
-  "references": [{ "path": "../iso-filecoin" }],
+  "references": [
+    { "path": "../iso-filecoin" },
+    { "path": "../iso-filecoin-wallets" }
+  ],
   "typedocOptions": {
     "entryPointStrategy": "resolve",
     "entryPoints": ["src/index.js"],

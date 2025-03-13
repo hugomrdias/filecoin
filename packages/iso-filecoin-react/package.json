@@ -2,7 +2,7 @@
 	"name": "iso-filecoin-react",
 	"type": "module",
 	"version": "1.0.0",
-	"description": "Context and hook for filecoin wallets.",
+	"description": "Context and hooks for Filecoin wallets.",
 	"author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
 	"funding": "https://github.com/sponsors/hugomrdias",
 	"license": "MIT",
@@ -60,16 +60,17 @@
 		"test": "playwright-test --runner mocha"
 	},
 	"peerDependencies": {
+		"@tanstack/react-query": ">=5.0.0",
+		"iso-filecoin": "workspace:*",
 		"react": ">=18"
 	},
 	"dependencies": {
-		"@tanstack/react-query": "^5.66.7",
-		"iso-filecoin": "workspace:^"
+		"iso-filecoin-wallets": "workspace:*"
 	},
 	"devDependencies": {
 		"@testing-library/react": "^16.2.0",
 		"@types/mocha": "^10.0.10",
-		"@types/node": "^22.13.4",
+		"@types/node": "^22.13.10",
 		"@types/react": "^19.0.10",
 		"@types/react-dom": "^19.0.4",
 		"assert": "^2.1.0",
@@ -77,7 +78,7 @@
 		"playwright-test": "^14.1.9",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"typescript": "5.7.3"
+		"typescript": "5.8.2"
 	},
 	"publishConfig": {
 		"provenance": true

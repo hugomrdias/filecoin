@@ -1,13 +1,9 @@
+import type { WalletAdapter } from 'iso-filecoin-wallets/types'
 import type { RPC } from 'iso-filecoin/rpc'
-import type {
-  Chain,
-  IAccount,
-  Network,
-  WalletAdapter,
-} from 'iso-filecoin/types'
+import type { Chain, IAccount, Network } from 'iso-filecoin/types'
 
-export type { WalletAdapter, IAccount, Network } from 'iso-filecoin/types'
-
+export type { IAccount, Network } from 'iso-filecoin/types'
+export type { WalletAdapter } from 'iso-filecoin-wallets/types'
 export interface WalletProviderProps {
   /**
    * @default 'mainnet'
