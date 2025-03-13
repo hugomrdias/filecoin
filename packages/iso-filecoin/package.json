@@ -137,7 +137,6 @@
     "@scure/bip32": "^1.6.1",
     "@scure/bip39": "^1.5.1",
     "bignumber.js": "^9.1.2",
-    "filsnap-adapter": "^2.0.2",
     "iso-base": "^4.0.2",
     "iso-kv": "^3.0.3",
     "iso-web": "^1.1.0",
@@ -146,11 +145,11 @@
   },
   "devDependencies": {
     "@ledgerhq/hw-transport": "^6.31.4",
-    "@rollup/plugin-commonjs": "^28.0.2",
-    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.10",
     "@zondax/zemu": "^0.54.0",
     "assert": "^2.1.0",
     "glob": "^11.0.1",
@@ -158,9 +157,9 @@
     "p-defer": "^4.0.1",
     "playwright-test": "^14.1.9",
     "rimraf": "^6.0.1",
-    "rollup": "^4.34.8",
-    "type-fest": "^4.35.0",
-    "typescript": "5.7.3"
+    "rollup": "^4.35.0",
+    "type-fest": "^4.37.0",
+    "typescript": "5.8.2"
   },
   "publishConfig": {
     "provenance": true

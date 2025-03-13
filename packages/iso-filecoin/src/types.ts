@@ -1,12 +1,16 @@
+import type _LedgerTransport from '@ledgerhq/hw-transport/lib-es/Transport'
 import type BigNumber from 'bignumber.js'
 import type { Driver } from 'iso-kv'
-import type { JsonValue, SetOptional } from 'type-fest'
+import type { JsonValue, SetOptional, SetRequired } from 'type-fest'
 import type { z } from 'zod'
-import type { WalletSupport as _WalletSupport } from './adapters/common'
+// import type { WalletSupport as _WalletSupport } from './adapters/common'
 import type { AddressId, PROTOCOL_INDICATOR } from './address'
 import type { MessageSchema } from './message.js'
 import type { RPC } from './rpc'
 import type { SignatureObj, SignatureType } from './signature'
+
+export type Transport = _LedgerTransport
+export type TransportImpl = typeof _LedgerTransport
 
 export type { MaybeResult } from 'iso-web/types'
 export type * from './message.js'
@@ -17,7 +21,7 @@ export type {
   SignatureObj,
   SignatureType,
 } from './signature.js'
-export type * from './adapters/types'
+// export type * from './adapters/types'
 
 export type MessageObj = z.infer<typeof MessageSchema>
 export type PartialMessageObj = SetOptional<
@@ -62,6 +66,7 @@ export interface IAccount {
    */
   privateKey?: Uint8Array
 }
+export type IAccountWithPath = SetRequired<IAccount, 'path'>
 
 /**
  * Address types
