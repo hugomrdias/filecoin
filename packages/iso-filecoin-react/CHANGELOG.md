@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v1.0.1...iso-filecoin-react-v1.1.0) (2025-03-18)
+
+
+### Features
+
+* **react:** extract everything into hooks ([af0e3f5](https://github.com/hugomrdias/filecoin/commit/af0e3f59ff82a0da03ad91b26fd4e81186241bf9))
+
 ## [1.0.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v1.0.0...iso-filecoin-react-v1.0.1) (2025-03-13)
 
 
