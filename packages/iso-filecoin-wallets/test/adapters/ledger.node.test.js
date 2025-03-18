@@ -18,6 +18,7 @@ for (const model of models) {
   let wallet
   connectorTests({
     walletName: `LEDGER ${model.name}`,
+    network: 'mainnet',
     beforeEachHook: async () => {
       sim = new Zemu(model.path)
       await sim.start({
@@ -31,7 +32,6 @@ for (const model of models) {
           create: async () => transport,
           isSupported: async () => true,
         },
-        network: 'mainnet',
         signatureType: 'SECP256K1',
         index: 0,
       })
@@ -64,7 +64,6 @@ for (const model of models) {
           create: async () => transport,
           isSupported: async () => true,
         },
-        network: 'mainnet',
         signatureType: 'SECP256K1',
         index: 0,
       })
