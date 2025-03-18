@@ -1,31 +1,23 @@
 import * as Chains from 'iso-filecoin/chains'
 import { RPC } from 'iso-filecoin/rpc'
 import { Token } from 'iso-filecoin/token'
-import React, {
-  createElement,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
+import React, { createElement, useContext, useEffect, useState } from 'react'
 
-import { useQueries, useQuery } from '@tanstack/react-query'
+import {
+  useMutation,
+  useMutationState,
+  useQueries,
+  useQuery,
+} from '@tanstack/react-query'
 export { mainnet, testnet } from 'iso-filecoin/chains'
 
 /**
- * @import { WalletProviderProps, WalletAdapter, IAccount, Network, WalletContextType  } from './types.js'
+ * @import { WalletProviderProps, WalletAdapter, AccountNetwork, Network, WalletContextType, IAccount, ConnectionState, UseAccountReturnType  } from './types.js'
  */
 
 /**
  * @typedef {import('iso-filecoin/types').Chain} Chain
  */
-
-/**
- * no op
- */
-const noop = () => {
-  // do nothing
-}
 
 const noopStorage = {
   getItem: () => null,
@@ -79,24 +71,25 @@ const WalletContext =
   /** @type {typeof React.createContext<WalletContextType>} */ (
     React.createContext
   )({
-    chain: Chains.mainnet,
     network: 'mainnet',
-    wallets: [],
-    wallet: undefined,
+    adapters: [],
+    adapter: undefined,
     account: undefined,
-    connecting: false,
-    connected: false,
-    disconnecting: false,
     loading: true,
-    rpc: new RPC({
-      api: Chains.mainnet.rpcUrls.default.http[0],
-      network: 'mainnet',
-    }),
-    select: () => Promise.resolve(),
-    connect: () => Promise.resolve(),
-    disconnect: () => Promise.resolve(),
-    changeNetwork: () => Promise.resolve(),
-    deriveAccount: () => Promise.resolve(),
+    error: undefined,
+    setAccount: () => void 0,
+    setAdapter: () => void 0,
+    setNetwork: () => void 0,
+    rpcs: {
+      mainnet: new RPC({
+        api: Chains.mainnet.rpcUrls.default.http[0],
+        network: 'mainnet',
+      }),
+      testnet: new RPC({
+        api: Chains.testnet.rpcUrls.default.http[0],
+        network: 'testnet',
+      }),
+    },
   })
 
 /**
@@ -106,44 +99,40 @@ const WalletContext =
  */
 export function WalletProvider({
   children,
-  adapters,
-  onError = noop,
-  chains,
+  adapters: _adapters,
+  rpcs = {
+    mainnet: new RPC({
+      api: Chains.mainnet.rpcUrls.default.http[0],
+      network: 'mainnet',
+    }),
+    testnet: new RPC({
+      api: Chains.testnet.rpcUrls.default.http[0],
+      network: 'testnet',
+    }),
+  },
   network: _network = 'mainnet',
-  connectOnSelect = true,
 }) {
+  const [error, setError] = /** @type {typeof useState<Error | undefined>} */ (
+    useState
+  )(undefined)
+  const [loading, setLoading] = useState(true)
+
   const [adapter, setAdapter] =
     /** @type {typeof useState<WalletAdapter | undefined>} */ (useState)(
       undefined
     )
 
-  const [rpc, setRpc] = /** @type {typeof useState<RPC>} */ (useState)(
-    new RPC({
-      api: chains[_network].rpcUrls.default.http[0],
-      network: _network,
-    })
-  )
-  const [chain, setChain] = /** @type {typeof useState<Chain>} */ (useState)(
-    chains[_network]
-  )
-
-  const [connecting, setConnecting] = useState(false)
-  const [loading, setLoading] = useState(true)
-  const [disconnecting, setDisconnecting] = useState(false)
-  const [connected, setConnected] = useState(false)
   const [network, setNetwork] = /** @type {typeof useState<Network>} */ (
     useState
   )(_network)
 
-  const [wallets, setWallets] =
+  const [adapters, setAdapters] =
     /** @type {typeof useState<WalletAdapter[]>} */ (useState)(() =>
-      adapters
-        .filter(({ support }) => support !== 'NotSupported')
-        .map((adapter) => {
-          adapter.changeNetwork(_network)
-          return adapter
-        })
+      _adapters.filter(({ support }) => support !== 'NotSupported')
     )
+
+  const [account, setAccount] =
+    /** @type {typeof useState<IAccount|undefined>} */ (useState)(undefined)
 
   /**
    * Effects
@@ -157,14 +146,13 @@ export function WalletProvider({
     async function setup() {
       try {
         const a = await Promise.all(
-          wallets.map(async (w) => {
+          adapters.map(async (w) => {
             await w.checkSupport()
             return w
           })
         )
 
-        const lastWallet = getDefaultStorage().getItem('adapter')
-        setWallets(() =>
+        setAdapters(() =>
           a
             .filter(({ support }) => support !== 'NotSupported')
             .sort((a, b) => {
@@ -178,11 +166,28 @@ export function WalletProvider({
             })
         )
 
+        // restore last wallet and network
+        const lastWallet = getDefaultStorage().getItem('adapter')
+        const lastNetwork = /** @type {Network} */ (
+          getDefaultStorage().getItem('network')
+        )
+
+        if (lastNetwork) {
+          setNetwork(lastNetwork)
+        }
+
         if (lastWallet) {
-          setAdapter(wallets.find((wallet) => wallet.name === lastWallet))
+          const adapter = adapters.find((wallet) => wallet.name === lastWallet)
+          if (adapter) {
+            setAdapter(adapter)
+            const { account } = await adapter.connect({
+              network: lastNetwork ?? network,
+            })
+            setAccount(account)
+          }
         }
       } catch (error) {
-        onError(/** @type {Error} */ (error))
+        setError(/** @type {Error} */ (error))
       } finally {
         setLoading(false)
       }
@@ -192,190 +197,79 @@ export function WalletProvider({
   }, [])
 
   // Setup and teardown event listeners when the adapter changes
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Only needs to react to adapter changes
   useEffect(() => {
     if (!adapter) return
 
-    const handleConnect = () => {
-      setConnecting(false)
-      setConnected(true)
-      setDisconnecting(false)
+    const handleConnect = (/** @type {CustomEvent<AccountNetwork>} */ evt) => {
       getDefaultStorage().setItem('adapter', adapter.name)
+      setAccount(evt.detail.account)
+      setError(undefined)
     }
 
     const handleDisconnect = () => {
       setAdapter(undefined)
-      setConnecting(false)
-      setConnected(false)
-      setDisconnecting(false)
+      setAccount(undefined)
       getDefaultStorage().removeItem('adapter')
+      getDefaultStorage().removeItem('network')
+      setError(undefined)
     }
 
     const handleNetworkChanged = (
-      /** @type {CustomEvent<{ network: Network; account?: IAccount }>} */ evt
+      /** @type {CustomEvent<AccountNetwork>} */ evt
     ) => {
+      setAccount(evt.detail.account)
       setNetwork(evt.detail.network)
-      setChain(chains[evt.detail.network])
-      setRpc(
-        new RPC({
-          api: Chains[evt.detail.network].rpcUrls.default.http[0],
-          network: evt.detail.network,
-        })
-      )
-      setConnecting(false)
+      setError(undefined)
+      getDefaultStorage().setItem('network', evt.detail.network)
     }
 
     const handleError = (/** @type {CustomEvent<Error>} */ evt) => {
-      if (onError) {
-        onError(evt.detail, adapter)
-      }
+      setError(evt.detail)
     }
-    const handleAccountChanged = () => {
-      setConnecting(false)
+    const handleAccountChanged = (/** @type {CustomEvent<IAccount>} */ evt) => {
+      setAccount(evt.detail)
+      setError(undefined)
     }
 
-    adapter.on('connect', handleConnect)
-    adapter.on('disconnect', handleDisconnect)
-    adapter.on('error', handleError)
-    adapter.on('networkChanged', handleNetworkChanged)
-    adapter.on('accountChanged', handleAccountChanged)
-    // globalThis.addEventListener('beforeunload', handleDisconnect)
-
-    if (connectOnSelect) {
-      connect()
+    if (adapter) {
+      adapter.on('connect', handleConnect)
+      adapter.on('disconnect', handleDisconnect)
+      adapter.on('error', handleError)
+      adapter.on('networkChanged', handleNetworkChanged)
+      adapter.on('accountChanged', handleAccountChanged)
     }
 
     return () => {
-      // globalThis.removeEventListener('beforeunload', handleDisconnect)
       adapter.off('connect', handleConnect)
       adapter.off('disconnect', handleDisconnect)
       adapter.off('error', handleError)
       adapter.off('networkChanged', handleNetworkChanged)
       adapter.off('accountChanged', handleAccountChanged)
     }
-  }, [
-    adapter,
-    chains,
-    connectOnSelect,
-    onError,
-    setAdapter,
-    setNetwork,
-    setRpc,
-    setChain,
-  ])
-
-  /**
-   * Callbacks
-   */
-  const selectWallet = useCallback(
-    async (/** @type {string} */ nextWalletName) => {
-      if (nextWalletName === adapter?.name) {
-        return
-      }
-      await disconnect()
-      setAdapter(wallets.find((wallet) => wallet.name === nextWalletName))
-    },
-    [adapter, wallets, setAdapter]
-  )
-
-  const connect = useCallback(async () => {
-    if (disconnecting || connecting || connected) {
-      return
-    }
-    if (!adapter) {
-      return onError(new Error('Adapter not found'), undefined)
-    }
-    try {
-      setConnecting(true)
-      await adapter.connect()
-    } catch {
-      setAdapter(undefined)
-    } finally {
-      setConnecting(false)
-    }
-  }, [adapter, disconnecting, connecting, connected, onError, setAdapter])
-
-  const disconnect = useCallback(async () => {
-    if (disconnecting || !adapter) {
-      return
-    }
-    try {
-      setDisconnecting(true)
-      await adapter.disconnect()
-    } catch {
-      // ignore will be handled by the error handler
-    } finally {
-      setDisconnecting(false)
-    }
-  }, [adapter, disconnecting])
-
-  const changeNetwork = React.useCallback(
-    async (/** @type {Network} */ network) => {
-      try {
-        setConnecting(true)
-        for (const wallet of wallets) {
-          await wallet.changeNetwork(network)
-        }
-        if (!adapter) {
-          setNetwork(network)
-          setChain(chains[network])
-          setRpc(
-            new RPC({
-              api: chains[network].rpcUrls.default.http[0],
-              network: network,
-            })
-          )
-        }
-      } catch {
-        // ignore will be handled by the error handler
-      } finally {
-        setConnecting(false)
-      }
-    },
-    [wallets, setNetwork, adapter, setChain, chains, setRpc]
-  )
-
-  const deriveAccount = React.useCallback(
-    async (/** @type {number} */ index) => {
-      try {
-        if (adapter) {
-          setConnecting(true)
-          await adapter.deriveAccount(index)
-        }
-      } catch {
-        // ignore will be handled by the error handler
-      } finally {
-        setConnecting(false)
-      }
-    },
-    [adapter]
-  )
+  }, [adapter])
 
   return createElement(
     WalletContext.Provider,
     {
       value: {
-        chain,
-        wallets,
-        wallet: adapter,
-        account: adapter?.account,
-        connecting,
-        connected,
-        disconnecting,
+        error,
+        adapters,
+        adapter,
+        account,
         loading,
         network,
-        rpc,
-        select: selectWallet,
-        connect,
-        disconnect,
-        changeNetwork,
-        deriveAccount,
+        setAccount,
+        setNetwork,
+        setAdapter,
+        rpcs,
       },
     },
     children
   )
 }
 
-export function useWallet() {
+export function useWalletProvider() {
   const context = useContext(WalletContext)
   if (!context) {
     throw new Error('useWallet must be used within a WalletProvider.')
@@ -383,8 +277,173 @@ export function useWallet() {
   return context
 }
 
+/**
+ * Hook to access the current wallet adapter and its state
+ *
+ * @example
+ * ```ts twoslash
+ * import { useAdapter } from 'iso-filecoin-react'
+ *
+ * function App() {
+ *   const { adapter, error, loading } = useAdapter()
+ *
+ *   if (loading) return <div>Loading...</div>
+ *   if (error) return <div>Error: {error.message}</div>
+ *
+ *   return <div>Current adapter: {adapter?.name}</div>
+ * }
+ * ```
+ * @returns {Pick<WalletContextType, 'adapter' | 'error' | 'loading'>} Wallet adapter state
+ */
+export function useAdapter() {
+  const { adapter, error, loading } = useWalletProvider()
+  return { adapter, error, loading }
+}
+
+/**
+ * Hook to access the current account and its state
+ *
+ * @example
+ * ```ts twoslash
+ * import { useAccount } from 'iso-filecoin-react'
+ *
+ * function App() {
+ *   const { account, adapter, network, chain, state } = useAccount()
+ *
+ *   return <div>Current address: {account?.address.toString()}</div>
+ * }
+ * ```
+ * @returns Account state
+ */
+export function useAccount() {
+  const connect = useMutationState({
+    filters: {
+      mutationKey: ['connect'],
+    },
+    select: (mutation) => mutation.state.status,
+  })
+
+  const [state, setState] = /** @type {typeof useState<ConnectionState>} */ (
+    useState
+  )('disconnected')
+
+  const { account, adapter, network } = useContext(WalletContext)
+  useEffect(() => {
+    if (connect[0] === 'pending') {
+      setState('connecting')
+    } else if (account) {
+      setState('connected')
+    } else {
+      setState('disconnected')
+    }
+  }, [connect, account, setState])
+
+  return /** @type {UseAccountReturnType} */ ({
+    account,
+    adapter,
+    network,
+    chain: Chains[network],
+    state,
+  })
+}
+
+/**
+ * Hook to connect a wallet adapter
+ *
+ * @example
+ * ```ts twoslash
+ * import { useConnect } from 'iso-filecoin-react'
+ *
+ * function App() {
+ *   const { adapters, error, mutate: connect, isPending } = useConnect()
+ *
+ *   return (
+ *     <div>
+ *       {adapters.map(adapter => (
+ *         <button
+ *           key={adapter.name}
+ *           onClick={() => connect({ adapter })}
+ *           disabled={isPending}
+ *         >
+ *           Connect {adapter.name}
+ *         </button>
+ *       ))}
+ *       {error && <div>Error: {error.message}</div>}
+ *     </div>
+ *   )
+ * }
+ * ```
+ * @returns Connection mutation and state
+ */
+export function useConnect() {
+  const { setAdapter, network, adapter, adapters, loading } =
+    useContext(WalletContext)
+  const result = useMutation({
+    mutationKey: ['connect'],
+    mutationFn: (/** @type {{adapter: WalletAdapter}} */ params) => {
+      return params.adapter.connect({ network })
+    },
+    onMutate: (params) => {
+      setAdapter(params.adapter)
+    },
+  })
+
+  return /** @type {typeof result & Pick<WalletContextType, 'adapters' | 'adapter' | 'loading'>} */ ({
+    ...result,
+    adapters,
+    adapter,
+    loading,
+  })
+}
+
+export function useDisconnect() {
+  const { adapter } = useContext(WalletContext)
+  return useMutation({
+    mutationKey: ['disconnect'],
+    mutationFn: () => {
+      if (!adapter) {
+        throw new Error('Adapter not found')
+      }
+      return adapter.disconnect()
+    },
+  })
+}
+
+export function useChangeNetwork() {
+  const { adapter, setNetwork } = useContext(WalletContext)
+  return useMutation({
+    mutationKey: ['changeNetwork'],
+    mutationFn: async (/** @type {Network} */ network) => {
+      if (!['mainnet', 'testnet'].includes(network)) {
+        throw new Error(
+          `Invalid network "${network}", must be "mainnet" or "testnet".`
+        )
+      }
+      if (adapter) {
+        const r = await adapter.changeNetwork(network)
+        return r.network
+      }
+      setNetwork(network)
+      return network
+    },
+  })
+}
+
+export function useDeriveAccount() {
+  const { adapter } = useContext(WalletContext)
+  return useMutation({
+    mutationKey: ['deriveAccount'],
+    mutationFn: (/** @type {number} */ index) => {
+      if (!adapter) {
+        throw new Error('Adapter not found')
+      }
+      return adapter.deriveAccount(index)
+    },
+  })
+}
+
 export function useBalance() {
-  const { account, network, rpc } = useContext(WalletContext)
+  const { account, network, rpcs } = useContext(WalletContext)
   const address = account?.address.toString()
 
   return useQuery({
@@ -393,7 +452,7 @@ export function useBalance() {
       if (!address) {
         throw new Error('Address not found')
       }
-      const balance = await rpc.balance(address)
+      const balance = await rpcs[network].balance(address)
 
       if (balance.error) {
         throw new Error(balance.error.message)
@@ -409,7 +468,7 @@ export function useBalance() {
  * TODO: use cache
  */
 export function useAddresses() {
-  const { account, network, rpc } = useContext(WalletContext)
+  const { account, network, rpcs } = useContext(WalletContext)
 
   return useQueries({
     queries: [
@@ -417,7 +476,7 @@ export function useAddresses() {
         queryKey: ['addresses-id', network, account?.address.toString()],
         queryFn: async () => {
           try {
-            return await account?.address.toIdAddress({ rpc })
+            return await account?.address.toIdAddress({ rpc: rpcs[network] })
           } catch (error) {
             throw new Error('ID address not found', { cause: error })
           }
@@ -429,7 +488,7 @@ export function useAddresses() {
         queryKey: ['addresses-0x', network, account?.address.toString()],
         queryFn: async () => {
           try {
-            return await account?.address.to0x({ rpc })
+            return await account?.address.to0x({ rpc: rpcs[network] })
           } catch (error) {
             throw new Error('0x address not found', { cause: error })
           }

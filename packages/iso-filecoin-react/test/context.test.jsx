@@ -1,22 +1,17 @@
 import assert from 'assert'
 import { cleanup, render } from '@testing-library/react/pure'
-import {
-  WalletProvider,
-  mainnet,
-  testnet,
-  useWallet,
-} from '../src/wallet-provider.js'
+import { WalletProvider, useWalletProvider } from '../src/wallet-provider.js'
 
 afterEach(() => {
   cleanup()
 })
 
 function Component() {
-  const { wallets } = useWallet()
+  const { adapters } = useWalletProvider()
   return (
     <div>
       <h1>wallet</h1>
-      {wallets.map((wallet) => (
+      {adapters.map((wallet) => (
         <div key={wallet.name}>{wallet.name}</div>
       ))}
     </div>
@@ -24,7 +19,7 @@ function Component() {
 }
 it('should basic', () => {
   const result = render(
-    <WalletProvider adapters={[]} chains={{ mainnet, testnet }}>
+    <WalletProvider adapters={[]}>
       <Component />
     </WalletProvider>
   )
