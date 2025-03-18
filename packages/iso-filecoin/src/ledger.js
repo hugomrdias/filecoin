@@ -236,7 +236,17 @@ async function signChunk(transport, index, size, data, instruction = 0x02) {
  * @param {Uint8Array} signature
  * @param {Uint8Array} data
  * @param {Uint8Array} publicKey
- * @returns
+ * @returns {boolean}
+ * @example
+ * ```ts twoslash
+ * import { verifyRaw } from 'iso-filecoin/ledger'
+ *
+ * const signature = new Uint8Array([1, 2, 3])
+ * const data = new Uint8Array([4, 5, 6])
+ * const publicKey = new Uint8Array([7, 8, 9])
+ * const isValid = verifyRaw(signature, data, publicKey)
+ * // => true
+ * ```
  */
 export function verifyRaw(signature, data, publicKey) {
   const prefix = utf8.decode(EIP191_PREFIX)
@@ -273,7 +283,14 @@ export class LedgerFilecoin {
    * Get the version of the Filecoin app
    *
    * @see https://github.com/LedgerHQ/app-filecoin/blob/develop/docs/APDUSPEC.md#get_version
+   * @example
+   * ```ts twoslash
+   * import { LedgerFilecoin } from 'iso-filecoin/ledger'
    *
+   * const ledger = new LedgerFilecoin(transport)
+   * const version = await ledger.getVersion()
+   * // => '1.0.0'
+   * ```
    */
   async getVersion() {
     const out = await this.transport.send(
