@@ -6,9 +6,9 @@ import {
 } from 'filsnap-adapter'
 import { base64pad } from 'iso-base/rfc4648'
 import { Signature } from 'iso-filecoin/signature'
+import { pathFromNetwork } from 'iso-filecoin/utils'
 import { TypedEventTarget } from 'iso-web/event-target'
-import { WalletSupport, pathFromNetwork } from './common.js'
-
+import { WalletSupport } from './common.js'
 /**
  * @typedef {import('iso-filecoin/types').IAccountWithPath} IAccount
  * @typedef {import('iso-filecoin/types').Network} Network
@@ -23,7 +23,7 @@ import { WalletSupport, pathFromNetwork } from './common.js'
 const symbol = Symbol.for('wallet-adapter-filsnap')
 
 /**
- * Local wallet implementation
+ * Filsnap wallet implementation
  *
  * @implements {WalletAdapter}
  * @extends {TypedEventTarget<WalletEvents>}
@@ -81,25 +81,21 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
     return value instanceof WalletAdapterFilsnap && symbol in value
   }
 
-  async checkSupport() {
-    if (this.#support !== WalletSupport.NotChecked) {
-      return
-    }
-    try {
-      this.#provider = await getProvider()
-      this.#support = WalletSupport.Detected
-    } catch {
-      this.#support = WalletSupport.NotDetected
-    }
-  }
-
-  async connect() {
+  /**
+   * @param {{ network?: Network }} [params]
+   */
+  async connect(params = {}) {
     if (this.#isConnecting || this.connected) {
-      return
+      if (!this.account) throw new Error('Already connecting')
+      return { account: this.account, network: this.network }
     }
     this.#isConnecting = true
 
     try {
+      if (params.network) {
+        this.network = params.network
+      }
+
       const provider = this.#provider ?? (await getProvider())
       this.#connector = createConnector({
         provider,
@@ -135,7 +131,8 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
         throw new Error(acc.error.message, { cause: acc.error.data })
       }
       this.account = acc.result
-      this.emit('connect', this.account)
+      this.emit('connect', { account: acc.result, network: this.network })
+      return { account: acc.result, network: this.network }
     } catch (error) {
       const err = /** @type {Error} */ (error)
 
@@ -158,47 +155,40 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
     return this.#support
   }
 
-  async disconnect() {
-    if (this.filsnap && this.#connector) {
-      await this.#connector.disconnect()
-      await this.filsnap.disconnect()
-    }
-
-    this.filsnap = undefined
-    this.account = undefined
-    this.emit('disconnect')
-  }
-
   /**
    * @param {Network} network
    */
   async changeNetwork(network) {
-    if (this.network !== network) {
-      if (this.filsnap && this.#connector) {
-        try {
-          const changeChainResult = await this.filsnap.changeNetwork(network)
-          if (changeChainResult.error) {
-            throw new Error(changeChainResult.error.message, {
-              cause: changeChainResult.error.data,
-            })
-          }
-          await this.#connector.switchChain(network)
-          this.account = changeChainResult.result.account
-        } catch (error) {
-          const err = /** @type {Error} */ (error)
+    if (!this.filsnap || !this.#connector || !this.account) {
+      const err = new Error('Adapter is not connected')
+      this.emit('error', err)
+      throw err
+    }
 
-          this.emit('error', err)
-          throw error
-        }
+    if (this.network === network) {
+      return { account: this.account, network: this.network }
+    }
+
+    try {
+      const changeChainResult = await this.filsnap.changeNetwork(network)
+      if (changeChainResult.error) {
+        throw new Error(changeChainResult.error.message, {
+          cause: changeChainResult.error.data,
+        })
       }
+      await this.#connector.switchChain(network)
+      this.account = changeChainResult.result.account
       this.network = network
       this.emit('networkChanged', {
         network: network,
         account: this.account,
       })
+      return { account: this.account, network: this.network }
+    } catch (error) {
+      const err = /** @type {Error} */ (error)
+      this.emit('error', err)
+      throw error
     }
-
-    return { account: this.account, network: this.network }
   }
 
   /**
@@ -222,7 +212,6 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
         this.emit('accountChanged', this.account)
       } catch (error) {
         const err = /** @type {Error} */ (error)
-
         this.emit('error', err)
         throw error
       }
@@ -269,5 +258,28 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
       type: r.result.signature.type,
       data: base64pad.decode(r.result.signature.data),
     })
+  }
+
+  async checkSupport() {
+    if (this.#support !== WalletSupport.NotChecked) {
+      return
+    }
+    try {
+      this.#provider = await getProvider()
+      this.#support = WalletSupport.Detected
+    } catch {
+      this.#support = WalletSupport.NotDetected
+    }
+  }
+
+  async disconnect() {
+    if (this.filsnap && this.#connector) {
+      await this.#connector.disconnect()
+      await this.filsnap.disconnect()
+    }
+
+    this.filsnap = undefined
+    this.account = undefined
+    this.emit('disconnect')
   }
 }

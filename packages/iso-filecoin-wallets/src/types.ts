@@ -16,9 +16,9 @@ export type WalletSupportType = keyof typeof _WalletSupport
 
 export type WalletEvents = {
   accountChanged: CustomEvent<IAccount>
-  networkChanged: CustomEvent<{ network: Network; account?: IAccount }>
+  networkChanged: CustomEvent<AccountNetwork>
   disconnect: CustomEvent
-  connect: CustomEvent<IAccount>
+  connect: CustomEvent<AccountNetwork>
   error: CustomEvent<Error>
   stateChanged: CustomEvent<WalletSupportType>
 }
@@ -41,7 +41,7 @@ export interface WalletHDConfig extends WalletConfig {
    * @default 0
    */
   index?: number
-  seed: Uint8Array
+  seed?: Uint8Array
 }
 export interface WalletHDMnemonicConfig extends Omit<WalletHDConfig, 'seed'> {
   mnemonic: string
@@ -60,25 +60,28 @@ export interface WalletLedgerConfig extends WalletConfig {
   }
 }
 
+export interface AccountNetwork {
+  network: Network
+  account: IAccount
+}
+
 /**
  * Wallet adapter interface
  */
 export interface WalletAdapter extends TypedEventTarget<WalletEvents> {
-  name: string
-  url: string
-  icon: string
-  network: Network
+  readonly name: string
+  readonly url: string
+  readonly icon: string
+  readonly network: Network
   readonly support: WalletSupportType
   readonly connecting: boolean
   readonly connected: boolean
-  account: IAccount | undefined
+  readonly account: IAccount | undefined
   checkSupport: () => Promise<void>
-  connect: () => Promise<void>
+  connect: ({ network }: { network?: Network }) => Promise<AccountNetwork>
   disconnect: () => Promise<void>
   deriveAccount: (index: number) => Promise<IAccount>
-  changeNetwork: (
-    network: Network
-  ) => Promise<{ network: Network; account?: IAccount }>
+  changeNetwork: (network: Network) => Promise<AccountNetwork>
 
   /**
    * Sign raw bytes

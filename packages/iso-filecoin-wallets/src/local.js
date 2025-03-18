@@ -83,20 +83,33 @@ export class WalletAdapterLocal extends TypedEventTarget {
     })
   }
 
+  /**
+   * @param {{ network?: Network }} [params]
+   */
+
   // biome-ignore lint/suspicious/useAwait: <explanation>
-  async connect() {
+  async connect(params = {}) {
     if (this.#isConnecting || this.connected) {
-      return
+      if (!this.account) throw new Error('No account found')
+      return { account: this.account, network: this.network }
     }
     this.#isConnecting = true
-    this.account = createAccount(
-      this.privateKey,
-      this.network,
-      this.signatureType
-    )
-    this.emit('connect', this.account)
 
-    this.#isConnecting = false
+    try {
+      if (params.network) {
+        this.network = params.network
+      }
+
+      this.account = createAccount(
+        this.privateKey,
+        this.network,
+        this.signatureType
+      )
+      this.emit('connect', { account: this.account, network: this.network })
+      return { account: this.account, network: this.network }
+    } finally {
+      this.#isConnecting = false
+    }
   }
 
   get connecting() {
@@ -124,22 +137,23 @@ export class WalletAdapterLocal extends TypedEventTarget {
   /**
    * @param {Network} network
    */
-  // biome-ignore lint/suspicious/useAwait: <xplanation>
+
+  // biome-ignore lint/suspicious/useAwait: <explanation>
   async changeNetwork(network) {
-    if (this.network !== network) {
-      if (this.connected) {
-        this.account = createAccount(
-          this.privateKey,
-          network,
-          this.signatureType
-        )
-      }
-      this.network = network
-      this.emit('networkChanged', {
-        network: this.network,
-        account: this.account,
-      })
+    if (!this.connected || !this.account) {
+      throw new Error('Adapter is not connected')
     }
+
+    if (this.network === network) {
+      return { account: this.account, network: this.network }
+    }
+
+    this.account = createAccount(this.privateKey, network, this.signatureType)
+    this.network = network
+    this.emit('networkChanged', {
+      network: this.network,
+      account: this.account,
+    })
     return { account: this.account, network: this.network }
   }
 

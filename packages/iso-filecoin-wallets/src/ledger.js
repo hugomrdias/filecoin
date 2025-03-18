@@ -1,8 +1,9 @@
 import { LedgerFilecoin } from 'iso-filecoin/ledger'
 import { Message } from 'iso-filecoin/message'
 import { Signature } from 'iso-filecoin/signature'
+import { pathFromNetwork } from 'iso-filecoin/utils'
 import { TypedEventTarget } from 'iso-web/event-target'
-import { WalletSupport, pathFromNetwork } from './common.js'
+import { WalletSupport } from './common.js'
 
 export { WalletSupport } from './common.js'
 
@@ -96,27 +97,35 @@ export class WalletAdapterLedger extends TypedEventTarget {
     return await app.getAddress(path, false)
   }
 
-  async connect() {
+  /**
+   * @param {{ network?: Network }} [params]
+   */
+  async connect(params = {}) {
     /** @type {import('./types.js').Transport} */
     let transport
     try {
       if (this.#isConnecting || this.connected) {
-        return
+        if (!this.account) throw new Error('No account found')
+        return { account: this.account, network: this.network }
       }
       this.#isConnecting = true
-      transport = await this.#transport.create()
 
+      if (params.network) {
+        this.network = params.network
+      }
+
+      transport = await this.#transport.create()
       this.#app = new LedgerFilecoin(transport)
       this.account = await this.#createAccount(this.#app)
 
-      this.emit('connect', this.account)
+      this.emit('connect', { account: this.account, network: this.network })
       transport.on('disconnect', this.#onDisconnect)
+      return { account: this.account, network: this.network }
     } catch (error) {
       await this.disconnect()
       const err = /** @type {Error} */ (error)
-
       this.emit('error', err)
-      throw error
+      throw err
     } finally {
       this.#isConnecting = false
     }
@@ -140,22 +149,25 @@ export class WalletAdapterLedger extends TypedEventTarget {
    * @param {Network} network
    */
   async changeNetwork(network) {
+    if (!this.#app || !this.account) {
+      throw new Error('Adapter is not connected')
+    }
+
+    if (this.network === network) {
+      return { account: this.account, network: this.network }
+    }
+
     try {
-      if (this.network !== network) {
-        this.network = network
-        if (this.#app) {
-          this.account = await this.#createAccount(this.#app)
-        }
-        this.emit('networkChanged', {
-          network: this.network,
-          account: this.account,
-        })
-      }
+      this.network = network
+      this.account = await this.#createAccount(this.#app)
+      this.emit('networkChanged', {
+        network: this.network,
+        account: this.account,
+      })
 
       return { account: this.account, network: this.network }
     } catch (error) {
       const err = /** @type {Error} */ (error)
-
       this.emit('error', err)
       throw error
     }
@@ -175,7 +187,6 @@ export class WalletAdapterLedger extends TypedEventTarget {
       return this.account
     } catch (error) {
       const err = /** @type {Error} */ (error)
-
       this.emit('error', err)
       throw error
     }
