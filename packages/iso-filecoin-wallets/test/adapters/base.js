@@ -41,7 +41,7 @@ export const fixtures = {
         '01e77594aed1f0fb1574c38bfeace2fddb18bdbbe22628d8e1d3f12e5d889da1e65ade19dc58f320a2db370687da7875409776ac45dd780bb92cc7f8caa290814a01',
     },
   },
-  HD: {
+  'HD Burner Wallet': {
     mainnet: {
       address0: 'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i',
       address1: 'f1wkozgbb4o5foj2kratibzmdxmf5w2h3t7vmddey',
@@ -81,12 +81,18 @@ export const fixtures = {
  *
  * @param {Object} options - Options
  * @param {string} options.walletName - Wallet name
+ * @param {import('iso-filecoin/types').Network} options.network - Network
  * @param {(() => any) } [options.afterHook] - After hook
  * @param {(() => any) } [options.beforeHook] - Before hook
  * @param {()=> Promise<void>} options.afterEachHook - After each hook
  * @param {()=> Promise<{wallet: import('../../src/types.js').WalletAdapter, sim?: import('@zondax/zemu').default}>} options.beforeEachHook - Before each hook
  */
-export function connectorTests({ walletName, afterEachHook, beforeEachHook }) {
+export function connectorTests({
+  walletName,
+  network,
+  afterEachHook,
+  beforeEachHook,
+}) {
   describe(`Wallet Adapter ${walletName}`, () => {
     /** @type {import('@zondax/zemu').default | undefined} */
     let sim
@@ -110,13 +116,13 @@ export function connectorTests({ walletName, afterEachHook, beforeEachHook }) {
     })
 
     it('should connect and return account ', async () => {
-      await wallet.connect()
+      await wallet.connect({ network })
       const account = wallet.account
 
       assert.strictEqual(account?.type, 'SECP256K1')
       assert.strictEqual(
         account.address.toString(),
-        fixtures[wallet.name][`${wallet.network}`].address0
+        fixtures[wallet.name][`${network}`].address0
       )
     })
 
@@ -124,20 +130,20 @@ export function connectorTests({ walletName, afterEachHook, beforeEachHook }) {
       const deferred = pDefer()
       /**
        *
-       * @param {CustomEvent<import('iso-filecoin/types').IAccount>} e
+       * @param {CustomEvent<import('../../src/types.js').AccountNetwork>} e
        */
       function onConnect(e) {
         assert.strictEqual(wallet.connected, true)
         assert.strictEqual(wallet.connecting, true)
-        assert.strictEqual(e.detail.type, 'SECP256K1')
+        assert.strictEqual(e.detail.account.type, 'SECP256K1')
         assert.strictEqual(
-          e.detail.address.toString(),
+          e.detail.account.address.toString(),
           fixtures[wallet.name][`${wallet.network}`].address0
         )
         deferred.resolve()
       }
       wallet.addEventListener('connect', onConnect, { once: true })
-      await wallet.connect()
+      await wallet.connect({ network })
       assert.strictEqual(
         wallet.connecting,
         false,
@@ -159,7 +165,7 @@ export function connectorTests({ walletName, afterEachHook, beforeEachHook }) {
         },
         { once: true }
       )
-      await wallet.connect()
+      await wallet.connect({ network })
       await wallet.disconnect()
       assert.strictEqual(wallet.connected, false)
       assert.strictEqual(wallet.connecting, false)
@@ -167,44 +173,32 @@ export function connectorTests({ walletName, afterEachHook, beforeEachHook }) {
       await deferred.promise
     })
 
-    it('should change network disconnected', async () => {
-      assert.strictEqual(wallet.connected, false)
-      assert.strictEqual(wallet.connecting, false)
-      assert.strictEqual(wallet.account, undefined)
-
-      const network = wallet.network === 'mainnet' ? 'testnet' : 'mainnet'
-
-      await wallet.changeNetwork(network)
-      assert.strictEqual(wallet.network, network)
-      assert.strictEqual(wallet.connected, false)
-    })
-
     it('should change network connect', async () => {
       const deferred = pDefer()
       assert.strictEqual(wallet.connected, false)
-      await wallet.connect()
+      const otherNetwork = network === 'mainnet' ? 'testnet' : 'mainnet'
+      await wallet.connect({ network })
       assert.strictEqual(wallet.connected, true)
-      const network = wallet.network === 'mainnet' ? 'testnet' : 'mainnet'
 
       function onNetworkChanged(
         /** @type {CustomEvent<{ network: string }>} */ event
       ) {
-        assert.strictEqual(network, event.detail.network)
+        assert.strictEqual(otherNetwork, event.detail.network)
         deferred.resolve()
       }
       wallet.addEventListener('networkChanged', onNetworkChanged, {
         once: true,
       })
-      await wallet.changeNetwork(network)
-      assert.strictEqual(wallet.network, network)
+      await wallet.changeNetwork(otherNetwork)
+      assert.strictEqual(wallet.network, otherNetwork)
       assert.strictEqual(
         wallet.account?.address.toString(),
-        fixtures[wallet.name][`${network}`].address0
+        fixtures[wallet.name][`${otherNetwork}`].address0
       )
       await deferred.promise
     })
     it('should derive account', async () => {
-      await wallet.connect()
+      await wallet.connect({ network })
       assert.strictEqual(wallet.connected, true)
 
       if (wallet.name === 'Local') {
@@ -239,7 +233,7 @@ export function connectorTests({ walletName, afterEachHook, beforeEachHook }) {
 
     it('should sign', async function () {
       this.timeout(10_000)
-      await wallet.connect()
+      await wallet.connect({ network })
       assert.strictEqual(wallet.connected, true)
       if (sim) {
         await sim.toggleExpertMode()
@@ -264,7 +258,7 @@ export function connectorTests({ walletName, afterEachHook, beforeEachHook }) {
     })
     it('should sign message', async function () {
       this.timeout(10_000)
-      await wallet.connect()
+      await wallet.connect({ network })
       assert.ok(wallet.account)
       const message = new Message({
         from: wallet.account.address.toString(),
