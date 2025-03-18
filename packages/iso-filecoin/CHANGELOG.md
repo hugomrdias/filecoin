@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.1.2](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.1.1...iso-filecoin-v7.1.2) (2025-03-18)
+
+
+### Bug Fixes
+
+* add contracts export ([8435c36](https://github.com/hugomrdias/filecoin/commit/8435c3630d609fd1e0b5ff310660c37255b55383))
+
 ## [7.1.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.1.0...iso-filecoin-v7.1.1) (2025-03-13)
 
 
