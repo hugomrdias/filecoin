@@ -5,10 +5,10 @@ import { MNEMONIC, connectorTests } from './base.js'
 let wallet
 connectorTests({
   walletName: 'HD mainnet',
+  network: 'mainnet',
   // biome-ignore lint/suspicious/useAwait: <explanation>
   beforeEachHook: async () => {
     wallet = WalletAdapterHd.fromMnemonic({
-      network: 'mainnet',
       signatureType: 'SECP256K1',
       mnemonic: MNEMONIC,
       index: 0,
@@ -25,10 +25,10 @@ connectorTests({
 
 connectorTests({
   walletName: 'HD testnet',
+  network: 'testnet',
   // biome-ignore lint/suspicious/useAwait: <explanation>
   beforeEachHook: async () => {
     wallet = WalletAdapterHd.fromMnemonic({
-      network: 'testnet',
       signatureType: 'SECP256K1',
       mnemonic: MNEMONIC,
       index: 0,

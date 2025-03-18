@@ -1,7 +1,7 @@
 {
   "name": "iso-filecoin",
   "type": "module",
-  "version": "7.1.1",
+  "version": "7.1.2",
   "description": "Isomorphic filecoin abstractions for RPC, signatures, address, token and wallet",
   "author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
   "license": "MIT",
@@ -67,10 +67,10 @@
       "import": "./src/chains.js",
       "require": "./dist/cjs/src/chains.cjs"
     },
-    "./adapters/*": {
-      "types": "./dist/src/adapters/*",
-      "import": "./src/adapters/*",
-      "require": "./dist/cjs/src/adapters/*"
+    "./contracts/*": {
+      "types": "./dist/src/contracts/*",
+      "import": "./src/contracts/*",
+      "require": "./dist/cjs/src/contracts/*"
     },
     "./types": {
       "types": "./dist/src/types.d.ts"
@@ -110,8 +110,8 @@
       "chains": [
         "dist/src/chains"
       ],
-      "adapters/*": [
-        "dist/src/adapters/*"
+      "contracts/*": [
+        "dist/src/contracts/*"
       ]
     }
   },
