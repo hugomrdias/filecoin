@@ -20,7 +20,7 @@ export default function ConnectLedger() {
   const [isOpen, setIsOpen] = useState(false)
   const { error, adapter } = useAdapter()
 
-  const { account, network, chain, state } = useAccount()
+  const { account, network } = useAccount()
 
   const disconnect = useDisconnect()
   const balance = useBalance()

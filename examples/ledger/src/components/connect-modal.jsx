@@ -94,7 +94,7 @@ export function ConnectModal({ isOpen, setIsOpen }) {
  * @param {(adapter: undefined) => void} props.setHDAdpter
  */
 function HDModal({ adapter, isOpen, handleClose, setHDAdpter }) {
-  const { error, mutate: connect, isPending } = useConnect()
+  const { error, mutate: connect } = useConnect()
 
   const {
     register,

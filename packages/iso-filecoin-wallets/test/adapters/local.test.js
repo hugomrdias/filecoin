@@ -6,10 +6,10 @@ import { PRIVATE_KEY, connectorTests } from './base.js'
 let wallet
 connectorTests({
   walletName: 'Local mainnet',
+  network: 'mainnet',
   // biome-ignore lint/suspicious/useAwait: <explanation>
   beforeEachHook: async () => {
     wallet = new WalletAdapterLocal({
-      network: 'mainnet',
       signatureType: 'SECP256K1',
       privateKey: base64pad.decode(PRIVATE_KEY),
     })
@@ -25,10 +25,10 @@ connectorTests({
 
 connectorTests({
   walletName: 'Local testnet',
+  network: 'testnet',
   // biome-ignore lint/suspicious/useAwait: <explanation>
   beforeEachHook: async () => {
     wallet = new WalletAdapterLocal({
-      network: 'testnet',
       signatureType: 'SECP256K1',
       privateKey: base64pad.decode(PRIVATE_KEY),
     })
