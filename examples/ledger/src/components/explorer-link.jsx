@@ -1,4 +1,5 @@
-import { useWallet } from 'iso-filecoin-react'
+import { useWalletProvider } from 'iso-filecoin-react'
+import * as chains from 'iso-filecoin/chains'
 import { CopyIcon } from './icons'
 
 /**
@@ -8,7 +9,7 @@ import { CopyIcon } from './icons'
  * @param {'filecoin' | 'ethereum' | 'id'} [param0.chain]
  */
 export default function ExplorerLink({ address, chain }) {
-  const { chain: _chain } = useWallet()
+  const { network } = useWalletProvider()
 
   /**
    * @param {string} address
@@ -45,7 +46,7 @@ export default function ExplorerLink({ address, chain }) {
       <a
         target="_blank"
         rel="noreferrer"
-        href={`${_chain.blockExplorers?.default?.url}/address/${address}`}
+        href={`${chains[network].blockExplorers?.default?.url}/address/${address}`}
       >
         {address}
       </a>{' '}

@@ -1,6 +1,6 @@
 import { Toaster } from 'react-hot-toast'
 import ConnectLedger from './components/connect-ledger.jsx'
-import { Logo } from './components/logo.jsx'
+import { Logo } from './components/icons.jsx'
 
 /**
  * App component.

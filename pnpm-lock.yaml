@@ -102,6 +102,9 @@ importers:
       '@ledgerhq/logs':
         specifier: ^6.12.0
         version: 6.12.0
+      '@scure/bip39':
+        specifier: ^1.5.1
+        version: 1.5.4
       '@tanstack/react-query':
         specifier: ^5.67.3
         version: 5.67.3(react@19.0.0)

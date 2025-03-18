@@ -1,51 +1,43 @@
-import { useAddresses, useBalance, useWallet } from 'iso-filecoin-react'
+import {
+  useAccount,
+  useAdapter,
+  useAddresses,
+  useBalance,
+  useChangeNetwork,
+  useDeriveAccount,
+  useDisconnect,
+} from 'iso-filecoin-react'
 import { useEffect, useLayoutEffect, useState } from 'react'
+import { ErrorBox } from './common.jsx'
+import { ConnectModal } from './connect-modal.jsx'
 import ExplorerLink from './explorer-link.jsx'
-import Modal from './modal.js'
 import { toast } from './toast.jsx'
 
 /**
  * Connect to the network.
  */
 export default function ConnectLedger() {
-  const {
-    connected,
-    wallets,
-    deriveAccount,
-    account,
-    wallet,
-    select,
-    loading,
-    connecting,
-    disconnecting,
-    disconnect,
-    network,
-    changeNetwork,
-  } = useWallet()
-
-  const { data } = useBalance()
-  const { address0x, addressId } = useAddresses()
   const [isOpen, setIsOpen] = useState(false)
+  const { error, adapter } = useAdapter()
 
+  const { account, network, chain, state } = useAccount()
+
+  const disconnect = useDisconnect()
+  const balance = useBalance()
+  const { address0x, addressId } = useAddresses()
+  const changeNetwork = useChangeNetwork()
+  const deriveAccount = useDeriveAccount()
   useEffect(() => {
-    if (connected) {
+    if (account) {
       setIsOpen(false)
     }
-  }, [connected])
+  }, [account])
 
   useLayoutEffect(() => {
-    if (address0x.isLoadingError) {
-      toast.error(address0x.error)
+    if (error && !isOpen) {
+      toast.error(error)
     }
-    if (addressId.isLoadingError) {
-      toast.error(addressId.error)
-    }
-  }, [
-    address0x.isLoadingError,
-    address0x.error,
-    addressId.isLoadingError,
-    addressId.error,
-  ])
+  }, [error, isOpen])
 
   return (
     <div className="Cell100 Box Grid">
@@ -55,12 +47,12 @@ export default function ConnectLedger() {
           name="network"
           id="network"
           className="u-FullWidth"
-          disabled={connecting}
+          disabled={changeNetwork.isPending}
           onChange={(event) => {
             const value = /** @type {import('iso-filecoin/types').Network} */ (
               event.target.value
             )
-            changeNetwork(value)
+            changeNetwork.mutate(value)
           }}
           value={network}
         >
@@ -75,31 +67,27 @@ export default function ConnectLedger() {
           textAlign: 'center',
         }}
       >
-        {!connected && (
-          <button
-            type="button"
-            onClick={() => setIsOpen(true)}
-            disabled={connected || connecting}
-          >
-            {connecting ? 'Connecting...' : 'Connect'}
+        {!account && (
+          <button type="button" onClick={() => setIsOpen(true)}>
+            Connect
           </button>
         )}
-        {connected && (
+        {account && (
           <button
             type="button"
-            onClick={() => disconnect()}
-            disabled={disconnecting || connecting || !connected}
+            onClick={() => disconnect.mutate()}
+            disabled={disconnect.isPending}
           >
             Disconnect
           </button>
         )}
       </div>
 
-      {connected && (
+      {account && (
         <div className="Cell100">
           <h3>Wallet</h3>
-          <p>{wallet?.name}</p>
-          <p>{wallet?.url}</p>
+          <p>{adapter?.name}</p>
+          <p>{adapter?.url}</p>
           <br />
           <h3>Account</h3>
           <code>{account?.path}</code>
@@ -111,8 +99,9 @@ export default function ConnectLedger() {
           <ExplorerLink address={address0x.data?.toString()} chain="ethereum" />
           <div>
             <b>
-              {data?.toFIL().toFormat({ decimalPlaces: 4, suffix: ' FIL' }) ??
-                ' '}
+              {balance.data
+                ?.toFIL()
+                .toFormat({ decimalPlaces: 4, suffix: ' FIL' }) ?? '...'}
             </b>
           </div>
           <br />
@@ -121,55 +110,32 @@ export default function ConnectLedger() {
 
           <button
             type="button"
-            onClick={() => deriveAccount(1)}
-            disabled={disconnecting || connecting || !connected}
+            onClick={() => deriveAccount.mutate(1)}
+            disabled={deriveAccount.isPending}
           >
             Change to Account 1
           </button>
           <button
             type="button"
-            onClick={() => deriveAccount(0)}
-            disabled={disconnecting || connecting || !connected}
+            onClick={() => deriveAccount.mutate(0)}
+            disabled={deriveAccount.isPending}
           >
             Change to Account 0
           </button>
+          <button
+            type="button"
+            // @ts-ignore
+            onClick={() => changeNetwork.mutate('eeee')}
+            disabled={changeNetwork.isPending}
+          >
+            Change Network Error
+          </button>
+          {changeNetwork.error && <ErrorBox error={changeNetwork.error} />}
+          {deriveAccount.error && <ErrorBox error={deriveAccount.error} />}
         </div>
       )}
 
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <h4>Connect a wallet</h4>
-        {wallets.map((wallet) => (
-          <button
-            key={wallet.name}
-            title={
-              wallet.support === 'NotDetected' && wallet.name === 'Filsnap'
-                ? 'Install Metamask'
-                : wallet.name
-            }
-            type="button"
-            className="modal-button"
-            onClick={() => select(wallet.name)}
-            disabled={
-              connecting ||
-              connected ||
-              wallet.support === 'NotDetected' ||
-              loading
-            }
-          >
-            <img
-              src={wallet?.icon}
-              alt={wallet?.name}
-              style={{
-                display: 'inline',
-                width: '24px',
-                verticalAlign: 'bottom',
-                marginRight: '5px',
-              }}
-            />
-            <span>{wallet.name}</span>
-          </button>
-        ))}
-      </Modal>
+      <ConnectModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   )
 }
