@@ -85,7 +85,7 @@
     "check": "biome check --no-errors-on-unmatched --files-ignore-unknown=true ."
   },
   "dependencies": {
-    "filsnap-adapter": "~3.0.2",
+    "filsnap-adapter": "~3.1.2",
     "iso-base": "^4.0.2",
     "iso-web": "^1.1.0"
   },
