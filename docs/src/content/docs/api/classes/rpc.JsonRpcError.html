@@ -1,0 +1,104 @@
+---
+editUrl: false
+next: true
+prev: true
+title: "JsonRpcError"
+---
+
+Defined in: [packages/iso-filecoin/src/rpc.js:71](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L71)
+
+## Extends
+
+- [`RpcError`](rpc.RpcError.html)
+
+## Constructors
+
+### Constructor
+
+```ts
+new JsonRpcError(cause: JsonRpcError): JsonRpcError
+```
+
+Defined in: [packages/iso-filecoin/src/rpc.js:81](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L81)
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `cause` | [`JsonRpcError`](../interfaces/rpc.JsonRpcError.html) |  |
+
+#### Returns
+
+`JsonRpcError`
+
+#### Overrides
+
+[`RpcError`](rpc.RpcError.html).[`constructor`](rpc.RpcError.html#constructor)
+
+## Methods
+
+### is()
+
+```ts
+static is(value: unknown): value is JsonRpcError
+```
+
+Defined in: [packages/iso-filecoin/src/rpc.js:91](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L91)
+
+Check if a value is a JsonRpcError
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` |  |
+
+#### Returns
+
+`value is JsonRpcError`
+
+#### Overrides
+
+[`RpcError`](rpc.RpcError.html).[`is`](rpc.RpcError.html#is)
+
+## Properties
+
+### \[symbol\]
+
+```ts
+[symbol]: boolean = true;
+```
+
+Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L43)
+
+#### Inherited from
+
+[`RpcError`](rpc.RpcError.html).[`[symbol]`](rpc.RpcError.html#symbol)
+
+***
+
+### cause
+
+```ts
+cause: JsonRpcError;
+```
+
+Defined in: [packages/iso-filecoin/src/rpc.js:75](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L75)
+
+#### Overrides
+
+[`RpcError`](rpc.RpcError.html).[`cause`](rpc.RpcError.html#cause)
+
+***
+
+### name
+
+```ts
+name: string = 'JsonRpcError';
+```
+
+Defined in: [packages/iso-filecoin/src/rpc.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L72)
+
+#### Overrides
+
+[`RpcError`](rpc.RpcError.html).[`name`](rpc.RpcError.html#name)

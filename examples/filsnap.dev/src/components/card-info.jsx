@@ -1,12 +1,4 @@
-import {
-  Box,
-  Card,
-  DataList,
-  Flex,
-  Heading,
-  Link,
-  Text,
-} from '@radix-ui/themes'
+import { Box, Card, DataList, Flex, Heading, Link } from '@radix-ui/themes'
 import { resolve as doh } from 'iso-web/dnslink'
 import { useEffect, useState } from 'react'
 import * as Icons from './icons.jsx'
