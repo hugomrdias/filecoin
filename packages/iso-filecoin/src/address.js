@@ -145,7 +145,7 @@ export function isIdMaskAddress(address) {
  */
 export function fromEthAddress(address, network) {
   if (isIdMaskAddress(address)) {
-    return AddressId.fromEthAddress(address, network)
+    return AddressId.fromIdMaskAddress(address, network)
   }
   return AddressDelegated.fromEthAddress(address, network)
 }
@@ -379,7 +379,7 @@ class Address {
       idAddress = AddressId.fromString(id.result)
     } else {
       // f1,f2 and f3 uses the faster endpoint
-      idAddress = AddressId.fromEthAddress(
+      idAddress = AddressId.fromIdMaskAddress(
         await this.to0x(options),
         this.network
       )
@@ -497,7 +497,7 @@ export class AddressId extends Address {
    * @param {string} address
    * @param {import('./types.js').Network} network
    */
-  static fromEthAddress(address, network) {
+  static fromIdMaskAddress(address, network) {
     if (!isIdMaskAddress(address)) {
       throw new Error(`Invalid Ethereum ID mask address: ${address}`)
     }
@@ -519,7 +519,7 @@ export class AddressId extends Address {
   /**
    * Convert address to ID masked 0x address
    *
-   * To convert to an eth address you problably should use {@link to0x}
+   * To convert to an eth address you probably should use {@link to0x}
    */
   toIdMaskAddress() {
     const buf = new ArrayBuffer(20)
