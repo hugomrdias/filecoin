@@ -1,3 +1,4 @@
+import * as Address from 'iso-filecoin/address'
 import * as Chains from 'iso-filecoin/chains'
 import { RPC } from 'iso-filecoin/rpc'
 import { Token } from 'iso-filecoin/token'
@@ -9,10 +10,12 @@ import {
   useQueries,
   useQuery,
 } from '@tanstack/react-query'
+import { Message } from 'iso-filecoin/message'
 export { mainnet, testnet } from 'iso-filecoin/chains'
 
 /**
  * @import { WalletProviderProps, WalletAdapter, AccountNetwork, Network, WalletContextType, IAccount, ConnectionState, UseAccountReturnType  } from './types.js'
+ * @import { SetOptional } from 'type-fest'
  */
 
 /**
@@ -76,6 +79,7 @@ const WalletContext =
     adapter: undefined,
     account: undefined,
     loading: true,
+    reconnecting: false,
     error: undefined,
     setAccount: () => void 0,
     setAdapter: () => void 0,
@@ -116,6 +120,7 @@ export function WalletProvider({
     useState
   )(undefined)
   const [loading, setLoading] = useState(true)
+  const [reconnecting, setReconnecting] = useState(false)
 
   const [adapter, setAdapter] =
     /** @type {typeof useState<WalletAdapter | undefined>} */ (useState)(
@@ -179,6 +184,7 @@ export function WalletProvider({
         if (lastWallet) {
           const adapter = adapters.find((wallet) => wallet.name === lastWallet)
           if (adapter) {
+            setReconnecting(true)
             setAdapter(adapter)
             const { account } = await adapter.connect({
               network: lastNetwork ?? network,
@@ -189,6 +195,7 @@ export function WalletProvider({
       } catch (error) {
         setError(/** @type {Error} */ (error))
       } finally {
+        setReconnecting(false)
         setLoading(false)
       }
     }
@@ -257,6 +264,7 @@ export function WalletProvider({
         adapters,
         adapter,
         account,
+        reconnecting,
         loading,
         network,
         setAccount,
@@ -293,11 +301,11 @@ export function useWalletProvider() {
  *   return <div>Current adapter: {adapter?.name}</div>
  * }
  * ```
- * @returns {Pick<WalletContextType, 'adapter' | 'error' | 'loading'>} Wallet adapter state
+ * @returns {Pick<WalletContextType, 'adapter' | 'error' | 'loading' | 'network' | 'reconnecting'>} Wallet adapter state
  */
 export function useAdapter() {
-  const { adapter, error, loading } = useWalletProvider()
-  return { adapter, error, loading }
+  const { adapter, error, loading, network, reconnecting } = useWalletProvider()
+  return { adapter, error, loading, network, reconnecting }
 }
 
 /**
@@ -323,20 +331,32 @@ export function useAccount() {
     select: (mutation) => mutation.state.status,
   })
 
+  const changeNetwork = useMutationState({
+    filters: {
+      mutationKey: ['changeNetwork'],
+    },
+    select: (mutation) => mutation.state.status,
+  })
+
   const [state, setState] = /** @type {typeof useState<ConnectionState>} */ (
     useState
   )('disconnected')
 
-  const { account, adapter, network } = useContext(WalletContext)
+  const { account, adapter, network, reconnecting } = useContext(WalletContext)
   useEffect(() => {
-    if (connect[0] === 'pending') {
+    if (connect.some((status) => status === 'pending')) {
       setState('connecting')
+    } else if (
+      reconnecting ||
+      changeNetwork.some((status) => status === 'pending')
+    ) {
+      setState('reconnecting')
     } else if (account) {
       setState('connected')
     } else {
       setState('disconnected')
     }
-  }, [connect, account, setState])
+  }, [connect, account, reconnecting, changeNetwork, setState])
 
   return /** @type {UseAccountReturnType} */ ({
     account,
@@ -457,7 +477,10 @@ export function useBalance() {
       if (balance.error) {
         throw new Error(balance.error.message)
       }
-      return new Token(balance.result)
+      return {
+        value: new Token(balance.result),
+        symbol: Chains[network].nativeCurrency.symbol,
+      }
     },
     enabled: !!account,
   })
@@ -466,35 +489,46 @@ export function useBalance() {
 /**
  * Resolve addresses from the network
  * TODO: use cache
+ * @param {Object} [options]
+ * @param {string} [options.address]
  */
-export function useAddresses() {
+export function useAddresses({ address } = {}) {
   const { account, network, rpcs } = useContext(WalletContext)
+  const _address = address ? Address.from(address, network) : account?.address
 
   return useQueries({
     queries: [
       {
-        queryKey: ['addresses-id', network, account?.address.toString()],
+        queryKey: ['addresses-id', network, _address?.toString()],
         queryFn: async () => {
           try {
-            return await account?.address.toIdAddress({ rpc: rpcs[network] })
+            return await _address?.toIdAddress({ rpc: rpcs[network] })
           } catch (error) {
             throw new Error('ID address not found', { cause: error })
           }
         },
         enabled: !!account,
         retry: 1,
+        staleTime: 5 * 60 * 1000,
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+        refetchOnReconnect: false,
       },
       {
-        queryKey: ['addresses-0x', network, account?.address.toString()],
+        queryKey: ['addresses-0x', network, _address?.toString()],
         queryFn: async () => {
           try {
-            return await account?.address.to0x({ rpc: rpcs[network] })
+            return await _address?.to0x({ rpc: rpcs[network] })
           } catch (error) {
             throw new Error('0x address not found', { cause: error })
           }
         },
         retry: 1,
         enabled: !!account,
+        staleTime: 5 * 60 * 1000,
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+        refetchOnReconnect: false,
       },
     ],
     combine: (result) => {
@@ -502,6 +536,90 @@ export function useAddresses() {
         addressId: result[0],
         address0x: result[1],
       }
+    },
+  })
+}
+
+/**
+ * Estimate the gas for a message
+ *
+ * @param {object} options
+ * @param {string} options.to - Address to send the message to
+ * @param {bigint} options.value - Value to send with the message
+ * @param {bigint} [options.maxFee] - Max fee to pay for gas (attoFIL/gas units). Defaults to 0n.
+ */
+export function useEstimateGas({ to, value, maxFee }) {
+  const { account, network, rpcs } = useContext(WalletContext)
+  const address = account?.address.toString()
+  return useQuery({
+    queryKey: ['estimateGas', network, address],
+    queryFn: async () => {
+      if (!address) {
+        throw new Error('Address not found')
+      }
+      const estimate = await rpcs[network].gasEstimate({
+        msg: {
+          from: address,
+          to: Address.from(to, network).toString(),
+          value: Token.fromAttoFIL(value).toString(),
+        },
+        maxFee: Token.fromAttoFIL(maxFee ?? 0n).toString(),
+      })
+
+      if (estimate.error) {
+        throw new Error(estimate.error.message)
+      }
+
+      const gas = Token.fromAttoFIL(estimate.result.GasPremium ?? '0')
+        .mul(estimate.result.GasLimit ?? '0')
+        .toBigInt()
+      return {
+        gas,
+        total: Token.fromAttoFIL(value).add(gas).toBigInt(),
+        symbol: Chains[network].nativeCurrency.symbol,
+      }
+    },
+    enabled: !!account,
+  })
+}
+
+export function useSendMessage() {
+  const { adapter, network, rpcs, account } = useContext(WalletContext)
+  return useMutation({
+    mutationKey: ['sendMessage'],
+    mutationFn: async (
+      /** @type {SetOptional<import('iso-filecoin/types').PartialMessageObj, 'from'>} */ message
+    ) => {
+      let from
+      if (!adapter) {
+        throw new Error('Adapter not found')
+      }
+
+      if (message.from) {
+        from = Address.from(message.from, network).toString()
+      } else if (account) {
+        from = account.address.toString()
+      } else {
+        throw new Error('From address not found')
+      }
+
+      const msg = await new Message({
+        ...message,
+        from,
+        to: Address.from(message.to, network).toString(),
+      }).prepare(rpcs[network])
+
+      const signedMessage = await adapter.signMessage(msg)
+
+      const send = await rpcs[network].pushMessage({
+        msg,
+        signature: signedMessage,
+      })
+      if (send.error) {
+        throw new Error(send.error.message)
+      }
+
+      return send.result
     },
   })
 }

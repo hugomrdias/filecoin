@@ -37,6 +37,10 @@ export type WalletContextType = {
    * Provider is checking adapters support
    */
   loading: boolean
+  /**
+   * Provider is reconnecting to the last selected adapter
+   */
+  reconnecting: boolean
   /** Last error that occurred on the selected adapter */
   error: Error | undefined
   /** RPC clients for each network */
@@ -52,7 +56,11 @@ export type WalletContextType = {
 /**
  * Connection state
  */
-export type ConnectionState = 'connected' | 'disconnected' | 'connecting'
+export type ConnectionState =
+  | 'connected'
+  | 'disconnected'
+  | 'connecting'
+  | 'reconnecting'
 
 /**
  * Use account return type

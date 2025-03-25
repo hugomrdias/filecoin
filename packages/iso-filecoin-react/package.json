@@ -68,16 +68,18 @@
 		"iso-filecoin-wallets": "workspace:*"
 	},
 	"devDependencies": {
+		"@tanstack/react-query": "^5.69.0",
 		"@testing-library/react": "^16.2.0",
 		"@types/mocha": "^10.0.10",
-		"@types/node": "^22.13.10",
-		"@types/react": "^19.0.10",
+		"@types/node": "^22.13.13",
+		"@types/react": "^19.0.12",
 		"@types/react-dom": "^19.0.4",
 		"assert": "^2.1.0",
 		"mocha": "^11.1.0",
 		"playwright-test": "^14.1.9",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
+		"type-fest": "^4.38.0",
 		"typescript": "5.8.2"
 	},
 	"publishConfig": {
