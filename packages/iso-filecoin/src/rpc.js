@@ -383,8 +383,8 @@ export class RPC {
     }
 
     return {
-      result:
-        this.network === 'testnet' ? r.result.replace('f', 't') : r.result,
+      result: r.result,
+
       error: undefined,
     }
   }
@@ -421,8 +421,7 @@ export class RPC {
     }
 
     return {
-      result:
-        this.network === 'testnet' ? r.result.replace('f', 't') : r.result,
+      result: r.result,
       error: undefined,
     }
   }
@@ -455,8 +454,7 @@ export class RPC {
     }
 
     return {
-      result:
-        this.network === 'testnet' ? r.result.replace('f', 't') : r.result,
+      result: r.result,
       error: undefined,
     }
   }
