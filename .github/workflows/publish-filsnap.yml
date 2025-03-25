@@ -21,7 +21,7 @@ jobs:
       - run: pnpm -r --filter filsnap.dev run build
         env:
           GITHUB_WORKFLOW_ID: ${{ github.run_id }}
-      - uses: hugomrdias/action-ipfs-publish@82ff048
+      - uses: hugomrdias/action-ipfs-publish@main
         with:
           dir: examples/filsnap.dev/dist
           w3s-key: ${{ secrets.W3S_KEY }}
