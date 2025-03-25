@@ -1,9 +1,4 @@
-import {
-  FilsnapAdapter,
-  chainIdtoNetwork,
-  createConnector,
-  getProvider,
-} from 'filsnap-adapter'
+import { FilsnapAdapter, createConnector, getProvider } from 'filsnap-adapter'
 import { base64pad } from 'iso-base/rfc4648'
 import { Signature } from 'iso-filecoin/signature'
 import { pathFromNetwork } from 'iso-filecoin/utils'
@@ -102,12 +97,9 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
         onDisconnect: () => {
           this.disconnect()
         },
-        onChainChanged: (chain) => {
-          const network = chainIdtoNetwork(chain)
+        onChainChanged: (network) => {
           if (network) {
             this.changeNetwork(network)
-          } else {
-            this.disconnect()
           }
         },
       })

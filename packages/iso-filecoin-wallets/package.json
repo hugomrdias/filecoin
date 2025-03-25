@@ -85,7 +85,7 @@
     "check": "biome check --no-errors-on-unmatched --files-ignore-unknown=true ."
   },
   "dependencies": {
-    "filsnap-adapter": "~3.0.2",
+    "filsnap-adapter": "~3.1.2",
     "iso-base": "^4.0.2",
     "iso-web": "^1.1.0"
   },
@@ -93,7 +93,7 @@
     "@ledgerhq/hw-transport": "^6.31.4",
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.13.10",
+    "@types/node": "^22.13.13",
     "@zondax/zemu": "^0.55.0",
     "assert": "^2.1.0",
     "mocha": "^11.0.1",
