@@ -128,6 +128,20 @@ export class Message {
    * @param {import('./rpc.js').RPC} rpc
    */
   async prepare(rpc) {
+    if (Address.isIdMaskAddress(this.to)) {
+      throw new Error('ID mask addresses are not supported for recipient')
+    }
+
+    const parsedTo = Address.from(this.to, rpc.network)
+
+    // Change to method to InvokeEVM for Bare value sends to 0x address to avoid losing funds
+    // @see https://docs.filecoin.io/smart-contracts/filecoin-evm-runtime/difference-with-ethereum#bare-value-sends
+    if (Address.isAddressDelegated(parsedTo) && this.method === 0) {
+      this.method = 3844450837
+    }
+
+    this.to = parsedTo.toString()
+
     if (this.nonce === 0) {
       const nonce = await rpc.nonce(this.from)
       if (nonce.error) {
