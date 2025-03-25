@@ -49,19 +49,19 @@ importers:
     dependencies:
       '@astrojs/starlight':
         specifier: ^0.32.2
-        version: 0.32.2(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
+        version: 0.32.2(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
       astro:
         specifier: ^5.5.2
-        version: 5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)
+        version: 5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)
       expressive-code-twoslash:
         specifier: ^0.4.0
         version: 0.4.0(@expressive-code/core@0.40.2)(expressive-code@0.40.2)(typescript@5.8.2)
       starlight-llms-txt:
         specifier: ^0.5.0
-        version: 0.5.0(@astrojs/starlight@0.32.2(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)))(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
+        version: 0.5.0(@astrojs/starlight@0.32.2(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)))(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
       starlight-typedoc:
         specifier: ^0.20.0
-        version: 0.20.0(@astrojs/starlight@0.32.2(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)))(typedoc-plugin-markdown@4.4.2(typedoc@0.27.9(typescript@5.8.2)))(typedoc@0.27.9(typescript@5.8.2))
+        version: 0.20.0(@astrojs/starlight@0.32.2(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)))(typedoc-plugin-markdown@4.4.2(typedoc@0.27.9(typescript@5.8.2)))(typedoc@0.27.9(typescript@5.8.2))
       typedoc:
         specifier: ^0.27.9
         version: 0.27.9(typescript@5.8.2)
@@ -143,11 +143,11 @@ importers:
         specifier: ^22.13.10
         version: 22.13.10
       '@types/react':
-        specifier: ^19.0.10
-        version: 19.0.10
+        specifier: ^19.0.12
+        version: 19.0.12
       '@types/react-dom':
         specifier: ^19.0.4
-        version: 19.0.4(@types/react@19.0.10)
+        version: 19.0.4(@types/react@19.0.12)
       '@types/w3c-web-hid':
         specifier: ^1.0.6
         version: 1.0.6
@@ -257,9 +257,6 @@ importers:
 
   packages/iso-filecoin-react:
     dependencies:
-      '@tanstack/react-query':
-        specifier: '>=5.0.0'
-        version: 5.67.3(react@19.0.0)
       iso-filecoin:
         specifier: workspace:^
         version: link:../iso-filecoin
@@ -267,21 +264,24 @@ importers:
         specifier: workspace:*
         version: link:../iso-filecoin-wallets
     devDependencies:
+      '@tanstack/react-query':
+        specifier: ^5.69.0
+        version: 5.69.0(react@19.0.0)
       '@testing-library/react':
         specifier: ^16.2.0
-        version: 16.2.0(@testing-library/dom@10.4.0)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 16.2.0(@testing-library/dom@10.4.0)(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@types/mocha':
         specifier: ^10.0.10
         version: 10.0.10
       '@types/node':
-        specifier: ^22.13.10
-        version: 22.13.10
+        specifier: ^22.13.13
+        version: 22.13.13
       '@types/react':
-        specifier: ^19.0.10
-        version: 19.0.10
+        specifier: ^19.0.12
+        version: 19.0.12
       '@types/react-dom':
         specifier: ^19.0.4
-        version: 19.0.4(@types/react@19.0.10)
+        version: 19.0.4(@types/react@19.0.12)
       assert:
         specifier: ^2.1.0
         version: 2.1.0
@@ -297,6 +297,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
+      type-fest:
+        specifier: ^4.38.0
+        version: 4.38.0
       typescript:
         specifier: 5.8.2
         version: 5.8.2
@@ -466,6 +469,10 @@ packages:
 
   '@babel/runtime@7.26.10':
     resolution: {integrity: sha512-2WJMeRQPHKSPemqk/awGrAiuFfzBmOIPXKizAsVhWH9YJqLZ0H+HS4c8loHGgW6utJ3E/ejXQUsiGaQy2NZ9Fw==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/runtime@7.27.0':
+    resolution: {integrity: sha512-VtPOkrdPHZsKc/clNqyi9WUA8TINkZ4cGk63UUE3u4pmB2k+ZMQRDuIOagv8UVd6j7k0T3+RRIb7beKTebNbcw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.26.9':
@@ -1158,6 +1165,7 @@ packages:
 
   '@paulmillr/qr@0.3.0':
     resolution: {integrity: sha512-3s/cagXuoXTA2gWSfSfJNanNgm2ifmqgoX8WLOs5//3qrIJ3WWHFjqFqCxvYGf46Afwv6PctT9eAOXLDGwp96Q==}
+    deprecated: 'The package is now available as "qr": npm install qr'
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -1383,8 +1391,16 @@ packages:
   '@tanstack/query-core@5.67.3':
     resolution: {integrity: sha512-pq76ObpjcaspAW4OmCbpXLF6BCZP2Zr/J5ztnyizXhSlNe7fIUp0QKZsd0JMkw9aDa+vxDX/OY7N+hjNY/dCGg==}
 
+  '@tanstack/query-core@5.69.0':
+    resolution: {integrity: sha512-Kn410jq6vs1P8Nm+ZsRj9H+U3C0kjuEkYLxbiCyn3MDEiYor1j2DGVULqAz62SLZtUZ/e9Xt6xMXiJ3NJ65WyQ==}
+
   '@tanstack/react-query@5.67.3':
     resolution: {integrity: sha512-u/n2HsQeH1vpZIOzB/w2lqKlXUDUKo6BxTdGXSMvNzIq5MHYFckRMVuFABp+QB7RN8LFXWV6X1/oSkuDq+MPIA==}
+    peerDependencies:
+      react: ^18 || ^19
+
+  '@tanstack/react-query@5.69.0':
+    resolution: {integrity: sha512-Ift3IUNQqTcaFa1AiIQ7WCb/PPy8aexZdq9pZWLXhfLcLxH0+PZqJ2xFImxCpdDZrFRZhLJrh76geevS5xjRhA==}
     peerDependencies:
       react: ^18 || ^19
 
@@ -1479,6 +1495,9 @@ packages:
   '@types/node@22.13.10':
     resolution: {integrity: sha512-I6LPUvlRH+O6VRUqYOcMudhaIdUVWfsjnZavnsraHvpBwaEyMN29ry+0UVJhImYL16xsscu0aske3yA+uPOWfw==}
 
+  '@types/node@22.13.13':
+    resolution: {integrity: sha512-ClsL5nMwKaBRwPcCvH8E7+nU4GxHVx1axNvMZTFHMEfNI7oahimt26P5zjVCRrjiIWj6YFXfE1v3dEp94wLcGQ==}
+
   '@types/parse-json@4.0.2':
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
 
@@ -1487,8 +1506,8 @@ packages:
     peerDependencies:
       '@types/react': ^19.0.0
 
-  '@types/react@19.0.10':
-    resolution: {integrity: sha512-JuRQ9KXLEjaUNjTWpzuR231Z2WpIwczOkBEIvbHNCzQefFIT0L8IqE6NV6ULLyC1SI/i234JnDoMkfg+RjQj2g==}
+  '@types/react@19.0.12':
+    resolution: {integrity: sha512-V6Ar115dBDrjbtXSrS+/Oruobc+qVbbUxDFC1RSbRqLt5SYvxxyIDrSC85RWml54g+jfNeEMZhEj7wW07ONQhA==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -4144,6 +4163,10 @@ packages:
     resolution: {integrity: sha512-S/5/0kFftkq27FPNye0XM1e2NsnoD/3FS+pBmbjmmtLT6I+i344KoOf7pvXreaFsDamWeaJX55nczA1m5PsBDg==}
     engines: {node: '>=16'}
 
+  type-fest@4.38.0:
+    resolution: {integrity: sha512-2dBz5D5ycHIoliLYLi0Q2V7KRaDlH0uWIvmk7TYlAg5slqwiPv1ezJdZm1QEM0xgk29oYWMCbIG7E6gHpvChlg==}
+    engines: {node: '>=16'}
+
   typedoc-plugin-markdown@4.4.2:
     resolution: {integrity: sha512-kJVkU2Wd+AXQpyL6DlYXXRrfNrHrEIUgiABWH8Z+2Lz5Sq6an4dQ/hfvP75bbokjNDUskOdFlEEm/0fSVyC7eg==}
     engines: {node: '>= 18'}
@@ -4604,12 +4627,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.2.0(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))':
+  '@astrojs/mdx@4.2.0(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.0
       '@mdx-js/mdx': 3.1.0(acorn@8.14.1)
       acorn: 8.14.1
-      astro: 5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)
+      astro: 5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)
       es-module-lexer: 1.6.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -4633,16 +4656,16 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.24.2
 
-  '@astrojs/starlight@0.32.2(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))':
+  '@astrojs/starlight@0.32.2(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))':
     dependencies:
-      '@astrojs/mdx': 4.2.0(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
+      '@astrojs/mdx': 4.2.0(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
       '@astrojs/sitemap': 3.2.1
       '@pagefind/default-ui': 1.3.0
       '@types/hast': 3.0.4
       '@types/js-yaml': 4.0.9
       '@types/mdast': 4.0.4
-      astro: 5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)
-      astro-expressive-code: 0.40.2(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
+      astro: 5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)
+      astro-expressive-code: 0.40.2(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
       bcp-47: 2.1.0
       hast-util-from-html: 2.0.3
       hast-util-select: 6.0.4
@@ -4764,6 +4787,10 @@ snapshots:
       '@babel/helper-plugin-utils': 7.26.5
 
   '@babel/runtime@7.26.10':
+    dependencies:
+      regenerator-runtime: 0.14.1
+
+  '@babel/runtime@7.27.0':
     dependencies:
       regenerator-runtime: 0.14.1
 
@@ -5566,15 +5593,22 @@ snapshots:
 
   '@tanstack/query-core@5.67.3': {}
 
+  '@tanstack/query-core@5.69.0': {}
+
   '@tanstack/react-query@5.67.3(react@19.0.0)':
     dependencies:
       '@tanstack/query-core': 5.67.3
       react: 19.0.0
 
+  '@tanstack/react-query@5.69.0(react@19.0.0)':
+    dependencies:
+      '@tanstack/query-core': 5.69.0
+      react: 19.0.0
+
   '@testing-library/dom@10.4.0':
     dependencies:
       '@babel/code-frame': 7.26.2
-      '@babel/runtime': 7.26.10
+      '@babel/runtime': 7.27.0
       '@types/aria-query': 5.0.4
       aria-query: 5.3.0
       chalk: 4.1.2
@@ -5582,15 +5616,15 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  '@testing-library/react@16.2.0(@testing-library/dom@10.4.0)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@testing-library/react@16.2.0(@testing-library/dom@10.4.0)(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@babel/runtime': 7.26.10
       '@testing-library/dom': 10.4.0
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
     optionalDependencies:
-      '@types/react': 19.0.10
-      '@types/react-dom': 19.0.4(@types/react@19.0.10)
+      '@types/react': 19.0.12
+      '@types/react-dom': 19.0.4(@types/react@19.0.12)
 
   '@types/acorn@4.0.6':
     dependencies:
@@ -5669,13 +5703,17 @@ snapshots:
     dependencies:
       undici-types: 6.20.0
 
+  '@types/node@22.13.13':
+    dependencies:
+      undici-types: 6.20.0
+
   '@types/parse-json@4.0.2': {}
 
-  '@types/react-dom@19.0.4(@types/react@19.0.10)':
+  '@types/react-dom@19.0.4(@types/react@19.0.12)':
     dependencies:
-      '@types/react': 19.0.10
+      '@types/react': 19.0.12
 
-  '@types/react@19.0.10':
+  '@types/react@19.0.12':
     dependencies:
       csstype: 3.1.3
 
@@ -5685,7 +5723,7 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 22.13.10
+      '@types/node': 17.0.45
 
   '@types/unist@2.0.11': {}
 
@@ -5859,12 +5897,12 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-expressive-code@0.40.2(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)):
+  astro-expressive-code@0.40.2(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)):
     dependencies:
-      astro: 5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)
+      astro: 5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)
       rehype-expressive-code: 0.40.2
 
-  astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0):
+  astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0):
     dependencies:
       '@astrojs/compiler': 2.11.0
       '@astrojs/internal-helpers': 0.6.1
@@ -5916,8 +5954,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.15.0(idb-keyval@6.2.1)
       vfile: 6.0.3
-      vite: 6.2.1(@types/node@22.13.10)(yaml@2.7.0)
-      vitefu: 1.0.6(vite@6.2.1(@types/node@22.13.10)(yaml@2.7.0))
+      vite: 6.2.1(@types/node@22.13.13)(yaml@2.7.0)
+      vitefu: 1.0.6(vite@6.2.1(@types/node@22.13.13)(yaml@2.7.0))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.1
@@ -6041,7 +6079,7 @@ snapshots:
       chalk: 5.4.1
       cli-boxes: 3.0.0
       string-width: 7.2.0
-      type-fest: 4.37.0
+      type-fest: 4.38.0
       widest-line: 5.0.0
       wrap-ansi: 9.0.0
 
@@ -9059,13 +9097,13 @@ snapshots:
       cpu-features: 0.0.10
       nan: 2.22.2
 
-  starlight-llms-txt@0.5.0(@astrojs/starlight@0.32.2(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)))(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)):
+  starlight-llms-txt@0.5.0(@astrojs/starlight@0.32.2(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)))(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)):
     dependencies:
-      '@astrojs/mdx': 4.2.0(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
-      '@astrojs/starlight': 0.32.2(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
+      '@astrojs/mdx': 4.2.0(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
+      '@astrojs/starlight': 0.32.2(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
       '@types/hast': 3.0.4
       '@types/micromatch': 4.0.9
-      astro: 5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)
+      astro: 5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)
       github-slugger: 2.0.0
       hast-util-select: 6.0.4
       micromatch: 4.0.8
@@ -9078,9 +9116,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  starlight-typedoc@0.20.0(@astrojs/starlight@0.32.2(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)))(typedoc-plugin-markdown@4.4.2(typedoc@0.27.9(typescript@5.8.2)))(typedoc@0.27.9(typescript@5.8.2)):
+  starlight-typedoc@0.20.0(@astrojs/starlight@0.32.2(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0)))(typedoc-plugin-markdown@4.4.2(typedoc@0.27.9(typescript@5.8.2)))(typedoc@0.27.9(typescript@5.8.2)):
     dependencies:
-      '@astrojs/starlight': 0.32.2(astro@5.5.2(@types/node@22.13.10)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
+      '@astrojs/starlight': 0.32.2(astro@5.5.2(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.35.0)(typescript@5.8.2)(yaml@2.7.0))
       github-slugger: 2.0.0
       typedoc: 0.27.9(typescript@5.8.2)
       typedoc-plugin-markdown: 4.4.2(typedoc@0.27.9(typescript@5.8.2))
@@ -9252,6 +9290,8 @@ snapshots:
   type-fest@3.13.1: {}
 
   type-fest@4.37.0: {}
+
+  type-fest@4.38.0: {}
 
   typedoc-plugin-markdown@4.4.2(typedoc@0.27.9(typescript@5.8.2)):
     dependencies:
@@ -9456,9 +9496,19 @@ snapshots:
       fsevents: 2.3.3
       yaml: 2.7.0
 
-  vitefu@1.0.6(vite@6.2.1(@types/node@22.13.10)(yaml@2.7.0)):
+  vite@6.2.1(@types/node@22.13.13)(yaml@2.7.0):
+    dependencies:
+      esbuild: 0.25.1
+      postcss: 8.5.3
+      rollup: 4.35.0
     optionalDependencies:
-      vite: 6.2.1(@types/node@22.13.10)(yaml@2.7.0)
+      '@types/node': 22.13.13
+      fsevents: 2.3.3
+      yaml: 2.7.0
+
+  vitefu@1.0.6(vite@6.2.1(@types/node@22.13.13)(yaml@2.7.0)):
+    optionalDependencies:
+      vite: 6.2.1(@types/node@22.13.13)(yaml@2.7.0)
 
   vm-browserify@1.1.2: {}
 
