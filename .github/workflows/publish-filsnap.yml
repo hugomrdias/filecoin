@@ -7,7 +7,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    if: github.ref_name == 'master'
+    if: github.ref_name == 'main'
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
