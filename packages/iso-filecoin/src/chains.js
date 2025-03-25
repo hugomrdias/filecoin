@@ -15,7 +15,7 @@ export const mainnet = {
     default: { http: ['https://api.node.glif.io/rpc/v1'] },
   },
   blockExplorers: {
-    default: {
+    Beryx: {
       name: 'Beryx',
       url: 'https://beryx.io/fil/mainnet',
     },
@@ -23,7 +23,7 @@ export const mainnet = {
       name: 'Filfox',
       url: 'https://filfox.info',
     },
-    glif: {
+    default: {
       name: 'Glif',
       url: 'https://www.glif.io/en',
     },
@@ -56,7 +56,7 @@ export const testnet = {
     default: { http: ['https://api.calibration.node.glif.io/rpc/v1'] },
   },
   blockExplorers: {
-    default: {
+    Beryx: {
       name: 'Beryx',
       url: 'https://beryx.io/fil/calibration',
     },
@@ -64,9 +64,9 @@ export const testnet = {
       name: 'Filfox',
       url: 'https://calibration.filfox.info',
     },
-    glif: {
+    default: {
       name: 'Glif',
-      url: 'https://www.glif.io/en?network=calibrationnet',
+      url: 'https://www.glif.io/en/calibrationnet',
     },
   },
   testnet: true,
