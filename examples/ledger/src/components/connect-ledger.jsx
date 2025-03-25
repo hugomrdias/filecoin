@@ -99,7 +99,7 @@ export default function ConnectLedger() {
           <ExplorerLink address={address0x.data?.toString()} chain="ethereum" />
           <div>
             <b>
-              {balance.data
+              {balance.data?.value
                 ?.toFIL()
                 .toFormat({ decimalPlaces: 4, suffix: ' FIL' }) ?? '...'}
             </b>

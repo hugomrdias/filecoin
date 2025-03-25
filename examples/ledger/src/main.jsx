@@ -8,6 +8,7 @@ import {
   WalletAdapterLedger,
   WalletAdapterLocal,
 } from 'iso-filecoin-wallets'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './app.jsx'
 
@@ -24,10 +25,12 @@ const wallets = [
 
 if (appEl) {
   createRoot(appEl).render(
-    <QueryClientProvider client={queryClient}>
-      <WalletProvider adapters={wallets} network="testnet">
-        <App />
-      </WalletProvider>
-    </QueryClientProvider>
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <WalletProvider adapters={wallets} network="testnet">
+          <App />
+        </WalletProvider>
+      </QueryClientProvider>
+    </StrictMode>
   )
 }

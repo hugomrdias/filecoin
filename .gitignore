@@ -34,3 +34,4 @@ kv-data
 # Extras
 snapshots-tmp
 .wireit
+.wrangler

@@ -1,0 +1,36 @@
+name: Publish filsnap.dev
+env:
+  CI: true
+  FORCE_COLOR: 1
+on: 
+  workflow_dispatch:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'master'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm -r --filter filsnap.dev run build
+        env:
+          GITHUB_WORKFLOW_ID: ${{ github.run_id }}
+      - uses: hugomrdias/action-ipfs-publish@main
+        with:
+          dir: examples/filsnap.dev/dist
+          w3s-key: ${{ secrets.W3S_KEY }}
+          w3s-proof: ${{ secrets.W3S_PROOF }}
+          cf-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cf-zone-id: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          cf-zone-name: ${{ secrets.CLOUDFLARE_ZONE_NAME }}
+      - name: Deploy to Cloudflare Pages
+        run: pnpx wrangler pages deploy examples/filsnap.dev/dist --project-name filsnap --branch dev
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
