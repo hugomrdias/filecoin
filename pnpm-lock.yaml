@@ -60,8 +60,8 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0(@astrojs/starlight@0.32.4(astro@5.5.4(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.37.0)(typescript@5.8.2)(yaml@2.7.0)))(astro@5.5.4(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.37.0)(typescript@5.8.2)(yaml@2.7.0))
       starlight-typedoc:
-        specifier: ^0.20.0
-        version: 0.20.0(@astrojs/starlight@0.32.4(astro@5.5.4(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.37.0)(typescript@5.8.2)(yaml@2.7.0)))(typedoc-plugin-markdown@4.6.0(typedoc@0.28.1(typescript@5.8.2)))(typedoc@0.28.1(typescript@5.8.2))
+        specifier: ^0.21.0
+        version: 0.21.0(@astrojs/starlight@0.32.4(astro@5.5.4(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.37.0)(typescript@5.8.2)(yaml@2.7.0)))(typedoc-plugin-markdown@4.6.0(typedoc@0.28.1(typescript@5.8.2)))(typedoc@0.28.1(typescript@5.8.2))
       typedoc:
         specifier: ^0.28.1
         version: 0.28.1(typescript@5.8.2)
@@ -69,9 +69,24 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(typedoc@0.28.1(typescript@5.8.2))
     devDependencies:
+      '@ledgerhq/hw-transport-webusb':
+        specifier: ^6.29.4
+        version: 6.29.4
+      '@types/react':
+        specifier: ^19.0.12
+        version: 19.0.12
       iso-filecoin:
         specifier: workspace:^
         version: link:../packages/iso-filecoin
+      iso-filecoin-react:
+        specifier: workspace:^
+        version: link:../packages/iso-filecoin-react
+      iso-filecoin-wallets:
+        specifier: workspace:^
+        version: link:../packages/iso-filecoin-wallets
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -5383,13 +5398,13 @@ packages:
       '@astrojs/starlight': '>=0.31'
       astro: ^5.1.6
 
-  starlight-typedoc@0.20.0:
-    resolution: {integrity: sha512-BdcBVV5V8t8PyplQGFbyncs/5Ppl9ynIVz6z++VocwKZZXi/1j+CcImchygfrVKy59rWch5+6uRSXYkS9zRhqA==}
+  starlight-typedoc@0.21.0:
+    resolution: {integrity: sha512-ADePbvN817lbCT289IZXIJQNkNN8YV44YbOy4A919P3itFZxh3ZS4bLns92F6Dex6vITTXuNLfwC9dFWl2GU7A==}
     engines: {node: '>=18.17.1'}
     peerDependencies:
       '@astrojs/starlight': '>=0.32.0'
-      typedoc: '>=0.26.5'
-      typedoc-plugin-markdown: '>=4.1.1'
+      typedoc: '>=0.28.0'
+      typedoc-plugin-markdown: '>=4.6.0'
 
   stdin-discarder@0.2.2:
     resolution: {integrity: sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==}
@@ -12548,7 +12563,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  starlight-typedoc@0.20.0(@astrojs/starlight@0.32.4(astro@5.5.4(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.37.0)(typescript@5.8.2)(yaml@2.7.0)))(typedoc-plugin-markdown@4.6.0(typedoc@0.28.1(typescript@5.8.2)))(typedoc@0.28.1(typescript@5.8.2)):
+  starlight-typedoc@0.21.0(@astrojs/starlight@0.32.4(astro@5.5.4(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.37.0)(typescript@5.8.2)(yaml@2.7.0)))(typedoc-plugin-markdown@4.6.0(typedoc@0.28.1(typescript@5.8.2)))(typedoc@0.28.1(typescript@5.8.2)):
     dependencies:
       '@astrojs/starlight': 0.32.4(astro@5.5.4(@types/node@22.13.13)(idb-keyval@6.2.1)(rollup@4.37.0)(typescript@5.8.2)(yaml@2.7.0))
       github-slugger: 2.0.0
