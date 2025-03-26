@@ -97,7 +97,8 @@
 			"@types/*",
 			"assert",
 			"mocha",
-			"playwright-test"
+			"playwright-test",
+			"type-fest"
 		]
 	}
 }
