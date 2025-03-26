@@ -1,4 +1,4 @@
-const abi = [
+const abi = /** @type {const} */ [
   {
     inputs: [
       {
@@ -76,10 +76,12 @@ const abi = [
     stateMutability: 'payable',
     type: 'function',
   },
-] as const
+]
 
-const contractAddress: `0x${string}` =
-  '0x2B3ef6906429b580b7b2080de5CA893BC282c225'
+/**
+ * @type {`0x${string}`}
+ */
+const contractAddress = '0x2B3ef6906429b580b7b2080de5CA893BC282c225'
 
 const chainIds = {
   filecoinMainnet: 'eip155:314',

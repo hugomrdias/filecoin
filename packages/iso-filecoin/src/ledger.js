@@ -286,7 +286,9 @@ export class LedgerFilecoin {
    * @example
    * ```ts twoslash
    * import { LedgerFilecoin } from 'iso-filecoin/ledger'
+   * import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
    *
+   * const transport = await TransportWebUSB.create()
    * const ledger = new LedgerFilecoin(transport)
    * const version = await ledger.getVersion()
    * // => '1.0.0'

@@ -9,7 +9,6 @@
   "typedocOptions": {
     "entryPointStrategy": "resolve",
     "entryPoints": [
-      "src/adapters/*.js",
       "src/address.js",
       "src/chains.js",
       "src/ledger.js",
@@ -19,12 +18,8 @@
       "src/token.js",
       "src/utils.js",
       "src/wallet.js",
-      "src/types.ts"
-    ],
-    "includeVersion": true,
-    "excludeExternals": true,
-    "excludeReferences": true,
-    "placeInternalsInOwningModule": true,
-    "groupOrder": ["Functions", "Classes", "Variables", "Interfaces"]
+      "src/types.ts",
+      "src/contracts/*.js"
+    ]
   }
 }
