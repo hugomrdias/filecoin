@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v1.1.0...iso-filecoin-react-v1.2.0) (2025-03-26)
+
+
+### Features
+
+* **react:** add `useEstimateGas`, `useSendMessage` and some improvements to the other hooks ([554683e](https://github.com/hugomrdias/filecoin/commit/554683e851271944f778bb725b0c48915a5661db))
+
 ## [1.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v1.0.1...iso-filecoin-react-v1.1.0) (2025-03-18)
 
 
