@@ -1,5 +1,16 @@
 # Changelog
 
+## [7.1.3](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.1.2...iso-filecoin-v7.1.3) (2025-03-26)
+
+
+### Bug Fixes
+
+* change default explorer to glif ([371cd78](https://github.com/hugomrdias/filecoin/commit/371cd78422a79040ec23c21a128f12f9d88e2a38))
+* export contracts properly ([e8007a1](https://github.com/hugomrdias/filecoin/commit/e8007a12b1a4de0ab857ced5eed698891c47d81e))
+* guard against send to id masked add, use method InvokeEVM for 0x send ([598075b](https://github.com/hugomrdias/filecoin/commit/598075bf2e21d9cd57e0cd728be14f5d93c55d89))
+* remove network prefix replace, lotus now return the correct result ([645e6cc](https://github.com/hugomrdias/filecoin/commit/645e6cc1eb7b9d2eca39a5f353938ef066508af5))
+* rename AddressId.fromEthAddress to AddressId.fromIdMaskAddress ([df943b5](https://github.com/hugomrdias/filecoin/commit/df943b57e0ff43fffdf64e7457c057aa5066371d))
+
 ## [7.1.2](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.1.1...iso-filecoin-v7.1.2) (2025-03-18)
 
 
