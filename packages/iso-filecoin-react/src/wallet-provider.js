@@ -289,7 +289,9 @@ export function useWalletProvider() {
  * Hook to access the current wallet adapter and its state
  *
  * @example
- * ```ts twoslash
+ * ```tsx twoslash
+ * // @allowUmdGlobalAccess
+ *
  * import { useAdapter } from 'iso-filecoin-react'
  *
  * function App() {
@@ -312,7 +314,8 @@ export function useAdapter() {
  * Hook to access the current account and its state
  *
  * @example
- * ```ts twoslash
+ * ```tsx twoslash
+ * // @allowUmdGlobalAccess
  * import { useAccount } from 'iso-filecoin-react'
  *
  * function App() {
@@ -371,7 +374,9 @@ export function useAccount() {
  * Hook to connect a wallet adapter
  *
  * @example
- * ```ts twoslash
+ * ```tsx twoslash
+ * // @allowUmdGlobalAccess
+ *
  * import { useConnect } from 'iso-filecoin-react'
  *
  * function App() {
