@@ -2,7 +2,9 @@ import starlight from '@astrojs/starlight'
 import { defineConfig } from 'astro/config'
 import ecTwoSlash from 'expressive-code-twoslash'
 import starlightLlmsTxt from 'starlight-llms-txt'
-import starlightTypeDoc, { typeDocSidebarGroup } from 'starlight-typedoc'
+import { createStarlightTypeDocPlugin } from 'starlight-typedoc'
+
+const [corePlugin, coreSidebar] = createStarlightTypeDocPlugin()
 
 const site = 'https://filecoin.hugomrdias.dev'
 // https://astro.build/config
@@ -47,37 +49,40 @@ export default defineConfig({
           autogenerate: { directory: 'reference' },
         },
         // Add the typedoc generated sidebar group to the sidebar.
-        typeDocSidebarGroup,
+        coreSidebar,
       ],
       expressiveCode: {
         plugins: [ecTwoSlash()],
       },
       plugins: [
         starlightLlmsTxt(),
-        starlightTypeDoc({
+        corePlugin({
           pagination: true,
           sidebar: {
-            label: 'API Reference',
+            label: 'Reference',
             collapsed: false,
           },
-          entryPoints: [
-            '../packages/iso-filecoin/src/address.js',
-            '../packages/iso-filecoin/src/chains.js',
-            '../packages/iso-filecoin/src/ledger.js',
-            '../packages/iso-filecoin/src/message.js',
-            '../packages/iso-filecoin/src/rpc.js',
-            '../packages/iso-filecoin/src/signature.js',
-            '../packages/iso-filecoin/src/token.js',
-            '../packages/iso-filecoin/src/types.js',
-            '../packages/iso-filecoin/src/utils.js',
-            '../packages/iso-filecoin/src/wallet.js',
-            '../packages/iso-filecoin/src/adapters/*.js',
-          ],
+
+          entryPoints: ['../packages/*'],
           typeDoc: {
-            githubPages: true,
-            gitRevision: 'main',
+            entryPointStrategy: 'packages',
+            packageOptions: {
+              readme: 'none',
+              groupOrder: [
+                'Functions',
+                'Classes',
+                'Variables',
+                'Interfaces',
+                'Enums',
+                'Type Aliases',
+                'References',
+              ],
+              // excludeExternals: true,
+              gitRevision: 'main',
+              // placeInternalsInOwningModule: true,
+            },
             plugin: [
-              'typedoc-plugin-missing-exports',
+              // 'typedoc-plugin-missing-exports',
               'typedoc-plugin-zod',
               'typedoc-plugin-mdn-links',
             ],
@@ -86,7 +91,7 @@ export default defineConfig({
             expandParameters: true,
             useCodeBlocks: true,
           },
-          tsconfig: '../packages/iso-filecoin/tsconfig.json',
+          tsconfig: '../tsconfig.json',
         }),
       ],
     }),
