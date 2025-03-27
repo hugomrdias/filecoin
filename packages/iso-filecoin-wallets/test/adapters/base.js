@@ -25,7 +25,7 @@ export const MNEMONIC =
  * @type {Record<string, WalletFixturesNetworks>}
  */
 export const fixtures = {
-  Local: {
+  raw: {
     mainnet: {
       address0: 'f1nzc6j2th7dhgg3mgcr3525arsx4zm5linh5bsli',
       address1: '',
@@ -41,7 +41,7 @@ export const fixtures = {
         '01e77594aed1f0fb1574c38bfeace2fddb18bdbbe22628d8e1d3f12e5d889da1e65ade19dc58f320a2db370687da7875409776ac45dd780bb92cc7f8caa290814a01',
     },
   },
-  'HD Burner Wallet': {
+  hd: {
     mainnet: {
       address0: 'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i',
       address1: 'f1wkozgbb4o5foj2kratibzmdxmf5w2h3t7vmddey',
@@ -57,7 +57,7 @@ export const fixtures = {
         '01bddf08762c8aa21c542ee701d222e196ab23d71eaaa286d71d1ca947a008dd99742310fb458e7b6e2fa6dd84d7d7453ffa492db9d20156c43f23f920c5ca04aa00',
     },
   },
-  Ledger: {
+  ledger: {
     mainnet: {
       address0: 'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i',
       address1: 'f1wkozgbb4o5foj2kratibzmdxmf5w2h3t7vmddey',
@@ -122,7 +122,7 @@ export function connectorTests({
       assert.strictEqual(account?.type, 'SECP256K1')
       assert.strictEqual(
         account.address.toString(),
-        fixtures[wallet.name][`${network}`].address0
+        fixtures[wallet.id][`${network}`].address0
       )
     })
 
@@ -138,7 +138,7 @@ export function connectorTests({
         assert.strictEqual(e.detail.account.type, 'SECP256K1')
         assert.strictEqual(
           e.detail.account.address.toString(),
-          fixtures[wallet.name][`${wallet.network}`].address0
+          fixtures[wallet.id][`${wallet.network}`].address0
         )
         deferred.resolve()
       }
@@ -193,7 +193,7 @@ export function connectorTests({
       assert.strictEqual(wallet.network, otherNetwork)
       assert.strictEqual(
         wallet.account?.address.toString(),
-        fixtures[wallet.name][`${otherNetwork}`].address0
+        fixtures[wallet.id][`${otherNetwork}`].address0
       )
       await deferred.promise
     })
@@ -201,7 +201,7 @@ export function connectorTests({
       await wallet.connect({ network })
       assert.strictEqual(wallet.connected, true)
 
-      if (wallet.name === 'Local') {
+      if (wallet.id === 'raw') {
         await assert.rejects(wallet.deriveAccount(1), {
           message: 'Local wallet is not a HD wallet',
         })
@@ -215,7 +215,7 @@ export function connectorTests({
             assert.strictEqual(e.detail.type, 'SECP256K1')
             assert.strictEqual(
               e.detail.address.toString(),
-              fixtures[wallet.name][`${wallet.network}`].address1
+              fixtures[wallet.id][`${wallet.network}`].address1
             )
             deferred.resolve()
           },
@@ -225,7 +225,7 @@ export function connectorTests({
 
         assert.strictEqual(
           wallet.account?.address.toString(),
-          fixtures[wallet.name][`${wallet.network}`].address1
+          fixtures[wallet.id][`${wallet.network}`].address1
         )
         await deferred.promise
       }
@@ -250,7 +250,7 @@ export function connectorTests({
       const sig = await sigPromise
       assert.strictEqual(
         sig.toLotusHex(),
-        fixtures[wallet.name][`${wallet.network}`].sig
+        fixtures[wallet.id][`${wallet.network}`].sig
       )
       if (sim) {
         await sim.toggleExpertMode()
@@ -279,7 +279,7 @@ export function connectorTests({
 
       assert.strictEqual(
         sig.toLotusHex(),
-        fixtures[wallet.name][`${wallet.network}`].sigMessage
+        fixtures[wallet.id][`${wallet.network}`].sigMessage
       )
     })
   })
