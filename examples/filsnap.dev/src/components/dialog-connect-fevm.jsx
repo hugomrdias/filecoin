@@ -13,7 +13,7 @@ import {
 import { useAccount } from 'iso-filecoin-react'
 import { useEffect, useState } from 'react'
 import { useConnect } from 'wagmi'
-
+import * as Icons from './icons.jsx'
 export function DialogConnectFEVM() {
   const { chain } = useAccount()
   const { connectors, connect, isSuccess, error, reset, isPending } =
@@ -70,9 +70,11 @@ export function DialogConnectFEVM() {
                     <Flex gap="3" align="center">
                       <Avatar
                         fallback="M"
-                        src={connector.icon}
                         style={{ objectFit: 'contain' }}
-                      />
+                        asChild
+                      >
+                        <Icons.MetaMask width={40} height={40} />
+                      </Avatar>
                       <Box>
                         <Text as="div" size="2" weight="bold">
                           {connector.name}

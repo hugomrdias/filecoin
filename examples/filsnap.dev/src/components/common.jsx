@@ -21,7 +21,7 @@ import * as Icons from './icons.jsx'
  */
 export function ErrorBox({ msg }) {
   return (
-    <Callout.Root color="red" size="1" mt="4">
+    <Callout.Root color="red" size="1">
       <Callout.Icon>
         <CrossCircledIcon />
       </Callout.Icon>

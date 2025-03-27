@@ -18,12 +18,13 @@ import {
   useBalance,
   useDisconnect,
 } from 'iso-filecoin-react'
+import { useState } from 'react'
 import { AddressItem, balanceInUSD, usePrice } from './common.jsx'
 import { DialogConnect } from './dialog-connect.jsx'
 import { DialogReceive } from './dialog-receive.jsx'
 import { DialogSend } from './dialog-send.jsx'
+import { DialogSign } from './dialog-sign.jsx'
 import * as Icons from './icons'
-
 export function CardFil() {
   const disconnect = useDisconnect()
   const { account, adapter } = useAccount()
@@ -67,9 +68,10 @@ export function CardFil() {
 function Account() {
   const balance = useBalance()
   const disconnect = useDisconnect()
-  const { account, state, chain } = useAccount()
+  const { account, state, chain, adapter } = useAccount()
   const { address0x, addressId } = useAddresses()
   const { data: price } = usePrice()
+  const [isSignOpen, setIsSignOpen] = useState(false)
 
   return (
     <Flex direction="column" gap="6">
@@ -113,6 +115,7 @@ function Account() {
           disabled={state === 'reconnecting'}
           address={account?.address.toString()}
         />
+        <DialogSign isOpen={isSignOpen} setIsOpen={setIsSignOpen} />
         <DropdownMenu.Root>
           <DropdownMenu.Trigger disabled={state === 'reconnecting'}>
             <Button variant="soft" size="3">
@@ -120,7 +123,17 @@ function Account() {
             </Button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content>
-            <DropdownMenu.Item>Sign</DropdownMenu.Item>
+            <DropdownMenu.Item onClick={() => setIsSignOpen(true)}>
+              Sign
+            </DropdownMenu.Item>
+            {adapter?.id === 'filsnap' && (
+              <DropdownMenu.Item
+                // @ts-ignore
+                onClick={() => adapter.filsnap.exportPrivateKey()}
+              >
+                Export Private Key
+              </DropdownMenu.Item>
+            )}
             <DropdownMenu.Item asChild>
               <a
                 href={`${chain.blockExplorers?.default?.url}/address/${account?.address.toString()}`}

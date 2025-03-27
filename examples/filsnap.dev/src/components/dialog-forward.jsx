@@ -60,7 +60,6 @@ export function DialogForward({ disabled = false, balance }) {
       args: [Address.from(recipient).toContractDestination()],
     })
 
-    reset()
     return
   }
 
@@ -88,7 +87,10 @@ export function DialogForward({ disabled = false, balance }) {
           Forward FIL to a native Filecoin address.
         </Dialog.Description>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          onFocus={() => resetWriteContract()}
+        >
           <Flex direction="column" gap="3">
             <label htmlFor="recipient">
               <Text as="div" size="2" mb="1" weight="bold">
@@ -160,6 +162,7 @@ export function DialogForward({ disabled = false, balance }) {
               </TextField.Root>
             </label>
             {errors.amount && <ErrorBox msg={errors.amount.message} />}
+            {error && <ErrorBox msg={error.message} />}
           </Flex>
 
           {data && (
@@ -174,7 +177,6 @@ export function DialogForward({ disabled = false, balance }) {
             </Button>
           </Flex>
         </form>
-        {error && <ErrorBox msg={error.message} />}
         <Dialog.Close>
           <button type="button" className="IconButton" aria-label="Close">
             <Cross2Icon />

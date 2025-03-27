@@ -1,7 +1,7 @@
 import './styles/index.css'
 import TransportWebHID from '@ledgerhq/hw-transport-webhid'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { WalletProvider } from 'iso-filecoin-react'
+import { FilecoinProvider } from 'iso-filecoin-react'
 import {
   WalletAdapterFilsnap,
   WalletAdapterHd,
@@ -27,9 +27,9 @@ if (appEl) {
   createRoot(appEl).render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
-        <WalletProvider adapters={wallets} network="testnet">
+        <FilecoinProvider adapters={wallets} network="testnet">
           <App />
-        </WalletProvider>
+        </FilecoinProvider>
       </QueryClientProvider>
     </StrictMode>
   )

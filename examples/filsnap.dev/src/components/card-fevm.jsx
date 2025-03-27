@@ -15,11 +15,13 @@ import {
 import { useAccount as useAccountFil, useAddresses } from 'iso-filecoin-react'
 import * as Address from 'iso-filecoin/address'
 import { Token } from 'iso-filecoin/token'
+import { useState } from 'react'
 import { useAccount, useBalance, useDisconnect } from 'wagmi'
 import { AddressItem, balanceInUSD, usePrice } from './common.jsx'
 import { DialogConnectFEVM } from './dialog-connect-fevm.jsx'
 import { DialogForward } from './dialog-forward.jsx'
 import { DialogReceive } from './dialog-receive.jsx'
+import { DialogSignEVM } from './dialog-sign-evm.jsx'
 import * as Icons from './icons.jsx'
 export function CardFevm() {
   const { address } = useAccount()
@@ -68,6 +70,7 @@ function Account() {
   const { data } = useBalance({ address })
   const { addressId } = useAddresses({ address })
   const { data: price } = usePrice()
+  const [isSignOpen, setIsSignOpen] = useState(false)
 
   return (
     <Flex direction="column" gap="6">
@@ -119,6 +122,7 @@ function Account() {
           }
         />
         <DialogReceive disabled={state === 'reconnecting'} address={address} />
+        <DialogSignEVM isOpen={isSignOpen} setIsOpen={setIsSignOpen} />
         <DropdownMenu.Root>
           <DropdownMenu.Trigger disabled={state === 'reconnecting'}>
             <Button variant="soft" size="3">
@@ -126,7 +130,9 @@ function Account() {
             </Button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content>
-            <DropdownMenu.Item>Sign</DropdownMenu.Item>
+            <DropdownMenu.Item onClick={() => setIsSignOpen(true)}>
+              Sign
+            </DropdownMenu.Item>
             <DropdownMenu.Item asChild>
               <a
                 href={`${chain.blockExplorers?.default?.url}/address/${address}`}

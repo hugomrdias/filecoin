@@ -60,7 +60,6 @@ export function DialogSend({ disabled = false, balance }) {
       value: Token.fromFIL(data.amount).toAttoFIL().toString(),
     })
 
-    reset()
     return
   }
 
@@ -88,7 +87,10 @@ export function DialogSend({ disabled = false, balance }) {
           Send FIL to an address.
         </Dialog.Description>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          onFocus={() => resetSendMessage()}
+        >
           <Flex direction="column" gap="3">
             <label htmlFor="recipient">
               <Text as="div" size="2" mb="1" weight="bold">
@@ -160,6 +162,7 @@ export function DialogSend({ disabled = false, balance }) {
               </TextField.Root>
             </label>
             {errors.amount && <ErrorBox msg={errors.amount.message} />}
+            {error && <ErrorBox msg={error.message} />}
           </Flex>
           {isValid && !data && (
             <Estimation
@@ -180,7 +183,6 @@ export function DialogSend({ disabled = false, balance }) {
             </Button>
           </Flex>
         </form>
-        {error && <ErrorBox msg={error.message} />}
         <Dialog.Close>
           <button type="button" className="IconButton" aria-label="Close">
             <Cross2Icon />

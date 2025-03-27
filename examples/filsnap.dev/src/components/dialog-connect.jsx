@@ -18,25 +18,41 @@ import { useConnect } from 'iso-filecoin-react'
 import { WalletAdapterHd } from 'iso-filecoin-wallets'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-
+import * as Icons from './icons.jsx'
 /**
  *
  * @param {import('iso-filecoin-wallets/types').WalletAdapter} adapter
  * @returns
  */
 function descriptionFromAdapter(adapter) {
-  switch (adapter.name) {
-    case 'Ledger':
+  switch (adapter.id) {
+    case 'ledger':
       return 'Connect your Ledger device'
-    case 'Filsnap':
+    case 'filsnap':
       if (adapter.support === 'NotDetected') {
         return 'Install MetaMask Extension and refresh the page'
       }
       return 'Connect to MetaMask Filecoin Wallet'
-    case 'HD Burner Wallet':
+    case 'hd':
       return 'Connect to an in-browser burner wallet'
     default:
       return 'Connect your wallet'
+  }
+}
+
+/**
+ * @param {{ id: any; }} adapter
+ */
+function iconFromAdapter(adapter) {
+  switch (adapter.id) {
+    case 'filsnap':
+      return <Icons.MetaMask width={40} height={40} />
+    case 'ledger':
+      return <Icons.Ledger width={40} height={40} />
+    case 'hd':
+      return <Icons.Burner width={40} height={40} />
+    default:
+      return <Icons.Wallet width={40} height={40} />
   }
 }
 
@@ -83,7 +99,7 @@ export function DialogConnect() {
         <Flex direction="column" gap="3">
           {adapters.map((adapter) => (
             <AdapterItem
-              key={adapter.name}
+              key={adapter.uid}
               adapter={adapter}
               loading={loading}
               isPending={isPending}
@@ -135,7 +151,6 @@ export function AdapterItem({ adapter, loading, isPending, connect }) {
       <Box>
         <Card
           asChild
-          id={adapter.support}
           className={clsx({
             'WalletOption--disabled': adapter.support === 'NotDetected',
           })}
@@ -153,10 +168,12 @@ export function AdapterItem({ adapter, loading, isPending, connect }) {
           >
             <Flex gap="3" align="center">
               <Avatar
-                fallback="M"
-                src={adapter.icon}
+                fallback={adapter.id.slice(0, 2)}
                 style={{ objectFit: 'contain' }}
-              />
+                asChild
+              >
+                {iconFromAdapter(adapter)}
+              </Avatar>
               <Box>
                 <Text as="div" size="2" weight="bold">
                   {adapter.name}

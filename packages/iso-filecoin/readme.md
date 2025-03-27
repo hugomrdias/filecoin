@@ -3,9 +3,7 @@
 [![npm (scoped)](https://img.shields.io/npm/v/iso-filecoin.svg)](https://www.npmjs.com/package/iso-filecoin)
 [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/fission-codes/filecoin/iso-filecoin.yml)](https://github.com/fission-codes/filecoin/actions/workflows/iso-filecoin.yml)
 
-Isomorphic filecoin abstractions for RPC, signatures, address, token and wallet.
-
-Used by the [Metamask Filecoin Wallet](https://github.com/filecoin-project/filsnap).
+Filecoin Javascript Standard Library. Used by the [Metamask Filecoin Wallet](https://github.com/filecoin-project/filsnap) and [Ledger Live Filecoin app](https://www.ledger.com/coin/wallet/filecoin).
 
 ## Install
 

@@ -66,16 +66,6 @@ export function ConnectModal({ isOpen, setIsOpen }) {
           }}
           disabled={isPending || adapter.support === 'NotDetected' || loading}
         >
-          <img
-            src={adapter?.icon}
-            alt={adapter?.name}
-            style={{
-              display: 'inline',
-              width: '24px',
-              verticalAlign: 'bottom',
-              marginRight: '5px',
-            }}
-          />
           <span>{adapter.name}</span>
         </button>
       ))}

@@ -9,7 +9,7 @@ import { metaMask } from 'wagmi/connectors'
 import Buffer from 'buffer'
 import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { WalletProvider } from 'iso-filecoin-react'
+import { FilecoinProvider } from 'iso-filecoin-react'
 import {
   WalletAdapterFilsnap,
   WalletAdapterHd,
@@ -25,6 +25,7 @@ globalThis.Buffer = Buffer
 export const config = createConfig({
   chains: [filecoin, filecoinCalibration],
   connectors: [metaMask()],
+  multiInjectedProviderDiscovery: false,
   transports: {
     [filecoin.id]: http(),
     [filecoinCalibration.id]: http(),
@@ -51,11 +52,11 @@ if (appEl) {
         radius="medium"
       >
         <WagmiProvider config={config}>
-          <WalletProvider adapters={wallets} network="mainnet">
+          <FilecoinProvider adapters={wallets} network="mainnet">
             <QueryClientProvider client={queryClient}>
               <App />
             </QueryClientProvider>
-          </WalletProvider>
+          </FilecoinProvider>
         </WagmiProvider>
       </Theme>
     </StrictMode>
