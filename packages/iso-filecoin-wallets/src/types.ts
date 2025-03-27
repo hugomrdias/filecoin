@@ -34,6 +34,11 @@ export interface WalletConfig {
    * @default SECP256K1
    */
   signatureType?: SignatureType
+
+  /**
+   * Wallet name
+   */
+  name?: string
 }
 export interface WalletHDConfig extends WalletConfig {
   /**
@@ -69,18 +74,75 @@ export interface AccountNetwork {
  * Wallet adapter interface
  */
 export interface WalletAdapter extends TypedEventTarget<WalletEvents> {
-  readonly name: string
-  readonly url: string
-  readonly icon: string
+  /**
+   * Unique identifier for this wallet instance
+   */
+  readonly uid: string
+
+  /**
+   * Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
+   */
+  readonly id: string
+
+  /**
+   * Human readable wallet name
+   */
+  name: string
+
+  /**
+   * Wallet homepage URL
+   */
+  url: string
+
+  /**
+   * Current network (mainnet or testnet)
+   */
   readonly network: Network
+
+  /**
+   * Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
+   */
   readonly support: WalletSupportType
+
+  /**
+   * Whether the wallet is in the process of connecting
+   */
   readonly connecting: boolean
+
+  /**
+   * Whether the wallet is currently connected
+   */
   readonly connected: boolean
+
+  /**
+   * Currently active account, if connected
+   */
   readonly account: IAccount | undefined
+
+  /**
+   * Check if this wallet adapter is supported in the current environment
+   */
   checkSupport: () => Promise<void>
+  /**
+   * Connect to the wallet
+   * @param params - Connect params
+   */
   connect: ({ network }: { network?: Network }) => Promise<AccountNetwork>
+  /**
+   * Disconnect from the wallet
+   */
   disconnect: () => Promise<void>
+
+  /**
+   * Derive a new account at the given index
+   * @param index - The derivation path index
+   */
   deriveAccount: (index: number) => Promise<IAccount>
+
+  /**
+   * Change the network and derive a new account
+   * @param network - The network to change to
+   */
   changeNetwork: (network: Network) => Promise<AccountNetwork>
 
   /**

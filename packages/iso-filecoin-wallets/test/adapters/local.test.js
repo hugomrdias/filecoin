@@ -1,5 +1,5 @@
 import { base64pad } from 'iso-base/rfc4648'
-import { WalletAdapterLocal } from '../../src/local.js'
+import { WalletAdapterRaw } from '../../src/local.js'
 import { PRIVATE_KEY, connectorTests } from './base.js'
 
 /** @type {import('../../src/types.js').WalletAdapter | undefined} */
@@ -9,7 +9,7 @@ connectorTests({
   network: 'mainnet',
   // biome-ignore lint/suspicious/useAwait: <explanation>
   beforeEachHook: async () => {
-    wallet = new WalletAdapterLocal({
+    wallet = new WalletAdapterRaw({
       signatureType: 'SECP256K1',
       privateKey: base64pad.decode(PRIVATE_KEY),
     })
@@ -28,7 +28,7 @@ connectorTests({
   network: 'testnet',
   // biome-ignore lint/suspicious/useAwait: <explanation>
   beforeEachHook: async () => {
-    wallet = new WalletAdapterLocal({
+    wallet = new WalletAdapterRaw({
       signatureType: 'SECP256K1',
       privateKey: base64pad.decode(PRIVATE_KEY),
     })

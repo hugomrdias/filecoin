@@ -1,6 +1,9 @@
 import { create, getPublicKey, sign, signMessage } from 'iso-filecoin/wallet'
 import { TypedEventTarget } from 'iso-web/event-target'
+import { nanoid } from 'nanoid'
 import { WalletSupport } from './common.js'
+
+const symbol = Symbol.for('wallet-adapter-raw')
 
 /**
  * @typedef {import('iso-filecoin/types').IAccount} IAccount
@@ -35,16 +38,18 @@ function createAccount(privateKey, network, signatureType) {
 }
 
 /**
- * Local wallet implementation
+ * Raw wallet implementation
  *
  * @implements{WalletAdapter}
  * @extends {TypedEventTarget<WalletEvents>}
  */
-export class WalletAdapterLocal extends TypedEventTarget {
-  name = 'Local'
+export class WalletAdapterRaw extends TypedEventTarget {
+  /** @type {boolean} */
+  [symbol] = true
+  uid = `raw-${nanoid(5)}`
+  id = 'raw'
+  name = 'Raw (Unsafe)'
   url = 'https://filecoin.io'
-  icon =
-    'data:image/svg+xml,%3Csvg%20width%3D%2234%22%20height%3D%2234%22%20viewBox%3D%22-5%200%2034%2034%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M23.555%2025.1A11.979%2011.979%200%200%201%200%2021.857a7.9%207.9%200%200%201%20.485-2.924C1.643%2011.595%208.785%2011.063%204.8%200c0%200%206.65%201.727%208%2012.143%200%200%204.919-.163%201.6-7.286A21.31%2021.31%200%200%201%2024%2020c.027%201.71-.122%203.42-.445%205.1%22%20fill%3D%22%23FF6E6E%22%2F%3E%3Cpath%20d%3D%22M19%2026.5a7.5%207.5%200%200%201-14.975.484L4%2027s-.075-3.272%200-4c.684-6.611%202.6-9.563%205-14%20.067-2.639-1.115%207.273%205%2010a8.19%208.19%200%200%201%205%207.5%22%20fill%3D%22%230C0058%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E'
 
   /**@type {IAccount | undefined}*/
   account = undefined
@@ -65,7 +70,7 @@ export class WalletAdapterLocal extends TypedEventTarget {
     this.network = config.network ?? 'mainnet'
     this.signatureType = config.signatureType ?? 'SECP256K1'
     this.privateKey = config.privateKey
-
+    this.name = config.name ?? this.name
     if (!this.privateKey) {
       throw new Error('Private key not found')
     }
@@ -76,7 +81,7 @@ export class WalletAdapterLocal extends TypedEventTarget {
   }
 
   static create() {
-    return new WalletAdapterLocal({
+    return new WalletAdapterRaw({
       network: 'mainnet',
       signatureType: 'SECP256K1',
       privateKey: create('SECP256K1', 'mainnet').privateKey,

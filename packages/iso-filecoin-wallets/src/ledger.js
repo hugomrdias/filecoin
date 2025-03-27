@@ -3,9 +3,12 @@ import { Message } from 'iso-filecoin/message'
 import { Signature } from 'iso-filecoin/signature'
 import { pathFromNetwork } from 'iso-filecoin/utils'
 import { TypedEventTarget } from 'iso-web/event-target'
+import { nanoid } from 'nanoid'
 import { WalletSupport } from './common.js'
 
 export { WalletSupport } from './common.js'
+
+const symbol = Symbol.for('wallet-adapter-ledger')
 
 /**
  * @typedef {import('iso-filecoin/types').IAccount} IAccount
@@ -26,10 +29,12 @@ export { WalletSupport } from './common.js'
  * @implements {WalletAdapter}
  */
 export class WalletAdapterLedger extends TypedEventTarget {
+  /** @type {boolean} */
+  [symbol] = true
+  uid = `ledger-${nanoid(5)}`
+  id = 'ledger'
   name = 'Ledger'
   url = 'https://ledger.com'
-  icon =
-    'data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20147%20128%22%20fill%3D%22white%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%222em%22%3E%3Cpath%20d%3D%22M0%2091.655V128h55.293v-8.06H8.056V91.655zm138.944%200v28.285H91.707v8.058H147V91.655zm-83.57-55.31v55.308h36.333v-7.269H63.43V36.345zM0%200v36.345h8.056V8.058h47.237V0zm91.707%200v8.058h47.237v28.287H147V0z%22%2F%3E%3C%2Fsvg%3E'
 
   /** @type {IAccount | undefined}*/
   account = undefined
@@ -60,7 +65,7 @@ export class WalletAdapterLedger extends TypedEventTarget {
     this.#isConnecting = false
     this.#transport = config.transport
     this.#index = config.index ?? 0
-    this.name = 'Ledger'
+    this.name = config.name ?? this.name
     this.network = config.network ?? 'mainnet'
     this.signatureType = config.signatureType ?? 'SECP256K1'
     this.#onDisconnect = this.disconnect.bind(this)

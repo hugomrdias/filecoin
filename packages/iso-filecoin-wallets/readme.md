@@ -1,41 +1,36 @@
-# iso-filecoin
+# iso-filecoin-wallets
 
-[![npm (scoped)](https://img.shields.io/npm/v/iso-filecoin.svg)](https://www.npmjs.com/package/iso-filecoin)
-[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/fission-codes/filecoin/iso-filecoin.yml)](https://github.com/fission-codes/filecoin/actions/workflows/iso-filecoin.yml)
+[![npm (scoped)](https://img.shields.io/npm/v/iso-filecoin-wallets.svg)](https://www.npmjs.com/package/iso-filecoin-wallets)
+[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/fission-codes/filecoin/iso-filecoin-wallets.yml)](https://github.com/fission-codes/filecoin/actions/workflows/iso-filecoin-wallets.yml)
 
-Isomorphic filecoin abstractions for RPC, signatures, address, token and wallet.
-
-Used by the [Metamask Filecoin Wallet](https://github.com/filecoin-project/filsnap).
+Wallet adapters for filsnap, ledger, HD, Raw and more.
 
 ## Install
 
 ```bash
-pnpm install iso-filecoin
+pnpm install iso-filecoin-wallets iso-filecoin filsnap-adapter
 ```
 
 ## Usage
 
 ```js
-import { Token } from 'iso-filecoin/token'
-import * as Wallet  from 'iso-filecoin/wallet'
+import { WalletAdapterHd } from 'iso-filecoin-wallets/hd'
 
-Token.fromFIL(1).toPicoFIL().toString() // '1000000000000'
+const adapter = new WalletAdapterHd({
+    mnemonic: 'raw include ecology social turtle still perfect trip dance food welcome aunt patient very toss very program estate diet portion city camera loop guess'
 
-const mnemonic = Wallet.generateMnemonic()
-const seed = Wallet.mnemonicToSeed(mnemonic)
-const account = Wallet.accountFromSeed(
-    seed,
-    'SECP256K1',
-    "m/44'/461'/0'/0/0"
-)
-const account = Wallet.accountFromMnemonic(
-    mnemonic,
-    'SECP256K1',
-    "m/44'/461'/0'/0/0"
-)
+})
 
-const address = account.address.toString() 
+adapter.connect({network: 'mainnet'})
+
+const address = adapter.account.address.toString() 
 // 'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i'
+
+const {network, account} = adapter.changeNetwork({network: 'testnet'})
+console.log(account.address.toString())
+// t1xciji452owqgqmyuphjbv3ubfkhpsvvxrcnfgpq
+
+await wallet.disconnect()
 ```
 
 ## Docs
