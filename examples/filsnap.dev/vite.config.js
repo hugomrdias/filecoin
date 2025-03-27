@@ -4,6 +4,7 @@ import * as git from 'tiny-git-rev-sync'
 import { defineConfig } from 'vite'
 import { analyzer } from 'vite-bundle-analyzer'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import { VitePWA } from 'vite-plugin-pwa'
 
 const commitHash = child.execSync('git rev-parse HEAD').toString()
 
@@ -28,6 +29,69 @@ export default defineConfig({
       },
     }),
     react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: ['filecoin-logo.svg'],
+      manifest: {
+        name: 'Filsnap',
+        short_name: 'Filsnap',
+        description:
+          'Connect to all native Filecoin wallets, FEVM accounts and send FIL to Native and FEVM accounts.',
+        categories: ['finance', 'wallet', 'blockchain', 'ethereum', 'filecoin'],
+        theme_color: '#0290FF',
+        background_color: '#121212',
+        display: 'standalone',
+        scope: '/',
+        start_url: '/',
+        screenshots: [
+          {
+            src: '/2560x1440_wide-2-optimized.png',
+            sizes: '2560x1440',
+            type: 'image/png',
+            form_factor: 'wide',
+          },
+          {
+            src: '/2560x1440_wide-1-optimized.png',
+            sizes: '2560x1440',
+            type: 'image/png',
+            form_factor: 'wide',
+          },
+          {
+            src: '/2560x1440_wide-3-optimized.png',
+            sizes: '2560x1440',
+            type: 'image/png',
+            form_factor: 'wide',
+          },
+          {
+            src: '/1290x2796_narrow-3-optimized.png',
+            sizes: '1290x2796',
+            type: 'image/png',
+            form_factor: 'narrow',
+          },
+          {
+            src: '/1290x2796_narrow-2-optimized.png',
+            sizes: '1290x2796',
+            type: 'image/png',
+            form_factor: 'narrow',
+          },
+          {
+            src: '/1290x2796_narrow-1-optimized.png',
+            sizes: '1290x2796',
+            type: 'image/png',
+            form_factor: 'narrow',
+          },
+        ],
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+        cleanupOutdatedCaches: true,
+        clientsClaim: true,
+        skipWaiting: true,
+      },
+      pwaAssets: {
+        image: 'public/filecoin-logo.svg',
+      },
+    }),
     // analyzer(),
   ],
 })

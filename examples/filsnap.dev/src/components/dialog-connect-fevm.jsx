@@ -49,7 +49,7 @@ export function DialogConnectFEVM() {
       <Dialog.Content maxWidth="450px" onEscapeKeyDown={() => setIsOpen(false)}>
         <Dialog.Title>Connect a FEVM wallet</Dialog.Title>
         <Dialog.Description size="2" mb="4">
-          Choose your preferred wallet.
+          Choose your preferred FEVM wallet.
         </Dialog.Description>
 
         <Flex direction="column" gap="3">

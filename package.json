@@ -43,9 +43,6 @@
       "esbuild",
       "sharp",
       "simple-git-hooks"
-    ],
-    "overrides": {
-      "iso-filecoin": "workspace:^"
-    }
+    ]
   }
 }

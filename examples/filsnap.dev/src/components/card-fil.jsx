@@ -53,7 +53,7 @@ export function CardFil() {
           <Text color="gray" size="1">
             {account
               ? `Connected to ${adapter?.name}`
-              : 'Connect your wallet to start using the Filecoin Wallet.'}
+              : 'Connect your wallet to start using the Filecoin.'}
           </Text>
           <Flex mt="6" mb="4" justify="center">
             {account ? <Account /> : <DialogConnect />}

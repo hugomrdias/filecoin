@@ -50,7 +50,7 @@ export function CardFevm() {
           <Text color="gray" size="1">
             {address
               ? 'Connected to MetaMask'
-              : 'Connect your wallet to start using the Filecoin EVM Wallet.'}
+              : 'Connect your wallet to start using the Filecoin EVM.'}
           </Text>
           <Flex mt="6" mb="4" justify="center">
             {address ? <Account /> : <DialogConnectFEVM />}
