@@ -1,6 +1,6 @@
 import assert from 'assert'
 import { cleanup, render } from '@testing-library/react/pure'
-import { WalletProvider, useWalletProvider } from '../src/wallet-provider.js'
+import { FilecoinProvider, useWalletProvider } from '../src/wallet-provider.js'
 
 afterEach(() => {
   cleanup()
@@ -19,9 +19,9 @@ function Component() {
 }
 it('should basic', () => {
   const result = render(
-    <WalletProvider adapters={[]}>
+    <FilecoinProvider adapters={[]}>
       <Component />
-    </WalletProvider>
+    </FilecoinProvider>
   )
 
   assert.strictEqual(result.getByRole('heading').innerText, 'wallet')

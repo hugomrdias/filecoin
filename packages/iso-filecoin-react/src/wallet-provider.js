@@ -14,7 +14,7 @@ import { Message } from 'iso-filecoin/message'
 export { mainnet, testnet } from 'iso-filecoin/chains'
 
 /**
- * @import { WalletProviderProps, WalletAdapter, AccountNetwork, Network, WalletContextType, IAccount, ConnectionState, UseAccountReturnType  } from './types.js'
+ * @import { FilecoinProviderProps, WalletAdapter, AccountNetwork, Network, FilecoinContextType, IAccount, ConnectionState, UseAccountReturnType  } from './types.js'
  * @import { SetOptional } from 'type-fest'
  */
 
@@ -70,8 +70,8 @@ function getDefaultStorage() {
 /**
  * Wallet context
  */
-const WalletContext =
-  /** @type {typeof React.createContext<WalletContextType>} */ (
+const FilecoinContext =
+  /** @type {typeof React.createContext<FilecoinContextType>} */ (
     React.createContext
   )({
     network: 'mainnet',
@@ -98,10 +98,10 @@ const WalletContext =
 
 /**
  *
- * @param {React.PropsWithChildren<WalletProviderProps>} props
+ * @param {React.PropsWithChildren<FilecoinProviderProps>} props
  * @returns
  */
-export function WalletProvider({
+export function FilecoinProvider({
   children,
   adapters: _adapters,
   rpcs = {
@@ -115,6 +115,7 @@ export function WalletProvider({
     }),
   },
   network: _network = 'mainnet',
+  reconnectOnMount = true,
 }) {
   const [error, setError] = /** @type {typeof useState<Error | undefined>} */ (
     useState
@@ -181,15 +182,19 @@ export function WalletProvider({
           setNetwork(lastNetwork)
         }
 
-        if (lastWallet) {
-          const adapter = adapters.find((wallet) => wallet.name === lastWallet)
+        if (lastWallet && reconnectOnMount) {
+          const adapter = adapters.find((wallet) => wallet.id === lastWallet)
           if (adapter) {
             setReconnecting(true)
-            setAdapter(adapter)
-            const { account } = await adapter.connect({
-              network: lastNetwork ?? network,
-            })
-            setAccount(account)
+            try {
+              const { account } = await adapter.connect({
+                network: lastNetwork ?? network,
+              })
+              setAdapter(adapter)
+              setAccount(account)
+            } catch {
+              // ignore
+            }
           }
         }
       } catch (error) {
@@ -209,7 +214,7 @@ export function WalletProvider({
     if (!adapter) return
 
     const handleConnect = (/** @type {CustomEvent<AccountNetwork>} */ evt) => {
-      getDefaultStorage().setItem('adapter', adapter.name)
+      getDefaultStorage().setItem('adapter', adapter.id)
       setAccount(evt.detail.account)
       setError(undefined)
     }
@@ -257,7 +262,7 @@ export function WalletProvider({
   }, [adapter])
 
   return createElement(
-    WalletContext.Provider,
+    FilecoinContext.Provider,
     {
       value: {
         error,
@@ -278,7 +283,7 @@ export function WalletProvider({
 }
 
 export function useWalletProvider() {
-  const context = useContext(WalletContext)
+  const context = useContext(FilecoinContext)
   if (!context) {
     throw new Error('useWallet must be used within a WalletProvider.')
   }
@@ -303,7 +308,7 @@ export function useWalletProvider() {
  *   return <div>Current adapter: {adapter?.name}</div>
  * }
  * ```
- * @returns {Pick<WalletContextType, 'adapter' | 'error' | 'loading' | 'network' | 'reconnecting'>} Wallet adapter state
+ * @returns {Pick<FilecoinContextType, 'adapter' | 'error' | 'loading' | 'network' | 'reconnecting'>} Wallet adapter state
  */
 export function useAdapter() {
   const { adapter, error, loading, network, reconnecting } = useWalletProvider()
@@ -345,7 +350,8 @@ export function useAccount() {
     useState
   )('disconnected')
 
-  const { account, adapter, network, reconnecting } = useContext(WalletContext)
+  const { account, adapter, network, reconnecting } =
+    useContext(FilecoinContext)
   useEffect(() => {
     if (connect.some((status) => status === 'pending')) {
       setState('connecting')
@@ -402,7 +408,7 @@ export function useAccount() {
  */
 export function useConnect() {
   const { setAdapter, network, adapter, adapters, loading } =
-    useContext(WalletContext)
+    useContext(FilecoinContext)
   const result = useMutation({
     mutationKey: ['connect'],
     mutationFn: (/** @type {{adapter: WalletAdapter}} */ params) => {
@@ -413,7 +419,7 @@ export function useConnect() {
     },
   })
 
-  return /** @type {typeof result & Pick<WalletContextType, 'adapters' | 'adapter' | 'loading'>} */ ({
+  return /** @type {typeof result & Pick<FilecoinContextType, 'adapters' | 'adapter' | 'loading'>} */ ({
     ...result,
     adapters,
     adapter,
@@ -422,7 +428,7 @@ export function useConnect() {
 }
 
 export function useDisconnect() {
-  const { adapter } = useContext(WalletContext)
+  const { adapter } = useContext(FilecoinContext)
   return useMutation({
     mutationKey: ['disconnect'],
     mutationFn: () => {
@@ -435,7 +441,7 @@ export function useDisconnect() {
 }
 
 export function useChangeNetwork() {
-  const { adapter, setNetwork } = useContext(WalletContext)
+  const { adapter, setNetwork } = useContext(FilecoinContext)
   return useMutation({
     mutationKey: ['changeNetwork'],
     mutationFn: async (/** @type {Network} */ network) => {
@@ -449,13 +455,14 @@ export function useChangeNetwork() {
         return r.network
       }
       setNetwork(network)
+      getDefaultStorage().setItem('network', network)
       return network
     },
   })
 }
 
 export function useDeriveAccount() {
-  const { adapter } = useContext(WalletContext)
+  const { adapter } = useContext(FilecoinContext)
   return useMutation({
     mutationKey: ['deriveAccount'],
     mutationFn: (/** @type {number} */ index) => {
@@ -468,7 +475,7 @@ export function useDeriveAccount() {
 }
 
 export function useBalance() {
-  const { account, network, rpcs } = useContext(WalletContext)
+  const { account, network, rpcs } = useContext(FilecoinContext)
   const address = account?.address.toString()
 
   return useQuery({
@@ -498,7 +505,7 @@ export function useBalance() {
  * @param {string} [options.address]
  */
 export function useAddresses({ address } = {}) {
-  const { account, network, rpcs } = useContext(WalletContext)
+  const { account, network, rpcs } = useContext(FilecoinContext)
   const _address = address ? Address.from(address, network) : account?.address
 
   return useQueries({
@@ -554,7 +561,7 @@ export function useAddresses({ address } = {}) {
  * @param {bigint} [options.maxFee] - Max fee to pay for gas (attoFIL/gas units). Defaults to 0n.
  */
 export function useEstimateGas({ to, value, maxFee }) {
-  const { account, network, rpcs } = useContext(WalletContext)
+  const { account, network, rpcs } = useContext(FilecoinContext)
   const address = account?.address.toString()
   return useQuery({
     queryKey: ['estimateGas', network, address],
@@ -589,7 +596,7 @@ export function useEstimateGas({ to, value, maxFee }) {
 }
 
 export function useSendMessage() {
-  const { adapter, network, rpcs, account } = useContext(WalletContext)
+  const { adapter, network, rpcs, account } = useContext(FilecoinContext)
   return useMutation({
     mutationKey: ['sendMessage'],
     mutationFn: async (
@@ -625,6 +632,32 @@ export function useSendMessage() {
       }
 
       return send.result
+    },
+  })
+}
+
+/**
+ * Hook to sign a message
+ *
+ * @example
+ * ```tsx twoslash
+ * // @allowUmdGlobalAccess
+ *
+ * import { useSign } from 'iso-filecoin-react'
+ *
+ */
+export function useSign() {
+  const { adapter } = useContext(FilecoinContext)
+  return useMutation({
+    mutationKey: ['sign'],
+    mutationFn: async (/** @type {Uint8Array} */ message) => {
+      if (!adapter) {
+        throw new Error('Adapter not found')
+      }
+
+      const sign = await adapter.sign(message)
+
+      return sign
     },
   })
 }

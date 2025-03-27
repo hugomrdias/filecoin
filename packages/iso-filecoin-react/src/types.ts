@@ -12,19 +12,23 @@ export type Compute<type> = { [key in keyof type]: type[key] } & unknown
 /**
  * Wallet provider props
  */
-export interface WalletProviderProps {
+export interface FilecoinProviderProps {
   /**
    * @default 'mainnet'
    */
   network?: Network
   adapters: WalletAdapter[]
   rpcs?: Record<Network, RPC>
+  /**
+   * @default true
+   */
+  reconnectOnMount?: boolean
 }
 
 /**
  * Wallet context type
  */
-export type WalletContextType = {
+export type FilecoinContextType = {
   /** Current network (mainnet or testnet) */
   network: Network
   /** List of available wallet adapters */
@@ -66,7 +70,7 @@ export type ConnectionState =
  * Use account return type
  */
 export type UseAccountReturnType = Compute<
-  Pick<WalletContextType, 'account' | 'adapter' | 'network'> & {
+  Pick<FilecoinContextType, 'account' | 'adapter' | 'network'> & {
     /**
      * Current connection state
      */
