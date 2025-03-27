@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v0.0.4...iso-filecoin-wallets-v1.0.0) (2025-03-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **wallets:** add id, uid and configurable name, remove icon.
+
+### Features
+
+* **wallets:** add id, uid and configurable name, remove icon. ([109dad0](https://github.com/hugomrdias/filecoin/commit/109dad0012e30228a7702ffb28701dadb7c4c066))
+
 ## [0.0.4](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v0.0.3...iso-filecoin-wallets-v0.0.4) (2025-03-26)
 
 
