@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v1.2.0...iso-filecoin-react-v2.0.0) (2025-03-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* change provider name to `FilecoinProvider`, add `useSign` and new option `reconnectOnMount`
+
+### Features
+
+* change provider name to `FilecoinProvider`, add `useSign` and new option `reconnectOnMount` ([71d7dc9](https://github.com/hugomrdias/filecoin/commit/71d7dc9d9a3790f3f7d80fb12c65658924fbf063))
+
 ## [1.2.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v1.1.0...iso-filecoin-react-v1.2.0) (2025-03-26)
 
 
