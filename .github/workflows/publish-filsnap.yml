@@ -30,7 +30,7 @@ jobs:
           cf-zone-id: ${{ secrets.CLOUDFLARE_ZONE_ID }}
           cf-zone-name: ${{ secrets.CLOUDFLARE_ZONE_NAME }}
       - name: Deploy to Cloudflare Pages
-        run: pnpx wrangler pages deploy examples/filsnap.dev/dist --project-name filsnap --branch dev
+        run: pnpx wrangler pages deploy examples/filsnap.dev/dist --project-name filsnap --branch main
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
