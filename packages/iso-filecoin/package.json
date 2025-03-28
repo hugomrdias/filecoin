@@ -139,7 +139,7 @@
     "bignumber.js": "^9.1.2",
     "iso-base": "^4.0.2",
     "iso-kv": "^3.0.3",
-    "iso-web": "^1.1.0",
+    "iso-web": "^1.1.1",
     "zod": "^3.24.2",
     "zod-validation-error": "^3.4.0"
   },

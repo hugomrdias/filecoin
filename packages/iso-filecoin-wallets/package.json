@@ -86,7 +86,7 @@
   },
   "dependencies": {
     "iso-base": "^4.0.2",
-    "iso-web": "^1.1.0",
+    "iso-web": "^1.1.1",
     "nanoid": "^5.1.5"
   },
   "devDependencies": {
