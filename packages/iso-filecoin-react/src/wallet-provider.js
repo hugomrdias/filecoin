@@ -369,6 +369,7 @@ export function useAccount() {
 
   return /** @type {UseAccountReturnType} */ ({
     account,
+    address: account?.address.toString(),
     adapter,
     network,
     chain: Chains[network],
@@ -505,8 +506,8 @@ export function useBalance() {
  * @param {string} [options.address]
  */
 export function useAddresses({ address } = {}) {
-  const { account, network, rpcs } = useContext(FilecoinContext)
-  const _address = address ? Address.from(address, network) : account?.address
+  const { network, rpcs } = useContext(FilecoinContext)
+  const _address = address ? Address.from(address, network) : undefined
 
   return useQueries({
     queries: [
@@ -519,12 +520,9 @@ export function useAddresses({ address } = {}) {
             throw new Error('ID address not found', { cause: error })
           }
         },
-        enabled: !!account,
+        enabled: !!_address,
         retry: 1,
         staleTime: 5 * 60 * 1000,
-        refetchOnWindowFocus: false,
-        refetchOnMount: false,
-        refetchOnReconnect: false,
       },
       {
         queryKey: ['addresses-0x', network, _address?.toString()],
@@ -536,11 +534,8 @@ export function useAddresses({ address } = {}) {
           }
         },
         retry: 1,
-        enabled: !!account,
+        enabled: !!_address,
         staleTime: 5 * 60 * 1000,
-        refetchOnWindowFocus: false,
-        refetchOnMount: false,
-        refetchOnReconnect: false,
       },
     ],
     combine: (result) => {

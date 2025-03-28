@@ -77,5 +77,8 @@ export type UseAccountReturnType = Compute<
     state: ConnectionState
     /** Current chain */
     chain: Chain
+
+    /** Current address */
+    address: string
   }
 >
