@@ -87,7 +87,7 @@ function Account() {
               {data?.symbol}
             </Heading>
             <Text size="2" color="gray">
-              {balanceInUSD(data?.value ?? 0n, price)} USD
+              {balanceInUSD(data?.value ?? 0n, price)}
             </Text>
           </Flex>
         </Skeleton>

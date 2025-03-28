@@ -68,8 +68,10 @@ export function CardFil() {
 function Account() {
   const balance = useBalance()
   const disconnect = useDisconnect()
-  const { account, state, chain, adapter } = useAccount()
-  const { address0x, addressId } = useAddresses()
+  const { state, chain, adapter, address } = useAccount()
+  const { address0x, addressId } = useAddresses({
+    address,
+  })
   const { data: price } = usePrice()
   const [isSignOpen, setIsSignOpen] = useState(false)
 
@@ -87,7 +89,7 @@ function Account() {
               {balance.data?.symbol}
             </Heading>
             <Text size="2" color="gray">
-              {balanceInUSD(balance.data?.value.toBigInt() ?? 0n, price)} USD
+              {balanceInUSD(balance.data?.value.toBigInt() ?? 0n, price)}
             </Text>
           </Flex>
         </Skeleton>
@@ -97,7 +99,7 @@ function Account() {
               ADDRESSES
             </Heading>
             <DataList.Root size="1">
-              <AddressItem address={account?.address.toString()} type="fil" />
+              <AddressItem address={address} type="fil" />
               <AddressItem address={address0x.data?.toString()} type="eth" />
               <AddressItem address={addressId.data?.toString()} type="id" />
             </DataList.Root>
@@ -111,10 +113,7 @@ function Account() {
             balance.data?.value?.toFIL().toFormat({ decimalPlaces: 1 }) ?? 0
           )}
         />
-        <DialogReceive
-          disabled={state === 'reconnecting'}
-          address={account?.address.toString()}
-        />
+        <DialogReceive disabled={state === 'reconnecting'} address={address} />
         <DialogSign isOpen={isSignOpen} setIsOpen={setIsSignOpen} />
         <DropdownMenu.Root>
           <DropdownMenu.Trigger disabled={state === 'reconnecting'}>
@@ -136,7 +135,7 @@ function Account() {
             )}
             <DropdownMenu.Item asChild>
               <a
-                href={`${chain.blockExplorers?.default?.url}/address/${account?.address.toString()}`}
+                href={`${chain.blockExplorers?.default?.url}/address/${address}`}
                 target="_blank"
                 rel="noreferrer"
               >

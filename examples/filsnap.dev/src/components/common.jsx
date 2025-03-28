@@ -83,13 +83,13 @@ export function onCopy(address = '') {
  * @returns {string} Balance in USD
  */
 export function balanceInUSD(balance, price = 0) {
-  const balanceFIL = Number(
-    Token.fromAttoFIL(balance ?? 0n)
-      .toFIL()
-      .toFormat({ decimalPlaces: 1 })
-  )
+  const value = Number(Token.fromAttoFIL(balance).toFIL().toString()) * price
 
-  return Number(balanceFIL * price).toFixed(2)
+  return new Intl.NumberFormat(undefined, {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 2,
+  }).format(value)
 }
 
 /**
@@ -136,7 +136,7 @@ export function usePrice() {
       )
       const json = await response.json()
 
-      return json.filecoin.usd
+      return /** @type {number}*/ (json.filecoin.usd)
     },
     staleTime: 5 * 60 * 1000,
   })
