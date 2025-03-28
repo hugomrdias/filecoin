@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v2.0.0...iso-filecoin-react-v2.1.0) (2025-03-28)
+
+
+### Features
+
+* **react:** useAccount return address string and useAddresses requires address input ([93e4262](https://github.com/hugomrdias/filecoin/commit/93e42621f7e9753573dff51a6ddf13581e3e0d46))
+
 ## [2.0.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v1.2.0...iso-filecoin-react-v2.0.0) (2025-03-27)
 
 
