@@ -69,9 +69,18 @@ importers:
       '@ledgerhq/hw-transport-webusb':
         specifier: ^6.29.4
         version: 6.29.4
+      '@tanstack/react-query':
+        specifier: ^5.69.3
+        version: 5.69.3(react@19.0.0)
       '@types/react':
         specifier: ^19.0.12
         version: 19.0.12
+      '@types/react-dom':
+        specifier: ^19.0.4
+        version: 19.0.4(@types/react@19.0.12)
+      iso-base:
+        specifier: ^4.0.2
+        version: 4.0.2
       iso-filecoin:
         specifier: workspace:^
         version: link:../packages/iso-filecoin
@@ -81,9 +90,6 @@ importers:
       iso-filecoin-wallets:
         specifier: workspace:^
         version: link:../packages/iso-filecoin-wallets
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
