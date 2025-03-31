@@ -5,7 +5,7 @@ prev: true
 title: "AccountNetwork"
 ---
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:63](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L63)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:68](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L68)
 
 ## Properties
 
@@ -15,7 +15,7 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:63](https://github.com/h
 account: IAccount;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:65](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L65)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:70](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L70)
 
 ***
 
@@ -25,4 +25,4 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:65](https://github.com/h
 network: Network;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:64](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L64)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:69](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L69)

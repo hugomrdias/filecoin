@@ -2,7 +2,7 @@
 editUrl: false
 next: true
 prev: true
-title: "WalletProviderProps"
+title: "FilecoinProviderProps"
 ---
 
 Defined in: [packages/iso-filecoin-react/src/types.ts:15](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L15)
@@ -33,6 +33,22 @@ Defined in: [packages/iso-filecoin-react/src/types.ts:19](https://github.com/hug
 
 ```ts
 'mainnet'
+```
+
+***
+
+### reconnectOnMount?
+
+```ts
+optional reconnectOnMount: boolean;
+```
+
+Defined in: [packages/iso-filecoin-react/src/types.ts:25](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L25)
+
+#### Default
+
+```ts
+true
 ```
 
 ***

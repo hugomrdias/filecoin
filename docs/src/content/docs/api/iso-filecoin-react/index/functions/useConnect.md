@@ -8,10 +8,10 @@ title: "useConnect"
 ```ts
 function useConnect(): UseMutationResult<AccountNetwork, Error, {
   adapter: WalletAdapter;
-}, void> & Pick<WalletContextType, "adapter" | "adapters" | "loading">
+}, void> & Pick<FilecoinContextType, "adapter" | "adapters" | "loading">
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:403](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L403)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:411](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L411)
 
 Hook to connect a wallet adapter
 
@@ -19,7 +19,7 @@ Hook to connect a wallet adapter
 
 `UseMutationResult`\<[`AccountNetwork`](/api/iso-filecoin-react/types/interfaces/accountnetwork/), [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error), \{
   `adapter`: [`WalletAdapter`](/api/iso-filecoin-react/types/interfaces/walletadapter/);
- \}, `void`\> & [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`WalletContextType`](/api/iso-filecoin-react/types/type-aliases/walletcontexttype/), `"adapter"` \| `"adapters"` \| `"loading"`\>
+ \}, `void`\> & [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`FilecoinContextType`](/api/iso-filecoin-react/types/type-aliases/filecoincontexttype/), `"adapter"` \| `"adapters"` \| `"loading"`\>
 
 Connection mutation and state
 

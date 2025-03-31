@@ -6,7 +6,7 @@ import {
   WalletAdapterFilsnap,
   WalletAdapterHd,
   WalletAdapterLedger,
-  WalletAdapterLocal,
+  WalletAdapterRaw,
 } from 'iso-filecoin-wallets'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -20,7 +20,7 @@ const wallets = [
   }),
   new WalletAdapterFilsnap(),
   new WalletAdapterHd(),
-  WalletAdapterLocal.create(),
+  WalletAdapterRaw.create(),
 ]
 
 if (appEl) {

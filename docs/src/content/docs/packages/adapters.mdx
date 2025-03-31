@@ -1,0 +1,204 @@
+---
+title: Wallet Adapters
+description: Learn how to use wallet adapters with iso-filecoin-wallets.
+---
+
+The `iso-filecoin-wallets` package provides a standardized way to interact with different types of Filecoin wallets through a common interface called `WalletAdapter`. It includes built-in adapters for Hierarchical Deterministic (HD) wallets, wallets created directly from a raw private key and those for browser extensions (e.g., Filsnap/Metamask) or hardware wallets (e.g., Ledger).
+
+## Installation
+
+You'll need `iso-filecoin-wallets` and its peer dependency `iso-filecoin`. If you plan to use external adapters, install them as well.
+
+```bash
+# Using pnpm (recommended for this monorepo)
+pnpm add iso-filecoin-wallets iso-filecoin
+# Example: add Filsnap adapter if needed
+pnpm add filsnap-adapter
+```
+
+## Core Concept: WalletAdapter
+
+All wallet interactions are managed through instances of classes that implement the `WalletAdapter` interface (or extend the `BaseWalletAdapter` class). This ensures a consistent API regardless of the underlying wallet type.
+
+Key characteristics of a `WalletAdapter`:
+
+*   **State Management:** Tracks connection status (`connecting`, `connected`), current account (`account`), and network (`network`).
+*   **Events:** Emits events for `connect`, `disconnect`, `accountChanged`, `networkChanged`, and `error`.
+*   **Actions:** Provides methods like `connect()`, `disconnect()`, `changeNetwork()`, `signMessage()`, `sign()`, and potentially wallet-specific methods like `deriveAccount()`.
+
+## Using Built-in Adapters
+
+You typically instantiate the specific adapter class you need and then interact with its methods and properties.
+
+### HD Wallet (`WalletAdapterHD`)
+
+This adapter uses a mnemonic phrase to derive accounts according to standard derivation paths (BIP-44 for Filecoin).
+
+```ts twoslash
+// @filename: index.ts
+import { WalletAdapterHd } from 'iso-filecoin-wallets';
+import { testnet } from 'iso-filecoin/chains'; // Or mainnet
+
+// Instantiate with mnemonic and optional parameters
+const hdAdapter = WalletAdapterHd.fromMnemonic  ({
+  mnemonic: 'raw include ecology social turtle still perfect trip dance food welcome aunt patient very toss very program estate diet portion city camera loop guess',
+  password: '123456',
+  index: 0,
+  name: 'My HD Wallet',
+  network: 'testnet', // Initial network
+  // signatureType: 'SECP256K1', // Default type
+});
+
+async function useHDWallet() {
+  // Check if the environment supports the adapter (mostly relevant for browser extensions)
+  await hdAdapter.checkSupport();
+  if (hdAdapter.support === 'NotSupported') {
+    console.error('HD Wallet adapter not supported in this environment.');
+    return;
+  }
+
+  // Connect to the wallet (derives the account at the specified path)
+  console.log('Connecting...');
+  await hdAdapter.connect({ network: 'testnet' }); // Can override network here
+
+  if (!hdAdapter.connected || !hdAdapter.account) {
+    console.error('Connection failed.');
+    return;
+  }
+
+  console.log('Connected!');
+  console.log('Adapter Name:', hdAdapter.name); // 'HD Wallet'
+  console.log('Network:', hdAdapter.network); // 'testnet'
+  console.log('Account Address:', hdAdapter.account.address.toString()); // e.g., t1...
+  console.log('Account Type:', hdAdapter.account.type); // 'SECP256K1'
+
+  // Derive another account (index 1)
+  console.log('Deriving account 1...');
+  const account1 = await hdAdapter.deriveAccount(1);
+  console.log('Account 1 Address:', account1.address.toString());
+
+  // Sign a message (raw bytes)
+  const message = new TextEncoder().encode('Hello Filecoin!');
+  console.log('Signing message...');
+  const signature = await hdAdapter.sign(message);
+  console.log('Signature:', signature); // Uint8Array
+
+  // Change network
+  console.log('Changing network to mainnet...');
+  const { network, account } = await hdAdapter.changeNetwork('mainnet');
+  console.log('New Network:', network); // 'mainnet'
+  console.log('New Address:', account.address.toString()); // e.g., f1...
+
+  // Disconnect
+  console.log('Disconnecting...');
+  await hdAdapter.disconnect();
+  console.log('Disconnected:', !hdAdapter.connected); // true
+}
+
+useHDWallet();
+
+```
+
+### Raw Private Key (`WalletAdapterRaw`)
+
+This adapter uses a specific private key directly. It's simpler but less flexible and generally less secure than HD wallets for managing multiple accounts or for user-facing applications.
+
+```ts twoslash
+// @filename: index.ts
+import { WalletAdapterRaw } from 'iso-filecoin-wallets';
+import { base64pad } from 'iso-base/rfc4648'
+import { testnet } from 'iso-filecoin/chains'; // Or mainnet
+
+// SECP256k1 Private Key (example, DO NOT USE REAL KEYS LIKE THIS)
+const privateKey = 'Un+VV/HZZ1YtfC1i4LULcvko0dV7F6CbQmnhSuUJRPU=';
+
+// Instantiate with private key and optional parameters
+const rawAdapter = new WalletAdapterRaw({
+  privateKey: base64pad.decode(privateKey),
+  signatureType: 'SECP256K1', // Must match the private key type
+  network: 'testnet', // Initial network
+});
+
+async function useRawWallet() {
+  await rawAdapter.checkSupport(); // Always supported
+
+  console.log('Connecting...');
+  await rawAdapter.connect({ network: 'testnet' });
+
+  if (!rawAdapter.connected || !rawAdapter.account) {
+    console.error('Connection failed.');
+    return;
+  }
+
+  console.log('Connected!');
+  console.log('Adapter Name:', rawAdapter.name); // 'Raw Wallet'
+  console.log('Network:', rawAdapter.network); // 'testnet'
+  console.log('Account Address:', rawAdapter.account.address.toString()); // e.g., t1...
+  console.log('Account Type:', rawAdapter.account.type); // 'SECP256K1'
+
+  // Change network
+  console.log('Changing network to mainnet...');
+  const { network, account } = await rawAdapter.changeNetwork('mainnet');
+  console.log('New Network:', network); // 'mainnet'
+  console.log('New Address:', account.address.toString()); // e.g., f1...
+
+  // Disconnect
+  console.log('Disconnecting...');
+  await rawAdapter.disconnect();
+  console.log('Disconnected:', !rawAdapter.connected); // true
+}
+
+useRawWallet();
+
+```
+
+## Common Adapter API
+
+All adapters conforming to the `WalletAdapter` interface share these core methods and properties:
+
+*   `adapter.name: string`: Human-readable name (e.g., 'HD Wallet', 'Metamask').
+*   `adapter.id: string`: Unique identifier (e.g., 'hd', 'filsnap', 'raw').
+*   `adapter.support: AdapterSupport`: Indicates if the adapter is 'Detected', 'NotDetected', or 'NotSupported'.
+*   `adapter.connecting: boolean`: True if currently attempting to connect.
+*   `adapter.connected: boolean`: True if currently connected.
+*   `adapter.network: Network`: The currently active network ('mainnet' or 'testnet').
+*   `adapter.account: IAccount | undefined`: The currently connected account object (contains address object and type) or `undefined`.
+*   `adapter.checkSupport(): Promise<void>`: Checks if the adapter is usable in the current environment.
+*   `adapter.connect({ network }): Promise<AccountNetwork>`: Initiates connection, returns account and network info.
+*   `adapter.disconnect(): Promise<void>`: Disconnects the wallet.
+*   `adapter.changeNetwork(network): Promise<AccountNetwork>`: Switches the active network, returns updated account and network.
+*   `adapter.sign(message: Uint8Array): Promise<Signature>`: Signs raw byte data.
+*   `adapter.signMessage(message: Message): Promise<Signature>`: Signs a structured Filecoin `Message` object.
+*   `adapter.deriveAccount(index: number): Promise<IAccount>`: (HD Wallet specific, may exist on others) Derives an account at a specific index.
+*   `adapter.on(event, listener)` / `adapter.off(event, listener)`: Methods to subscribe/unsubscribe from events (`connect`, `disconnect`, `error`, `networkChanged`, `accountChanged`).
+
+## Integration with `iso-filecoin-react`
+
+The primary use case for these adapter classes is often within a React application using `iso-filecoin-react`. You instantiate the adapters you want to support and pass them in an array to the `FilecoinProvider`:
+
+```tsx
+import { FilecoinProvider } from 'iso-filecoin-react';
+import { WalletAdapterHd, WalletAdapterRaw } from 'iso-filecoin-wallets';
+
+const adapters = [
+  new WalletAdapterHd({ /* config */ }),
+  new WalletAdapterRaw({ /* config */ }),
+  // Add other adapter instances...
+];
+
+function AppWrapper() {
+  return (
+    <FilecoinProvider adapters={adapters}>
+      {/* Your App Components */}
+    </FilecoinProvider>
+  );
+}
+```
+
+The `FilecoinProvider` and its hooks (`useConnect`, `useAccount`, etc.) then manage selecting and interacting with these adapter instances.
+
+## Next Steps
+
+*   Explore the API Reference for detailed information on adapter classes, interfaces, and types.
+*   See the [iso-filecoin-react guide](./iso-filecoin-react/getting-started.md) for using these adapters within a React application.
+*   Check out the specific documentation for the [filsnap adapter](/api/iso-filecoin-wallets/filsnap/classes/walletadapterfilsnap/) and the [ledger adapter](/api/iso-filecoin-wallets/ledger/classes/walletadapterledger/).

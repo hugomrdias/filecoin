@@ -51,7 +51,7 @@ Error.constructor
 static captureStackTrace(targetObject: object, constructorOpt?: Function): void
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:136
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:136
 
 Create .stack property on a target object
 
@@ -176,7 +176,7 @@ Error.stack
 static optional prepareStackTrace: (err: Error, stackTraces: CallSite[]) => any;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:143
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:143
 
 Optional override for formatting stack traces
 
@@ -209,7 +209,7 @@ Error.prepareStackTrace
 static stackTraceLimit: number;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:145
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:145
 
 #### Inherited from
 

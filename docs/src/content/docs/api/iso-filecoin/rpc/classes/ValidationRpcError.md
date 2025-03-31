@@ -43,7 +43,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:106](https://github.com/hugomrdias
 static captureStackTrace(targetObject: object, constructorOpt?: Function): void
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:136
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:136
 
 Create .stack property on a target object
 
@@ -166,7 +166,7 @@ Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/li
 static optional prepareStackTrace: (err: Error, stackTraces: CallSite[]) => any;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:143
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:143
 
 Optional override for formatting stack traces
 
@@ -197,7 +197,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 static stackTraceLimit: number;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:145
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:145
 
 #### Inherited from
 

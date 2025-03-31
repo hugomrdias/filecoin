@@ -2,11 +2,11 @@
 editUrl: false
 next: true
 prev: true
-title: "WalletContextType"
+title: "FilecoinContextType"
 ---
 
 ```ts
-type WalletContextType = {
+type FilecoinContextType = {
   account:   | IAccount
      | undefined;
   adapter:   | WalletAdapter
@@ -28,7 +28,7 @@ type WalletContextType = {
 };
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:27](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L27)
+Defined in: [packages/iso-filecoin-react/src/types.ts:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L31)
 
 Wallet context type
 
@@ -42,7 +42,7 @@ account:
   | undefined;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:35](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L35)
+Defined in: [packages/iso-filecoin-react/src/types.ts:39](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L39)
 
 Currently connected account
 
@@ -56,7 +56,7 @@ adapter:
   | undefined;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L33)
+Defined in: [packages/iso-filecoin-react/src/types.ts:37](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L37)
 
 Currently selected wallet adapter
 
@@ -68,7 +68,7 @@ Currently selected wallet adapter
 adapters: WalletAdapter[];
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L31)
+Defined in: [packages/iso-filecoin-react/src/types.ts:35](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L35)
 
 List of available wallet adapters
 
@@ -82,7 +82,7 @@ error:
   | undefined;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:45](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L45)
+Defined in: [packages/iso-filecoin-react/src/types.ts:49](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L49)
 
 Last error that occurred on the selected adapter
 
@@ -94,7 +94,7 @@ Last error that occurred on the selected adapter
 loading: boolean;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:39](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L39)
+Defined in: [packages/iso-filecoin-react/src/types.ts:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L43)
 
 Provider is checking adapters support
 
@@ -106,7 +106,7 @@ Provider is checking adapters support
 network: Network;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:29](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L29)
+Defined in: [packages/iso-filecoin-react/src/types.ts:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L33)
 
 Current network (mainnet or testnet)
 
@@ -118,7 +118,7 @@ Current network (mainnet or testnet)
 reconnecting: boolean;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L43)
+Defined in: [packages/iso-filecoin-react/src/types.ts:47](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L47)
 
 Provider is reconnecting to the last selected adapter
 
@@ -130,7 +130,7 @@ Provider is reconnecting to the last selected adapter
 rpcs: Record<Network, RPC>;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:47](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L47)
+Defined in: [packages/iso-filecoin-react/src/types.ts:51](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L51)
 
 RPC clients for each network
 
@@ -144,7 +144,7 @@ setAccount: (value: React.SetStateAction<
   | undefined>) => void;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:49](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L49)
+Defined in: [packages/iso-filecoin-react/src/types.ts:53](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L53)
 
 Set the current account
 
@@ -168,7 +168,7 @@ setAdapter: (value: React.SetStateAction<
   | undefined>) => void;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:53](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L53)
+Defined in: [packages/iso-filecoin-react/src/types.ts:57](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L57)
 
 Set the current wallet adapter
 
@@ -190,7 +190,7 @@ Set the current wallet adapter
 setNetwork: (value: React.SetStateAction<Network>) => void;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/types.ts:51](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L51)
+Defined in: [packages/iso-filecoin-react/src/types.ts:55](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L55)
 
 Set the current network
 

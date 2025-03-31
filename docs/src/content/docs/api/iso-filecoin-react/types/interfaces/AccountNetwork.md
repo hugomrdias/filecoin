@@ -5,7 +5,7 @@ prev: true
 title: "AccountNetwork"
 ---
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:52
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:56
 
 ## Properties
 
@@ -15,7 +15,7 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:52
 account: IAccount;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:54
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:58
 
 ***
 
@@ -25,4 +25,4 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:54
 network: Network;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:53
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:57

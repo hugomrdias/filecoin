@@ -5,7 +5,7 @@ prev: true
 title: "AbortError"
 ---
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:217
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:217
 
 ## Extends
 
@@ -19,7 +19,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/htt
 new AbortError(signal: AbortSignal, options?: ErrorOptions): AbortError
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:230
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:230
 
 #### Parameters
 
@@ -44,7 +44,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/htt
 static captureStackTrace(targetObject: object, constructorOpt?: Function): void
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:136
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:136
 
 Create .stack property on a target object
 
@@ -71,7 +71,7 @@ Create .stack property on a target object
 static is(value: unknown): value is AbortError
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:224
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:224
 
 Check if a value is a AbortError
 
@@ -97,7 +97,7 @@ Check if a value is a AbortError
 [symbol]: boolean;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:187
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:187
 
 #### Inherited from
 
@@ -111,7 +111,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/htt
 cause: unknown;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:185
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:185
 
 #### Inherited from
 
@@ -153,7 +153,7 @@ Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/li
 signal: AbortSignal;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:232
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:232
 
 ***
 
@@ -177,7 +177,7 @@ Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/li
 static optional prepareStackTrace: (err: Error, stackTraces: CallSite[]) => any;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:143
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:143
 
 Optional override for formatting stack traces
 
@@ -208,7 +208,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 static stackTraceLimit: number;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:145
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:145
 
 #### Inherited from
 

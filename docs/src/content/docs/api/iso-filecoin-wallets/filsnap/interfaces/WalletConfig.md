@@ -14,6 +14,18 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:26](https://github.com/h
 
 ## Properties
 
+### name?
+
+```ts
+optional name: string;
+```
+
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:41](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L41)
+
+Wallet name
+
+***
+
 ### network?
 
 ```ts

@@ -5,7 +5,7 @@ prev: true
 title: "RequestOptions"
 ---
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:4
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:4
 
 ## Properties
 
@@ -15,7 +15,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/typ
 optional body: null | BodyInit;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:7
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:7
 
 ***
 
@@ -28,7 +28,7 @@ optional fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Respon
 | Request, init?: RequestInit) => Promise<Response>;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:5
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:5
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch)
 
@@ -64,7 +64,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/typ
 optional headers: HeadersInit;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:9
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:9
 
 ***
 
@@ -74,7 +74,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/typ
 optional json: Jsonifiable;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:14
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:14
 
 ***
 
@@ -84,7 +84,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/typ
 optional keepalive: boolean;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:11
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:11
 
 ***
 
@@ -94,7 +94,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/typ
 optional method: string;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:8
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:8
 
 ***
 
@@ -104,7 +104,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/typ
 optional redirect: RequestRedirect;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:6
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:6
 
 ***
 
@@ -114,7 +114,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/typ
 optional retry: Options;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:13
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:13
 
 ***
 
@@ -124,7 +124,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/typ
 optional signal: AbortSignal;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:10
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:10
 
 ***
 
@@ -134,4 +134,4 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/typ
 optional timeout: number;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:12
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:12

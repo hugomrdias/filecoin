@@ -1,0 +1,183 @@
+---
+title: React
+description: Learn how to set up and use iso-filecoin-react hooks.
+---
+
+`iso-filecoin-react` provides React hooks and context to easily integrate Filecoin wallet interactions into your React applications. It works seamlessly with the wallet adapters from `iso-filecoin-wallets`.
+
+## Installation
+
+First, you need to install the necessary packages. You'll typically need `iso-filecoin-react`, `iso-filecoin` (as a peer dependency), and at least one wallet adapter from `iso-filecoin-wallets`. You might also need `@tanstack/react-query` if you haven't installed it already, as it's a peer dependency for hooks.
+
+```bash
+# Using pnpm (recommended for this monorepo)
+pnpm add iso-filecoin-react iso-filecoin iso-filecoin-wallets @tanstack/react-query
+```
+
+## Setup: The FilecoinProvider
+
+Wrap your application (or the relevant part of it) with the `FilecoinProvider`. This component initializes the context and makes the wallet state and hooks available throughout your app.
+
+You need to pass an array of instantiated wallet adapters to the `adapters` prop.
+
+```tsx
+// Import the actual provider name
+import { FilecoinProvider } from 'iso-filecoin-react';
+import {
+  WalletAdapterHd,
+  WalletAdapterLedger,
+} from 'iso-filecoin-wallets'
+import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
+// Need QueryClientProvider for TanStack Query hooks
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App';
+
+// Instantiate the wallet adapters you want to support
+const adapters = [
+  new WalletAdapterLedger({
+    transport: TransportWebUSB,
+  }),
+  new WalletAdapterHd(),
+]
+
+const queryClient = new QueryClient();
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    {/* Wrap with QueryClientProvider */}
+    <QueryClientProvider client={queryClient}>
+      {/* Use FilecoinProvider and the correct prop names */}
+      <FilecoinProvider adapters={adapters} reconnectOnMount={true}>
+        <App />
+      </FilecoinProvider>
+    </QueryClientProvider>
+  </StrictMode>,
+);
+
+// @filename: App.tsx
+export default function App() {
+  return <div>My Filecoin App</div>;
+}
+```
+**Props for `FilecoinProvider`:**
+
+*   `adapters`: (`WalletAdapter[]`, Required) An array of initialized wallet adapter instances (e.g., `new WalletAdapterHD()`).
+*   `network`: (`Network`, Optional) The initial network to use ('mainnet' or 'testnet'). Defaults to `'mainnet'`.
+*   `rpcs`: (`Record<Network, RPC>`, Optional) An object mapping network names to initialized `RPC` client instances from `iso-filecoin/rpc`. If not provided, defaults are used for mainnet and testnet.
+*   `reconnectOnMount`: (`boolean`, Optional) If `true`, tries to automatically connect to the last used wallet adapter stored in local storage upon mounting. Defaults to `true`.
+*   `children`: (`React.ReactNode`, Required) Your application components.
+
+## Basic Usage: Accessing Wallet State
+
+Once the provider is set up, you can use the hooks provided by `iso-filecoin-react` within any child component.
+
+### `useAdapter`
+
+Provides access to the currently selected adapter instance, loading/reconnecting states, errors, and the current network.
+
+```tsx twoslash
+// @filename: WalletInfo.tsx
+import { useAdapter } from 'iso-filecoin-react';
+
+export function WalletInfo() {
+  const { adapter, loading, error, network, reconnecting } = useAdapter();
+
+  // loading is true only during initial provider setup/adapter check
+  if (loading) return <div>Checking adapter support...</div>;
+  // reconnecting is true if reconnectOnMount is true and it's trying to connect
+  if (reconnecting) return <div>Reconnecting wallet...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  // adapter can be undefined if no wallet is selected/connected yet
+  if (!adapter) return <div>No wallet adapter selected.</div>;
+
+  return (
+    <div>
+      <p>Selected Adapter: {adapter.name}</p>
+      {/* adapter.connected and adapter.connecting reflect the *adapter's* state */}
+      <p>Is Connected: {adapter.connected ? 'Yes' : 'No'}</p>
+      <p>Is Connecting: {adapter.connecting ? 'Yes' : 'No'}</p>
+      <p>Network: {network}</p> {/* 'mainnet' or 'testnet' - reflects provider state */}
+    </div>
+  );
+}
+```
+
+**Return value of `useAdapter`:**
+
+*   `adapter`: (`WalletAdapter | undefined`) The currently selected wallet adapter instance, or `undefined` if none is selected/connected.
+*   `loading`: (`boolean`) `true` while the provider checks adapter support on initial mount.
+*   `error`: (`Error | undefined`) The last error encountered related to the adapter or provider state.
+*   `network`: (`Network`) The current network ('mainnet' or 'testnet') set in the provider state.
+*   `reconnecting`: (`boolean`) `true` if the provider is attempting to auto-connect via `reconnectOnMount`.
+
+### `useAccount`
+
+Provides access to the connected account details (`IAccount`), the active adapter instance, network/chain information, the derived connection state, and the address string.
+
+```tsx twoslash
+// @filename: AccountDisplay.tsx
+import { useAccount } from 'iso-filecoin-react';
+import type { ConnectionState } from 'iso-filecoin-react'; // Import type if needed
+
+export function AccountDisplay() {
+  // address is returned directly for convenience
+  const { account, address, adapter, network, chain, state } = useAccount();
+
+  // State provides a string representation: 'disconnected', 'connecting', 'connected', 'reconnecting'
+  const displayState: ConnectionState = state;
+
+  if (displayState === 'connecting' || displayState === 'reconnecting') {
+    return <div>Status: {displayState}...</div>;
+  }
+
+  if (displayState === 'disconnected' || !account) {
+    return <div>Status: Disconnected. Please connect a wallet.</div>;
+  }
+
+  // State is 'connected' here
+  return (
+    <div>
+      <h2>Connected Account</h2>
+      {/* Use the direct address string */}
+      <p>Address: {address}</p>
+      <p>Type: {account.type}</p> {/* 'SECP256K1' or 'BLS' */}
+      <p>Network: {network}</p> {/* 'mainnet' or 'testnet' */}
+      <p>Chain ID: {chain.id}</p> {/* e.g., 314 for mainnet */}
+      <p>Adapter: {adapter?.name}</p>
+      <p>State: {displayState}</p>
+    </div>
+  );
+}
+
+```
+
+**Return value of `useAccount`:**
+
+*   `account`: (`IAccount | undefined`) The currently connected account object, or `undefined` if not connected. Contains `address` (as `IAddress` object) and `type`.
+*   `address`: (`string | undefined`) The string representation of the connected account's address, or `undefined`.
+*   `adapter`: (`WalletAdapter | undefined`) The currently selected and connected wallet adapter instance.
+*   `chain`: (`Chain`) An object representing the current Filecoin chain based on the provider's `network` state (e.g., `{ id: 314, name: 'Filecoin Mainnet' }`).
+*   `network`: (`Network`) The current network ('mainnet' or 'testnet') from the provider state.
+*   `state`: (`ConnectionState`) The derived connection status string: `'disconnected'`, `'connecting'`, `'connected'`, or `'reconnecting'`.
+
+## Other Core Hooks
+
+These hooks provide mutation functions (leveraging `@tanstack/react-query`), query results, or access context state for performing common wallet actions:
+
+*   [`useConnect`](/api/iso-filecoin-react/index/functions/useconnect/): Returns the `connect` mutation function to initiate connection to a selected wallet adapter. Also provides the list of available `adapters`, the currently selected `adapter` (if any), and the provider's initial `loading` state.
+*   [`useDisconnect`](/api/iso-filecoin-react/index/functions/usedisconnect/): Returns the `disconnect` mutation function to disconnect the currently connected wallet adapter.
+*   [`useChangeNetwork`](/api/iso-filecoin-react/index/functions/usechangenetwork/): Returns the `changeNetwork` mutation function to switch the provider's and potentially the adapter's active network (between 'mainnet' and 'testnet').
+*   [`useDeriveAccount`](/api/iso-filecoin-react/index/functions/usederiveaccount/): Returns the `deriveAccount` mutation function to derive a new account from the current adapter at a specific index (if supported by the adapter).
+*   [`useBalance`](/api/iso-filecoin-react/index/functions/usebalance/): Returns a TanStack Query query result object (`{ data, isLoading, error, ... }`) for fetching the FIL balance (`{ value: Token, symbol: string }` | `undefined`) of the connected account. Requires RPC client configuration.
+*   [`useAddresses`](/api/iso-filecoin-react/index/functions/useaddresses/): Takes an optional address string and returns TanStack Query query result objects for resolving its corresponding ID address (`addressId: { data, ... }`) and f4/0x address (`address0x: { data, ... }`) using the configured RPC client.
+*   [`useEstimateGas`](/api/iso-filecoin-react/index/functions/useestimategas/): Takes message parameters (`to`, `value`, `maxFee`) and returns a TanStack Query query result object (`{ data, ... }`) containing the estimated gas cost (`{ gas: bigint, total: bigint, symbol: string }` | `undefined`) for sending the message from the currently connected account. Requires RPC client configuration.
+*   [`useSendMessage`](/api/iso-filecoin-react/index/functions/usesendmessage/): Returns the `sendMessage` mutation function. Takes a partial message object, prepares it using the RPC client (getting nonce, gas estimation), signs it using the adapter, and pushes it to the network via the RPC client. Returns the message CID (`{ '/': string }`).
+*   [`useSign`](/api/iso-filecoin-react/index/functions/usesign/): Returns the `sign` mutation function. Takes a raw `Uint8Array` message and requests a signature from the connected adapter using the adapter's generic `sign` method. *(Note: This is different from `useSignMessage` which prepares and signs a specific Filecoin message structure).*
+
+## Next Steps
+
+*   Explore the API Reference for detailed information on all hooks and types.
+*   See the guide on [Using Wallet Adapters](./iso-filecoin-wallets/index.md) for more on specific adapters.
+*   Check out the [examples](https://github.com/hugomrdias/filecoin/tree/main/examples) folder in the repository for practical examples.

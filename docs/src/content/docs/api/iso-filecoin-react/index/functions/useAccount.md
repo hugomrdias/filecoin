@@ -11,13 +11,14 @@ function useAccount(): {
      | IAccount;
   adapter:   | undefined
      | WalletAdapter;
+  address: string;
   chain: Chain;
   network: Network;
   state: ConnectionState;
 }
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:329](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L329)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:335](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L335)
 
 Hook to access the current account and its state
 
@@ -29,6 +30,7 @@ Hook to access the current account and its state
      | IAccount;
   adapter:   | undefined
      | WalletAdapter;
+  address: string;
   chain: Chain;
   network: Network;
   state: ConnectionState;
@@ -56,6 +58,14 @@ adapter:
 ```
 
 Currently selected wallet adapter
+
+### address
+
+```ts
+address: string;
+```
+
+Current address
 
 ### chain
 

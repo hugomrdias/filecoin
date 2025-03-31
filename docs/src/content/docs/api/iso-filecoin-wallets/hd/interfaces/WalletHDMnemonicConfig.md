@@ -5,7 +5,7 @@ prev: true
 title: "WalletHDMnemonicConfig"
 ---
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:46](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L46)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:51](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L51)
 
 ## Extends
 
@@ -19,7 +19,7 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:46](https://github.com/h
 optional index: number;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L43)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:48](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L48)
 
 Derivation path address index
 
@@ -43,7 +43,25 @@ Omit.index
 mnemonic: string;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:47](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L47)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:52](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L52)
+
+***
+
+### name?
+
+```ts
+optional name: string;
+```
+
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:41](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L41)
+
+Wallet name
+
+#### Inherited from
+
+```ts
+Omit.name
+```
 
 ***
 
@@ -77,7 +95,7 @@ Omit.network
 optional password: string;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:48](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L48)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:53](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L53)
 
 ***
 

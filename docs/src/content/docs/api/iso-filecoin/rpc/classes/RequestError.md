@@ -5,7 +5,7 @@ prev: true
 title: "RequestError"
 ---
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:170
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:170
 
 ## Extends
 
@@ -28,7 +28,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/htt
 new RequestError(message: string, options?: ErrorOptions): RequestError
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:183
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:183
 
 #### Parameters
 
@@ -55,7 +55,7 @@ Error.constructor
 static captureStackTrace(targetObject: object, constructorOpt?: Function): void
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:136
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:136
 
 Create .stack property on a target object
 
@@ -84,7 +84,7 @@ Error.captureStackTrace
 static is(value: unknown): value is RequestError
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:177
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:177
 
 Check if a value is a RequestError
 
@@ -106,7 +106,7 @@ Check if a value is a RequestError
 [symbol]: boolean;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:187
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:187
 
 ***
 
@@ -116,7 +116,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/htt
 cause: unknown;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:185
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:185
 
 #### Overrides
 
@@ -180,7 +180,7 @@ Error.stack
 static optional prepareStackTrace: (err: Error, stackTraces: CallSite[]) => any;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:143
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:143
 
 Optional override for formatting stack traces
 
@@ -213,7 +213,7 @@ Error.prepareStackTrace
 static stackTraceLimit: number;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:145
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:145
 
 #### Inherited from
 

@@ -38,7 +38,7 @@ const filForwarderMetadata: {
 };
 ```
 
-Defined in: packages/iso-filecoin/src/contracts/filforwarder.js:93
+Defined in: [packages/iso-filecoin/src/contracts/filforwarder.js:93](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/contracts/filforwarder.js#L93)
 
 ## Type declaration
 

@@ -1,0 +1,251 @@
+---
+title: Core
+description: Core Filecoin utilities for addresses, tokens, messages, and RPC interactions.
+---
+
+`iso-filecoin` provides the foundational building blocks for working with Filecoin in JavaScript/TypeScript. It handles address formatting, token calculations, message construction, and RPC interactions.
+
+## Installation
+
+```bash
+pnpm add iso-filecoin
+```
+
+## Core Modules
+
+The package is organized into several focused modules, each available through its own entrypoint:
+
+### Address
+
+Handles Filecoin address parsing, validation, and conversion between different formats.
+
+```ts twoslash
+import { from } from 'iso-filecoin/address';
+
+// Parse any address format
+const addr = from('f1xciji452owqgqmyuphjbv3ubfkhpsvvxrvr7z6q', 'mainnet');
+console.log(addr.toString()); // f1xciji452owqgqmyuphjbv3ubfkhpsvvxrvr7z6q
+console.log(addr.protocol); // 1 (secp256k1)
+
+```
+
+### Wallet
+
+Provides core wallet functionality for generating and managing Filecoin accounts.
+
+```ts twoslash
+import { 
+  generateMnemonic, 
+  mnemonicToSeed,
+  accountFromSeed,
+  accountFromPrivateKey,
+  accountFromMnemonic 
+} from 'iso-filecoin/wallet';
+import { base64pad } from 'iso-base/rfc4648'
+
+// Generate new wallet from mnemonic
+const mnemonic = generateMnemonic();
+console.log('Mnemonic:', mnemonic);
+
+// Create account from mnemonic (all-in-one)
+const account = accountFromMnemonic(
+  mnemonic,
+  'SECP256K1', // or 'BLS'
+  "m/44'/461'/0'/0/0" // Standard Filecoin derivation path
+);
+console.log('Address:', account.address.toString());
+console.log('Type:', account.type);
+
+// Or step by step with more control
+const seed = mnemonicToSeed(mnemonic);
+const account2 = accountFromSeed(
+  seed,
+  'SECP256K1',
+  "m/44'/461'/0'/0/1" // Different index
+);
+
+// Create from existing private key
+// SECP256k1 Private Key (example, DO NOT USE REAL KEYS LIKE THIS)
+const privateKey = base64pad.decode('Un+VV/HZZ1YtfC1i4LULcvko0dV7F6CbQmnhSuUJRPU='); // Your private key hex
+const accountFromKey = accountFromPrivateKey(
+  privateKey,
+  'SECP256K1',
+  'mainnet'
+);
+```
+
+### Token
+
+Handles FIL token amounts with precision, supporting conversions between FIL, attoFIL, and picoFIL.
+
+```ts twoslash
+import { Token } from 'iso-filecoin/token';
+
+// Create from different denominations
+const fromFil = Token.fromFIL('1.5');
+const fromAtto = Token.fromAttoFIL('1500000000000000000');
+const fromPico = Token.fromPicoFIL('1500000000000000');
+
+// Convert between units
+console.log(fromFil.toAttoFIL()); // 1500000000000000000n
+console.log(fromFil.toPicoFIL()); // 1500000000000000n
+console.log(fromFil.toFIL()); // '1.5'
+
+// Arithmetic operations
+const sum = fromFil.add(Token.fromFIL('0.5'));
+console.log(sum.toFIL()); // '2'
+```
+
+### Message
+
+Constructs and handles Filecoin messages (transactions).
+
+```ts twoslash
+import { Message } from 'iso-filecoin/message';
+import { Token } from 'iso-filecoin/token';
+import { RPC } from 'iso-filecoin/rpc';
+import { mainnet } from 'iso-filecoin/chains';
+
+const rpc = new RPC({ 
+  network: 'mainnet', 
+  api: mainnet.rpcUrls.default.http[0] 
+});
+
+// Create a new message
+const msg = new Message({
+  to: 'f1xciji452owqgqmyuphjbv3ubfkhpsvvxrvr7z6q',
+  from: 'f1ssi7mcnxvwhhhtz6ludvpbsljyn26wmyfdgqnaq',
+  value: Token.fromFIL('1').toString(),
+});
+
+// Prepare the message (gets nonce and estimates gas)
+const prepared = await msg.prepare(rpc);
+console.log(prepared);
+```
+
+### RPC
+
+Provides a type-safe client for interacting with Filecoin JSON-RPC nodes.
+
+```ts twoslash
+import { RPC } from 'iso-filecoin/rpc';
+import { mainnet } from 'iso-filecoin/chains';
+
+// Create RPC client
+const rpc = new RPC({
+  api: mainnet.rpcUrls.default.http[0], // Optional, defaults per network
+  network: 'mainnet',
+});
+
+// Get chain head
+const head = await rpc.chainHead();
+console.log(head.result);
+
+// Get balance
+const balance = await rpc.balance('f1xciji452owqgqmyuphjbv3ubfkhpsvvxrvr7z6q');
+console.log(balance.result);
+```
+
+### Chains
+
+Provides network configurations and chain information.
+
+```ts twoslash
+import { mainnet, testnet } from 'iso-filecoin/chains';
+
+console.log(mainnet.id); // 314
+console.log(mainnet.name); // 'Filecoin Mainnet'
+console.log(mainnet.nativeCurrency); // { name: 'Filecoin', symbol: 'FIL', decimals: 18 }
+console.log(mainnet.rpcUrls.default.http); // Array of default RPC URLs
+```
+
+### Utils
+
+Common utilities for working with Filecoin data.
+
+```ts twoslash
+import { parseDerivationPath } from 'iso-filecoin/utils';
+
+// Parse BIP-44 derivation paths
+const path = parseDerivationPath("m/44'/461'/0'/0/0");
+console.log(path); // { purpose: 44, coinType: 461, account: 0, change: 0, index: 0 }
+
+```
+
+### Ledger
+
+Handles communication with Ledger hardware wallets through their Filecoin app.
+
+```ts twoslash
+import { 
+  LedgerFilecoin,
+} from 'iso-filecoin/ledger';
+import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
+
+async function ledgerExample() {
+  // Get USB transport
+  const transport = await TransportWebUSB.create();
+  
+  // Create Filecoin app instance
+  const app = new LedgerFilecoin(transport);
+  
+  // Get app version
+  const version = await app.getVersion();
+  console.log('App Version:', version);
+  
+  // Get public key and address
+  const path = "m/44'/461'/0'/0/0";
+  const { publicKey, address } = await app.getAddress(path);
+  console.log('Address:', address.toString());
+  
+  // Sign a message
+  const message = new Uint8Array([/* your message */]);
+  const signature = await app.sign(path, message);
+  console.log('Signature:', signature);
+  
+  // Always close transport when done
+  await transport.close();
+}
+```
+
+The Ledger module requires:
+- A connected Ledger device
+- The Filecoin app installed and opened on the device
+- Browser with WebUSB support (for web applications)
+- `@ledgerhq/hw-transport-node-hid` package for Node.js applications
+
+Example Node.js setup:
+
+```ts
+import { FilecoinApp } from 'iso-filecoin/ledger';
+import TransportHID from '@ledgerhq/hw-transport-node-hid';
+
+async function nodeLedgerExample() {
+  const transport = await TransportHID.create();
+  const app = new FilecoinApp(transport);
+  
+  // Use app methods...
+  
+  await transport.close();
+}
+```
+
+**Important Ledger Notes:**
+- Always verify the transaction details on your Ledger device before signing
+- Keep your Ledger firmware and the Filecoin app updated
+- The Ledger will only sign transactions for addresses derived from its seed
+- Different derivation paths might require user verification on the device
+
+## Integration with Other Packages
+
+`iso-filecoin` is designed to work seamlessly with:
+
+- `iso-filecoin-wallets`: Uses the address, token, and message modules to implement wallet adapters.
+- `iso-filecoin-react`: Uses all core modules to provide React hooks for Filecoin functionality.
+
+## Next Steps
+
+*   Explore the API Reference for detailed information on all modules and types.
+*   Learn about [Wallet Adapters](../iso-filecoin-wallets/getting-started.md) built on top of these utilities.
+*   See the [React Integration Guide](../iso-filecoin-react/getting-started.md) for using these modules in React applications.
+*   Check out the [Examples](https://github.com/hugomrdias/filecoin/tree/main/examples) for more usage patterns.

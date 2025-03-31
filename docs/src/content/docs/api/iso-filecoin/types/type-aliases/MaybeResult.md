@@ -17,7 +17,7 @@ type MaybeResult<ResultType, ErrorType> =
 };
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/types.d.ts:30
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:30
 
 Generic result with error
 

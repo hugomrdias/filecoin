@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-description: A guide in my new Starlight docs site.
+description: Learn how to install and use the iso-filecoin libraries.
 ---
 
 iso-filecoin is a **Filecoin Standard Library** that provides a set of lightweight, performant and type-safe Javascript modules. 
@@ -11,21 +11,48 @@ Used by the [Metamask Filecoin Wallet](https://github.com/filecoin-project/filsn
 
 ## Installation 
 
-Install the required packages.
+Install the required packages using `pnpm`.  Make sure you have Node.js >= 20 installed.
 
 ```bash
 pnpm add iso-filecoin
 ```
 
+If you plan to use React hooks, install `iso-filecoin-react` as well:
+
+```bash
+pnpm add iso-filecoin-react
+```
+
+For wallet functionalities (Ledger, Filecoin App), install `iso-filecoin-wallets`:
+
+```bash
+pnpm add iso-filecoin-wallets
+```
+
 ---
+
+## Project Structure
+
+This project uses a monorepo structure managed by `pnpm` workspaces. Core libraries reside in the `packages/` directory, examples in `examples/`, and this documentation site in `docs/`.
+
+```text
+.
+├── packages/
+│   ├── iso-filecoin/         # Core Filecoin library
+│   ├── iso-filecoin-react/   # React hooks and context
+│   └── iso-filecoin-wallets/ # Wallet adapters
+├── examples/                 # Usage examples and demos
+├── docs/                     # This documentation site
+├── pnpm-workspace.yaml       # Workspace configuration
+└── package.json              # Root package file
+```
 
 ## Usage
 
-```ts twoslash
-import { Message } from 'iso-filecoin/message'
-import { Token } from 'iso-filecoin/token'
-import * as Wallet  from 'iso-filecoin/wallet'
+Here's a basic example of how to use `iso-filecoin` to generate a wallet and address:
 
+```ts twoslash
+import * as Wallet from 'iso-filecoin/wallet'
 
 const mnemonic = Wallet.generateMnemonic()
 const account = Wallet.accountFromMnemonic(
@@ -34,12 +61,26 @@ const account = Wallet.accountFromMnemonic(
     "m/44'/461'/0'/0/0"
 )
 
-const address = account.address.toString() 
-// 'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i'
+const address = account.address.toString()
+// 'f1...'
+```
+
+Here's how to create a message:
+
+```ts twoslash
+import { Message } from 'iso-filecoin/message'
+import { Token } from 'iso-filecoin/token'
 
 const msg = new Message({
-   from: address,
+   from: 'f1...',
    to: 'f4...',
-   value: Token.fromFIL(1).toAttoFIL().toString() 
+   value: Token.fromFIL(1).toAttoFIL().toString()
 })
 ```
+
+
+## Further Resources
+
+-   API Reference
+-   [Examples](https://github.com/hugomrdias/filecoin/tree/main/examples)
+-   [GitHub Repository](https://github.com/hugomrdias/filecoin)

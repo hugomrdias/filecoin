@@ -14,7 +14,7 @@ function useAddresses(options?: {
 }
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:500](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L500)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:509](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L509)
 
 Resolve addresses from the network
 TODO: use cache

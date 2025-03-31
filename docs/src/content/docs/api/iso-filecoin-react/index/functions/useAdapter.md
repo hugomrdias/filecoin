@@ -6,16 +6,16 @@ title: "useAdapter"
 ---
 
 ```ts
-function useAdapter(): Pick<WalletContextType, "reconnecting" | "adapter" | "network" | "loading" | "error">
+function useAdapter(): Pick<FilecoinContextType, "reconnecting" | "adapter" | "network" | "loading" | "error">
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:308](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L308)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:314](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L314)
 
 Hook to access the current wallet adapter and its state
 
 ## Returns
 
-[`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`WalletContextType`](/api/iso-filecoin-react/types/type-aliases/walletcontexttype/), `"reconnecting"` \| `"adapter"` \| `"network"` \| `"loading"` \| `"error"`\>
+[`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`FilecoinContextType`](/api/iso-filecoin-react/types/type-aliases/filecoincontexttype/), `"reconnecting"` \| `"adapter"` \| `"network"` \| `"loading"` \| `"error"`\>
 
 Wallet adapter state
 

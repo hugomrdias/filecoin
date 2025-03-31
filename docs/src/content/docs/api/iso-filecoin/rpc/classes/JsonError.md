@@ -5,7 +5,7 @@ prev: true
 title: "JsonError"
 ---
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:189
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:189
 
 ## Extends
 
@@ -21,7 +21,7 @@ new JsonError(options: {
  }): JsonError
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:201
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:201
 
 #### Parameters
 
@@ -46,7 +46,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/htt
 static captureStackTrace(targetObject: object, constructorOpt?: Function): void
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:136
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:136
 
 Create .stack property on a target object
 
@@ -73,7 +73,7 @@ Create .stack property on a target object
 static is(value: unknown): value is JsonError
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:196
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:196
 
 Check if a value is a JsonError
 
@@ -99,7 +99,7 @@ Check if a value is a JsonError
 [symbol]: boolean;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:187
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:187
 
 #### Inherited from
 
@@ -113,7 +113,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/htt
 cause: JsonValue;
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/http.d.ts:205
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:205
 
 #### Overrides
 
@@ -169,7 +169,7 @@ Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/li
 static optional prepareStackTrace: (err: Error, stackTraces: CallSite[]) => any;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:143
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:143
 
 Optional override for formatting stack traces
 
@@ -200,7 +200,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 static stackTraceLimit: number;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.13/node\_modules/@types/node/globals.d.ts:145
+Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:145
 
 #### Inherited from
 

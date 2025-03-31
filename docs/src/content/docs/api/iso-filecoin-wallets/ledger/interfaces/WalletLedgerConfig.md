@@ -5,7 +5,7 @@ prev: true
 title: "WalletLedgerConfig"
 ---
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:51](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L51)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:56](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L56)
 
 ## Extends
 
@@ -19,7 +19,7 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:51](https://github.com/h
 optional index: number;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:56](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L56)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:61](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L61)
 
 Derivation path address index
 
@@ -28,6 +28,22 @@ Derivation path address index
 ```ts
 0
 ```
+
+***
+
+### name?
+
+```ts
+optional name: string;
+```
+
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:41](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L41)
+
+Wallet name
+
+#### Inherited from
+
+[`WalletConfig`](/api/iso-filecoin-wallets/filsnap/interfaces/walletconfig/).[`name`](/api/iso-filecoin-wallets/filsnap/interfaces/walletconfig/#name)
 
 ***
 
@@ -84,7 +100,7 @@ transport: {
 };
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:57](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L57)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:62](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L62)
 
 #### create()
 

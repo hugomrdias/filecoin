@@ -9,4 +9,4 @@ title: "SignatureType"
 type SignatureType = SignatureType;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:14](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L14)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:17](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L17)

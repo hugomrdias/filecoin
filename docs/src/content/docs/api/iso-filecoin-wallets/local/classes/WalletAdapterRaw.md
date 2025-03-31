@@ -2,12 +2,12 @@
 editUrl: false
 next: true
 prev: true
-title: "WalletAdapterLocal"
+title: "WalletAdapterRaw"
 ---
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L43)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:46](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L46)
 
-Local wallet implementation
+Raw wallet implementation
 
 @implements{WalletAdapter}
 
@@ -25,7 +25,9 @@ Local wallet implementation
 get connected(): boolean
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:119](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L119)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:124](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L124)
+
+Whether the wallet is currently connected
 
 ##### Returns
 
@@ -41,7 +43,9 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:119](https://github.com/
 get connecting(): boolean
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:115](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L115)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:120](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L120)
+
+Whether the wallet is in the process of connecting
 
 ##### Returns
 
@@ -57,7 +61,9 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:115](https://github.com/
 get support(): "NotChecked" | "Detected" | "NotDetected" | "NotSupported"
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:122](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L122)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:127](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L127)
+
+Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
 ##### Returns
 
@@ -68,12 +74,12 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:122](https://github.com/
 ### Constructor
 
 ```ts
-new WalletAdapterLocal(config: WalletConfig & {
+new WalletAdapterRaw(config: WalletConfig & {
   privateKey: Uint8Array;
- }): WalletAdapterLocal
+ }): WalletAdapterRaw
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:62](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L62)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:67](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L67)
 
 #### Parameters
 
@@ -83,7 +89,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:62](https://github.com/h
 
 #### Returns
 
-`WalletAdapterLocal`
+`WalletAdapterRaw`
 
 #### Overrides
 
@@ -104,7 +110,7 @@ addEventListener<T>(
    options?: boolean | AddEventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
 
 #### Type Parameters
 
@@ -143,7 +149,7 @@ changeNetwork(network: Network): Promise<{
 }>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:142](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L142)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:147](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L147)
 
 #### Parameters
 
@@ -166,7 +172,9 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:142](https://github.com/
 checkSupport(): Promise<void>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:127](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L127)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:132](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L132)
+
+Check if this wallet adapter is supported in the current environment
 
 #### Returns
 
@@ -185,7 +193,7 @@ connect(params?: {
 }>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:91](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L91)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:96](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L96)
 
 #### Parameters
 
@@ -209,7 +217,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:91](https://github.com/h
 deriveAccount(_index: number): Promise<IAccount>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:165](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L165)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:170](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L170)
 
 #### Parameters
 
@@ -229,7 +237,9 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:165](https://github.com/
 disconnect(): Promise<void>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:132](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L132)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:137](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L137)
+
+Disconnect from the wallet
 
 #### Returns
 
@@ -273,7 +283,7 @@ TypedEventTarget.dispatchEvent
 dispatchTypedEvent<T>(_type: T, event: WalletEvents[T]): boolean
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
 
 Dispatches a synthetic event to target and returns true if either
 event's cancelable attribute value is false or its preventDefault() method
@@ -310,7 +320,7 @@ TypedEventTarget.dispatchTypedEvent
 emit<T>(...args: WalletEvents[T]["detail"] extends IsAny<WalletEvents[T]["detail"]> ? [T, unknown] : [T, WalletEvents[T]["detail"]]): boolean
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
 
 #### Type Parameters
 
@@ -347,7 +357,7 @@ off<T>(
    options?: boolean | EventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
 
 Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/types/interfaces/walletadapter/#removeeventlistener)
 
@@ -388,7 +398,7 @@ on<T>(
    options?: boolean | AddEventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
 
 Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/types/interfaces/walletadapter/#addeventlistener)
 
@@ -429,7 +439,7 @@ removeEventListener<T>(
    options?: boolean | EventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
 
 #### Type Parameters
 
@@ -465,7 +475,7 @@ TypedEventTarget.removeEventListener
 sign(data: Uint8Array<ArrayBufferLike>): Promise<Signature>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:176](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L176)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:181](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L181)
 
 #### Parameters
 
@@ -496,7 +506,7 @@ signMessage(message: {
 }): Promise<Signature>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:188](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L188)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:193](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L193)
 
 #### Parameters
 
@@ -523,16 +533,26 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:188](https://github.com/
 ### create()
 
 ```ts
-static create(): WalletAdapterLocal
+static create(): WalletAdapterRaw
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:78](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L78)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:83](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L83)
 
 #### Returns
 
-`WalletAdapterLocal`
+`WalletAdapterRaw`
 
 ## Properties
+
+### \[symbol\]
+
+```ts
+[symbol]: boolean = true;
+```
+
+Defined in: [packages/iso-filecoin-wallets/src/local.js:48](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L48)
+
+***
 
 ### account
 
@@ -542,27 +562,31 @@ account:
   | IAccount = undefined;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:50](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L50)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:55](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L55)
 
 ***
 
-### icon
+### id
 
 ```ts
-icon: string = 'data:image/svg+xml,%3Csvg%20width%3D%2234%22%20height%3D%2234%22%20viewBox%3D%22-5%200%2034%2034%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M23.555%2025.1A11.979%2011.979%200%200%201%200%2021.857a7.9%207.9%200%200%201%20.485-2.924C1.643%2011.595%208.785%2011.063%204.8%200c0%200%206.65%201.727%208%2012.143%200%200%204.919-.163%201.6-7.286A21.31%2021.31%200%200%201%2024%2020c.027%201.71-.122%203.42-.445%205.1%22%20fill%3D%22%23FF6E6E%22%2F%3E%3Cpath%20d%3D%22M19%2026.5a7.5%207.5%200%200%201-14.975.484L4%2027s-.075-3.272%200-4c.684-6.611%202.6-9.563%205-14%20.067-2.639-1.115%207.273%205%2010a8.19%208.19%200%200%201%205%207.5%22%20fill%3D%22%230C0058%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E';
+id: string = 'raw';
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:46](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L46)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:50](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L50)
+
+Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
 ***
 
 ### name
 
 ```ts
-name: string = 'Local';
+name: string = 'Raw (Unsafe)';
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:44](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L44)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:51](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L51)
+
+Human readable wallet name
 
 ***
 
@@ -572,7 +596,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:44](https://github.com/h
 network: Network;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:65](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L65)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:70](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L70)
 
 ***
 
@@ -582,7 +606,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:65](https://github.com/h
 privateKey: Uint8Array<ArrayBufferLike>;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:67](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L67)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L72)
 
 ***
 
@@ -592,7 +616,19 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:67](https://github.com/h
 signatureType: "SECP256K1" | "BLS";
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:66](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L66)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:71](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L71)
+
+***
+
+### uid
+
+```ts
+uid: string;
+```
+
+Defined in: [packages/iso-filecoin-wallets/src/local.js:49](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L49)
+
+Unique identifier for this wallet instance
 
 ***
 
@@ -602,4 +638,6 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:66](https://github.com/h
 url: string = 'https://filecoin.io';
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:45](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L45)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:52](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L52)
+
+Wallet homepage URL

@@ -17,7 +17,7 @@ function useEstimateGas(options: {
 }, Error>
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:556](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L556)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:559](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L559)
 
 Estimate the gas for a message
 

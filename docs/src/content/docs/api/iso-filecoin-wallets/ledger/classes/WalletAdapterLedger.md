@@ -5,7 +5,7 @@ prev: true
 title: "WalletAdapterLedger"
 ---
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:28](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L28)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L31)
 
 Ledger wallet implementation
 
@@ -27,7 +27,7 @@ get app():
   | LedgerFilecoin
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:77](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L77)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:82](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L82)
 
 ##### Returns
 
@@ -44,7 +44,9 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:77](https://github.com/
 get connected(): boolean
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:73](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L73)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:78](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L78)
+
+Whether the wallet is currently connected
 
 ##### Returns
 
@@ -60,7 +62,9 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:73](https://github.com/
 get connecting(): boolean
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:69](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L69)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:74](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L74)
+
+Whether the wallet is in the process of connecting
 
 ##### Returns
 
@@ -76,7 +80,9 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:69](https://github.com/
 get support(): "NotChecked" | "Detected" | "NotDetected" | "NotSupported"
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:81](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L81)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:86](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L86)
+
+Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
 ##### Returns
 
@@ -90,7 +96,7 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:81](https://github.com/
 new WalletAdapterLedger(config: WalletLedgerConfig): WalletAdapterLedger
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:58](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L58)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:63](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L63)
 
 #### Parameters
 
@@ -121,7 +127,7 @@ addEventListener<T>(
    options?: boolean | AddEventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
 
 #### Type Parameters
 
@@ -160,7 +166,7 @@ changeNetwork(network: Network): Promise<{
 }>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:151](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L151)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:156](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L156)
 
 #### Parameters
 
@@ -183,7 +189,9 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:151](https://github.com
 checkSupport(): Promise<void>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:85](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L85)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:90](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L90)
+
+Check if this wallet adapter is supported in the current environment
 
 #### Returns
 
@@ -202,7 +210,7 @@ connect(params?: {
 }>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:103](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L103)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:108](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L108)
 
 #### Parameters
 
@@ -226,7 +234,7 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:103](https://github.com
 deriveAccount(index: number): Promise<IAccount>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:179](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L179)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:184](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L184)
 
 #### Parameters
 
@@ -246,7 +254,9 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:179](https://github.com
 disconnect(): Promise<void>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:134](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L134)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:139](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L139)
+
+Disconnect from the wallet
 
 #### Returns
 
@@ -290,7 +300,7 @@ TypedEventTarget.dispatchEvent
 dispatchTypedEvent<T>(_type: T, event: WalletEvents[T]): boolean
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
 
 Dispatches a synthetic event to target and returns true if either
 event's cancelable attribute value is false or its preventDefault() method
@@ -327,7 +337,7 @@ TypedEventTarget.dispatchTypedEvent
 emit<T>(...args: WalletEvents[T]["detail"] extends IsAny<WalletEvents[T]["detail"]> ? [T, unknown] : [T, WalletEvents[T]["detail"]]): boolean
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
 
 #### Type Parameters
 
@@ -364,7 +374,7 @@ off<T>(
    options?: boolean | EventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
 
 Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/types/interfaces/walletadapter/#removeeventlistener)
 
@@ -405,7 +415,7 @@ on<T>(
    options?: boolean | AddEventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
 
 Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/types/interfaces/walletadapter/#addeventlistener)
 
@@ -446,7 +456,7 @@ removeEventListener<T>(
    options?: boolean | EventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
 
 #### Type Parameters
 
@@ -482,7 +492,7 @@ TypedEventTarget.removeEventListener
 sign(data: Uint8Array<ArrayBufferLike>): Promise<Signature>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:198](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L198)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:203](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L203)
 
 #### Parameters
 
@@ -513,7 +523,7 @@ signMessage(message: {
 }): Promise<Signature>
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:224](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L224)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:229](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L229)
 
 #### Parameters
 
@@ -537,6 +547,16 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:224](https://github.com
 
 ## Properties
 
+### \[symbol\]
+
+```ts
+[symbol]: boolean = true;
+```
+
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L33)
+
+***
+
 ### account
 
 ```ts
@@ -545,17 +565,19 @@ account:
   | IAccount = undefined;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:35](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L35)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:40](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L40)
 
 ***
 
-### icon
+### id
 
 ```ts
-icon: string = 'data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20147%20128%22%20fill%3D%22white%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%222em%22%3E%3Cpath%20d%3D%22M0%2091.655V128h55.293v-8.06H8.056V91.655zm138.944%200v28.285H91.707v8.058H147V91.655zm-83.57-55.31v55.308h36.333v-7.269H63.43V36.345zM0%200v36.345h8.056V8.058h47.237V0zm91.707%200v8.058h47.237v28.287H147V0z%22%2F%3E%3C%2Fsvg%3E';
+id: string = 'ledger';
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L31)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:35](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L35)
+
+Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
 ***
 
@@ -565,7 +587,9 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:31](https://github.com/
 name: string = 'Ledger';
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:29](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L29)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:36](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L36)
+
+Human readable wallet name
 
 ***
 
@@ -575,7 +599,7 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:29](https://github.com/
 network: Network;
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:64](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L64)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:69](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L69)
 
 ***
 
@@ -585,7 +609,19 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:64](https://github.com/
 signatureType: "SECP256K1" | "BLS";
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:65](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L65)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:70](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L70)
+
+***
+
+### uid
+
+```ts
+uid: string;
+```
+
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:34](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L34)
+
+Unique identifier for this wallet instance
 
 ***
 
@@ -595,4 +631,6 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:65](https://github.com/
 url: string = 'https://ledger.com';
 ```
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:30](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L30)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:37](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L37)
+
+Wallet homepage URL

@@ -5,7 +5,7 @@ prev: true
 title: "WalletAdapter"
 ---
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:59
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:63
 
 Wallet adapter interface
 
@@ -26,7 +26,7 @@ addEventListener<T>(
    options?: boolean | AddEventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
 
 #### Type Parameters
 
@@ -92,7 +92,7 @@ TypedEventTarget.dispatchEvent
 dispatchTypedEvent<T>(_type: T, event: WalletEvents[T]): boolean
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
 
 Dispatches a synthetic event to target and returns true if either
 event's cancelable attribute value is false or its preventDefault() method
@@ -129,7 +129,7 @@ TypedEventTarget.dispatchTypedEvent
 emit<T>(...args: WalletEvents[T]["detail"] extends IsAny<WalletEvents[T]["detail"]> ? [T, unknown] : [T, WalletEvents[T]["detail"]]): boolean
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
 
 #### Type Parameters
 
@@ -166,7 +166,7 @@ off<T>(
    options?: boolean | EventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
 
 Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/types/interfaces/walletadapter/#removeeventlistener)
 
@@ -207,7 +207,7 @@ on<T>(
    options?: boolean | AddEventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
 
 Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/types/interfaces/walletadapter/#addeventlistener)
 
@@ -248,7 +248,7 @@ removeEventListener<T>(
    options?: boolean | EventListenerOptions): void
 ```
 
-Defined in: node\_modules/.pnpm/iso-web@1.1.0/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
+Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
 
 #### Type Parameters
 
@@ -284,7 +284,7 @@ TypedEventTarget.removeEventListener
 sign(data: Uint8Array): Promise<Signature>
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:80
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:130
 
 Sign raw bytes
 
@@ -308,7 +308,9 @@ readonly account:
   | IAccount;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:67
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:99
+
+Currently active account, if connected
 
 ***
 
@@ -318,13 +320,15 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:67
 changeNetwork: (network: Network) => Promise<AccountNetwork>;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:74
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:124
+
+Change the network and derive a new account
 
 #### Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `network` | [`Network`](/api/iso-filecoin-react/types/type-aliases/network/) |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `network` | [`Network`](/api/iso-filecoin-react/types/type-aliases/network/) | The network to change to |
 
 #### Returns
 
@@ -338,7 +342,9 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:74
 checkSupport: () => Promise<void>;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:68
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:103
+
+Check if this wallet adapter is supported in the current environment
 
 #### Returns
 
@@ -349,19 +355,21 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:68
 ### connect()
 
 ```ts
-connect: (__namedParameters: {
+connect: (params: {
   network: Network;
 }) => Promise<AccountNetwork>;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:69
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:108
+
+Connect to the wallet
 
 #### Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `__namedParameters` | \{ `network`: [`Network`](/api/iso-filecoin-react/types/type-aliases/network/); \} |
-| `__namedParameters.network`? | [`Network`](/api/iso-filecoin-react/types/type-aliases/network/) |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | \{ `network`: [`Network`](/api/iso-filecoin-react/types/type-aliases/network/); \} | Connect params |
+| `params.network`? | [`Network`](/api/iso-filecoin-react/types/type-aliases/network/) | - |
 
 #### Returns
 
@@ -375,7 +383,9 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:69
 readonly connected: boolean;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:66
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:95
+
+Whether the wallet is currently connected
 
 ***
 
@@ -385,7 +395,9 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:66
 readonly connecting: boolean;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:65
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:91
+
+Whether the wallet is in the process of connecting
 
 ***
 
@@ -395,13 +407,15 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:65
 deriveAccount: (index: number) => Promise<IAccount>;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:73
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:119
+
+Derive a new account at the given index
 
 #### Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `index` | `number` |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `index` | `number` | The derivation path index |
 
 #### Returns
 
@@ -415,7 +429,9 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:73
 disconnect: () => Promise<void>;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:72
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:114
+
+Disconnect from the wallet
 
 #### Returns
 
@@ -423,23 +439,27 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:72
 
 ***
 
-### icon
+### id
 
 ```ts
-readonly icon: string;
+readonly id: string;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:62
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:71
+
+Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
 ***
 
 ### name
 
 ```ts
-readonly name: string;
+name: string;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:60
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:75
+
+Human readable wallet name
 
 ***
 
@@ -449,7 +469,9 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:60
 readonly network: Network;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:63
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:83
+
+Current network (mainnet or testnet)
 
 ***
 
@@ -470,7 +492,7 @@ signMessage: (message: {
 }) => Promise<Signature>;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:86
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:136
 
 Sign filecoin message
 
@@ -502,14 +524,30 @@ Sign filecoin message
 readonly support: "NotChecked" | "Detected" | "NotDetected" | "NotSupported";
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:64
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:87
+
+Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
+
+***
+
+### uid
+
+```ts
+readonly uid: string;
+```
+
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:67
+
+Unique identifier for this wallet instance
 
 ***
 
 ### url
 
 ```ts
-readonly url: string;
+url: string;
 ```
 
-Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:61
+Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:79
+
+Wallet homepage URL

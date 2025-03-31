@@ -12,7 +12,7 @@ function useBalance(): UseQueryResult<{
 }, Error>
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:470](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L470)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:479](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L479)
 
 ## Returns
 

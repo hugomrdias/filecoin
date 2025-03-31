@@ -45,14 +45,23 @@ export default defineConfig({
           autogenerate: { directory: 'intro' },
         },
         {
-          label: 'Integrations',
-          autogenerate: { directory: 'reference' },
+          label: 'Packages',
+          autogenerate: { directory: 'packages' },
         },
         // Add the typedoc generated sidebar group to the sidebar.
         coreSidebar,
       ],
       expressiveCode: {
-        plugins: [ecTwoSlash()],
+        plugins: [
+          ecTwoSlash({
+            twoslashOptions: {
+              compilerOptions: {
+                allowUmdGlobalAccess: true,
+                lib: ['ESNext', 'DOM', 'DOM.Iterable'],
+              },
+            },
+          }),
+        ],
       },
       plugins: [
         starlightLlmsTxt(),
