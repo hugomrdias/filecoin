@@ -66,7 +66,7 @@ export default function App() {
         <CardFevm />
       </Flex>
 
-      <Box maxWidth="880px" mx="auto" mt="6" px="6">
+      <Box maxWidth="880px" mx="auto" mt="4" mb="6" px="6">
         <CardInfo />
       </Box>
     </main>
