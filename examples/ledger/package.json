@@ -41,7 +41,7 @@
     "@types/w3c-web-hid": "^1.0.6",
     "@vitejs/plugin-react": "^4.3.4",
     "buffer": "^6.0.3",
-    "react": "^19.0.0",
+    "react": "^19.1.0",
     "typescript": "5.8.2",
     "vite": "^6.2.3",
     "vite-plugin-node-polyfills": "^0.23.0"
