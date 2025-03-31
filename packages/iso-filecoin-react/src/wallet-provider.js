@@ -20,6 +20,7 @@ export { mainnet, testnet } from 'iso-filecoin/chains'
 
 /**
  * @typedef {import('iso-filecoin/types').Chain} Chain
+ * @typedef {import('./types.js').ConnectionState} ConnectionState
  */
 
 const noopStorage = {
@@ -636,7 +637,6 @@ export function useSendMessage() {
  *
  * @example
  * ```tsx twoslash
- * // @allowUmdGlobalAccess
  *
  * import { useSign } from 'iso-filecoin-react'
  *
