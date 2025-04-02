@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.0.1...iso-filecoin-wallets-v1.0.2) (2025-04-02)
+
+
+### Bug Fixes
+
+* republish ([603f7f8](https://github.com/hugomrdias/filecoin/commit/603f7f8c1bc9fee8e09c4cc3742f239fe7b29d2b))
+
 ## [1.0.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.0.0...iso-filecoin-wallets-v1.0.1) (2025-04-02)
 
 
