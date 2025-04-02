@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.0.0...iso-filecoin-wallets-v1.0.1) (2025-04-02)
+
+
+### Bug Fixes
+
+* fix raw adapter name ([458f1eb](https://github.com/hugomrdias/filecoin/commit/458f1ebefd47fa25deb9d88185720de105d51818))
+
 ## [1.0.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v0.0.4...iso-filecoin-wallets-v1.0.0) (2025-03-27)
 
 
