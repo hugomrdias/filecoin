@@ -1,13 +1,16 @@
 import assert from 'assert'
 import { cleanup, render } from '@testing-library/react/pure'
-import { FilecoinProvider, useWalletProvider } from '../src/wallet-provider.js'
+import {
+  FilecoinProvider,
+  useFilecoinProvider,
+} from '../src/wallet-provider.js'
 
 afterEach(() => {
   cleanup()
 })
 
 function Component() {
-  const { adapters } = useWalletProvider()
+  const { adapters } = useFilecoinProvider()
   return (
     <div>
       <h1>wallet</h1>

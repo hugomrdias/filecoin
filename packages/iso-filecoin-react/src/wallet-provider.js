@@ -283,7 +283,7 @@ export function FilecoinProvider({
   )
 }
 
-export function useWalletProvider() {
+export function useFilecoinProvider() {
   const context = useContext(FilecoinContext)
   if (!context) {
     throw new Error('useWallet must be used within a WalletProvider.')
@@ -296,7 +296,6 @@ export function useWalletProvider() {
  *
  * @example
  * ```tsx twoslash
- * // @allowUmdGlobalAccess
  *
  * import { useAdapter } from 'iso-filecoin-react'
  *
@@ -312,7 +311,8 @@ export function useWalletProvider() {
  * @returns {Pick<FilecoinContextType, 'adapter' | 'error' | 'loading' | 'network' | 'reconnecting'>} Wallet adapter state
  */
 export function useAdapter() {
-  const { adapter, error, loading, network, reconnecting } = useWalletProvider()
+  const { adapter, error, loading, network, reconnecting } =
+    useFilecoinProvider()
   return { adapter, error, loading, network, reconnecting }
 }
 
@@ -321,7 +321,6 @@ export function useAdapter() {
  *
  * @example
  * ```tsx twoslash
- * // @allowUmdGlobalAccess
  * import { useAccount } from 'iso-filecoin-react'
  *
  * function App() {
@@ -383,7 +382,6 @@ export function useAccount() {
  *
  * @example
  * ```tsx twoslash
- * // @allowUmdGlobalAccess
  *
  * import { useConnect } from 'iso-filecoin-react'
  *
@@ -503,10 +501,10 @@ export function useBalance() {
 /**
  * Resolve addresses from the network
  * TODO: use cache
- * @param {Object} [options]
- * @param {string} [options.address]
+ * @param {Object} options
+ * @param {string} options.address
  */
-export function useAddresses({ address } = {}) {
+export function useAddresses({ address }) {
   const { network, rpcs } = useContext(FilecoinContext)
   const _address = address ? Address.from(address, network) : undefined
 
