@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v2.1.0...iso-filecoin-react-v2.1.1) (2025-04-02)
+
+
+### Bug Fixes
+
+* export connection state type ([0881329](https://github.com/hugomrdias/filecoin/commit/088132921b783b08493876b2c0b28458d675289b))
+* **react:** rename useWalletProvider to useFilecoinProvider and update references ([61ca3a2](https://github.com/hugomrdias/filecoin/commit/61ca3a294fa2811fc603db230d1eb3d6ca83e5f3))
+
 ## [2.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v2.0.0...iso-filecoin-react-v2.1.0) (2025-03-28)
 
 
