@@ -8,7 +8,6 @@ import {
   useDisconnect,
 } from 'iso-filecoin-react'
 import { useEffect, useLayoutEffect, useState } from 'react'
-import { ErrorBox } from './common.jsx'
 import { ConnectModal } from './connect-modal.jsx'
 import ExplorerLink from './explorer-link.jsx'
 import { toast } from './toast.jsx'
@@ -18,15 +17,14 @@ import { toast } from './toast.jsx'
  */
 export default function ConnectLedger() {
   const [isOpen, setIsOpen] = useState(false)
-  const { error, adapter } = useAdapter()
-
-  const { account, network } = useAccount()
-
+  const { error } = useAdapter()
+  const { account, network, adapter, address } = useAccount()
   const disconnect = useDisconnect()
   const balance = useBalance()
-  const { address0x, addressId } = useAddresses()
+  const { address0x, addressId } = useAddresses({ address })
   const changeNetwork = useChangeNetwork()
   const deriveAccount = useDeriveAccount()
+
   useEffect(() => {
     if (account) {
       setIsOpen(false)
@@ -34,10 +32,11 @@ export default function ConnectLedger() {
   }, [account])
 
   useLayoutEffect(() => {
-    if (error && !isOpen) {
-      toast.error(error)
+    const _err = error ?? changeNetwork.error ?? deriveAccount.error
+    if (_err && !isOpen) {
+      toast.error(_err)
     }
-  }, [error, isOpen])
+  }, [error, changeNetwork.error, deriveAccount.error, isOpen])
 
   return (
     <div className="Cell100 Box Grid">
@@ -99,9 +98,10 @@ export default function ConnectLedger() {
           <ExplorerLink address={address0x.data?.toString()} chain="ethereum" />
           <div>
             <b>
-              {balance.data?.value
-                ?.toFIL()
-                .toFormat({ decimalPlaces: 4, suffix: ' FIL' }) ?? '...'}
+              {balance.data?.value?.toFIL().toFormat({
+                decimalPlaces: 2,
+                suffix: ` ${balance.data.symbol}`,
+              }) ?? '...'}
             </b>
           </div>
           <br />
@@ -130,8 +130,6 @@ export default function ConnectLedger() {
           >
             Change Network Error
           </button>
-          {changeNetwork.error && <ErrorBox error={changeNetwork.error} />}
-          {deriveAccount.error && <ErrorBox error={deriveAccount.error} />}
         </div>
       )}
 

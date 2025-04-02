@@ -1,23 +1,6 @@
 @import "@acab/reset.css";
 @import "water.css";
 
-/* @import "react-toastify/dist/ReactToastify.css"; */
-
-:root {
-  --toastify-color-dark: #161f27;
-}
-
-.Toastify__close-button > svg {
-  max-inline-size: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  ::selection {
-    /* chrome for some reason doesnt inherit the custom variable here */
-    background-color: #1c76c5;
-  }
-}
-
 :where(:root) body {
   display: grid;
   height: 100vh;

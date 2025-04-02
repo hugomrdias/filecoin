@@ -1,6 +1,6 @@
 import type React from 'react'
 import { type FC, type PropsWithChildren, useEffect, useRef } from 'react'
-import '../styles/model.css'
+import '../styles/modal.css'
 import { CloseButton } from './close-button'
 
 export type ModalProps = PropsWithChildren<{

@@ -17,16 +17,6 @@
   min-width: 200px;
   box-sizing: border-box;
 }
-.modal-button span {
-  display: block;
-  width: 100%;
-  text-align: right;
-}
-.modal-button img {
-  display: block;
-  width: 24px;
-  height: 24px;
-}
 
 .modal::backdrop {
   background: hsl(0 0% 0% / 50%);

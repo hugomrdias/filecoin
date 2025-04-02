@@ -23,7 +23,14 @@ import Modal from './modal.tsx'
  * @param {(isOpen: boolean) => void} props.setIsOpen - Function to set modal open state
  */
 export function ConnectModal({ isOpen, setIsOpen }) {
-  const { error, adapters, mutate: connect, isPending, loading } = useConnect()
+  const {
+    error,
+    adapters,
+    mutate: connect,
+    isPending,
+    loading,
+    reset,
+  } = useConnect()
   const [HDAdapter, setHDAdapter] =
     /** @type {typeof useState<WalletAdapterHd | undefined>} */ (useState)(
       undefined
@@ -31,6 +38,7 @@ export function ConnectModal({ isOpen, setIsOpen }) {
   const handleClose = () => {
     setHDAdapter(undefined)
     setIsOpen(false)
+    reset()
   }
 
   if (HDAdapter) {

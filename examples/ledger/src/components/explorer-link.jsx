@@ -1,4 +1,4 @@
-import { useWalletProvider } from 'iso-filecoin-react'
+import { useFilecoinProvider } from 'iso-filecoin-react'
 import * as chains from 'iso-filecoin/chains'
 import { CopyIcon } from './icons'
 
@@ -9,7 +9,7 @@ import { CopyIcon } from './icons'
  * @param {'filecoin' | 'ethereum' | 'id'} [param0.chain]
  */
 export default function ExplorerLink({ address, chain }) {
-  const { network } = useWalletProvider()
+  const { network } = useFilecoinProvider()
 
   /**
    * @param {string} address
