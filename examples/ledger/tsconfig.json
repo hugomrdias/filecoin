@@ -27,17 +27,6 @@
     "types": ["vite/client"],
     "allowImportingTsExtensions": true
   },
-  "references": [
-    {
-      "path": "../../packages/iso-filecoin"
-    },
-    {
-      "path": "../../packages/iso-filecoin-react"
-    },
-    {
-      "path": "../../packages/iso-filecoin-wallets"
-    }
-  ],
   "include": ["src"],
   "exclude": ["node_modules", "dist", "out"]
 }
