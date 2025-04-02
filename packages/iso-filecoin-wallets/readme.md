@@ -3,7 +3,7 @@
 [![npm (scoped)](https://img.shields.io/npm/v/iso-filecoin-wallets.svg)](https://www.npmjs.com/package/iso-filecoin-wallets)
 [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/fission-codes/filecoin/iso-filecoin-wallets.yml)](https://github.com/fission-codes/filecoin/actions/workflows/iso-filecoin-wallets.yml)
 
-Wallet adapters for filsnap, ledger, HD, Raw and more.
+Unified wallet interface for filsnap, ledger, HD, Raw and more.
 
 ## Install
 
