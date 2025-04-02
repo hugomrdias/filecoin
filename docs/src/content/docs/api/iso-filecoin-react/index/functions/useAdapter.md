@@ -9,7 +9,7 @@ title: "useAdapter"
 function useAdapter(): Pick<FilecoinContextType, "reconnecting" | "adapter" | "network" | "loading" | "error">
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:314](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L314)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:313](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L313)
 
 Hook to access the current wallet adapter and its state
 
@@ -22,7 +22,6 @@ Wallet adapter state
 ## Example
 
 ```tsx twoslash
-// @allowUmdGlobalAccess
 
 import { useAdapter } from 'iso-filecoin-react'
 

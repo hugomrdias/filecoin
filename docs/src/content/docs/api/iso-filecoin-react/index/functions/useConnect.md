@@ -11,7 +11,7 @@ function useConnect(): UseMutationResult<AccountNetwork, Error, {
 }, void> & Pick<FilecoinContextType, "adapter" | "adapters" | "loading">
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:411](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L411)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:409](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L409)
 
 Hook to connect a wallet adapter
 
@@ -26,7 +26,6 @@ Connection mutation and state
 ## Example
 
 ```tsx twoslash
-// @allowUmdGlobalAccess
 
 import { useConnect } from 'iso-filecoin-react'
 

@@ -20,7 +20,7 @@ function useSendMessage(): UseMutationResult<CID, Error, {
 }, unknown>
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:594](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L594)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:592](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L592)
 
 ## Returns
 

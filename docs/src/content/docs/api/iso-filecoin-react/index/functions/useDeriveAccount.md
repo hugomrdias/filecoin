@@ -9,7 +9,7 @@ title: "useDeriveAccount"
 function useDeriveAccount(): UseMutationResult<IAccount, Error, number, unknown>
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:466](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L466)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:464](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L464)
 
 ## Returns
 

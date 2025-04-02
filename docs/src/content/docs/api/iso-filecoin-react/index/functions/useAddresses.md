@@ -6,7 +6,7 @@ title: "useAddresses"
 ---
 
 ```ts
-function useAddresses(options?: {
+function useAddresses(options: {
   address: string;
  }): {
   address0x: UseQueryResult<undefined | string, Error>;
@@ -14,7 +14,7 @@ function useAddresses(options?: {
 }
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:509](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L509)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:507](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L507)
 
 Resolve addresses from the network
 TODO: use cache
@@ -23,8 +23,8 @@ TODO: use cache
 
 | Parameter | Type |
 | ------ | ------ |
-| `options`? | \{ `address`: `string`; \} |
-| `options.address`? | `string` |
+| `options` | \{ `address`: `string`; \} |
+| `options.address` | `string` |
 
 ## Returns
 

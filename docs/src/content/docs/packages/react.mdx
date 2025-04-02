@@ -176,6 +176,15 @@ These hooks provide mutation functions (leveraging `@tanstack/react-query`), que
 *   [`useSendMessage`](/api/iso-filecoin-react/index/functions/usesendmessage/): Returns the `sendMessage` mutation function. Takes a partial message object, prepares it using the RPC client (getting nonce, gas estimation), signs it using the adapter, and pushes it to the network via the RPC client. Returns the message CID (`{ '/': string }`).
 *   [`useSign`](/api/iso-filecoin-react/index/functions/usesign/): Returns the `sign` mutation function. Takes a raw `Uint8Array` message and requests a signature from the connected adapter using the adapter's generic `sign` method. *(Note: This is different from `useSignMessage` which prepares and signs a specific Filecoin message structure).*
 
+## Playground
+
+Play with all the hooks in this StackBlitz example:
+
+<iframe src="https://stackblitz.com/github/hugomrdias/filecoin/tree/main/examples/ledger?ctl=1&embed=1&file=src%2Fmain.jsx&hideExplorer=1&hideNavigation=0&theme=dark&view=preview" style={{ height: '500px', width: '100%', border: '1px solid rgba(193, 195, 200, 20%)' }}></iframe>
+
+Check the source code [here](https://github.com/hugomrdias/filecoin/tree/main/examples/ledger).
+
+
 ## Next Steps
 
 *   Explore the API Reference for detailed information on all hooks and types.

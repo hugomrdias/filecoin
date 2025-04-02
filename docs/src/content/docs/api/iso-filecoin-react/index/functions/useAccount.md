@@ -18,7 +18,7 @@ function useAccount(): {
 }
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:335](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L335)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:334](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L334)
 
 Hook to access the current account and its state
 
@@ -94,7 +94,6 @@ Current connection state
 ## Example
 
 ```tsx twoslash
-// @allowUmdGlobalAccess
 import { useAccount } from 'iso-filecoin-react'
 
 function App() {

@@ -9,7 +9,7 @@ title: "useSign"
 function useSign(): UseMutationResult<Signature, Error, Uint8Array<ArrayBufferLike>, unknown>
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:644](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L644)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:642](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L642)
 
 Hook to sign a message
 
