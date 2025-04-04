@@ -28,6 +28,6 @@
     "iso-filecoin": "workspace:^",
     "iso-filecoin-react": "workspace:^",
     "iso-filecoin-wallets": "workspace:^",
-    "sharp": "^0.33.5"
+    "sharp": "^0.34.0"
   }
 }
