@@ -18,7 +18,7 @@
     "@walletconnect/universal-provider": "^2.19.2",
     "iso-filecoin": "workspace:*",
     "iso-filecoin-wallets": "workspace:*",
-    "react": "19.0.0",
+    "react": "19.1.0",
     "react-dom": "19.0.0",
     "viem": "^2.25.0",
     "wagmi": "^2.14.12"
