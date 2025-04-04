@@ -32,7 +32,7 @@
     "iso-web": "^1.1.1",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
-    "viem": "~2.24.1",
+    "viem": "~2.25.0",
     "wagmi": "^2.14.15"
   },
   "devDependencies": {
@@ -41,7 +41,7 @@
     "@types/node": "^22.13.13",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
-    "@vite-pwa/assets-generator": "^0.2.6",
+    "@vite-pwa/assets-generator": "^1.0.0",
     "@vitejs/plugin-react": "^4.3.4",
     "buffer": "^6.0.3",
     "react": "^19.0.0",
@@ -50,7 +50,7 @@
     "vite": "^6.2.3",
     "vite-bundle-analyzer": "^0.18.1",
     "vite-plugin-node-polyfills": "^0.23.0",
-    "vite-plugin-pwa": "^0.21.2"
+    "vite-plugin-pwa": "^1.0.0"
   },
   "depcheck": {
     "specials": [
