@@ -86,12 +86,12 @@ export function getNetworkFromChainId(chainId) {
   switch (chainId) {
     case testnet.id:
     case testnet.chainId:
-    case testnet.caipId:
+    case testnet.caipNetworkId:
     case 'testnet':
       return 'testnet'
     case mainnet.id:
     case mainnet.chainId:
-    case mainnet.caipId:
+    case mainnet.caipNetworkId:
     case 'mainnet':
       return 'mainnet'
     default:

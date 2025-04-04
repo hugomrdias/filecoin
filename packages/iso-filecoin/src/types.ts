@@ -142,7 +142,7 @@ export type ChainContract = {
 }
 
 export interface Chain {
-  id: number
+  id: number | string
   name: string
   testnet?: boolean
   nativeCurrency: {
@@ -161,10 +161,11 @@ export interface Chain {
   contracts?: {
     [key: string]: ChainContract
   }
+  chainNamespace: string
   /**
-   * CAIP-2 chain ID
+   * CAIP-2 ID
    */
-  caipId: `${string}:${string}`
+  caipNetworkId: `${string}:${string}`
   /**
    * Chain ID 0x prefixed hex string
    */

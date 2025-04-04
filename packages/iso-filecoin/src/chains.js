@@ -35,7 +35,8 @@ export const mainnet = {
     },
   },
   chainId: '0x13a',
-  caipId: 'fil:f',
+  chainNamespace: 'eip155',
+  caipNetworkId: 'eip155:314',
   iconUrls: ['https://filsnap.dev/filecoin-logo.svg'],
 }
 
@@ -71,8 +72,37 @@ export const testnet = {
   },
   testnet: true,
   chainId: '0x4cb2f',
-  caipId: 'fil:t',
+  chainNamespace: 'eip155',
+  caipNetworkId: 'eip155:314159',
   iconUrls: ['https://filsnap.dev/filecoin-logo.svg'],
+}
+
+/**
+ * Filecoin Native chain
+ *
+ * @type {import('./types.js').Chain}
+ */
+export const filecoinNative = {
+  ...mainnet,
+  id: 'f',
+  name: 'Filecoin',
+  chainNamespace: 'fil',
+  caipNetworkId: 'fil:f',
+  chainId: 'f',
+}
+
+/**
+ * Filecoin Calibration chain
+ *
+ * @type {import('./types.js').Chain}
+ */
+export const filecoinCalibration = {
+  ...testnet,
+  id: 't',
+  name: 'Filecoin Calibration',
+  chainNamespace: 'fil',
+  caipNetworkId: 'fil:t',
+  chainId: 't',
 }
 
 /**
