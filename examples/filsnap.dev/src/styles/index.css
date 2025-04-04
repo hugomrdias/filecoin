@@ -6,8 +6,8 @@
   margin: 0;
   max-width: 100%;
 }
+
 .radix-themes {
-  min-height: inherit;
   --cursor-button: pointer;
 }
 
