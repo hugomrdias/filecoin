@@ -68,6 +68,7 @@ function Account() {
   const { disconnect } = useDisconnect()
   const { address } = useAccount()
   const { data } = useBalance({ address })
+  // @ts-ignore
   const { addressId } = useAddresses({ address })
   const { data: price } = usePrice()
   const [isSignOpen, setIsSignOpen] = useState(false)

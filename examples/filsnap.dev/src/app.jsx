@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <main className="App">
-      <Box maxWidth="880px" mx="auto" mt="6" px="6">
+      <Box maxWidth="880px" mx="auto" pt="6" px="6">
         <Card>
           <Flex gap="3" align="center">
             <Avatar
@@ -39,7 +39,7 @@ export default function App() {
                     /** @type {import('iso-filecoin/types').Network} */ (value)
                   await changeNetwork.mutateAsync(network)
                   switchChain({
-                    chainId: Chains[network].id,
+                    chainId: Number(Chains[network].id),
                   })
                 }}
               >
@@ -66,7 +66,7 @@ export default function App() {
         <CardFevm />
       </Flex>
 
-      <Box maxWidth="880px" mx="auto" mt="4" mb="6" px="6">
+      <Box maxWidth="880px" mx="auto" mt="4" pb="6" px="6">
         <CardInfo />
       </Box>
     </main>

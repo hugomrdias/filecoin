@@ -63,7 +63,7 @@ export function DialogConnectFEVM() {
                     onClick={() =>
                       connect({
                         connector,
-                        chainId: chain?.id,
+                        chainId: Number(chain?.id),
                       })
                     }
                   >
