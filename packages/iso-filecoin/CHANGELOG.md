@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.2.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.1.3...iso-filecoin-v7.2.0) (2025-04-04)
+
+
+### Features
+
+* add compatibility with walletconnect to the Chain type and fix caip ids ([bbaf167](https://github.com/hugomrdias/filecoin/commit/bbaf167f59bb4cda15ca19ef9e85cea0bbd73d12))
+
 ## [7.1.3](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.1.2...iso-filecoin-v7.1.3) (2025-03-26)
 
 
