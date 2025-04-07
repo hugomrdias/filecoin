@@ -24,7 +24,7 @@
     "depcheck": "^1.4.7",
     "lint-staged": "^15.5.0",
     "simple-git-hooks": "^2.12.1",
-    "typedoc": "^0.28.1",
+    "typedoc": "^0.28.2",
     "typedoc-plugin-markdown": "^4.6.0",
     "typedoc-plugin-mdn-links": "^5.0.1",
     "typedoc-plugin-missing-exports": "^4.0.0",
