@@ -136,7 +136,7 @@
     "@noble/hashes": "^1.7.1",
     "@scure/bip32": "^1.6.1",
     "@scure/bip39": "^1.5.1",
-    "bignumber.js": "^9.1.2",
+    "bignumber.js": "^9.2.1",
     "iso-base": "^4.0.2",
     "iso-kv": "^3.0.3",
     "iso-web": "^1.1.1",
@@ -158,7 +158,7 @@
     "rimraf": "^6.0.1",
     "rollup": "^4.37.0",
     "type-fest": "^4.38.0",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   },
   "publishConfig": {
     "provenance": true
