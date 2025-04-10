@@ -65,7 +65,7 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
     this.name = config.name ?? this.name
     this.#index = config.index ?? 0
     this.#isConnecting = false
-    this.version = config.version ?? '*'
+    this.version = config.version
     this.network = config.network ?? 'mainnet'
     this.signatureType = config.signatureType ?? 'SECP256K1'
   }
