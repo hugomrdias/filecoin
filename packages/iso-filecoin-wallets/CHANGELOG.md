@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.0.2...iso-filecoin-wallets-v1.0.3) (2025-04-10)
+
+
+### Bug Fixes
+
+* **wallets:** let filsnap-adapter handle version ([d5ce788](https://github.com/hugomrdias/filecoin/commit/d5ce7883580afcaa4ee421b3fbe4f07e6d873b0c))
+
 ## [1.0.2](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.0.1...iso-filecoin-wallets-v1.0.2) (2025-04-02)
 
 
