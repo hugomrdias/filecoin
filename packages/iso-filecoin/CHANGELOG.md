@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.2.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.2.0...iso-filecoin-v7.2.1) (2025-04-11)
+
+
+### Bug Fixes
+
+* change native filecoin calibration name ([bd5cb14](https://github.com/hugomrdias/filecoin/commit/bd5cb1457c4f01531fa9c7c0c423b6603e18e2c8))
+
 ## [7.2.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.1.3...iso-filecoin-v7.2.0) (2025-04-04)
 
 
