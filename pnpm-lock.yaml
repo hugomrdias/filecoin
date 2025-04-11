@@ -506,9 +506,6 @@ importers:
       '@reown/appkit':
         specifier: 1.7.2
         version: 1.7.2(@types/react@19.1.0)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.3)(utf-8-validate@5.0.10)
-      '@reown/appkit-common':
-        specifier: ^1.7.2
-        version: 1.7.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)
       '@reown/appkit-controllers':
         specifier: ^1.7.2
         version: 1.7.2(@types/react@19.1.0)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.3)(utf-8-validate@5.0.10)
