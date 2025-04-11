@@ -6,7 +6,7 @@ title: "isAddressDelegated"
 ---
 
 ```ts
-function isAddressDelegated(val: any): val is AddressDelegated
+function isAddressDelegated(val: any): val is AddressDelegated;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:98](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L98)

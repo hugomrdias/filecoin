@@ -6,7 +6,7 @@ title: "lotusCid"
 ---
 
 ```ts
-function lotusCid(data: Uint8Array<ArrayBufferLike>): Uint8Array<ArrayBuffer>
+function lotusCid(data: Uint8Array<ArrayBufferLike>): Uint8Array<ArrayBuffer>;
 ```
 
 Defined in: [packages/iso-filecoin/src/utils.js:310](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L310)

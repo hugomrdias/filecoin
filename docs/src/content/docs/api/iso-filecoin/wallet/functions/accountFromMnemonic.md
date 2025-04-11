@@ -17,7 +17,7 @@ function accountFromMnemonic(
   privateKey: Uint8Array;
   publicKey: Uint8Array;
   type: "SECP256K1" | "BLS";
-}
+};
 ```
 
 Defined in: [packages/iso-filecoin/src/wallet.js:60](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L60)
@@ -31,20 +31,10 @@ Get HD account from mnemonic
 | `mnemonic` | `string` |
 | `type` | `"SECP256K1"` \| `"BLS"` |
 | `path` | `string` |
-| `password`? | `string` |
-| `network`? | [`Network`](/api/iso-filecoin/types/type-aliases/network/) |
+| `password?` | `string` |
+| `network?` | [`Network`](/api/iso-filecoin/types/type-aliases/network/) |
 
 ## Returns
-
-```ts
-{
-  address: IAddress;
-  path: string;
-  privateKey: Uint8Array;
-  publicKey: Uint8Array;
-  type: "SECP256K1" | "BLS";
-}
-```
 
 ### address
 

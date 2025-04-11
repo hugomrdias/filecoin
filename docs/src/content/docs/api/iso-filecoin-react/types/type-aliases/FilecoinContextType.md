@@ -20,10 +20,10 @@ type FilecoinContextType = {
   rpcs: Record<Network, RPC>;
   setAccount: (value: React.SetStateAction<
      | IAccount
-     | undefined>) => void;
+    | undefined>) => void;
   setAdapter: (value: React.SetStateAction<
      | WalletAdapter
-     | undefined>) => void;
+    | undefined>) => void;
   setNetwork: (value: React.SetStateAction<Network>) => void;
 };
 ```
@@ -176,7 +176,7 @@ Set the current wallet adapter
 
 | Parameter | Type |
 | ------ | ------ |
-| `value` | `React.SetStateAction`\< \| [`WalletAdapter`](/api/iso-filecoin-react/types/interfaces/walletadapter/) \| `undefined`\> |
+| `value` | `React.SetStateAction`\< \| [`WalletAdapter`](/api/iso-filecoin-react/index/interfaces/walletadapter/) \| `undefined`\> |
 
 #### Returns
 

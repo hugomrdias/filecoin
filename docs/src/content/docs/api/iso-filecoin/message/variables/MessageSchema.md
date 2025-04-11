@@ -17,7 +17,7 @@ const MessageSchema: ZodObject<{
   to: ZodString;
   value: ZodEffects<ZodString, string, string>;
   version: ZodDefault<ZodLiteral<0>>;
- }, "strip", ZodTypeAny, {
+}, "strip", ZodTypeAny, {
   from: string;
   gasFeeCap: string;
   gasLimit: number;
@@ -28,7 +28,7 @@ const MessageSchema: ZodObject<{
   to: string;
   value: string;
   version: 0;
- }, {
+}, {
   from: string;
   gasFeeCap: string;
   gasLimit: number;

@@ -16,7 +16,7 @@ function accountFromPrivateKey(
   privateKey: Uint8Array;
   publicKey: Uint8Array;
   type: "SECP256K1" | "BLS";
-}
+};
 ```
 
 Defined in: [packages/iso-filecoin/src/wallet.js:108](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L108)
@@ -32,19 +32,9 @@ Lotus BLS private key is little endian so you need to reverse the byte order. Us
 | `privateKey` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\> |
 | `type` | `"SECP256K1"` \| `"BLS"` |
 | `network` | [`Network`](/api/iso-filecoin/types/type-aliases/network/) |
-| `path`? | `string` |
+| `path?` | `string` |
 
 ## Returns
-
-```ts
-{
-  address: IAddress;
-  path: string;
-  privateKey: Uint8Array;
-  publicKey: Uint8Array;
-  type: "SECP256K1" | "BLS";
-}
-```
 
 ### address
 

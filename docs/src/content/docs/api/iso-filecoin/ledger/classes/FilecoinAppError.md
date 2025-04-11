@@ -18,7 +18,7 @@ Filecoin app error
 ### Constructor
 
 ```ts
-new FilecoinAppError(statusCode: number, data?: string): FilecoinAppError
+new FilecoinAppError(statusCode: number, data?: string): FilecoinAppError;
 ```
 
 Defined in: [packages/iso-filecoin/src/ledger.js:158](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L158)
@@ -28,7 +28,7 @@ Defined in: [packages/iso-filecoin/src/ledger.js:158](https://github.com/hugomrd
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `statusCode` | `number` | The error status code coming from a Transport implementation |
-| `data`? | `string` | The error message coming from a instruction call |
+| `data?` | `string` | The error message coming from a instruction call |
 
 #### Returns
 
@@ -45,10 +45,10 @@ Error.constructor
 ### captureStackTrace()
 
 ```ts
-static captureStackTrace(targetObject: object, constructorOpt?: Function): void
+static captureStackTrace(targetObject: object, constructorOpt?: Function): void;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:136
+Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:136
 
 Create .stack property on a target object
 
@@ -57,7 +57,7 @@ Create .stack property on a target object
 | Parameter | Type |
 | ------ | ------ |
 | `targetObject` | `object` |
-| `constructorOpt`? | [`Function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function) |
+| `constructorOpt?` | [`Function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function) |
 
 #### Returns
 
@@ -77,7 +77,7 @@ Error.captureStackTrace
 optional cause: unknown;
 ```
 
-Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/lib.es2022.error.d.ts:26
+Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es2022.error.d.ts:26
 
 #### Inherited from
 
@@ -93,7 +93,7 @@ Error.cause
 message: string;
 ```
 
-Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/lib.es5.d.ts:1077
+Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:1077
 
 #### Inherited from
 
@@ -125,7 +125,7 @@ Error.name
 optional stack: string;
 ```
 
-Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/lib.es5.d.ts:1078
+Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:1078
 
 #### Inherited from
 
@@ -151,7 +151,7 @@ Defined in: [packages/iso-filecoin/src/ledger.js:152](https://github.com/hugomrd
 static optional prepareStackTrace: (err: Error, stackTraces: CallSite[]) => any;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:143
+Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:143
 
 Optional override for formatting stack traces
 
@@ -184,7 +184,7 @@ Error.prepareStackTrace
 static stackTraceLimit: number;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:145
+Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:145
 
 #### Inherited from
 

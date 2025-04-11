@@ -11,7 +11,7 @@ function fromPublicKey(
    network: Network, 
    type: "SECP256K1" | "BLS"): 
   | AddressSecp256k1
-  | AddressBLS
+  | AddressBLS;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:272](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L272)

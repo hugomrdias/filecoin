@@ -6,7 +6,7 @@ title: "isAddress"
 ---
 
 ```ts
-function isAddress(val: any): val is IAddress
+function isAddress(val: any): val is IAddress;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:58](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L58)

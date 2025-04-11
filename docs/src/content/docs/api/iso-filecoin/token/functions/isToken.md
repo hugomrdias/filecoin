@@ -6,7 +6,7 @@ title: "isToken"
 ---
 
 ```ts
-function isToken(val: any): val is Token
+function isToken(val: any): val is Token;
 ```
 
 Defined in: [packages/iso-filecoin/src/token.js:39](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L39)

@@ -27,7 +27,7 @@ https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0048.md
 new AddressDelegated(
    namespace: number, 
    payload: Uint8Array<ArrayBufferLike>, 
-   network: Network): AddressDelegated
+   network: Network): AddressDelegated;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:836](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L836)
@@ -55,7 +55,7 @@ Address.constructor
 ### checksum()
 
 ```ts
-checksum(): Uint8Array<ArrayBufferLike>
+checksum(): Uint8Array<ArrayBufferLike>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:337](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L337)
@@ -75,7 +75,7 @@ Address.checksum
 ### to0x()
 
 ```ts
-to0x(_rpc: AddressRpcOptions): Promise<string>
+to0x(_rpc: AddressRpcOptions): Promise<string>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:940](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L940)
@@ -103,7 +103,7 @@ Address.to0x
 ### toBytes()
 
 ```ts
-toBytes(): Uint8Array<ArrayBuffer>
+toBytes(): Uint8Array<ArrayBuffer>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:965](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L965)
@@ -123,7 +123,7 @@ Address.toBytes
 ### toContractDestination()
 
 ```ts
-toContractDestination(): `0x${string}`
+toContractDestination(): `0x${string}`;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:333](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L333)
@@ -143,7 +143,7 @@ Address.toContractDestination
 ### toEthAddress()
 
 ```ts
-toEthAddress(): string
+toEthAddress(): string;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:949](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L949)
@@ -160,7 +160,7 @@ because f4s dont need to check the chain to get the address
 ### toIdAddress()
 
 ```ts
-toIdAddress(options: AddressRpcSafetyOptions): Promise<AddressId>
+toIdAddress(options: AddressRpcSafetyOptions): Promise<AddressId>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:348](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L348)
@@ -188,7 +188,7 @@ Address.toIdAddress
 ### toString()
 
 ```ts
-toString(): string
+toString(): string;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:959](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L959)
@@ -208,7 +208,7 @@ Address.toString
 ### fromBytes()
 
 ```ts
-static fromBytes(bytes: Uint8Array<ArrayBufferLike>, network: Network): AddressDelegated
+static fromBytes(bytes: Uint8Array<ArrayBufferLike>, network: Network): AddressDelegated;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:895](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L895)
@@ -231,7 +231,7 @@ Create address from bytes
 ### fromEthAddress()
 
 ```ts
-static fromEthAddress(address: string, network: Network): AddressDelegated
+static fromEthAddress(address: string, network: Network): AddressDelegated;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:915](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L915)
@@ -254,7 +254,7 @@ Create delegated address from ethereum address
 ### fromString()
 
 ```ts
-static fromString(address: string): AddressDelegated
+static fromString(address: string): AddressDelegated;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:858](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L858)

@@ -22,7 +22,7 @@ Raw wallet implementation
 #### Get Signature
 
 ```ts
-get connected(): boolean
+get connected(): boolean;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:124](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L124)
@@ -40,7 +40,7 @@ Whether the wallet is currently connected
 #### Get Signature
 
 ```ts
-get connecting(): boolean
+get connecting(): boolean;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:120](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L120)
@@ -58,7 +58,7 @@ Whether the wallet is in the process of connecting
 #### Get Signature
 
 ```ts
-get support(): "NotChecked" | "Detected" | "NotDetected" | "NotSupported"
+get support(): "NotChecked" | "Detected" | "NotDetected" | "NotSupported";
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:127](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L127)
@@ -76,7 +76,7 @@ Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 ```ts
 new WalletAdapterRaw(config: WalletConfig & {
   privateKey: Uint8Array;
- }): WalletAdapterRaw
+}): WalletAdapterRaw;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:67](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L67)
@@ -107,7 +107,7 @@ addEventListener<T>(
    callback: 
   | null
   | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void
+   options?: boolean | AddEventListenerOptions): void;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
@@ -124,7 +124,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/eve
 | ------ | ------ |
 | `type` | `T` |
 | `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options`? | `boolean` \| `AddEventListenerOptions` |
+| `options?` | `boolean` \| `AddEventListenerOptions` |
 
 #### Returns
 
@@ -146,7 +146,7 @@ TypedEventTarget.addEventListener
 changeNetwork(network: Network): Promise<{
   account: IAccount;
   network: Network;
-}>
+}>;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:147](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L147)
@@ -162,14 +162,14 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:147](https://github.com/
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{
   `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/);
   `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/);
- \}\>
+\}\>
 
 ***
 
 ### checkSupport()
 
 ```ts
-checkSupport(): Promise<void>
+checkSupport(): Promise<void>;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:132](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L132)
@@ -187,10 +187,10 @@ Check if this wallet adapter is supported in the current environment
 ```ts
 connect(params?: {
   network: Network;
- }): Promise<{
+}): Promise<{
   account: IAccount;
   network: Network;
-}>
+}>;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:96](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L96)
@@ -199,22 +199,22 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:96](https://github.com/h
 
 | Parameter | Type |
 | ------ | ------ |
-| `params`? | \{ `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \} |
-| `params.network`? | [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/) |
+| `params?` | \{ `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \} |
+| `params.network?` | [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/) |
 
 #### Returns
 
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{
   `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/);
   `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/);
- \}\>
+\}\>
 
 ***
 
 ### deriveAccount()
 
 ```ts
-deriveAccount(_index: number): Promise<IAccount>
+deriveAccount(_index: number): Promise<IAccount>;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:170](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L170)
@@ -234,7 +234,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:170](https://github.com/
 ### disconnect()
 
 ```ts
-disconnect(): Promise<void>
+disconnect(): Promise<void>;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:137](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L137)
@@ -250,10 +250,10 @@ Disconnect from the wallet
 ### dispatchEvent()
 
 ```ts
-dispatchEvent(event: Event): boolean
+dispatchEvent(event: Event): boolean;
 ```
 
-Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/lib.dom.d.ts:8882
+Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.dom.d.ts:8882
 
 Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
 
@@ -280,7 +280,7 @@ TypedEventTarget.dispatchEvent
 ### dispatchTypedEvent()
 
 ```ts
-dispatchTypedEvent<T>(_type: T, event: WalletEvents[T]): boolean
+dispatchTypedEvent<T>(_type: T, event: WalletEvents[T]): boolean;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
@@ -317,7 +317,7 @@ TypedEventTarget.dispatchTypedEvent
 ### emit()
 
 ```ts
-emit<T>(...args: WalletEvents[T]["detail"] extends IsAny<WalletEvents[T]["detail"]> ? [T, unknown] : [T, WalletEvents[T]["detail"]]): boolean
+emit<T>(...args: WalletEvents[T]["detail"] extends IsAny<WalletEvents[T]["detail"]> ? [T, unknown] : [T, WalletEvents[T]["detail"]]): boolean;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
@@ -354,12 +354,12 @@ off<T>(
    callback: 
   | null
   | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void
+   options?: boolean | EventListenerOptions): void;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
 
-Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/types/interfaces/walletadapter/#removeeventlistener)
+Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#removeeventlistener)
 
 #### Type Parameters
 
@@ -373,7 +373,7 @@ Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/types/i
 | ------ | ------ |
 | `type` | `T` |
 | `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options`? | `boolean` \| `EventListenerOptions` |
+| `options?` | `boolean` \| `EventListenerOptions` |
 
 #### Returns
 
@@ -395,12 +395,12 @@ on<T>(
    callback: 
   | null
   | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void
+   options?: boolean | AddEventListenerOptions): void;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
 
-Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/types/interfaces/walletadapter/#addeventlistener)
+Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#addeventlistener)
 
 #### Type Parameters
 
@@ -414,7 +414,7 @@ Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/types/inte
 | ------ | ------ |
 | `type` | `T` |
 | `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options`? | `boolean` \| `AddEventListenerOptions` |
+| `options?` | `boolean` \| `AddEventListenerOptions` |
 
 #### Returns
 
@@ -436,7 +436,7 @@ removeEventListener<T>(
    callback: 
   | null
   | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void
+   options?: boolean | EventListenerOptions): void;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
@@ -453,7 +453,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/eve
 | ------ | ------ |
 | `type` | `T` |
 | `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options`? | `boolean` \| `EventListenerOptions` |
+| `options?` | `boolean` \| `EventListenerOptions` |
 
 #### Returns
 
@@ -472,7 +472,7 @@ TypedEventTarget.removeEventListener
 ### sign()
 
 ```ts
-sign(data: Uint8Array<ArrayBufferLike>): Promise<Signature>
+sign(data: Uint8Array<ArrayBufferLike>): Promise<Signature>;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:181](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L181)
@@ -503,7 +503,7 @@ signMessage(message: {
   to: string;
   value: string;
   version: 0;
-}): Promise<Signature>
+}): Promise<Signature>;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:193](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L193)
@@ -533,7 +533,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:193](https://github.com/
 ### create()
 
 ```ts
-static create(): WalletAdapterRaw
+static create(): WalletAdapterRaw;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:83](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L83)

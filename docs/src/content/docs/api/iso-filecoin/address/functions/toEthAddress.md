@@ -6,7 +6,7 @@ title: "toEthAddress"
 ---
 
 ```ts
-function toEthAddress(address: IAddress): string
+function toEthAddress(address: IAddress): string;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:158](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L158)

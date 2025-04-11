@@ -10,7 +10,7 @@ type MaybeResult<ResultType, ErrorType> =
   | {
   error: ErrorType;
   result: undefined;
- }
+}
   | {
   error: undefined;
   result: ResultType;

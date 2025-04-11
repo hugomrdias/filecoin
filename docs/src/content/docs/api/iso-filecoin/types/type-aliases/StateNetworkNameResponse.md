@@ -9,4 +9,4 @@ title: "StateNetworkNameResponse"
 type StateNetworkNameResponse = Network;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:334](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L334)
+Defined in: [packages/iso-filecoin/src/types.ts:335](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L335)
