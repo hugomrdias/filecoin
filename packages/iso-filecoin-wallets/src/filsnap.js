@@ -58,7 +58,7 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
 
   /**
    *
-   * @param {WalletConfig & ({version?: string, index?: number} )} config
+   * @param {WalletConfig & ({version?: string, index?: number, syncWithProvider?: boolean} )} config
    */
   constructor(config = {}) {
     super()
@@ -68,6 +68,7 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
     this.version = config.version
     this.network = config.network ?? 'mainnet'
     this.signatureType = config.signatureType ?? 'SECP256K1'
+    this.syncWithProvider = config.syncWithProvider ?? true
   }
 
   /**
@@ -94,17 +95,6 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
       }
 
       const provider = this.#provider ?? (await getProvider())
-      this.#connector = createConnector({
-        provider,
-        onDisconnect: () => {
-          this.disconnect()
-        },
-        onChainChanged: (network) => {
-          if (network) {
-            this.changeNetwork(network)
-          }
-        },
-      })
 
       this.filsnap = await FilsnapAdapter.connect({
         config: {
@@ -116,9 +106,22 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
         snapVersion: this.version,
       })
 
-      await this.#connector.connect({
-        network: this.network,
-      })
+      if (this.syncWithProvider) {
+        this.#connector = createConnector({
+          provider,
+          onDisconnect: () => {
+            this.disconnect()
+          },
+          onChainChanged: (network) => {
+            if (network) {
+              this.changeNetwork(network)
+            }
+          },
+        })
+        await this.#connector.connect({
+          network: this.network,
+        })
+      }
 
       const acc = await this.filsnap.getAccount()
       if (acc.error) {
@@ -153,7 +156,7 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
    * @param {Network} network
    */
   async changeNetwork(network) {
-    if (!this.filsnap || !this.#connector || !this.account) {
+    if (!this.filsnap || !this.account) {
       const err = new Error('Adapter is not connected')
       this.emit('error', err)
       throw err
@@ -170,7 +173,10 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
           cause: changeChainResult.error.data,
         })
       }
-      await this.#connector.switchChain(network)
+
+      if (this.syncWithProvider && this.#connector) {
+        await this.#connector.switchChain(network)
+      }
       this.account = changeChainResult.result.account
       this.network = network
       this.emit('networkChanged', {
@@ -267,9 +273,11 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
   }
 
   async disconnect() {
-    if (this.filsnap && this.#connector) {
-      await this.#connector.disconnect()
+    if (this.filsnap) {
       await this.filsnap.disconnect()
+    }
+    if (this.#connector) {
+      await this.#connector.disconnect()
     }
 
     this.filsnap = undefined
