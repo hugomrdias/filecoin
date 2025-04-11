@@ -44,7 +44,7 @@
     "@vite-pwa/assets-generator": "^1.0.0",
     "@vitejs/plugin-react": "^4.3.4",
     "buffer": "^6.0.3",
-    "react": "^19.0.0",
+    "react": "^19.1.0",
     "tiny-git-rev-sync": "^0.1.0",
     "typescript": "5.8.3",
     "vite": "^6.2.6",
