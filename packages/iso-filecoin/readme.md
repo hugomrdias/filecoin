@@ -33,7 +33,7 @@ const account = Wallet.accountFromMnemonic(
 )
 
 const address = account.address.toString() 
-// 'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i'
+//  'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i'
 ```
 
 ## Docs
