@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v2.1.1...iso-filecoin-react-v2.2.0) (2025-04-11)
+
+
+### Features
+
+* **react:** support appkit with useAppKitAdapter hook ([4f38e34](https://github.com/hugomrdias/filecoin/commit/4f38e34244b35121f15bb11b81c64b507d6e5573))
+
 ## [2.1.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v2.1.0...iso-filecoin-react-v2.1.1) (2025-04-02)
 
 
