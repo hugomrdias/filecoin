@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.2.2](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.2.1...iso-filecoin-v7.2.2) (2025-04-11)
+
+
+### Bug Fixes
+
+* bump version ([b17fb0a](https://github.com/hugomrdias/filecoin/commit/b17fb0a037ed98df39bf41b0ec67ad2fbeb2e3aa))
+
 ## [7.2.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.2.0...iso-filecoin-v7.2.1) (2025-04-11)
 
 
