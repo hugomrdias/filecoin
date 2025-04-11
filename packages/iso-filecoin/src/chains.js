@@ -1,5 +1,5 @@
 /**
- * Filecoin Mainnet chain
+ * Filecoin EVM Mainnet chain
  *
  * @type {import('./types.js').Chain}
  */
@@ -41,7 +41,7 @@ export const mainnet = {
 }
 
 /**
- * Filecoin Calibration testnet chain
+ * Filecoin EVM Calibration testnet chain
  *
  * @type {import('./types.js').Chain}
  */
@@ -96,7 +96,7 @@ export const filecoinNative = {
  *
  * @type {import('./types.js').Chain}
  */
-export const filecoinCalibration = {
+export const filecoinNativeCalibration = {
   ...testnet,
   id: 't',
   name: 'Filecoin Calibration',
