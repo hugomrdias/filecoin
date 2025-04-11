@@ -78,7 +78,7 @@
 		"mocha": "^11.1.0",
 		"playwright-test": "^14.1.9",
 		"react": "^19.0.0",
-		"react-dom": "^19.0.0",
+		"react-dom": "^19.1.0",
 		"type-fest": "^4.38.0",
 		"typescript": "5.8.3"
 	},
