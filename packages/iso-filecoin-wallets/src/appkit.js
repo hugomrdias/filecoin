@@ -4,8 +4,8 @@ import { RPC } from 'iso-filecoin/rpc'
 import { Token } from 'iso-filecoin/token'
 
 /**
- * @import { AppKit, AppKitOptions } from '@reown/appkit'
- * @import { CaipNetwork, ChainNamespace } from '@reown/appkit-common'
+ * @import { AppKit, AppKitOptions, CaipNetwork } from '@reown/appkit'
+ * @import { ChainNamespace } from '@reown/appkit-common'
  * @import { AccountNetwork, WalletAdapter } from 'iso-filecoin-wallets/types'
  * @import { ConnectorType, Provider } from '@reown/appkit-controllers'
  */
