@@ -18,7 +18,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/htt
 ```ts
 new JsonError(options: {
   cause: JsonValue;
- }): JsonError
+}): JsonError;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:201
@@ -43,10 +43,10 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/htt
 ### captureStackTrace()
 
 ```ts
-static captureStackTrace(targetObject: object, constructorOpt?: Function): void
+static captureStackTrace(targetObject: object, constructorOpt?: Function): void;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:136
+Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:136
 
 Create .stack property on a target object
 
@@ -55,7 +55,7 @@ Create .stack property on a target object
 | Parameter | Type |
 | ------ | ------ |
 | `targetObject` | `object` |
-| `constructorOpt`? | [`Function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function) |
+| `constructorOpt?` | [`Function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function) |
 
 #### Returns
 
@@ -70,7 +70,7 @@ Create .stack property on a target object
 ### is()
 
 ```ts
-static is(value: unknown): value is JsonError
+static is(value: unknown): value is JsonError;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/http.d.ts:196
@@ -127,7 +127,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/htt
 message: string;
 ```
 
-Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/lib.es5.d.ts:1077
+Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:1077
 
 #### Inherited from
 
@@ -141,7 +141,7 @@ Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/li
 name: string;
 ```
 
-Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/lib.es5.d.ts:1076
+Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:1076
 
 #### Inherited from
 
@@ -155,7 +155,7 @@ Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/li
 optional stack: string;
 ```
 
-Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/lib.es5.d.ts:1078
+Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:1078
 
 #### Inherited from
 
@@ -169,7 +169,7 @@ Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/li
 static optional prepareStackTrace: (err: Error, stackTraces: CallSite[]) => any;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:143
+Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:143
 
 Optional override for formatting stack traces
 
@@ -200,7 +200,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 static stackTraceLimit: number;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:145
+Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:145
 
 #### Inherited from
 

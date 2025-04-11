@@ -11,7 +11,7 @@ function recoverAddress(
    data: Uint8Array<ArrayBufferLike>, 
    network: Network): 
   | AddressSecp256k1
-  | AddressBLS
+  | AddressBLS;
 ```
 
 Defined in: [packages/iso-filecoin/src/wallet.js:331](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L331)

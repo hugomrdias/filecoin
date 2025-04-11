@@ -13,7 +13,8 @@ Defined in: packages/iso-filecoin/dist/src/types.d.ts:108
 
 ```ts
 optional blockExplorers: {
-[key: string]: ChainBlockExplorer;   default: ChainBlockExplorer;
+[key: string]: ChainBlockExplorer;
+  default: ChainBlockExplorer;
 };
 ```
 
@@ -33,15 +34,15 @@ default: ChainBlockExplorer;
 
 ***
 
-### caipId
+### caipNetworkId
 
 ```ts
-caipId: `${string}:${string}`;
+caipNetworkId: `${string}:${string}`;
 ```
 
-Defined in: packages/iso-filecoin/dist/src/types.d.ts:131
+Defined in: packages/iso-filecoin/dist/src/types.d.ts:132
 
-CAIP-2 chain ID
+CAIP-2 ID
 
 ***
 
@@ -51,16 +52,28 @@ CAIP-2 chain ID
 chainId: string;
 ```
 
-Defined in: packages/iso-filecoin/dist/src/types.d.ts:135
+Defined in: packages/iso-filecoin/dist/src/types.d.ts:136
 
 Chain ID 0x prefixed hex string
+
+***
+
+### chainNamespace
+
+```ts
+chainNamespace: string;
+```
+
+Defined in: packages/iso-filecoin/dist/src/types.d.ts:128
 
 ***
 
 ### contracts?
 
 ```ts
-optional contracts: {};
+optional contracts: {
+[key: string]: ChainContract;
+};
 ```
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:125
@@ -79,14 +92,14 @@ Defined in: packages/iso-filecoin/dist/src/types.d.ts:125
 optional iconUrls: string[];
 ```
 
-Defined in: packages/iso-filecoin/dist/src/types.d.ts:136
+Defined in: packages/iso-filecoin/dist/src/types.d.ts:137
 
 ***
 
 ### id
 
 ```ts
-id: number;
+id: string | number;
 ```
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:109
@@ -139,7 +152,8 @@ symbol: string;
 
 ```ts
 rpcUrls: {
-[key: string]: ChainRpcUrls;   default: ChainRpcUrls;
+[key: string]: ChainRpcUrls;
+  default: ChainRpcUrls;
 };
 ```
 

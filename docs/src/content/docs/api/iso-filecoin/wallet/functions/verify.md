@@ -9,7 +9,7 @@ title: "verify"
 function verify(
    signature: Signature, 
    data: Uint8Array<ArrayBufferLike>, 
-   publicKey: Uint8Array<ArrayBufferLike>): boolean
+   publicKey: Uint8Array<ArrayBufferLike>): boolean;
 ```
 
 Defined in: [packages/iso-filecoin/src/wallet.js:273](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L273)

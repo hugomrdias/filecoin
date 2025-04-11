@@ -16,7 +16,7 @@ function accountFromSeed(
   privateKey: Uint8Array;
   publicKey: Uint8Array;
   type: "SECP256K1" | "BLS";
-}
+};
 ```
 
 Defined in: [packages/iso-filecoin/src/wallet.js:74](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L74)
@@ -30,19 +30,9 @@ Get HD account from seed
 | `seed` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\> |
 | `type` | `"SECP256K1"` \| `"BLS"` |
 | `path` | `string` |
-| `network`? | [`Network`](/api/iso-filecoin/types/type-aliases/network/) |
+| `network?` | [`Network`](/api/iso-filecoin/types/type-aliases/network/) |
 
 ## Returns
-
-```ts
-{
-  address: IAddress;
-  path: string;
-  privateKey: Uint8Array;
-  publicKey: Uint8Array;
-  type: "SECP256K1" | "BLS";
-}
-```
 
 ### address
 

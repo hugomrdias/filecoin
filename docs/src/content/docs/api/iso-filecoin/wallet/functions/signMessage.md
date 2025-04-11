@@ -20,7 +20,7 @@ function signMessage(
   to: string;
   value: string;
   version: 0;
- }): Signature
+}): Signature;
 ```
 
 Defined in: [packages/iso-filecoin/src/wallet.js:217](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L217)

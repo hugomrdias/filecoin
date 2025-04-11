@@ -26,7 +26,7 @@ https://spec.filecoin.io/appendix/address/#section-appendix.address.protocol-2-a
 ### Constructor
 
 ```ts
-new AddressActor(payload: Uint8Array<ArrayBufferLike>, network: Network): AddressActor
+new AddressActor(payload: Uint8Array<ArrayBufferLike>, network: Network): AddressActor;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:690](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L690)
@@ -53,7 +53,7 @@ Address.constructor
 ### checksum()
 
 ```ts
-checksum(): Uint8Array<ArrayBufferLike>
+checksum(): Uint8Array<ArrayBufferLike>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:337](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L337)
@@ -73,7 +73,7 @@ Address.checksum
 ### to0x()
 
 ```ts
-to0x(options: AddressRpcSafetyOptions): Promise<string>
+to0x(options: AddressRpcSafetyOptions): Promise<string>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:399](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L399)
@@ -103,7 +103,7 @@ Address.to0x
 ### toBytes()
 
 ```ts
-toBytes(): Uint8Array<ArrayBuffer>
+toBytes(): Uint8Array<ArrayBuffer>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:329](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L329)
@@ -123,7 +123,7 @@ Address.toBytes
 ### toContractDestination()
 
 ```ts
-toContractDestination(): `0x${string}`
+toContractDestination(): `0x${string}`;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:333](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L333)
@@ -143,7 +143,7 @@ Address.toContractDestination
 ### toIdAddress()
 
 ```ts
-toIdAddress(options: AddressRpcSafetyOptions): Promise<AddressId>
+toIdAddress(options: AddressRpcSafetyOptions): Promise<AddressId>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:348](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L348)
@@ -171,7 +171,7 @@ Address.toIdAddress
 ### toString()
 
 ```ts
-toString(): string
+toString(): string;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:323](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L323)
@@ -191,7 +191,7 @@ Address.toString
 ### fromBytes()
 
 ```ts
-static fromBytes(bytes: Uint8Array<ArrayBufferLike>, network: Network): AddressActor
+static fromBytes(bytes: Uint8Array<ArrayBufferLike>, network: Network): AddressActor;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:733](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L733)
@@ -214,7 +214,7 @@ Create address from bytes
 ### fromString()
 
 ```ts
-static fromString(address: string): AddressActor
+static fromString(address: string): AddressActor;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:703](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L703)

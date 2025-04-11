@@ -6,7 +6,7 @@ title: "getNetworkFromPath"
 ---
 
 ```ts
-function getNetworkFromPath(path: string): Network
+function getNetworkFromPath(path: string): Network;
 ```
 
 Defined in: [packages/iso-filecoin/src/utils.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L72)

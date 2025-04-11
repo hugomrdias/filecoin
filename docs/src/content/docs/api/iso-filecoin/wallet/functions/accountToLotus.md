@@ -6,7 +6,7 @@ title: "accountToLotus"
 ---
 
 ```ts
-function accountToLotus(account: IAccount): string
+function accountToLotus(account: IAccount): string;
 ```
 
 Defined in: [packages/iso-filecoin/src/wallet.js:341](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L341)

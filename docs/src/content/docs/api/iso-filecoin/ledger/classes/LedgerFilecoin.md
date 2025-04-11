@@ -14,7 +14,7 @@ Ledger Filecoin app client
 ### Constructor
 
 ```ts
-new LedgerFilecoin(transport: Transport): LedgerFilecoin
+new LedgerFilecoin(transport: Transport): LedgerFilecoin;
 ```
 
 Defined in: [packages/iso-filecoin/src/ledger.js:273](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L273)
@@ -34,7 +34,7 @@ Defined in: [packages/iso-filecoin/src/ledger.js:273](https://github.com/hugomrd
 ### close()
 
 ```ts
-close(): Promise<void>
+close(): Promise<void>;
 ```
 
 Defined in: [packages/iso-filecoin/src/ledger.js:406](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L406)
@@ -50,7 +50,7 @@ Close the transport
 ### getAddress()
 
 ```ts
-getAddress(path: string, showOnDevice?: boolean): Promise<IAccount>
+getAddress(path: string, showOnDevice?: boolean): Promise<IAccount>;
 ```
 
 Defined in: [packages/iso-filecoin/src/ledger.js:323](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L323)
@@ -62,7 +62,7 @@ Get the secp256k1 address for a given derivation path
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
 | `path` | `string` | `undefined` | Derivation path |
-| `showOnDevice`? | `boolean` | `false` | Whether to show the address on the device |
+| `showOnDevice?` | `boolean` | `false` | Whether to show the address on the device |
 
 #### Returns
 
@@ -77,7 +77,7 @@ https://github.com/LedgerHQ/app-filecoin/blob/develop/docs/APDUSPEC.md#ins_get_a
 ### getVersion()
 
 ```ts
-getVersion(): Promise<string>
+getVersion(): Promise<string>;
 ```
 
 Defined in: [packages/iso-filecoin/src/ledger.js:297](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L297)
@@ -112,7 +112,7 @@ const version = await ledger.getVersion()
 sign(
    path: string, 
    message: Uint8Array<ArrayBufferLike>, 
-type?: "SECP256K1" | "DATA_CAP" | "CLIENT_DEAL" | "RAW_BYTES"): Promise<Uint8Array<ArrayBufferLike>>
+type?: "SECP256K1" | "DATA_CAP" | "CLIENT_DEAL" | "RAW_BYTES"): Promise<Uint8Array<ArrayBufferLike>>;
 ```
 
 Defined in: [packages/iso-filecoin/src/ledger.js:358](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L358)
@@ -125,7 +125,7 @@ Sign a message
 | ------ | ------ | ------ | ------ |
 | `path` | `string` | `undefined` | Derivation path |
 | `message` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\> | `undefined` | Message to sign in bytes |
-| `type`? | `"SECP256K1"` \| `"DATA_CAP"` \| `"CLIENT_DEAL"` \| `"RAW_BYTES"` | `'SECP256K1'` | Signature type |
+| `type?` | `"SECP256K1"` \| `"DATA_CAP"` \| `"CLIENT_DEAL"` \| `"RAW_BYTES"` | `'SECP256K1'` | Signature type |
 
 #### Returns
 
@@ -136,7 +136,7 @@ Sign a message
 ### signRaw()
 
 ```ts
-signRaw(path: string, message: Uint8Array<ArrayBufferLike>): Promise<Uint8Array<ArrayBufferLike>>
+signRaw(path: string, message: Uint8Array<ArrayBufferLike>): Promise<Uint8Array<ArrayBufferLike>>;
 ```
 
 Defined in: [packages/iso-filecoin/src/ledger.js:395](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L395)

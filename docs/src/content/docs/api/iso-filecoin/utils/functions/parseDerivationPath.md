@@ -6,7 +6,7 @@ title: "parseDerivationPath"
 ---
 
 ```ts
-function parseDerivationPath(path: string): DerivationPathComponents
+function parseDerivationPath(path: string): DerivationPathComponents;
 ```
 
 Defined in: [packages/iso-filecoin/src/utils.js:167](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L167)

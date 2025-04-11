@@ -13,27 +13,27 @@ const filForwarderMetadata: {
         internalType: string;
         name: string;
         type: string;
-       }[];
+     }[];
      name: string;
      outputs: undefined;
      stateMutability: undefined;
      type: string;
-    }
+   }
      | {
      inputs: {
         internalType: string;
         name: string;
         type: string;
-       }[];
+     }[];
      name: string;
      outputs: never[];
      stateMutability: string;
      type: string;
-    })[];
+  })[];
   chainIds: {
      filecoinCalibrationTestnet: string;
      filecoinMainnet: string;
-    };
+  };
   contractAddress: `0x${string}`;
 };
 ```
@@ -51,23 +51,23 @@ abi: (
      internalType: string;
      name: string;
      type: string;
-    }[];
+  }[];
   name: string;
   outputs: undefined;
   stateMutability: undefined;
   type: string;
- }
+}
   | {
   inputs: {
      internalType: string;
      name: string;
      type: string;
-    }[];
+  }[];
   name: string;
   outputs: never[];
   stateMutability: string;
   type: string;
- })[];
+})[];
 ```
 
 ### chainIds

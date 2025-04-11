@@ -5,7 +5,7 @@ prev: true
 title: "LotusMessage"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:315](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L315)
+Defined in: [packages/iso-filecoin/src/types.ts:316](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L316)
 
 Lotus message
 
@@ -17,7 +17,7 @@ Lotus message
 optional CID: CID;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:326](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L326)
+Defined in: [packages/iso-filecoin/src/types.ts:327](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L327)
 
 ***
 
@@ -27,7 +27,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:326](https://github.com/hugomrdi
 From: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:318](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L318)
+Defined in: [packages/iso-filecoin/src/types.ts:319](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L319)
 
 ***
 
@@ -37,7 +37,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:318](https://github.com/hugomrdi
 GasFeeCap: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:322](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L322)
+Defined in: [packages/iso-filecoin/src/types.ts:323](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L323)
 
 ***
 
@@ -47,7 +47,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:322](https://github.com/hugomrdi
 GasLimit: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:321](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L321)
+Defined in: [packages/iso-filecoin/src/types.ts:322](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L322)
 
 ***
 
@@ -57,7 +57,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:321](https://github.com/hugomrdi
 GasPremium: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:323](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L323)
+Defined in: [packages/iso-filecoin/src/types.ts:324](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L324)
 
 ***
 
@@ -67,7 +67,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:323](https://github.com/hugomrdi
 Method: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:324](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L324)
+Defined in: [packages/iso-filecoin/src/types.ts:325](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L325)
 
 ***
 
@@ -77,7 +77,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:324](https://github.com/hugomrdi
 Nonce: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:319](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L319)
+Defined in: [packages/iso-filecoin/src/types.ts:320](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L320)
 
 ***
 
@@ -87,7 +87,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:319](https://github.com/hugomrdi
 Params: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:325](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L325)
+Defined in: [packages/iso-filecoin/src/types.ts:326](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L326)
 
 ***
 
@@ -97,7 +97,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:325](https://github.com/hugomrdi
 To: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:317](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L317)
+Defined in: [packages/iso-filecoin/src/types.ts:318](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L318)
 
 ***
 
@@ -107,7 +107,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:317](https://github.com/hugomrdi
 Value: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:320](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L320)
+Defined in: [packages/iso-filecoin/src/types.ts:321](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L321)
 
 ***
 
@@ -117,4 +117,4 @@ Defined in: [packages/iso-filecoin/src/types.ts:320](https://github.com/hugomrdi
 Version: 0;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:316](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L316)
+Defined in: [packages/iso-filecoin/src/types.ts:317](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L317)

@@ -6,7 +6,7 @@ title: "isZodErrorLike"
 ---
 
 ```ts
-function isZodErrorLike(err: unknown): err is ZodError<any>
+function isZodErrorLike(err: unknown): err is ZodError<any>;
 ```
 
 Defined in: [packages/iso-filecoin/src/utils.js:326](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L326)

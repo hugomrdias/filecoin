@@ -9,6 +9,6 @@ title: "testnet"
 const testnet: Chain;
 ```
 
-Defined in: [packages/iso-filecoin/src/chains.js:47](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/chains.js#L47)
+Defined in: [packages/iso-filecoin/src/chains.js:48](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/chains.js#L48)
 
-Filecoin Calibration testnet chain
+Filecoin EVM Calibration testnet chain

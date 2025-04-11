@@ -26,7 +26,7 @@ https://spec.filecoin.io/appendix/address/#section-appendix.address.protocol-0-i
 ### Constructor
 
 ```ts
-new AddressId(payload: Uint8Array<ArrayBufferLike>, network: Network): AddressId
+new AddressId(payload: Uint8Array<ArrayBufferLike>, network: Network): AddressId;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:450](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L450)
@@ -53,7 +53,7 @@ Address.constructor
 ### checksum()
 
 ```ts
-checksum(): Uint8Array<ArrayBufferLike>
+checksum(): Uint8Array<ArrayBufferLike>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:337](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L337)
@@ -73,7 +73,7 @@ Address.checksum
 ### to0x()
 
 ```ts
-to0x(options: AddressRpcOptions): Promise<string>
+to0x(options: AddressRpcOptions): Promise<string>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:571](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L571)
@@ -99,7 +99,7 @@ Address.to0x
 ### toBytes()
 
 ```ts
-toBytes(): Uint8Array<ArrayBuffer>
+toBytes(): Uint8Array<ArrayBuffer>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:329](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L329)
@@ -119,7 +119,7 @@ Address.toBytes
 ### toContractDestination()
 
 ```ts
-toContractDestination(): `0x${string}`
+toContractDestination(): `0x${string}`;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:333](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L333)
@@ -139,7 +139,7 @@ Address.toContractDestination
 ### toIdAddress()
 
 ```ts
-toIdAddress(options: AddressRpcSafetyOptions): Promise<AddressId>
+toIdAddress(options: AddressRpcSafetyOptions): Promise<AddressId>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:348](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L348)
@@ -167,7 +167,7 @@ Address.toIdAddress
 ### toIdMaskAddress()
 
 ```ts
-toIdMaskAddress(): string
+toIdMaskAddress(): string;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:524](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L524)
@@ -185,7 +185,7 @@ To convert to an eth address you probably should use [to0x](/api/iso-filecoin/ad
 ### toRobust()
 
 ```ts
-toRobust(options: AddressRpcOptions): Promise<IAddress>
+toRobust(options: AddressRpcOptions): Promise<IAddress>;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:541](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L541)
@@ -207,7 +207,7 @@ Get robust address from public key address
 ### toString()
 
 ```ts
-toString(): string
+toString(): string;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:532](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L532)
@@ -227,7 +227,7 @@ Address.toString
 ### fromBytes()
 
 ```ts
-static fromBytes(bytes: Uint8Array<ArrayBufferLike>, network: Network): AddressId
+static fromBytes(bytes: Uint8Array<ArrayBufferLike>, network: Network): AddressId;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:487](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L487)
@@ -250,7 +250,7 @@ Create address from bytes
 ### fromIdMaskAddress()
 
 ```ts
-static fromIdMaskAddress(address: string, network: Network): AddressId
+static fromIdMaskAddress(address: string, network: Network): AddressId;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:500](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L500)
@@ -273,7 +273,7 @@ Create ID address from ID masked 0x address
 ### fromString()
 
 ```ts
-static fromString(address: string): AddressId
+static fromString(address: string): AddressId;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:461](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L461)
