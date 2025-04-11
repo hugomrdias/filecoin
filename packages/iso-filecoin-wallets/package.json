@@ -96,6 +96,7 @@
   },
   "dependencies": {
     "@reown/appkit": "1.7.2",
+    "@reown/appkit-common": "^1.7.2",
     "@reown/appkit-controllers": "^1.7.2",
     "iso-base": "^4.0.2",
     "iso-web": "^1.1.1",
@@ -127,6 +128,7 @@
     ],
     "ignores": [
       "@types/*",
+      "@reown/appkit-common",
       "assert",
       "rimraf"
     ]
