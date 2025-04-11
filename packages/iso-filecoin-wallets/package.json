@@ -19,7 +19,9 @@
     "metamask",
     "adapter",
     "snap",
-    "filsnap"
+    "filsnap",
+    "appkit",
+    "reown"
   ],
   "exports": {
     ".": {
@@ -47,6 +49,11 @@
       "import": "./src/local.js",
       "require": "./dist/cjs/src/local.cjs"
     },
+    "./appkit": {
+      "types": "./dist/src/appkit.d.ts",
+      "import": "./src/appkit.js",
+      "require": "./dist/cjs/src/appkit.cjs"
+    },
     "./types": {
       "types": "./dist/src/types.d.ts"
     }
@@ -67,6 +74,9 @@
       "local": [
         "dist/src/local"
       ],
+      "appkit": [
+        "dist/src/appkit"
+      ],
       "types": [
         "dist/src/types"
       ]
@@ -85,6 +95,9 @@
     "check": "biome check --no-errors-on-unmatched --files-ignore-unknown=true ."
   },
   "dependencies": {
+    "@reown/appkit": "1.7.2",
+    "@reown/appkit-common": "^1.7.2",
+    "@reown/appkit-controllers": "^1.7.2",
     "iso-base": "^4.0.2",
     "iso-web": "^1.1.1",
     "nanoid": "^5.1.5"
