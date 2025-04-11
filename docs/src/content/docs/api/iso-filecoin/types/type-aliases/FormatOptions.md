@@ -12,7 +12,7 @@ type FormatOptions = BigNumber.Format & {
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:409](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L409)
+Defined in: [packages/iso-filecoin/src/types.ts:410](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L410)
 
 ## Type declaration
 

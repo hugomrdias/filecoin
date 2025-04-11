@@ -6,7 +6,7 @@ title: "pathFromNetwork"
 ---
 
 ```ts
-function pathFromNetwork(network: Network, index?: number): string
+function pathFromNetwork(network: Network, index?: number): string;
 ```
 
 Defined in: [packages/iso-filecoin/src/utils.js:114](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L114)
@@ -18,7 +18,7 @@ Derivation path from chain
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
 | `network` | [`Network`](/api/iso-filecoin/types/type-aliases/network/) | `undefined` | - |
-| `index`? | `number` | `0` | Account index (default 0) |
+| `index?` | `number` | `0` | Account index (default 0) |
 
 ## Returns
 

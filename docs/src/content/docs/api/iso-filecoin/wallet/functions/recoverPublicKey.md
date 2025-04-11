@@ -6,7 +6,7 @@ title: "recoverPublicKey"
 ---
 
 ```ts
-function recoverPublicKey(signature: Signature, data: Uint8Array<ArrayBufferLike>): Uint8Array<ArrayBufferLike>
+function recoverPublicKey(signature: Signature, data: Uint8Array<ArrayBufferLike>): Uint8Array<ArrayBufferLike>;
 ```
 
 Defined in: [packages/iso-filecoin/src/wallet.js:311](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L311)

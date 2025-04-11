@@ -6,7 +6,7 @@ title: "isEthAddress"
 ---
 
 ```ts
-function isEthAddress(address: string): boolean
+function isEthAddress(address: string): boolean;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:119](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L119)

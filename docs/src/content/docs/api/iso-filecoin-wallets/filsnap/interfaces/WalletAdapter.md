@@ -23,7 +23,7 @@ addEventListener<T>(
    callback: 
   | null
   | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void
+   options?: boolean | AddEventListenerOptions): void;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
@@ -40,7 +40,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/eve
 | ------ | ------ |
 | `type` | `T` |
 | `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options`? | `boolean` \| `AddEventListenerOptions` |
+| `options?` | `boolean` \| `AddEventListenerOptions` |
 
 #### Returns
 
@@ -59,10 +59,10 @@ TypedEventTarget.addEventListener
 ### dispatchEvent()
 
 ```ts
-dispatchEvent(event: Event): boolean
+dispatchEvent(event: Event): boolean;
 ```
 
-Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/lib.dom.d.ts:8882
+Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.dom.d.ts:8882
 
 Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
 
@@ -89,7 +89,7 @@ TypedEventTarget.dispatchEvent
 ### dispatchTypedEvent()
 
 ```ts
-dispatchTypedEvent<T>(_type: T, event: WalletEvents[T]): boolean
+dispatchTypedEvent<T>(_type: T, event: WalletEvents[T]): boolean;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
@@ -126,7 +126,7 @@ TypedEventTarget.dispatchTypedEvent
 ### emit()
 
 ```ts
-emit<T>(...args: WalletEvents[T]["detail"] extends IsAny<WalletEvents[T]["detail"]> ? [T, unknown] : [T, WalletEvents[T]["detail"]]): boolean
+emit<T>(...args: WalletEvents[T]["detail"] extends IsAny<WalletEvents[T]["detail"]> ? [T, unknown] : [T, WalletEvents[T]["detail"]]): boolean;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
@@ -163,12 +163,12 @@ off<T>(
    callback: 
   | null
   | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void
+   options?: boolean | EventListenerOptions): void;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
 
-Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/types/interfaces/walletadapter/#removeeventlistener)
+Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#removeeventlistener)
 
 #### Type Parameters
 
@@ -182,7 +182,7 @@ Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/types/i
 | ------ | ------ |
 | `type` | `T` |
 | `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options`? | `boolean` \| `EventListenerOptions` |
+| `options?` | `boolean` \| `EventListenerOptions` |
 
 #### Returns
 
@@ -204,12 +204,12 @@ on<T>(
    callback: 
   | null
   | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void
+   options?: boolean | AddEventListenerOptions): void;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
 
-Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/types/interfaces/walletadapter/#addeventlistener)
+Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#addeventlistener)
 
 #### Type Parameters
 
@@ -223,7 +223,7 @@ Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/types/inte
 | ------ | ------ |
 | `type` | `T` |
 | `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options`? | `boolean` \| `AddEventListenerOptions` |
+| `options?` | `boolean` \| `AddEventListenerOptions` |
 
 #### Returns
 
@@ -245,7 +245,7 @@ removeEventListener<T>(
    callback: 
   | null
   | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void
+   options?: boolean | EventListenerOptions): void;
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
@@ -262,7 +262,7 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/eve
 | ------ | ------ |
 | `type` | `T` |
 | `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options`? | `boolean` \| `EventListenerOptions` |
+| `options?` | `boolean` \| `EventListenerOptions` |
 
 #### Returns
 
@@ -281,7 +281,7 @@ TypedEventTarget.removeEventListener
 ### sign()
 
 ```ts
-sign(data: Uint8Array): Promise<Signature>
+sign(data: Uint8Array): Promise<Signature>;
 ```
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:153](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L153)
@@ -369,7 +369,7 @@ Connect to the wallet
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `params` | \{ `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \} | Connect params |
-| `params.network`? | [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/) | - |
+| `params.network?` | [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/) | - |
 
 #### Returns
 

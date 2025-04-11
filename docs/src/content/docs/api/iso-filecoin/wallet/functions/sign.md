@@ -9,7 +9,7 @@ title: "sign"
 function sign(
    privateKey: Uint8Array<ArrayBufferLike>, 
    type: "SECP256K1" | "BLS", 
-   data: Uint8Array<ArrayBufferLike>): Signature
+   data: Uint8Array<ArrayBufferLike>): Signature;
 ```
 
 Defined in: [packages/iso-filecoin/src/wallet.js:232](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L232)

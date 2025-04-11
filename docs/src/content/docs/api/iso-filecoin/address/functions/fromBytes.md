@@ -6,7 +6,7 @@ title: "fromBytes"
 ---
 
 ```ts
-function fromBytes(bytes: Uint8Array<ArrayBufferLike>, network: Network): IAddress
+function fromBytes(bytes: Uint8Array<ArrayBufferLike>, network: Network): IAddress;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:237](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L237)

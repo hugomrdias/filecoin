@@ -21,7 +21,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:41](https://github.com/hugomrdias/
 ### Constructor
 
 ```ts
-new RpcError(message: string, options?: ErrorOptions): RpcError
+new RpcError(message: string, options?: ErrorOptions): RpcError;
 ```
 
 Defined in: [packages/iso-filecoin/src/rpc.js:55](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L55)
@@ -31,7 +31,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:55](https://github.com/hugomrdias/
 | Parameter | Type |
 | ------ | ------ |
 | `message` | `string` |
-| `options`? | `ErrorOptions` |
+| `options?` | `ErrorOptions` |
 
 #### Returns
 
@@ -48,10 +48,10 @@ Error.constructor
 ### captureStackTrace()
 
 ```ts
-static captureStackTrace(targetObject: object, constructorOpt?: Function): void
+static captureStackTrace(targetObject: object, constructorOpt?: Function): void;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:136
+Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:136
 
 Create .stack property on a target object
 
@@ -60,7 +60,7 @@ Create .stack property on a target object
 | Parameter | Type |
 | ------ | ------ |
 | `targetObject` | `object` |
-| `constructorOpt`? | [`Function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function) |
+| `constructorOpt?` | [`Function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function) |
 
 #### Returns
 
@@ -77,7 +77,7 @@ Error.captureStackTrace
 ### is()
 
 ```ts
-static is(value: unknown): value is RpcError
+static is(value: unknown): value is RpcError;
 ```
 
 Defined in: [packages/iso-filecoin/src/rpc.js:66](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L66)
@@ -128,7 +128,7 @@ Error.cause
 message: string;
 ```
 
-Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/lib.es5.d.ts:1077
+Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:1077
 
 #### Inherited from
 
@@ -160,7 +160,7 @@ Error.name
 optional stack: string;
 ```
 
-Defined in: node\_modules/.pnpm/typescript@5.8.2/node\_modules/typescript/lib/lib.es5.d.ts:1078
+Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:1078
 
 #### Inherited from
 
@@ -176,7 +176,7 @@ Error.stack
 static optional prepareStackTrace: (err: Error, stackTraces: CallSite[]) => any;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:143
+Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:143
 
 Optional override for formatting stack traces
 
@@ -209,7 +209,7 @@ Error.prepareStackTrace
 static stackTraceLimit: number;
 ```
 
-Defined in: node\_modules/.pnpm/@types+node@22.13.14/node\_modules/@types/node/globals.d.ts:145
+Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:145
 
 #### Inherited from
 

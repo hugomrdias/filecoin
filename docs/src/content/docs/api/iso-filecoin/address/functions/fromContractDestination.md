@@ -6,7 +6,7 @@ title: "fromContractDestination"
 ---
 
 ```ts
-function fromContractDestination(address: `0x${string}`, network: Network): IAddress
+function fromContractDestination(address: `0x${string}`, network: Network): IAddress;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:294](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L294)

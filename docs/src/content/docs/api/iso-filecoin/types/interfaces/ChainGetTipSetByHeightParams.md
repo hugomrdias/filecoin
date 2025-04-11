@@ -5,7 +5,7 @@ prev: true
 title: "ChainGetTipSetByHeightParams"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:403](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L403)
+Defined in: [packages/iso-filecoin/src/types.ts:404](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L404)
 
 ## Properties
 
@@ -15,7 +15,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:403](https://github.com/hugomrdi
 height: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:404](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L404)
+Defined in: [packages/iso-filecoin/src/types.ts:405](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L405)
 
 ***
 
@@ -25,4 +25,4 @@ Defined in: [packages/iso-filecoin/src/types.ts:404](https://github.com/hugomrdi
 optional tipSetKey: null | TipSetKey;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:405](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L405)
+Defined in: [packages/iso-filecoin/src/types.ts:406](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L406)

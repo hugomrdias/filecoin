@@ -15,12 +15,12 @@ type EthereumChain = {
      decimals: number;
      name: string;
      symbol: string;
-    };
+  };
   rpcUrls: string[];
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:178](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L178)
+Defined in: [packages/iso-filecoin/src/types.ts:179](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L179)
 
 Ethereum chain type (Metamask)
 
@@ -32,7 +32,7 @@ Ethereum chain type (Metamask)
 optional blockExplorerUrls: string[];
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:192](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L192)
+Defined in: [packages/iso-filecoin/src/types.ts:193](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L193)
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:192](https://github.com/hugomrdi
 chainId: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:180](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L180)
+Defined in: [packages/iso-filecoin/src/types.ts:181](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L181)
 
 A 0x-prefixed hexadecimal string
 
@@ -54,7 +54,7 @@ A 0x-prefixed hexadecimal string
 chainName: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:182](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L182)
+Defined in: [packages/iso-filecoin/src/types.ts:183](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L183)
 
 The chain name.
 
@@ -66,7 +66,7 @@ The chain name.
 optional iconUrls: string[];
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:193](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L193)
+Defined in: [packages/iso-filecoin/src/types.ts:194](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L194)
 
 ***
 
@@ -80,7 +80,7 @@ optional nativeCurrency: {
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:184](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L184)
+Defined in: [packages/iso-filecoin/src/types.ts:185](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L185)
 
 Native currency for the chain.
 
@@ -110,4 +110,4 @@ symbol: string;
 rpcUrls: string[];
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:191](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L191)
+Defined in: [packages/iso-filecoin/src/types.ts:192](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L192)

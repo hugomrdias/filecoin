@@ -9,7 +9,7 @@ title: "verifyRaw"
 function verifyRaw(
    signature: Uint8Array<ArrayBufferLike>, 
    data: Uint8Array<ArrayBufferLike>, 
-   publicKey: Uint8Array<ArrayBufferLike>): boolean
+   publicKey: Uint8Array<ArrayBufferLike>): boolean;
 ```
 
 Defined in: [packages/iso-filecoin/src/ledger.js:251](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L251)

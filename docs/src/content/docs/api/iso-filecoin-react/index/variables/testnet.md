@@ -11,4 +11,4 @@ const testnet: Chain;
 
 Defined in: packages/iso-filecoin/dist/src/chains.d.ts:19
 
-Filecoin Calibration testnet chain
+Filecoin EVM Calibration testnet chain

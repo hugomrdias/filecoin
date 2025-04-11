@@ -12,7 +12,7 @@ type JsonRpcResponse =
   id: number | string | null;
   jsonrpc: "2.0";
   result: JsonValue;
- }
+}
   | {
   error: JsonRpcError;
   id: number | string | null;
@@ -21,4 +21,4 @@ type JsonRpcResponse =
 };
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:215](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L215)
+Defined in: [packages/iso-filecoin/src/types.ts:216](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L216)

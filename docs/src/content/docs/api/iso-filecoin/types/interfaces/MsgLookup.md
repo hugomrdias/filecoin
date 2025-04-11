@@ -5,7 +5,7 @@ prev: true
 title: "MsgLookup"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:250](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L250)
+Defined in: [packages/iso-filecoin/src/types.ts:251](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L251)
 
 ## Properties
 
@@ -15,7 +15,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:250](https://github.com/hugomrdi
 Height: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:251](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L251)
+Defined in: [packages/iso-filecoin/src/types.ts:252](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L252)
 
 ***
 
@@ -25,7 +25,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:251](https://github.com/hugomrdi
 Message: CID;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:252](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L252)
+Defined in: [packages/iso-filecoin/src/types.ts:253](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L253)
 
 ***
 
@@ -35,7 +35,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:252](https://github.com/hugomrdi
 Receipt: MsgReceipt;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:253](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L253)
+Defined in: [packages/iso-filecoin/src/types.ts:254](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L254)
 
 ***
 
@@ -45,7 +45,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:253](https://github.com/hugomrdi
 ReturnDec: unknown;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:254](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L254)
+Defined in: [packages/iso-filecoin/src/types.ts:255](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L255)
 
 ***
 
@@ -55,4 +55,4 @@ Defined in: [packages/iso-filecoin/src/types.ts:254](https://github.com/hugomrdi
 TipSet: TipSetKey;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:255](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L255)
+Defined in: [packages/iso-filecoin/src/types.ts:256](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L256)

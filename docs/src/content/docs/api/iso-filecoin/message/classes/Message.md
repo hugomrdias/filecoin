@@ -25,7 +25,7 @@ new Message(msg: {
   to: string;
   value: string;
   version: 0;
- }): Message
+}): Message;
 ```
 
 Defined in: [packages/iso-filecoin/src/message.js:70](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L70)
@@ -36,15 +36,15 @@ Defined in: [packages/iso-filecoin/src/message.js:70](https://github.com/hugomrd
 | ------ | ------ | ------ |
 | `msg` | \{ `from`: `string`; `gasFeeCap`: `string`; `gasLimit`: `number`; `gasPremium`: `string`; `method`: `number`; `nonce`: `number`; `params`: `string`; `to`: `string`; `value`: `string`; `version`: `0`; \} | - |
 | `msg.from` | `string` | - |
-| `msg.gasFeeCap`? | `string` | - |
-| `msg.gasLimit`? | `number` | - |
-| `msg.gasPremium`? | `string` | - |
-| `msg.method`? | `number` | - |
-| `msg.nonce`? | `number` | - |
-| `msg.params`? | `string` | Params encoded as base64pad |
+| `msg.gasFeeCap?` | `string` | - |
+| `msg.gasLimit?` | `number` | - |
+| `msg.gasPremium?` | `string` | - |
+| `msg.method?` | `number` | - |
+| `msg.nonce?` | `number` | - |
+| `msg.params?` | `string` | Params encoded as base64pad |
 | `msg.to` | `string` | - |
 | `msg.value` | `string` | Value in attoFIL |
-| `msg.version`? | `0` | - |
+| `msg.version?` | `0` | - |
 
 #### Returns
 
@@ -55,7 +55,7 @@ Defined in: [packages/iso-filecoin/src/message.js:70](https://github.com/hugomrd
 ### cidBytes()
 
 ```ts
-cidBytes(): Uint8Array<ArrayBufferLike>
+cidBytes(): Uint8Array<ArrayBufferLike>;
 ```
 
 Defined in: [packages/iso-filecoin/src/message.js:200](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L200)
@@ -71,7 +71,7 @@ CID bytes of the filecoin message
 ### prepare()
 
 ```ts
-prepare(rpc: RPC): Promise<Message>
+prepare(rpc: RPC): Promise<Message>;
 ```
 
 Defined in: [packages/iso-filecoin/src/message.js:130](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L130)
@@ -93,7 +93,7 @@ Prepare message for signing with nonce and gas estimation
 ### serialize()
 
 ```ts
-serialize(): Uint8Array<ArrayBufferLike>
+serialize(): Uint8Array<ArrayBufferLike>;
 ```
 
 Defined in: [packages/iso-filecoin/src/message.js:175](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L175)
@@ -120,7 +120,7 @@ toLotus(): {
   To: string;
   Value: string;
   Version: 0;
-}
+};
 ```
 
 Defined in: [packages/iso-filecoin/src/message.js:87](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L87)
@@ -209,7 +209,7 @@ Version: 0;
 ### fromLotus()
 
 ```ts
-static fromLotus(json: LotusMessage): Message
+static fromLotus(json: LotusMessage): Message;
 ```
 
 Defined in: [packages/iso-filecoin/src/message.js:107](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L107)

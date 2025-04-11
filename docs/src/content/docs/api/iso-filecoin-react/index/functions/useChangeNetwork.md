@@ -6,10 +6,10 @@ title: "useChangeNetwork"
 ---
 
 ```ts
-function useChangeNetwork(): UseMutationResult<Network, Error, Network, unknown>
+function useChangeNetwork(): UseMutationResult<Network, Error, Network, unknown>;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:443](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L443)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:460](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L460)
 
 ## Returns
 
