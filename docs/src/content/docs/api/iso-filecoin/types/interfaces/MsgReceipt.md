@@ -5,7 +5,7 @@ prev: true
 title: "MsgReceipt"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:242](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L242)
+Defined in: [packages/iso-filecoin/src/types.ts:243](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L243)
 
 ## Properties
 
@@ -15,7 +15,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:242](https://github.com/hugomrdi
 EventsRoot: null | CID;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:246](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L246)
+Defined in: [packages/iso-filecoin/src/types.ts:247](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L247)
 
 ***
 
@@ -25,7 +25,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:246](https://github.com/hugomrdi
 ExitCode: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:243](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L243)
+Defined in: [packages/iso-filecoin/src/types.ts:244](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L244)
 
 ***
 
@@ -35,7 +35,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:243](https://github.com/hugomrdi
 GasUsed: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:245](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L245)
+Defined in: [packages/iso-filecoin/src/types.ts:246](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L246)
 
 ***
 
@@ -45,4 +45,4 @@ Defined in: [packages/iso-filecoin/src/types.ts:245](https://github.com/hugomrdi
 Return: null | string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:244](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L244)
+Defined in: [packages/iso-filecoin/src/types.ts:245](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L245)

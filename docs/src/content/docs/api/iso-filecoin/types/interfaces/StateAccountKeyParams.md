@@ -5,7 +5,7 @@ prev: true
 title: "StateAccountKeyParams"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:385](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L385)
+Defined in: [packages/iso-filecoin/src/types.ts:386](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L386)
 
 ## Properties
 
@@ -15,7 +15,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:385](https://github.com/hugomrdi
 address: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:386](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L386)
+Defined in: [packages/iso-filecoin/src/types.ts:387](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L387)
 
 ***
 
@@ -25,4 +25,4 @@ Defined in: [packages/iso-filecoin/src/types.ts:386](https://github.com/hugomrdi
 optional tipSetKey: null | TipSetKey;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:387](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L387)
+Defined in: [packages/iso-filecoin/src/types.ts:388](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L388)

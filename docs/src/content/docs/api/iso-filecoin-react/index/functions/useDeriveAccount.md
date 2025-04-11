@@ -6,10 +6,10 @@ title: "useDeriveAccount"
 ---
 
 ```ts
-function useDeriveAccount(): UseMutationResult<IAccount, Error, number, unknown>
+function useDeriveAccount(): UseMutationResult<IAccount, Error, number, unknown>;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:464](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L464)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:481](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L481)
 
 ## Returns
 

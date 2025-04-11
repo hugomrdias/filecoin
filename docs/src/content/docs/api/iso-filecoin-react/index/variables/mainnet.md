@@ -11,4 +11,4 @@ const mainnet: Chain;
 
 Defined in: packages/iso-filecoin/dist/src/chains.d.ts:13
 
-Filecoin Mainnet chain
+Filecoin EVM Mainnet chain

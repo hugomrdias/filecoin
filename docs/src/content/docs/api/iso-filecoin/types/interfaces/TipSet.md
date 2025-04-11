@@ -5,7 +5,7 @@ prev: true
 title: "TipSet"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:300](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L300)
+Defined in: [packages/iso-filecoin/src/types.ts:301](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L301)
 
 ## Properties
 
@@ -15,7 +15,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:300](https://github.com/hugomrdi
 Blocks: Block[];
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:303](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L303)
+Defined in: [packages/iso-filecoin/src/types.ts:304](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L304)
 
 ***
 
@@ -25,7 +25,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:303](https://github.com/hugomrdi
 Cids: CID[];
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:301](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L301)
+Defined in: [packages/iso-filecoin/src/types.ts:302](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L302)
 
 ***
 
@@ -35,4 +35,4 @@ Defined in: [packages/iso-filecoin/src/types.ts:301](https://github.com/hugomrdi
 Height: number;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:302](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L302)
+Defined in: [packages/iso-filecoin/src/types.ts:303](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L303)

@@ -6,7 +6,7 @@ title: "checksumEthAddress"
 ---
 
 ```ts
-function checksumEthAddress(address: string): string
+function checksumEthAddress(address: string): string;
 ```
 
 Defined in: [packages/iso-filecoin/src/utils.js:243](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L243)

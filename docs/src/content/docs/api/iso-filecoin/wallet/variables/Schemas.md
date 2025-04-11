@@ -10,13 +10,13 @@ const Schemas: {
   lotusPrivateKey: ZodObject<{
      PrivateKey: ZodString;
      Type: ZodUnion<[ZodLiteral<"bls">, ZodLiteral<"secp256k1">]>;
-    }, "strip", ZodTypeAny, {
+   }, "strip", ZodTypeAny, {
      PrivateKey: string;
      Type: "bls" | "secp256k1";
-    }, {
+   }, {
      PrivateKey: string;
      Type: "bls" | "secp256k1";
-    }>;
+  }>;
 };
 ```
 
@@ -32,10 +32,10 @@ Schemas
 lotusPrivateKey: ZodObject<{
   PrivateKey: ZodString;
   Type: ZodUnion<[ZodLiteral<"bls">, ZodLiteral<"secp256k1">]>;
- }, "strip", ZodTypeAny, {
+}, "strip", ZodTypeAny, {
   PrivateKey: string;
   Type: "bls" | "secp256k1";
- }, {
+}, {
   PrivateKey: string;
   Type: "bls" | "secp256k1";
 }>;

@@ -16,7 +16,7 @@ Signature Class
 #### Get Signature
 
 ```ts
-get code(): 1 | 2
+get code(): 1 | 2;
 ```
 
 Defined in: [packages/iso-filecoin/src/signature.js:54](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L54)
@@ -33,7 +33,7 @@ Defined in: [packages/iso-filecoin/src/signature.js:54](https://github.com/hugom
 new Signature(sig: {
   data: Uint8Array<ArrayBufferLike>;
   type: "SECP256K1" | "BLS";
- }): Signature
+}): Signature;
 ```
 
 Defined in: [packages/iso-filecoin/src/signature.js:48](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L48)
@@ -58,7 +58,7 @@ Defined in: [packages/iso-filecoin/src/signature.js:48](https://github.com/hugom
 toLotus(): {
   Data: string;
   Type: 1 | 2;
-}
+};
 ```
 
 Defined in: [packages/iso-filecoin/src/signature.js:75](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L75)
@@ -91,7 +91,7 @@ Type: 1 | 2;
 ### toLotusHex()
 
 ```ts
-toLotusHex(): string
+toLotusHex(): string;
 ```
 
 Defined in: [packages/iso-filecoin/src/signature.js:125](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L125)
@@ -114,7 +114,7 @@ Hex encoded signature
 static fromLotus(json: {
   Data: string;
   Type: 1 | 2;
- }): Signature
+}): Signature;
 ```
 
 Defined in: [packages/iso-filecoin/src/signature.js:62](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L62)
@@ -136,7 +136,7 @@ Defined in: [packages/iso-filecoin/src/signature.js:62](https://github.com/hugom
 ### fromLotusHex()
 
 ```ts
-static fromLotusHex(str: string): Signature
+static fromLotusHex(str: string): Signature;
 ```
 
 Defined in: [packages/iso-filecoin/src/signature.js:89](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L89)

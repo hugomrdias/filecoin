@@ -22,37 +22,55 @@ Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/typ
 ### fetch()?
 
 ```ts
-optional fetch: (input: URL | RequestInfo, init?: RequestInit) => Promise<Response>(input: 
+optional fetch: {
+  (input: URL | RequestInfo, init?: RequestInit): Promise<Response>;
+  (input: 
   | string
   | URL
-| Request, init?: RequestInit) => Promise<Response>;
+  | Request, init?: RequestInit): Promise<Response>;
+};
 ```
 
 Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/types.d.ts:5
 
+#### Call Signature
+
+```ts
+(input: URL | RequestInfo, init?: RequestInit): Promise<Response>;
+```
+
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch)
 
-#### Parameters
+##### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `input` | [`URL`](https://developer.mozilla.org/docs/Web/API/URL) \| `RequestInfo` |
-| `init`? | `RequestInit` |
+| `init?` | `RequestInit` |
 
-#### Returns
+##### Returns
 
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Response`](https://developer.mozilla.org/docs/Web/API/Response)\>
 
+#### Call Signature
+
+```ts
+(input: 
+  | string
+  | URL
+| Request, init?: RequestInit): Promise<Response>;
+```
+
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch)
 
-#### Parameters
+##### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `input` | \| `string` \| [`URL`](https://developer.mozilla.org/docs/Web/API/URL) \| [`Request`](https://developer.mozilla.org/docs/Web/API/Request) |
-| `init`? | `RequestInit` |
+| `init?` | `RequestInit` |
 
-#### Returns
+##### Returns
 
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Response`](https://developer.mozilla.org/docs/Web/API/Response)\>
 

@@ -6,7 +6,7 @@ title: "fromString"
 ---
 
 ```ts
-function fromString(address: string): IAddress
+function fromString(address: string): IAddress;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:200](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L200)

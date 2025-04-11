@@ -6,7 +6,7 @@ title: "fromEthAddress"
 ---
 
 ```ts
-function fromEthAddress(address: string, network: Network): IAddress
+function fromEthAddress(address: string, network: Network): IAddress;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:146](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L146)

@@ -6,7 +6,7 @@ title: "getNetwork"
 ---
 
 ```ts
-function getNetwork(networkPrefix: NetworkPrefix): Network
+function getNetwork(networkPrefix: NetworkPrefix): Network;
 ```
 
 Defined in: [packages/iso-filecoin/src/utils.js:56](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L56)

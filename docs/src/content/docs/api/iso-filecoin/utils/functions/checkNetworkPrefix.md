@@ -6,7 +6,7 @@ title: "checkNetworkPrefix"
 ---
 
 ```ts
-function checkNetworkPrefix(prefix: string): prefix is NetworkPrefix
+function checkNetworkPrefix(prefix: string): prefix is NetworkPrefix;
 ```
 
 Defined in: [packages/iso-filecoin/src/utils.js:141](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L141)

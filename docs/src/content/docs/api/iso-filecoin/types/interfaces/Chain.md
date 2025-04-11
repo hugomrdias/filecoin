@@ -13,7 +13,8 @@ Defined in: [packages/iso-filecoin/src/types.ts:144](https://github.com/hugomrdi
 
 ```ts
 optional blockExplorers: {
-[key: string]: ChainBlockExplorer;   default: ChainBlockExplorer;
+[key: string]: ChainBlockExplorer;
+  default: ChainBlockExplorer;
 };
 ```
 
@@ -33,15 +34,15 @@ default: ChainBlockExplorer;
 
 ***
 
-### caipId
+### caipNetworkId
 
 ```ts
-caipId: `${string}:${string}`;
+caipNetworkId: `${string}:${string}`;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:167](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L167)
+Defined in: [packages/iso-filecoin/src/types.ts:168](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L168)
 
-CAIP-2 chain ID
+CAIP-2 ID
 
 ***
 
@@ -51,16 +52,28 @@ CAIP-2 chain ID
 chainId: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:171](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L171)
+Defined in: [packages/iso-filecoin/src/types.ts:172](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L172)
 
 Chain ID 0x prefixed hex string
+
+***
+
+### chainNamespace
+
+```ts
+chainNamespace: string;
+```
+
+Defined in: [packages/iso-filecoin/src/types.ts:164](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L164)
 
 ***
 
 ### contracts?
 
 ```ts
-optional contracts: {};
+optional contracts: {
+[key: string]: ChainContract;
+};
 ```
 
 Defined in: [packages/iso-filecoin/src/types.ts:161](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L161)
@@ -79,14 +92,14 @@ Defined in: [packages/iso-filecoin/src/types.ts:161](https://github.com/hugomrdi
 optional iconUrls: string[];
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:172](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L172)
+Defined in: [packages/iso-filecoin/src/types.ts:173](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L173)
 
 ***
 
 ### id
 
 ```ts
-id: number;
+id: string | number;
 ```
 
 Defined in: [packages/iso-filecoin/src/types.ts:145](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L145)
@@ -139,7 +152,8 @@ symbol: string;
 
 ```ts
 rpcUrls: {
-[key: string]: ChainRpcUrls;   default: ChainRpcUrls;
+[key: string]: ChainRpcUrls;
+  default: ChainRpcUrls;
 };
 ```
 

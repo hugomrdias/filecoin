@@ -6,7 +6,7 @@ title: "isAddressBls"
 ---
 
 ```ts
-function isAddressBls(val: any): val is AddressBLS
+function isAddressBls(val: any): val is AddressBLS;
 ```
 
 Defined in: [packages/iso-filecoin/src/address.js:78](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L78)

@@ -17,10 +17,10 @@ function useSendMessage(): UseMutationResult<CID, Error, {
   to: string;
   value: string;
   version: 0;
-}, unknown>
+}, unknown>;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:592](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L592)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:609](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L609)
 
 ## Returns
 
@@ -35,4 +35,4 @@ Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:592](https://git
   `to`: `string`;
   `value`: `string`;
   `version`: `0`;
- \}, `unknown`\>
+\}, `unknown`\>

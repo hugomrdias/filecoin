@@ -6,10 +6,10 @@ title: "useSign"
 ---
 
 ```ts
-function useSign(): UseMutationResult<Signature, Error, Uint8Array<ArrayBufferLike>, unknown>
+function useSign(): UseMutationResult<Signature, Error, Uint8Array<ArrayBufferLike>, unknown>;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:642](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L642)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:659](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L659)
 
 Hook to sign a message
 

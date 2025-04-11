@@ -10,14 +10,14 @@ function useEstimateGas(options: {
   maxFee: bigint;
   to: string;
   value: bigint;
- }): UseQueryResult<{
+}): UseQueryResult<{
   gas: bigint;
   symbol: string;
   total: bigint;
-}, Error>
+}, Error>;
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:557](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L557)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:574](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L574)
 
 Estimate the gas for a message
 
@@ -26,7 +26,7 @@ Estimate the gas for a message
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `options` | \{ `maxFee`: `bigint`; `to`: `string`; `value`: `bigint`; \} | - |
-| `options.maxFee`? | `bigint` | Max fee to pay for gas (attoFIL/gas units). Defaults to 0n. |
+| `options.maxFee?` | `bigint` | Max fee to pay for gas (attoFIL/gas units). Defaults to 0n. |
 | `options.to` | `string` | Address to send the message to |
 | `options.value` | `bigint` | Value to send with the message |
 
@@ -36,4 +36,4 @@ Estimate the gas for a message
   `gas`: `bigint`;
   `symbol`: `string`;
   `total`: `bigint`;
- \}, [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\>
+\}, [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\>

@@ -31,10 +31,23 @@ export default defineConfig({
           },
         },
       ],
-      social: {
-        github: 'https://github.com/hugomrdias/filecoin',
-        'x.com': 'https://x.com/hugomrdias',
-      },
+      social: [
+        {
+          icon: 'github',
+          label: 'Github',
+          href: 'https://github.com/hugomrdias/filecoin',
+        },
+        {
+          icon: 'x.com',
+          label: 'X',
+          href: 'https://x.com/hugomrdias',
+        },
+      ],
+      // social: {
+
+      //   github: 'https://github.com/hugomrdias/filecoin',
+      //   'x.com': 'https://x.com/hugomrdias',
+      // },
       editLink: {
         baseUrl: 'https://github.com/hugomrdias/filecoin/edit/main/docs/',
       },

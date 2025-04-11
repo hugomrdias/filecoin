@@ -8,13 +8,13 @@ title: "useAddresses"
 ```ts
 function useAddresses(options: {
   address: string;
- }): {
+}): {
   address0x: UseQueryResult<undefined | string, Error>;
   addressId: UseQueryResult<undefined | AddressId, Error>;
-}
+};
 ```
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:507](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L507)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:524](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L524)
 
 Resolve addresses from the network
 TODO: use cache

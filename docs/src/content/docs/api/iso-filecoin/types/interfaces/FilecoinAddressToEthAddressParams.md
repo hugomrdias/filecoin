@@ -5,7 +5,7 @@ prev: true
 title: "FilecoinAddressToEthAddressParams"
 ---
 
-Defined in: [packages/iso-filecoin/src/types.ts:390](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L390)
+Defined in: [packages/iso-filecoin/src/types.ts:391](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L391)
 
 ## Properties
 
@@ -15,7 +15,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:390](https://github.com/hugomrdi
 address: string;
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:394](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L394)
+Defined in: [packages/iso-filecoin/src/types.ts:395](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L395)
 
 The Filecoin address to convert.
 
@@ -27,7 +27,7 @@ The Filecoin address to convert.
 optional blockNumber: "pending" | "latest" | "finalized" | "safe" | "0x${string}";
 ```
 
-Defined in: [packages/iso-filecoin/src/types.ts:400](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L400)
+Defined in: [packages/iso-filecoin/src/types.ts:401](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L401)
 
 The block number or state for the conversion.
 Defaults to "finalized" for maximum safety.

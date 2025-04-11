@@ -10,23 +10,23 @@ const Schemas: {
   lotusSignature: ZodObject<{
      Data: ZodString;
      Type: ZodUnion<[ZodLiteral<1>, ZodLiteral<2>]>;
-    }, "strip", ZodTypeAny, {
+   }, "strip", ZodTypeAny, {
      Data: string;
      Type: 1 | 2;
-    }, {
+   }, {
      Data: string;
      Type: 1 | 2;
-    }>;
+  }>;
   signature: ZodObject<{
      data: ZodEffects<ZodType<BufferSource, ZodTypeDef, BufferSource>, Uint8Array<ArrayBufferLike>, BufferSource>;
      type: ZodEnum<["SECP256K1", "BLS"]>;
-    }, "strip", ZodTypeAny, {
+   }, "strip", ZodTypeAny, {
      data: Uint8Array<ArrayBufferLike>;
      type: "SECP256K1" | "BLS";
-    }, {
+   }, {
      data: BufferSource;
      type: "SECP256K1" | "BLS";
-    }>;
+  }>;
 };
 ```
 
@@ -40,10 +40,10 @@ Defined in: [packages/iso-filecoin/src/signature.js:22](https://github.com/hugom
 lotusSignature: ZodObject<{
   Data: ZodString;
   Type: ZodUnion<[ZodLiteral<1>, ZodLiteral<2>]>;
- }, "strip", ZodTypeAny, {
+}, "strip", ZodTypeAny, {
   Data: string;
   Type: 1 | 2;
- }, {
+}, {
   Data: string;
   Type: 1 | 2;
 }>;
@@ -55,10 +55,10 @@ lotusSignature: ZodObject<{
 signature: ZodObject<{
   data: ZodEffects<ZodType<BufferSource, ZodTypeDef, BufferSource>, Uint8Array<ArrayBufferLike>, BufferSource>;
   type: ZodEnum<["SECP256K1", "BLS"]>;
- }, "strip", ZodTypeAny, {
+}, "strip", ZodTypeAny, {
   data: Uint8Array<ArrayBufferLike>;
   type: "SECP256K1" | "BLS";
- }, {
+}, {
   data: BufferSource;
   type: "SECP256K1" | "BLS";
 }>;

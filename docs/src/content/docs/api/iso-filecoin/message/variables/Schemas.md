@@ -18,7 +18,7 @@ const Schemas: {
      to: ZodString;
      value: ZodEffects<ZodString, string, string>;
      version: ZodDefault<ZodLiteral<0>>;
-    }, "strip", ZodTypeAny, {
+   }, "strip", ZodTypeAny, {
      from: string;
      gasFeeCap: string;
      gasLimit: number;
@@ -29,7 +29,7 @@ const Schemas: {
      to: string;
      value: string;
      version: 0;
-    }, {
+   }, {
      from: string;
      gasFeeCap: string;
      gasLimit: number;
@@ -40,7 +40,7 @@ const Schemas: {
      to: string;
      value: string;
      version: 0;
-    }>;
+  }>;
   messagePartial: ZodObject<{
      from: ZodString;
      gasFeeCap: ZodOptional<ZodDefault<ZodString>>;
@@ -52,7 +52,7 @@ const Schemas: {
      to: ZodString;
      value: ZodEffects<ZodString, string, string>;
      version: ZodOptional<ZodDefault<ZodLiteral<0>>>;
-    }, "strip", ZodTypeAny, {
+   }, "strip", ZodTypeAny, {
      from: string;
      gasFeeCap: string;
      gasLimit: number;
@@ -63,7 +63,7 @@ const Schemas: {
      to: string;
      value: string;
      version: 0;
-    }, {
+   }, {
      from: string;
      gasFeeCap: string;
      gasLimit: number;
@@ -74,7 +74,7 @@ const Schemas: {
      to: string;
      value: string;
      version: 0;
-    }>;
+  }>;
 };
 ```
 
@@ -96,7 +96,7 @@ message: ZodObject<{
   to: ZodString;
   value: ZodEffects<ZodString, string, string>;
   version: ZodDefault<ZodLiteral<0>>;
- }, "strip", ZodTypeAny, {
+}, "strip", ZodTypeAny, {
   from: string;
   gasFeeCap: string;
   gasLimit: number;
@@ -107,7 +107,7 @@ message: ZodObject<{
   to: string;
   value: string;
   version: 0;
- }, {
+}, {
   from: string;
   gasFeeCap: string;
   gasLimit: number;
@@ -118,7 +118,7 @@ message: ZodObject<{
   to: string;
   value: string;
   version: 0;
- }> = MessageSchema;
+}> = MessageSchema;
 ```
 
 ### messagePartial
@@ -135,7 +135,7 @@ messagePartial: ZodObject<{
   to: ZodString;
   value: ZodEffects<ZodString, string, string>;
   version: ZodOptional<ZodDefault<ZodLiteral<0>>>;
- }, "strip", ZodTypeAny, {
+}, "strip", ZodTypeAny, {
   from: string;
   gasFeeCap: string;
   gasLimit: number;
@@ -146,7 +146,7 @@ messagePartial: ZodObject<{
   to: string;
   value: string;
   version: 0;
- }, {
+}, {
   from: string;
   gasFeeCap: string;
   gasLimit: number;
@@ -157,5 +157,5 @@ messagePartial: ZodObject<{
   to: string;
   value: string;
   version: 0;
- }> = MessageSchemaPartial;
+}> = MessageSchemaPartial;
 ```
