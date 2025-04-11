@@ -317,6 +317,23 @@ export function useAdapter() {
 }
 
 /**
+ * Hook to sync the adapter to the context for AppKit
+ *
+ * @param {object} param0
+ * @param {WalletAdapter} param0.adapter
+ */
+export function useAppKitAdapter({ adapter }) {
+  const { setAccount, setAdapter, setNetwork } = useContext(FilecoinContext)
+  useEffect(() => {
+    if (adapter) {
+      setAdapter(adapter)
+      setNetwork(adapter.network)
+      setAccount(adapter.account)
+    }
+  }, [adapter, setAdapter, setNetwork, setAccount])
+}
+
+/**
  * Hook to access the current account and its state
  *
  * @example
