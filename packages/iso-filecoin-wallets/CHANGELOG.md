@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.0.3...iso-filecoin-wallets-v1.1.0) (2025-04-11)
+
+
+### Features
+
+* **wallet:** add option to sync with metamask to filsnap adapter ([249720e](https://github.com/hugomrdias/filecoin/commit/249720e12c76e922426d995e53562b2dba83997a))
+* **wallets:** implement FilecoinAppKitAdapter and FilecoinConnector for enhanced AppKit integration ([4cf3cee](https://github.com/hugomrdias/filecoin/commit/4cf3cee5fee573b47214e38a8a026f173b8b954a))
+
 ## [1.0.3](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.0.2...iso-filecoin-wallets-v1.0.3) (2025-04-10)
 
 
