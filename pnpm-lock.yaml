@@ -45,8 +45,8 @@ importers:
   docs:
     dependencies:
       '@astrojs/starlight':
-        specifier: ^0.33.0
-        version: 0.33.0(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))
+        specifier: ^0.33.1
+        version: 0.33.1(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))
       astro:
         specifier: ^5.5.4
         version: 5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)
@@ -55,10 +55,10 @@ importers:
         version: 0.4.0(@expressive-code/core@0.40.2)(expressive-code@0.40.2)(typescript@5.8.3)
       starlight-llms-txt:
         specifier: ^0.5.0
-        version: 0.5.0(@astrojs/starlight@0.33.0(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)))(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))
+        version: 0.5.0(@astrojs/starlight@0.33.1(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)))(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))
       starlight-typedoc:
         specifier: ^0.21.1
-        version: 0.21.1(@astrojs/starlight@0.33.0(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)))(typedoc-plugin-markdown@4.6.2(typedoc@0.28.2(typescript@5.8.3)))(typedoc@0.28.2(typescript@5.8.3))
+        version: 0.21.1(@astrojs/starlight@0.33.1(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)))(typedoc-plugin-markdown@4.6.2(typedoc@0.28.2(typescript@5.8.3)))(typedoc@0.28.2(typescript@5.8.3))
       typedoc:
         specifier: ^0.28.2
         version: 0.28.2(typescript@5.8.3)
@@ -310,16 +310,16 @@ importers:
         version: 2.1.1
       filsnap-adapter:
         specifier: ^3.2.0
-        version: 3.2.0(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0)
+        version: 3.2.0(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)
       iso-filecoin:
         specifier: ^7.2.0
         version: 7.2.0
       iso-filecoin-react:
         specifier: ^2.1.1
-        version: 2.1.1(@tanstack/react-query@5.72.2(react@19.0.0))(filsnap-adapter@3.2.0(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0)(react@19.0.0)
+        version: 2.1.1(@tanstack/react-query@5.72.2(react@19.0.0))(filsnap-adapter@3.2.0(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0)(react@19.0.0)
       iso-filecoin-wallets:
         specifier: ^1.0.3
-        version: 1.0.3(filsnap-adapter@3.2.0(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0)
+        version: 1.0.3(filsnap-adapter@3.2.0(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0)
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
@@ -606,8 +606,8 @@ packages:
   '@astrojs/sitemap@3.3.0':
     resolution: {integrity: sha512-nYE4lKQtk+Kbrw/w0G0TTgT724co0jUsU4tPlHY9au5HmTBKbwiCLwO/15b1/y13aZ4Kr9ZbMeMHlXuwn0ty4Q==}
 
-  '@astrojs/starlight@0.33.0':
-    resolution: {integrity: sha512-BAdz3TJ5f7e0iDwu7ZNy6i6Rlca2sgi416K8pGPN3VMIlgJmj9NCqSUGZh+OQhk5FNzmnssi8w+xQQeNpe5hDw==}
+  '@astrojs/starlight@0.33.1':
+    resolution: {integrity: sha512-YBu9tDOBoEmRZWLoI8jAfO+pON2lEFOcViZrxwv8kpbLn3CDRkcDoP+UeO/Utwb+XVpDGrvjgmyEsqcsq54b2g==}
     peerDependencies:
       astro: ^5.1.5
 
@@ -3930,8 +3930,8 @@ packages:
     resolution: {integrity: sha512-x8dy3RnvYdlUcPOjkEHqozhiwzKNSq7GcPuXFbnyMOCHxX8V3OgIg/pYuabl2sbUPfIJaeAQB7PMOK8DFIdoRA==}
     engines: {node: '>=12'}
 
-  css-selector-parser@3.1.1:
-    resolution: {integrity: sha512-Y+DuvJ7JAjpL1f4DeILe5sXCC3kRXMl0DxM4lAWbS8/jEZ29o3V0L5TL6zIifj4Csmj6c+jiF2ENjida2OVOGA==}
+  css-selector-parser@3.1.2:
+    resolution: {integrity: sha512-WfUcL99xWDs7b3eZPoRszWVfbNo8ErCF15PTvVROjkShGlAfjIkG6hlfj/sl6/rfo5Q9x9ryJ3VqVnAZDA+gcw==}
 
   cssesc@3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
@@ -7563,7 +7563,7 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.24.2
 
-  '@astrojs/starlight@0.33.0(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))':
+  '@astrojs/starlight@0.33.1(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))':
     dependencies:
       '@astrojs/mdx': 4.2.3(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))
       '@astrojs/sitemap': 3.3.0
@@ -10615,7 +10615,7 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 22.14.0
 
   '@types/trusted-types@2.0.7': {}
 
@@ -12043,7 +12043,7 @@ snapshots:
     dependencies:
       type-fest: 1.4.0
 
-  css-selector-parser@3.1.1: {}
+  css-selector-parser@3.1.2: {}
 
   cssesc@3.0.0: {}
 
@@ -12668,6 +12668,19 @@ snapshots:
     dependencies:
       to-regex-range: 5.0.1
 
+  filsnap-adapter@3.2.0(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0):
+    dependencies:
+      filsnap: 1.6.1(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)
+      iso-base: 4.0.2
+      iso-filecoin: 7.2.0
+      semver: 7.7.1
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - typescript
+      - utf-8-validate
+      - webextension-polyfill
+
   filsnap-adapter@3.2.0(bufferutil@4.0.9)(iso-filecoin@packages+iso-filecoin)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0):
     dependencies:
       filsnap: 1.6.1(bufferutil@4.0.9)(iso-filecoin@packages+iso-filecoin)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)
@@ -12681,12 +12694,18 @@ snapshots:
       - utf-8-validate
       - webextension-polyfill
 
-  filsnap-adapter@3.2.0(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0):
+  filsnap@1.6.1(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0):
     dependencies:
-      filsnap: 1.6.1(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0)
+      '@metamask/key-tree': 10.1.1
+      '@metamask/snaps-sdk': 6.17.1(webextension-polyfill@0.10.0)
+      '@paulmillr/qr': 0.3.0
+      dequal: 2.0.3
       iso-base: 4.0.2
       iso-filecoin: 7.2.0
-      semver: 7.7.1
+      merge-options: 3.0.4
+      viem: 2.26.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2)
+      zod: 3.24.2
+      zod-validation-error: 3.4.0(zod@3.24.2)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -12702,25 +12721,6 @@ snapshots:
       dequal: 2.0.3
       iso-base: 4.0.2
       iso-filecoin: link:packages/iso-filecoin
-      merge-options: 3.0.4
-      viem: 2.26.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2)
-      zod: 3.24.2
-      zod-validation-error: 3.4.0(zod@3.24.2)
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - typescript
-      - utf-8-validate
-      - webextension-polyfill
-
-  filsnap@1.6.1(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0):
-    dependencies:
-      '@metamask/key-tree': 10.1.1
-      '@metamask/snaps-sdk': 6.17.1(webextension-polyfill@0.10.0)
-      '@paulmillr/qr': 0.3.0
-      dequal: 2.0.3
-      iso-base: 4.0.2
-      iso-filecoin: 7.2.0
       merge-options: 3.0.4
       viem: 2.26.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2)
       zod: 3.24.2
@@ -13055,7 +13055,7 @@ snapshots:
       '@types/unist': 3.0.3
       bcp-47-match: 2.0.3
       comma-separated-tokens: 2.0.3
-      css-selector-parser: 3.1.1
+      css-selector-parser: 3.1.2
       devlop: 1.1.0
       direction: 2.0.1
       hast-util-has-property: 3.0.0
@@ -13441,26 +13441,26 @@ snapshots:
       base-x: 5.0.1
       bigint-mod-arith: 3.3.1
 
-  iso-filecoin-react@2.1.1(@tanstack/react-query@5.72.2(react@19.0.0))(filsnap-adapter@3.2.0(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0)(react@19.0.0):
+  iso-filecoin-react@2.1.1(@tanstack/react-query@5.72.2(react@19.0.0))(filsnap-adapter@3.2.0(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0)(react@19.0.0):
     dependencies:
       '@tanstack/react-query': 5.72.2(react@19.0.0)
       iso-filecoin: 7.2.0
-      iso-filecoin-wallets: 1.0.2(filsnap-adapter@3.2.0(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0)
+      iso-filecoin-wallets: 1.0.2(filsnap-adapter@3.2.0(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0)
       react: 19.0.0
     transitivePeerDependencies:
       - filsnap-adapter
 
-  iso-filecoin-wallets@1.0.2(filsnap-adapter@3.2.0(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0):
+  iso-filecoin-wallets@1.0.2(filsnap-adapter@3.2.0(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0):
     dependencies:
-      filsnap-adapter: 3.2.0(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0)
+      filsnap-adapter: 3.2.0(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)
       iso-base: 4.0.2
       iso-filecoin: 7.2.0
       iso-web: 1.1.1
       nanoid: 5.1.5
 
-  iso-filecoin-wallets@1.0.3(filsnap-adapter@3.2.0(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0):
+  iso-filecoin-wallets@1.0.3(filsnap-adapter@3.2.0(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0))(iso-filecoin@7.2.0):
     dependencies:
-      filsnap-adapter: 3.2.0(iso-filecoin@7.2.0)(typescript@5.8.3)(webextension-polyfill@0.10.0)
+      filsnap-adapter: 3.2.0(bufferutil@4.0.9)(iso-filecoin@7.2.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)
       iso-base: 4.0.2
       iso-filecoin: 7.2.0
       iso-web: 1.1.1
@@ -13499,7 +13499,7 @@ snapshots:
     dependencies:
       ws: 8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
 
-  isows@1.0.6(ws@8.18.1):
+  isows@1.0.6(ws@8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)):
     dependencies:
       ws: 8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
 
@@ -15623,10 +15623,10 @@ snapshots:
       cpu-features: 0.0.10
       nan: 2.22.2
 
-  starlight-llms-txt@0.5.0(@astrojs/starlight@0.33.0(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)))(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)):
+  starlight-llms-txt@0.5.0(@astrojs/starlight@0.33.1(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)))(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)):
     dependencies:
       '@astrojs/mdx': 4.2.3(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))
-      '@astrojs/starlight': 0.33.0(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))
+      '@astrojs/starlight': 0.33.1(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))
       '@types/hast': 3.0.4
       '@types/micromatch': 4.0.9
       astro: 5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)
@@ -15642,9 +15642,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  starlight-typedoc@0.21.1(@astrojs/starlight@0.33.0(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)))(typedoc-plugin-markdown@4.6.2(typedoc@0.28.2(typescript@5.8.3)))(typedoc@0.28.2(typescript@5.8.3)):
+  starlight-typedoc@0.21.1(@astrojs/starlight@0.33.1(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1)))(typedoc-plugin-markdown@4.6.2(typedoc@0.28.2(typescript@5.8.3)))(typedoc@0.28.2(typescript@5.8.3)):
     dependencies:
-      '@astrojs/starlight': 0.33.0(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))
+      '@astrojs/starlight': 0.33.1(astro@5.6.1(@types/node@22.14.0)(idb-keyval@6.2.1)(jiti@2.4.2)(rollup@4.39.0)(terser@5.39.0)(typescript@5.8.3)(yaml@2.7.1))
       github-slugger: 2.0.0
       typedoc: 0.28.2(typescript@5.8.3)
       typedoc-plugin-markdown: 4.6.2(typedoc@0.28.2(typescript@5.8.3))
@@ -16210,7 +16210,7 @@ snapshots:
       '@scure/bip32': 1.6.2
       '@scure/bip39': 1.5.4
       abitype: 1.0.8(typescript@5.8.3)(zod@3.22.4)
-      isows: 1.0.6(ws@8.18.1)
+      isows: 1.0.6(ws@8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10))
       ox: 0.6.9(typescript@5.8.3)(zod@3.22.4)
       ws: 8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
     optionalDependencies:
@@ -16227,7 +16227,7 @@ snapshots:
       '@scure/bip32': 1.6.2
       '@scure/bip39': 1.5.4
       abitype: 1.0.8(typescript@5.8.3)(zod@3.24.2)
-      isows: 1.0.6(ws@8.18.1)
+      isows: 1.0.6(ws@8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10))
       ox: 0.6.9(typescript@5.8.3)(zod@3.24.2)
       ws: 8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
     optionalDependencies:
