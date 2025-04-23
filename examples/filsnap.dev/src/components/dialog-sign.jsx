@@ -9,7 +9,7 @@ import {
   TextField,
 } from '@radix-ui/themes'
 import { utf8 } from 'iso-base/utf8'
-import { useSign } from 'iso-filecoin-react'
+import { useAccount, useSign } from 'iso-filecoin-react'
 import { useForm } from 'react-hook-form'
 import { ErrorBox, InfoBox, onCopy } from './common.jsx'
 import * as Icons from './icons.jsx'
@@ -26,6 +26,7 @@ import * as Icons from './icons.jsx'
  * @param {Function} props.setIsOpen
  */
 export function DialogSign({ isOpen, setIsOpen }) {
+  const { adapter } = useAccount()
   const { mutate: sign, isPending, error, reset: resetSign, data } = useSign()
   const {
     register,
@@ -42,6 +43,8 @@ export function DialogSign({ isOpen, setIsOpen }) {
 
   /** @type {import('react-hook-form').SubmitHandler<Inputs>} */
   const onSubmit = (data) => {
+    console.log('🚀 ~ onSubmit ~ data:', data)
+
     sign(utf8.decode(data.message))
 
     reset()
@@ -83,6 +86,11 @@ export function DialogSign({ isOpen, setIsOpen }) {
             {errors.message && <ErrorBox msg={errors.message.message} />}
             {error && <ErrorBox msg={error.message} />}
           </Flex>
+          {adapter?.id === 'ledger' && (
+            <InfoBox>
+              Enable "Bling sign" in your Ledger device to sign messages.
+            </InfoBox>
+          )}
 
           <Flex gap="3" mt="4" justify="end">
             <Button title="Sign message" type="submit" loading={isPending}>
