@@ -11,9 +11,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:206](https://github.com/hugomrdi
 
 ### id?
 
-```ts
-optional id: null | string | number;
-```
+> `optional` **id**: `null` \| `string` \| `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:208](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L208)
 
@@ -21,9 +19,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:208](https://github.com/hugomrdi
 
 ### jsonrpc
 
-```ts
-jsonrpc: "2.0";
-```
+> **jsonrpc**: `"2.0"`
 
 Defined in: [packages/iso-filecoin/src/types.ts:207](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L207)
 
@@ -31,9 +27,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:207](https://github.com/hugomrdi
 
 ### method
 
-```ts
-method: string;
-```
+> **method**: `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:212](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L212)
 
@@ -43,8 +37,6 @@ A String containing the name of the method to be invoked. Method names that begi
 
 ### params?
 
-```ts
-optional params: JsonValue;
-```
+> `optional` **params**: `JsonValue`
 
 Defined in: [packages/iso-filecoin/src/types.ts:213](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L213)

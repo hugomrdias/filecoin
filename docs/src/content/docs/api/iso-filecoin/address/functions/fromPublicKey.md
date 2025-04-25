@@ -5,14 +5,7 @@ prev: true
 title: "fromPublicKey"
 ---
 
-```ts
-function fromPublicKey(
-   bytes: Uint8Array<ArrayBufferLike>, 
-   network: Network, 
-   type: "SECP256K1" | "BLS"): 
-  | AddressSecp256k1
-  | AddressBLS;
-```
+> **fromPublicKey**(`bytes`, `network`, `type`): [`AddressSecp256k1`](/api/iso-filecoin/address/classes/addresssecp256k1/) \| [`AddressBLS`](/api/iso-filecoin/address/classes/addressbls/)
 
 Defined in: [packages/iso-filecoin/src/address.js:272](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L272)
 
@@ -29,7 +22,6 @@ Only for f1 SECP256K1 and f3 BLS
 
 ## Returns
 
-  \| [`AddressSecp256k1`](/api/iso-filecoin/address/classes/addresssecp256k1/)
-  \| [`AddressBLS`](/api/iso-filecoin/address/classes/addressbls/)
+[`AddressSecp256k1`](/api/iso-filecoin/address/classes/addresssecp256k1/) \| [`AddressBLS`](/api/iso-filecoin/address/classes/addressbls/)
 
 IAddress

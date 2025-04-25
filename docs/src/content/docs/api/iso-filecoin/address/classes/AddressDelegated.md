@@ -23,12 +23,7 @@ https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0048.md
 
 ### Constructor
 
-```ts
-new AddressDelegated(
-   namespace: number, 
-   payload: Uint8Array<ArrayBufferLike>, 
-   network: Network): AddressDelegated;
-```
+> **new AddressDelegated**(`namespace`, `payload`, `network`): `AddressDelegated`
 
 Defined in: [packages/iso-filecoin/src/address.js:836](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L836)
 
@@ -46,17 +41,13 @@ Defined in: [packages/iso-filecoin/src/address.js:836](https://github.com/hugomr
 
 #### Overrides
 
-```ts
-Address.constructor
-```
+`Address.constructor`
 
 ## Methods
 
 ### checksum()
 
-```ts
-checksum(): Uint8Array<ArrayBufferLike>;
-```
+> **checksum**(): [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>
 
 Defined in: [packages/iso-filecoin/src/address.js:337](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L337)
 
@@ -66,17 +57,13 @@ Defined in: [packages/iso-filecoin/src/address.js:337](https://github.com/hugomr
 
 #### Inherited from
 
-```ts
-Address.checksum
-```
+`Address.checksum`
 
 ***
 
 ### to0x()
 
-```ts
-to0x(_rpc: AddressRpcOptions): Promise<string>;
-```
+> **to0x**(`_rpc`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`string`\>
 
 Defined in: [packages/iso-filecoin/src/address.js:940](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L940)
 
@@ -94,17 +81,13 @@ Convert address to ethereum address
 
 #### Overrides
 
-```ts
-Address.to0x
-```
+`Address.to0x`
 
 ***
 
 ### toBytes()
 
-```ts
-toBytes(): Uint8Array<ArrayBuffer>;
-```
+> **toBytes**(): [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<[`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)\>
 
 Defined in: [packages/iso-filecoin/src/address.js:965](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L965)
 
@@ -114,17 +97,13 @@ Defined in: [packages/iso-filecoin/src/address.js:965](https://github.com/hugomr
 
 #### Overrides
 
-```ts
-Address.toBytes
-```
+`Address.toBytes`
 
 ***
 
 ### toContractDestination()
 
-```ts
-toContractDestination(): `0x${string}`;
-```
+> **toContractDestination**(): `` `0x${string}` ``
 
 Defined in: [packages/iso-filecoin/src/address.js:333](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L333)
 
@@ -134,17 +113,13 @@ Defined in: [packages/iso-filecoin/src/address.js:333](https://github.com/hugomr
 
 #### Inherited from
 
-```ts
-Address.toContractDestination
-```
+`Address.toContractDestination`
 
 ***
 
 ### toEthAddress()
 
-```ts
-toEthAddress(): string;
-```
+> **toEthAddress**(): `string`
 
 Defined in: [packages/iso-filecoin/src/address.js:949](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L949)
 
@@ -159,9 +134,7 @@ because f4s dont need to check the chain to get the address
 
 ### toIdAddress()
 
-```ts
-toIdAddress(options: AddressRpcSafetyOptions): Promise<AddressId>;
-```
+> **toIdAddress**(`options`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`AddressId`](/api/iso-filecoin/address/classes/addressid/)\>
 
 Defined in: [packages/iso-filecoin/src/address.js:348](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L348)
 
@@ -179,17 +152,13 @@ Convert to ID address
 
 #### Inherited from
 
-```ts
-Address.toIdAddress
-```
+`Address.toIdAddress`
 
 ***
 
 ### toString()
 
-```ts
-toString(): string;
-```
+> **toString**(): `string`
 
 Defined in: [packages/iso-filecoin/src/address.js:959](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L959)
 
@@ -199,17 +168,13 @@ Defined in: [packages/iso-filecoin/src/address.js:959](https://github.com/hugomr
 
 #### Overrides
 
-```ts
-Address.toString
-```
+`Address.toString`
 
 ***
 
 ### fromBytes()
 
-```ts
-static fromBytes(bytes: Uint8Array<ArrayBufferLike>, network: Network): AddressDelegated;
-```
+> `static` **fromBytes**(`bytes`, `network`): `AddressDelegated`
 
 Defined in: [packages/iso-filecoin/src/address.js:895](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L895)
 
@@ -230,9 +195,7 @@ Create address from bytes
 
 ### fromEthAddress()
 
-```ts
-static fromEthAddress(address: string, network: Network): AddressDelegated;
-```
+> `static` **fromEthAddress**(`address`, `network`): `AddressDelegated`
 
 Defined in: [packages/iso-filecoin/src/address.js:915](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L915)
 
@@ -253,9 +216,7 @@ Create delegated address from ethereum address
 
 ### fromString()
 
-```ts
-static fromString(address: string): AddressDelegated;
-```
+> `static` **fromString**(`address`): `AddressDelegated`
 
 Defined in: [packages/iso-filecoin/src/address.js:858](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L858)
 
@@ -275,25 +236,19 @@ Create address from string
 
 ### \[symbol\]
 
-```ts
-[symbol]: boolean = true;
-```
+> **\[symbol\]**: `boolean` = `true`
 
 Defined in: [packages/iso-filecoin/src/address.js:308](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L308)
 
 #### Inherited from
 
-```ts
-Address.[symbol]
-```
+`Address.[symbol]`
 
 ***
 
 ### namespace
 
-```ts
-namespace: number;
-```
+> **namespace**: `number`
 
 Defined in: [packages/iso-filecoin/src/address.js:839](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L839)
 
@@ -301,62 +256,46 @@ Defined in: [packages/iso-filecoin/src/address.js:839](https://github.com/hugomr
 
 ### network
 
-```ts
-network: Network;
-```
+> **network**: [`Network`](/api/iso-filecoin/types/type-aliases/network/)
 
 Defined in: [packages/iso-filecoin/src/address.js:317](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L317)
 
 #### Inherited from
 
-```ts
-Address.network
-```
+`Address.network`
 
 ***
 
 ### networkPrefix
 
-```ts
-networkPrefix: "f" | "t";
-```
+> **networkPrefix**: `"f"` \| `"t"`
 
 Defined in: [packages/iso-filecoin/src/address.js:318](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L318)
 
 #### Inherited from
 
-```ts
-Address.networkPrefix
-```
+`Address.networkPrefix`
 
 ***
 
 ### payload
 
-```ts
-payload: Uint8Array<ArrayBufferLike>;
-```
+> **payload**: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>
 
 Defined in: [packages/iso-filecoin/src/address.js:316](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L316)
 
 #### Inherited from
 
-```ts
-Address.payload
-```
+`Address.payload`
 
 ***
 
 ### protocol
 
-```ts
-protocol: 4;
-```
+> **protocol**: `4`
 
 Defined in: [packages/iso-filecoin/src/address.js:838](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L838)
 
 #### Inherited from
 
-```ts
-Address.protocol
-```
+`Address.protocol`

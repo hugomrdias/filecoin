@@ -5,12 +5,7 @@ prev: true
 title: "FormatOptions"
 ---
 
-```ts
-type FormatOptions = BigNumber.Format & {
-  decimalPlaces: number;
-  roundingMode: BigNumber.RoundingMode;
-};
-```
+> **FormatOptions** = `BigNumber.Format` & `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:410](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L410)
 
@@ -18,9 +13,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:410](https://github.com/hugomrdi
 
 ### decimalPlaces?
 
-```ts
-optional decimalPlaces: number;
-```
+> `optional` **decimalPlaces**: `number`
 
 #### Default
 
@@ -34,9 +27,7 @@ https://mikemcl.github.io/bignumber.js/#decimal-places
 
 ### roundingMode?
 
-```ts
-optional roundingMode: BigNumber.RoundingMode;
-```
+> `optional` **roundingMode**: `BigNumber.RoundingMode`
 
 #### Default
 

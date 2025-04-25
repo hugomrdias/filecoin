@@ -20,9 +20,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:41](https://github.com/hugomrdias/
 
 ### Constructor
 
-```ts
-new RpcError(message: string, options?: ErrorOptions): RpcError;
-```
+> **new RpcError**(`message`, `options?`): `RpcError`
 
 Defined in: [packages/iso-filecoin/src/rpc.js:55](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L55)
 
@@ -39,46 +37,13 @@ Defined in: [packages/iso-filecoin/src/rpc.js:55](https://github.com/hugomrdias/
 
 #### Overrides
 
-```ts
-Error.constructor
-```
+`Error.constructor`
 
 ## Methods
 
-### captureStackTrace()
-
-```ts
-static captureStackTrace(targetObject: object, constructorOpt?: Function): void;
-```
-
-Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:136
-
-Create .stack property on a target object
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `targetObject` | `object` |
-| `constructorOpt?` | [`Function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function) |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-```ts
-Error.captureStackTrace
-```
-
-***
-
 ### is()
 
-```ts
-static is(value: unknown): value is RpcError;
-```
+> `static` **is**(`value`): `value is RpcError`
 
 Defined in: [packages/iso-filecoin/src/rpc.js:66](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L66)
 
@@ -98,9 +63,7 @@ Check if a value is a RequestError
 
 ### \[symbol\]
 
-```ts
-[symbol]: boolean = true;
-```
+> **\[symbol\]**: `boolean` = `true`
 
 Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L43)
 
@@ -108,111 +71,22 @@ Defined in: [packages/iso-filecoin/src/rpc.js:43](https://github.com/hugomrdias/
 
 ### cause
 
-```ts
-cause: unknown;
-```
+> **cause**: `unknown`
 
 Defined in: [packages/iso-filecoin/src/rpc.js:48](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L48)
 
 #### Overrides
 
-```ts
-Error.cause
-```
-
-***
-
-### message
-
-```ts
-message: string;
-```
-
-Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:1077
-
-#### Inherited from
-
-```ts
-Error.message
-```
+`Error.cause`
 
 ***
 
 ### name
 
-```ts
-name: string = 'RpcError';
-```
+> **name**: `string` = `'RpcError'`
 
 Defined in: [packages/iso-filecoin/src/rpc.js:45](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L45)
 
 #### Overrides
 
-```ts
-Error.name
-```
-
-***
-
-### stack?
-
-```ts
-optional stack: string;
-```
-
-Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.es5.d.ts:1078
-
-#### Inherited from
-
-```ts
-Error.stack
-```
-
-***
-
-### prepareStackTrace()?
-
-```ts
-static optional prepareStackTrace: (err: Error, stackTraces: CallSite[]) => any;
-```
-
-Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:143
-
-Optional override for formatting stack traces
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `err` | [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error) |
-| `stackTraces` | `CallSite`[] |
-
-#### Returns
-
-`any`
-
-#### See
-
-https://v8.dev/docs/stack-trace-api#customizing-stack-traces
-
-#### Inherited from
-
-```ts
-Error.prepareStackTrace
-```
-
-***
-
-### stackTraceLimit
-
-```ts
-static stackTraceLimit: number;
-```
-
-Defined in: node\_modules/.pnpm/@types+node@22.14.0/node\_modules/@types/node/globals.d.ts:145
-
-#### Inherited from
-
-```ts
-Error.stackTraceLimit
-```
+`Error.name`

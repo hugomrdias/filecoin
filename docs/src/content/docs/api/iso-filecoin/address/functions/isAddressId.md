@@ -5,9 +5,7 @@ prev: true
 title: "isAddressId"
 ---
 
-```ts
-function isAddressId(val: any): val is AddressId;
-```
+> **isAddressId**(`val`): `val is AddressId`
 
 Defined in: [packages/iso-filecoin/src/address.js:88](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L88)
 

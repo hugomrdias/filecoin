@@ -5,12 +5,7 @@ prev: true
 title: "getPublicKey"
 ---
 
-```ts
-function getPublicKey(
-   privateKey: Uint8Array<ArrayBufferLike>, 
-   network: Network, 
-   type: "SECP256K1" | "BLS"): IAccount;
-```
+> **getPublicKey**(`privateKey`, `network`, `type`): [`IAccount`](/api/iso-filecoin/types/interfaces/iaccount/)
 
 Defined in: [packages/iso-filecoin/src/wallet.js:181](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L181)
 

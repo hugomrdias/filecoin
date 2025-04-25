@@ -5,9 +5,7 @@ prev: true
 title: "isIdMaskAddress"
 ---
 
-```ts
-function isIdMaskAddress(address: string): boolean;
-```
+> **isIdMaskAddress**(`address`): `boolean`
 
 Defined in: [packages/iso-filecoin/src/address.js:130](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L130)
 

@@ -11,9 +11,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:301](https://github.com/hugomrdi
 
 ### Blocks
 
-```ts
-Blocks: Block[];
-```
+> **Blocks**: [`Block`](/api/iso-filecoin/types/interfaces/block/)[]
 
 Defined in: [packages/iso-filecoin/src/types.ts:304](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L304)
 
@@ -21,9 +19,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:304](https://github.com/hugomrdi
 
 ### Cids
 
-```ts
-Cids: CID[];
-```
+> **Cids**: [`CID`](/api/iso-filecoin/types/type-aliases/cid/)[]
 
 Defined in: [packages/iso-filecoin/src/types.ts:302](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L302)
 
@@ -31,8 +27,6 @@ Defined in: [packages/iso-filecoin/src/types.ts:302](https://github.com/hugomrdi
 
 ### Height
 
-```ts
-Height: number;
-```
+> **Height**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:303](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L303)

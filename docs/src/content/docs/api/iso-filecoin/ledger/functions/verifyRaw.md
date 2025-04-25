@@ -5,12 +5,7 @@ prev: true
 title: "verifyRaw"
 ---
 
-```ts
-function verifyRaw(
-   signature: Uint8Array<ArrayBufferLike>, 
-   data: Uint8Array<ArrayBufferLike>, 
-   publicKey: Uint8Array<ArrayBufferLike>): boolean;
-```
+> **verifyRaw**(`signature`, `data`, `publicKey`): `boolean`
 
 Defined in: [packages/iso-filecoin/src/ledger.js:251](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L251)
 

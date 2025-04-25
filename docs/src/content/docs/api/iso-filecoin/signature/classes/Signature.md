@@ -15,9 +15,7 @@ Signature Class
 
 #### Get Signature
 
-```ts
-get code(): 1 | 2;
-```
+> **get** **code**(): `1` \| `2`
 
 Defined in: [packages/iso-filecoin/src/signature.js:54](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L54)
 
@@ -29,12 +27,7 @@ Defined in: [packages/iso-filecoin/src/signature.js:54](https://github.com/hugom
 
 ### Constructor
 
-```ts
-new Signature(sig: {
-  data: Uint8Array<ArrayBufferLike>;
-  type: "SECP256K1" | "BLS";
-}): Signature;
-```
+> **new Signature**(`sig`): `Signature`
 
 Defined in: [packages/iso-filecoin/src/signature.js:48](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L48)
 
@@ -54,12 +47,7 @@ Defined in: [packages/iso-filecoin/src/signature.js:48](https://github.com/hugom
 
 ### toLotus()
 
-```ts
-toLotus(): {
-  Data: string;
-  Type: 1 | 2;
-};
-```
+> **toLotus**(): `object`
 
 Defined in: [packages/iso-filecoin/src/signature.js:75](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L75)
 
@@ -67,32 +55,21 @@ Encodes the signature as a JSON object in the Lotus RPC format.
 
 #### Returns
 
-```ts
-{
-  Data: string;
-  Type: 1 | 2;
-}
-```
+`object`
 
 ##### Data
 
-```ts
-Data: string;
-```
+> **Data**: `string`
 
 ##### Type
 
-```ts
-Type: 1 | 2;
-```
+> **Type**: `1` \| `2`
 
 ***
 
 ### toLotusHex()
 
-```ts
-toLotusHex(): string;
-```
+> **toLotusHex**(): `string`
 
 Defined in: [packages/iso-filecoin/src/signature.js:125](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L125)
 
@@ -110,12 +87,7 @@ Hex encoded signature
 
 ### fromLotus()
 
-```ts
-static fromLotus(json: {
-  Data: string;
-  Type: 1 | 2;
-}): Signature;
-```
+> `static` **fromLotus**(`json`): `Signature`
 
 Defined in: [packages/iso-filecoin/src/signature.js:62](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L62)
 
@@ -135,9 +107,7 @@ Defined in: [packages/iso-filecoin/src/signature.js:62](https://github.com/hugom
 
 ### fromLotusHex()
 
-```ts
-static fromLotusHex(str: string): Signature;
-```
+> `static` **fromLotusHex**(`str`): `Signature`
 
 Defined in: [packages/iso-filecoin/src/signature.js:89](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L89)
 
@@ -159,9 +129,7 @@ Lotus adds 0x01 or 0x02 to the signature depending on the type.
 
 ### data
 
-```ts
-data: Uint8Array<ArrayBufferLike>;
-```
+> **data**: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>
 
 Defined in: [packages/iso-filecoin/src/signature.js:51](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L51)
 
@@ -169,8 +137,6 @@ Defined in: [packages/iso-filecoin/src/signature.js:51](https://github.com/hugom
 
 ### type
 
-```ts
-type: "SECP256K1" | "BLS";
-```
+> **type**: `"SECP256K1"` \| `"BLS"`
 
 Defined in: [packages/iso-filecoin/src/signature.js:50](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/signature.js#L50)

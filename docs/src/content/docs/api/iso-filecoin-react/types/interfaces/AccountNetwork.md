@@ -11,9 +11,7 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:56
 
 ### account
 
-```ts
-account: IAccount;
-```
+> **account**: [`IAccount`](/api/iso-filecoin-react/types/interfaces/iaccount/)
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:58
 
@@ -21,8 +19,6 @@ Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:58
 
 ### network
 
-```ts
-network: Network;
-```
+> **network**: [`Network`](/api/iso-filecoin-react/types/type-aliases/network/)
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:57

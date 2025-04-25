@@ -5,9 +5,7 @@ prev: true
 title: "mainnet"
 ---
 
-```ts
-const mainnet: Chain;
-```
+> `const` **mainnet**: [`Chain`](/api/iso-filecoin-react/index/interfaces/chain/)
 
 Defined in: packages/iso-filecoin/dist/src/chains.d.ts:13
 

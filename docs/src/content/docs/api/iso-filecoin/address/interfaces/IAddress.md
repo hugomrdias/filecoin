@@ -13,9 +13,7 @@ Address interface
 
 ### checksum()
 
-```ts
-checksum: () => Uint8Array;
-```
+> **checksum**: () => [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)
 
 Defined in: [packages/iso-filecoin/src/types.ts:102](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L102)
 
@@ -27,9 +25,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:102](https://github.com/hugomrdi
 
 ### id?
 
-```ts
-optional id: bigint;
-```
+> `optional` **id**: `bigint`
 
 Defined in: [packages/iso-filecoin/src/types.ts:101](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L101)
 
@@ -37,9 +33,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:101](https://github.com/hugomrdi
 
 ### namespace?
 
-```ts
-optional namespace: number;
-```
+> `optional` **namespace**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:100](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L100)
 
@@ -47,9 +41,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:100](https://github.com/hugomrdi
 
 ### network
 
-```ts
-network: Network;
-```
+> **network**: [`Network`](/api/iso-filecoin/types/type-aliases/network/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:98](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L98)
 
@@ -57,9 +49,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:98](https://github.com/hugomrdia
 
 ### networkPrefix
 
-```ts
-networkPrefix: NetworkPrefix;
-```
+> **networkPrefix**: [`NetworkPrefix`](/api/iso-filecoin/utils/type-aliases/networkprefix/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:99](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L99)
 
@@ -67,9 +57,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:99](https://github.com/hugomrdia
 
 ### payload
 
-```ts
-payload: Uint8Array;
-```
+> **payload**: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)
 
 Defined in: [packages/iso-filecoin/src/types.ts:97](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L97)
 
@@ -77,9 +65,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:97](https://github.com/hugomrdia
 
 ### protocol
 
-```ts
-protocol: ProtocolIndicatorCode;
-```
+> **protocol**: [`ProtocolIndicatorCode`](/api/iso-filecoin/types/type-aliases/protocolindicatorcode/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:96](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L96)
 
@@ -87,9 +73,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:96](https://github.com/hugomrdia
 
 ### to0x()
 
-```ts
-to0x: (options: AddressRpcOptions) => Promise<string>;
-```
+> **to0x**: (`options`) => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`string`\>
 
 Defined in: [packages/iso-filecoin/src/types.ts:115](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L115)
 
@@ -111,9 +95,7 @@ and f0 depends on the underline address type
 
 ### toBytes()
 
-```ts
-toBytes: () => Uint8Array;
-```
+> **toBytes**: () => [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)
 
 Defined in: [packages/iso-filecoin/src/types.ts:105](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L105)
 
@@ -125,9 +107,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:105](https://github.com/hugomrdi
 
 ### toContractDestination()
 
-```ts
-toContractDestination: () => `0x${string}`;
-```
+> **toContractDestination**: () => `` `0x${string}` ``
 
 Defined in: [packages/iso-filecoin/src/types.ts:103](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L103)
 
@@ -139,9 +119,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:103](https://github.com/hugomrdi
 
 ### toIdAddress()
 
-```ts
-toIdAddress: (options: AddressRpcOptions) => Promise<AddressId>;
-```
+> **toIdAddress**: (`options`) => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`AddressId`](/api/iso-filecoin/address/classes/addressid/)\>
 
 Defined in: [packages/iso-filecoin/src/types.ts:109](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L109)
 
@@ -161,9 +139,7 @@ Convert to ID address
 
 ### toString()
 
-```ts
-toString: () => string;
-```
+> **toString**: () => `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:104](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L104)
 

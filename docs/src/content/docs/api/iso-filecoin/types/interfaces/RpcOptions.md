@@ -11,9 +11,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:238](https://github.com/hugomrdi
 
 ### method
 
-```ts
-method: `Filecoin.${string}`;
-```
+> **method**: `` `Filecoin.${string}` ``
 
 Defined in: [packages/iso-filecoin/src/types.ts:239](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L239)
 
@@ -21,8 +19,6 @@ Defined in: [packages/iso-filecoin/src/types.ts:239](https://github.com/hugomrdi
 
 ### params?
 
-```ts
-optional params: JsonValue;
-```
+> `optional` **params**: `JsonValue`
 
 Defined in: [packages/iso-filecoin/src/types.ts:240](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L240)

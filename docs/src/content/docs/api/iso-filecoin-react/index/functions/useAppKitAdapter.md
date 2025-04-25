@@ -5,11 +5,7 @@ prev: true
 title: "useAppKitAdapter"
 ---
 
-```ts
-function useAppKitAdapter(param0: {
-  adapter: WalletAdapter;
-}): void;
-```
+> **useAppKitAdapter**(`param0`): `void`
 
 Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:325](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L325)
 

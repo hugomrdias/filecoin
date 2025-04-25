@@ -5,13 +5,7 @@ prev: true
 title: "UseAccountReturnType"
 ---
 
-```ts
-type UseAccountReturnType = Compute<Pick<FilecoinContextType, "account" | "adapter" | "network"> & {
-  address: string;
-  chain: Chain;
-  state: ConnectionState;
-}>;
-```
+> **UseAccountReturnType** = [`Compute`](/api/iso-filecoin-react/types/type-aliases/compute/)\<[`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`FilecoinContextType`](/api/iso-filecoin-react/types/type-aliases/filecoincontexttype/), `"account"` \| `"adapter"` \| `"network"`\> & `object`\>
 
 Defined in: [packages/iso-filecoin-react/src/types.ts:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L72)
 

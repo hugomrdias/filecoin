@@ -13,20 +13,7 @@ Filecoin Message class
 
 ### Constructor
 
-```ts
-new Message(msg: {
-  from: string;
-  gasFeeCap: string;
-  gasLimit: number;
-  gasPremium: string;
-  method: number;
-  nonce: number;
-  params: string;
-  to: string;
-  value: string;
-  version: 0;
-}): Message;
-```
+> **new Message**(`msg`): `Message`
 
 Defined in: [packages/iso-filecoin/src/message.js:70](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L70)
 
@@ -34,7 +21,7 @@ Defined in: [packages/iso-filecoin/src/message.js:70](https://github.com/hugomrd
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `msg` | \{ `from`: `string`; `gasFeeCap`: `string`; `gasLimit`: `number`; `gasPremium`: `string`; `method`: `number`; `nonce`: `number`; `params`: `string`; `to`: `string`; `value`: `string`; `version`: `0`; \} | - |
+| `msg` | \{ `from`: `string`; `gasFeeCap?`: `string`; `gasLimit?`: `number`; `gasPremium?`: `string`; `method?`: `number`; `nonce?`: `number`; `params?`: `string`; `to`: `string`; `value`: `string`; `version?`: `0`; \} | - |
 | `msg.from` | `string` | - |
 | `msg.gasFeeCap?` | `string` | - |
 | `msg.gasLimit?` | `number` | - |
@@ -54,9 +41,7 @@ Defined in: [packages/iso-filecoin/src/message.js:70](https://github.com/hugomrd
 
 ### cidBytes()
 
-```ts
-cidBytes(): Uint8Array<ArrayBufferLike>;
-```
+> **cidBytes**(): [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>
 
 Defined in: [packages/iso-filecoin/src/message.js:200](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L200)
 
@@ -70,9 +55,7 @@ CID bytes of the filecoin message
 
 ### prepare()
 
-```ts
-prepare(rpc: RPC): Promise<Message>;
-```
+> **prepare**(`rpc`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`Message`\>
 
 Defined in: [packages/iso-filecoin/src/message.js:130](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L130)
 
@@ -92,9 +75,7 @@ Prepare message for signing with nonce and gas estimation
 
 ### serialize()
 
-```ts
-serialize(): Uint8Array<ArrayBufferLike>;
-```
+> **serialize**(): [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>
 
 Defined in: [packages/iso-filecoin/src/message.js:175](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L175)
 
@@ -108,20 +89,7 @@ Serialize message using dag-cbor
 
 ### toLotus()
 
-```ts
-toLotus(): {
-  From: string;
-  GasFeeCap: string;
-  GasLimit: number;
-  GasPremium: string;
-  Method: number;
-  Nonce: number;
-  Params: string;
-  To: string;
-  Value: string;
-  Version: 0;
-};
-```
+> **toLotus**(): `object`
 
 Defined in: [packages/iso-filecoin/src/message.js:87](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L87)
 
@@ -129,88 +97,53 @@ Convert message to Lotus message
 
 #### Returns
 
-```ts
-{
-  From: string;
-  GasFeeCap: string;
-  GasLimit: number;
-  GasPremium: string;
-  Method: number;
-  Nonce: number;
-  Params: string;
-  To: string;
-  Value: string;
-  Version: 0;
-}
-```
+`object`
 
 ##### From
 
-```ts
-From: string;
-```
+> **From**: `string`
 
 ##### GasFeeCap
 
-```ts
-GasFeeCap: string;
-```
+> **GasFeeCap**: `string`
 
 ##### GasLimit
 
-```ts
-GasLimit: number;
-```
+> **GasLimit**: `number`
 
 ##### GasPremium
 
-```ts
-GasPremium: string;
-```
+> **GasPremium**: `string`
 
 ##### Method
 
-```ts
-Method: number;
-```
+> **Method**: `number`
 
 ##### Nonce
 
-```ts
-Nonce: number;
-```
+> **Nonce**: `number`
 
 ##### Params
 
-```ts
-Params: string;
-```
+> **Params**: `string`
 
 ##### To
 
-```ts
-To: string;
-```
+> **To**: `string`
 
 ##### Value
 
-```ts
-Value: string;
-```
+> **Value**: `string`
 
 ##### Version
 
-```ts
-Version: 0;
-```
+> **Version**: `0`
 
 ***
 
 ### fromLotus()
 
-```ts
-static fromLotus(json: LotusMessage): Message;
-```
+> `static` **fromLotus**(`json`): `Message`
 
 Defined in: [packages/iso-filecoin/src/message.js:107](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L107)
 
@@ -230,9 +163,7 @@ Create message from Lotus message
 
 ### from
 
-```ts
-from: string;
-```
+> **from**: `string`
 
 Defined in: [packages/iso-filecoin/src/message.js:74](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L74)
 
@@ -240,9 +171,7 @@ Defined in: [packages/iso-filecoin/src/message.js:74](https://github.com/hugomrd
 
 ### gasFeeCap
 
-```ts
-gasFeeCap: string;
-```
+> **gasFeeCap**: `string`
 
 Defined in: [packages/iso-filecoin/src/message.js:78](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L78)
 
@@ -250,9 +179,7 @@ Defined in: [packages/iso-filecoin/src/message.js:78](https://github.com/hugomrd
 
 ### gasLimit
 
-```ts
-gasLimit: number;
-```
+> **gasLimit**: `number`
 
 Defined in: [packages/iso-filecoin/src/message.js:77](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L77)
 
@@ -260,9 +187,7 @@ Defined in: [packages/iso-filecoin/src/message.js:77](https://github.com/hugomrd
 
 ### gasPremium
 
-```ts
-gasPremium: string;
-```
+> **gasPremium**: `string`
 
 Defined in: [packages/iso-filecoin/src/message.js:79](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L79)
 
@@ -270,9 +195,7 @@ Defined in: [packages/iso-filecoin/src/message.js:79](https://github.com/hugomrd
 
 ### method
 
-```ts
-method: number;
-```
+> **method**: `number`
 
 Defined in: [packages/iso-filecoin/src/message.js:80](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L80)
 
@@ -280,9 +203,7 @@ Defined in: [packages/iso-filecoin/src/message.js:80](https://github.com/hugomrd
 
 ### nonce
 
-```ts
-nonce: number;
-```
+> **nonce**: `number`
 
 Defined in: [packages/iso-filecoin/src/message.js:75](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L75)
 
@@ -290,9 +211,7 @@ Defined in: [packages/iso-filecoin/src/message.js:75](https://github.com/hugomrd
 
 ### params
 
-```ts
-params: string;
-```
+> **params**: `string`
 
 Defined in: [packages/iso-filecoin/src/message.js:81](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L81)
 
@@ -300,9 +219,7 @@ Defined in: [packages/iso-filecoin/src/message.js:81](https://github.com/hugomrd
 
 ### to
 
-```ts
-to: string;
-```
+> **to**: `string`
 
 Defined in: [packages/iso-filecoin/src/message.js:73](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L73)
 
@@ -310,9 +227,7 @@ Defined in: [packages/iso-filecoin/src/message.js:73](https://github.com/hugomrd
 
 ### value
 
-```ts
-value: string;
-```
+> **value**: `string`
 
 Defined in: [packages/iso-filecoin/src/message.js:76](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L76)
 
@@ -320,8 +235,6 @@ Defined in: [packages/iso-filecoin/src/message.js:76](https://github.com/hugomrd
 
 ### version
 
-```ts
-version: 0;
-```
+> **version**: `0`
 
 Defined in: [packages/iso-filecoin/src/message.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/message.js#L72)

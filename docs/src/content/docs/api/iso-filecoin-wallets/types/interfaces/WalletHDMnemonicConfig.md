@@ -9,15 +9,13 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:51](https://github.com/h
 
 ## Extends
 
-- [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)\<[`WalletHDConfig`](/api/iso-filecoin-wallets/hd/interfaces/wallethdconfig/), `"seed"`\>
+- [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)\<[`WalletHDConfig`](/api/iso-filecoin-wallets/types/interfaces/wallethdconfig/), `"seed"`\>
 
 ## Properties
 
 ### index?
 
-```ts
-optional index: number;
-```
+> `optional` **index**: `number`
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:48](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L48)
 
@@ -31,17 +29,13 @@ Derivation path address index
 
 #### Inherited from
 
-```ts
-Omit.index
-```
+`Omit.index`
 
 ***
 
 ### mnemonic
 
-```ts
-mnemonic: string;
-```
+> **mnemonic**: `string`
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:52](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L52)
 
@@ -49,9 +43,7 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:52](https://github.com/h
 
 ### name?
 
-```ts
-optional name: string;
-```
+> `optional` **name**: `string`
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:41](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L41)
 
@@ -59,17 +51,13 @@ Wallet name
 
 #### Inherited from
 
-```ts
-Omit.name
-```
+`Omit.name`
 
 ***
 
 ### network?
 
-```ts
-optional network: Network;
-```
+> `optional` **network**: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/)
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L31)
 
@@ -83,17 +71,13 @@ mainnet
 
 #### Inherited from
 
-```ts
-Omit.network
-```
+`Omit.network`
 
 ***
 
 ### password?
 
-```ts
-optional password: string;
-```
+> `optional` **password**: `string`
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:53](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L53)
 
@@ -101,9 +85,7 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:53](https://github.com/h
 
 ### signatureType?
 
-```ts
-optional signatureType: "SECP256K1" | "BLS";
-```
+> `optional` **signatureType**: `"SECP256K1"` \| `"BLS"`
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:36](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L36)
 
@@ -117,6 +99,4 @@ SECP256K1
 
 #### Inherited from
 
-```ts
-Omit.signatureType
-```
+`Omit.signatureType`

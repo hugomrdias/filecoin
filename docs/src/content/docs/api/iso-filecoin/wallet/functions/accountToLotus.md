@@ -5,9 +5,7 @@ prev: true
 title: "accountToLotus"
 ---
 
-```ts
-function accountToLotus(account: IAccount): string;
-```
+> **accountToLotus**(`account`): `string`
 
 Defined in: [packages/iso-filecoin/src/wallet.js:341](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L341)
 

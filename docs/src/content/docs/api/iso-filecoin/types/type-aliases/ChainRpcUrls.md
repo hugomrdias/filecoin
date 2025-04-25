@@ -5,12 +5,7 @@ prev: true
 title: "ChainRpcUrls"
 ---
 
-```ts
-type ChainRpcUrls = {
-  http: string[];
-  webSocket: string[];
-};
-```
+> **ChainRpcUrls** = `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:129](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L129)
 
@@ -18,9 +13,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:129](https://github.com/hugomrdi
 
 ### http
 
-```ts
-http: string[];
-```
+> **http**: `string`[]
 
 Defined in: [packages/iso-filecoin/src/types.ts:130](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L130)
 
@@ -28,8 +21,6 @@ Defined in: [packages/iso-filecoin/src/types.ts:130](https://github.com/hugomrdi
 
 ### webSocket?
 
-```ts
-optional webSocket: string[];
-```
+> `optional` **webSocket**: `string`[]
 
 Defined in: [packages/iso-filecoin/src/types.ts:131](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L131)

@@ -11,9 +11,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:391](https://github.com/hugomrdi
 
 ### address
 
-```ts
-address: string;
-```
+> **address**: `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:395](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L395)
 
@@ -23,9 +21,7 @@ The Filecoin address to convert.
 
 ### blockNumber?
 
-```ts
-optional blockNumber: "pending" | "latest" | "finalized" | "safe" | "0x${string}";
-```
+> `optional` **blockNumber**: `"pending"` \| `"latest"` \| `"finalized"` \| `"safe"` \| `"0x${string}"`
 
 Defined in: [packages/iso-filecoin/src/types.ts:401](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L401)
 

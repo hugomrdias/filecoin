@@ -11,108 +11,66 @@ Defined in: [packages/iso-filecoin/src/types.ts:365](https://github.com/hugomrdi
 
 ### msg
 
-```ts
-msg: {
-  from: string;
-  gasFeeCap: string;
-  gasLimit: number;
-  gasPremium: string;
-  method: number;
-  nonce: number;
-  params: string;
-  to: string;
-  value: string;
-  version: 0;
-};
-```
+> **msg**: `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:366](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L366)
 
 #### from
 
-```ts
-from: string;
-```
+> **from**: `string`
 
 #### gasFeeCap
 
-```ts
-gasFeeCap: string;
-```
+> **gasFeeCap**: `string`
 
 #### gasLimit
 
-```ts
-gasLimit: number;
-```
+> **gasLimit**: `number`
 
 #### gasPremium
 
-```ts
-gasPremium: string;
-```
+> **gasPremium**: `string`
 
 #### method
 
-```ts
-method: number;
-```
+> **method**: `number`
 
 #### nonce
 
-```ts
-nonce: number;
-```
+> **nonce**: `number`
 
 #### params
 
-```ts
-params: string;
-```
+> **params**: `string`
 
 Params encoded as base64pad
 
 #### to
 
-```ts
-to: string;
-```
+> **to**: `string`
 
 #### value
 
-```ts
-value: string;
-```
+> **value**: `string`
 
 Value in attoFIL
 
 #### version
 
-```ts
-version: 0;
-```
+> **version**: `0`
 
 ***
 
 ### signature
 
-```ts
-signature: {
-  data: Uint8Array<ArrayBufferLike>;
-  type: "SECP256K1" | "BLS";
-};
-```
+> **signature**: `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:367](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L367)
 
 #### data
 
-```ts
-data: Uint8Array<ArrayBufferLike> = zBuf;
-```
+> **data**: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\> = `zBuf`
 
 #### type
 
-```ts
-type: "SECP256K1" | "BLS";
-```
+> **type**: `"SECP256K1"` \| `"BLS"`

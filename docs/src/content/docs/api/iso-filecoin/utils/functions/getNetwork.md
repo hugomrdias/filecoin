@@ -5,9 +5,7 @@ prev: true
 title: "getNetwork"
 ---
 
-```ts
-function getNetwork(networkPrefix: NetworkPrefix): Network;
-```
+> **getNetwork**(`networkPrefix`): [`Network`](/api/iso-filecoin/types/type-aliases/network/)
 
 Defined in: [packages/iso-filecoin/src/utils.js:56](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L56)
 

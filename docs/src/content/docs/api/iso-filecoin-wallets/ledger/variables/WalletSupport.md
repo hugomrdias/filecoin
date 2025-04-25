@@ -5,14 +5,7 @@ prev: true
 title: "WalletSupport"
 ---
 
-```ts
-const WalletSupport: {
-  Detected: "Detected";
-  NotChecked: "NotChecked";
-  NotDetected: "NotDetected";
-  NotSupported: "NotSupported";
-};
-```
+> `const` **WalletSupport**: `object`
 
 Defined in: [packages/iso-filecoin-wallets/src/common.js:1](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/common.js#L1)
 
@@ -20,24 +13,16 @@ Defined in: [packages/iso-filecoin-wallets/src/common.js:1](https://github.com/h
 
 ### Detected
 
-```ts
-readonly Detected: "Detected" = 'Detected';
-```
+> `readonly` **Detected**: `"Detected"` = `'Detected'`
 
 ### NotChecked
 
-```ts
-readonly NotChecked: "NotChecked" = 'NotChecked';
-```
+> `readonly` **NotChecked**: `"NotChecked"` = `'NotChecked'`
 
 ### NotDetected
 
-```ts
-readonly NotDetected: "NotDetected" = 'NotDetected';
-```
+> `readonly` **NotDetected**: `"NotDetected"` = `'NotDetected'`
 
 ### NotSupported
 
-```ts
-readonly NotSupported: "NotSupported" = 'NotSupported';
-```
+> `readonly` **NotSupported**: `"NotSupported"` = `'NotSupported'`

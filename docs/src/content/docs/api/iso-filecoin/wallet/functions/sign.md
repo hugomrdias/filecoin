@@ -5,12 +5,7 @@ prev: true
 title: "sign"
 ---
 
-```ts
-function sign(
-   privateKey: Uint8Array<ArrayBufferLike>, 
-   type: "SECP256K1" | "BLS", 
-   data: Uint8Array<ArrayBufferLike>): Signature;
-```
+> **sign**(`privateKey`, `type`, `data`): [`Signature`](/api/iso-filecoin/signature/classes/signature/)
 
 Defined in: [packages/iso-filecoin/src/wallet.js:232](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L232)
 

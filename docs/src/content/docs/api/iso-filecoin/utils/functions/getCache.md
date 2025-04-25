@@ -5,9 +5,7 @@ prev: true
 title: "getCache"
 ---
 
-```ts
-function getCache(cache: Cache): KV;
-```
+> **getCache**(`cache`): `KV`
 
 Defined in: [packages/iso-filecoin/src/utils.js:280](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L280)
 

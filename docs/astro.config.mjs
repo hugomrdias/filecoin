@@ -7,6 +7,7 @@ import { createStarlightTypeDocPlugin } from 'starlight-typedoc'
 const [corePlugin, coreSidebar] = createStarlightTypeDocPlugin()
 
 const site = 'https://filecoin.hugomrdias.dev'
+
 // https://astro.build/config
 export default defineConfig({
   site,
@@ -43,11 +44,6 @@ export default defineConfig({
           href: 'https://x.com/hugomrdias',
         },
       ],
-      // social: {
-
-      //   github: 'https://github.com/hugomrdias/filecoin',
-      //   'x.com': 'https://x.com/hugomrdias',
-      // },
       editLink: {
         baseUrl: 'https://github.com/hugomrdias/filecoin/edit/main/docs/',
       },
@@ -58,8 +54,8 @@ export default defineConfig({
           autogenerate: { directory: 'intro' },
         },
         {
-          label: 'Packages',
-          autogenerate: { directory: 'packages' },
+          label: 'Guides',
+          autogenerate: { directory: 'guides' },
         },
         // Add the typedoc generated sidebar group to the sidebar.
         coreSidebar,
@@ -84,7 +80,6 @@ export default defineConfig({
             label: 'Reference',
             collapsed: false,
           },
-
           entryPoints: ['../packages/*'],
           typeDoc: {
             entryPointStrategy: 'packages',
@@ -99,9 +94,10 @@ export default defineConfig({
                 'Type Aliases',
                 'References',
               ],
-              // excludeExternals: true,
+              excludeExternals: true,
               gitRevision: 'main',
-              // placeInternalsInOwningModule: true,
+              // placeInternalsInOwningModule: false,
+              // internalModule: 'Internal',
             },
             plugin: [
               // 'typedoc-plugin-missing-exports',
@@ -109,9 +105,6 @@ export default defineConfig({
               'typedoc-plugin-mdn-links',
             ],
             parametersFormat: 'table',
-            expandObjects: true,
-            expandParameters: true,
-            useCodeBlocks: true,
           },
           tsconfig: '../tsconfig.json',
         }),

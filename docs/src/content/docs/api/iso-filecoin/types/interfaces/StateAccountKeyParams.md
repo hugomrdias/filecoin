@@ -11,9 +11,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:386](https://github.com/hugomrdi
 
 ### address
 
-```ts
-address: string;
-```
+> **address**: `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:387](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L387)
 
@@ -21,8 +19,6 @@ Defined in: [packages/iso-filecoin/src/types.ts:387](https://github.com/hugomrdi
 
 ### tipSetKey?
 
-```ts
-optional tipSetKey: null | TipSetKey;
-```
+> `optional` **tipSetKey**: `null` \| [`TipSetKey`](/api/iso-filecoin/types/type-aliases/tipsetkey/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:388](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L388)

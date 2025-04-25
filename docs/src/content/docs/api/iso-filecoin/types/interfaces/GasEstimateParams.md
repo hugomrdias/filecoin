@@ -11,9 +11,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:350](https://github.com/hugomrdi
 
 ### maxFee?
 
-```ts
-optional maxFee: string;
-```
+> `optional` **maxFee**: `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:362](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L362)
 
@@ -29,20 +27,7 @@ Max fee to pay for gas (attoFIL/gas units)
 
 ### msg
 
-```ts
-msg: {
-  from: string;
-  gasFeeCap: string;
-  gasLimit: number;
-  gasPremium: string;
-  method: number;
-  nonce: number;
-  params: string;
-  to: string;
-  value: string;
-  version: 0;
-};
-```
+> **msg**: `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:356](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L356)
 
@@ -50,67 +35,47 @@ Message to estimate gas for
 
 #### from
 
-```ts
-from: string;
-```
+> **from**: `string`
 
 #### gasFeeCap?
 
-```ts
-optional gasFeeCap: string;
-```
+> `optional` **gasFeeCap**: `string`
 
 #### gasLimit?
 
-```ts
-optional gasLimit: number;
-```
+> `optional` **gasLimit**: `number`
 
 #### gasPremium?
 
-```ts
-optional gasPremium: string;
-```
+> `optional` **gasPremium**: `string`
 
 #### method?
 
-```ts
-optional method: number;
-```
+> `optional` **method**: `number`
 
 #### nonce?
 
-```ts
-optional nonce: number;
-```
+> `optional` **nonce**: `number`
 
 #### params?
 
-```ts
-optional params: string;
-```
+> `optional` **params**: `string`
 
 Params encoded as base64pad
 
 #### to
 
-```ts
-to: string;
-```
+> **to**: `string`
 
 #### value
 
-```ts
-value: string;
-```
+> **value**: `string`
 
 Value in attoFIL
 
 #### version?
 
-```ts
-optional version: 0;
-```
+> `optional` **version**: `0`
 
 #### See
 

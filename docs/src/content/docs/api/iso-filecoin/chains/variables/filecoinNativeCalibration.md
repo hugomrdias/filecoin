@@ -5,9 +5,7 @@ prev: true
 title: "filecoinNativeCalibration"
 ---
 
-```ts
-const filecoinNativeCalibration: Chain;
-```
+> `const` **filecoinNativeCalibration**: [`Chain`](/api/iso-filecoin/types/interfaces/chain/)
 
 Defined in: [packages/iso-filecoin/src/chains.js:99](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/chains.js#L99)
 

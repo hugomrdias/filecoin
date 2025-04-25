@@ -13,9 +13,7 @@ Wallet provider props
 
 ### adapters
 
-```ts
-adapters: WalletAdapter[];
-```
+> **adapters**: [`WalletAdapter`](/api/iso-filecoin-react/index/interfaces/walletadapter/)[]
 
 Defined in: [packages/iso-filecoin-react/src/types.ts:20](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L20)
 
@@ -23,9 +21,7 @@ Defined in: [packages/iso-filecoin-react/src/types.ts:20](https://github.com/hug
 
 ### network?
 
-```ts
-optional network: Network;
-```
+> `optional` **network**: [`Network`](/api/iso-filecoin-react/types/type-aliases/network/)
 
 Defined in: [packages/iso-filecoin-react/src/types.ts:19](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L19)
 
@@ -39,9 +35,7 @@ Defined in: [packages/iso-filecoin-react/src/types.ts:19](https://github.com/hug
 
 ### reconnectOnMount?
 
-```ts
-optional reconnectOnMount: boolean;
-```
+> `optional` **reconnectOnMount**: `boolean`
 
 Defined in: [packages/iso-filecoin-react/src/types.ts:25](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L25)
 
@@ -55,8 +49,6 @@ true
 
 ### rpcs?
 
-```ts
-optional rpcs: Record<Network, RPC>;
-```
+> `optional` **rpcs**: [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<[`Network`](/api/iso-filecoin-react/types/type-aliases/network/), [`RPC`](/api/iso-filecoin/rpc/classes/rpc/)\>
 
 Defined in: [packages/iso-filecoin-react/src/types.ts:21](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/types.ts#L21)

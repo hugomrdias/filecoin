@@ -5,9 +5,7 @@ prev: true
 title: "getNetworkFromPath"
 ---
 
-```ts
-function getNetworkFromPath(path: string): Network;
-```
+> **getNetworkFromPath**(`path`): [`Network`](/api/iso-filecoin/types/type-aliases/network/)
 
 Defined in: [packages/iso-filecoin/src/utils.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L72)
 

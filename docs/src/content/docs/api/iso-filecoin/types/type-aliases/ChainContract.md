@@ -5,12 +5,7 @@ prev: true
 title: "ChainContract"
 ---
 
-```ts
-type ChainContract = {
-  address: HexAddress;
-  blockCreated: number;
-};
-```
+> **ChainContract** = `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:139](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L139)
 
@@ -18,9 +13,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:139](https://github.com/hugomrdi
 
 ### address
 
-```ts
-address: HexAddress;
-```
+> **address**: [`HexAddress`](/api/iso-filecoin/types/type-aliases/hexaddress/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:140](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L140)
 
@@ -28,8 +21,6 @@ Defined in: [packages/iso-filecoin/src/types.ts:140](https://github.com/hugomrdi
 
 ### blockCreated?
 
-```ts
-optional blockCreated: number;
-```
+> `optional` **blockCreated**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:141](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L141)

@@ -2,6 +2,7 @@
 title: Getting Started
 description: Learn how to install and use the iso-filecoin libraries.
 ---
+import { FileTree } from '@astrojs/starlight/components';
 
 iso-filecoin is a **Filecoin Standard Library** that provides a set of lightweight, performant and type-safe Javascript modules. 
 
@@ -35,17 +36,19 @@ pnpm add iso-filecoin-wallets
 
 This project uses a monorepo structure managed by `pnpm` workspaces. Core libraries reside in the `packages/` directory, examples in `examples/`, and this documentation site in `docs/`.
 
-```text
-.
-├── packages/
-│   ├── iso-filecoin/         # Core Filecoin library
-│   ├── iso-filecoin-react/   # React hooks and context
-│   └── iso-filecoin-wallets/ # Wallet adapters
-├── examples/                 # Usage examples and demos
-├── docs/                     # This documentation site
-├── pnpm-workspace.yaml       # Workspace configuration
-└── package.json              # Root package file
-```
+
+<FileTree>
+
+- packages/
+  - iso-filecoin/ Core Filecoin library
+  - iso-filecoin-react/ React hooks and context
+  - iso-filecoin-wallets/ Wallet adapters
+- examples/ Usage examples and demos
+- docs/ This documentation site
+- pnpm-workspace.yaml Workspace configuration
+- package.json Root package file
+
+</FileTree>
 
 ## Usage
 

@@ -5,15 +5,7 @@ prev: true
 title: "create"
 ---
 
-```ts
-function create(type: "SECP256K1" | "BLS", network: Network): {
-  address: IAddress;
-  path: string;
-  privateKey: Uint8Array;
-  publicKey: Uint8Array;
-  type: "SECP256K1" | "BLS";
-};
-```
+> **create**(`type`, `network`): `object`
 
 Defined in: [packages/iso-filecoin/src/wallet.js:156](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L156)
 
@@ -30,34 +22,24 @@ Create account
 
 ### address
 
-```ts
-address: IAddress;
-```
+> **address**: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/)
 
 ### path?
 
-```ts
-optional path: string;
-```
+> `optional` **path**: `string`
 
 Derivation path - only for HD wallets
 
 ### privateKey
 
-```ts
-privateKey: Uint8Array;
-```
+> **privateKey**: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)
 
 Private key - only for RAW and HD wallets
 
 ### publicKey
 
-```ts
-publicKey: Uint8Array;
-```
+> **publicKey**: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)
 
 ### type
 
-```ts
-type: "SECP256K1" | "BLS";
-```
+> **type**: `"SECP256K1"` \| `"BLS"`

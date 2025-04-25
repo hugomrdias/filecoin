@@ -5,13 +5,7 @@ prev: true
 title: "VersionResponse"
 ---
 
-```ts
-type VersionResponse = {
-  APIVersion: number;
-  BlockDelay: number;
-  Version: string;
-};
-```
+> **VersionResponse** = `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:330](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L330)
 
@@ -19,9 +13,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:330](https://github.com/hugomrdi
 
 ### APIVersion
 
-```ts
-APIVersion: number;
-```
+> **APIVersion**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:332](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L332)
 
@@ -29,9 +21,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:332](https://github.com/hugomrdi
 
 ### BlockDelay
 
-```ts
-BlockDelay: number;
-```
+> **BlockDelay**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:333](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L333)
 
@@ -39,8 +29,6 @@ Defined in: [packages/iso-filecoin/src/types.ts:333](https://github.com/hugomrdi
 
 ### Version
 
-```ts
-Version: string;
-```
+> **Version**: `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:331](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L331)

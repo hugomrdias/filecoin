@@ -1,0 +1,224 @@
+---
+title: Reown Appkit
+description: Learn how to use the Reown Appkit to connect to a Filecoin Account.
+---
+
+Learn how to use the Reown Appkit to connect to a Filecoin Account using the `iso-filecoin-wallets` library.
+
+
+## Installation
+
+```bash
+# Using pnpm (recommended for this monorepo)
+pnpm add iso-filecoin-react iso-filecoin iso-filecoin-wallets @tanstack/react-query filsnap-adapter
+```
+
+## Usage
+
+The wallets package provides hooks and an Appkit Adapter to build a Filecoin connect wallet using Reown Appkit.
+
+### Setup Providers
+
+```tsx title="App.tsx"
+import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
+import { createAppKit } from '@reown/appkit/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import * as Chains from 'iso-filecoin/chains'
+import { FilecoinProvider } from 'iso-filecoin-react'
+import { FilecoinAppKitAdapter, chainImages } from 'iso-filecoin-wallets/appkit'
+import { WalletAdapterFilsnap } from 'iso-filecoin-wallets/filsnap'
+import { WalletAdapterLedger } from 'iso-filecoin-wallets/ledger'
+import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
+import { WagmiProvider, http } from 'wagmi'
+
+
+// Get projectId from https://cloud.reown.com
+export const projectId = '<REOWN_PROJECT_ID>'
+
+//Set up the Wagmi Adapter (Config) for Filecoin
+export const wagmiAdapter = new WagmiAdapter({
+  projectId,
+  networks: [Chains.mainnet, Chains.testnet] as [
+    AppKitNetwork,
+    ...AppKitNetwork[],
+  ],
+  transports: {
+    [Chains.mainnet.id]: http(),
+    [Chains.testnet.id]: http(),
+  },
+})
+
+// Set up the Filecoin Adapters
+const adapters = [
+  new WalletAdapterFilsnap({
+    syncWithProvider: true,
+  }),
+  new WalletAdapterLedger({
+    transport: TransportWebUSB,
+  }),
+]
+
+// Create the Filecoin Appkit Adapter
+export const filecoinAdapter = new FilecoinAppKitAdapter({ adapters })
+
+// Create modal
+createAppKit({
+  adapters: [filecoinAdapter],
+  projectId,
+  networks: [
+    Chains.mainnet,
+    Chains.testnet,
+    Chains.filecoinNative,
+    Chains.filecoinNativeCalibration,
+  ] as [AppKitNetwork, ...AppKitNetwork[]],
+  chainImages,
+  themeMode: 'light',
+})
+
+export function App() {
+  return (
+    <WagmiProvider config={wagmiAdapter.wagmiConfig}>
+        <FilecoinProvider adapters={adapters}>
+            <QueryClientProvider client={queryClient}>
+            <appkit-button />
+            </QueryClientProvider>
+        </FilecoinProvider>
+    </WagmiProvider>
+  )
+}
+
+```
+
+### Using Appkit Hooks
+
+Now lets create a component to use the Appkit hooks.
+
+```tsx title="actions-list.tsx"
+import type { AppKitNetwork } from '@reown/appkit-common'
+import {
+  useAppKit,
+  useAppKitAccount,
+  useAppKitNetwork,
+  useDisconnect,
+} from '@reown/appkit/react'
+import { filecoinNative, filecoinNativeCalibration } from 'iso-filecoin/chains'
+
+export const ActionButtonList = () => {
+  const { disconnect } = useDisconnect() // AppKit hook to disconnect
+  const { open } = useAppKit() // AppKit hook to open the modal
+  const { switchNetwork } = useAppKitNetwork() // AppKithook to switch network
+  const { isConnected } = useAppKitAccount() // AppKit hook to get the address and check if the user is connected
+
+  const handleDisconnect = async () => {
+    try {
+      await disconnect()
+    } catch (error) {
+      console.error('Failed to disconnect:', error)
+    }
+  }
+
+  return (
+    isConnected && (
+      <div>
+        <button type="button" onClick={() => open()}>
+          Open
+        </button>
+        <button
+          type="button"
+          onClick={() => switchNetwork(filecoinNative as AppKitNetwork)}
+        >
+          Change to Mainnet
+        </button>
+        <button
+          type="button"
+          onClick={() =>
+            switchNetwork(filecoinNativeCalibration as AppKitNetwork)
+          }
+        >
+          Change to Calibration
+        </button>
+        <button type="button" onClick={handleDisconnect}>
+          Disconnect
+        </button>
+      </div>
+    )
+  )
+}
+
+```
+
+### Using Filecoin Hooks
+
+To use the Filecoin hooks, you need to set the adapter in the Filecoin Provider.
+
+```tsx title="info-list.tsx"
+import type { ChainNamespace } from '@reown/appkit-common'
+import {
+  useAppKitAccount,
+  useAppKitProvider,
+} from '@reown/appkit/react'
+import {
+  type WalletAdapter,
+  useAccount,
+  useAppKitAdapter,
+  useBalance,
+} from 'iso-filecoin-react'
+
+export const InfoList = () => {
+  const { address, caipAddress, isConnected, status, embeddedWalletInfo } =
+    useAppKitAccount() // AppKit hook to get the account information
+
+  // Get the Filecoin Wallet Adapter from the Appkit Provider
+  const { walletProvider } = useAppKitProvider<WalletAdapter>(
+    'fil' as ChainNamespace
+  )
+
+  // Set the adapter in the Filecoin Provider
+  useAppKitAdapter({
+    adapter: walletProvider,
+  })
+
+  // Now you can use all the Filecoin Hooks from `iso-filecoin-react`
+  const { account } = useAccount()
+  const { data: balance } = useBalance()
+
+  return (
+    <>
+      <section>
+        <h2>Filecoin Hooks</h2>
+        <pre>
+          Address: {account?.address.toString()}
+          <br />
+          Balance: {balance?.value.toFIL().toFormat({ decimalPlaces: 1 })}
+          <br />
+        </pre>
+      </section>
+      <section>
+        <h2>useAppKit</h2>
+        <pre>
+          Address: {address}
+          <br />
+          caip Address: {caipAddress}
+          <br />
+          Connected: {isConnected.toString()}
+          <br />
+          Status: {status}
+          <br />
+          Account Type: {embeddedWalletInfo?.accountType}
+        </pre>
+      </section>
+    </>
+  )
+}
+
+```
+
+
+
+## Full example
+
+Play with the reown appkit provider and hooks in this StackBlitz example:
+
+<iframe src="https://stackblitz.com/github/hugomrdias/filecoin/tree/main/examples/appkit?ctl=1&embed=1&file=src%2Fmain.jsx&theme=dark&view=preview&title=Filecoin%20Playground" style={{ height: '500px', width: '100%', border: '1px solid rgba(193, 195, 200, 20%)' }}></iframe>
+
+Check the source code [here](https://github.com/hugomrdias/filecoin/tree/main/examples/appkit).

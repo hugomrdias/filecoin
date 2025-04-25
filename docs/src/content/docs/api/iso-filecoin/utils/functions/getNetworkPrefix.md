@@ -5,9 +5,7 @@ prev: true
 title: "getNetworkPrefix"
 ---
 
-```ts
-function getNetworkPrefix(network: Network): "f" | "t";
-```
+> **getNetworkPrefix**(`network`): `"f"` \| `"t"`
 
 Defined in: [packages/iso-filecoin/src/utils.js:40](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L40)
 

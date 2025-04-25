@@ -5,9 +5,7 @@ prev: true
 title: "lotusCid"
 ---
 
-```ts
-function lotusCid(data: Uint8Array<ArrayBufferLike>): Uint8Array<ArrayBuffer>;
-```
+> **lotusCid**(`data`): [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<[`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)\>
 
 Defined in: [packages/iso-filecoin/src/utils.js:310](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L310)
 

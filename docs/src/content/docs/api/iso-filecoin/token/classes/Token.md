@@ -17,9 +17,7 @@ https://docs.filecoin.io/basics/assets/the-fil-token/#denomonations
 
 ### Constructor
 
-```ts
-new Token(val: Value): Token;
-```
+> **new Token**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:76](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L76)
 
@@ -37,9 +35,7 @@ Defined in: [packages/iso-filecoin/src/token.js:76](https://github.com/hugomrdia
 
 ### abs()
 
-```ts
-abs(): Token;
-```
+> **abs**(): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:144](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L144)
 
@@ -51,9 +47,7 @@ Defined in: [packages/iso-filecoin/src/token.js:144](https://github.com/hugomrdi
 
 ### add()
 
-```ts
-add(val: Value): Token;
-```
+> **add**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:151](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L151)
 
@@ -71,9 +65,7 @@ Defined in: [packages/iso-filecoin/src/token.js:151](https://github.com/hugomrdi
 
 ### div()
 
-```ts
-div(val: Value): Token;
-```
+> **div**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:140](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L140)
 
@@ -91,9 +83,7 @@ Defined in: [packages/iso-filecoin/src/token.js:140](https://github.com/hugomrdi
 
 ### mul()
 
-```ts
-mul(val: Value): Token;
-```
+> **mul**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:133](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L133)
 
@@ -111,9 +101,7 @@ Defined in: [packages/iso-filecoin/src/token.js:133](https://github.com/hugomrdi
 
 ### sub()
 
-```ts
-sub(val: Value): Token;
-```
+> **sub**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:158](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L158)
 
@@ -131,9 +119,7 @@ Defined in: [packages/iso-filecoin/src/token.js:158](https://github.com/hugomrdi
 
 ### toAttoFIL()
 
-```ts
-toAttoFIL(): Token;
-```
+> **toAttoFIL**(): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:197](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L197)
 
@@ -145,9 +131,7 @@ Defined in: [packages/iso-filecoin/src/token.js:197](https://github.com/hugomrdi
 
 ### toBigInt()
 
-```ts
-toBigInt(): bigint;
-```
+> **toBigInt**(): `bigint`
 
 Defined in: [packages/iso-filecoin/src/token.js:229](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L229)
 
@@ -159,9 +143,7 @@ Defined in: [packages/iso-filecoin/src/token.js:229](https://github.com/hugomrdi
 
 ### toBytes()
 
-```ts
-toBytes(): Uint8Array<ArrayBuffer>;
-```
+> **toBytes**(): [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<[`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)\>
 
 Defined in: [packages/iso-filecoin/src/token.js:233](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L233)
 
@@ -173,9 +155,7 @@ Defined in: [packages/iso-filecoin/src/token.js:233](https://github.com/hugomrdi
 
 ### toFemtoFIL()
 
-```ts
-toFemtoFIL(): Token;
-```
+> **toFemtoFIL**(): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:205](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L205)
 
@@ -187,9 +167,7 @@ Defined in: [packages/iso-filecoin/src/token.js:205](https://github.com/hugomrdi
 
 ### toFIL()
 
-```ts
-toFIL(): Token;
-```
+> **toFIL**(): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:225](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L225)
 
@@ -201,9 +179,7 @@ Defined in: [packages/iso-filecoin/src/token.js:225](https://github.com/hugomrdi
 
 ### toFormat()
 
-```ts
-toFormat(options?: FormatOptions): string;
-```
+> **toFormat**(`options?`): `string`
 
 Defined in: [packages/iso-filecoin/src/token.js:177](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L177)
 
@@ -227,9 +203,7 @@ https://mikemcl.github.io/bignumber.js/#toFor
 
 ### toMicroFIL()
 
-```ts
-toMicroFIL(): Token;
-```
+> **toMicroFIL**(): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:217](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L217)
 
@@ -241,9 +215,7 @@ Defined in: [packages/iso-filecoin/src/token.js:217](https://github.com/hugomrdi
 
 ### toMilliFIL()
 
-```ts
-toMilliFIL(): Token;
-```
+> **toMilliFIL**(): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:221](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L221)
 
@@ -255,9 +227,7 @@ Defined in: [packages/iso-filecoin/src/token.js:221](https://github.com/hugomrdi
 
 ### toNanoFIL()
 
-```ts
-toNanoFIL(): Token;
-```
+> **toNanoFIL**(): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:213](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L213)
 
@@ -269,9 +239,7 @@ Defined in: [packages/iso-filecoin/src/token.js:213](https://github.com/hugomrdi
 
 ### toPicoFIL()
 
-```ts
-toPicoFIL(): Token;
-```
+> **toPicoFIL**(): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:209](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L209)
 
@@ -283,9 +251,7 @@ Defined in: [packages/iso-filecoin/src/token.js:209](https://github.com/hugomrdi
 
 ### toString()
 
-```ts
-toString(base?: number): string;
-```
+> **toString**(`base?`): `string`
 
 Defined in: [packages/iso-filecoin/src/token.js:167](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L167)
 
@@ -305,9 +271,7 @@ Serialize the number to a string using the given base.
 
 ### fromAttoFIL()
 
-```ts
-static fromAttoFIL(val: Value): Token;
-```
+> `static` **fromAttoFIL**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:84](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L84)
 
@@ -325,9 +289,7 @@ Defined in: [packages/iso-filecoin/src/token.js:84](https://github.com/hugomrdia
 
 ### fromFemtoFIL()
 
-```ts
-static fromFemtoFIL(val: Value): Token;
-```
+> `static` **fromFemtoFIL**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:91](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L91)
 
@@ -345,9 +307,7 @@ Defined in: [packages/iso-filecoin/src/token.js:91](https://github.com/hugomrdia
 
 ### fromFIL()
 
-```ts
-static fromFIL(val: Value): Token;
-```
+> `static` **fromFIL**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:126](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L126)
 
@@ -365,9 +325,7 @@ Defined in: [packages/iso-filecoin/src/token.js:126](https://github.com/hugomrdi
 
 ### fromMicroFIL()
 
-```ts
-static fromMicroFIL(val: Value): Token;
-```
+> `static` **fromMicroFIL**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:112](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L112)
 
@@ -385,9 +343,7 @@ Defined in: [packages/iso-filecoin/src/token.js:112](https://github.com/hugomrdi
 
 ### fromMilliFIL()
 
-```ts
-static fromMilliFIL(val: Value): Token;
-```
+> `static` **fromMilliFIL**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:119](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L119)
 
@@ -405,9 +361,7 @@ Defined in: [packages/iso-filecoin/src/token.js:119](https://github.com/hugomrdi
 
 ### fromNanoFIL()
 
-```ts
-static fromNanoFIL(val: Value): Token;
-```
+> `static` **fromNanoFIL**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:105](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L105)
 
@@ -425,9 +379,7 @@ Defined in: [packages/iso-filecoin/src/token.js:105](https://github.com/hugomrdi
 
 ### fromPicoFIL()
 
-```ts
-static fromPicoFIL(val: Value): Token;
-```
+> `static` **fromPicoFIL**(`val`): `Token`
 
 Defined in: [packages/iso-filecoin/src/token.js:98](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L98)
 
@@ -445,9 +397,7 @@ Defined in: [packages/iso-filecoin/src/token.js:98](https://github.com/hugomrdia
 
 ### \[symbol\]
 
-```ts
-[symbol]: boolean = true;
-```
+> **\[symbol\]**: `boolean` = `true`
 
 Defined in: [packages/iso-filecoin/src/token.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L72)
 
@@ -455,8 +405,6 @@ Defined in: [packages/iso-filecoin/src/token.js:72](https://github.com/hugomrdia
 
 ### val
 
-```ts
-val: BigNumber;
-```
+> **val**: `BigNumber`
 
 Defined in: [packages/iso-filecoin/src/token.js:78](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/token.js#L78)

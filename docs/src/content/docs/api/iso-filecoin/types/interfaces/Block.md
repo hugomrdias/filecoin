@@ -11,109 +11,71 @@ Defined in: [packages/iso-filecoin/src/types.ts:259](https://github.com/hugomrdi
 
 ### BeaconEntries
 
-```ts
-BeaconEntries: {
-  Data: string;
-  Round: number;
-}[];
-```
+> **BeaconEntries**: `object`[]
 
 Defined in: [packages/iso-filecoin/src/types.ts:264](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L264)
 
 #### Data
 
-```ts
-Data: string;
-```
+> **Data**: `string`
 
 #### Round
 
-```ts
-Round: number;
-```
+> **Round**: `number`
 
 ***
 
 ### BlockSig
 
-```ts
-BlockSig: {
-  Data: string;
-  Type: 2;
-};
-```
+> **BlockSig**: `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:268](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L268)
 
 #### Data
 
-```ts
-Data: string;
-```
+> **Data**: `string`
 
 #### Type
 
-```ts
-Type: 2;
-```
+> **Type**: `2`
 
 ***
 
 ### BLSAggregate
 
-```ts
-BLSAggregate: {
-  Data: string;
-  Type: 2;
-};
-```
+> **BLSAggregate**: `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:260](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L260)
 
 #### Data
 
-```ts
-Data: string;
-```
+> **Data**: `string`
 
 #### Type
 
-```ts
-Type: 2;
-```
+> **Type**: `2`
 
 ***
 
 ### ElectionProof
 
-```ts
-ElectionProof: {
-  VRFProof: string;
-  WinCount: number;
-};
-```
+> **ElectionProof**: `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:272](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L272)
 
 #### VRFProof
 
-```ts
-VRFProof: string;
-```
+> **VRFProof**: `string`
 
 #### WinCount
 
-```ts
-WinCount: number;
-```
+> **WinCount**: `number`
 
 ***
 
 ### ForkSignaling
 
-```ts
-ForkSignaling: number;
-```
+> **ForkSignaling**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:276](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L276)
 
@@ -121,9 +83,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:276](https://github.com/hugomrdi
 
 ### Height
 
-```ts
-Height: number;
-```
+> **Height**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:277](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L277)
 
@@ -131,9 +91,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:277](https://github.com/hugomrdi
 
 ### Messages
 
-```ts
-Messages: CID;
-```
+> **Messages**: [`CID`](/api/iso-filecoin/types/type-aliases/cid/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:278](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L278)
 
@@ -141,9 +99,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:278](https://github.com/hugomrdi
 
 ### Miner
 
-```ts
-Miner: string;
-```
+> **Miner**: `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:282](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L282)
 
@@ -153,9 +109,7 @@ The miner address of the block.
 
 ### ParentBaseFee
 
-```ts
-ParentBaseFee: string;
-```
+> **ParentBaseFee**: `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:283](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L283)
 
@@ -163,9 +117,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:283](https://github.com/hugomrdi
 
 ### ParentMessageReceipts
 
-```ts
-ParentMessageReceipts: CID;
-```
+> **ParentMessageReceipts**: [`CID`](/api/iso-filecoin/types/type-aliases/cid/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:284](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L284)
 
@@ -173,9 +125,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:284](https://github.com/hugomrdi
 
 ### Parents
 
-```ts
-Parents: CID[];
-```
+> **Parents**: [`CID`](/api/iso-filecoin/types/type-aliases/cid/)[]
 
 Defined in: [packages/iso-filecoin/src/types.ts:290](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L290)
 
@@ -183,9 +133,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:290](https://github.com/hugomrdi
 
 ### ParentStateRoot
 
-```ts
-ParentStateRoot: CID;
-```
+> **ParentStateRoot**: [`CID`](/api/iso-filecoin/types/type-aliases/cid/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:285](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L285)
 
@@ -193,9 +141,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:285](https://github.com/hugomrdi
 
 ### ParentWeight
 
-```ts
-ParentWeight: string;
-```
+> **ParentWeight**: `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:289](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L289)
 
@@ -205,27 +151,19 @@ BitInt as a string
 
 ### Ticket
 
-```ts
-Ticket: {
-  VRFProof: string;
-};
-```
+> **Ticket**: `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:291](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L291)
 
 #### VRFProof
 
-```ts
-VRFProof: string;
-```
+> **VRFProof**: `string`
 
 ***
 
 ### Timestamp
 
-```ts
-Timestamp: number;
-```
+> **Timestamp**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:294](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L294)
 
@@ -233,23 +171,14 @@ Defined in: [packages/iso-filecoin/src/types.ts:294](https://github.com/hugomrdi
 
 ### WinPoStProof
 
-```ts
-WinPoStProof: {
-  PoStProof: number;
-  ProofBytes: string;
-}[];
-```
+> **WinPoStProof**: `object`[]
 
 Defined in: [packages/iso-filecoin/src/types.ts:295](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L295)
 
 #### PoStProof
 
-```ts
-PoStProof: number;
-```
+> **PoStProof**: `number`
 
 #### ProofBytes
 
-```ts
-ProofBytes: string;
-```
+> **ProofBytes**: `string`

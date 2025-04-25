@@ -11,9 +11,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:243](https://github.com/hugomrdi
 
 ### EventsRoot
 
-```ts
-EventsRoot: null | CID;
-```
+> **EventsRoot**: `null` \| [`CID`](/api/iso-filecoin/types/type-aliases/cid/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:247](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L247)
 
@@ -21,9 +19,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:247](https://github.com/hugomrdi
 
 ### ExitCode
 
-```ts
-ExitCode: number;
-```
+> **ExitCode**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:244](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L244)
 
@@ -31,9 +27,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:244](https://github.com/hugomrdi
 
 ### GasUsed
 
-```ts
-GasUsed: number;
-```
+> **GasUsed**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:246](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L246)
 
@@ -41,8 +35,6 @@ Defined in: [packages/iso-filecoin/src/types.ts:246](https://github.com/hugomrdi
 
 ### Return
 
-```ts
-Return: null | string;
-```
+> **Return**: `null` \| `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:245](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L245)

@@ -5,9 +5,7 @@ prev: true
 title: "isRpcError"
 ---
 
-```ts
-function isRpcError(value: unknown): value is RpcError;
-```
+> **isRpcError**(`value`): `value is RpcError`
 
 Defined in: [packages/iso-filecoin/src/rpc.js:37](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L37)
 

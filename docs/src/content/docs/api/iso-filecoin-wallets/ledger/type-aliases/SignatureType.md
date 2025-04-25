@@ -5,8 +5,6 @@ prev: true
 title: "SignatureType"
 ---
 
-```ts
-type SignatureType = SignatureType;
-```
+> **SignatureType** = [`SignatureType`](/api/iso-filecoin/signature/type-aliases/signaturetype/)
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:17](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L17)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:21](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L21)

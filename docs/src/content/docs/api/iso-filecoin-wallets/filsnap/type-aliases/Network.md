@@ -5,8 +5,6 @@ prev: true
 title: "Network"
 ---
 
-```ts
-type Network = "mainnet" | "testnet";
-```
+> **Network** = `"mainnet"` \| `"testnet"`
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:93

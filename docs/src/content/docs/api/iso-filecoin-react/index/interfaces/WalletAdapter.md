@@ -11,278 +11,13 @@ Wallet adapter interface
 
 ## Extends
 
-- `TypedEventTarget`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\>
+- `TypedEventTarget`\<[`WalletEvents`](/api/iso-filecoin-wallets/types/type-aliases/walletevents/)\>
 
 ## Methods
 
-### addEventListener()
-
-```ts
-addEventListener<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"error"` \| `"connect"` \| `"disconnect"` \| `"accountChanged"` \| `"networkChanged"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `AddEventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherit Doc
-
-#### Inherited from
-
-```ts
-TypedEventTarget.addEventListener
-```
-
-***
-
-### dispatchEvent()
-
-```ts
-dispatchEvent(event: Event): boolean;
-```
-
-Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.dom.d.ts:8882
-
-Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
-
-[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/dispatchEvent)
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `event` | [`Event`](https://developer.mozilla.org/docs/Web/API/Event) |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.dispatchEvent
-```
-
-***
-
-### dispatchTypedEvent()
-
-```ts
-dispatchTypedEvent<T>(_type: T, event: WalletEvents[T]): boolean;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
-
-Dispatches a synthetic event to target and returns true if either
-event's cancelable attribute value is false or its preventDefault() method
-was not invoked, and false otherwise.
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* keyof [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/) |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `_type` | `T` |
-| `event` | [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\] |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.dispatchTypedEvent
-```
-
-***
-
-### emit()
-
-```ts
-emit<T>(...args: WalletEvents[T]["detail"] extends IsAny<WalletEvents[T]["detail"]> ? [T, unknown] : [T, WalletEvents[T]["detail"]]): boolean;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* keyof [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/) |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| ...`args` | [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\] *extends* `IsAny`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\]\> ? \[`T`, `unknown`\] : \[`T`, [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\]\] |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.emit
-```
-
-***
-
-### off()
-
-```ts
-off<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
-
-Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#removeeventlistener)
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"error"` \| `"connect"` \| `"disconnect"` \| `"accountChanged"` \| `"networkChanged"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `EventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.off
-```
-
-***
-
-### on()
-
-```ts
-on<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
-
-Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#addeventlistener)
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"error"` \| `"connect"` \| `"disconnect"` \| `"accountChanged"` \| `"networkChanged"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `AddEventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.on
-```
-
-***
-
-### removeEventListener()
-
-```ts
-removeEventListener<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"error"` \| `"connect"` \| `"disconnect"` \| `"accountChanged"` \| `"networkChanged"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `EventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherit Doc
-
-#### Inherited from
-
-```ts
-TypedEventTarget.removeEventListener
-```
-
-***
-
 ### sign()
 
-```ts
-sign(data: Uint8Array): Promise<Signature>;
-```
+> **sign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:130
 
@@ -302,11 +37,7 @@ Sign raw bytes
 
 ### account
 
-```ts
-readonly account: 
-  | undefined
-  | IAccount;
-```
+> `readonly` **account**: `undefined` \| [`IAccount`](/api/iso-filecoin-react/types/interfaces/iaccount/)
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:99
 
@@ -316,9 +47,7 @@ Currently active account, if connected
 
 ### changeNetwork()
 
-```ts
-changeNetwork: (network: Network) => Promise<AccountNetwork>;
-```
+> **changeNetwork**: (`network`) => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`AccountNetwork`](/api/iso-filecoin-react/types/interfaces/accountnetwork/)\>
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:124
 
@@ -338,9 +67,7 @@ Change the network and derive a new account
 
 ### checkSupport()
 
-```ts
-checkSupport: () => Promise<void>;
-```
+> **checkSupport**: () => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:103
 
@@ -354,11 +81,7 @@ Check if this wallet adapter is supported in the current environment
 
 ### connect()
 
-```ts
-connect: (params: {
-  network: Network;
-}) => Promise<AccountNetwork>;
-```
+> **connect**: (`params`) => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`AccountNetwork`](/api/iso-filecoin-react/types/interfaces/accountnetwork/)\>
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:108
 
@@ -368,7 +91,7 @@ Connect to the wallet
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `params` | \{ `network`: [`Network`](/api/iso-filecoin-react/types/type-aliases/network/); \} | Connect params |
+| `params` | \{ `network?`: [`Network`](/api/iso-filecoin-react/types/type-aliases/network/); \} | Connect params |
 | `params.network?` | [`Network`](/api/iso-filecoin-react/types/type-aliases/network/) | - |
 
 #### Returns
@@ -379,9 +102,7 @@ Connect to the wallet
 
 ### connected
 
-```ts
-readonly connected: boolean;
-```
+> `readonly` **connected**: `boolean`
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:95
 
@@ -391,9 +112,7 @@ Whether the wallet is currently connected
 
 ### connecting
 
-```ts
-readonly connecting: boolean;
-```
+> `readonly` **connecting**: `boolean`
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:91
 
@@ -403,9 +122,7 @@ Whether the wallet is in the process of connecting
 
 ### deriveAccount()
 
-```ts
-deriveAccount: (index: number) => Promise<IAccount>;
-```
+> **deriveAccount**: (`index`) => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`IAccount`](/api/iso-filecoin-react/types/interfaces/iaccount/)\>
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:119
 
@@ -425,9 +142,7 @@ Derive a new account at the given index
 
 ### disconnect()
 
-```ts
-disconnect: () => Promise<void>;
-```
+> **disconnect**: () => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:114
 
@@ -441,9 +156,7 @@ Disconnect from the wallet
 
 ### id
 
-```ts
-readonly id: string;
-```
+> `readonly` **id**: `string`
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:71
 
@@ -453,9 +166,7 @@ Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
 ### name
 
-```ts
-name: string;
-```
+> **name**: `string`
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:75
 
@@ -465,9 +176,7 @@ Human readable wallet name
 
 ### network
 
-```ts
-readonly network: Network;
-```
+> `readonly` **network**: [`Network`](/api/iso-filecoin-react/types/type-aliases/network/)
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:83
 
@@ -477,20 +186,7 @@ Current network (mainnet or testnet)
 
 ### signMessage()
 
-```ts
-signMessage: (message: {
-  from: string;
-  gasFeeCap: string;
-  gasLimit: number;
-  gasPremium: string;
-  method: number;
-  nonce: number;
-  params: string;
-  to: string;
-  value: string;
-  version: 0;
-}) => Promise<Signature>;
-```
+> **signMessage**: (`message`) => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:136
 
@@ -520,9 +216,7 @@ Sign filecoin message
 
 ### support
 
-```ts
-readonly support: "NotChecked" | "Detected" | "NotDetected" | "NotSupported";
-```
+> `readonly` **support**: `"NotChecked"` \| `"Detected"` \| `"NotDetected"` \| `"NotSupported"`
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:87
 
@@ -532,9 +226,7 @@ Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
 ### uid
 
-```ts
-readonly uid: string;
-```
+> `readonly` **uid**: `string`
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:67
 
@@ -544,9 +236,7 @@ Unique identifier for this wallet instance
 
 ### url
 
-```ts
-url: string;
-```
+> **url**: `string`
 
 Defined in: packages/iso-filecoin-wallets/dist/src/types.d.ts:79
 

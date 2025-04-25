@@ -5,9 +5,7 @@ prev: true
 title: "accountFromLotus"
 ---
 
-```ts
-function accountFromLotus(lotusHex: string, network: Network): IAccount;
-```
+> **accountFromLotus**(`lotusHex`, `network`): [`IAccount`](/api/iso-filecoin/types/interfaces/iaccount/)
 
 Defined in: [packages/iso-filecoin/src/wallet.js:131](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L131)
 

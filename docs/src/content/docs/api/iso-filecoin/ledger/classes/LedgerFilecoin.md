@@ -13,9 +13,7 @@ Ledger Filecoin app client
 
 ### Constructor
 
-```ts
-new LedgerFilecoin(transport: Transport): LedgerFilecoin;
-```
+> **new LedgerFilecoin**(`transport`): `LedgerFilecoin`
 
 Defined in: [packages/iso-filecoin/src/ledger.js:273](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L273)
 
@@ -33,9 +31,7 @@ Defined in: [packages/iso-filecoin/src/ledger.js:273](https://github.com/hugomrd
 
 ### close()
 
-```ts
-close(): Promise<void>;
-```
+> **close**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
 Defined in: [packages/iso-filecoin/src/ledger.js:406](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L406)
 
@@ -49,9 +45,7 @@ Close the transport
 
 ### getAddress()
 
-```ts
-getAddress(path: string, showOnDevice?: boolean): Promise<IAccount>;
-```
+> **getAddress**(`path`, `showOnDevice?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`IAccount`](/api/iso-filecoin/types/interfaces/iaccount/)\>
 
 Defined in: [packages/iso-filecoin/src/ledger.js:323](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L323)
 
@@ -76,9 +70,7 @@ https://github.com/LedgerHQ/app-filecoin/blob/develop/docs/APDUSPEC.md#ins_get_a
 
 ### getVersion()
 
-```ts
-getVersion(): Promise<string>;
-```
+> **getVersion**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`string`\>
 
 Defined in: [packages/iso-filecoin/src/ledger.js:297](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L297)
 
@@ -108,12 +100,7 @@ const version = await ledger.getVersion()
 
 ### sign()
 
-```ts
-sign(
-   path: string, 
-   message: Uint8Array<ArrayBufferLike>, 
-type?: "SECP256K1" | "DATA_CAP" | "CLIENT_DEAL" | "RAW_BYTES"): Promise<Uint8Array<ArrayBufferLike>>;
-```
+> **sign**(`path`, `message`, `type?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>\>
 
 Defined in: [packages/iso-filecoin/src/ledger.js:358](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L358)
 
@@ -135,9 +122,7 @@ Sign a message
 
 ### signRaw()
 
-```ts
-signRaw(path: string, message: Uint8Array<ArrayBufferLike>): Promise<Uint8Array<ArrayBufferLike>>;
-```
+> **signRaw**(`path`, `message`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>\>
 
 Defined in: [packages/iso-filecoin/src/ledger.js:395](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L395)
 
@@ -158,8 +143,6 @@ Sign raw bytes using prefixed message similar to EIP-191
 
 ### transport
 
-```ts
-transport: Transport;
-```
+> **transport**: `Transport`
 
 Defined in: [packages/iso-filecoin/src/ledger.js:274](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L274)

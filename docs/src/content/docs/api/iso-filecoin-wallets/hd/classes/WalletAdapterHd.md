@@ -5,11 +5,13 @@ prev: true
 title: "WalletAdapterHd"
 ---
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:34](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L34)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L31)
 
 HD wallet implementation
 
 ## Implements
+
+- [WalletAdapter](/api/iso-filecoin-wallets/local/interfaces/walletadapter/)
 
 ## Extends
 
@@ -21,11 +23,9 @@ HD wallet implementation
 
 #### Get Signature
 
-```ts
-get connected(): boolean;
-```
+> **get** **connected**(): `boolean`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:100](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L100)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:97](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L97)
 
 Whether the wallet is currently connected
 
@@ -39,11 +39,9 @@ Whether the wallet is currently connected
 
 #### Get Signature
 
-```ts
-get connecting(): boolean;
-```
+> **get** **connecting**(): `boolean`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:96](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L96)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:93](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L93)
 
 Whether the wallet is in the process of connecting
 
@@ -57,11 +55,9 @@ Whether the wallet is in the process of connecting
 
 #### Get Signature
 
-```ts
-get support(): "NotChecked" | "Detected" | "NotDetected" | "NotSupported";
-```
+> **get** **support**(): `"NotChecked"` \| `"Detected"` \| `"NotDetected"` \| `"NotSupported"`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:104](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L104)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:101](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L101)
 
 Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
@@ -73,17 +69,15 @@ Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
 ### Constructor
 
-```ts
-new WalletAdapterHd(config: WalletHDConfig): WalletAdapterHd;
-```
+> **new WalletAdapterHd**(`config`): `WalletAdapterHd`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:60](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L60)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:57](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L57)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `config` | [`WalletHDConfig`](/api/iso-filecoin-wallets/hd/interfaces/wallethdconfig/) |
+| `config` | [`WalletHDConfig`](/api/iso-filecoin-wallets/types/interfaces/wallethdconfig/) |
 
 #### Returns
 
@@ -91,63 +85,15 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:60](https://github.com/hugo
 
 #### Overrides
 
-```ts
-TypedEventTarget.constructor
-```
+`TypedEventTarget.constructor`
 
 ## Methods
 
-### addEventListener()
-
-```ts
-addEventListener<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `AddEventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherit Doc
-
-#### Inherited from
-
-```ts
-TypedEventTarget.addEventListener
-```
-
-***
-
 ### changeNetwork()
 
-```ts
-changeNetwork(network: Network): Promise<{
-  account: IAccount;
-  network: Network;
-}>;
-```
+> **changeNetwork**(`network`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/); `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:166](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L166)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:163](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L163)
 
 #### Parameters
 
@@ -157,20 +103,15 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:166](https://github.com/hug
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{
-  `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/);
-  `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/);
-\}\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/); `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
 ***
 
 ### checkSupport()
 
-```ts
-checkSupport(): Promise<void>;
-```
+> **checkSupport**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:109](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L109)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:106](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L106)
 
 Check if this wallet adapter is supported in the current environment
 
@@ -182,40 +123,28 @@ Check if this wallet adapter is supported in the current environment
 
 ### connect()
 
-```ts
-connect(params?: {
-  network: Network;
-}): Promise<{
-  account: IAccount;
-  network: Network;
-}>;
-```
+> **connect**(`params?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/); `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:127](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L127)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:124](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L124)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `params?` | \{ `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \} |
+| `params?` | \{ `network?`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \} |
 | `params.network?` | [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/) |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{
-  `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/);
-  `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/);
-\}\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/); `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
 ***
 
 ### deriveAccount()
 
-```ts
-deriveAccount(index: number): Promise<IAccount>;
-```
+> **deriveAccount**(`index`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:194](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L194)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:191](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L191)
 
 #### Parameters
 
@@ -231,11 +160,9 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:194](https://github.com/hug
 
 ### disconnect()
 
-```ts
-disconnect(): Promise<void>;
-```
+> **disconnect**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:156](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L156)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:153](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L153)
 
 Disconnect from the wallet
 
@@ -245,237 +172,11 @@ Disconnect from the wallet
 
 ***
 
-### dispatchEvent()
-
-```ts
-dispatchEvent(event: Event): boolean;
-```
-
-Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.dom.d.ts:8882
-
-Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
-
-[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/dispatchEvent)
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `event` | [`Event`](https://developer.mozilla.org/docs/Web/API/Event) |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.dispatchEvent
-```
-
-***
-
-### dispatchTypedEvent()
-
-```ts
-dispatchTypedEvent<T>(_type: T, event: WalletEvents[T]): boolean;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
-
-Dispatches a synthetic event to target and returns true if either
-event's cancelable attribute value is false or its preventDefault() method
-was not invoked, and false otherwise.
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* keyof [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/) |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `_type` | `T` |
-| `event` | [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\] |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.dispatchTypedEvent
-```
-
-***
-
-### emit()
-
-```ts
-emit<T>(...args: WalletEvents[T]["detail"] extends IsAny<WalletEvents[T]["detail"]> ? [T, unknown] : [T, WalletEvents[T]["detail"]]): boolean;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* keyof [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/) |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| ...`args` | [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\] *extends* `IsAny`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\]\> ? \[`T`, `unknown`\] : \[`T`, [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\]\] |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.emit
-```
-
-***
-
-### off()
-
-```ts
-off<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
-
-Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#removeeventlistener)
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `EventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.off
-```
-
-***
-
-### on()
-
-```ts
-on<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
-
-Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#addeventlistener)
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `AddEventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.on
-```
-
-***
-
-### removeEventListener()
-
-```ts
-removeEventListener<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `EventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherit Doc
-
-#### Inherited from
-
-```ts
-TypedEventTarget.removeEventListener
-```
-
-***
-
 ### setup()
 
-```ts
-setup(config: WalletHDMnemonicConfig & {
-  index: number;
-}): void;
-```
+> **setup**(`config`): `void`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:118](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L118)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:115](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L115)
 
 Setup the wallet from a mnemonic
 
@@ -483,7 +184,7 @@ Setup the wallet from a mnemonic
 
 | Parameter | Type |
 | ------ | ------ |
-| `config` | [`WalletHDMnemonicConfig`](/api/iso-filecoin-wallets/hd/interfaces/wallethdmnemonicconfig/) & \{ `index`: `number`; \} |
+| `config` | [`WalletHDMnemonicConfig`](/api/iso-filecoin-wallets/types/interfaces/wallethdmnemonicconfig/) & `object` |
 
 #### Returns
 
@@ -493,11 +194,9 @@ Setup the wallet from a mnemonic
 
 ### sign()
 
-```ts
-sign(data: Uint8Array<ArrayBufferLike>): Promise<Signature>;
-```
+> **sign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:215](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L215)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:212](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L212)
 
 #### Parameters
 
@@ -513,22 +212,9 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:215](https://github.com/hug
 
 ### signMessage()
 
-```ts
-signMessage(message: {
-  from: string;
-  gasFeeCap: string;
-  gasLimit: number;
-  gasPremium: string;
-  method: number;
-  nonce: number;
-  params: string;
-  to: string;
-  value: string;
-  version: 0;
-}): Promise<Signature>;
-```
+> **signMessage**(`message`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:231](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L231)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:228](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L228)
 
 #### Parameters
 
@@ -554,11 +240,9 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:231](https://github.com/hug
 
 ### fromMnemonic()
 
-```ts
-static fromMnemonic(config: WalletHDMnemonicConfig): WalletAdapterHd;
-```
+> `static` **fromMnemonic**(`config`): `WalletAdapterHd`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:85](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L85)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:82](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L82)
 
 HD wallet from mnemonic
 
@@ -566,7 +250,7 @@ HD wallet from mnemonic
 
 | Parameter | Type |
 | ------ | ------ |
-| `config` | [`WalletHDMnemonicConfig`](/api/iso-filecoin-wallets/hd/interfaces/wallethdmnemonicconfig/) |
+| `config` | [`WalletHDMnemonicConfig`](/api/iso-filecoin-wallets/types/interfaces/wallethdmnemonicconfig/) |
 
 #### Returns
 
@@ -576,17 +260,15 @@ HD wallet from mnemonic
 
 ### is()
 
-```ts
-static is(value: WalletAdapter): value is WalletAdapterHd;
-```
+> `static` **is**(`value`): `value is WalletAdapterHd`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:75](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L75)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L72)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `value` | [`WalletAdapter`](/api/iso-filecoin-wallets/filsnap/interfaces/walletadapter/) |
+| `value` | [`WalletAdapter`](/api/iso-filecoin-wallets/local/interfaces/walletadapter/) |
 
 #### Returns
 
@@ -596,33 +278,25 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:75](https://github.com/hugo
 
 ### \[symbol\]
 
-```ts
-[symbol]: boolean = true;
-```
+> **\[symbol\]**: `boolean` = `true`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:36](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L36)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L33)
 
 ***
 
 ### account
 
-```ts
-account: 
-  | undefined
-  | IAccount = undefined;
-```
+> **account**: `undefined` \| [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/) = `undefined`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:42](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L42)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:39](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L39)
 
 ***
 
 ### id
 
-```ts
-id: string = 'hd';
-```
+> **id**: `string` = `'hd'`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:38](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L38)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:35](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L35)
 
 Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
@@ -630,11 +304,9 @@ Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
 ### name
 
-```ts
-name: string = 'Burner Wallet';
-```
+> **name**: `string` = `'Burner Wallet'`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:39](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L39)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:36](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L36)
 
 Human readable wallet name
 
@@ -642,31 +314,25 @@ Human readable wallet name
 
 ### network
 
-```ts
-network: Network;
-```
+> **network**: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/)
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:67](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L67)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:64](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L64)
 
 ***
 
 ### signatureType
 
-```ts
-signatureType: "SECP256K1" | "BLS";
-```
+> **signatureType**: `"SECP256K1"` \| `"BLS"`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:68](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L68)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:65](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L65)
 
 ***
 
 ### uid
 
-```ts
-uid: string;
-```
+> **uid**: `string`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:37](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L37)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:34](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L34)
 
 Unique identifier for this wallet instance
 
@@ -674,10 +340,8 @@ Unique identifier for this wallet instance
 
 ### url
 
-```ts
-url: string = 'https://filecoin.io';
-```
+> **url**: `string` = `'https://filecoin.io'`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:40](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L40)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:37](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L37)
 
 Wallet homepage URL

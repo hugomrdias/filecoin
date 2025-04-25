@@ -5,9 +5,7 @@ prev: true
 title: "WalletBalanceResponse"
 ---
 
-```ts
-type WalletBalanceResponse = string;
-```
+> **WalletBalanceResponse** = `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:344](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L344)
 

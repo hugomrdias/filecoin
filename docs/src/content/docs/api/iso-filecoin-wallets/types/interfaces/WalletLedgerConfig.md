@@ -9,15 +9,13 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:56](https://github.com/h
 
 ## Extends
 
-- [`WalletConfig`](/api/iso-filecoin-wallets/filsnap/interfaces/walletconfig/)
+- [`WalletConfig`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/)
 
 ## Properties
 
 ### index?
 
-```ts
-optional index: number;
-```
+> `optional` **index**: `number`
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:61](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L61)
 
@@ -33,9 +31,7 @@ Derivation path address index
 
 ### name?
 
-```ts
-optional name: string;
-```
+> `optional` **name**: `string`
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:41](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L41)
 
@@ -43,15 +39,13 @@ Wallet name
 
 #### Inherited from
 
-[`WalletConfig`](/api/iso-filecoin-wallets/filsnap/interfaces/walletconfig/).[`name`](/api/iso-filecoin-wallets/filsnap/interfaces/walletconfig/#name)
+[`WalletConfig`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/).[`name`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/#name)
 
 ***
 
 ### network?
 
-```ts
-optional network: Network;
-```
+> `optional` **network**: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/)
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L31)
 
@@ -65,15 +59,13 @@ mainnet
 
 #### Inherited from
 
-[`WalletConfig`](/api/iso-filecoin-wallets/filsnap/interfaces/walletconfig/).[`network`](/api/iso-filecoin-wallets/filsnap/interfaces/walletconfig/#network)
+[`WalletConfig`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/).[`network`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/#network)
 
 ***
 
 ### signatureType?
 
-```ts
-optional signatureType: "SECP256K1" | "BLS";
-```
+> `optional` **signatureType**: `"SECP256K1"` \| `"BLS"`
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:36](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L36)
 
@@ -87,26 +79,19 @@ SECP256K1
 
 #### Inherited from
 
-[`WalletConfig`](/api/iso-filecoin-wallets/filsnap/interfaces/walletconfig/).[`signatureType`](/api/iso-filecoin-wallets/filsnap/interfaces/walletconfig/#signaturetype)
+[`WalletConfig`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/).[`signatureType`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/#signaturetype)
 
 ***
 
 ### transport
 
-```ts
-transport: {
-  create: () => Promise<Transport>;
-  isSupported: () => Promise<boolean>;
-};
-```
+> **transport**: `object`
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:62](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L62)
 
 #### create()
 
-```ts
-create: () => Promise<Transport>;
-```
+> **create**: () => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`Transport`\>
 
 ##### Returns
 
@@ -114,9 +99,7 @@ create: () => Promise<Transport>;
 
 #### isSupported()
 
-```ts
-isSupported: () => Promise<boolean>;
-```
+> **isSupported**: () => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`boolean`\>
 
 ##### Returns
 

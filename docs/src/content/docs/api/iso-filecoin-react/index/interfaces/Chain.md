@@ -11,34 +11,23 @@ Defined in: packages/iso-filecoin/dist/src/types.d.ts:108
 
 ### blockExplorers?
 
-```ts
-optional blockExplorers: {
-[key: string]: ChainBlockExplorer;
-  default: ChainBlockExplorer;
-};
-```
+> `optional` **blockExplorers**: `object`
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:121
 
 #### Index Signature
 
-```ts
-[key: string]: ChainBlockExplorer
-```
+\[`key`: `string`\]: [`ChainBlockExplorer`](/api/iso-filecoin/types/type-aliases/chainblockexplorer/)
 
 #### default
 
-```ts
-default: ChainBlockExplorer;
-```
+> **default**: [`ChainBlockExplorer`](/api/iso-filecoin/types/type-aliases/chainblockexplorer/)
 
 ***
 
 ### caipNetworkId
 
-```ts
-caipNetworkId: `${string}:${string}`;
-```
+> **caipNetworkId**: `` `${string}:${string}` ``
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:132
 
@@ -48,9 +37,7 @@ CAIP-2 ID
 
 ### chainId
 
-```ts
-chainId: string;
-```
+> **chainId**: `string`
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:136
 
@@ -60,9 +47,7 @@ Chain ID 0x prefixed hex string
 
 ### chainNamespace
 
-```ts
-chainNamespace: string;
-```
+> **chainNamespace**: `string`
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:128
 
@@ -70,27 +55,19 @@ Defined in: packages/iso-filecoin/dist/src/types.d.ts:128
 
 ### contracts?
 
-```ts
-optional contracts: {
-[key: string]: ChainContract;
-};
-```
+> `optional` **contracts**: `object`
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:125
 
 #### Index Signature
 
-```ts
-[key: string]: ChainContract
-```
+\[`key`: `string`\]: [`ChainContract`](/api/iso-filecoin/types/type-aliases/chaincontract/)
 
 ***
 
 ### iconUrls?
 
-```ts
-optional iconUrls: string[];
-```
+> `optional` **iconUrls**: `string`[]
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:137
 
@@ -98,9 +75,7 @@ Defined in: packages/iso-filecoin/dist/src/types.d.ts:137
 
 ### id
 
-```ts
-id: string | number;
-```
+> **id**: `string` \| `number`
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:109
 
@@ -108,9 +83,7 @@ Defined in: packages/iso-filecoin/dist/src/types.d.ts:109
 
 ### name
 
-```ts
-name: string;
-```
+> **name**: `string`
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:110
 
@@ -118,65 +91,42 @@ Defined in: packages/iso-filecoin/dist/src/types.d.ts:110
 
 ### nativeCurrency
 
-```ts
-nativeCurrency: {
-  decimals: number;
-  name: string;
-  symbol: string;
-};
-```
+> **nativeCurrency**: `object`
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:112
 
 #### decimals
 
-```ts
-decimals: number;
-```
+> **decimals**: `number`
 
 #### name
 
-```ts
-name: string;
-```
+> **name**: `string`
 
 #### symbol
 
-```ts
-symbol: string;
-```
+> **symbol**: `string`
 
 ***
 
 ### rpcUrls
 
-```ts
-rpcUrls: {
-[key: string]: ChainRpcUrls;
-  default: ChainRpcUrls;
-};
-```
+> **rpcUrls**: `object`
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:117
 
 #### Index Signature
 
-```ts
-[key: string]: ChainRpcUrls
-```
+\[`key`: `string`\]: [`ChainRpcUrls`](/api/iso-filecoin/types/type-aliases/chainrpcurls/)
 
 #### default
 
-```ts
-default: ChainRpcUrls;
-```
+> **default**: [`ChainRpcUrls`](/api/iso-filecoin/types/type-aliases/chainrpcurls/)
 
 ***
 
 ### testnet?
 
-```ts
-optional testnet: boolean;
-```
+> `optional` **testnet**: `boolean`
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:111

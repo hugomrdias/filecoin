@@ -5,11 +5,7 @@ prev: true
 title: "useConnect"
 ---
 
-```ts
-function useConnect(): UseMutationResult<AccountNetwork, Error, {
-  adapter: WalletAdapter;
-}, void> & Pick<FilecoinContextType, "adapter" | "adapters" | "loading">;
-```
+> **useConnect**(): `UseMutationResult`\<[`AccountNetwork`](/api/iso-filecoin-react/types/interfaces/accountnetwork/), [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error), \{ `adapter`: [`WalletAdapter`](/api/iso-filecoin-react/index/interfaces/walletadapter/); \}, `void`\> & [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`FilecoinContextType`](/api/iso-filecoin-react/types/type-aliases/filecoincontexttype/), `"adapter"` \| `"adapters"` \| `"loading"`\>
 
 Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:426](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L426)
 
@@ -17,9 +13,7 @@ Hook to connect a wallet adapter
 
 ## Returns
 
-`UseMutationResult`\<[`AccountNetwork`](/api/iso-filecoin-react/types/interfaces/accountnetwork/), [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error), \{
-  `adapter`: [`WalletAdapter`](/api/iso-filecoin-react/index/interfaces/walletadapter/);
-\}, `void`\> & [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`FilecoinContextType`](/api/iso-filecoin-react/types/type-aliases/filecoincontexttype/), `"adapter"` \| `"adapters"` \| `"loading"`\>
+`UseMutationResult`\<[`AccountNetwork`](/api/iso-filecoin-react/types/interfaces/accountnetwork/), [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error), \{ `adapter`: [`WalletAdapter`](/api/iso-filecoin-react/index/interfaces/walletadapter/); \}, `void`\> & [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`FilecoinContextType`](/api/iso-filecoin-react/types/type-aliases/filecoincontexttype/), `"adapter"` \| `"adapters"` \| `"loading"`\>
 
 Connection mutation and state
 

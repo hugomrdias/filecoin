@@ -13,9 +13,7 @@ JSON-RPC 2.0
 
 ### code
 
-```ts
-code: number;
-```
+> **code**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:202](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L202)
 
@@ -23,9 +21,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:202](https://github.com/hugomrdi
 
 ### data?
 
-```ts
-optional data: JsonValue;
-```
+> `optional` **data**: `JsonValue`
 
 Defined in: [packages/iso-filecoin/src/types.ts:204](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L204)
 
@@ -33,8 +29,6 @@ Defined in: [packages/iso-filecoin/src/types.ts:204](https://github.com/hugomrdi
 
 ### message
 
-```ts
-message: string;
-```
+> **message**: `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:203](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L203)

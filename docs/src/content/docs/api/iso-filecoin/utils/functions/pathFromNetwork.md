@@ -5,9 +5,7 @@ prev: true
 title: "pathFromNetwork"
 ---
 
-```ts
-function pathFromNetwork(network: Network, index?: number): string;
-```
+> **pathFromNetwork**(`network`, `index?`): `string`
 
 Defined in: [packages/iso-filecoin/src/utils.js:114](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L114)
 

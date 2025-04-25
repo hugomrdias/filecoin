@@ -5,12 +5,7 @@ prev: true
 title: "verify"
 ---
 
-```ts
-function verify(
-   signature: Signature, 
-   data: Uint8Array<ArrayBufferLike>, 
-   publicKey: Uint8Array<ArrayBufferLike>): boolean;
-```
+> **verify**(`signature`, `data`, `publicKey`): `boolean`
 
 Defined in: [packages/iso-filecoin/src/wallet.js:273](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L273)
 

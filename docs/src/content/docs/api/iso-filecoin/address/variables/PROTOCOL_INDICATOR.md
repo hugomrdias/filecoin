@@ -5,15 +5,7 @@ prev: true
 title: "PROTOCOL_INDICATOR"
 ---
 
-```ts
-const PROTOCOL_INDICATOR: {
-  ACTOR: 2;
-  BLS: 3;
-  DELEGATED: 4;
-  ID: 0;
-  SECP256K1: 1;
-};
-```
+> `const` **PROTOCOL\_INDICATOR**: `object`
 
 Defined in: [packages/iso-filecoin/src/address.js:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/address.js#L33)
 
@@ -23,30 +15,20 @@ Protocol indicator
 
 ### ACTOR
 
-```ts
-readonly ACTOR: 2 = 2;
-```
+> `readonly` **ACTOR**: `2` = `2`
 
 ### BLS
 
-```ts
-readonly BLS: 3 = 3;
-```
+> `readonly` **BLS**: `3` = `3`
 
 ### DELEGATED
 
-```ts
-readonly DELEGATED: 4 = 4;
-```
+> `readonly` **DELEGATED**: `4` = `4`
 
 ### ID
 
-```ts
-readonly ID: 0 = 0;
-```
+> `readonly` **ID**: `0` = `0`
 
 ### SECP256K1
 
-```ts
-readonly SECP256K1: 1 = 1;
-```
+> `readonly` **SECP256K1**: `1` = `1`

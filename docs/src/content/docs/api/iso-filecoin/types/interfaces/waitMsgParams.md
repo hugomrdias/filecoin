@@ -11,9 +11,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:370](https://github.com/hugomrdi
 
 ### cid
 
-```ts
-cid: CID;
-```
+> **cid**: [`CID`](/api/iso-filecoin/types/type-aliases/cid/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:371](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L371)
 
@@ -21,9 +19,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:371](https://github.com/hugomrdi
 
 ### confidence?
 
-```ts
-optional confidence: number;
-```
+> `optional` **confidence**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:377](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L377)
 
@@ -39,9 +35,7 @@ Confidence depth to wait for
 
 ### lookback?
 
-```ts
-optional lookback: number;
-```
+> `optional` **lookback**: `number`
 
 Defined in: [packages/iso-filecoin/src/types.ts:383](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L383)
 

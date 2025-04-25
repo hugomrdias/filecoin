@@ -17,9 +17,7 @@ Options for RPC-based address methods with safety
 
 ### cache?
 
-```ts
-optional cache: Cache;
-```
+> `optional` **cache**: [`Cache`](/api/iso-filecoin/types/type-aliases/cache/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:80](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L80)
 
@@ -31,9 +29,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:80](https://github.com/hugomrdia
 
 ### rpc
 
-```ts
-rpc: RPC;
-```
+> **rpc**: [`RPC`](/api/iso-filecoin/rpc/classes/rpc/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:79](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L79)
 
@@ -45,8 +41,6 @@ Defined in: [packages/iso-filecoin/src/types.ts:79](https://github.com/hugomrdia
 
 ### safety?
 
-```ts
-optional safety: Safety;
-```
+> `optional` **safety**: [`Safety`](/api/iso-filecoin/types/type-aliases/safety/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:89](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L89)

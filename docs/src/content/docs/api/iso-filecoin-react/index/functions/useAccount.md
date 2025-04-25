@@ -5,18 +5,7 @@ prev: true
 title: "useAccount"
 ---
 
-```ts
-function useAccount(): {
-  account:   | undefined
-     | IAccount;
-  adapter:   | undefined
-     | WalletAdapter;
-  address: string;
-  chain: Chain;
-  network: Network;
-  state: ConnectionState;
-};
-```
+> **useAccount**(): `object`
 
 Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:351](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L351)
 
@@ -28,53 +17,37 @@ Account state
 
 ### account
 
-```ts
-account: 
-  | undefined
-  | IAccount;
-```
+> **account**: `undefined` \| [`IAccount`](/api/iso-filecoin-react/types/interfaces/iaccount/)
 
 Currently connected account
 
 ### adapter
 
-```ts
-adapter: 
-  | undefined
-  | WalletAdapter;
-```
+> **adapter**: `undefined` \| [`WalletAdapter`](/api/iso-filecoin-react/index/interfaces/walletadapter/)
 
 Currently selected wallet adapter
 
 ### address
 
-```ts
-address: string;
-```
+> **address**: `string`
 
 Current address
 
 ### chain
 
-```ts
-chain: Chain;
-```
+> **chain**: [`Chain`](/api/iso-filecoin-react/index/interfaces/chain/)
 
 Current chain
 
 ### network
 
-```ts
-network: Network;
-```
+> **network**: [`Network`](/api/iso-filecoin-react/types/type-aliases/network/)
 
 Current network (mainnet or testnet)
 
 ### state
 
-```ts
-state: ConnectionState;
-```
+> **state**: [`ConnectionState`](/api/iso-filecoin-react/types/type-aliases/connectionstate/)
 
 Current connection state
 

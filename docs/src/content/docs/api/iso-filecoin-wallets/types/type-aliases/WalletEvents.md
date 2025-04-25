@@ -5,16 +5,7 @@ prev: true
 title: "WalletEvents"
 ---
 
-```ts
-type WalletEvents = {
-  accountChanged: CustomEvent<IAccount>;
-  connect: CustomEvent<AccountNetwork>;
-  disconnect: CustomEvent;
-  error: CustomEvent<Error>;
-  networkChanged: CustomEvent<AccountNetwork>;
-  stateChanged: CustomEvent<WalletSupportType>;
-};
-```
+> **WalletEvents** = `object`
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:17](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L17)
 
@@ -22,9 +13,7 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:17](https://github.com/h
 
 ### accountChanged
 
-```ts
-accountChanged: CustomEvent<IAccount>;
-```
+> **accountChanged**: [`CustomEvent`](https://developer.mozilla.org/docs/Web/API/CustomEvent)\<[`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/)\>
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:18](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L18)
 
@@ -32,9 +21,7 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:18](https://github.com/h
 
 ### connect
 
-```ts
-connect: CustomEvent<AccountNetwork>;
-```
+> **connect**: [`CustomEvent`](https://developer.mozilla.org/docs/Web/API/CustomEvent)\<[`AccountNetwork`](/api/iso-filecoin-wallets/types/interfaces/accountnetwork/)\>
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:21](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L21)
 
@@ -42,9 +29,7 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:21](https://github.com/h
 
 ### disconnect
 
-```ts
-disconnect: CustomEvent;
-```
+> **disconnect**: [`CustomEvent`](https://developer.mozilla.org/docs/Web/API/CustomEvent)
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:20](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L20)
 
@@ -52,9 +37,7 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:20](https://github.com/h
 
 ### error
 
-```ts
-error: CustomEvent<Error>;
-```
+> **error**: [`CustomEvent`](https://developer.mozilla.org/docs/Web/API/CustomEvent)\<[`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\>
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:22](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L22)
 
@@ -62,9 +45,7 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:22](https://github.com/h
 
 ### networkChanged
 
-```ts
-networkChanged: CustomEvent<AccountNetwork>;
-```
+> **networkChanged**: [`CustomEvent`](https://developer.mozilla.org/docs/Web/API/CustomEvent)\<[`AccountNetwork`](/api/iso-filecoin-wallets/types/interfaces/accountnetwork/)\>
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:19](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L19)
 
@@ -72,8 +53,6 @@ Defined in: [packages/iso-filecoin-wallets/src/types.ts:19](https://github.com/h
 
 ### stateChanged
 
-```ts
-stateChanged: CustomEvent<WalletSupportType>;
-```
+> **stateChanged**: [`CustomEvent`](https://developer.mozilla.org/docs/Web/API/CustomEvent)\<[`WalletSupportType`](/api/iso-filecoin-wallets/types/type-aliases/walletsupporttype/)\>
 
 Defined in: [packages/iso-filecoin-wallets/src/types.ts:23](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L23)

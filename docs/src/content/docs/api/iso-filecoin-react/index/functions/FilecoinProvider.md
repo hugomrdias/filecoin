@@ -5,9 +5,7 @@ prev: true
 title: "FilecoinProvider"
 ---
 
-```ts
-function FilecoinProvider(props: PropsWithChildren<FilecoinProviderProps>): FunctionComponentElement<ProviderProps<FilecoinContextType>>;
-```
+> **FilecoinProvider**(`props`): `FunctionComponentElement`\<`ProviderProps`\<[`FilecoinContextType`](/api/iso-filecoin-react/types/type-aliases/filecoincontexttype/)\>\>
 
 Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:105](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L105)
 

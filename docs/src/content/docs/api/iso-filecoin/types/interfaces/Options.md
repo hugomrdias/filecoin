@@ -11,9 +11,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:231](https://github.com/hugomrdi
 
 ### api
 
-```ts
-api: string | URL;
-```
+> **api**: `string` \| [`URL`](https://developer.mozilla.org/docs/Web/API/URL)
 
 Defined in: [packages/iso-filecoin/src/types.ts:233](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L233)
 
@@ -21,23 +19,13 @@ Defined in: [packages/iso-filecoin/src/types.ts:233](https://github.com/hugomrdi
 
 ### fetch()?
 
-```ts
-optional fetch: {
-  (input: URL | RequestInfo, init?: RequestInit): Promise<Response>;
-  (input: 
-  | string
-  | URL
-  | Request, init?: RequestInit): Promise<Response>;
-};
-```
+> `optional` **fetch**: \{(`input`, `init?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Response`](https://developer.mozilla.org/docs/Web/API/Response)\>; (`input`, `init?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Response`](https://developer.mozilla.org/docs/Web/API/Response)\>; \}
 
 Defined in: [packages/iso-filecoin/src/types.ts:235](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L235)
 
 #### Call Signature
 
-```ts
-(input: URL | RequestInfo, init?: RequestInit): Promise<Response>;
-```
+> (`input`, `init?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Response`](https://developer.mozilla.org/docs/Web/API/Response)\>
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch)
 
@@ -54,12 +42,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:235](https://github.com/hugomrdi
 
 #### Call Signature
 
-```ts
-(input: 
-  | string
-  | URL
-| Request, init?: RequestInit): Promise<Response>;
-```
+> (`input`, `init?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Response`](https://developer.mozilla.org/docs/Web/API/Response)\>
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch)
 
@@ -67,7 +50,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:235](https://github.com/hugomrdi
 
 | Parameter | Type |
 | ------ | ------ |
-| `input` | \| `string` \| [`URL`](https://developer.mozilla.org/docs/Web/API/URL) \| [`Request`](https://developer.mozilla.org/docs/Web/API/Request) |
+| `input` | `string` \| [`URL`](https://developer.mozilla.org/docs/Web/API/URL) \| [`Request`](https://developer.mozilla.org/docs/Web/API/Request) |
 | `init?` | `RequestInit` |
 
 ##### Returns
@@ -78,9 +61,7 @@ Defined in: [packages/iso-filecoin/src/types.ts:235](https://github.com/hugomrdi
 
 ### network?
 
-```ts
-optional network: Network;
-```
+> `optional` **network**: [`Network`](/api/iso-filecoin/types/type-aliases/network/)
 
 Defined in: [packages/iso-filecoin/src/types.ts:234](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L234)
 
@@ -88,8 +69,6 @@ Defined in: [packages/iso-filecoin/src/types.ts:234](https://github.com/hugomrdi
 
 ### token?
 
-```ts
-optional token: string;
-```
+> `optional` **token**: `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:232](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L232)

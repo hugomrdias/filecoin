@@ -11,18 +11,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.33.0",
-    "astro": "^5.5.4",
-    "expressive-code-twoslash": "^0.4.0",
-    "starlight-llms-txt": "^0.5.0",
+    "@astrojs/starlight": "^0.34.1",
+    "astro": "^5.7.5",
+    "expressive-code-twoslash": "^0.5.0",
+    "starlight-llms-txt": "^0.5.1",
     "starlight-typedoc": "^0.21.1",
-    "typedoc": "^0.28.2",
-    "typedoc-plugin-markdown": "^4.6.2"
+    "typedoc": "^0.28.3",
+    "typedoc-plugin-markdown": "^4.6.3"
   },
   "devDependencies": {
     "@ledgerhq/hw-transport-webusb": "^6.29.4",
-    "@tanstack/react-query": "^5.72.2",
-    "@types/react": "^19.0.12",
+    "@tanstack/react-query": "^5.74.4",
+    "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "iso-base": "^4.0.2",
     "iso-filecoin": "workspace:^",

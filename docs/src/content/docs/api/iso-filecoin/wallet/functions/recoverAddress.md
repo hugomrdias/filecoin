@@ -5,14 +5,7 @@ prev: true
 title: "recoverAddress"
 ---
 
-```ts
-function recoverAddress(
-   signature: Signature, 
-   data: Uint8Array<ArrayBufferLike>, 
-   network: Network): 
-  | AddressSecp256k1
-  | AddressBLS;
-```
+> **recoverAddress**(`signature`, `data`, `network`): [`AddressSecp256k1`](/api/iso-filecoin/address/classes/addresssecp256k1/) \| [`AddressBLS`](/api/iso-filecoin/address/classes/addressbls/)
 
 Defined in: [packages/iso-filecoin/src/wallet.js:331](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L331)
 
@@ -26,5 +19,4 @@ Defined in: [packages/iso-filecoin/src/wallet.js:331](https://github.com/hugomrd
 
 ## Returns
 
-  \| [`AddressSecp256k1`](/api/iso-filecoin/address/classes/addresssecp256k1/)
-  \| [`AddressBLS`](/api/iso-filecoin/address/classes/addressbls/)
+[`AddressSecp256k1`](/api/iso-filecoin/address/classes/addresssecp256k1/) \| [`AddressBLS`](/api/iso-filecoin/address/classes/addressbls/)

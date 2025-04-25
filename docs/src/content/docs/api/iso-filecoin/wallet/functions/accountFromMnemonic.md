@@ -5,20 +5,7 @@ prev: true
 title: "accountFromMnemonic"
 ---
 
-```ts
-function accountFromMnemonic(
-   mnemonic: string, 
-   type: "SECP256K1" | "BLS", 
-   path: string, 
-   password?: string, 
-   network?: Network): {
-  address: IAddress;
-  path: string;
-  privateKey: Uint8Array;
-  publicKey: Uint8Array;
-  type: "SECP256K1" | "BLS";
-};
-```
+> **accountFromMnemonic**(`mnemonic`, `type`, `path`, `password?`, `network?`): `object`
 
 Defined in: [packages/iso-filecoin/src/wallet.js:60](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L60)
 
@@ -38,34 +25,24 @@ Get HD account from mnemonic
 
 ### address
 
-```ts
-address: IAddress;
-```
+> **address**: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/)
 
 ### path
 
-```ts
-path: string;
-```
+> **path**: `string`
 
 Derivation path - only for HD wallets
 
 ### privateKey
 
-```ts
-privateKey: Uint8Array;
-```
+> **privateKey**: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)
 
 Private key - only for RAW and HD wallets
 
 ### publicKey
 
-```ts
-publicKey: Uint8Array;
-```
+> **publicKey**: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)
 
 ### type
 
-```ts
-type: "SECP256K1" | "BLS";
-```
+> **type**: `"SECP256K1"` \| `"BLS"`

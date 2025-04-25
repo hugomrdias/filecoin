@@ -5,11 +5,7 @@ prev: true
 title: "CID"
 ---
 
-```ts
-type CID = {
-  /: string;
-};
-```
+> **CID** = `object`
 
 Defined in: [packages/iso-filecoin/src/types.ts:42](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L42)
 
@@ -17,8 +13,6 @@ Defined in: [packages/iso-filecoin/src/types.ts:42](https://github.com/hugomrdia
 
 ### /
 
-```ts
-/: string;
-```
+> **/**: `string`
 
 Defined in: [packages/iso-filecoin/src/types.ts:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L43)

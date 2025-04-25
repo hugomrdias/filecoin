@@ -5,9 +5,7 @@ prev: true
 title: "checksumEthAddress"
 ---
 
-```ts
-function checksumEthAddress(address: string): string;
-```
+> **checksumEthAddress**(`address`): `string`
 
 Defined in: [packages/iso-filecoin/src/utils.js:243](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L243)
 

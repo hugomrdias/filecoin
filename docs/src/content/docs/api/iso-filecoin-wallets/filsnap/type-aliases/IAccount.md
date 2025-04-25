@@ -5,8 +5,6 @@ prev: true
 title: "IAccount"
 ---
 
-```ts
-type IAccount = SetRequired<IAccount, "path">;
-```
+> **IAccount** = `SetRequired`\<[`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/), `"path"`\>
 
 Defined in: packages/iso-filecoin/dist/src/types.d.ts:43

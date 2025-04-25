@@ -5,11 +5,13 @@ prev: true
 title: "WalletAdapterFilsnap"
 ---
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:27](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L27)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:28](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L28)
 
 Filsnap wallet implementation
 
 ## Implements
+
+- [WalletAdapter](/api/iso-filecoin-wallets/local/interfaces/walletadapter/)
 
 ## Extends
 
@@ -21,11 +23,9 @@ Filsnap wallet implementation
 
 #### Get Signature
 
-```ts
-get connected(): boolean;
-```
+> **get** **connected**(): `boolean`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:147](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L147)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:148](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L148)
 
 Whether the wallet is currently connected
 
@@ -39,11 +39,9 @@ Whether the wallet is currently connected
 
 #### Get Signature
 
-```ts
-get connecting(): boolean;
-```
+> **get** **connecting**(): `boolean`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:143](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L143)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:144](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L144)
 
 Whether the wallet is in the process of connecting
 
@@ -57,11 +55,9 @@ Whether the wallet is in the process of connecting
 
 #### Get Signature
 
-```ts
-get support(): "NotChecked" | "Detected" | "NotDetected" | "NotSupported";
-```
+> **get** **support**(): `"NotChecked"` \| `"Detected"` \| `"NotDetected"` \| `"NotSupported"`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:151](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L151)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:152](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L152)
 
 Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
@@ -73,21 +69,15 @@ Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
 ### Constructor
 
-```ts
-new WalletAdapterFilsnap(config: WalletConfig & {
-  index: number;
-  syncWithProvider: boolean;
-  version: string;
-}): WalletAdapterFilsnap;
-```
+> **new WalletAdapterFilsnap**(`config`): `WalletAdapterFilsnap`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:63](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L63)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:64](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L64)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `config` | [`WalletConfig`](/api/iso-filecoin-wallets/filsnap/interfaces/walletconfig/) & \{ `index`: `number`; `syncWithProvider`: `boolean`; `version`: `string`; \} |
+| `config` | [`WalletConfig`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/) & `object` |
 
 #### Returns
 
@@ -95,69 +85,15 @@ Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:63](https://github.com
 
 #### Overrides
 
-```ts
-TypedEventTarget.constructor
-```
+`TypedEventTarget.constructor`
 
 ## Methods
 
-### addEventListener()
-
-```ts
-addEventListener<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `AddEventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherit Doc
-
-#### Inherited from
-
-```ts
-TypedEventTarget.addEventListener
-```
-
-***
-
 ### changeNetwork()
 
-```ts
-changeNetwork(network: Network): Promise<{
-  account: {
-     address: IAddress;
-     path: string;
-     privateKey: Uint8Array<ArrayBufferLike>;
-     publicKey: Uint8Array;
-     type: "SECP256K1" | "BLS";
-  };
-  network: Network;
-}>;
-```
+> **changeNetwork**(`network`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: \{ `address`: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/); `path`: `string`; `privateKey?`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>; `publicKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array); `type`: `"SECP256K1"` \| `"BLS"`; \}; `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:158](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L158)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:159](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L159)
 
 #### Parameters
 
@@ -167,26 +103,15 @@ Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:158](https://github.co
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{
-  `account`: \{
-     `address`: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/);
-     `path`: `string`;
-     `privateKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>;
-     `publicKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array);
-     `type`: `"SECP256K1"` \| `"BLS"`;
-  \};
-  `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/);
-\}\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: \{ `address`: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/); `path`: `string`; `privateKey?`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>; `publicKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array); `type`: `"SECP256K1"` \| `"BLS"`; \}; `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
 ***
 
 ### checkSupport()
 
-```ts
-checkSupport(): Promise<void>;
-```
+> **checkSupport**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:263](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L263)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:264](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L264)
 
 Check if this wallet adapter is supported in the current environment
 
@@ -198,58 +123,28 @@ Check if this wallet adapter is supported in the current environment
 
 ### connect()
 
-```ts
-connect(params?: {
-  network: Network;
-}): Promise<{
-  account: {
-     address: IAddress;
-     path: string;
-     privateKey: Uint8Array<ArrayBufferLike>;
-     publicKey: Uint8Array;
-     type: "SECP256K1" | "BLS";
-  };
-  network: Network;
-}>;
-```
+> **connect**(`params?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: \{ `address`: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/); `path`: `string`; `privateKey?`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>; `publicKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array); `type`: `"SECP256K1"` \| `"BLS"`; \}; `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:85](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L85)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:86](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L86)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `params?` | \{ `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \} |
+| `params?` | \{ `network?`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \} |
 | `params.network?` | [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/) |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{
-  `account`: \{
-     `address`: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/);
-     `path`: `string`;
-     `privateKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>;
-     `publicKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array);
-     `type`: `"SECP256K1"` \| `"BLS"`;
-  \};
-  `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/);
-\}\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: \{ `address`: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/); `path`: `string`; `privateKey?`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>; `publicKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array); `type`: `"SECP256K1"` \| `"BLS"`; \}; `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
 ***
 
 ### deriveAccount()
 
-```ts
-deriveAccount(_index: number): Promise<{
-  address: IAddress;
-  path: string;
-  privateKey: Uint8Array<ArrayBufferLike>;
-  publicKey: Uint8Array;
-  type: "SECP256K1" | "BLS";
-}>;
-```
+> **deriveAccount**(`_index`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `address`: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/); `path`: `string`; `privateKey?`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>; `publicKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array); `type`: `"SECP256K1"` \| `"BLS"`; \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:198](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L198)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:199](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L199)
 
 #### Parameters
 
@@ -259,23 +154,15 @@ Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:198](https://github.co
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{
-  `address`: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/);
-  `path`: `string`;
-  `privateKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>;
-  `publicKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array);
-  `type`: `"SECP256K1"` \| `"BLS"`;
-\}\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `address`: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/); `path`: `string`; `privateKey?`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>; `publicKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array); `type`: `"SECP256K1"` \| `"BLS"`; \}\>
 
 ***
 
 ### disconnect()
 
-```ts
-disconnect(): Promise<void>;
-```
+> **disconnect**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:275](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L275)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:276](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L276)
 
 Disconnect from the wallet
 
@@ -285,235 +172,11 @@ Disconnect from the wallet
 
 ***
 
-### dispatchEvent()
-
-```ts
-dispatchEvent(event: Event): boolean;
-```
-
-Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.dom.d.ts:8882
-
-Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
-
-[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/dispatchEvent)
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `event` | [`Event`](https://developer.mozilla.org/docs/Web/API/Event) |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.dispatchEvent
-```
-
-***
-
-### dispatchTypedEvent()
-
-```ts
-dispatchTypedEvent<T>(_type: T, event: WalletEvents[T]): boolean;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
-
-Dispatches a synthetic event to target and returns true if either
-event's cancelable attribute value is false or its preventDefault() method
-was not invoked, and false otherwise.
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* keyof [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/) |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `_type` | `T` |
-| `event` | [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\] |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.dispatchTypedEvent
-```
-
-***
-
-### emit()
-
-```ts
-emit<T>(...args: WalletEvents[T]["detail"] extends IsAny<WalletEvents[T]["detail"]> ? [T, unknown] : [T, WalletEvents[T]["detail"]]): boolean;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* keyof [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/) |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| ...`args` | [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\] *extends* `IsAny`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\]\> ? \[`T`, `unknown`\] : \[`T`, [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\]\] |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.emit
-```
-
-***
-
-### off()
-
-```ts
-off<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
-
-Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#removeeventlistener)
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `EventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.off
-```
-
-***
-
-### on()
-
-```ts
-on<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
-
-Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#addeventlistener)
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `AddEventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.on
-```
-
-***
-
-### removeEventListener()
-
-```ts
-removeEventListener<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `EventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherit Doc
-
-#### Inherited from
-
-```ts
-TypedEventTarget.removeEventListener
-```
-
-***
-
 ### sign()
 
-```ts
-sign(data: Uint8Array<ArrayBufferLike>): Promise<Signature>;
-```
+> **sign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:227](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L227)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:228](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L228)
 
 #### Parameters
 
@@ -529,22 +192,9 @@ Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:227](https://github.co
 
 ### signMessage()
 
-```ts
-signMessage(message: {
-  from: string;
-  gasFeeCap: string;
-  gasLimit: number;
-  gasPremium: string;
-  method: number;
-  nonce: number;
-  params: string;
-  to: string;
-  value: string;
-  version: 0;
-}): Promise<Signature>;
-```
+> **signMessage**(`message`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:245](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L245)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:246](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L246)
 
 #### Parameters
 
@@ -570,17 +220,15 @@ Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:245](https://github.co
 
 ### is()
 
-```ts
-static is(value: WalletAdapter): value is WalletAdapterFilsnap;
-```
+> `static` **is**(`value`): `value is WalletAdapterFilsnap`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:78](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L78)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:79](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L79)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `value` | [`WalletAdapter`](/api/iso-filecoin-wallets/filsnap/interfaces/walletadapter/) |
+| `value` | [`WalletAdapter`](/api/iso-filecoin-wallets/local/interfaces/walletadapter/) |
 
 #### Returns
 
@@ -590,97 +238,63 @@ Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:78](https://github.com
 
 ### \[symbol\]
 
-```ts
-[symbol]: boolean = true;
-```
+> **\[symbol\]**: `boolean` = `true`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:29](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L29)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:30](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L30)
 
 ***
 
 ### account
 
-```ts
-account: 
-  | undefined
-  | {
-  address: IAddress;
-  path: string;
-  privateKey: Uint8Array<ArrayBufferLike>;
-  publicKey: Uint8Array;
-  type: "SECP256K1" | "BLS";
-} = undefined;
-```
+> **account**: `undefined` \| \{ `address`: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/); `path`: `string`; `privateKey?`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>; `publicKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array); `type`: `"SECP256K1"` \| `"BLS"`; \} = `undefined`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:36](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L36)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:37](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L37)
 
 #### Type declaration
 
 `undefined`
 
-```ts
-{
-  address: IAddress;
-  path: string;
-  privateKey: Uint8Array<ArrayBufferLike>;
-  publicKey: Uint8Array;
-  type: "SECP256K1" | "BLS";
-}
-```
+\{ `address`: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/); `path`: `string`; `privateKey?`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>; `publicKey`: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array); `type`: `"SECP256K1"` \| `"BLS"`; \}
 
 #### address
 
-```ts
-address: IAddress;
-```
+> **address**: [`IAddress`](/api/iso-filecoin/address/interfaces/iaddress/)
 
 #### path
 
-```ts
-path: string;
-```
+> **path**: `string`
 
 Derivation path - only for HD wallets
 
 #### privateKey?
 
-```ts
-optional privateKey: Uint8Array<ArrayBufferLike>;
-```
+> `optional` **privateKey**: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>
 
 Private key - only for RAW and HD wallets
 
 #### publicKey
 
-```ts
-publicKey: Uint8Array;
-```
+> **publicKey**: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)
 
 #### type
 
-```ts
-type: "SECP256K1" | "BLS";
-```
+> **type**: `"SECP256K1"` \| `"BLS"`
 
 ***
 
 ### filsnap
 
-```ts
-filsnap: undefined | FilsnapAdapter;
-```
+> **filsnap**: `undefined` \| `FilsnapAdapter`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:42](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L42)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L43)
 
 ***
 
 ### id
 
-```ts
-id: string = 'filsnap';
-```
+> **id**: `string` = `'filsnap'`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L31)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:32](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L32)
 
 Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
@@ -688,11 +302,9 @@ Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
 ### name
 
-```ts
-name: string = 'Filsnap';
-```
+> **name**: `string` = `'Filsnap'`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:32](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L32)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L33)
 
 Human readable wallet name
 
@@ -700,41 +312,33 @@ Human readable wallet name
 
 ### network
 
-```ts
-network: Network;
-```
-
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:69](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L69)
-
-***
-
-### signatureType
-
-```ts
-signatureType: "SECP256K1" | "BLS";
-```
+> **network**: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/)
 
 Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:70](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L70)
 
 ***
 
-### syncWithProvider
+### signatureType
 
-```ts
-syncWithProvider: boolean;
-```
+> **signatureType**: `"SECP256K1"` \| `"BLS"`
 
 Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:71](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L71)
 
 ***
 
+### syncWithProvider
+
+> **syncWithProvider**: `boolean`
+
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L72)
+
+***
+
 ### uid
 
-```ts
-uid: string;
-```
+> **uid**: `string`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:30](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L30)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L31)
 
 Unique identifier for this wallet instance
 
@@ -742,11 +346,9 @@ Unique identifier for this wallet instance
 
 ### url
 
-```ts
-url: string = 'https://snaps.metamask.io/snap/npm/filsnap/';
-```
+> **url**: `string` = `'https://snaps.metamask.io/snap/npm/filsnap/'`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L33)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:34](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L34)
 
 Wallet homepage URL
 
@@ -754,8 +356,6 @@ Wallet homepage URL
 
 ### version
 
-```ts
-version: undefined | string;
-```
+> **version**: `undefined` \| `string`
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:68](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L68)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:69](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L69)

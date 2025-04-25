@@ -5,11 +5,13 @@ prev: true
 title: "WalletAdapterLedger"
 ---
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L31)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:30](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L30)
 
 Ledger wallet implementation
 
 ## Implements
+
+- [WalletAdapter](/api/iso-filecoin-wallets/local/interfaces/walletadapter/)
 
 ## Extends
 
@@ -21,18 +23,13 @@ Ledger wallet implementation
 
 #### Get Signature
 
-```ts
-get app(): 
-  | undefined
-  | LedgerFilecoin;
-```
+> **get** **app**(): `undefined` \| [`LedgerFilecoin`](/api/iso-filecoin/ledger/classes/ledgerfilecoin/)
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:82](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L82)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:81](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L81)
 
 ##### Returns
 
-  \| `undefined`
-  \| [`LedgerFilecoin`](/api/iso-filecoin/ledger/classes/ledgerfilecoin/)
+`undefined` \| [`LedgerFilecoin`](/api/iso-filecoin/ledger/classes/ledgerfilecoin/)
 
 ***
 
@@ -40,11 +37,9 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:82](https://github.com/
 
 #### Get Signature
 
-```ts
-get connected(): boolean;
-```
+> **get** **connected**(): `boolean`
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:78](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L78)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:77](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L77)
 
 Whether the wallet is currently connected
 
@@ -58,11 +53,9 @@ Whether the wallet is currently connected
 
 #### Get Signature
 
-```ts
-get connecting(): boolean;
-```
+> **get** **connecting**(): `boolean`
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:74](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L74)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:73](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L73)
 
 Whether the wallet is in the process of connecting
 
@@ -76,11 +69,9 @@ Whether the wallet is in the process of connecting
 
 #### Get Signature
 
-```ts
-get support(): "NotChecked" | "Detected" | "NotDetected" | "NotSupported";
-```
+> **get** **support**(): `"NotChecked"` \| `"Detected"` \| `"NotDetected"` \| `"NotSupported"`
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:86](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L86)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:85](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L85)
 
 Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
@@ -92,17 +83,15 @@ Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
 ### Constructor
 
-```ts
-new WalletAdapterLedger(config: WalletLedgerConfig): WalletAdapterLedger;
-```
+> **new WalletAdapterLedger**(`config`): `WalletAdapterLedger`
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:63](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L63)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:62](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L62)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `config` | [`WalletLedgerConfig`](/api/iso-filecoin-wallets/ledger/interfaces/walletledgerconfig/) |
+| `config` | [`WalletLedgerConfig`](/api/iso-filecoin-wallets/types/interfaces/walletledgerconfig/) |
 
 #### Returns
 
@@ -110,63 +99,15 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:63](https://github.com/
 
 #### Overrides
 
-```ts
-TypedEventTarget.constructor
-```
+`TypedEventTarget.constructor`
 
 ## Methods
 
-### addEventListener()
-
-```ts
-addEventListener<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:29
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `AddEventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherit Doc
-
-#### Inherited from
-
-```ts
-TypedEventTarget.addEventListener
-```
-
-***
-
 ### changeNetwork()
 
-```ts
-changeNetwork(network: Network): Promise<{
-  account: IAccount;
-  network: Network;
-}>;
-```
+> **changeNetwork**(`network`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/); `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:156](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L156)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:155](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L155)
 
 #### Parameters
 
@@ -176,20 +117,15 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:156](https://github.com
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{
-  `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/);
-  `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/);
-\}\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/); `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
 ***
 
 ### checkSupport()
 
-```ts
-checkSupport(): Promise<void>;
-```
+> **checkSupport**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:90](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L90)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:89](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L89)
 
 Check if this wallet adapter is supported in the current environment
 
@@ -201,40 +137,28 @@ Check if this wallet adapter is supported in the current environment
 
 ### connect()
 
-```ts
-connect(params?: {
-  network: Network;
-}): Promise<{
-  account: IAccount;
-  network: Network;
-}>;
-```
+> **connect**(`params?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/); `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:108](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L108)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:107](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L107)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `params?` | \{ `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \} |
+| `params?` | \{ `network?`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \} |
 | `params.network?` | [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/) |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{
-  `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/);
-  `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/);
-\}\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/); `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
 ***
 
 ### deriveAccount()
 
-```ts
-deriveAccount(index: number): Promise<IAccount>;
-```
+> **deriveAccount**(`index`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:184](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L184)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:183](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L183)
 
 #### Parameters
 
@@ -250,11 +174,9 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:184](https://github.com
 
 ### disconnect()
 
-```ts
-disconnect(): Promise<void>;
-```
+> **disconnect**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:139](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L139)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:138](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L138)
 
 Disconnect from the wallet
 
@@ -264,235 +186,11 @@ Disconnect from the wallet
 
 ***
 
-### dispatchEvent()
-
-```ts
-dispatchEvent(event: Event): boolean;
-```
-
-Defined in: node\_modules/.pnpm/typescript@5.8.3/node\_modules/typescript/lib/lib.dom.d.ts:8882
-
-Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
-
-[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/dispatchEvent)
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `event` | [`Event`](https://developer.mozilla.org/docs/Web/API/Event) |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.dispatchEvent
-```
-
-***
-
-### dispatchTypedEvent()
-
-```ts
-dispatchTypedEvent<T>(_type: T, event: WalletEvents[T]): boolean;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:20
-
-Dispatches a synthetic event to target and returns true if either
-event's cancelable attribute value is false or its preventDefault() method
-was not invoked, and false otherwise.
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* keyof [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/) |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `_type` | `T` |
-| `event` | [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\] |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.dispatchTypedEvent
-```
-
-***
-
-### emit()
-
-```ts
-emit<T>(...args: WalletEvents[T]["detail"] extends IsAny<WalletEvents[T]["detail"]> ? [T, unknown] : [T, WalletEvents[T]["detail"]]): boolean;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:21
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* keyof [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/) |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| ...`args` | [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\] *extends* `IsAny`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\]\> ? \[`T`, `unknown`\] : \[`T`, [`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/)\[`T`\]\[`"detail"`\]\] |
-
-#### Returns
-
-`boolean`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.emit
-```
-
-***
-
-### off()
-
-```ts
-off<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:55
-
-Alias for [TypedEventTarget.removeEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#removeeventlistener)
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `EventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.off
-```
-
-***
-
-### on()
-
-```ts
-on<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | AddEventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:38
-
-Alias for [TypedEventTarget.addEventListener](/api/iso-filecoin-react/index/interfaces/walletadapter/#addeventlistener)
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `AddEventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-```ts
-TypedEventTarget.on
-```
-
-***
-
-### removeEventListener()
-
-```ts
-removeEventListener<T>(
-   type: T, 
-   callback: 
-  | null
-  | TypedEventListenerOrEventListenerObject<WalletEvents, T>, 
-   options?: boolean | EventListenerOptions): void;
-```
-
-Defined in: node\_modules/.pnpm/iso-web@1.1.1/node\_modules/iso-web/dist/src/event-target/index.d.ts:46
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* \| `"accountChanged"` \| `"networkChanged"` \| `"disconnect"` \| `"connect"` \| `"error"` \| `"stateChanged"` |
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `type` | `T` |
-| `callback` | \| `null` \| `TypedEventListenerOrEventListenerObject`\<[`WalletEvents`](/api/iso-filecoin-wallets/filsnap/type-aliases/walletevents/), `T`\> |
-| `options?` | `boolean` \| `EventListenerOptions` |
-
-#### Returns
-
-`void`
-
-#### Inherit Doc
-
-#### Inherited from
-
-```ts
-TypedEventTarget.removeEventListener
-```
-
-***
-
 ### sign()
 
-```ts
-sign(data: Uint8Array<ArrayBufferLike>): Promise<Signature>;
-```
+> **sign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:203](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L203)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:202](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L202)
 
 #### Parameters
 
@@ -508,22 +206,9 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:203](https://github.com
 
 ### signMessage()
 
-```ts
-signMessage(message: {
-  from: string;
-  gasFeeCap: string;
-  gasLimit: number;
-  gasPremium: string;
-  method: number;
-  nonce: number;
-  params: string;
-  to: string;
-  value: string;
-  version: 0;
-}): Promise<Signature>;
-```
+> **signMessage**(`message`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:229](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L229)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:228](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L228)
 
 #### Parameters
 
@@ -549,33 +234,25 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:229](https://github.com
 
 ### \[symbol\]
 
-```ts
-[symbol]: boolean = true;
-```
+> **\[symbol\]**: `boolean` = `true`
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L33)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:32](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L32)
 
 ***
 
 ### account
 
-```ts
-account: 
-  | undefined
-  | IAccount = undefined;
-```
+> **account**: `undefined` \| [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/) = `undefined`
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:40](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L40)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:39](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L39)
 
 ***
 
 ### id
 
-```ts
-id: string = 'ledger';
-```
+> **id**: `string` = `'ledger'`
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:35](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L35)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:34](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L34)
 
 Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
@@ -583,11 +260,9 @@ Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
 ### name
 
-```ts
-name: string = 'Ledger';
-```
+> **name**: `string` = `'Ledger'`
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:36](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L36)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:35](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L35)
 
 Human readable wallet name
 
@@ -595,31 +270,25 @@ Human readable wallet name
 
 ### network
 
-```ts
-network: Network;
-```
+> **network**: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/)
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:69](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L69)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:68](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L68)
 
 ***
 
 ### signatureType
 
-```ts
-signatureType: "SECP256K1" | "BLS";
-```
+> **signatureType**: `"SECP256K1"` \| `"BLS"`
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:70](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L70)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:69](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L69)
 
 ***
 
 ### uid
 
-```ts
-uid: string;
-```
+> **uid**: `string`
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:34](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L34)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L33)
 
 Unique identifier for this wallet instance
 
@@ -627,10 +296,8 @@ Unique identifier for this wallet instance
 
 ### url
 
-```ts
-url: string = 'https://ledger.com';
-```
+> **url**: `string` = `'https://ledger.com'`
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:37](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L37)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:36](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L36)
 
 Wallet homepage URL

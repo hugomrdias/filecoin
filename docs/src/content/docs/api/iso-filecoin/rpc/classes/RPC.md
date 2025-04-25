@@ -13,9 +13,7 @@ RPC
 
 ### Constructor
 
-```ts
-new RPC(options: Options, fetchOptions?: RequestOptions): RPC;
-```
+> **new RPC**(`options`, `fetchOptions?`): `RPC`
 
 Defined in: [packages/iso-filecoin/src/rpc.js:134](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L134)
 
@@ -27,7 +25,7 @@ TODO: either remove token or merge this.headers with fetchOptions.headers
 | Parameter | Type |
 | ------ | ------ |
 | `options` | [`Options`](/api/iso-filecoin/types/interfaces/options/) |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
@@ -37,12 +35,7 @@ TODO: either remove token or merge this.headers with fetchOptions.headers
 
 ### balance()
 
-```ts
-balance(address: string, fetchOptions?: RequestOptions): Promise<MaybeResult<string, 
-  | RequestErrors
-  | RpcError
-| JsonRpcError>>;
-```
+> **balance**(`address`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:231](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L231)
 
@@ -53,14 +46,11 @@ WalletBalance returns the balance of the given address at the current head of th
 | Parameter | Type |
 | ------ | ------ |
 | `address` | `string` |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<`string`, 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 #### See
 
@@ -70,11 +60,7 @@ https://lotus.filecoin.io/reference/lotus/wallet/#walletbalance
 
 ### call()
 
-```ts
-call<R>(rpcOptions: RpcOptions, fetchOptions?: RequestOptions): Promise<MaybeResult<R, 
-  | RequestErrors
-| JsonRpcError>>;
-```
+> **call**\<`R`\>(`rpcOptions`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`R`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:590](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L590)
 
@@ -91,23 +77,17 @@ Generic method to call any method on the lotus rpc api.
 | Parameter | Type |
 | ------ | ------ |
 | `rpcOptions` | [`RpcOptions`](/api/iso-filecoin/types/interfaces/rpcoptions/) |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<`R`, 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`R`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 ***
 
 ### chainHead()
 
-```ts
-chainHead(fetchOptions?: RequestOptions): Promise<MaybeResult<TipSet, 
-  | RequestErrors
-| JsonRpcError>>;
-```
+> **chainHead**(`fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`TipSet`](/api/iso-filecoin/types/interfaces/tipset/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:471](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L471)
 
@@ -117,13 +97,11 @@ The current head of the chain.
 
 | Parameter | Type |
 | ------ | ------ |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<[`TipSet`](/api/iso-filecoin/types/interfaces/tipset/), 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`TipSet`](/api/iso-filecoin/types/interfaces/tipset/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 #### See
 
@@ -133,12 +111,7 @@ https://github.com/filecoin-project/filecoin-docs/blob/main/reference/json-rpc/c
 
 ### filecoinAddressToEthAddress()
 
-```ts
-filecoinAddressToEthAddress(params: FilecoinAddressToEthAddressParams, fetchOptions?: RequestOptions): Promise<MaybeResult<string, 
-  | RequestErrors
-  | RpcError
-| JsonRpcError>>;
-```
+> **filecoinAddressToEthAddress**(`params`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:340](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L340)
 
@@ -149,14 +122,11 @@ Converts any Filecoin address to an EthAddress.
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`FilecoinAddressToEthAddressParams`](/api/iso-filecoin/types/interfaces/filecoinaddresstoethaddressparams/) |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<`string`, 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 #### See
 
@@ -166,13 +136,7 @@ https://github.com/filecoin-project/lotus/blob/471819bf1ef8a4d5c7c0476a38ce9f5e2
 
 ### gasEstimate()
 
-```ts
-gasEstimate(params: GasEstimateParams, fetchOptions?: RequestOptions): Promise<MaybeResult<LotusMessage, 
-  | RequestErrors
-  | RpcError
-  | JsonRpcError
-| ValidationRpcError>>;
-```
+> **gasEstimate**(`params`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`LotusMessage`](/api/iso-filecoin/types/interfaces/lotusmessage/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/) \| [`ValidationRpcError`](/api/iso-filecoin/rpc/classes/validationrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:186](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L186)
 
@@ -183,15 +147,11 @@ GasEstimateMessageGas estimates gas values for unset message gas fields
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`GasEstimateParams`](/api/iso-filecoin/types/interfaces/gasestimateparams/) |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<[`LotusMessage`](/api/iso-filecoin/types/interfaces/lotusmessage/), 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)
-  \| [`ValidationRpcError`](/api/iso-filecoin/rpc/classes/validationrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`LotusMessage`](/api/iso-filecoin/types/interfaces/lotusmessage/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/) \| [`ValidationRpcError`](/api/iso-filecoin/rpc/classes/validationrpcerror/)\>\>
 
 #### See
 
@@ -201,15 +161,7 @@ https://lotus.filecoin.io/reference/lotus/gas/#gasestimatemessagegas
 
 ### getIDAddress()
 
-```ts
-getIDAddress(params: {
-  address: string;
-  safety: Safety;
-}, fetchOptions?: RequestOptions): Promise<MaybeResult<string, 
-  | RequestErrors
-  | RpcError
-| JsonRpcError>>;
-```
+> **getIDAddress**(`params`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:552](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L552)
 
@@ -219,27 +171,20 @@ Get the ID address for an address with different safety guarantees
 
 | Parameter | Type |
 | ------ | ------ |
-| `params` | \{ `address`: `string`; `safety`: [`Safety`](/api/iso-filecoin/types/type-aliases/safety/); \} |
+| `params` | \{ `address`: `string`; `safety?`: [`Safety`](/api/iso-filecoin/types/type-aliases/safety/); \} |
 | `params.address` | `string` |
 | `params.safety?` | [`Safety`](/api/iso-filecoin/types/type-aliases/safety/) |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<`string`, 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 ***
 
 ### getTipSetByHeight()
 
-```ts
-getTipSetByHeight(params: ChainGetTipSetByHeightParams, fetchOptions?: RequestOptions): Promise<MaybeResult<TipSet, 
-  | RequestErrors
-| JsonRpcError>>;
-```
+> **getTipSetByHeight**(`params`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`TipSet`](/api/iso-filecoin/types/interfaces/tipset/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:491](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L491)
 
@@ -250,13 +195,11 @@ Get tipset at the specified epoch (height). If there are no blocks at the specif
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`ChainGetTipSetByHeightParams`](/api/iso-filecoin/types/interfaces/chaingettipsetbyheightparams/) |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<[`TipSet`](/api/iso-filecoin/types/interfaces/tipset/), 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`TipSet`](/api/iso-filecoin/types/interfaces/tipset/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 #### See
 
@@ -266,12 +209,7 @@ https://github.com/filecoin-project/filecoin-docs/blob/main/reference/json-rpc/c
 
 ### lookBackTipSet()
 
-```ts
-lookBackTipSet(lookback: number, fetchOptions?: RequestOptions): Promise<MaybeResult<TipSet, 
-  | RequestErrors
-  | RpcError
-| JsonRpcError>>;
-```
+> **lookBackTipSet**(`lookback`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`TipSet`](/api/iso-filecoin/types/interfaces/tipset/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:513](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L513)
 
@@ -282,24 +220,17 @@ Looks back from latest height for a tipset
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `lookback` | `number` | Chain epoch to look back to |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) | - |
+| `fetchOptions?` | `RequestOptions` | - |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<[`TipSet`](/api/iso-filecoin/types/interfaces/tipset/), 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`TipSet`](/api/iso-filecoin/types/interfaces/tipset/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 ***
 
 ### networkName()
 
-```ts
-networkName(fetchOptions?: RequestOptions): Promise<MaybeResult<Network, 
-  | RequestErrors
-| JsonRpcError>>;
-```
+> **networkName**(`fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`Network`](/api/iso-filecoin/types/type-aliases/network/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:171](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L171)
 
@@ -309,24 +240,17 @@ NetworkName returns the name of the network the node is synced to.
 
 | Parameter | Type |
 | ------ | ------ |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<[`Network`](/api/iso-filecoin/types/type-aliases/network/), 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`Network`](/api/iso-filecoin/types/type-aliases/network/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 ***
 
 ### nonce()
 
-```ts
-nonce(address: string, fetchOptions?: RequestOptions): Promise<MaybeResult<number, 
-  | RequestErrors
-  | RpcError
-| JsonRpcError>>;
-```
+> **nonce**(`address`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`number`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:249](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L249)
 
@@ -337,14 +261,11 @@ MpoolGetNonce gets next nonce for the specified sender. Note that this method ma
 | Parameter | Type |
 | ------ | ------ |
 | `address` | `string` |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<`number`, 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`number`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 #### See
 
@@ -354,13 +275,7 @@ https://lotus.filecoin.io/reference/lotus/mpool/#mpoolgetnonce
 
 ### pushMessage()
 
-```ts
-pushMessage(params: PushMessageParams, fetchOptions?: RequestOptions): Promise<MaybeResult<CID, 
-  | RequestErrors
-  | RpcError
-  | JsonRpcError
-| ValidationRpcError>>;
-```
+> **pushMessage**(`params`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`CID`](/api/iso-filecoin/types/type-aliases/cid/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/) \| [`ValidationRpcError`](/api/iso-filecoin/rpc/classes/validationrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:268](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L268)
 
@@ -371,15 +286,11 @@ MpoolPush pushes a signed message to mempool.
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`PushMessageParams`](/api/iso-filecoin/types/interfaces/pushmessageparams/) |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<[`CID`](/api/iso-filecoin/types/type-aliases/cid/), 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)
-  \| [`ValidationRpcError`](/api/iso-filecoin/rpc/classes/validationrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`CID`](/api/iso-filecoin/types/type-aliases/cid/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/) \| [`ValidationRpcError`](/api/iso-filecoin/rpc/classes/validationrpcerror/)\>\>
 
 #### See
 
@@ -389,12 +300,7 @@ https://lotus.filecoin.io/reference/lotus/mpool/#mpoolpush
 
 ### stateAccountKey()
 
-```ts
-stateAccountKey(params: StateAccountKeyParams, fetchOptions?: RequestOptions): Promise<MaybeResult<string, 
-  | RequestErrors
-  | RpcError
-| JsonRpcError>>;
-```
+> **stateAccountKey**(`params`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:365](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L365)
 
@@ -405,14 +311,11 @@ Public key address of the given ID address.
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`StateAccountKeyParams`](/api/iso-filecoin/types/interfaces/stateaccountkeyparams/) |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<`string`, 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 #### See
 
@@ -422,11 +325,7 @@ https://github.com/filecoin-project/lotus/blob/master/documentation/en/api-v0-me
 
 ### stateLookupID()
 
-```ts
-stateLookupID(params: StateAccountKeyParams, fetchOptions?: RequestOptions): Promise<MaybeResult<string, 
-  | RequestErrors
-| JsonRpcError>>;
-```
+> **stateLookupID**(`params`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:440](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L440)
 
@@ -438,13 +337,11 @@ If you dont have a specific tipset in mind, better to use [getIDAddress](/api/is
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`StateAccountKeyParams`](/api/iso-filecoin/types/interfaces/stateaccountkeyparams/) |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<`string`, 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 #### See
 
@@ -454,12 +351,7 @@ https://github.com/filecoin-project/lotus/blob/master/documentation/en/api-v0-me
 
 ### stateLookupRobustAddress()
 
-```ts
-stateLookupRobustAddress(params: StateAccountKeyParams, fetchOptions?: RequestOptions): Promise<MaybeResult<string, 
-  | RequestErrors
-  | RpcError
-| JsonRpcError>>;
-```
+> **stateLookupRobustAddress**(`params`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:402](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L402)
 
@@ -470,14 +362,11 @@ Public key address of the given non-account ID address.
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`StateAccountKeyParams`](/api/iso-filecoin/types/interfaces/stateaccountkeyparams/) |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<`string`, 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<`string`, [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`RpcError`](/api/iso-filecoin/rpc/classes/rpcerror/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 #### See
 
@@ -487,11 +376,7 @@ https://github.com/filecoin-project/lotus/blob/master/documentation/en/api-v0-me
 
 ### version()
 
-```ts
-version(fetchOptions?: RequestOptions): Promise<MaybeResult<VersionResponse, 
-  | RequestErrors
-| JsonRpcError>>;
-```
+> **version**(`fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`VersionResponse`](/api/iso-filecoin/types/type-aliases/versionresponse/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:159](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L159)
 
@@ -501,23 +386,17 @@ Version returns the version of the Filecoin node.
 
 | Parameter | Type |
 | ------ | ------ |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<[`VersionResponse`](/api/iso-filecoin/types/type-aliases/versionresponse/), 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`VersionResponse`](/api/iso-filecoin/types/type-aliases/versionresponse/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 ***
 
 ### waitMsg()
 
-```ts
-waitMsg(params: waitMsgParams, fetchOptions?: RequestOptions): Promise<MaybeResult<CID, 
-  | RequestErrors
-| JsonRpcError>>;
-```
+> **waitMsg**(`params`, `fetchOptions?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`CID`](/api/iso-filecoin/types/type-aliases/cid/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 Defined in: [packages/iso-filecoin/src/rpc.js:317](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L317)
 
@@ -530,13 +409,11 @@ Timeout is increased to 60s instead of the default 5s.
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`waitMsgParams`](/api/iso-filecoin/types/interfaces/waitmsgparams/) |
-| `fetchOptions?` | [`RequestOptions`](/api/iso-filecoin/rpc/interfaces/requestoptions/) |
+| `fetchOptions?` | `RequestOptions` |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`MaybeResult`](/api/iso-filecoin/types/type-aliases/mayberesult/)\<[`CID`](/api/iso-filecoin/types/type-aliases/cid/), 
-  \| [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/)
-  \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MaybeResult`\<[`CID`](/api/iso-filecoin/types/type-aliases/cid/), [`RequestErrors`](/api/iso-filecoin/rpc/type-aliases/requesterrors/) \| [`JsonRpcError`](/api/iso-filecoin/rpc/classes/jsonrpcerror/)\>\>
 
 #### See
 
@@ -546,9 +423,7 @@ https://lotus.filecoin.io/reference/lotus/state/#statewaitmsg
 
 ### api
 
-```ts
-api: URL;
-```
+> **api**: [`URL`](https://developer.mozilla.org/docs/Web/API/URL)
 
 Defined in: [packages/iso-filecoin/src/rpc.js:144](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L144)
 
@@ -556,23 +431,13 @@ Defined in: [packages/iso-filecoin/src/rpc.js:144](https://github.com/hugomrdias
 
 ### fetch()
 
-```ts
-fetch: {
-  (input: URL | RequestInfo, init?: RequestInit): Promise<Response>;
-  (input: 
-  | string
-  | URL
-  | Request, init?: RequestInit): Promise<Response>;
-};
-```
+> **fetch**: \{(`input`, `init?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Response`](https://developer.mozilla.org/docs/Web/API/Response)\>; (`input`, `init?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Response`](https://developer.mozilla.org/docs/Web/API/Response)\>; \}
 
 Defined in: [packages/iso-filecoin/src/rpc.js:143](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L143)
 
 #### Call Signature
 
-```ts
-(input: URL | RequestInfo, init?: RequestInit): Promise<Response>;
-```
+> (`input`, `init?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Response`](https://developer.mozilla.org/docs/Web/API/Response)\>
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch)
 
@@ -589,12 +454,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:143](https://github.com/hugomrdias
 
 #### Call Signature
 
-```ts
-(input: 
-  | string
-  | URL
-| Request, init?: RequestInit): Promise<Response>;
-```
+> (`input`, `init?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Response`](https://developer.mozilla.org/docs/Web/API/Response)\>
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch)
 
@@ -602,7 +462,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:143](https://github.com/hugomrdias
 
 | Parameter | Type |
 | ------ | ------ |
-| `input` | \| `string` \| [`URL`](https://developer.mozilla.org/docs/Web/API/URL) \| [`Request`](https://developer.mozilla.org/docs/Web/API/Request) |
+| `input` | `string` \| [`URL`](https://developer.mozilla.org/docs/Web/API/URL) \| [`Request`](https://developer.mozilla.org/docs/Web/API/Request) |
 | `init?` | `RequestInit` |
 
 ##### Returns
@@ -613,9 +473,7 @@ Defined in: [packages/iso-filecoin/src/rpc.js:143](https://github.com/hugomrdias
 
 ### fetchOptions
 
-```ts
-fetchOptions: RequestOptions;
-```
+> **fetchOptions**: `RequestOptions`
 
 Defined in: [packages/iso-filecoin/src/rpc.js:151](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L151)
 
@@ -623,33 +481,22 @@ Defined in: [packages/iso-filecoin/src/rpc.js:151](https://github.com/hugomrdias
 
 ### headers
 
-```ts
-headers: {
-  Authorization: string;
-  Content-Type: string;
-};
-```
+> **headers**: `object`
 
 Defined in: [packages/iso-filecoin/src/rpc.js:146](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L146)
 
 #### Authorization?
 
-```ts
-optional Authorization: string;
-```
+> `optional` **Authorization**: `string`
 
 #### Content-Type
 
-```ts
-Content-Type: string = 'application/json';
-```
+> **Content-Type**: `string` = `'application/json'`
 
 ***
 
 ### network
 
-```ts
-network: Network;
-```
+> **network**: [`Network`](/api/iso-filecoin/types/type-aliases/network/)
 
 Defined in: [packages/iso-filecoin/src/rpc.js:145](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/rpc.js#L145)

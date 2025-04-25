@@ -5,14 +5,7 @@ prev: true
 title: "useAddresses"
 ---
 
-```ts
-function useAddresses(options: {
-  address: string;
-}): {
-  address0x: UseQueryResult<undefined | string, Error>;
-  addressId: UseQueryResult<undefined | AddressId, Error>;
-};
-```
+> **useAddresses**(`options`): `object`
 
 Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:524](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L524)
 
@@ -28,21 +21,12 @@ TODO: use cache
 
 ## Returns
 
-```ts
-{
-  address0x: UseQueryResult<undefined | string, Error>;
-  addressId: UseQueryResult<undefined | AddressId, Error>;
-}
-```
+`object`
 
 ### address0x
 
-```ts
-address0x: UseQueryResult<undefined | string, Error>;
-```
+> **address0x**: `UseQueryResult`\<`undefined` \| `string`, [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\>
 
 ### addressId
 
-```ts
-addressId: UseQueryResult<undefined | AddressId, Error>;
-```
+> **addressId**: `UseQueryResult`\<`undefined` \| [`AddressId`](/api/iso-filecoin/address/classes/addressid/), [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\>

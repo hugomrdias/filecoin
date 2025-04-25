@@ -5,23 +5,7 @@ prev: true
 title: "signMessage"
 ---
 
-```ts
-function signMessage(
-   privateKey: Uint8Array<ArrayBufferLike>, 
-   type: "SECP256K1" | "BLS", 
-   message: {
-  from: string;
-  gasFeeCap: string;
-  gasLimit: number;
-  gasPremium: string;
-  method: number;
-  nonce: number;
-  params: string;
-  to: string;
-  value: string;
-  version: 0;
-}): Signature;
-```
+> **signMessage**(`privateKey`, `type`, `message`): [`Signature`](/api/iso-filecoin/signature/classes/signature/)
 
 Defined in: [packages/iso-filecoin/src/wallet.js:217](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L217)
 

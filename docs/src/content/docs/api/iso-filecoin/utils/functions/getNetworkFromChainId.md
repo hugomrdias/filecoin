@@ -5,9 +5,7 @@ prev: true
 title: "getNetworkFromChainId"
 ---
 
-```ts
-function getNetworkFromChainId(chainId: string | number): "mainnet" | "testnet";
-```
+> **getNetworkFromChainId**(`chainId`): `"mainnet"` \| `"testnet"`
 
 Defined in: [packages/iso-filecoin/src/utils.js:85](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/utils.js#L85)
 
