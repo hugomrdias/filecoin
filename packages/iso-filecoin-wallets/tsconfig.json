@@ -14,7 +14,8 @@
       "src/ledger.js",
       "src/hd.js",
       "src/local.js",
-      "src/types.ts"
+      "src/types.ts",
+      "src/appkit.js"
     ]
   }
 }

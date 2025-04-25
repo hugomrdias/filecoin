@@ -12,23 +12,20 @@ import { WalletSupport } from './common.js'
 const symbol = Symbol.for('wallet-adapter-hd')
 
 /**
+ * @import { WalletAdapter, WalletEvents, WalletHDConfig, WalletHDMnemonicConfig, WalletSupportType } from './types.js'
+ */
+
+/**
  * @typedef {import('iso-filecoin/types').Network} Network
  * @typedef {import('iso-filecoin/types').IAccount} IAccount
  * @typedef {import('iso-filecoin/types').MessageObj} MessageObj
  * @typedef {import('iso-filecoin/types').SignatureType} SignatureType
- * @typedef {import('./types.js').WalletAdapter} WalletAdapter
- * @typedef {import('./types.js').WalletConfig} WalletConfig
- * @typedef {import('./types.js').WalletEvents} WalletEvents
- * @typedef {import('./types.js').WalletSupportType} WalletSupportType
- * @typedef {import('./types.js').WalletHDConfig} WalletHDConfig
- * @typedef {import('./types.js').WalletHDMnemonicConfig} WalletHDMnemonicConfig
- *
  */
 
 /**
  * HD wallet implementation
  *
- * @implements {WalletAdapter}
+ * @implements {WalletAdapter} - {@link WalletAdapter}
  * @extends {TypedEventTarget<WalletEvents>}
  */
 export class WalletAdapterHd extends TypedEventTarget {

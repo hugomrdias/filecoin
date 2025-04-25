@@ -11,22 +11,21 @@ export { WalletSupport } from './common.js'
 const symbol = Symbol.for('wallet-adapter-ledger')
 
 /**
+ * @import { WalletAdapter, WalletEvents, WalletSupportType, WalletLedgerConfig } from './types.js'
+ */
+
+/**
  * @typedef {import('iso-filecoin/types').IAccount} IAccount
  * @typedef {import('iso-filecoin/types').Network} Network
  * @typedef {import('iso-filecoin/types').MessageObj} MessageObj
  * @typedef {import('iso-filecoin/types').SignatureType} SignatureType
- * @typedef {import('./types.js').WalletAdapter} WalletAdapter
- * @typedef {import('./types.js').WalletConfig} WalletConfig
- * @typedef {import('./types.js').WalletEvents} WalletEvents
- * @typedef {import('./types.js').WalletSupportType} WalletSupportType
- * @typedef {import('./types.js').WalletLedgerConfig} WalletLedgerConfig
  */
 
 /**
  * Ledger wallet implementation
  *
  * @extends {TypedEventTarget<WalletEvents>}
- * @implements {WalletAdapter}
+ * @implements {WalletAdapter} - {@link WalletAdapter}
  */
 export class WalletAdapterLedger extends TypedEventTarget {
   /** @type {boolean} */

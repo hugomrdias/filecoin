@@ -6,14 +6,11 @@ import { WalletSupport } from './common.js'
 const symbol = Symbol.for('wallet-adapter-raw')
 
 /**
+ * @typedef {import('./types.js').WalletAdapter} WalletAdapter
  * @typedef {import('iso-filecoin/types').IAccount} IAccount
  * @typedef {import('iso-filecoin/types').Network} Network
  * @typedef {import('iso-filecoin/types').MessageObj} MessageObj
  * @typedef {import('iso-filecoin/types').SignatureType} SignatureType
- * @typedef {import('./types.js').WalletAdapter} WalletAdapter
- * @typedef {import('./types.js').WalletConfig} WalletConfig
- * @typedef {import('./types.js').WalletEvents} WalletEvents
- * @typedef {import('./types.js').WalletSupportType} WalletSupportType
  */
 
 /**
@@ -40,8 +37,8 @@ function createAccount(privateKey, network, signatureType) {
 /**
  * Raw wallet implementation
  *
- * @implements{WalletAdapter}
- * @extends {TypedEventTarget<WalletEvents>}
+ * @implements {WalletAdapter} - {@link WalletAdapter}
+ * @extends {TypedEventTarget<import('./types.js').WalletEvents>}
  */
 export class WalletAdapterRaw extends TypedEventTarget {
   /** @type {boolean} */
@@ -57,12 +54,12 @@ export class WalletAdapterRaw extends TypedEventTarget {
   /** @type {boolean} */
   #isConnecting
 
-  /** @type {WalletSupportType} */
+  /** @type {import('./types.js').WalletSupportType} */
   #support = WalletSupport.Detected
 
   /**
    *
-   * @param {WalletConfig & ({privateKey: Uint8Array} )} config
+   * @param {import('./types.js').WalletConfig & ({privateKey: Uint8Array} )} config
    */
   constructor(config) {
     super()
