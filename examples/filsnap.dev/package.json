@@ -32,7 +32,7 @@
     "iso-web": "^1.1.1",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
-    "viem": "~2.26.2",
+    "viem": "~2.28.0",
     "wagmi": "^2.14.15"
   },
   "devDependencies": {
