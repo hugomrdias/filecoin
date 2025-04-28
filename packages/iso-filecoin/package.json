@@ -156,7 +156,7 @@
     "mocha": "^11.0.1",
     "playwright-test": "^14.1.9",
     "rimraf": "^6.0.1",
-    "rollup": "^4.40.0",
+    "rollup": "^4.40.1",
     "type-fest": "^4.40.0",
     "typescript": "5.8.3"
   },
