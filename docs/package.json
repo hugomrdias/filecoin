@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@ledgerhq/hw-transport-webusb": "^6.29.4",
-    "@tanstack/react-query": "^5.74.4",
+    "@tanstack/react-query": "^5.75.2",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "iso-base": "^4.0.2",
