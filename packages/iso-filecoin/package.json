@@ -149,7 +149,7 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.15.2",
+    "@types/node": "^22.15.19",
     "@zondax/zemu": "^0.55.0",
     "assert": "^2.1.0",
     "glob": "^11.0.2",
