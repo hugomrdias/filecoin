@@ -38,7 +38,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@hugomrdias/configs": "^0.1.9",
-    "@types/node": "^22.15.2",
+    "@types/node": "^22.15.29",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vite-pwa/assets-generator": "^1.0.0",
