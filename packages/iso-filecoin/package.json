@@ -140,8 +140,8 @@
     "iso-base": "^4.1.0",
     "iso-kv": "^3.0.3",
     "iso-web": "^1.1.1",
-    "zod": "^3.24.3",
-    "zod-validation-error": "^3.4.0"
+    "zod": "^4.0.10",
+    "zod-validation-error": "^4.0.1"
   },
   "devDependencies": {
     "@ledgerhq/hw-transport": "^6.31.8",

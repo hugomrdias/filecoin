@@ -16,11 +16,11 @@ import { lotusCid } from './utils.js'
  */
 export const MessageSchema = z.object({
   version: z.literal(0).default(0),
-  nonce: z.number().nonnegative().safe().default(0),
-  gasLimit: z.number().nonnegative().safe().default(0),
+  nonce: z.int().nonnegative().default(0),
+  gasLimit: z.int().nonnegative().default(0),
   gasFeeCap: z.string().default('0'),
   gasPremium: z.string().default('0'),
-  method: z.number().nonnegative().safe().default(0),
+  method: z.int().nonnegative().default(0),
   to: z.string(),
   from: z.string(),
   /**
@@ -35,7 +35,7 @@ export const MessageSchema = z.object({
   /**
    * Params encoded as base64pad
    */
-  params: z.string().base64().default(''),
+  params: z.base64().default(''),
 })
 
 const MessageSchemaPartial = MessageSchema.partial({
