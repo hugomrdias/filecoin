@@ -1,12 +1,11 @@
-import assert from 'assert'
-import { EIP191_PREFIX, LedgerFilecoin, verifyRaw } from '../src/ledger.js'
-import * as Wallet from '../src/wallet.js'
-
 import _Zemu, { isTouchDevice } from '@zondax/zemu'
+import assert from 'assert'
 import { utf8 } from 'iso-base/utf8'
 import { concat } from 'iso-base/utils'
+import { EIP191_PREFIX, LedgerFilecoin, verifyRaw } from '../src/ledger.js'
 import { Message } from '../src/message.js'
 import { lotusCid } from '../src/utils.js'
+import * as Wallet from '../src/wallet.js'
 import { DEFAULT_OPTIONS, models } from './setup.js'
 
 // @ts-ignore

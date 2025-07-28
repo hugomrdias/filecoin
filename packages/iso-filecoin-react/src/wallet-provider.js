@@ -1,16 +1,16 @@
-import * as Address from 'iso-filecoin/address'
-import * as Chains from 'iso-filecoin/chains'
-import { RPC } from 'iso-filecoin/rpc'
-import { Token } from 'iso-filecoin/token'
-import React, { createElement, useContext, useEffect, useState } from 'react'
-
 import {
   useMutation,
   useMutationState,
   useQueries,
   useQuery,
 } from '@tanstack/react-query'
+import * as Address from 'iso-filecoin/address'
+import * as Chains from 'iso-filecoin/chains'
 import { Message } from 'iso-filecoin/message'
+import { RPC } from 'iso-filecoin/rpc'
+import { Token } from 'iso-filecoin/token'
+import React, { createElement, useContext, useEffect, useState } from 'react'
+
 export { mainnet, testnet } from 'iso-filecoin/chains'
 
 /**
@@ -148,7 +148,6 @@ export function FilecoinProvider({
   /**
    * Initial adapter support check on mount once
    */
-  // biome-ignore lint/correctness/useExhaustiveDependencies: just need to check support once
   useEffect(() => {
     async function setup() {
       try {
@@ -210,7 +209,6 @@ export function FilecoinProvider({
   }, [])
 
   // Setup and teardown event listeners when the adapter changes
-  // biome-ignore lint/correctness/useExhaustiveDependencies: Only needs to react to adapter changes
   useEffect(() => {
     if (!adapter) return
 

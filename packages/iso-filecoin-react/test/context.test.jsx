@@ -1,5 +1,5 @@
-import assert from 'assert'
 import { cleanup, render } from '@testing-library/react/pure'
+import assert from 'assert'
 import {
   FilecoinProvider,
   useFilecoinProvider,

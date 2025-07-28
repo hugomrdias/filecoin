@@ -1,9 +1,9 @@
-import type { WalletAdapter } from 'iso-filecoin-wallets/types'
 import type { RPC } from 'iso-filecoin/rpc'
 import type { Chain, IAccount, Network } from 'iso-filecoin/types'
+import type { WalletAdapter } from 'iso-filecoin-wallets/types'
 
 export type { IAccount, Network } from 'iso-filecoin/types'
-export type { WalletAdapter, AccountNetwork } from 'iso-filecoin-wallets/types'
+export type { AccountNetwork, WalletAdapter } from 'iso-filecoin-wallets/types'
 
 /** Combines members of an intersection into a readable type. */
 // https://twitter.com/mattpocockuk/status/1622730173446557697?s=20&t=NdpAcmEFXY01xkqU3KO0Mg

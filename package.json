@@ -19,23 +19,19 @@
     "docs": "pnpm -r --filter docs run build"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@hugomrdias/configs": "^0.1.9",
+    "@biomejs/biome": "^2.1.2",
+    "@hugomrdias/configs": "^1.0.0",
     "depcheck": "^1.4.7",
-    "lint-staged": "^15.5.1",
     "simple-git-hooks": "^2.13.0",
-    "typedoc": "^0.28.3",
-    "typedoc-plugin-markdown": "^4.6.3",
-    "typedoc-plugin-mdn-links": "^5.0.1",
+    "typedoc": "^0.28.8",
+    "typedoc-plugin-markdown": "^4.7.1",
+    "typedoc-plugin-mdn-links": "^5.0.6",
     "typedoc-plugin-missing-exports": "^4.0.0",
-    "typedoc-plugin-zod": "^1.4.1",
+    "typedoc-plugin-zod": "^1.4.2",
     "typescript": "5.8.3"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "*": "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+    "pre-commit": "pnpm exec biome check --no-errors-on-unmatched --files-ignore-unknown=true --staged"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

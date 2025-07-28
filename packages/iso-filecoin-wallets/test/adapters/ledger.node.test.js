@@ -1,9 +1,10 @@
-import assert from 'assert'
 import _Zemu from '@zondax/zemu'
+import assert from 'assert'
 import pDefer from 'p-defer'
 import { WalletAdapterLedger } from '../../src/ledger.js'
 import { DEFAULT_OPTIONS, models } from '../setup.js'
-import { MNEMONIC, connectorTests } from './base.js'
+import { connectorTests, MNEMONIC } from './base.js'
+
 // @ts-ignore
 
 const Zemu = /** @type {typeof _Zemu} */ (

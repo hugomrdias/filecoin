@@ -1,6 +1,6 @@
 import { URL } from 'node:url'
-import path from 'path'
 import _Zemu, { DEFAULT_START_OPTIONS } from '@zondax/zemu'
+import path from 'path'
 
 // Will contain trailing slash
 const __dirname = new URL('.', import.meta.url).pathname

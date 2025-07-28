@@ -1,4 +1,4 @@
-import { FilsnapAdapter, createConnector, getProvider } from 'filsnap-adapter'
+import { createConnector, FilsnapAdapter, getProvider } from 'filsnap-adapter'
 import { base64pad } from 'iso-base/rfc4648'
 import { Signature } from 'iso-filecoin/signature'
 import { pathFromNetwork } from 'iso-filecoin/utils'

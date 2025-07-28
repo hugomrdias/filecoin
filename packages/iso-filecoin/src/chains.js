@@ -112,7 +112,7 @@ export const filecoinNativeCalibration = {
  * @returns {import('./types.js').EthereumChain}
  */
 export function toEthereumChain(chain) {
-  let blockExplorerUrls = undefined
+  let blockExplorerUrls
 
   if (chain.blockExplorers) {
     blockExplorerUrls = Object.values(chain.blockExplorers).flatMap(

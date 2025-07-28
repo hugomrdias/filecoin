@@ -9,11 +9,11 @@ import * as leb128 from 'iso-base/leb128'
 import { base32, hex } from 'iso-base/rfc4648'
 import { concat, equals, isBufferSource, u8 } from 'iso-base/utils'
 import {
-  NETWORKS,
   checkNetworkPrefix,
   checksumEthAddress,
   getCache,
   getNetwork,
+  NETWORKS,
 } from './utils.js'
 
 export { checksumEthAddress } from './utils.js'

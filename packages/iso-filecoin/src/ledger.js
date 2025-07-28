@@ -1,11 +1,10 @@
 import { StatusCodes } from '@ledgerhq/errors'
 import { secp256k1 as secp } from '@noble/curves/secp256k1'
+import { blake2b } from '@noble/hashes/blake2b'
 import { hex } from 'iso-base/rfc4648'
 import { utf8 } from 'iso-base/utf8'
 import { buf, concat, u8 } from 'iso-base/utils'
 import * as varint from 'iso-base/varint'
-
-import { blake2b } from '@noble/hashes/blake2b'
 import { AddressSecp256k1 } from './address.js'
 import { getNetworkFromPath, lotusCid, parseDerivationPath } from './utils.js'
 

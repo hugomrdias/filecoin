@@ -1,5 +1,5 @@
 import { WalletAdapterHd } from '../../src/hd.js'
-import { MNEMONIC, connectorTests } from './base.js'
+import { connectorTests, MNEMONIC } from './base.js'
 
 /** @type {import('../../src/types.js').WalletAdapter | undefined} */
 let wallet

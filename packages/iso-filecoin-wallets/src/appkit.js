@@ -1,5 +1,5 @@
-import { CoreHelperUtil, StorageUtil } from '@reown/appkit-controllers'
 import { AdapterBlueprint } from '@reown/appkit/adapters'
+import { CoreHelperUtil, StorageUtil } from '@reown/appkit-controllers'
 import { RPC } from 'iso-filecoin/rpc'
 import { Token } from 'iso-filecoin/token'
 
@@ -109,6 +109,16 @@ export class FilecoinAppKitAdapter extends AdapterBlueprint {
   }
 
   /**
+   * Sync connections
+   *
+   * @param {AdapterBlueprint.SyncConnectionsParams} _params
+   * @returns {void | Promise<void>}
+   */
+  syncConnections(_params) {
+    return Promise.resolve()
+  }
+
+  /**
    * Connect
    *
    * @param {AdapterBlueprint.ConnectParams} params
@@ -187,12 +197,16 @@ export class FilecoinAppKitAdapter extends AdapterBlueprint {
    * Disconnect
    *
    * @param {AdapterBlueprint.DisconnectParams} _params
-   * @returns {Promise<void>}
+   * @returns {Promise<AdapterBlueprint.DisconnectResult>}
    */
   async disconnect(_params) {
     if (this.#adapter) {
       await this.#adapter.disconnect()
       this.#adapter = undefined
+    }
+
+    return {
+      connections: [],
     }
   }
 
@@ -350,15 +364,7 @@ export class FilecoinAppKitAdapter extends AdapterBlueprint {
   walletGetAssets() {
     return Promise.resolve({})
   }
-  /**
-   * Get ens address
-   *
-   * @param {AdapterBlueprint.GetEnsAddressParams} params
-   * @returns {Promise<AdapterBlueprint.GetEnsAddressResult>}
-   */
-  getEnsAddress(params) {
-    return Promise.resolve({ address: params.name })
-  }
+
   /**
    * Write contract
    *
@@ -369,8 +375,9 @@ export class FilecoinAppKitAdapter extends AdapterBlueprint {
       hash: '',
     })
   }
+
   setUniversalProvider() {
-    return
+    return Promise.resolve()
   }
   /**
    * @param {{ provider: any; }} params
