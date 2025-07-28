@@ -397,11 +397,11 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1
       zod:
-        specifier: ^3.24.3
-        version: 3.24.3
+        specifier: ^4.0.10
+        version: 4.0.10
       zod-validation-error:
         specifier: ^3.4.0
-        version: 3.4.0(zod@3.24.3)
+        version: 3.4.0(zod@4.0.10)
     devDependencies:
       '@ledgerhq/hw-transport':
         specifier: ^6.31.8
@@ -1941,10 +1941,6 @@ packages:
     resolution: {integrity: sha512-warwspo+UYUPep0Q+vtdVB4Ugn8GGQj8iyB3gnRWsztmUHTI3S1nhdiWNsPUGL0vud7JlRRk1XEu7Lq1KGTnMQ==}
     engines: {node: ^14.21.3 || >=16}
 
-  '@noble/curves@1.8.2':
-    resolution: {integrity: sha512-vnI7V6lFNe0tLAuJMu+2sX+FcL14TaCWy1qiczg1VwRmPrpQCdq5ESXQMqUc2tluRNf6irBXrWbl1mGN8uaU/g==}
-    engines: {node: ^14.21.3 || >=16}
-
   '@noble/curves@1.9.0':
     resolution: {integrity: sha512-7YDlXiNMdO1YZeH6t/kvopHHbIZzlxrCV9WLqCY6QhcXOoXiNCMDqJIglZ9Yjx5+w7Dz30TITFrlTjnRg7sKEg==}
     engines: {node: ^14.21.3 || >=16}
@@ -1975,10 +1971,6 @@ packages:
 
   '@noble/hashes@1.7.1':
     resolution: {integrity: sha512-B8XBPsn4vT/KJAGqDzbwztd+6Yte3P4V7iafm24bxgDe/mlRuK6xmWPuCNrKt2vDafZ8MfJLlchDG/vYafQEjQ==}
-    engines: {node: ^14.21.3 || >=16}
-
-  '@noble/hashes@1.7.2':
-    resolution: {integrity: sha512-biZ0NUSxyjLLqo6KxEJ1b+C2NAx0wtDoFvCaXHGgUkeHzf3Xc1xKumFKREuT7f7DARNZ/slvYUwFG6B0f2b6hQ==}
     engines: {node: ^14.21.3 || >=16}
 
   '@noble/hashes@1.8.0':
@@ -5188,9 +5180,6 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  iso-base@4.0.2:
-    resolution: {integrity: sha512-Zz7dWhb9mBq76CRlt6rhHo+5f6Z3XlEX+5GoqPp/YBGjTDK4UI8aDxjcr9ZuGwn9we0HJ2UOu5M3YkbVQ8aT3A==}
-
   iso-base@4.1.0:
     resolution: {integrity: sha512-YW75u3g9xfXOfVMlMJ/dayo2U3ac/BTg0E9F+7QD/4gdPEz0J482Z7pNp+fgZpuI61uAxRJnfyznz2dKPAmipQ==}
 
@@ -7345,14 +7334,6 @@ packages:
       typescript:
         optional: true
 
-  viem@2.28.0:
-    resolution: {integrity: sha512-Z4W5O1pe+6pirYTFm451FcZmfGAUxUWt2L/eWC+YfTF28j/8rd7q6MBAi05lMN4KhLJjhN0s5YGIPB+kf1L20g==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
   viem@2.31.0:
     resolution: {integrity: sha512-U7OMQ6yqK+bRbEIarf2vqxL7unSEQvNxvML/1zG7suAmKuJmipqdVTVJGKBCJiYsm/EremyO2FS4dHIPpGv+eA==}
     peerDependencies:
@@ -7670,18 +7651,6 @@ packages:
       utf-8-validate:
         optional: true
 
-  ws@8.18.1:
-    resolution: {integrity: sha512-RKW2aJZMXeMxVpnZ6bck+RswznaxmzdULiBr6KY7XkTnW8uvt0iT9H5DkHUChXrc+uurzwa0rVI16n/Xzjdz1w==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: '>=5.0.2'
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
-
   ws@8.18.2:
     resolution: {integrity: sha512-DMricUmwGZUVr++AEAe2uiVM7UoO9MAVZMDu05UQOaUII0lp+zOzLLU4Xqh/JvTqklB1T4uELaaPBKyjE1r4fQ==}
     engines: {node: '>=10.0.0'}
@@ -7793,6 +7762,9 @@ packages:
 
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
+  zod@4.0.10:
+    resolution: {integrity: sha512-3vB+UU3/VmLL2lvwcY/4RV2i9z/YU0DTV/tDuYjrwmx5WeJ7hwy+rGEEx8glHp6Yxw7ibRbKSaIFBgReRPe5KA==}
 
   zustand@5.0.0:
     resolution: {integrity: sha512-LE+VcmbartOPM+auOjCCLQOsQ05zUTp8RkgwRzefUk+2jISdMMFnxvyTjA4YNWr5ZGXYbVsEMZosttuxUBkojQ==}
@@ -9661,10 +9633,6 @@ snapshots:
     dependencies:
       '@noble/hashes': 1.7.1
 
-  '@noble/curves@1.8.2':
-    dependencies:
-      '@noble/hashes': 1.7.2
-
   '@noble/curves@1.9.0':
     dependencies:
       '@noble/hashes': 1.8.0
@@ -9688,8 +9656,6 @@ snapshots:
   '@noble/hashes@1.7.0': {}
 
   '@noble/hashes@1.7.1': {}
-
-  '@noble/hashes@1.7.2': {}
 
   '@noble/hashes@1.8.0': {}
 
@@ -15728,7 +15694,7 @@ snapshots:
   filsnap-adapter@3.2.0(bufferutil@4.0.9)(iso-filecoin@packages+iso-filecoin)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0):
     dependencies:
       filsnap: 1.6.1(bufferutil@4.0.9)(iso-filecoin@packages+iso-filecoin)(typescript@5.8.3)(utf-8-validate@5.0.10)(webextension-polyfill@0.10.0)
-      iso-base: 4.0.2
+      iso-base: 4.1.0
       iso-filecoin: link:packages/iso-filecoin
       semver: 7.7.1
     transitivePeerDependencies:
@@ -15747,9 +15713,9 @@ snapshots:
       iso-base: 4.1.0
       iso-filecoin: 7.2.2
       merge-options: 3.0.4
-      viem: 2.33.1(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3)
-      zod: 3.24.3
-      zod-validation-error: 3.4.0(zod@3.24.3)
+      viem: 2.33.1(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+      zod: 3.25.76
+      zod-validation-error: 3.4.0(zod@3.25.76)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -15763,12 +15729,12 @@ snapshots:
       '@metamask/snaps-sdk': 6.17.1(webextension-polyfill@0.10.0)
       '@paulmillr/qr': 0.3.0
       dequal: 2.0.3
-      iso-base: 4.0.2
+      iso-base: 4.1.0
       iso-filecoin: link:packages/iso-filecoin
       merge-options: 3.0.4
-      viem: 2.28.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3)
-      zod: 3.24.3
-      zod-validation-error: 3.4.0(zod@3.24.3)
+      viem: 2.33.1(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+      zod: 3.25.76
+      zod-validation-error: 3.4.0(zod@3.25.76)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -16489,11 +16455,6 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  iso-base@4.0.2:
-    dependencies:
-      base-x: 5.0.1
-      bigint-mod-arith: 3.3.1
-
   iso-base@4.1.0:
     dependencies:
       base-x: 5.0.1
@@ -16671,10 +16632,6 @@ snapshots:
   isows@1.0.6(ws@8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)):
     dependencies:
       ws: 8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-
-  isows@1.0.6(ws@8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)):
-    dependencies:
-      ws: 8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
 
   isows@1.0.7(ws@8.18.2(bufferutil@4.0.9)(utf-8-validate@5.0.10)):
     dependencies:
@@ -19535,23 +19492,6 @@ snapshots:
       - utf-8-validate
       - zod
 
-  viem@2.28.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3):
-    dependencies:
-      '@noble/curves': 1.8.2
-      '@noble/hashes': 1.7.2
-      '@scure/bip32': 1.6.2
-      '@scure/bip39': 1.5.4
-      abitype: 1.0.8(typescript@5.8.3)(zod@3.24.3)
-      isows: 1.0.6(ws@8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10))
-      ox: 0.6.9(typescript@5.8.3)(zod@3.24.3)
-      ws: 8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-    optionalDependencies:
-      typescript: 5.8.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-      - zod
-
   viem@2.31.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3):
     dependencies:
       '@noble/curves': 1.9.1
@@ -20057,11 +19997,6 @@ snapshots:
       bufferutil: 4.0.9
       utf-8-validate: 5.0.10
 
-  ws@8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10):
-    optionalDependencies:
-      bufferutil: 4.0.9
-      utf-8-validate: 5.0.10
-
   ws@8.18.2(bufferutil@4.0.9)(utf-8-validate@5.0.10):
     optionalDependencies:
       bufferutil: 4.0.9
@@ -20156,11 +20091,21 @@ snapshots:
     dependencies:
       zod: 3.24.3
 
+  zod-validation-error@3.4.0(zod@3.25.76):
+    dependencies:
+      zod: 3.25.76
+
+  zod-validation-error@3.4.0(zod@4.0.10):
+    dependencies:
+      zod: 4.0.10
+
   zod@3.22.4: {}
 
   zod@3.24.3: {}
 
   zod@3.25.76: {}
+
+  zod@4.0.10: {}
 
   zustand@5.0.0(@types/react@19.1.8)(react@19.1.1)(use-sync-external-store@1.4.0(react@19.1.1)):
     optionalDependencies:
