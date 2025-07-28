@@ -42,7 +42,7 @@ Check [docs website](https://filecoin.hugomrdias.dev)
 
 ## Contributing
 
-Read contributing guidelines [here](../../.github/CONTRIBUTING.md).
+Read contributing [guidelines](../../.github/CONTRIBUTING.md).
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/hugomrdias/filecoin)
 
