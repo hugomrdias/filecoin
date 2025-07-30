@@ -1,9 +1,11 @@
 import _Zemu, { isTouchDevice } from '@zondax/zemu'
 import assert from 'assert'
+import { base64pad } from 'iso-base/rfc4648'
 import { utf8 } from 'iso-base/utf8'
 import { concat } from 'iso-base/utils'
 import { EIP191_PREFIX, LedgerFilecoin, verifyRaw } from '../src/ledger.js'
 import { Message } from '../src/message.js'
+import { Signature } from '../src/signature.js'
 import { lotusCid } from '../src/utils.js'
 import * as Wallet from '../src/wallet.js'
 import { DEFAULT_OPTIONS, models } from './setup.js'
@@ -20,7 +22,7 @@ const account = Wallet.accountFromMnemonic(
   "m/44'/1'/0'/0/0"
 )
 
-const FILECOIN_APP_VERSION = '1.0.0'
+const FILECOIN_APP_VERSION = '2.2.0'
 
 describe('ledger', function () {
   this.timeout(20000)
@@ -98,7 +100,7 @@ describe('ledger', function () {
           from: account.address.toString(),
           to: 't1sfizuhpgjqyl4yjydlebncvecf3q2cmeeathzwi',
           value: '1',
-          // params: base64pad.encode('hello world'),
+          params: base64pad.encode('hello world'),
         })
 
         const sig = Wallet.signMessage(account.privateKey, 'SECP256K1', message)
@@ -121,7 +123,7 @@ describe('ledger', function () {
 
       try {
         await sim.start({ ...DEFAULT_OPTIONS, model: model.name })
-        await sim.toggleExpertMode()
+        await sim.toggleBlindSigning()
 
         const app = new LedgerFilecoin(sim.getTransport())
 
@@ -134,12 +136,63 @@ describe('ledger', function () {
         const rawSigRequest = app.signRaw(account.path, data)
 
         await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
-        await sim.compareSnapshotsAndApprove('./test', `sign_raw-${model.name}`)
+        await sim.compareSnapshotsAndApprove(
+          './test',
+          `sign_raw-${model.name}`,
+          true,
+          0,
+          1500,
+          true
+        )
 
         const ledgerSig = await rawSigRequest
 
         assert.deepStrictEqual(sig.data, ledgerSig)
         assert.ok(verifyRaw(ledgerSig, data, account.publicKey))
+      } finally {
+        await sim.close()
+      }
+    })
+  }
+
+  for (const model of models) {
+    it.skip(`should personal sign raw bytes from ${model.name}`, async () => {
+      const sim = new Zemu(model.path)
+
+      try {
+        await sim.start({ ...DEFAULT_OPTIONS, model: model.name })
+        // await sim.toggleBlindSigning()
+
+        const app = new LedgerFilecoin(sim.getTransport())
+
+        const data = utf8.decode('hello world')
+        const sig = Wallet.personalSign(account.privateKey, 'SECP256K1', data)
+
+        const rawSigRequest = app.personalSign(account.path, data)
+
+        await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
+        await sim.compareSnapshotsAndApprove(
+          './test',
+          `personal_sign_raw-${model.name}`,
+          true,
+          0,
+          1500,
+          false
+        )
+
+        const ledgerSig = await rawSigRequest
+
+        assert.deepStrictEqual(sig.data, ledgerSig)
+        assert.ok(
+          Wallet.personalVerify(
+            new Signature({
+              type: 'SECP256K1',
+              data: ledgerSig,
+            }),
+            data,
+            account.publicKey
+          )
+        )
       } finally {
         await sim.close()
       }

@@ -122,6 +122,7 @@ const SIGNATURE_TYPE = {
   DATA_CAP: 0x05,
   CLIENT_DEAL: 0x06,
   RAW_BYTES: 0x07,
+  PERSONAL_MESSAGE: 0x08,
 }
 
 /**
@@ -397,6 +398,21 @@ export class LedgerFilecoin {
     const data = concat([varint.encode(prefixed.length)[0], prefixed])
 
     return this.sign(path, data, 'RAW_BYTES')
+  }
+
+  /**
+   * Sign a message using FRC-102
+   *
+   * @param {string} path - Derivation path
+   * @param {Uint8Array} message - Message to sign
+   */
+  personalSign(path, message) {
+    const buf = new Uint8Array(4)
+    const view = new DataView(buf.buffer)
+    view.setUint32(0, message.length, false)
+
+    const data = concat([buf, message])
+    return this.sign(path, data, 'PERSONAL_MESSAGE')
   }
 
   /**
