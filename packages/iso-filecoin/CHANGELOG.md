@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.4.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.3.0...iso-filecoin-v7.4.0) (2025-07-30)
+
+
+### Features
+
+* implement personal sign and verify using FRC-102 ([c042c7d](https://github.com/hugomrdias/filecoin/commit/c042c7d791b855a606bf8453678e64c606bcd068))
+* support ledger personal sign FRC102 and upgrade app to 2.2.0 ([12792c8](https://github.com/hugomrdias/filecoin/commit/12792c827f6feb1714bc92bdb268d2bd710c971d)), closes [#205](https://github.com/hugomrdias/filecoin/issues/205)
+
 ## [7.3.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.2.2...iso-filecoin-v7.3.0) (2025-07-28)
 
 
