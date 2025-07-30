@@ -1,5 +1,6 @@
 import assert from 'assert'
 import { base64pad, hex } from 'iso-base/rfc4648'
+import { utf8 } from 'iso-base/utf8'
 import { Message } from '../src/message.js'
 import { RPC } from '../src/rpc.js'
 import { Signature } from '../src/signature.js'
@@ -161,6 +162,28 @@ describe('wallet', () => {
 
     assert.ok(
       Wallet.verify(lotusSig, hex.decode('68656c6c6f'), accountSecp.publicKey)
+    )
+  })
+
+  it('should sign/verify bytes with secp using FRC-102', () => {
+    const accountSecp = Wallet.accountFromPrivateKey(
+      base64pad.decode('LzjsZEXCy6tDWAxcFiu76IRQwHkohWvsVK1T+2Q5NfY='),
+      'SECP256K1',
+      'mainnet'
+    )
+
+    const signature = Wallet.personalSign(
+      accountSecp.privateKey,
+      'SECP256K1',
+      utf8.decode('hello world')
+    )
+
+    assert.ok(
+      Wallet.personalVerify(
+        signature,
+        utf8.decode('hello world'),
+        accountSecp.publicKey
+      )
     )
   })
 

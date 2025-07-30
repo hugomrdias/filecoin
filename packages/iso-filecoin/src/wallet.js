@@ -18,6 +18,13 @@ import { getNetworkFromPath } from './utils.js'
  */
 
 /**
+ * FRC-102 prefix
+ *
+ * @see https://github.com/filecoin-project/FIPs/blob/master/FRCs/frc-0102.md
+ */
+const FRC_102_PREFIX = '\x19Filecoin Signed Message:\n'
+
+/**
  * Schemas
  */
 export const Schemas = {
@@ -261,6 +268,34 @@ export function sign(privateKey, type, data) {
       )
     }
   }
+}
+
+/**
+ * Personal sign using FRC-102
+ *
+ * @see https://github.com/filecoin-project/FIPs/blob/master/FRCs/frc-0102.md
+ *
+ * @param {Uint8Array} privateKey
+ * @param {import('./types.js').SignatureType} type
+ * @param {Uint8Array} data
+ */
+export function personalSign(privateKey, type, data) {
+  const prefix = utf8.decode(`${FRC_102_PREFIX}${data.length}`)
+  return sign(privateKey, type, concat([prefix, data]))
+}
+
+/**
+ * Personal verify using FRC-102
+ *
+ * @see https://github.com/filecoin-project/FIPs/blob/master/FRCs/frc-0102.md
+ *
+ * @param {import('./signature.js').Signature} signature
+ * @param {Uint8Array} data
+ * @param {Uint8Array} publicKey
+ */
+export function personalVerify(signature, data, publicKey) {
+  const prefix = utf8.decode(`${FRC_102_PREFIX}${data.length}`)
+  return verify(signature, concat([prefix, data]), publicKey)
 }
 
 /**
