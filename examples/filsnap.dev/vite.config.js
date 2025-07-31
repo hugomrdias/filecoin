@@ -1,5 +1,5 @@
-import * as child from 'child_process'
 import react from '@vitejs/plugin-react'
+import * as child from 'child_process'
 import * as git from 'tiny-git-rev-sync'
 import { defineConfig } from 'vite'
 import { analyzer } from 'vite-bundle-analyzer'
@@ -83,10 +83,8 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
-        cleanupOutdatedCaches: true,
-        clientsClaim: true,
-        skipWaiting: true,
+        navigateFallback: '/',
+        globPatterns: ['**/*.{js,css,html,png,svg,ico,txt,xml}'],
       },
       pwaAssets: {
         image: 'public/filecoin-logo.svg',

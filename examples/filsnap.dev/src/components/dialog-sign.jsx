@@ -53,31 +53,31 @@ export function DialogSign({ isOpen, setIsOpen }) {
 
   return (
     <Dialog.Root
-      open={isOpen}
       onOpenChange={(open) => {
         setIsOpen(open)
         if (!open) {
           reset()
         }
       }}
+      open={isOpen}
     >
       <Dialog.Content maxWidth="350px" onEscapeKeyDown={() => setIsOpen(false)}>
         <Dialog.Title>Sign</Dialog.Title>
-        <Dialog.Description size="2" mb="4">
+        <Dialog.Description mb="4" size="2">
           Sign a message.
         </Dialog.Description>
 
-        <form onSubmit={handleSubmit(onSubmit)} onFocus={() => resetSign()}>
+        <form onFocus={() => resetSign()} onSubmit={handleSubmit(onSubmit)}>
           <Flex direction="column" gap="3">
             <label htmlFor="recipient">
-              <Text as="div" size="2" mb="1" weight="bold">
+              <Text as="div" mb="1" size="2" weight="bold">
                 Message
               </Text>
               <TextField.Root
-                size="3"
-                data-1p-ignore
                 autoComplete="off"
+                data-1p-ignore
                 placeholder="Hello world"
+                size="3"
                 {...register('message', {
                   required: 'Message is required',
                 })}
@@ -92,8 +92,8 @@ export function DialogSign({ isOpen, setIsOpen }) {
             </InfoBox>
           )}
 
-          <Flex gap="3" mt="4" justify="end">
-            <Button title="Sign message" type="submit" loading={isPending}>
+          <Flex gap="3" justify="end" mt="4">
+            <Button loading={isPending} title="Sign message" type="submit">
               Sign
             </Button>
           </Flex>
@@ -103,18 +103,18 @@ export function DialogSign({ isOpen, setIsOpen }) {
             <strong>Signature:</strong>{' '}
             <Code variant="soft">{data.toLotusHex()}</Code>
             <IconButton
-              size="1"
               aria-label="Copy value"
               color="gray"
-              variant="ghost"
               onClick={() => onCopy(data.toLotusHex())}
+              size="1"
+              variant="ghost"
             >
-              <Icons.CopyIcon width={16} height={16} />
+              <Icons.CopyIcon height={16} width={16} />
             </IconButton>
           </InfoBox>
         )}
         <Dialog.Close>
-          <button type="button" className="IconButton" aria-label="Close">
+          <button aria-label="Close" className="IconButton" type="button">
             <Cross2Icon />
           </button>
         </Dialog.Close>
