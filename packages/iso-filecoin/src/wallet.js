@@ -1,6 +1,6 @@
 import { bls12_381 as bls } from '@noble/curves/bls12-381'
 import { secp256k1 as secp } from '@noble/curves/secp256k1'
-import { blake2b } from '@noble/hashes/blake2b'
+import { blake2b } from '@noble/hashes/blake2'
 import { HDKey } from '@scure/bip32'
 import * as bip39 from '@scure/bip39'
 import { wordlist } from '@scure/bip39/wordlists/english'
@@ -249,7 +249,7 @@ export function sign(privateKey, type, data) {
       return new Signature({
         type: 'SECP256K1',
         data: concat([
-          signature.toCompactRawBytes(),
+          signature.toBytes('compact'),
           Uint8Array.from([signature.recovery]),
         ]),
       })
@@ -309,7 +309,10 @@ export function verify(signature, data, publicKey) {
   switch (signature.type) {
     case 'SECP256K1': {
       return secp.verify(
-        secp.Signature.fromCompact(signature.data.subarray(0, 64)),
+        secp.Signature.fromBytes(
+          signature.data.subarray(0, 64),
+          'compact'
+        ).toBytes(),
         blake2b(data, {
           dkLen: 32,
         }),
@@ -351,7 +354,7 @@ export function recoverPublicKey(signature, data) {
   const hash = blake2b(data, {
     dkLen: 32,
   })
-  return secp.Signature.fromCompact(signature.data.subarray(0, 64))
+  return secp.Signature.fromBytes(signature.data.subarray(0, 64), 'compact')
     .addRecoveryBit(signature.data[64])
     .recoverPublicKey(hash)
     .toRawBytes(false)

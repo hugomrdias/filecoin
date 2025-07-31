@@ -18,10 +18,10 @@ export const SEED =
 export const PATH = "m/44'/461'/0/0/0"
 export const PATH_TESTNET = "m/44'/1'/0/0/0"
 
-const APP_PATH_X = path.join(__dirname, 'output/app_x.elf')
-const APP_PATH_SP = path.join(__dirname, 'output/app_s2.elf')
-const APP_PATH_ST = path.join(__dirname, 'output/app_stax.elf')
-const APP_PATH_FL = path.join(__dirname, 'output/app_flex.elf')
+const APP_PATH_X = path.join(__dirname, '../../../ledger-app/app_x.elf')
+const APP_PATH_SP = path.join(__dirname, '../../../ledger-app/app_s2.elf')
+const APP_PATH_ST = path.join(__dirname, '../../../ledger-app/app_stax.elf')
+const APP_PATH_FL = path.join(__dirname, '../../../ledger-app/app_flex.elf')
 /**
  * @type {import('@zondax/zemu').IDeviceModel[]}
  */

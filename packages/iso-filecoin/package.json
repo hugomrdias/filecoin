@@ -132,7 +132,7 @@
   "dependencies": {
     "@ipld/dag-cbor": "^9.2.4",
     "@ledgerhq/errors": "^6.23.0",
-    "@noble/curves": "^1.9.4",
+    "@noble/curves": "^1.9.6",
     "@noble/hashes": "^1.8.0",
     "@scure/bip32": "^1.7.0",
     "@scure/bip39": "^1.6.0",
@@ -140,7 +140,7 @@
     "iso-base": "^4.1.0",
     "iso-kv": "^3.0.3",
     "iso-web": "^1.1.1",
-    "zod": "^4.0.10",
+    "zod": "^4.0.14",
     "zod-validation-error": "^4.0.1"
   },
   "devDependencies": {
@@ -156,7 +156,7 @@
     "mocha": "^11.7.1",
     "playwright-test": "^14.1.11",
     "rimraf": "^6.0.1",
-    "rollup": "^4.46.1",
+    "rollup": "^4.46.2",
     "type-fest": "^4.41.0",
     "typescript": "5.8.3"
   },

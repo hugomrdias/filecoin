@@ -22,7 +22,7 @@ const account = Wallet.accountFromMnemonic(
   "m/44'/1'/0'/0/0"
 )
 
-const FILECOIN_APP_VERSION = '2.2.0'
+const FILECOIN_APP_VERSION = '2.2.1'
 
 describe('ledger', function () {
   this.timeout(20000)
@@ -156,7 +156,7 @@ describe('ledger', function () {
   }
 
   for (const model of models) {
-    it.skip(`should personal sign raw bytes from ${model.name}`, async () => {
+    it(`should personal sign raw bytes from ${model.name}`, async () => {
       const sim = new Zemu(model.path)
 
       try {
