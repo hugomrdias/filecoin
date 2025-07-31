@@ -240,6 +240,24 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
   }
 
   /**
+   * @type {WalletAdapter['personalSign']}
+   * @inheritdoc
+   */
+  async personalSign(data) {
+    if (!this.filsnap) {
+      throw new Error('Adapter is not connected')
+    }
+    const r = await this.filsnap.personalSign(data)
+    if (r.error) {
+      const err = new Error(r.error.message, { cause: r.error.data })
+      this.emit('error', err)
+      throw err
+    }
+
+    return r.result
+  }
+
+  /**
    *
    * @param {MessageObj} message - Filecoin message to sign
    */

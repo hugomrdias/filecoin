@@ -148,9 +148,18 @@ export interface WalletAdapter extends TypedEventTarget<WalletEvents> {
   /**
    * Sign raw bytes
    *
+   * @deprecated Use {@link personalSign} instead
    * @param data - raw bytes to sign
    */
   sign(data: Uint8Array): Promise<Signature>
+
+  /**
+   * Sign FRC-102 message
+   *
+   * @see https://github.com/filecoin-project/FIPs/blob/master/FRCs/frc-0102.md
+   * @param data - raw bytes to sign
+   */
+  personalSign: (data: Uint8Array) => Promise<Signature>
 
   /**
    * Sign filecoin message

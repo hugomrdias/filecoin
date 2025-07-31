@@ -232,11 +232,11 @@ export function connectorTests({
     })
 
     it('should sign', async function () {
-      this.timeout(10_000)
+      this.timeout(15_000)
       await wallet.connect({ network })
       assert.strictEqual(wallet.connected, true)
       if (sim) {
-        await sim.toggleExpertMode()
+        await sim.toggleBlindSigning()
       }
 
       const sigPromise = wallet.sign(utf8.decode('hello world'))
@@ -244,7 +244,11 @@ export function connectorTests({
         await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
         await sim.compareSnapshotsAndApprove(
           './test',
-          `adapter_sign_raw-${walletName}`
+          `adapter_sign_raw-${walletName}`,
+          true,
+          0,
+          1500,
+          true
         )
       }
       const sig = await sigPromise
@@ -253,7 +257,7 @@ export function connectorTests({
         fixtures[wallet.id][`${wallet.network}`].sig
       )
       if (sim) {
-        await sim.toggleExpertMode()
+        await sim.toggleBlindSigning()
       }
     })
     it('should sign message', async function () {

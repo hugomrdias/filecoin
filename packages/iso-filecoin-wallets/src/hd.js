@@ -1,7 +1,9 @@
+/** biome-ignore-all lint/suspicious/useAwait: sync version */
 import { pathFromNetwork } from 'iso-filecoin/utils'
 import {
   accountFromSeed,
   mnemonicToSeed,
+  personalSign,
   sign,
   signMessage,
 } from 'iso-filecoin/wallet'
@@ -102,7 +104,6 @@ export class WalletAdapterHd extends TypedEventTarget {
     return this.#support
   }
 
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async checkSupport() {
     this.#support = WalletSupport.Detected
   }
@@ -120,7 +121,6 @@ export class WalletAdapterHd extends TypedEventTarget {
   /**
    * @param {{ network?: Network }} [params]
    */
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async connect(params = {}) {
     if (!this.#seed) {
       throw new Error('No seed found')
@@ -149,7 +149,6 @@ export class WalletAdapterHd extends TypedEventTarget {
     }
   }
 
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async disconnect() {
     this.account = undefined
     this.emit('disconnect')
@@ -158,8 +157,6 @@ export class WalletAdapterHd extends TypedEventTarget {
   /**
    * @param {Network} network
    */
-
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async changeNetwork(network) {
     if (!this.connected || !this.account || !this.#seed) {
       throw new Error('Adapter is not connected')
@@ -187,7 +184,6 @@ export class WalletAdapterHd extends TypedEventTarget {
   /**
    * @param {number } index
    */
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async deriveAccount(index) {
     if (!this.connected || !this.account || !this.#seed) {
       throw new Error('Adapter is not connected')
@@ -208,7 +204,6 @@ export class WalletAdapterHd extends TypedEventTarget {
    *
    * @param {Uint8Array} data - Data to sign
    */
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async sign(data) {
     if (!this.account) {
       throw new Error('Client is not connected')
@@ -221,10 +216,24 @@ export class WalletAdapterHd extends TypedEventTarget {
   }
 
   /**
+   * @type {WalletAdapter['personalSign']}
+   * @inheritdoc
+   */
+  async personalSign(data) {
+    if (!this.account) {
+      throw new Error('Client is not connected')
+    }
+
+    if (!this.account.privateKey) {
+      throw new Error('Private key not found')
+    }
+    return personalSign(this.account.privateKey, this.signatureType, data)
+  }
+
+  /**
    *
    * @param {MessageObj} message - Filecoin message to sign
    */
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async signMessage(message) {
     if (!this.account) {
       throw new Error('Client is not connected')

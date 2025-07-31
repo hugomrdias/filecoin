@@ -120,6 +120,11 @@ export class WalletAdapterLedger extends TypedEventTarget {
 
       transport = await this.#transport.create()
       this.#app = new LedgerFilecoin(transport)
+      const version = await this.#app.getVersion()
+      const vNum = version.split('.').join('')
+      if (Number(vNum) < 221) {
+        throw new Error('Ledger app version is too old')
+      }
       this.account = await this.#createAccount(this.#app)
 
       this.emit('connect', { account: this.account, network: this.network })
@@ -210,6 +215,33 @@ export class WalletAdapterLedger extends TypedEventTarget {
       }
 
       const raw = await this.#app.signRaw(this.account.path, data)
+      return new Signature({
+        type: this.signatureType,
+        data: raw,
+      })
+    } catch (error) {
+      const err = /** @type {Error} */ (error)
+
+      this.emit('error', err)
+      throw error
+    }
+  }
+
+  /**
+   * @type {WalletAdapter['personalSign']}
+   * @inheritdoc
+   */
+  async personalSign(data) {
+    try {
+      if (!this.account || !this.#app) {
+        throw new Error('Adapter is not connected')
+      }
+
+      if (!this.account.path) {
+        throw new Error('Derivation path not found')
+      }
+
+      const raw = await this.#app.personalSign(this.account.path, data)
       return new Signature({
         type: this.signatureType,
         data: raw,

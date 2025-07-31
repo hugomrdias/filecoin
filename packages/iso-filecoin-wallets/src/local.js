@@ -1,4 +1,11 @@
-import { create, getPublicKey, sign, signMessage } from 'iso-filecoin/wallet'
+/** biome-ignore-all lint/suspicious/useAwait: sync version */
+import {
+  create,
+  getPublicKey,
+  personalSign,
+  sign,
+  signMessage,
+} from 'iso-filecoin/wallet'
 import { TypedEventTarget } from 'iso-web/event-target'
 import { nanoid } from 'nanoid'
 import { WalletSupport } from './common.js'
@@ -89,7 +96,6 @@ export class WalletAdapterRaw extends TypedEventTarget {
    * @param {{ network?: Network }} [params]
    */
 
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async connect(params = {}) {
     if (this.#isConnecting || this.connected) {
       if (!this.account) throw new Error('No account found')
@@ -125,12 +131,10 @@ export class WalletAdapterRaw extends TypedEventTarget {
     return this.#support
   }
 
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async checkSupport() {
     this.#support = WalletSupport.Detected
   }
 
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async disconnect() {
     this.account = undefined
     this.emit('disconnect')
@@ -140,7 +144,6 @@ export class WalletAdapterRaw extends TypedEventTarget {
    * @param {Network} network
    */
 
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async changeNetwork(network) {
     if (!this.connected || !this.account) {
       throw new Error('Adapter is not connected')
@@ -163,7 +166,6 @@ export class WalletAdapterRaw extends TypedEventTarget {
    * @param {number } _index
    * @returns {Promise<IAccount>}
    */
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async deriveAccount(_index) {
     const err = new Error('Local wallet is not a HD wallet')
     this.emit('error', err)
@@ -171,10 +173,8 @@ export class WalletAdapterRaw extends TypedEventTarget {
   }
 
   /**
-   *
-   * @param {Uint8Array} data - Data to sign
+   * @type {WalletAdapter['sign']}
    */
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async sign(data) {
     if (!this.account) {
       throw new Error('Client is not connected')
@@ -183,10 +183,20 @@ export class WalletAdapterRaw extends TypedEventTarget {
   }
 
   /**
+   * @type {WalletAdapter['personalSign']}
+   * @inheritdoc
+   */
+  async personalSign(data) {
+    if (!this.account) {
+      throw new Error('Client is not connected')
+    }
+    return personalSign(this.privateKey, this.signatureType, data)
+  }
+
+  /**
    *
    * @param {MessageObj} message - Filecoin message to sign
    */
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async signMessage(message) {
     if (!this.connected) {
       throw new Error('Client is not connected')
