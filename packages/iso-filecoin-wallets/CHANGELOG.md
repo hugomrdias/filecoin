@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.1.0...iso-filecoin-wallets-v1.2.0) (2025-07-31)
+
+
+### Features
+
+* implement personalSign method in wallet adapters ([63066ef](https://github.com/hugomrdias/filecoin/commit/63066ef3a7350ee5a453261b76764b224214ce12))
+
 ## [1.1.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.0.3...iso-filecoin-wallets-v1.1.0) (2025-04-11)
 
 
