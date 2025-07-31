@@ -7,7 +7,7 @@ title: "useEstimateGas"
 
 > **useEstimateGas**(`options`): `UseQueryResult`\<\{ `gas`: `bigint`; `symbol`: `string`; `total`: `bigint`; \}, [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\>
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:574](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L574)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:572](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L572)
 
 Estimate the gas for a message
 

@@ -15,13 +15,17 @@ Wallet adapter interface
 
 ## Methods
 
-### sign()
+### ~~sign()~~
 
 > **sign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:153](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L153)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:154](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L154)
 
 Sign raw bytes
+
+:::caution[Deprecated]
+Use [personalSign](/api/iso-filecoin-wallets/local/interfaces/walletadapter/#personalsign) instead
+:::
 
 #### Parameters
 
@@ -184,11 +188,35 @@ Current network (mainnet or testnet)
 
 ***
 
+### personalSign()
+
+> **personalSign**: (`data`) => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
+
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:162](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L162)
+
+Sign FRC-102 message
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `data` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) | raw bytes to sign |
+
+#### Returns
+
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
+
+#### See
+
+https://github.com/filecoin-project/FIPs/blob/master/FRCs/frc-0102.md
+
+***
+
 ### signMessage()
 
 > **signMessage**: (`message`) => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/types.ts:160](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L160)
+Defined in: [packages/iso-filecoin-wallets/src/types.ts:169](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/types.ts#L169)
 
 Sign filecoin message
 

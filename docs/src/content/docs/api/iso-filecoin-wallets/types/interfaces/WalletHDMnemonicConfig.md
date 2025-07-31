@@ -29,7 +29,7 @@ Derivation path address index
 
 #### Inherited from
 
-`Omit.index`
+[`WalletHDConfig`](/api/iso-filecoin-wallets/types/interfaces/wallethdconfig/).[`index`](/api/iso-filecoin-wallets/types/interfaces/wallethdconfig/#index)
 
 ***
 
@@ -51,7 +51,7 @@ Wallet name
 
 #### Inherited from
 
-`Omit.name`
+[`WalletConfig`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/).[`name`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/#name)
 
 ***
 
@@ -71,7 +71,7 @@ mainnet
 
 #### Inherited from
 
-`Omit.network`
+[`WalletConfig`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/).[`network`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/#network)
 
 ***
 
@@ -99,4 +99,4 @@ SECP256K1
 
 #### Inherited from
 
-`Omit.signatureType`
+[`WalletConfig`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/).[`signatureType`](/api/iso-filecoin-wallets/types/interfaces/walletconfig/#signaturetype)

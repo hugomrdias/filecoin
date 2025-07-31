@@ -47,7 +47,7 @@ Defined in: [packages/iso-filecoin-wallets/src/appkit.js:39](https://github.com/
 
 > **connect**(`params`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`ConnectResult`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:117](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L117)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:127](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L127)
 
 Connect
 
@@ -91,9 +91,9 @@ Defined in: [packages/iso-filecoin-wallets/src/appkit.js:50](https://github.com/
 
 ### disconnect()
 
-> **disconnect**(`_params`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
+> **disconnect**(`_params`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DisconnectResult`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:192](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L192)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:202](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L202)
 
 Disconnect
 
@@ -105,7 +105,7 @@ Disconnect
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DisconnectResult`\>
 
 #### Overrides
 
@@ -117,7 +117,7 @@ Disconnect
 
 > **estimateGas**(`_params`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`EstimateGasTransactionResult`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:297](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L297)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:311](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L311)
 
 Estimate gas
 
@@ -141,7 +141,7 @@ Estimate gas
 
 > **formatUnits**(`_params`): `string`
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:331](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L331)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:345](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L345)
 
 Format units
 
@@ -189,7 +189,7 @@ Get accounts
 
 > **getBalance**(`params`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`GetBalanceResult`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:221](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L221)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:235](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L235)
 
 Get balance
 
@@ -213,7 +213,7 @@ Get balance
 
 > **getCapabilities**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:341](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L341)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:355](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L355)
 
 #### Returns
 
@@ -225,47 +225,15 @@ Defined in: [packages/iso-filecoin-wallets/src/appkit.js:341](https://github.com
 
 ***
 
-### getEnsAddress()
-
-> **getEnsAddress**(`params`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`GetEnsAddressResult`\>
-
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:359](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L359)
-
-Get ens address
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `params` | `GetEnsAddressParams` |
-
-#### Returns
-
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`GetEnsAddressResult`\>
-
-#### Overrides
-
-`AdapterBlueprint.getEnsAddress`
-
-***
-
 ### getProfile()
 
 > **getProfile**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `profileImage`: `undefined`; `profileName`: `undefined`; \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:335](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L335)
-
-Gets the profile for a given address and chain ID.
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:349](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L349)
 
 #### Returns
 
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `profileImage`: `undefined`; `profileName`: `undefined`; \}\>
-
-Profile result
-
-#### Overrides
-
-`AdapterBlueprint.getProfile`
 
 ***
 
@@ -273,7 +241,7 @@ Profile result
 
 > **getWalletConnectProvider**(`params`): `any`
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:378](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L378)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:385](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L385)
 
 #### Parameters
 
@@ -296,7 +264,7 @@ Defined in: [packages/iso-filecoin-wallets/src/appkit.js:378](https://github.com
 
 > **grantPermissions**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:344](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L344)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:358](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L358)
 
 #### Returns
 
@@ -312,7 +280,7 @@ Defined in: [packages/iso-filecoin-wallets/src/appkit.js:344](https://github.com
 
 > **parseUnits**(`_params`): `bigint`
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:321](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L321)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:335](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L335)
 
 Parse units
 
@@ -336,7 +304,7 @@ Parse units
 
 > **revokePermissions**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`` `0x${string}` ``\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:347](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L347)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:361](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L361)
 
 #### Returns
 
@@ -352,7 +320,7 @@ Defined in: [packages/iso-filecoin-wallets/src/appkit.js:347](https://github.com
 
 > **sendTransaction**(`_params`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`SendTransactionResult`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:309](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L309)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:323](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L323)
 
 Send transaction
 
@@ -374,15 +342,15 @@ Send transaction
 
 ### setUniversalProvider()
 
-> **setUniversalProvider**(): `void`
+> **setUniversalProvider**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:372](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L372)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:379](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L379)
 
 Sets the universal provider for WalletConnect.
 
 #### Returns
 
-`void`
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
 #### Overrides
 
@@ -394,7 +362,7 @@ Sets the universal provider for WalletConnect.
 
 > **signMessage**(`_params`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`SignMessageResult`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:285](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L285)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:299](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L299)
 
 Sign message
 
@@ -418,7 +386,7 @@ Sign message
 
 > **switchNetwork**(`params`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:205](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L205)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:219](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L219)
 
 Switch network
 
@@ -442,7 +410,7 @@ Switch network
 
 > **syncConnection**(`params`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`ConnectResult`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:179](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L179)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:189](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L189)
 
 Sync connection
 
@@ -459,6 +427,30 @@ Sync connection
 #### Overrides
 
 `AdapterBlueprint.syncConnection`
+
+***
+
+### syncConnections()
+
+> **syncConnections**(`_params`): `void` \| [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
+
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:117](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L117)
+
+Sync connections
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `_params` | `SyncConnectionsParams` |
+
+#### Returns
+
+`void` \| [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
+
+#### Overrides
+
+`AdapterBlueprint.syncConnections`
 
 ***
 
@@ -491,7 +483,7 @@ Sync connectors
 
 > **walletGetAssets**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:350](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L350)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:364](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L364)
 
 #### Returns
 
@@ -507,7 +499,7 @@ Defined in: [packages/iso-filecoin-wallets/src/appkit.js:350](https://github.com
 
 > **writeContract**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`WriteContractResult`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/appkit.js:367](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L367)
+Defined in: [packages/iso-filecoin-wallets/src/appkit.js:373](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/appkit.js#L373)
 
 Write contract
 

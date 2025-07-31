@@ -7,7 +7,7 @@ title: "accountFromPrivateKey"
 
 > **accountFromPrivateKey**(`privateKey`, `type`, `network`, `path?`): `object`
 
-Defined in: [packages/iso-filecoin/src/wallet.js:108](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L108)
+Defined in: [packages/iso-filecoin/src/wallet.js:115](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L115)
 
 Get account from private key
 

@@ -7,7 +7,7 @@ title: "recoverAddress"
 
 > **recoverAddress**(`signature`, `data`, `network`): [`AddressSecp256k1`](/api/iso-filecoin/address/classes/addresssecp256k1/) \| [`AddressBLS`](/api/iso-filecoin/address/classes/addressbls/)
 
-Defined in: [packages/iso-filecoin/src/wallet.js:331](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L331)
+Defined in: [packages/iso-filecoin/src/wallet.js:366](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L366)
 
 ## Parameters
 

@@ -5,7 +5,7 @@ prev: true
 title: "WalletAdapterHd"
 ---
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:31](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L31)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L33)
 
 HD wallet implementation
 
@@ -25,7 +25,7 @@ HD wallet implementation
 
 > **get** **connected**(): `boolean`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:97](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L97)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:99](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L99)
 
 Whether the wallet is currently connected
 
@@ -41,7 +41,7 @@ Whether the wallet is currently connected
 
 > **get** **connecting**(): `boolean`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:93](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L93)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:95](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L95)
 
 Whether the wallet is in the process of connecting
 
@@ -57,7 +57,7 @@ Whether the wallet is in the process of connecting
 
 > **get** **support**(): `"NotChecked"` \| `"Detected"` \| `"NotDetected"` \| `"NotSupported"`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:101](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L101)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:103](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L103)
 
 Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
@@ -71,7 +71,7 @@ Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
 > **new WalletAdapterHd**(`config`): `WalletAdapterHd`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:57](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L57)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:59](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L59)
 
 #### Parameters
 
@@ -93,7 +93,7 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:57](https://github.com/hugo
 
 > **changeNetwork**(`network`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/); `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:163](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L163)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:160](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L160)
 
 #### Parameters
 
@@ -111,7 +111,7 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:163](https://github.com/hug
 
 > **checkSupport**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:106](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L106)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:107](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L107)
 
 Check if this wallet adapter is supported in the current environment
 
@@ -144,7 +144,7 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:124](https://github.com/hug
 
 > **deriveAccount**(`index`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:191](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L191)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:187](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L187)
 
 #### Parameters
 
@@ -162,7 +162,7 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:191](https://github.com/hug
 
 > **disconnect**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:153](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L153)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:152](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L152)
 
 Disconnect from the wallet
 
@@ -172,11 +172,29 @@ Disconnect from the wallet
 
 ***
 
+### personalSign()
+
+> **personalSign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
+
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:222](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L222)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `data` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) |
+
+#### Returns
+
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
+
+***
+
 ### setup()
 
 > **setup**(`config`): `void`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:115](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L115)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:116](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L116)
 
 Setup the wallet from a mnemonic
 
@@ -196,7 +214,7 @@ Setup the wallet from a mnemonic
 
 > **sign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:212](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L212)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:207](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L207)
 
 #### Parameters
 
@@ -214,7 +232,7 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:212](https://github.com/hug
 
 > **signMessage**(`message`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:228](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L228)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:237](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L237)
 
 #### Parameters
 
@@ -242,7 +260,7 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:228](https://github.com/hug
 
 > `static` **fromMnemonic**(`config`): `WalletAdapterHd`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:82](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L82)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:84](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L84)
 
 HD wallet from mnemonic
 
@@ -262,7 +280,7 @@ HD wallet from mnemonic
 
 > `static` **is**(`value`): `value is WalletAdapterHd`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:72](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L72)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:74](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L74)
 
 #### Parameters
 
@@ -280,7 +298,7 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:72](https://github.com/hugo
 
 > **\[symbol\]**: `boolean` = `true`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:33](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L33)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:35](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L35)
 
 ***
 
@@ -288,7 +306,7 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:33](https://github.com/hugo
 
 > **account**: `undefined` \| [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/) = `undefined`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:39](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L39)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:41](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L41)
 
 ***
 
@@ -296,7 +314,7 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:39](https://github.com/hugo
 
 > **id**: `string` = `'hd'`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:35](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L35)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:37](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L37)
 
 Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
@@ -306,7 +324,7 @@ Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
 > **name**: `string` = `'Burner Wallet'`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:36](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L36)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:38](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L38)
 
 Human readable wallet name
 
@@ -316,7 +334,7 @@ Human readable wallet name
 
 > **network**: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/)
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:64](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L64)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:66](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L66)
 
 ***
 
@@ -324,7 +342,7 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:64](https://github.com/hugo
 
 > **signatureType**: `"SECP256K1"` \| `"BLS"`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:65](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L65)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:67](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L67)
 
 ***
 
@@ -332,7 +350,7 @@ Defined in: [packages/iso-filecoin-wallets/src/hd.js:65](https://github.com/hugo
 
 > **uid**: `string`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:34](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L34)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:36](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L36)
 
 Unique identifier for this wallet instance
 
@@ -342,6 +360,6 @@ Unique identifier for this wallet instance
 
 > **url**: `string` = `'https://filecoin.io'`
 
-Defined in: [packages/iso-filecoin-wallets/src/hd.js:37](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L37)
+Defined in: [packages/iso-filecoin-wallets/src/hd.js:39](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/hd.js#L39)
 
 Wallet homepage URL

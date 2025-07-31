@@ -7,7 +7,7 @@ title: "useAdapter"
 
 > **useAdapter**(): [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`FilecoinContextType`](/api/iso-filecoin-react/types/type-aliases/filecoincontexttype/), `"reconnecting"` \| `"adapter"` \| `"network"` \| `"loading"` \| `"error"`\>
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:313](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L313)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:311](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L311)
 
 Hook to access the current wallet adapter and its state
 

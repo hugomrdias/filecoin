@@ -7,7 +7,7 @@ title: "accountFromLotus"
 
 > **accountFromLotus**(`lotusHex`, `network`): [`IAccount`](/api/iso-filecoin/types/interfaces/iaccount/)
 
-Defined in: [packages/iso-filecoin/src/wallet.js:131](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L131)
+Defined in: [packages/iso-filecoin/src/wallet.js:138](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L138)
 
 Get account from lotus private key export
 

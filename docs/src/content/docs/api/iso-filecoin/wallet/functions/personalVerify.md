@@ -2,14 +2,14 @@
 editUrl: false
 next: true
 prev: true
-title: "verify"
+title: "personalVerify"
 ---
 
-> **verify**(`signature`, `data`, `publicKey`): `boolean`
+> **personalVerify**(`signature`, `data`, `publicKey`): `boolean`
 
-Defined in: [packages/iso-filecoin/src/wallet.js:308](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L308)
+Defined in: [packages/iso-filecoin/src/wallet.js:296](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L296)
 
-Verify signatures
+Personal verify using FRC-102
 
 ## Parameters
 
@@ -22,3 +22,7 @@ Verify signatures
 ## Returns
 
 `boolean`
+
+## See
+
+https://github.com/filecoin-project/FIPs/blob/master/FRCs/frc-0102.md

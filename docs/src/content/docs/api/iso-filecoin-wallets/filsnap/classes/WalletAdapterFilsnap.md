@@ -111,7 +111,7 @@ Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:159](https://github.co
 
 > **checkSupport**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:264](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L264)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:282](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L282)
 
 Check if this wallet adapter is supported in the current environment
 
@@ -162,13 +162,31 @@ Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:199](https://github.co
 
 > **disconnect**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:276](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L276)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:294](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L294)
 
 Disconnect from the wallet
 
 #### Returns
 
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
+
+***
+
+### personalSign()
+
+> **personalSign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
+
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:246](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L246)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `data` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) |
+
+#### Returns
+
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
 ***
 
@@ -194,7 +212,7 @@ Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:228](https://github.co
 
 > **signMessage**(`message`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:246](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L246)
+Defined in: [packages/iso-filecoin-wallets/src/filsnap.js:264](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/filsnap.js#L264)
 
 #### Parameters
 

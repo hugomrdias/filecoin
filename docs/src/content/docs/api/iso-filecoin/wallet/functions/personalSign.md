@@ -2,16 +2,14 @@
 editUrl: false
 next: true
 prev: true
-title: "sign"
+title: "personalSign"
 ---
 
-> **sign**(`privateKey`, `type`, `data`): [`Signature`](/api/iso-filecoin/signature/classes/signature/)
+> **personalSign**(`privateKey`, `type`, `data`): [`Signature`](/api/iso-filecoin/signature/classes/signature/)
 
-Defined in: [packages/iso-filecoin/src/wallet.js:239](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L239)
+Defined in: [packages/iso-filecoin/src/wallet.js:282](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L282)
 
-Sign arbitary bytes similar to `lotus wallet sign`
-
-Lotus BLS private key is little endian so you need to reverse the byte order. Use `lotusBlsPrivateKeyToBytes` to convert.
+Personal sign using FRC-102
 
 ## Parameters
 
@@ -24,3 +22,7 @@ Lotus BLS private key is little endian so you need to reverse the byte order. Us
 ## Returns
 
 [`Signature`](/api/iso-filecoin/signature/classes/signature/)
+
+## See
+
+https://github.com/filecoin-project/FIPs/blob/master/FRCs/frc-0102.md

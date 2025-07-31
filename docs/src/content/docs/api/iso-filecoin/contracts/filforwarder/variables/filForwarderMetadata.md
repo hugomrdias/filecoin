@@ -21,11 +21,11 @@ Defined in: [packages/iso-filecoin/src/contracts/filforwarder.js:93](https://git
 
 #### chainIds.filecoinCalibrationTestnet
 
-> **chainIds.filecoinCalibrationTestnet**: `string` = `'eip155:314159'`
+> **filecoinCalibrationTestnet**: `string` = `'eip155:314159'`
 
 #### chainIds.filecoinMainnet
 
-> **chainIds.filecoinMainnet**: `string` = `'eip155:314'`
+> **filecoinMainnet**: `string` = `'eip155:314'`
 
 ### contractAddress
 

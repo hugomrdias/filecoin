@@ -33,7 +33,7 @@ Defined in: [packages/iso-filecoin/src/ledger.js:273](https://github.com/hugomrd
 
 > **close**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin/src/ledger.js:406](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L406)
+Defined in: [packages/iso-filecoin/src/ledger.js:421](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L421)
 
 Close the transport
 
@@ -98,6 +98,27 @@ const version = await ledger.getVersion()
 
 ***
 
+### personalSign()
+
+> **personalSign**(`path`, `message`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>\>
+
+Defined in: [packages/iso-filecoin/src/ledger.js:409](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L409)
+
+Sign a message using FRC-102
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Derivation path |
+| `message` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\> | Message to sign |
+
+#### Returns
+
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>\>
+
+***
+
 ### sign()
 
 > **sign**(`path`, `message`, `type?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>\>
@@ -112,7 +133,7 @@ Sign a message
 | ------ | ------ | ------ | ------ |
 | `path` | `string` | `undefined` | Derivation path |
 | `message` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\> | `undefined` | Message to sign in bytes |
-| `type?` | `"SECP256K1"` \| `"DATA_CAP"` \| `"CLIENT_DEAL"` \| `"RAW_BYTES"` | `'SECP256K1'` | Signature type |
+| `type?` | `"SECP256K1"` \| `"DATA_CAP"` \| `"CLIENT_DEAL"` \| `"RAW_BYTES"` \| `"PERSONAL_MESSAGE"` | `'SECP256K1'` | Signature type |
 
 #### Returns
 

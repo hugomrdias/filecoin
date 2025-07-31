@@ -7,7 +7,7 @@ title: "create"
 
 > **create**(`type`, `network`): `object`
 
-Defined in: [packages/iso-filecoin/src/wallet.js:156](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L156)
+Defined in: [packages/iso-filecoin/src/wallet.js:163](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L163)
 
 Create account
 

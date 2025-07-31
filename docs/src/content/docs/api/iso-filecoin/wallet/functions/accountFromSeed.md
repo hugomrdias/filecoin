@@ -7,7 +7,7 @@ title: "accountFromSeed"
 
 > **accountFromSeed**(`seed`, `type`, `path`, `network?`): `object`
 
-Defined in: [packages/iso-filecoin/src/wallet.js:74](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L74)
+Defined in: [packages/iso-filecoin/src/wallet.js:81](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L81)
 
 Get HD account from seed
 

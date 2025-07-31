@@ -7,7 +7,7 @@ title: "useAddresses"
 
 > **useAddresses**(`options`): `object`
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:524](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L524)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:522](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L522)
 
 Resolve addresses from the network
 TODO: use cache

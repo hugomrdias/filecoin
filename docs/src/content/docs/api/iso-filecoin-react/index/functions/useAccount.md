@@ -7,7 +7,7 @@ title: "useAccount"
 
 > **useAccount**(): `object`
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:351](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L351)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:349](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L349)
 
 Hook to access the current account and its state
 

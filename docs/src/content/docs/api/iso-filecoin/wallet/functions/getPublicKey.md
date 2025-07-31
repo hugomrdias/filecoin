@@ -7,7 +7,7 @@ title: "getPublicKey"
 
 > **getPublicKey**(`privateKey`, `network`, `type`): [`IAccount`](/api/iso-filecoin/types/interfaces/iaccount/)
 
-Defined in: [packages/iso-filecoin/src/wallet.js:181](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L181)
+Defined in: [packages/iso-filecoin/src/wallet.js:188](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L188)
 
 Get public key from private key
 

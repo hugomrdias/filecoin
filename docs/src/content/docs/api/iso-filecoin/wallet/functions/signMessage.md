@@ -7,7 +7,7 @@ title: "signMessage"
 
 > **signMessage**(`privateKey`, `type`, `message`): [`Signature`](/api/iso-filecoin/signature/classes/signature/)
 
-Defined in: [packages/iso-filecoin/src/wallet.js:217](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L217)
+Defined in: [packages/iso-filecoin/src/wallet.js:224](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L224)
 
 Sign filecoin message
 

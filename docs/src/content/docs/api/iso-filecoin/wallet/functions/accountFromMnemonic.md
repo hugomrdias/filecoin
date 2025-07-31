@@ -7,7 +7,7 @@ title: "accountFromMnemonic"
 
 > **accountFromMnemonic**(`mnemonic`, `type`, `path`, `password?`, `network?`): `object`
 
-Defined in: [packages/iso-filecoin/src/wallet.js:60](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L60)
+Defined in: [packages/iso-filecoin/src/wallet.js:67](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/wallet.js#L67)
 
 Get HD account from mnemonic
 

@@ -7,7 +7,7 @@ title: "useConnect"
 
 > **useConnect**(): `UseMutationResult`\<[`AccountNetwork`](/api/iso-filecoin-react/types/interfaces/accountnetwork/), [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error), \{ `adapter`: [`WalletAdapter`](/api/iso-filecoin-react/index/interfaces/walletadapter/); \}, `void`\> & [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`FilecoinContextType`](/api/iso-filecoin-react/types/type-aliases/filecoincontexttype/), `"adapter"` \| `"adapters"` \| `"loading"`\>
 
-Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:426](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L426)
+Defined in: [packages/iso-filecoin-react/src/wallet-provider.js:424](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-react/src/wallet-provider.js#L424)
 
 Hook to connect a wallet adapter
 

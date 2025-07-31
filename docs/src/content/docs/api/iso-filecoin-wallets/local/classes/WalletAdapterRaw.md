@@ -5,7 +5,7 @@ prev: true
 title: "WalletAdapterRaw"
 ---
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:43](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L43)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:50](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L50)
 
 Raw wallet implementation
 
@@ -25,7 +25,7 @@ Raw wallet implementation
 
 > **get** **connected**(): `boolean`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:121](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L121)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:127](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L127)
 
 Whether the wallet is currently connected
 
@@ -41,7 +41,7 @@ Whether the wallet is currently connected
 
 > **get** **connecting**(): `boolean`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:117](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L117)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:123](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L123)
 
 Whether the wallet is in the process of connecting
 
@@ -57,7 +57,7 @@ Whether the wallet is in the process of connecting
 
 > **get** **support**(): `"NotChecked"` \| `"Detected"` \| `"NotDetected"` \| `"NotSupported"`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:124](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L124)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:130](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L130)
 
 Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
@@ -71,7 +71,7 @@ Wallet support status (NotChecked, Detected, NotDetected, NotSupported)
 
 > **new WalletAdapterRaw**(`config`): `WalletAdapterRaw`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:64](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L64)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:71](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L71)
 
 #### Parameters
 
@@ -93,7 +93,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:64](https://github.com/h
 
 > **changeNetwork**(`network`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/); `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:144](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L144)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:147](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L147)
 
 #### Parameters
 
@@ -111,7 +111,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:144](https://github.com/
 
 > **checkSupport**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:129](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L129)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:134](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L134)
 
 Check if this wallet adapter is supported in the current environment
 
@@ -125,7 +125,7 @@ Check if this wallet adapter is supported in the current environment
 
 > **connect**(`params?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{ `account`: [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/); `network`: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/); \}\>
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:93](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L93)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:99](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L99)
 
 #### Parameters
 
@@ -144,7 +144,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:93](https://github.com/h
 
 > **deriveAccount**(`_index`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:167](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L167)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:169](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L169)
 
 #### Parameters
 
@@ -162,7 +162,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:167](https://github.com/
 
 > **disconnect**(): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:134](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L134)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:138](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L138)
 
 Disconnect from the wallet
 
@@ -172,17 +172,41 @@ Disconnect from the wallet
 
 ***
 
-### sign()
+### personalSign()
+
+> **personalSign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
+
+Defined in: [packages/iso-filecoin-wallets/src/local.js:189](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L189)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `data` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) |
+
+#### Returns
+
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
+
+***
+
+### ~~sign()~~
 
 > **sign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
 Defined in: [packages/iso-filecoin-wallets/src/local.js:178](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L178)
 
+Sign raw bytes
+
+:::caution[Deprecated]
+Use [personalSign](/api/iso-filecoin-wallets/local/interfaces/walletadapter/#personalsign) instead
+:::
+
 #### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `data` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\> | Data to sign |
+| `data` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) | raw bytes to sign |
 
 #### Returns
 
@@ -194,7 +218,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:178](https://github.com/
 
 > **signMessage**(`message`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:190](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L190)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:200](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L200)
 
 #### Parameters
 
@@ -222,7 +246,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:190](https://github.com/
 
 > `static` **create**(): `WalletAdapterRaw`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:80](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L80)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:87](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L87)
 
 #### Returns
 
@@ -234,7 +258,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:80](https://github.com/h
 
 > **\[symbol\]**: `boolean` = `true`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:45](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L45)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:52](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L52)
 
 ***
 
@@ -242,7 +266,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:45](https://github.com/h
 
 > **account**: `undefined` \| [`IAccount`](/api/iso-filecoin-wallets/ledger/interfaces/iaccount/) = `undefined`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:52](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L52)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:59](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L59)
 
 ***
 
@@ -250,7 +274,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:52](https://github.com/h
 
 > **id**: `string` = `'raw'`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:47](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L47)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:54](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L54)
 
 Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
@@ -260,7 +284,7 @@ Wallet adapter identifier (e.g. 'filsnap', 'ledger', 'hd', 'raw')
 
 > **name**: `string` = `'Raw (Unsafe)'`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:48](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L48)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:55](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L55)
 
 Human readable wallet name
 
@@ -270,7 +294,7 @@ Human readable wallet name
 
 > **network**: [`Network`](/api/iso-filecoin-wallets/filsnap/type-aliases/network/)
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:67](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L67)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:74](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L74)
 
 ***
 
@@ -278,7 +302,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:67](https://github.com/h
 
 > **privateKey**: [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)\<`ArrayBufferLike`\>
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:69](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L69)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:76](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L76)
 
 ***
 
@@ -286,7 +310,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:69](https://github.com/h
 
 > **signatureType**: `"SECP256K1"` \| `"BLS"`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:68](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L68)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:75](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L75)
 
 ***
 
@@ -294,7 +318,7 @@ Defined in: [packages/iso-filecoin-wallets/src/local.js:68](https://github.com/h
 
 > **uid**: `string`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:46](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L46)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:53](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L53)
 
 Unique identifier for this wallet instance
 
@@ -304,6 +328,6 @@ Unique identifier for this wallet instance
 
 > **url**: `string` = `'https://filecoin.io'`
 
-Defined in: [packages/iso-filecoin-wallets/src/local.js:49](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L49)
+Defined in: [packages/iso-filecoin-wallets/src/local.js:56](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/local.js#L56)
 
 Wallet homepage URL

@@ -186,6 +186,24 @@ Disconnect from the wallet
 
 ***
 
+### personalSign()
+
+> **personalSign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
+
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:229](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L229)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `data` | [`Uint8Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) |
+
+#### Returns
+
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
+
+***
+
 ### sign()
 
 > **sign**(`data`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
@@ -208,7 +226,7 @@ Defined in: [packages/iso-filecoin-wallets/src/ledger.js:202](https://github.com
 
 > **signMessage**(`message`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Signature`](/api/iso-filecoin/signature/classes/signature/)\>
 
-Defined in: [packages/iso-filecoin-wallets/src/ledger.js:228](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L228)
+Defined in: [packages/iso-filecoin-wallets/src/ledger.js:255](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin-wallets/src/ledger.js#L255)
 
 #### Parameters
 

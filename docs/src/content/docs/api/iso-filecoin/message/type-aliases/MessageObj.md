@@ -9,8 +9,6 @@ title: "MessageObj"
 
 Defined in: [packages/iso-filecoin/src/types.ts:26](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/types.ts#L26)
 
-Message validation schema
-
 ## Type declaration
 
 ### from

@@ -7,7 +7,7 @@ title: "APDU_CODES"
 
 > `const` **APDU\_CODES**: `object`
 
-Defined in: [packages/iso-filecoin/src/ledger.js:48](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L48)
+Defined in: [packages/iso-filecoin/src/ledger.js:47](https://github.com/hugomrdias/filecoin/blob/main/packages/iso-filecoin/src/ledger.js#L47)
 
 APDU codes
 
