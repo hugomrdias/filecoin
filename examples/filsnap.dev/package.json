@@ -31,7 +31,7 @@
     "iso-filecoin-wallets": "workspace:*",
     "iso-web": "^1.1.1",
     "react-dom": "^19.1.1",
-    "react-hook-form": "^7.61.1",
+    "react-hook-form": "^7.62.0",
     "viem": "~2.33.2",
     "wagmi": "^2.16.0"
   },
