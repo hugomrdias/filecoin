@@ -14,9 +14,9 @@ Check [docs website](https://filecoin.hugomrdias.dev)
 
 ## Examples
 
-- [`ledger`](https://github.com/hugomrdias/filecoin/tree/main/examples/ledger) - React + Vite example using all the packages. 
+- [`ledger`](https://github.com/hugomrdias/filecoin/tree/main/examples/ledger) - React + Vite example using all the packages.
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/hugomrdias/filecoin/tree/main/examples/ledger?title=Filecoin%20Ledger%20Example&file=src/main.jsx&hideExplorer=1&theme=dark)
-- [`synapse-script`](https://github.com/hugomrdias/filecoin/tree/main/examples/synapse-script) - React + Vite example using all the packages. 
+- [`synapse-script`](https://github.com/hugomrdias/filecoin/tree/main/examples/synapse-script) - Synapse with script tag.
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/hugomrdias/filecoin/tree/main/examples/synapse-script?title=Synapse%20Script%20Tag&hideExplorer=1&theme=dark)
 
 To clone it locally:
