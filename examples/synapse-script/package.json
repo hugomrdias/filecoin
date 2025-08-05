@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "servor --reload --browse",
-    "start": "servor --reload"
+    "dev": "servor --reload"
   },
   "keywords": [],
   "author": "",
