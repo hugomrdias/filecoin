@@ -29,7 +29,7 @@
     "iso-filecoin-react": "^2.2.0",
     "iso-filecoin-wallets": "^1.1.0",
     "react-dom": "^19.1.1",
-    "react-hook-form": "^7.61.1",
+    "react-hook-form": "^7.62.0",
     "react-hot-toast": "^2.5.2",
     "water.css": "^2.1.1"
   },
