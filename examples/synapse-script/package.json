@@ -1,0 +1,17 @@
+{
+  "name": "synapse-script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "servor --reload --browse",
+    "start": "servor --reload"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.14.0",
+  "dependencies": {
+    "servor": "^4.0.2"
+  }
+}
