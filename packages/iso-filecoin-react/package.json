@@ -68,7 +68,7 @@
     "iso-filecoin-wallets": "workspace:*"
   },
   "devDependencies": {
-    "@tanstack/react-query": "^5.83.1",
+    "@tanstack/react-query": "^5.84.2",
     "@testing-library/react": "^16.2.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.1.0",
