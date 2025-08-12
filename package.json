@@ -20,12 +20,12 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",
-    "@hugomrdias/configs": "^1.0.0",
+    "@hugomrdias/configs": "^1.1.0",
     "depcheck": "^1.4.7",
-    "simple-git-hooks": "^2.13.0",
-    "typedoc": "^0.28.8",
+    "simple-git-hooks": "^2.13.1",
+    "typedoc": "^0.28.9",
     "typedoc-plugin-markdown": "^4.8.0",
-    "typedoc-plugin-mdn-links": "^5.0.6",
+    "typedoc-plugin-mdn-links": "^5.0.7",
     "typedoc-plugin-missing-exports": "^4.0.0",
     "typedoc-plugin-zod": "^1.4.2",
     "typescript": "5.8.3"
@@ -36,9 +36,20 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "@biomejs/biome",
+      "@tailwindcss/oxide",
       "esbuild",
       "sharp",
       "simple-git-hooks"
+    ],
+    "ignoredBuiltDependencies": [
+      "@reown/appkit",
+      "bufferutil",
+      "cpu-features",
+      "keccak",
+      "protobufjs",
+      "secp256k1",
+      "ssh2",
+      "utf-8-validate"
     ]
   }
 }

@@ -140,7 +140,7 @@
     "iso-base": "^4.1.0",
     "iso-kv": "^3.0.3",
     "iso-web": "^1.1.1",
-    "zod": "^4.0.14",
+    "zod": "^4.0.17",
     "zod-validation-error": "^4.0.1"
   },
   "devDependencies": {
@@ -149,12 +149,12 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^24.1.0",
+    "@types/node": "^24.2.1",
     "@zondax/zemu": "^0.55.0",
     "assert": "^2.1.0",
     "glob": "^11.0.3",
     "mocha": "^11.7.1",
-    "playwright-test": "^14.1.11",
+    "playwright-test": "^14.1.12",
     "rimraf": "^6.0.1",
     "rollup": "^4.46.2",
     "type-fest": "^4.41.0",
