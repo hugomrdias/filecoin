@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.4.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.4.0...iso-filecoin-v7.4.1) (2025-08-13)
+
+
+### Bug Fixes
+
+* zod v3/4 ([9706960](https://github.com/hugomrdias/filecoin/commit/9706960c0ba60545ab576d75075efaa8b0872546))
+
 ## [7.4.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.3.0...iso-filecoin-v7.4.0) (2025-07-30)
 
 
