@@ -95,7 +95,7 @@
     "check": "biome check --no-errors-on-unmatched --files-ignore-unknown=true ."
   },
   "dependencies": {
-    "@reown/appkit": "1.7.18",
+    "@reown/appkit": "1.7.19",
     "@reown/appkit-common": "^1.7.18",
     "@reown/appkit-controllers": "^1.7.18",
     "iso-base": "^4.1.0",
