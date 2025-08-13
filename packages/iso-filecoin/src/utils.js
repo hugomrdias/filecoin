@@ -321,7 +321,7 @@ export function lotusCid(data) {
  * Check if an error is a ZodError
  *
  * @param {unknown} err
- * @returns {err is import('zod').ZodError}
+ * @returns {err is import('zod/v4').ZodError}
  */
 export function isZodErrorLike(err) {
   return (

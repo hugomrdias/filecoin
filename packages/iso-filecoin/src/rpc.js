@@ -96,12 +96,12 @@ export class JsonRpcError extends RpcError {
 export class ValidationRpcError extends RpcError {
   name = 'ValidationRpcError'
 
-  /** @type {import('zod').ZodError} */
+  /** @type {import('zod/v4').ZodError} */
   cause
 
   /**
    *
-   * @param {import('zod').ZodError} cause
+   * @param {import('zod/v4').ZodError} cause
    */
   constructor(cause) {
     const message = z.prettifyError(cause)
