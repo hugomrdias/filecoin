@@ -63,7 +63,7 @@
     }
   },
   "scripts": {
-    "lint": "tsc --build && biome check --no-errors-on-unmatched --files-ignore-unknown=true",
+    "lint": "pnpm run build && biome check --no-errors-on-unmatched --files-ignore-unknown=true",
     "test": "playwright-test --runner mocha",
     "build": "pnpm run generate && tsc --build",
     "generate": "wagmi generate",
