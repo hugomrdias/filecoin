@@ -141,7 +141,7 @@
     "iso-kv": "^3.0.3",
     "iso-web": "^1.1.1",
     "zod": "^3.25.0",
-    "zod-validation-error": "^4.0.1"
+    "zod-validation-error": "^3.5.2"
   },
   "devDependencies": {
     "@ledgerhq/hw-transport": "^6.31.8",
