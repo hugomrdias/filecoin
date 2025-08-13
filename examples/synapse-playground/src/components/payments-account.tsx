@@ -3,7 +3,7 @@ import { useReadUsdfcBalanceOf } from 'iso-filecoin-synapse/gen'
 import { useForm } from 'react-hook-form'
 import { formatEther, parseEther } from 'viem'
 import { useAccount } from 'wagmi'
-import { z } from 'zod'
+import { z } from 'zod/v4'
 import {
   Card,
   CardAction,
