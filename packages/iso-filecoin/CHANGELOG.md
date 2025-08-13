@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.4.2](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.4.1...iso-filecoin-v7.4.2) (2025-08-13)
+
+
+### Bug Fixes
+
+* remove zod validation error ([9f3748a](https://github.com/hugomrdias/filecoin/commit/9f3748acc93fd53c8927424adfacd3d28025dcee))
+* zod validation ([2f21338](https://github.com/hugomrdias/filecoin/commit/2f21338a3ab6265856a94660ddd91768272e8f84))
+
 ## [7.4.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.4.0...iso-filecoin-v7.4.1) (2025-08-13)
 
 
