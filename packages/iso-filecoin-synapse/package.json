@@ -1,0 +1,114 @@
+{
+  "name": "iso-filecoin-synapse",
+  "type": "module",
+  "version": "0.0.5",
+  "description": "Actions and hooks for Filecoin Synapse.",
+  "author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
+  "funding": "https://github.com/sponsors/hugomrdias",
+  "license": "MIT",
+  "homepage": "https://github.com/hugomrdias/filecoin/tree/main/packages/iso-filecoin-synapse",
+  "repository": {
+    "url": "hugomrdias/filecoin",
+    "directory": "packages/iso-filecoin-synapse"
+  },
+  "bugs": {
+    "url": "https://github.com/hugomrdias/filecoin/issues"
+  },
+  "keywords": [
+    "filecoin",
+    "synapse",
+    "dapp",
+    "react",
+    "hooks",
+    "context"
+  ],
+  "sideEffects": false,
+  "main": "./dist/src/index.js",
+  "module": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "files": [
+    "src",
+    "dist/src/**/*.js",
+    "dist/src/**/*.d.ts",
+    "dist/src/**/*.d.ts.map"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    },
+    "./gen": {
+      "types": "./dist/src/gen.d.ts",
+      "default": "./dist/src/gen.js"
+    },
+    "./chains": {
+      "types": "./dist/src/chains.d.ts",
+      "default": "./dist/src/chains.js"
+    },
+    "./types": {
+      "types": "./dist/src/types.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "chains": [
+        "dist/src/chains"
+      ],
+      "gen": [
+        "dist/src/gen"
+      ],
+      "types": [
+        "dist/src/types"
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "tsc --build && biome check --no-errors-on-unmatched --files-ignore-unknown=true",
+    "test": "playwright-test --runner mocha",
+    "build": "pnpm run generate && tsc --build",
+    "generate": "wagmi generate",
+    "watch": "tsc --watch"
+  },
+  "peerDependencies": {
+    "viem": "2.33.3",
+    "wagmi": "2.16.3"
+  },
+  "dependencies": {
+    "@wagmi/core": "2.19.0",
+    "dnum": "^2.15.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.2.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.2.1",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@wagmi/cli": "^2.4.0",
+    "assert": "^2.1.0",
+    "mocha": "^11.7.1",
+    "playwright-test": "^14.1.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "type-fest": "^4.41.0",
+    "typescript": "5.8.3"
+  },
+  "publishConfig": {
+    "provenance": false
+  },
+  "depcheck": {
+    "specials": [
+      "bin"
+    ],
+    "ignorePatterns": [
+      "dist",
+      ".wireit"
+    ],
+    "ignores": [
+      "@types/*",
+      "assert",
+      "mocha",
+      "playwright-test",
+      "type-fest"
+    ]
+  }
+}
