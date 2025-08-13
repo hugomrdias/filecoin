@@ -1,5 +1,5 @@
 import { request } from 'iso-web/http'
-import { fromError } from 'zod-validation-error'
+import * as z from 'zod/v4'
 import { Message } from './message.js'
 import { Signature } from './signature.js'
 import { getNetworkPrefix, isZodErrorLike } from './utils.js'
@@ -104,7 +104,7 @@ export class ValidationRpcError extends RpcError {
    * @param {import('zod').ZodError} cause
    */
   constructor(cause) {
-    const message = fromError(cause).message.replace('Validation error: ', '')
+    const message = z.prettifyError(cause)
     super(message, { cause })
     this.cause = cause
   }

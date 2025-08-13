@@ -424,10 +424,7 @@ describe('lotus rpc errors', () => {
     if (estimate.error) {
       assert.ok(estimate.error instanceof ValidationRpcError)
       assert.ok(estimate.error.cause instanceof ZodError)
-      assert.deepEqual(
-        estimate.error.message,
-        'Invalid input: expected string, received number at "value"'
-      )
+      assert.match(estimate.error.message, /Invalid input: expected string/)
       return
     }
     assert.fail('should fail')
