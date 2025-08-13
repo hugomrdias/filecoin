@@ -1,6 +1,6 @@
 import { base64pad, hex } from 'iso-base/rfc4648'
 import { concat, isBufferSource, u8 } from 'iso-base/utils'
-import { z } from 'zod'
+import { z } from 'zod/v4'
 
 export const SIGNATURE_TYPE = /** @type {const} */ ({
   SECP256K1: 1,
@@ -12,10 +12,12 @@ export const SIGNATURE_CODE = /** @type {const} */ ({
   2: 'BLS',
 })
 
-/** @type {import("zod").ZodType<BufferSource>} */
-const _zBufferSource = z.custom((value) => {
-  return isBufferSource(value)
-}, 'Value must be a BufferSource')
+const _zBufferSource = /** @type {typeof z.custom<BufferSource>} */ (z.custom)(
+  (value) => {
+    return isBufferSource(value)
+  },
+  'Value must be a BufferSource'
+)
 
 const zBuf = _zBufferSource.transform((value) => u8(value))
 

@@ -140,7 +140,7 @@
     "iso-base": "^4.1.0",
     "iso-kv": "^3.0.3",
     "iso-web": "^1.1.1",
-    "zod": "^4.0.17",
+    "zod": "^3.25.0",
     "zod-validation-error": "^4.0.1"
   },
   "devDependencies": {
