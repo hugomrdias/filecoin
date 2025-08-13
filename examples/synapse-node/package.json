@@ -1,0 +1,20 @@
+{
+  "name": "synapse-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.14.0",
+  "dependencies": {
+    "@wagmi/connectors": "^5.9.3",
+    "@wagmi/core": "2.19.0",
+    "iso-filecoin-synapse": "workspace:*",
+    "viem": "2.33.3"
+  }
+}
