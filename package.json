@@ -19,7 +19,7 @@
     "docs": "pnpm -r --filter docs run build"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.1.2",
+    "@biomejs/biome": "^2.2.0",
     "@hugomrdias/configs": "^1.1.0",
     "depcheck": "^1.4.7",
     "simple-git-hooks": "^2.13.1",
