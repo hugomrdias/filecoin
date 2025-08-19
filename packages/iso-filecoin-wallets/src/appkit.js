@@ -432,7 +432,7 @@ class FilecoinConnector {
     this.chain = /** @type {ChainNamespace} */ ('fil')
     this.imageUrl = connectorImages[adapter.id]
     this.chains = []
-    // @ts-ignore
+    // @ts-expect-error todo: fix
     this.provider = adapter
   }
 }

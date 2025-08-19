@@ -95,9 +95,9 @@
     "check": "biome check --no-errors-on-unmatched --files-ignore-unknown=true ."
   },
   "dependencies": {
-    "@reown/appkit": "1.7.19",
-    "@reown/appkit-common": "^1.7.18",
-    "@reown/appkit-controllers": "^1.7.18",
+    "@reown/appkit": "1.7.20",
+    "@reown/appkit-common": "^1.7.20",
+    "@reown/appkit-controllers": "^1.7.20",
     "iso-base": "^4.1.0",
     "iso-web": "^1.1.1",
     "nanoid": "^5.1.5"
@@ -116,7 +116,7 @@
     "typescript": "5.8.3"
   },
   "peerDependencies": {
-    "filsnap-adapter": "^3.2.0",
+    "filsnap-adapter": "^3.3.5",
     "iso-filecoin": "workspace:^"
   },
   "publishConfig": {

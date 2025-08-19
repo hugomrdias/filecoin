@@ -5,11 +5,8 @@ import path from 'path'
 // Will contain trailing slash
 const __dirname = new URL('.', import.meta.url).pathname
 
-// @ts-ignore
-const Zemu = /** @type {typeof _Zemu} */ (
-  // @ts-ignore
-  _Zemu.default
-)
+// @ts-expect-error todo: fix
+const Zemu = /** @type {typeof _Zemu} */ (_Zemu.default)
 
 export const SNAPSHOTS_PATH = path.join(__dirname, 'snapshots')
 

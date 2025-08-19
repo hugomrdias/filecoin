@@ -266,6 +266,7 @@ export class WalletAdapterFilsnap extends TypedEventTarget {
       throw new Error('Adapter is not connected')
     }
 
+    // biome-ignore lint/correctness/noUnusedVariables: todo: fix
     const { from, ...rest } = message
     const r = await this.filsnap.signMessage(rest)
     if (r.error) {

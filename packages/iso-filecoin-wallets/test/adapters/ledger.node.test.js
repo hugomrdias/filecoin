@@ -5,10 +5,8 @@ import { WalletAdapterLedger } from '../../src/ledger.js'
 import { DEFAULT_OPTIONS, models } from '../setup.js'
 import { connectorTests, MNEMONIC } from './base.js'
 
-// @ts-ignore
-
 const Zemu = /** @type {typeof _Zemu} */ (
-  // @ts-ignore
+  // @ts-expect-error todo: fix
   _Zemu.default
 )
 

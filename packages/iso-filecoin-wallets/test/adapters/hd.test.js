@@ -6,7 +6,7 @@ let wallet
 connectorTests({
   walletName: 'HD mainnet',
   network: 'mainnet',
-  // biome-ignore lint/suspicious/useAwait: <explanation>
+  // biome-ignore lint/suspicious/useAwait: todo
   beforeEachHook: async () => {
     wallet = WalletAdapterHd.fromMnemonic({
       signatureType: 'SECP256K1',
@@ -26,7 +26,7 @@ connectorTests({
 connectorTests({
   walletName: 'HD testnet',
   network: 'testnet',
-  // biome-ignore lint/suspicious/useAwait: <explanation>
+  // biome-ignore lint/suspicious/useAwait: todo
   beforeEachHook: async () => {
     wallet = WalletAdapterHd.fromMnemonic({
       signatureType: 'SECP256K1',
