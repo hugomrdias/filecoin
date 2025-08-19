@@ -31,5 +31,8 @@
     }
   },
   "include": ["src"],
-  "references": [{ "path": "../../packages/iso-filecoin-synapse" }]
+  "references": [
+    { "path": "../../packages/iso-filecoin-synapse" },
+    { "path": "../../packages/iso-filecoin" }
+  ]
 }

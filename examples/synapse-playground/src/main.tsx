@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { calibration, mainnet } from 'iso-filecoin-synapse/chains'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createConfig, http, WagmiProvider } from 'wagmi'
-import { filecoin, filecoinCalibration } from 'wagmi/chains'
 
 import { injected } from 'wagmi/connectors'
 import App from './app'
@@ -12,11 +12,11 @@ import './style.css'
 
 const queryClient = new QueryClient()
 export const config = createConfig({
-  chains: [filecoin, filecoinCalibration],
+  chains: [mainnet, calibration],
   connectors: [injected()],
   transports: {
-    [filecoin.id]: http(),
-    [filecoinCalibration.id]: http(),
+    [mainnet.id]: http(),
+    [calibration.id]: http(),
   },
 })
 

@@ -1,14 +1,9 @@
 import '@radix-ui/themes/styles.css'
 import './styles/index.css'
-import { Theme } from '@radix-ui/themes'
-
-import { http, WagmiProvider, createConfig } from 'wagmi'
-import { filecoin, filecoinCalibration } from 'wagmi/chains'
-import { metaMask } from 'wagmi/connectors'
-
-import Buffer from 'buffer'
 import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
+import { Theme } from '@radix-ui/themes'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import Buffer from 'buffer'
 import { FilecoinProvider } from 'iso-filecoin-react'
 import {
   WalletAdapterFilsnap,
@@ -17,6 +12,9 @@ import {
 } from 'iso-filecoin-wallets'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { createConfig, http, WagmiProvider } from 'wagmi'
+import { filecoin, filecoinCalibration } from 'wagmi/chains'
+import { metaMask } from 'wagmi/connectors'
 import App from './app.jsx'
 
 // ledger transport needs this
@@ -56,8 +54,8 @@ if (appEl) {
   createRoot(appEl).render(
     <StrictMode>
       <Theme
-        appearance="dark"
         accentColor="blue"
+        appearance="dark"
         grayColor="auto"
         radius="medium"
       >

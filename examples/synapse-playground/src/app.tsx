@@ -1,8 +1,11 @@
 import { useAccount } from 'wagmi'
 import { ConnectWallet } from '@/components/connect-wallet'
+import * as Icons from '@/components/icons'
 import { NetworkSelector } from '@/components/network-selector'
+import { Toaster } from '@/components/ui/sonner'
 import { PaymentsAccount } from './components/payments-account'
 import { WalletMenu } from './components/wallet-menu'
+import { WarmStorageService } from './components/warm-storage-service'
 
 export function App() {
   const { isConnected } = useAccount()
@@ -15,9 +18,9 @@ export function App() {
         >
           <div className="flex flex-row gap-2 items-center">
             <a className="" href="/">
-              <img alt="" className="h-8 w-auto" src="/filoz.svg" />
+              <Icons.Filecoin className="w-8 h-8" />
             </a>
-            <span className="text-xl font-bold">Payments</span>
+            <span className="text-xl font-bold">Pay</span>
           </div>
           <div className="flex flex-row gap-2 items-center">
             {isConnected && <WalletMenu />}
@@ -28,9 +31,11 @@ export function App() {
       <main>
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           {isConnected && <PaymentsAccount />}
+          {isConnected && <WarmStorageService />}
           {!isConnected && <ConnectWallet />}
         </div>
       </main>
+      <Toaster />
     </div>
   )
 }

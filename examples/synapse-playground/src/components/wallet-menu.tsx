@@ -1,3 +1,4 @@
+import { erc20 } from 'iso-filecoin-synapse'
 import { ArrowUpRight, Copy, Wallet } from 'lucide-react'
 import { useAccount, useBalance, useDisconnect } from 'wagmi'
 import * as Icons from '@/components/icons'
@@ -13,7 +14,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { useAddUsdfc } from '@/hooks/use-add-usdfc'
-// import { useBalanceUsdfc } from '@/hooks/use-balance-usdfc'
 import { useCopyToClipboard } from '@/hooks/use-clipboard'
 import { formatBalance, truncateMiddle } from '@/lib/utils'
 
@@ -25,8 +25,7 @@ export function WalletMenu() {
   const { data: balance } = useBalance({
     address,
   })
-
-  // const { data: usdfcBalance } = useBalanceUsdfc({ address })
+  const { data: erc20Balance } = erc20.useBalance({ address })
 
   return (
     <DropdownMenu>
@@ -51,7 +50,7 @@ export function WalletMenu() {
             </DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            {/* {formatBalance(usdfcBalance)} {usdfcBalance?.symbol} */}
+            {formatBalance(erc20Balance)} {erc20Balance?.symbol}
             <DropdownMenuShortcut>
               <Icons.Usdfc />
             </DropdownMenuShortcut>
