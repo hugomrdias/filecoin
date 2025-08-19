@@ -107,7 +107,7 @@
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.2.1",
-    "@zondax/zemu": "^0.55.0",
+    "@zondax/zemu": "^0.61.10",
     "assert": "^2.1.0",
     "mocha": "^11.7.1",
     "p-defer": "^4.0.1",
