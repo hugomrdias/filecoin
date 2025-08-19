@@ -1,7 +1,7 @@
 /**
  * Filecoin EVM Mainnet chain
  *
- * @type {import('./types.js').Chain}
+ * @type {import('./types.js').Chain<number>}
  */
 export const mainnet = {
   id: 314,
@@ -12,20 +12,27 @@ export const mainnet = {
     decimals: 18,
   },
   rpcUrls: {
-    default: { http: ['https://api.node.glif.io/rpc/v1'] },
+    default: {
+      http: ['https://api.node.glif.io/rpc/v1'],
+      webSocket: ['wss://wss.node.glif.io/apigw/lotus/rpc/v1'],
+    },
   },
   blockExplorers: {
     Beryx: {
       name: 'Beryx',
       url: 'https://beryx.io/fil/mainnet',
     },
-    filfox: {
+    Filfox: {
       name: 'Filfox',
       url: 'https://filfox.info',
     },
-    default: {
+    Glif: {
       name: 'Glif',
       url: 'https://www.glif.io/en',
+    },
+    default: {
+      name: 'Blockscout',
+      url: 'https://filecoin.blockscout.com',
     },
   },
   contracts: {
@@ -43,7 +50,7 @@ export const mainnet = {
 /**
  * Filecoin EVM Calibration testnet chain
  *
- * @type {import('./types.js').Chain}
+ * @type {import('./types.js').Chain<number>}
  */
 export const testnet = {
   id: 314_159,
@@ -54,20 +61,33 @@ export const testnet = {
     decimals: 18,
   },
   rpcUrls: {
-    default: { http: ['https://api.calibration.node.glif.io/rpc/v1'] },
+    default: {
+      http: ['https://api.calibration.node.glif.io/rpc/v1'],
+      webSocket: ['wss://wss.calibration.node.glif.io/apigw/lotus/rpc/v1'],
+    },
   },
   blockExplorers: {
     Beryx: {
       name: 'Beryx',
       url: 'https://beryx.io/fil/calibration',
     },
-    filfox: {
+    Filfox: {
       name: 'Filfox',
       url: 'https://calibration.filfox.info',
     },
-    default: {
+    Glif: {
       name: 'Glif',
       url: 'https://www.glif.io/en/calibrationnet',
+    },
+    default: {
+      name: 'Blockscout',
+      url: 'https://filecoin-testnet.blockscout.com',
+    },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+      blockCreated: 1446201,
     },
   },
   testnet: true,
@@ -78,9 +98,16 @@ export const testnet = {
 }
 
 /**
+ * Filecoin EVM Calibration testnet chain
+ *
+ * @type {import('./types.js').Chain<number>}
+ */
+export const calibration = testnet
+
+/**
  * Filecoin Native chain
  *
- * @type {import('./types.js').Chain}
+ * @type {import('./types.js').Chain<string>}
  */
 export const filecoinNative = {
   ...mainnet,
@@ -94,7 +121,7 @@ export const filecoinNative = {
 /**
  * Filecoin Calibration chain
  *
- * @type {import('./types.js').Chain}
+ * @type {import('./types.js').Chain<string>}
  */
 export const filecoinNativeCalibration = {
   ...testnet,

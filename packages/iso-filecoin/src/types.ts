@@ -1,4 +1,5 @@
 import type _LedgerTransport from '@ledgerhq/hw-transport/lib-es/Transport'
+import type { Abi } from 'abitype'
 import type BigNumber from 'bignumber.js'
 import type { Driver } from 'iso-kv'
 import type { JsonValue, SetOptional, SetRequired } from 'type-fest'
@@ -139,10 +140,11 @@ export type ChainBlockExplorer = {
 export type ChainContract = {
   address: HexAddress
   blockCreated?: number | undefined
+  abi?: Abi
 }
 
-export interface Chain {
-  id: number | string
+export interface Chain<Id extends number | string = number> {
+  id: Id
   name: string
   testnet?: boolean
   nativeCurrency: {
