@@ -1,21 +1,16 @@
+import type { Chain as FilChain } from 'iso-filecoin/types'
+import type { erc20Abi } from 'viem'
 import type * as generated from './gen.js'
 
 export type Address = `0x${string}`
-export type Chain = {
+
+export interface Chain extends FilChain<number> {
   id: number
-  name: string
   genesis: number
-  nativeCurrency: {
-    decimals: number
-    name: string
-    symbol: string
-  }
-  http: string
-  websocket: string
   contracts: {
     usdfc: {
       address: Address
-      abi: typeof generated.usdfcAbi
+      abi: typeof erc20Abi
     }
     payments: {
       address: Address

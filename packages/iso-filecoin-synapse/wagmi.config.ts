@@ -1,18 +1,10 @@
 import { defineConfig } from '@wagmi/cli'
 import { actions, react } from '@wagmi/cli/plugins'
-import { type Address, erc20Abi } from 'viem'
+import type { Address } from 'viem'
 import { pandora, payments, pdp } from './src/abi.js'
 
 const config = defineConfig(() => {
   const contracts = [
-    {
-      name: 'USDFC',
-      abi: erc20Abi,
-      address: {
-        314: '0x80B98d3aa09ffff255c3ba4A241111Ff1262F045' as Address,
-        314159: '0xb3042734b608a1B16e9e86B374A3f3e389B4cDf0' as Address,
-      },
-    },
     {
       name: 'Payments',
       abi: payments,

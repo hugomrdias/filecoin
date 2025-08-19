@@ -8,14 +8,14 @@
   },
   "include": ["src", "test"],
   "exclude": ["node_modules", "dist", "out"],
+  "references": [{ "path": "../iso-filecoin" }],
   "typedocOptions": {
     "entryPointStrategy": "resolve",
     "entryPoints": [
       "src/index.js",
       "src/types.ts",
       "src/abi-actions.ts",
-      "src/abi-hooks.ts",
-      "src/chains.js"
+      "src/abi-hooks.ts"
     ]
   }
 }

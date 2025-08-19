@@ -1,6 +1,20 @@
-import { type Address, erc20Abi } from 'viem'
-import { useConfig, useReadContracts } from 'wagmi'
+import {
+  type MutateOptions,
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query'
+import { simulateContract, writeContract } from '@wagmi/core'
+import { type Address, erc20Abi, type TransactionReceipt } from 'viem'
+import { waitForTransactionReceipt } from 'viem/actions'
+import {
+  type UseReadContractsParameters,
+  useAccount,
+  useChainId,
+  useConfig,
+  useReadContracts,
+} from 'wagmi'
 import { getChain } from '../chains.js'
+import { invalidateQueries } from '../utils.js'
 
 type Props = {
   address?: Address
@@ -8,21 +22,23 @@ type Props = {
    * The address of the ERC20 token to query.
    * If not provided, the USDFC token address will be used.
    */
-  contract?: Address
+  token?: Address
   query?: Omit<
-    NonNullable<Parameters<typeof useReadContracts>[0]>['query'],
-    'enabled' | 'select'
+    UseReadContractsParameters['query'],
+    'enabled' | 'select' | 'scopeKey'
   >
 }
 
-export function useBalance({ address, contract, query }: Props) {
+export function useBalance(props: Props) {
   const config = useConfig()
   const chain = getChain(config.state.chainId)
-  contract = contract ?? chain.contracts.usdfc.address
+  const token = props.token ?? chain.contracts.usdfc.address
+  const scopeKey = `synapse-erc20-balance-${token}-${props.address}`
+
   return useReadContracts({
     query: {
-      ...query,
-      enabled: !!address,
+      ...props.query,
+      enabled: !!props.address,
       select(data) {
         return {
           value: data[0],
@@ -32,30 +48,94 @@ export function useBalance({ address, contract, query }: Props) {
         }
       },
     },
+    scopeKey,
     allowFailure: false,
     contracts: [
       {
-        address: contract,
+        address: token,
         abi: erc20Abi,
         functionName: 'balanceOf',
-        args: [address!],
+        args: [props.address!],
       },
       {
-        address: contract,
+        address: token,
         abi: erc20Abi,
         functionName: 'decimals',
       },
       {
-        address: contract,
+        address: token,
         abi: erc20Abi,
         functionName: 'symbol',
       },
       {
-        address: contract,
+        address: token,
         abi: erc20Abi,
         functionName: 'allowance',
-        args: [chain.contracts.payments.address, address!],
+        args: [props.address!, chain.contracts.payments.address],
       },
     ],
+  })
+}
+
+type ApproveAllowanceProps =
+  | {
+      /**
+       * The address of the ERC20 token to query.
+       * If not provided, the USDFC token address will be used.
+       * @default chain.contracts.usdfc.address
+       */
+      token?: Address
+      /**
+       * The mutation options.
+       */
+      mutation?: Omit<
+        MutateOptions<TransactionReceipt, Error, { amount: bigint }>,
+        'mutationFn'
+      >
+      onHash?: (hash: string) => void
+    }
+  | undefined
+
+/**
+ * Approve the allowance of the USDFC token to the payments contract.
+ */
+export function useApproveAllowance(props?: ApproveAllowanceProps) {
+  const config = useConfig()
+  const chainId = useChainId({ config })
+  const chain = getChain(chainId)
+  const account = useAccount({ config })
+  const queryClient = useQueryClient()
+  const token = props?.token ?? chain.contracts.usdfc.address
+
+  return useMutation({
+    mutationFn: async ({ amount }: { amount: bigint }) => {
+      const scopeKey = `synapse-erc20-balance-${token}-${account.address}`
+
+      if (amount < 0n) {
+        throw new Error('Amount must be positive')
+      }
+
+      const simulateApprove = await simulateContract(config, {
+        account: account.address,
+        address: token,
+        abi: erc20Abi,
+        functionName: 'approve',
+        args: [chain.contracts.payments.address, amount],
+      })
+
+      const approve = await writeContract(config, simulateApprove.request)
+
+      props?.onHash?.(approve)
+      const transactionReceipt = await waitForTransactionReceipt(
+        config.getClient(),
+        {
+          hash: approve,
+        }
+      )
+
+      await invalidateQueries(queryClient, [scopeKey])
+      return transactionReceipt
+    },
+    ...props?.mutation,
   })
 }

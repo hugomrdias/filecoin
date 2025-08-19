@@ -1,11 +1,14 @@
 import { type Config, readContracts } from '@wagmi/core'
 import { type Address, isAddressEqual } from 'viem'
-import { getChain } from './chains.js'
+import { getChain } from '../chains.js'
+import { SIZE_CONSTANTS, TIME_CONSTANTS } from '../constants.js'
 import {
   readPdpVerifierGetNextRootId,
   readWarmStorageGetClientProofSets,
+  type readWarmStorageGetServicePrice,
   readWarmStorageRailToProofSet,
-} from './gen.js'
+} from '../gen.js'
+import type { OperatorApprovalResult } from './payments.js'
 
 /**
  * Get the proof sets for an address
@@ -34,6 +37,7 @@ export async function getClientProofSets({
 
 /**
  * Get enhanced proof set information including chain details
+ *
  * @param config - The wagmi config
  * @param address - The address of the client
  * @param onlyManaged - If true, only return proof sets managed by this Pandora contract (default: false)
@@ -129,4 +133,80 @@ export async function getClientProofSetsWithDetails({
   const proofsWithDetails = await Promise.all(proofsPromises)
 
   return proofsWithDetails.filter((proof) => proof !== null)
+}
+
+/**
+ * Calculate the costs for a storage operation
+ */
+export function calculateStorageCosts(
+  sizeInBytes: bigint,
+  prices: Awaited<ReturnType<typeof readWarmStorageGetServicePrice>>
+) {
+  const {
+    pricePerTiBPerMonthNoCDN,
+    pricePerTiBPerMonthWithCDN,
+    epochsPerMonth,
+  } = prices
+  // Calculate price per byte per epoch
+  const pricePerEpochNoCDN =
+    (pricePerTiBPerMonthNoCDN * sizeInBytes) /
+    (SIZE_CONSTANTS.TiB * epochsPerMonth)
+  const pricePerEpochWithCDN =
+    (pricePerTiBPerMonthWithCDN * sizeInBytes) /
+    (SIZE_CONSTANTS.TiB * epochsPerMonth)
+
+  return {
+    withCDN: {
+      perEpoch: pricePerEpochWithCDN,
+      perDay: pricePerEpochWithCDN * TIME_CONSTANTS.EPOCHS_PER_DAY,
+      perMonth: pricePerEpochWithCDN * epochsPerMonth,
+    },
+    withoutCDN: {
+      perEpoch: pricePerEpochNoCDN,
+      perDay: pricePerEpochNoCDN * TIME_CONSTANTS.EPOCHS_PER_DAY,
+      perMonth: pricePerEpochNoCDN * epochsPerMonth,
+    },
+  }
+}
+
+/**
+ * Calculate the allowance needed for a storage operation
+ * TODO check if it needs creation fee with getClientProofSetsWithDetails
+ */
+export function calculateAllowanceNeeded(
+  costs: {
+    perEpoch: bigint
+    perDay: bigint
+    perMonth: bigint
+  },
+  lockupDays: bigint,
+  approval: OperatorApprovalResult
+) {
+  const ratePerEpoch = costs.perEpoch
+
+  // Calculate lockup period based on provided days (default: 10)
+  const lockupInEpoch =
+    (lockupDays ?? TIME_CONSTANTS.DEFAULT_LOCKUP_DAYS) *
+    TIME_CONSTANTS.EPOCHS_PER_DAY
+  const lockupNeeded = ratePerEpoch * lockupInEpoch
+
+  // Calculate required allowances (current usage + new requirement)
+  const totalRateNeeded = approval.rateUsed + ratePerEpoch
+  const totalLockupNeeded = approval.lockupUsed + lockupNeeded
+
+  const sufficient =
+    approval.rateAllowance >= totalRateNeeded &&
+    approval.lockupAllowance >= totalLockupNeeded
+
+  return {
+    depositAmountNeeded: lockupNeeded,
+    rateAllowanceNeeded: totalRateNeeded,
+    lockupAllowanceNeeded: totalLockupNeeded,
+    currentRateAllowance: approval.rateAllowance,
+    currentLockupAllowance: approval.lockupAllowance,
+    currentRateUsed: approval.rateUsed,
+    currentLockupUsed: approval.lockupUsed,
+    sufficient,
+    costs,
+  }
 }
