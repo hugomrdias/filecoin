@@ -75,7 +75,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.85.5",
-    "@wagmi/core": "2.19.0",
+    "@wagmi/core": "2.20.0",
     "dnum": "^2.15.0",
     "iso-filecoin": "workspace:*"
   },
