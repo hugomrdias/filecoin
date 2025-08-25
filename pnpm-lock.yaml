@@ -567,8 +567,8 @@ importers:
         specifier: ^24.2.1
         version: 24.3.0
       '@zondax/zemu':
-        specifier: ^0.55.0
-        version: 0.55.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+        specifier: ^0.61.11
+        version: 0.61.11(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       assert:
         specifier: ^2.1.0
         version: 2.1.0
@@ -744,8 +744,8 @@ importers:
         specifier: ^24.2.1
         version: 24.3.0
       '@zondax/zemu':
-        specifier: ^0.55.0
-        version: 0.55.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+        specifier: ^0.61.11
+        version: 0.61.11(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       assert:
         specifier: ^2.1.0
         version: 2.1.0
@@ -1790,6 +1790,11 @@ packages:
 
   '@grpc/proto-loader@0.7.15':
     resolution: {integrity: sha512-tMXdRCfYVixjuFK+Hk0Q1s38gV9zDiDJfWL3h1rv4Qc39oILCu1TRTDt7+fGUI8K4G1Fj125Hx/ru3azECWTyQ==}
+    engines: {node: '>=6'}
+    hasBin: true
+
+  '@grpc/proto-loader@0.8.0':
+    resolution: {integrity: sha512-rc1hOQtjIWGxcxpb9aHAfLpIctjEnsDehj0DAiVfBlmT84uvR0uUtN2hEi/ecvWVjXUGf5qPF4qEgiLOx1YIMQ==}
     engines: {node: '>=6'}
     hasBin: true
 
@@ -3922,8 +3927,9 @@ packages:
   '@walletconnect/window-metadata@1.0.1':
     resolution: {integrity: sha512-9koTqyGrM2cqFRW517BPY/iEtUDx2r1+Pwwu5m7sJ7ka79wi3EyqhqcICk/yDmv6jAS1rjKgTKXlEhanYjijcA==}
 
-  '@zondax/zemu@0.55.3':
-    resolution: {integrity: sha512-1XWrcKZIt/0niu4A/mk4oyY4sdilJhr3vKd7imOXTsi6dQX/DTKt38HCSmSh1EP9hBk4eK0yHnoQ6d2ljIAPNw==}
+  '@zondax/zemu@0.61.11':
+    resolution: {integrity: sha512-tPf+ambxIe7yIiH1YFbA+Jl68r+CfhQcB4cCcMi3+8H++6UOyqGBXjmEwl6JqFsjzxt91eDq7JEClK/WmZLVVw==}
+    engines: {node: '>=22.0.0'}
 
   abitype@1.0.8:
     resolution: {integrity: sha512-ZeiI6h3GnW06uYDLx0etQtX/p8E24UaHHBj57RSjK7YBFe7iuVn07EDpOeP451D06sF27VOz9JJPlIKJmXgkEg==}
@@ -4521,8 +4527,8 @@ packages:
     resolution: {integrity: sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==}
     engines: {node: '>=18'}
 
-  core-js-compat@3.45.0:
-    resolution: {integrity: sha512-gRoVMBawZg0OnxaVv3zpqLLxaHmsubEGyTnqdpI/CEBvX4JadI1dMSHxagThprYRtSVbuQxvi6iUatdPxohHpA==}
+  core-js-compat@3.45.1:
+    resolution: {integrity: sha512-tqTt5T4PzsMIZ430XGviK4vzYSoeNJ6CXODi6c/voxOT6IZqBht5/EKaSNnYiEjjRYxjVz7DQIsOsY0XNi8PIA==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -7312,8 +7318,8 @@ packages:
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
-  ssh2@1.16.0:
-    resolution: {integrity: sha512-r1X4KsBGedJqo7h8F5c4Ybpcr5RjyP+aWIG007uBPRjmdQWfEiVLzSK71Zji1B9sKxwaCvD8y8cwSkYrlLiRRg==}
+  ssh2@1.17.0:
+    resolution: {integrity: sha512-wPldCk3asibAjQ/kziWQQt1Wh3PgDFpC0XpwclzKcdT1vql6KeYxf5LIt4nlFkUeR8WuphYMKqUA56X4rjbfgQ==}
     engines: {node: '>=10.16.0'}
 
   starlight-llms-txt@0.6.0:
@@ -9182,7 +9188,7 @@ snapshots:
       babel-plugin-polyfill-corejs2: 0.4.14(@babel/core@7.28.3)
       babel-plugin-polyfill-corejs3: 0.13.0(@babel/core@7.28.3)
       babel-plugin-polyfill-regenerator: 0.6.5(@babel/core@7.28.3)
-      core-js-compat: 3.45.0
+      core-js-compat: 3.45.1
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
@@ -9626,6 +9632,13 @@ snapshots:
       '@js-sdsl/ordered-map': 4.4.2
 
   '@grpc/proto-loader@0.7.15':
+    dependencies:
+      lodash.camelcase: 4.3.0
+      long: 5.3.2
+      protobufjs: 7.5.4
+      yargs: 17.7.2
+
+  '@grpc/proto-loader@0.8.0':
     dependencies:
       lodash.camelcase: 4.3.0
       long: 5.3.2
@@ -14174,10 +14187,11 @@ snapshots:
       '@walletconnect/window-getters': 1.0.1
       tslib: 1.14.1
 
-  '@zondax/zemu@0.55.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
+  '@zondax/zemu@0.61.11(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
     dependencies:
       '@grpc/grpc-js': 1.13.4
-      '@grpc/proto-loader': 0.7.15
+      '@grpc/proto-loader': 0.8.0
+      '@ledgerhq/errors': 6.24.0
       '@ledgerhq/hw-transport-http': 6.30.9(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       axios: 1.11.0
       axios-retry: 4.5.0(axios@1.11.0)
@@ -14483,7 +14497,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.28.3
       '@babel/helper-define-polyfill-provider': 0.6.5(@babel/core@7.28.3)
-      core-js-compat: 3.45.0
+      core-js-compat: 3.45.1
     transitivePeerDependencies:
       - supports-color
 
@@ -14927,7 +14941,7 @@ snapshots:
 
   cookie@1.0.2: {}
 
-  core-js-compat@3.45.0:
+  core-js-compat@3.45.1:
     dependencies:
       browserslist: 4.25.3
 
@@ -15213,7 +15227,7 @@ snapshots:
       debug: 4.4.1(supports-color@8.1.1)
       readable-stream: 3.6.2
       split-ca: 1.0.1
-      ssh2: 1.16.0
+      ssh2: 1.17.0
     transitivePeerDependencies:
       - supports-color
 
@@ -19008,7 +19022,7 @@ snapshots:
 
   sprintf-js@1.0.3: {}
 
-  ssh2@1.16.0:
+  ssh2@1.17.0:
     dependencies:
       asn1: 0.2.6
       bcrypt-pbkdf: 1.0.2
