@@ -14,6 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
 import { formatBalance } from '@/lib/utils'
 import { ErrorAlert, HashAlert, SuccessAlert } from './custom-ui/alerts'
 import { ButtonLoading } from './custom-ui/button-loading'
@@ -38,6 +39,7 @@ import {
   FormMessage,
 } from './ui/form'
 import { Input } from './ui/input'
+import { Separator } from './ui/separator'
 
 export function PaymentsAccount() {
   const { address } = useAccount()
@@ -74,11 +76,34 @@ export function PaymentsAccount() {
           </span>
           <Icons.Usdfc className="w-4 h-4" />
         </div>
+        <div className="flex flex-wrap gap-2 items-center md:flex-row my-4">
+          <DepositDialog />
+          <WithdrawDialog />
+        </div>
+        <Card className="bg-neutral-700">
+          <CardHeader>
+            <CardTitle>Payments Rails</CardTitle>
+            <CardDescription>
+              Payments rails are used to send and receive payments.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col my-3 space-y-2">
+              <Skeleton className="h-[50px] w-full rounded-xl" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-full" />
+              </div>
+            </div>
+            <div className="flex flex-col my-4 space-y-2">
+              <Skeleton className="h-[50px] w-full rounded-xl" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-full" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <DepositDialog />
-        <WithdrawDialog />
-      </CardFooter>
+      <CardFooter className="flex-col gap-2"></CardFooter>
     </Card>
   )
 }
@@ -226,9 +251,7 @@ export function DepositDialog() {
       }}
     >
       <DialogTrigger asChild>
-        <Button className="w-full" variant="default">
-          Deposit
-        </Button>
+        <Button variant="default">Deposit</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <Form {...form}>
@@ -328,9 +351,7 @@ export function WithdrawDialog() {
       }}
     >
       <DialogTrigger asChild>
-        <Button className="w-full" variant="default">
-          Withdraw
-        </Button>
+        <Button>Withdraw</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <Form {...form}>

@@ -1,10 +1,8 @@
 import starlight from '@astrojs/starlight'
+import { docsPlugin } from '@hugomrdias/docs/starlight-typedoc'
 import { defineConfig } from 'astro/config'
 import ecTwoSlash from 'expressive-code-twoslash'
 import starlightLlmsTxt from 'starlight-llms-txt'
-import { createStarlightTypeDocPlugin } from 'starlight-typedoc'
-
-const [corePlugin, coreSidebar] = createStarlightTypeDocPlugin()
 
 const site = 'https://filecoin.hugomrdias.dev'
 
@@ -57,8 +55,11 @@ export default defineConfig({
           label: 'Guides',
           autogenerate: { directory: 'guides' },
         },
-        // Add the typedoc generated sidebar group to the sidebar.
-        coreSidebar,
+        {
+          label: 'Reference',
+          collapsed: true,
+          autogenerate: { directory: 'reference' },
+        },
       ],
       expressiveCode: {
         plugins: [
@@ -74,39 +75,19 @@ export default defineConfig({
       },
       plugins: [
         starlightLlmsTxt(),
-        corePlugin({
+        docsPlugin({
           pagination: true,
-          sidebar: {
-            label: 'Reference',
-            collapsed: false,
-          },
-          entryPoints: ['../packages/*'],
-          typeDoc: {
+          outputDirectory: 'reference',
+          typeDocOptions: {
             entryPointStrategy: 'packages',
-            packageOptions: {
-              readme: 'none',
-              groupOrder: [
-                'Functions',
-                'Classes',
-                'Variables',
-                'Interfaces',
-                'Enums',
-                'Type Aliases',
-                'References',
-              ],
-              excludeExternals: true,
-              gitRevision: 'main',
-              // placeInternalsInOwningModule: false,
-              // internalModule: 'Internal',
-            },
-            plugin: [
-              // 'typedoc-plugin-missing-exports',
-              'typedoc-plugin-zod',
-              'typedoc-plugin-mdn-links',
-            ],
+            entryPoints: ['../packages/*'],
+            tsconfig: '../tsconfig.json',
+            gitRevision: 'main',
+            // useCodeBlocks: true,
             parametersFormat: 'table',
+            indexFormat: 'table',
+            plugin: ['typedoc-plugin-mdn-links'],
           },
-          tsconfig: '../tsconfig.json',
         }),
       ],
     }),

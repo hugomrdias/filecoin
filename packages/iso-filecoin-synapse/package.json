@@ -70,14 +70,19 @@
     "watch": "tsc --watch"
   },
   "peerDependencies": {
-    "viem": "2.33.3",
-    "wagmi": "2.16.3"
+    "viem": "2.x",
+    "wagmi": "2.x"
   },
   "dependencies": {
+    "@filoz/synapse-sdk": "^0.23.2",
     "@tanstack/react-query": "^5.85.5",
     "@wagmi/core": "2.19.0",
     "dnum": "^2.15.0",
-    "iso-filecoin": "workspace:*"
+    "ethers": "^6.15.0",
+    "iso-filecoin": "workspace:*",
+    "iso-web": "^1.1.1",
+    "multiformats": "^13.4.0",
+    "zod": "^3.25.0"
   },
   "devDependencies": {
     "@testing-library/react": "^16.2.0",

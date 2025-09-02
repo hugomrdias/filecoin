@@ -70,3 +70,5 @@ export const TIME_CONSTANTS = {
    */
   DEFAULT_LOCKUP_DAYS: 10n,
 }
+
+export const DATA_SET_CREATION_FEE = BigInt(0.1 * 10 ** 18)
