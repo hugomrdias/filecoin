@@ -14,7 +14,7 @@
   "packageManager": "pnpm@10.14.0",
   "dependencies": {
     "@wagmi/connectors": "^5.9.4",
-    "@wagmi/core": "2.19.0",
+    "@wagmi/core": "2.20.3",
     "iso-filecoin-synapse": "workspace:*",
     "viem": "2.34.0"
   }
