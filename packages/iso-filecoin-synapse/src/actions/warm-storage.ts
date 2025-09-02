@@ -1,5 +1,10 @@
-import { type Config, readContracts } from '@wagmi/core'
-import { type Address, isAddressEqual } from 'viem'
+import type { CommP } from '@filoz/synapse-sdk'
+import { asCommP, toPieceSize } from '@filoz/synapse-sdk/commp'
+import { type Config, readContracts, signTypedData } from '@wagmi/core'
+import { request } from 'iso-web/http'
+import { type Address, encodeAbiParameters, isAddressEqual, toHex } from 'viem'
+import { multicall } from 'viem/actions'
+import { z } from 'zod/v4'
 import { getChain } from '../chains.js'
 import { SIZE_CONSTANTS, TIME_CONSTANTS } from '../constants.js'
 import {
@@ -9,7 +14,6 @@ import {
   readWarmStorageRailToProofSet,
 } from '../gen.js'
 import type { OperatorApprovalResult } from './payments.js'
-
 /**
  * Get the proof sets for an address
  *
@@ -209,4 +213,260 @@ export function calculateAllowanceNeeded(
     sufficient,
     costs,
   }
+}
+
+/**
+ * Get the add roots info for a proof set
+ *
+ * @param config - The wagmi config
+ * @param proofSetId - The proof set ID
+ * @returns The add roots info
+ */
+export async function getAddRootsInfo(config: Config, proofSetId: bigint) {
+  const chainId = config.state.chainId
+  const chain = getChain(chainId)
+
+  const [isLive, nextRootId, listener, proofSet] = await multicall(
+    config.getClient(),
+    {
+      allowFailure: false,
+      contracts: [
+        {
+          address: chain.contracts.pdp.address,
+          abi: chain.contracts.pdp.abi,
+          functionName: 'proofSetLive',
+          args: [proofSetId],
+        },
+        {
+          address: chain.contracts.pdp.address,
+          abi: chain.contracts.pdp.abi,
+          functionName: 'getNextRootId',
+          args: [proofSetId],
+        },
+        {
+          address: chain.contracts.pdp.address,
+          abi: chain.contracts.pdp.abi,
+          functionName: 'getProofSetListener',
+          args: [proofSetId],
+        },
+        {
+          address: chain.contracts.pandora.address,
+          abi: chain.contracts.pandora.abi,
+          functionName: 'getProofSet',
+          args: [proofSetId],
+        },
+      ],
+    }
+  )
+
+  if (!isLive) {
+    throw new Error('Proof set is not live')
+  }
+
+  if (!isAddressEqual(listener, chain.contracts.pandora.address)) {
+    throw new Error('Proof set is not managed by this Pandora contract')
+  }
+
+  return {
+    nextRootId,
+    clientDataSetId: proofSet.clientDataSetId,
+    currentRootCount: nextRootId,
+  }
+}
+
+/**
+ * Root data for adding to proof sets
+ */
+export interface RootData {
+  /** The CommP CID */
+  cid: CommP
+  /** The raw (unpadded) size of the original data in bytes */
+  rawSize: number
+}
+
+// EIP-712 Type definitions
+const EIP712_TYPES = {
+  CreateProofSet: [
+    { name: 'clientDataSetId', type: 'uint256' },
+    { name: 'withCDN', type: 'bool' },
+    { name: 'payee', type: 'address' },
+  ],
+  Cid: [{ name: 'data', type: 'bytes' }],
+  RootData: [
+    { name: 'root', type: 'Cid' },
+    { name: 'rawSize', type: 'uint256' },
+  ],
+  AddRoots: [
+    { name: 'clientDataSetId', type: 'uint256' },
+    { name: 'firstAdded', type: 'uint256' },
+    { name: 'rootData', type: 'RootData[]' },
+  ],
+  ScheduleRemovals: [
+    { name: 'clientDataSetId', type: 'uint256' },
+    { name: 'rootIds', type: 'uint256[]' },
+  ],
+  DeleteProofSet: [{ name: 'clientDataSetId', type: 'uint256' }],
+}
+
+/**
+ * Add roots to a proof set
+ *
+ * @param config - The wagmi config
+ * @param proofSetId - The proof set ID
+ * @param clientDataSetId - The client data set ID
+ * @param nextRootId - The next root ID
+ * @param rootDataArray - The root data array
+ */
+export async function addRoots({
+  config,
+  account,
+  pdpUrl,
+  proofSetId,
+  clientDataSetId,
+  nextRootId,
+  rootDataArray,
+}: {
+  config: Config
+  account: Address
+  pdpUrl: string
+  proofSetId: bigint
+  clientDataSetId: bigint
+  nextRootId: bigint
+  rootDataArray: RootData[]
+}) {
+  const chainId = config.state.chainId
+  const chain = getChain(chainId)
+
+  if (rootDataArray.length === 0) {
+    throw new Error('At least one root must be provided')
+  }
+
+  const formattedRootData = []
+
+  // Validate all CommPs
+  for (const rootData of rootDataArray) {
+    const commP = asCommP(rootData.cid)
+    if (commP == null) {
+      throw new Error(`Invalid CommP: ${String(rootData.cid)}`)
+    }
+    formattedRootData.push({
+      root: {
+        data: toHex(commP.bytes),
+      },
+      rawSize: BigInt(toPieceSize(rootData.rawSize)),
+    })
+  }
+
+  const signature = await signTypedData(config, {
+    account,
+    domain: {
+      name: 'PandoraService',
+      version: '1',
+      chainId,
+      verifyingContract: chain.contracts.pandora.address,
+    },
+    primaryType: 'AddRoots',
+    message: {
+      clientDataSetId: clientDataSetId,
+      firstAdded: nextRootId,
+      rootData: formattedRootData,
+    },
+    types: {
+      AddRoots: EIP712_TYPES.AddRoots,
+      RootData: EIP712_TYPES.RootData,
+      Cid: EIP712_TYPES.Cid,
+    },
+  })
+
+  const extraData = encodeAbiParameters(
+    [{ type: 'bytes' }, { type: 'string' }],
+    [signature, '']
+  )
+
+  // Prepare request body matching the Curio handler expectation
+  // Each root has itself as its only subroot (internal implementation detail)
+  const requestBody = {
+    roots: rootDataArray.map((rootData) => {
+      // Convert to string for JSON serialization
+      const cidString = rootData.cid.toString()
+      return {
+        rootCid: cidString,
+        subroots: [
+          {
+            subrootCid: cidString, // Root is its own subroot
+          },
+        ],
+      }
+    }),
+    extraData,
+  }
+
+  // Make the POST request to add roots to the proof set
+  const response = await fetch(`${pdpUrl}/pdp/proof-sets/${proofSetId}/roots`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(requestBody),
+  })
+
+  if (response.status !== 201) {
+    const errorText = await response.text()
+    throw new Error(
+      `Failed to add roots to proof set: ${response.status} ${response.statusText} - ${errorText}`
+    )
+  }
+
+  // Check for Location header (backward compatible with old servers)
+  const location = response.headers.get('Location')
+  let txHash: string | undefined
+  let statusUrl: string | undefined
+
+  if (location != null) {
+    // Expected format: /pdp/proof-sets/{proofSetId}/roots/added/{txHash}
+    const locationMatch = location.match(/\/roots\/added\/([0-9a-fA-Fx]+)$/)
+    if (locationMatch != null) {
+      txHash = locationMatch[1]
+      // Ensure txHash has 0x prefix
+      if (!txHash.startsWith('0x')) {
+        txHash = '0x' + txHash
+      }
+      statusUrl = `${pdpUrl}${location}`
+    }
+  }
+
+  return {
+    txHash: txHash as `0x${string}`,
+    statusUrl,
+  }
+}
+
+const RootAdditionStatusResponse = z.object({
+  txHash: z.string(),
+  txStatus: z.string(),
+  proofSetId: z.number(),
+  rootCount: z.number(),
+  addMessageOk: z.boolean().nullable(),
+  confirmedRootIds: z.array(z.number()).optional(),
+})
+
+export async function getRootAdditionStatus(
+  proofSetId: number,
+  txHash: string,
+  url: string
+) {
+  const response = await request.json.get(
+    `${url}/pdp/proof-sets/${proofSetId}/roots/added/${txHash}`,
+    {
+      retry: {
+        retries: 3,
+      },
+    }
+  )
+  if (response.error) {
+    throw response.error
+  }
+
+  const result = RootAdditionStatusResponse.parse(response.result)
+  return result
 }

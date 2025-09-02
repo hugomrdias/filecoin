@@ -4,11 +4,12 @@ import * as Icons from '@/components/icons'
 import { NetworkSelector } from '@/components/network-selector'
 import { Toaster } from '@/components/ui/sonner'
 import { PaymentsAccount } from './components/payments-account'
+import { Services } from './components/services'
 import { WalletMenu } from './components/wallet-menu'
-import { WarmStorageService } from './components/warm-storage-service'
 
 export function App() {
   const { isConnected } = useAccount()
+
   return (
     <div>
       <header>
@@ -31,7 +32,7 @@ export function App() {
       <main>
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           {isConnected && <PaymentsAccount />}
-          {isConnected && <WarmStorageService />}
+          {isConnected && <Services />}
           {!isConnected && <ConnectWallet />}
         </div>
       </main>

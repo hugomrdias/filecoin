@@ -1,35 +1,36 @@
+import { useQueryClient } from '@tanstack/react-query'
+import { useList } from '@uidotdev/usehooks'
 import {
-  erc20,
+  DATA_SET_CREATION_FEE,
+  formatBalance,
+  formatFraction,
   payments,
   SIZE_CONSTANTS,
-  TIME_CONSTANTS,
   warmStorage,
 } from 'iso-filecoin-synapse'
 import { getChain } from 'iso-filecoin-synapse/chains'
 import {
   useReadPaymentsOperatorApprovals,
   useReadWarmStorageGetServicePrice,
-  useWritePaymentsSetOperatorApproval,
 } from 'iso-filecoin-synapse/gen'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { parseEther } from 'viem'
-import { useAccount, useChainId, useConfig } from 'wagmi'
+import { type Address, parseEther } from 'viem'
+import { useAccount, useChainId } from 'wagmi'
 import { z } from 'zod/v4'
 import * as Icons from '@/components/icons'
 import {
   Card,
   CardAction,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { formatBalance } from '@/lib/utils'
+import { truncateMiddle } from '@/lib/utils'
 import { ErrorAlert, HashAlert, SuccessAlert } from './custom-ui/alerts'
 import { ButtonLoading } from './custom-ui/button-loading'
 import { Button } from './ui/button'
+import { Checkbox } from './ui/checkbox'
 import {
   Dialog,
   DialogClose,
@@ -80,69 +81,49 @@ export function WarmStorageService() {
   return (
     <Card className="my-4">
       <CardHeader>
-        <CardTitle>Warm Storage</CardTitle>
-        <CardDescription>Manage your warm storage service</CardDescription>
+        <CardTitle className="font-normal">
+          {operator.isApproved ? (
+            <>
+              <div className="flex flex-row gap-2 items-center">
+                <span className="text-sm text-muted-foreground">Lockup:</span>
+                <span className="text-sm font-bold">
+                  {formatFraction({
+                    value: operator.lockupUsed ?? 0n,
+                  })}{' '}
+                  /{' '}
+                  {formatFraction({
+                    value: operator.lockupAllowance ?? 0n,
+                  })}
+                </span>
+
+                <Icons.Usdfc className="w-4 h-4" />
+              </div>
+              <div className="flex flex-row gap-2 items-center">
+                <span className="text-sm text-muted-foreground">Rate:</span>
+                <span className="text-sm font-bold">
+                  {formatFraction({
+                    value: operator.rateUsed ?? 0n,
+                  })}{' '}
+                  /{' '}
+                  {formatFraction({
+                    value: operator.rateAllowance ?? 0n,
+                  })}
+                </span>
+                <Icons.Usdfc className="w-4 h-4" />
+              </div>
+            </>
+          ) : (
+            <div>Not approved</div>
+          )}
+        </CardTitle>
         <CardAction>
           <OperatorApprovalDialog />
         </CardAction>
       </CardHeader>
       <CardContent>
-        {operator.isApproved ? (
-          <>
-            <div className="flex flex-row gap-2 items-center">
-              <span className="text-sm text-muted-foreground">
-                Lockup Used:
-              </span>
-              <span className="text-sm font-bold">
-                {formatBalance(
-                  {
-                    value: operator.lockupUsed ?? 0n,
-                  },
-                  { compact: false, digits: 8 }
-                )}
-              </span>
-              <Icons.Usdfc className="w-4 h-4" />
-            </div>
-            <div className="flex flex-row gap-2 items-center">
-              <span className="text-sm text-muted-foreground">Lockup:</span>
-              <span className="text-sm font-bold">
-                {formatBalance(
-                  {
-                    value: operator.lockupAllowance ?? 0n,
-                  },
-                  { compact: false, digits: 8 }
-                )}
-              </span>
-              <Icons.Usdfc className="w-4 h-4" />
-            </div>
-            <div className="flex flex-row gap-2 items-center">
-              <span className="text-sm text-muted-foreground">Rate Used:</span>
-              <span className="text-sm font-bold">
-                {formatBalance(
-                  {
-                    value: operator.rateUsed ?? 0n,
-                  },
-                  { compact: false, digits: 8 }
-                )}
-              </span>
-              <Icons.Usdfc className="w-4 h-4" />
-            </div>
-            <div className="flex flex-row gap-2 items-center">
-              <span className="text-sm text-muted-foreground">Rate:</span>
-              <span className="text-sm font-bold">
-                {formatBalance(
-                  {
-                    value: operator.rateAllowance ?? 0n,
-                  },
-                  { compact: false, digits: 8 }
-                )}
-              </span>
-              <Icons.Usdfc className="w-4 h-4" />
-            </div>
-          </>
-        ) : (
-          <div>Not approved</div>
-        )}
+        <FileUpload />
+        <Separator className="my-4" />
+        <DataSetsDownload />
       </CardContent>
       {/* <CardFooter className="flex-col gap-2">
         <OperatorApprovalDialog />
@@ -171,10 +152,6 @@ export function OperatorApprovalDialog() {
     lockupDays: duration,
     withCDN,
   })
-
-  console.log(
-    (allowance?.currentRateAllowance ?? 0n) * TIME_CONSTANTS.EPOCHS_PER_MONTH
-  )
 
   const {
     mutate: revokeOperator,
@@ -214,18 +191,14 @@ export function OperatorApprovalDialog() {
 
   const form = useForm<z.infer<typeof formSchema>>({
     values: {
-      lockup: formatBalance(
-        {
-          value: allowance?.depositAmountNeeded ?? 0n,
-        },
-        { compact: false, digits: 18 }
-      ),
-      rate: formatBalance(
-        {
-          value: allowance?.rateAllowanceNeeded ?? 0n,
-        },
-        { compact: false, digits: 18 }
-      ),
+      lockup: formatFraction({
+        value: allowance?.depositAmountNeeded ?? 0n,
+        digits: 18,
+      }),
+      rate: formatFraction({
+        value: allowance?.rateAllowanceNeeded ?? 0n,
+        digits: 18,
+      }),
     },
   })
 
@@ -425,12 +398,9 @@ export function DataUsageTable({
               Cost per Day
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-              {formatBalance(
-                {
-                  value: data?.costs.perDay ?? 0n,
-                },
-                { compact: false, digits: 8 }
-              )}
+              {formatFraction({
+                value: data?.costs.perDay ?? 0n,
+              })}
             </td>
           </tr>
           <tr className="even:bg-muted m-0 border-t p-0">
@@ -438,12 +408,9 @@ export function DataUsageTable({
               Cost per Month
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-              {formatBalance(
-                {
-                  value: data?.costs.perMonth ?? 0n,
-                },
-                { compact: false, digits: 8 }
-              )}
+              {formatFraction({
+                value: data?.costs.perMonth ?? 0n,
+              })}
             </td>
           </tr>
           <tr className="even:bg-muted m-0 border-t p-0">
@@ -451,12 +418,9 @@ export function DataUsageTable({
               Cost per Epoch
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-              {formatBalance(
-                {
-                  value: data?.costs.perEpoch ?? 0n,
-                },
-                { compact: false, digits: 8 }
-              )}
+              {formatFraction({
+                value: data?.costs.perEpoch ?? 0n,
+              })}
             </td>
           </tr>
           <tr className="even:bg-muted m-0 border-t p-0">
@@ -464,12 +428,9 @@ export function DataUsageTable({
               Current Rate
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-              {formatBalance(
-                {
-                  value: data?.currentRateAllowance ?? 0n,
-                },
-                { compact: false, digits: 8 }
-              )}
+              {formatFraction({
+                value: data?.currentRateAllowance ?? 0n,
+              })}
             </td>
           </tr>
           <tr className="even:bg-muted m-0 border-t p-0">
@@ -477,12 +438,9 @@ export function DataUsageTable({
               Current Lockup
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-              {formatBalance(
-                {
-                  value: data?.currentLockupAllowance ?? 0n,
-                },
-                { compact: false, digits: 8 }
-              )}
+              {formatFraction({
+                value: data?.currentLockupAllowance ?? 0n,
+              })}
             </td>
           </tr>
           <tr className="even:bg-muted m-0 border-t p-0">
@@ -490,12 +448,9 @@ export function DataUsageTable({
               Current Rate Used
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-              {formatBalance(
-                {
-                  value: data?.currentRateUsed ?? 0n,
-                },
-                { compact: false, digits: 8 }
-              )}
+              {formatFraction({
+                value: data?.currentRateUsed ?? 0n,
+              })}
             </td>
           </tr>
           <tr className="even:bg-muted m-0 border-t p-0">
@@ -503,12 +458,9 @@ export function DataUsageTable({
               Current Lockup Used
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-              {formatBalance(
-                {
-                  value: data?.currentLockupUsed ?? 0n,
-                },
-                { compact: false, digits: 8 }
-              )}
+              {formatFraction({
+                value: data?.currentLockupUsed ?? 0n,
+              })}
             </td>
           </tr>
           <tr className="even:bg-muted m-0 border-t p-0">
@@ -516,12 +468,9 @@ export function DataUsageTable({
               Total Lockup Needed
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-              {formatBalance(
-                {
-                  value: data?.lockupAllowanceNeeded ?? 0n,
-                },
-                { compact: false, digits: 8 }
-              )}
+              {formatFraction({
+                value: data?.lockupAllowanceNeeded ?? 0n,
+              })}
             </td>
           </tr>
         </tbody>
@@ -530,206 +479,185 @@ export function DataUsageTable({
   )
 }
 
-const depositFormSchema = z.object({
-  amount: z.string().min(1),
-})
-export function DepositDialog() {
-  const [hash, setHash] = useState<string | null>(null)
+export function FileUpload() {
+  const queryClient = useQueryClient()
+  const { address } = useAccount()
+  const [messages, { push, clear }] = useList<{
+    message: string
+    date: Date
+    id: string
+  }>()
+  const [withCDN, setWithCDN] = useState(false)
+  const [size, setSize] = useState(0n)
+  const { data: dataSets } = warmStorage.useDataSets({
+    address,
+    withCDN,
+  })
+
+  const { data: allowance, isPending } = warmStorage.useAllowance({
+    address,
+    sizeInBytes: size,
+    lockupDays: 30n,
+    withCDN,
+  })
+
   const {
-    mutate: deposit,
-    isPending,
-    isSuccess,
-    error,
-    reset,
-  } = payments.useDeposit({
-    onHash: (hash) => {
-      setHash(hash)
-    },
+    mutate: upload,
+    isPending: isUploading,
+    error: uploadError,
+    reset: uploadReset,
+  } = warmStorage.useStorageUpload({
+    withCDN,
+    providerId: dataSets?.providerId,
     mutation: {
-      onSettled: () => {
-        setHash(null)
+      onError() {
+        clear()
+      },
+    },
+    onRootAdded(txHash) {
+      push({
+        message: `Waiting for confirmation: ${txHash}`,
+        date: new Date(),
+        id: crypto.randomUUID(),
+      })
+    },
+    onRootConfirmed(status) {
+      queryClient.invalidateQueries({
+        queryKey: ['useDataSetsDownload', address],
+      })
+      push({
+        message: `Upload confirmed`,
+        date: new Date(),
+        id: crypto.randomUUID(),
+      })
+    },
+    creationCallbacks: {
+      onProviderSelected(provider) {
+        push({
+          message: `Uploading to ${truncateMiddle(provider.owner, 4, 4)} ${provider.pdpUrl}`,
+          date: new Date(),
+          id: crypto.randomUUID(),
+        })
+      },
+    },
+    uploadCallbacks: {
+      onUploadComplete(commp) {
+        push({
+          message: `Upload complete: ${commp.toString()}`,
+          date: new Date(),
+          id: crypto.randomUUID(),
+        })
       },
     },
   })
 
-  const form = useForm<z.infer<typeof depositFormSchema>>({
-    defaultValues: {
-      amount: '1',
-    },
-  })
+  const needsCreationFee = dataSets?.filtered.length === 0
+  const costPerMonth = needsCreationFee
+    ? (allowance?.costs.perMonth ?? 0n) + DATA_SET_CREATION_FEE
+    : (allowance?.costs.perMonth ?? 0n)
 
-  function onSubmit(values: z.infer<typeof depositFormSchema>) {
-    const amount = parseEther(values.amount)
-    deposit({ amount })
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+
+    const fileInput = e.currentTarget.elements.namedItem(
+      'file'
+    ) as HTMLInputElement
+
+    if (fileInput.files) {
+      const file = fileInput.files[0]
+      clear()
+      upload({ file })
+    }
   }
 
   return (
-    <Dialog
-      onOpenChange={() => {
-        reset()
-      }}
-    >
-      <DialogTrigger asChild>
-        <Button className="w-full" variant="default">
-          Deposit
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <DialogHeader>
-              <DialogTitle>Deposit USDFC</DialogTitle>
-              <DialogDescription>
-                Deposit USDFC tokens to the Payments contract.
-              </DialogDescription>
-            </DialogHeader>
+    <form onSubmit={onSubmit}>
+      <div className="grid w-full max-w-sm items-center gap-3">
+        <Label htmlFor="file">Upload</Label>
+        <Input
+          id="file"
+          onChange={(e) => {
+            clear()
+            uploadReset()
+            const fileInput = e.currentTarget as HTMLInputElement
+            if (fileInput.files) {
+              const file = fileInput.files[0]
+              setSize(BigInt(file.size))
+            }
+          }}
+          type="file"
+        />
+        <div className="flex items-center space-x-2">
+          <Checkbox
+            checked={withCDN}
+            id="with-cdn"
+            onCheckedChange={(checked) => setWithCDN(checked as boolean)}
+          />
+          <Label htmlFor="with-cdn">With CDN</Label>
+        </div>
+        <ButtonLoading
+          disabled={!allowance?.sufficient}
+          loading={isPending || isUploading}
+          type="submit"
+        >
+          Upload
+        </ButtonLoading>
+        <p className="text-muted-foreground text-sm">
+          Estimated cost per month {needsCreationFee ? 'with creation fee' : ''}
+          : {formatFraction({ value: costPerMonth })}
+        </p>
 
-            <div className="grid gap-4 py-4">
-              <div className="grid gap-3">
-                <FormField
-                  control={form.control}
-                  name="amount"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Amount</FormLabel>
-                      <FormControl>
-                        <Input {...field} />
-                      </FormControl>
-                      <FormDescription>
-                        Amount of USDFC to deposit.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                  rules={{
-                    required: 'Amount is required',
-                    validate: (value) => {
-                      const amount = parseEther(value)
-                      if (amount <= 0n) {
-                        return 'Amount must be greater than 0'
-                      }
-                      return true
-                    },
-                  }}
-                />
-              </div>
-              <HashAlert hash={hash} />
-              <ErrorAlert error={error} />
-              <SuccessAlert message="USDFC deposited" show={isSuccess} />
+        <ErrorAlert error={uploadError} />
+        <div className="flex flex-col gap-2">
+          {messages.map((message) => (
+            <div key={message.id}>
+              <small className="text-xs leading-none font-medium">
+                {message.message}
+              </small>
+              <p className="text-muted-foreground text-xs">
+                {message.date.toLocaleString()}
+              </p>
             </div>
-            <DialogFooter>
-              <DialogClose asChild>
-                <Button variant="outline">Cancel</Button>
-              </DialogClose>
-              <ButtonLoading className="w-24" loading={isPending} type="submit">
-                Deposit
-              </ButtonLoading>
-            </DialogFooter>
-          </form>
-        </Form>
-      </DialogContent>
-    </Dialog>
+          ))}
+        </div>
+      </div>
+    </form>
   )
 }
 
-const withdrawFormSchema = z.object({
-  amount: z.string().min(1),
-})
-export function WithdrawDialog() {
-  const [hash, setHash] = useState<string | null>(null)
-  const {
-    mutate: withdraw,
-    isPending,
-    isSuccess,
-    error,
-    reset,
-  } = payments.useWithdraw({
-    onHash: (hash) => {
-      setHash(hash)
-    },
-    mutation: {
-      onSettled: () => {
-        setHash(null)
-      },
-    },
+export function DataSetsDownload() {
+  const { address } = useAccount()
+  const { data: dataSets } = warmStorage.useDataSetsDownload({
+    address,
   })
-
-  const form = useForm<z.infer<typeof withdrawFormSchema>>({
-    defaultValues: {
-      amount: '1',
-    },
-  })
-
-  function onSubmit(values: z.infer<typeof withdrawFormSchema>) {
-    const amount = parseEther(values.amount)
-    withdraw({ amount })
-  }
-
   return (
-    <Dialog
-      onOpenChange={() => {
-        reset()
-      }}
-    >
-      <DialogTrigger asChild>
-        <Button className="w-full" variant="default">
-          Withdraw
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <DialogHeader>
-              <DialogTitle>Withdraw USDFC</DialogTitle>
-              <DialogDescription>
-                Withdraw USDFC tokens from the Payments contract.
-              </DialogDescription>
-            </DialogHeader>
-
-            <div className="grid gap-4 py-4">
-              <div className="grid gap-3">
-                <FormField
-                  control={form.control}
-                  name="amount"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Amount</FormLabel>
-                      <FormControl>
-                        <Input {...field} />
-                      </FormControl>
-                      <FormDescription>
-                        Amount of USDFC to withdraw.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                  rules={{
-                    required: 'Amount is required',
-                    validate: (value) => {
-                      const amount = parseEther(value)
-                      if (amount <= 0n) {
-                        return 'Amount must be greater than 0'
-                      }
-                      return true
-                    },
-                  }}
-                />
-              </div>
-              <HashAlert hash={hash} />
-              <ErrorAlert error={error} />
-              <SuccessAlert message="USDFC withdrawn" show={isSuccess} />
+    <div>
+      <p>Data Sets</p>
+      <div className="flex flex-col gap-2">
+        {dataSets?.data.map((dataSet) => (
+          <div className="" key={dataSet.dataSet.payee}>
+            <div className="text-sm py-2" key={dataSet.dataSet.payee}>
+              # {dataSet.details.id}{' '}
+              <span className="text-muted-foreground text-xs">
+                {new URL(dataSet.pdpUrl ?? '').hostname}{' '}
+                {dataSet.dataSet.withCDN ? 'CDN' : ''}
+              </span>
             </div>
-            <DialogFooter>
-              <DialogClose asChild>
-                <Button variant="outline">Cancel</Button>
-              </DialogClose>
-              <ButtonLoading className="w-24" loading={isPending} type="submit">
-                Withdraw
-              </ButtonLoading>
-            </DialogFooter>
-          </form>
-        </Form>
-      </DialogContent>
-    </Dialog>
+            {dataSet.details.roots.map((root) => (
+              <div
+                className="text-sm px-4 py-2 my-2 border-accent border rounded-md bg-accent"
+                key={root.rootId}
+              >
+                <p>File #{root.rootId}</p>
+                <p className="text-muted-foreground text-xs">{root.rootCid}</p>
+                <a href={root.pieceUrl} rel="noreferrer" target="_blank">
+                  Download
+                </a>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
