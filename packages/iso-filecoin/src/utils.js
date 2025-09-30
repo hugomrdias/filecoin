@@ -1,5 +1,5 @@
-import { blake2b } from '@noble/hashes/blake2b'
-import { keccak_256 } from '@noble/hashes/sha3'
+import { blake2b } from '@noble/hashes/blake2.js'
+import { keccak_256 } from '@noble/hashes/sha3.js'
 import { utf8 } from 'iso-base/utf8'
 import { concat } from 'iso-base/utils'
 import { KV } from 'iso-kv'
@@ -296,7 +296,7 @@ export function getCache(cache) {
 }
 
 /**
- * Create a Lotus CID from a BufferSource
+ * Create a Lotus CID from a Uint8Array
  *
  * @param {Uint8Array} data
  * @example

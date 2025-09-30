@@ -10,9 +10,8 @@ import { lotusCid } from '../src/utils.js'
 import * as Wallet from '../src/wallet.js'
 import { DEFAULT_OPTIONS, models } from './setup.js'
 
-// @ts-ignore
 const Zemu = /** @type {typeof _Zemu} */ (
-  // @ts-ignore
+  // @ts-expect-error
   _Zemu.default
 )
 

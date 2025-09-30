@@ -1,6 +1,6 @@
 import { StatusCodes } from '@ledgerhq/errors'
 import { secp256k1 as secp } from '@noble/curves/secp256k1'
-import { blake2b } from '@noble/hashes/blake2b'
+import { blake2b } from '@noble/hashes/blake2.js'
 import { hex } from 'iso-base/rfc4648'
 import { utf8 } from 'iso-base/utf8'
 import { buf, concat, u8 } from 'iso-base/utils'
@@ -99,7 +99,7 @@ export const APDU_CODES = {
 export const EIP191_PREFIX = 'Filecoin Sign Bytes:\n'
 
 export const IS_HID_SUPPORTED =
-  // @ts-ignore
+  // @ts-expect-error
   'navigator' in globalThis && navigator.hid !== undefined
 
 const CHUNK_SIZE = 250
@@ -212,7 +212,7 @@ async function signChunk(transport, index, size, data, instruction = 0x02) {
     instruction,
     payloadDesc,
     0,
-    buf(data),
+    buf(/** @type {BufferSource} */ (data)),
     [
       StatusCodes.OK,
       APDU_CODES.BAD_KEY_HANDLE,

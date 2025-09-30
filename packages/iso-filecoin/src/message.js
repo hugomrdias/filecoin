@@ -190,7 +190,7 @@ export class Message {
       base64pad.decode(this.params),
     ]
 
-    this.#bytes = /** @type {Uint8Array}*/ (encode(msg))
+    this.#bytes = encode(msg)
     return this.#bytes
   }
 

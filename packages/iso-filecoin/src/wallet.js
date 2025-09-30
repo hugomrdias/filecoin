@@ -1,6 +1,6 @@
 import { bls12_381 as bls } from '@noble/curves/bls12-381'
 import { secp256k1 as secp } from '@noble/curves/secp256k1'
-import { blake2b } from '@noble/hashes/blake2'
+import { blake2b } from '@noble/hashes/blake2.js'
 import { HDKey } from '@scure/bip32'
 import * as bip39 from '@scure/bip39'
 import { wordlist } from '@scure/bip39/wordlists/english'

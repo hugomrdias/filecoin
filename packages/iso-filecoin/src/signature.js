@@ -1,5 +1,5 @@
 import { base64pad, hex } from 'iso-base/rfc4648'
-import { concat, isBufferSource, u8 } from 'iso-base/utils'
+import { concat, isUint8Array } from 'iso-base/utils'
 import { z } from 'zod/v4'
 
 export const SIGNATURE_TYPE = /** @type {const} */ ({
@@ -12,14 +12,9 @@ export const SIGNATURE_CODE = /** @type {const} */ ({
   2: 'BLS',
 })
 
-const _zBufferSource = /** @type {typeof z.custom<BufferSource>} */ (z.custom)(
-  (value) => {
-    return isBufferSource(value)
-  },
-  'Value must be a BufferSource'
+const zU8 = /** @type {typeof z.custom<Uint8Array>} */ (z.custom)((value) =>
+  isUint8Array(value)
 )
-
-const zBuf = _zBufferSource.transform((value) => u8(value))
 
 export const Schemas = {
   lotusSignature: z.object({
@@ -28,7 +23,7 @@ export const Schemas = {
   }),
   signature: z.object({
     type: z.enum([SIGNATURE_CODE[1], SIGNATURE_CODE[2]]),
-    data: zBuf,
+    data: zU8,
   }),
 }
 

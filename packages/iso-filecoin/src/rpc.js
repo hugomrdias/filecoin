@@ -10,7 +10,6 @@ export {
   JsonError,
   NetworkError,
   RequestError,
-  RetryError,
   TimeoutError,
 } from 'iso-web/http'
 

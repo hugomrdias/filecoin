@@ -4,10 +4,10 @@
  * @module
  */
 
-import { blake2b } from '@noble/hashes/blake2b'
+import { blake2b } from '@noble/hashes/blake2.js'
 import * as leb128 from 'iso-base/leb128'
 import { base32, hex } from 'iso-base/rfc4648'
-import { concat, equals, isBufferSource, u8 } from 'iso-base/utils'
+import { concat, equals, isUint8Array } from 'iso-base/utils'
 import {
   checkNetworkPrefix,
   checksumEthAddress,
@@ -24,7 +24,7 @@ export { checksumEthAddress } from './utils.js'
 
 /**
  * @typedef {import('./types.js').IAddress} IAddress
- * @typedef { string | IAddress | BufferSource} Value
+ * @typedef { string | IAddress | Uint8Array} Value
  */
 
 /**
@@ -174,8 +174,8 @@ export function toEthAddress(address) {
  * @returns {IAddress}
  */
 export function from(value, network = 'mainnet') {
-  if (isBufferSource(value)) {
-    return fromBytes(u8(value), network)
+  if (isUint8Array(value)) {
+    return fromBytes(value, network)
   }
 
   if (isAddress(value)) {
@@ -198,7 +198,7 @@ export function from(value, network = 'mainnet') {
  * @returns {IAddress}
  */
 export function fromString(address) {
-  const type = Number.parseInt(address[1])
+  const type = Number.parseInt(address[1], 10)
 
   switch (type) {
     case PROTOCOL_INDICATOR.SECP256K1: {
@@ -466,7 +466,7 @@ export class AddressId extends Address {
       throw new Error(`Invalid network: ${networkPrefix}`)
     }
 
-    if (Number.parseInt(protocolIndicator) !== PROTOCOL_INDICATOR.ID) {
+    if (Number.parseInt(protocolIndicator, 10) !== PROTOCOL_INDICATOR.ID) {
       throw new Error(`Invalid protocol indicator: ${protocolIndicator}`)
     }
 
@@ -626,7 +626,9 @@ export class AddressSecp256k1 extends Address {
       throw new Error(`Invalid network: ${networkPrefix}`)
     }
 
-    if (Number.parseInt(protocolIndicator) !== PROTOCOL_INDICATOR.SECP256K1) {
+    if (
+      Number.parseInt(protocolIndicator, 10) !== PROTOCOL_INDICATOR.SECP256K1
+    ) {
       throw new Error(`Invalid protocol indicator: ${protocolIndicator}`)
     }
 
@@ -708,7 +710,7 @@ export class AddressActor extends Address {
       throw new Error(`Invalid network: ${networkPrefix}`)
     }
 
-    if (Number.parseInt(protocolIndicator) !== PROTOCOL_INDICATOR.ACTOR) {
+    if (Number.parseInt(protocolIndicator, 10) !== PROTOCOL_INDICATOR.ACTOR) {
       throw new Error(`Invalid protocol indicator: ${protocolIndicator}`)
     }
 
@@ -774,7 +776,7 @@ export class AddressBLS extends Address {
       throw new Error(`Invalid network: ${networkPrefix}`)
     }
 
-    if (Number.parseInt(protocolIndicator) !== PROTOCOL_INDICATOR.BLS) {
+    if (Number.parseInt(protocolIndicator, 10) !== PROTOCOL_INDICATOR.BLS) {
       throw new Error(
         `Invalid protocol indicator: ${protocolIndicator} expected ${PROTOCOL_INDICATOR.BLS}`
       )
@@ -863,7 +865,9 @@ export class AddressDelegated extends Address {
       throw new Error(`Invalid network: ${networkPrefix}`)
     }
 
-    if (Number.parseInt(protocolIndicator) !== PROTOCOL_INDICATOR.DELEGATED) {
+    if (
+      Number.parseInt(protocolIndicator, 10) !== PROTOCOL_INDICATOR.DELEGATED
+    ) {
       throw new Error(`Invalid protocol indicator: ${protocolIndicator}`)
     }
 
@@ -874,7 +878,7 @@ export class AddressDelegated extends Address {
     const payload = data.subarray(0, -4)
     const checksum = data.subarray(-4)
     const newAddress = new AddressDelegated(
-      Number.parseInt(namespace),
+      Number.parseInt(namespace, 10),
       payload,
       getNetwork(networkPrefix)
     )
