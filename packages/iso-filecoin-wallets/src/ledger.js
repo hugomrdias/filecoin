@@ -202,7 +202,7 @@ export class WalletAdapterLedger extends TypedEventTarget {
   }
 
   /**
-   * @param {Uint8Array<ArrayBufferLike>} data
+   * @param {Uint8Array} data
    */
   async sign(data) {
     try {
