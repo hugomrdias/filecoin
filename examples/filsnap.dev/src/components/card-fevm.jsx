@@ -12,9 +12,9 @@ import {
   Text,
   Tooltip,
 } from '@radix-ui/themes'
-import { useAccount as useAccountFil, useAddresses } from 'iso-filecoin-react'
 import * as Address from 'iso-filecoin/address'
 import { Token } from 'iso-filecoin/token'
+import { useAccount as useAccountFil, useAddresses } from 'iso-filecoin-react'
 import { useState } from 'react'
 import { useAccount, useBalance, useDisconnect } from 'wagmi'
 import { AddressItem, balanceInUSD, usePrice } from './common.jsx'
@@ -33,19 +33,19 @@ export function CardFevm() {
         {address && (
           <Tooltip content="Disconnect Wallet">
             <IconButton
-              color="red"
-              variant="soft"
-              radius="full"
               aria-label="Close"
               className="TopCornerButton"
+              color="red"
               onClick={() => disconnect()}
+              radius="full"
+              variant="soft"
             >
               <ExitIcon />
             </IconButton>
           </Tooltip>
         )}
-        <Flex gap="1" p="1" direction="column">
-          <Flex gap="2" align="center">
+        <Flex direction="column" gap="1" p="1">
+          <Flex align="center" gap="2">
             <Icons.TokenEthereum />
             <Heading size="3">FEVM Wallet</Heading>
           </Flex>
@@ -54,7 +54,7 @@ export function CardFevm() {
               ? 'Connected to MetaMask'
               : 'Connect your wallet to start using the Filecoin EVM.'}
           </Text>
-          <Flex mt="6" mb="4" justify="center">
+          <Flex justify="center" mb="4" mt="6">
             {address ? <Account /> : <DialogConnectFEVM />}
           </Flex>
         </Flex>
@@ -68,7 +68,7 @@ function Account() {
   const { disconnect } = useDisconnect()
   const { address } = useAccount()
   const { data } = useBalance({ address })
-  // @ts-ignore
+  // @ts-expect-error
   const { addressId } = useAddresses({ address })
   const { data: price } = usePrice()
   const [isSignOpen, setIsSignOpen] = useState(false)
@@ -77,8 +77,8 @@ function Account() {
     <Flex direction="column" gap="6">
       <Flex gap="6" justify="center">
         <Skeleton loading={!data}>
-          <Flex gap="1" direction="column">
-            <Heading size="1" color="gray">
+          <Flex direction="column" gap="1">
+            <Heading color="gray" size="1">
               BALANCE
             </Heading>
             <Heading size="4">
@@ -87,14 +87,14 @@ function Account() {
                 .toFormat({ decimalPlaces: 1 })}{' '}
               {data?.symbol}
             </Heading>
-            <Text size="2" color="gray">
+            <Text color="gray" size="2">
               {balanceInUSD(data?.value ?? 0n, price)}
             </Text>
           </Flex>
         </Skeleton>
         <Skeleton loading={!address}>
-          <Flex gap="2" direction="column">
-            <Heading size="1" color="gray">
+          <Flex direction="column" gap="2">
+            <Heading color="gray" size="1">
               ADDRESSES
             </Heading>
             <DataList.Root size="1">
@@ -113,7 +113,6 @@ function Account() {
       </Flex>
       <Flex direction="row" gap="3" justify="center">
         <DialogForward
-          disabled={state === 'reconnecting'}
           balance={
             Number(
               Token.fromAttoFIL(data?.value ?? 0n)
@@ -121,12 +120,17 @@ function Account() {
                 .toFormat({ decimalPlaces: 1 })
             ) ?? 0
           }
+          disabled={state === 'reconnecting'}
         />
-        <DialogReceive disabled={state === 'reconnecting'} address={address} />
+        <DialogReceive
+          address={address}
+          disabled={state === 'reconnecting'}
+          otherAddress={addressId.data?.toString()}
+        />
         <DialogSignEVM isOpen={isSignOpen} setIsOpen={setIsSignOpen} />
         <DropdownMenu.Root>
           <DropdownMenu.Trigger disabled={state === 'reconnecting'}>
-            <Button variant="soft" size="3">
+            <Button size="3" variant="soft">
               <DropdownMenu.TriggerIcon />
             </Button>
           </DropdownMenu.Trigger>
@@ -137,8 +141,8 @@ function Account() {
             <DropdownMenu.Item asChild>
               <a
                 href={`${chain.blockExplorers?.default?.url}/address/${address}`}
-                target="_blank"
                 rel="noreferrer"
+                target="_blank"
               >
                 Explorer
               </a>
