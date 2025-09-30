@@ -1,23 +1,27 @@
-import { erc20, payments } from 'iso-filecoin-synapse'
+import {
+  erc20,
+  formatBalance,
+  formatFraction,
+  payments,
+} from 'iso-filecoin-synapse'
+import { payments as paymentsActions } from 'iso-filecoin-synapse/actions'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { parseEther } from 'viem'
-import { useAccount } from 'wagmi'
+import { useAccount, useConnectorClient } from 'wagmi'
 import { z } from 'zod/v4'
 import * as Icons from '@/components/icons'
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Skeleton } from '@/components/ui/skeleton'
-import { formatBalance } from '@/lib/utils'
 import { ErrorAlert, HashAlert, SuccessAlert } from './custom-ui/alerts'
 import { ButtonLoading } from './custom-ui/button-loading'
+import { DepositAndApproveDialog } from './payments/deposit-and-approve'
 import { Button } from './ui/button'
 import {
   Dialog,
@@ -39,29 +43,38 @@ import {
   FormMessage,
 } from './ui/form'
 import { Input } from './ui/input'
-import { Separator } from './ui/separator'
 
 export function PaymentsAccount() {
   const { address } = useAccount()
-  const { data: paymentsBalance } = payments.useBalance({ address })
-  const { data: erc20Balance } = erc20.useBalance({ address })
+  const { data: paymentsBalance } = payments.useAccountInfo({
+    address,
+  })
+
+  // const { data: erc20Balance } = erc20.useBalance({ address })
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Account</CardTitle>
+        <CardTitle>Pay Account</CardTitle>
         <CardDescription>Manage your payments account</CardDescription>
-        <CardAction>
-          <AllowanceDialog />
-        </CardAction>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-row gap-2 items-center">
+        {/* <div className="flex flex-row gap-2 items-center">
           <span className="text-sm text-muted-foreground">Allowance:</span>
           <span className="text-sm font-bold">
             {formatBalance({
-              value: erc20Balance?.allowance ?? 0n,
-              decimals: 18,
+              value: erc20Balance?.allowance,
+            })}
+          </span>
+          <Icons.Usdfc className="w-4 h-4" />
+        </div> */}
+        <div className="flex flex-row gap-2 items-center">
+          <span className="text-sm text-muted-foreground">
+            Available Balance:
+          </span>
+          <span className="text-sm font-bold">
+            {formatFraction({
+              value: paymentsBalance?.availableFunds,
             })}
           </span>
           <Icons.Usdfc className="w-4 h-4" />
@@ -69,18 +82,32 @@ export function PaymentsAccount() {
         <div className="flex flex-row gap-2 items-center">
           <span className="text-sm text-muted-foreground">Balance:</span>
           <span className="text-sm font-bold">
-            {formatBalance({
-              value: paymentsBalance?.availableFunds ?? 0n,
-              decimals: 18,
+            {formatFraction({
+              value: paymentsBalance?.funds,
             })}
           </span>
           <Icons.Usdfc className="w-4 h-4" />
         </div>
-        <div className="flex flex-wrap gap-2 items-center md:flex-row my-4">
-          <DepositDialog />
-          <WithdrawDialog />
+        <div className="flex flex-row gap-2 items-center">
+          <span className="text-sm text-muted-foreground">Lockup:</span>
+          <span className="text-sm font-bold">
+            {formatFraction({
+              value: paymentsBalance?.lockupCurrent,
+            })}
+          </span>
+          <Icons.Usdfc className="w-4 h-4" />
         </div>
-        <Card className="bg-neutral-700">
+        <div className="flex flex-row gap-2 items-center">
+          <span className="text-sm text-muted-foreground">Lockup Rate:</span>
+          <span className="text-sm font-bold">
+            {formatFraction({
+              value: paymentsBalance?.lockupRate,
+            })}
+          </span>
+          <Icons.Usdfc className="w-4 h-4" />
+        </div>
+
+        {/* <Card className="bg-neutral-700">
           <CardHeader>
             <CardTitle>Payments Rails</CardTitle>
             <CardDescription>
@@ -101,9 +128,14 @@ export function PaymentsAccount() {
               </div>
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
       </CardContent>
-      <CardFooter className="flex-col gap-2"></CardFooter>
+      <CardFooter className="flex-row gap-2">
+        <DepositAndApproveDialog />
+        {/* <AllowanceDialog /> */}
+        {/* <DepositDialog /> */}
+        <WithdrawDialog />
+      </CardFooter>
     </Card>
   )
 }
@@ -148,9 +180,7 @@ export function AllowanceDialog() {
       }}
     >
       <DialogTrigger asChild>
-        <Button className="w-full" variant="outline">
-          Allowance
-        </Button>
+        <Button>Allowance</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <Form {...form}>
@@ -200,7 +230,11 @@ export function AllowanceDialog() {
               <DialogClose asChild>
                 <Button variant="outline">Cancel</Button>
               </DialogClose>
-              <ButtonLoading className="w-24" loading={isPending} type="submit">
+              <ButtonLoading
+                className="sm:w-24 w-full"
+                loading={isPending}
+                type="submit"
+              >
                 Approve
               </ButtonLoading>
             </DialogFooter>
@@ -251,7 +285,7 @@ export function DepositDialog() {
       }}
     >
       <DialogTrigger asChild>
-        <Button variant="default">Deposit</Button>
+        <Button variant="secondary">Deposit</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <Form {...form}>
@@ -300,7 +334,11 @@ export function DepositDialog() {
               <DialogClose asChild>
                 <Button variant="outline">Cancel</Button>
               </DialogClose>
-              <ButtonLoading className="w-24" loading={isPending} type="submit">
+              <ButtonLoading
+                className="sm:w-24 w-full"
+                loading={isPending}
+                type="submit"
+              >
                 Deposit
               </ButtonLoading>
             </DialogFooter>
@@ -351,7 +389,7 @@ export function WithdrawDialog() {
       }}
     >
       <DialogTrigger asChild>
-        <Button>Withdraw</Button>
+        <Button variant="secondary">Withdraw</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <Form {...form}>
@@ -400,7 +438,11 @@ export function WithdrawDialog() {
               <DialogClose asChild>
                 <Button variant="outline">Cancel</Button>
               </DialogClose>
-              <ButtonLoading className="w-24" loading={isPending} type="submit">
+              <ButtonLoading
+                className="sm:w-24 w-full"
+                loading={isPending}
+                type="submit"
+              >
                 Withdraw
               </ButtonLoading>
             </DialogFooter>

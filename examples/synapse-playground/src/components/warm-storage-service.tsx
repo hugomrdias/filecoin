@@ -1,5 +1,3 @@
-import { useQueryClient } from '@tanstack/react-query'
-import { useList } from '@uidotdev/usehooks'
 import {
   DATA_SET_CREATION_FEE,
   formatBalance,
@@ -8,15 +6,10 @@ import {
   SIZE_CONSTANTS,
   warmStorage,
 } from 'iso-filecoin-synapse'
-import { getChain } from 'iso-filecoin-synapse/chains'
-import {
-  useReadPaymentsOperatorApprovals,
-  useReadWarmStorageGetServicePrice,
-} from 'iso-filecoin-synapse/gen'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { type Address, parseEther } from 'viem'
-import { useAccount, useChainId } from 'wagmi'
+import { parseEther } from 'viem'
+import { useAccount } from 'wagmi'
 import { z } from 'zod/v4'
 import * as Icons from '@/components/icons'
 import {
@@ -26,11 +19,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { truncateMiddle } from '@/lib/utils'
 import { ErrorAlert, HashAlert, SuccessAlert } from './custom-ui/alerts'
 import { ButtonLoading } from './custom-ui/button-loading'
 import { Button } from './ui/button'
-import { Checkbox } from './ui/checkbox'
 import {
   Dialog,
   DialogClose,
@@ -52,78 +43,55 @@ import {
 } from './ui/form'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from './ui/select'
 import { Separator } from './ui/separator'
+import { Skeleton } from './ui/skeleton'
 import { Switch } from './ui/switch'
+import { DataSetsSection } from './warm-storage/data-sets-section'
 
 export function WarmStorageService() {
   const { address } = useAccount()
-  const chainId = useChainId()
-  const chain = getChain(chainId)
 
-  const { data: operatorApprovals } = useReadPaymentsOperatorApprovals({
-    query: {
-      enabled: !!address,
-    },
-    args: [
-      chain.contracts.usdfc.address,
-      address!,
-      chain.contracts.pandora.address,
-    ],
+  const { data: operator } = payments.useOperatorApprovals({
+    address,
   })
-  const operator = {
-    isApproved: operatorApprovals?.[0],
-    rateAllowance: operatorApprovals?.[1],
-    lockupAllowance: operatorApprovals?.[2],
-    rateUsed: operatorApprovals?.[3],
-    lockupUsed: operatorApprovals?.[4],
-  }
+
+  const { data: dataSets } = warmStorage.useDataSets({
+    address,
+  })
 
   return (
     <Card className="my-4">
-      <CardHeader>
+      {/* <CardHeader>
         <CardTitle className="font-normal">
-          {operator.isApproved ? (
-            <>
-              <div className="flex flex-row gap-2 items-center">
-                <span className="text-sm text-muted-foreground">Lockup:</span>
-                <span className="text-sm font-bold">
-                  {formatFraction({
-                    value: operator.lockupUsed ?? 0n,
-                  })}{' '}
-                  /{' '}
-                  {formatFraction({
-                    value: operator.lockupAllowance ?? 0n,
-                  })}
-                </span>
-
-                <Icons.Usdfc className="w-4 h-4" />
-              </div>
-              <div className="flex flex-row gap-2 items-center">
-                <span className="text-sm text-muted-foreground">Rate:</span>
-                <span className="text-sm font-bold">
-                  {formatFraction({
-                    value: operator.rateUsed ?? 0n,
-                  })}{' '}
-                  /{' '}
-                  {formatFraction({
-                    value: operator.rateAllowance ?? 0n,
-                  })}
-                </span>
-                <Icons.Usdfc className="w-4 h-4" />
-              </div>
-            </>
+          {operator ? (
+            <OperatorApprovals operator={operator} />
           ) : (
-            <div>Not approved</div>
+            <Skeleton className="w-full h-6" />
           )}
         </CardTitle>
-        <CardAction>
-          <OperatorApprovalDialog />
-        </CardAction>
-      </CardHeader>
+        <CardAction>{operator && <OperatorApprovalDialog />}</CardAction>
+      </CardHeader> */}
       <CardContent>
-        <FileUpload />
-        <Separator className="my-4" />
-        <DataSetsDownload />
+        {operator?.isApproved && dataSets && dataSets?.length > 0 && (
+          <FileUpload />
+        )}
+        {operator?.isApproved ? (
+          <>
+            <Separator className="my-4" />
+            <DataSetsSection />
+          </>
+        ) : (
+          'Not approved'
+        )}
       </CardContent>
       {/* <CardFooter className="flex-col gap-2">
         <OperatorApprovalDialog />
@@ -139,38 +107,40 @@ const formSchema = z.object({
   rate: z.string().min(1),
 })
 export function OperatorApprovalDialog() {
-  const { address } = useAccount()
-  const { data: servicePrice } = useReadWarmStorageGetServicePrice()
   const [hash, setHash] = useState<string | null>(null)
   const [withCDN, setWithCDN] = useState(false)
   const [size, setSize] = useState(10n)
-  const [duration, setDuration] = useState(10n)
 
-  const { data: allowance } = warmStorage.useAllowance({
+  const { address } = useAccount()
+  const { data: operator } = payments.useOperatorApprovals({
     address,
+  })
+  const { data: servicePrice } = warmStorage.useServicePrice()
+  const { data: estimateLockup } = warmStorage.useEstimateLockup({
     sizeInBytes: size * SIZE_CONSTANTS.GiB,
-    lockupDays: duration,
     withCDN,
   })
 
-  const {
-    mutate: revokeOperator,
-    isPending: isRevoking,
-    isSuccess: isRevoked,
-    error: revokeError,
-    reset: revokeReset,
-  } = payments.useRevokeOperator({
-    onHash: (hash) => {
-      setHash(hash)
-      reset()
-    },
-    mutation: {
-      onSettled: () => {
-        setHash(null)
-      },
-    },
-  })
+  // Revoke Operator Mutation
+  // const {
+  //   mutate: revokeOperator,
+  //   isPending: isRevoking,
+  //   isSuccess: isRevoked,
+  //   error: revokeError,
+  //   reset: revokeReset,
+  // } = payments.useRevokeOperator({
+  //   onHash: (hash) => {
+  //     setHash(hash)
+  //     reset()
+  //   },
+  //   mutation: {
+  //     onSettled: () => {
+  //       setHash(null)
+  //     },
+  //   },
+  // })
 
+  // Approve Operator Mutation
   const {
     mutate: approveOperator,
     isPending,
@@ -180,7 +150,7 @@ export function OperatorApprovalDialog() {
   } = payments.useApproveOperator({
     onHash: (hash) => {
       setHash(hash)
-      revokeReset()
+      // revokeReset()
     },
     mutation: {
       onSettled: () => {
@@ -189,15 +159,14 @@ export function OperatorApprovalDialog() {
     },
   })
 
+  // Approve Operator Form
   const form = useForm<z.infer<typeof formSchema>>({
     values: {
       lockup: formatFraction({
-        value: allowance?.depositAmountNeeded ?? 0n,
-        digits: 18,
+        value: estimateLockup?.lockup,
       }),
       rate: formatFraction({
-        value: allowance?.rateAllowanceNeeded ?? 0n,
-        digits: 18,
+        value: estimateLockup?.rate,
       }),
     },
   })
@@ -213,22 +182,21 @@ export function OperatorApprovalDialog() {
     <Dialog
       onOpenChange={() => {
         reset()
-        revokeReset()
+        // revokeReset()
       }}
     >
       <DialogTrigger asChild>
         <Button className="w-full" variant="default">
-          Allowance
+          Lockup
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] max-h-3/4 overflow-y-auto">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <DialogHeader>
-              <DialogTitle>Manage Allowance</DialogTitle>
+              <DialogTitle>Manage Lockup</DialogTitle>
               <DialogDescription>
-                Manage the allowance for the Payments contract to spend your
-                USDFC tokens.
+                Manage the lockup Warm Storage can set for your account.
               </DialogDescription>
             </DialogHeader>
 
@@ -249,13 +217,13 @@ export function OperatorApprovalDialog() {
                 <span className="text-sm font-bold">
                   {formatBalance({
                     value: withCDN
-                      ? (servicePrice?.pricePerTiBPerMonthWithCDN ?? 0n)
-                      : (servicePrice?.pricePerTiBPerMonthNoCDN ?? 0n),
+                      ? servicePrice?.pricePerTiBPerMonthWithCDN
+                      : servicePrice?.pricePerTiBPerMonthNoCDN,
                   })}
                 </span>
                 <Icons.Usdfc className="w-4 h-4" />
               </div>
-              <p className="text-muted-foreground text-lg">Estimate</p>
+              <p className="text-muted-foreground text-lg">Lockup Estimate</p>
               <div className="grid w-full max-w-sm items-center gap-3">
                 <Label htmlFor="size">Size</Label>
                 <Input
@@ -268,91 +236,77 @@ export function OperatorApprovalDialog() {
                 <p className="text-muted-foreground text-sm">
                   Enter the size of the data you want to store in GiB.
                 </p>
-                <Label htmlFor="duration">Duration</Label>
-                <Input
-                  id="duration"
-                  onChange={(e) => setDuration(BigInt(e.target.value))}
-                  placeholder="Duration"
-                  type="number"
-                  value={duration.toString()}
-                />
-                <p className="text-muted-foreground text-sm">
-                  Enter how long you want to store the data in days.
-                </p>
               </div>
-              <DataUsageTable data={allowance} />
+              <DataUsageTable data={estimateLockup} />
 
               <Separator />
-              <div className="grid gap-3">
-                <FormField
-                  control={form.control}
-                  name="lockup"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Lockup</FormLabel>
-                      <FormControl>
-                        <Input {...field} />
-                      </FormControl>
-                      <FormDescription>
-                        Amount of USDFC to lockup.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                  rules={{
-                    required: 'Amount is required',
-                    validate: (value) => {
-                      const amount = parseEther(value)
-                      if (amount < 0n) {
-                        return 'Amount must be greater than 0'
-                      }
-                      return true
-                    },
-                  }}
-                />
-              </div>
-              <div className="grid gap-3">
-                <FormField
-                  control={form.control}
-                  name="rate"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Rate</FormLabel>
-                      <FormControl>
-                        <Input {...field} />
-                      </FormControl>
-                      <FormDescription>Rate amount.</FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                  rules={{
-                    required: 'Amount is required',
-                    validate: (value) => {
-                      const amount = parseEther(value)
-                      if (amount < 0n) {
-                        return 'Amount must be greater than 0'
-                      }
-                      return true
-                    },
-                  }}
-                />
-              </div>
+              <FormField
+                control={form.control}
+                name="lockup"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Lockup</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      Amount of USDFC to lockup. Add 0.1 USDFC for each data set
+                      you want to create.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+                rules={{
+                  required: 'Amount is required',
+                  validate: (value) => {
+                    const amount = parseEther(value)
+                    if (amount < 0n) {
+                      return 'Amount must be greater than 0'
+                    }
+                    return true
+                  },
+                }}
+              />
+              <FormField
+                control={form.control}
+                name="rate"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Rate</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormDescription>Rate limit per day.</FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+                rules={{
+                  required: 'Amount is required',
+                  validate: (value) => {
+                    const amount = parseEther(value)
+                    if (amount < 0n) {
+                      return 'Amount must be greater than 0'
+                    }
+                    return true
+                  },
+                }}
+              />
               <HashAlert hash={hash} />
-              <ErrorAlert error={error || revokeError} />
+              <ErrorAlert error={error} />
               <SuccessAlert
                 message="Operator approval updated"
                 show={isSuccess}
               />
-              <SuccessAlert
+              {/* <SuccessAlert
                 message="Operator approval revoked"
                 show={isRevoked}
-              />
+              /> */}
             </div>
             <DialogFooter>
               <DialogClose asChild>
                 <Button variant="outline">Cancel</Button>
               </DialogClose>
-              <ButtonLoading
+              {/* <ButtonLoading
                 className="w-24"
                 loading={isRevoking}
                 onClick={() => {
@@ -362,9 +316,13 @@ export function OperatorApprovalDialog() {
                 variant="destructive"
               >
                 Revoke
-              </ButtonLoading>
-              <ButtonLoading className="w-24" loading={isPending} type="submit">
-                Update
+              </ButtonLoading> */}
+              <ButtonLoading
+                className="sm:w-24 w-full"
+                loading={isPending}
+                type="submit"
+              >
+                {operator?.isApproved ? 'Update' : 'Approve'}
               </ButtonLoading>
             </DialogFooter>
           </form>
@@ -377,21 +335,15 @@ export function OperatorApprovalDialog() {
 export function DataUsageTable({
   data,
 }: {
-  data?: warmStorage.AllowanceResult
+  data?: warmStorage.UseEstimateLockupResult
 }) {
+  const { address } = useAccount()
+  const { data: operator } = payments.useOperatorApprovals({
+    address,
+  })
   return (
     <div className="my-4 w-full overflow-y-auto text-sm text-muted-foreground">
       <table className="w-full">
-        {/* <thead>
-          <tr className="even:bg-muted m-0 border-t p-0">
-            <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right">
-              Data Usage
-            </th>
-            <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right">
-              Amount
-            </th>
-          </tr>
-        </thead> */}
         <tbody>
           <tr className="even:bg-muted m-0 border-t p-0">
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
@@ -429,7 +381,7 @@ export function DataUsageTable({
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
               {formatFraction({
-                value: data?.currentRateAllowance ?? 0n,
+                value: operator?.rateAllowance ?? 0n,
               })}
             </td>
           </tr>
@@ -439,7 +391,7 @@ export function DataUsageTable({
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
               {formatFraction({
-                value: data?.currentLockupAllowance ?? 0n,
+                value: operator?.lockupAllowance ?? 0n,
               })}
             </td>
           </tr>
@@ -449,7 +401,7 @@ export function DataUsageTable({
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
               {formatFraction({
-                value: data?.currentRateUsed ?? 0n,
+                value: operator?.rateUsed ?? 0n,
               })}
             </td>
           </tr>
@@ -459,7 +411,7 @@ export function DataUsageTable({
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
               {formatFraction({
-                value: data?.currentLockupUsed ?? 0n,
+                value: operator?.lockupUsed ?? 0n,
               })}
             </td>
           </tr>
@@ -469,7 +421,7 @@ export function DataUsageTable({
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
               {formatFraction({
-                value: data?.lockupAllowanceNeeded ?? 0n,
+                value: data?.lockup ?? 0n,
               })}
             </td>
           </tr>
@@ -480,25 +432,25 @@ export function DataUsageTable({
 }
 
 export function FileUpload() {
-  const queryClient = useQueryClient()
   const { address } = useAccount()
-  const [messages, { push, clear }] = useList<{
-    message: string
-    date: Date
-    id: string
-  }>()
-  const [withCDN, setWithCDN] = useState(false)
+  const [hash, setHash] = useState<string | null>(null)
   const [size, setSize] = useState(0n)
-  const { data: dataSets } = warmStorage.useDataSets({
-    address,
-    withCDN,
-  })
+  const [dataSet, setDataSet] = useState<string | undefined>(undefined)
 
-  const { data: allowance, isPending } = warmStorage.useAllowance({
+  const { data: providers } = warmStorage.useProvidersWithDataSets({
     address,
+  })
+  const dataSets = providers?.flatMap((provider) => provider.dataSets) ?? []
+  useEffect(() => {
+    if (!dataSet && dataSets.length > 0) {
+      setDataSet(dataSets[0].pdpDatasetId.toString())
+    }
+  }, [dataSets])
+
+  const { data: allowance, isPending } = warmStorage.useEstimateLockup({
     sizeInBytes: size,
-    lockupDays: 30n,
-    withCDN,
+    withCDN:
+      dataSets.find((d) => d.pdpDatasetId.toString() === dataSet)?.cdn ?? false,
   })
 
   const {
@@ -506,52 +458,18 @@ export function FileUpload() {
     isPending: isUploading,
     error: uploadError,
     reset: uploadReset,
-  } = warmStorage.useStorageUpload({
-    withCDN,
-    providerId: dataSets?.providerId,
+  } = warmStorage.useUpload({
+    onHash: (hash) => {
+      setHash(hash)
+    },
     mutation: {
-      onError() {
-        clear()
-      },
-    },
-    onRootAdded(txHash) {
-      push({
-        message: `Waiting for confirmation: ${txHash}`,
-        date: new Date(),
-        id: crypto.randomUUID(),
-      })
-    },
-    onRootConfirmed(status) {
-      queryClient.invalidateQueries({
-        queryKey: ['useDataSetsDownload', address],
-      })
-      push({
-        message: `Upload confirmed`,
-        date: new Date(),
-        id: crypto.randomUUID(),
-      })
-    },
-    creationCallbacks: {
-      onProviderSelected(provider) {
-        push({
-          message: `Uploading to ${truncateMiddle(provider.owner, 4, 4)} ${provider.pdpUrl}`,
-          date: new Date(),
-          id: crypto.randomUUID(),
-        })
-      },
-    },
-    uploadCallbacks: {
-      onUploadComplete(commp) {
-        push({
-          message: `Upload complete: ${commp.toString()}`,
-          date: new Date(),
-          id: crypto.randomUUID(),
-        })
+      onSettled: () => {
+        setHash(null)
       },
     },
   })
 
-  const needsCreationFee = dataSets?.filtered.length === 0
+  const needsCreationFee = dataSets?.length === 0
   const costPerMonth = needsCreationFee
     ? (allowance?.costs.perMonth ?? 0n) + DATA_SET_CREATION_FEE
     : (allowance?.costs.perMonth ?? 0n)
@@ -563,21 +481,53 @@ export function FileUpload() {
       'file'
     ) as HTMLInputElement
 
-    if (fileInput.files) {
+    const dataSetInput = e.currentTarget.elements.namedItem(
+      'data-set'
+    ) as HTMLSelectElement
+
+    const dataSetId = BigInt(dataSetInput.value)
+
+    if (fileInput.files && dataSetId) {
       const file = fileInput.files[0]
-      clear()
-      upload({ file })
+      upload({ file, dataSetId })
     }
   }
 
-  return (
+  return dataSet ? (
     <form onSubmit={onSubmit}>
-      <div className="grid w-full max-w-sm items-center gap-3">
-        <Label htmlFor="file">Upload</Label>
+      <h3 className="text-lg font-bold">Upload File</h3>
+      <div className="grid w-full max-w-sm items-center gap-3 my-4">
+        <Label htmlFor="data-set">Data Set</Label>
+        <Select
+          name="data-set"
+          onValueChange={(value) => {
+            setDataSet(value)
+          }}
+          value={dataSet}
+        >
+          <SelectTrigger className="w-[280px]">
+            <SelectValue placeholder="Select a data set" />
+          </SelectTrigger>
+          <SelectContent>
+            {providers?.map((provider) => (
+              <SelectGroup key={provider.providerId}>
+                <SelectLabel>{provider.name}</SelectLabel>
+                {provider.dataSets.map((dataSet) => (
+                  <SelectItem
+                    key={dataSet.clientDataSetId}
+                    value={dataSet.pdpDatasetId.toString()}
+                  >
+                    # {dataSet.pdpDatasetId} {dataSet.cdn ? 'CDN' : ''}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            ))}
+          </SelectContent>
+        </Select>
+        <Label htmlFor="file">File to Upload</Label>
         <Input
           id="file"
           onChange={(e) => {
-            clear()
             uploadReset()
             const fileInput = e.currentTarget as HTMLInputElement
             if (fileInput.files) {
@@ -587,16 +537,8 @@ export function FileUpload() {
           }}
           type="file"
         />
-        <div className="flex items-center space-x-2">
-          <Checkbox
-            checked={withCDN}
-            id="with-cdn"
-            onCheckedChange={(checked) => setWithCDN(checked as boolean)}
-          />
-          <Label htmlFor="with-cdn">With CDN</Label>
-        </div>
         <ButtonLoading
-          disabled={!allowance?.sufficient}
+          // disabled={!allowance?.sufficient}
           loading={isPending || isUploading}
           type="submit"
         >
@@ -608,56 +550,65 @@ export function FileUpload() {
         </p>
 
         <ErrorAlert error={uploadError} />
-        <div className="flex flex-col gap-2">
-          {messages.map((message) => (
-            <div key={message.id}>
-              <small className="text-xs leading-none font-medium">
-                {message.message}
-              </small>
-              <p className="text-muted-foreground text-xs">
-                {message.date.toLocaleString()}
-              </p>
-            </div>
-          ))}
-        </div>
+        <HashAlert hash={hash} />
       </div>
     </form>
+  ) : (
+    <Skeleton className="w-full h-50" />
   )
 }
 
-export function DataSetsDownload() {
-  const { address } = useAccount()
-  const { data: dataSets } = warmStorage.useDataSetsDownload({
-    address,
-  })
+export function OperatorApprovals({
+  operator,
+}: {
+  operator: payments.OperatorApprovalsResult
+}) {
   return (
-    <div>
-      <p>Data Sets</p>
-      <div className="flex flex-col gap-2">
-        {dataSets?.data.map((dataSet) => (
-          <div className="" key={dataSet.dataSet.payee}>
-            <div className="text-sm py-2" key={dataSet.dataSet.payee}>
-              # {dataSet.details.id}{' '}
-              <span className="text-muted-foreground text-xs">
-                {new URL(dataSet.pdpUrl ?? '').hostname}{' '}
-                {dataSet.dataSet.withCDN ? 'CDN' : ''}
-              </span>
-            </div>
-            {dataSet.details.roots.map((root) => (
-              <div
-                className="text-sm px-4 py-2 my-2 border-accent border rounded-md bg-accent"
-                key={root.rootId}
-              >
-                <p>File #{root.rootId}</p>
-                <p className="text-muted-foreground text-xs">{root.rootCid}</p>
-                <a href={root.pieceUrl} rel="noreferrer" target="_blank">
-                  Download
-                </a>
-              </div>
-            ))}
+    <>
+      {operator.isApproved ? (
+        <>
+          <p className="text-muted-foreground text-sm">
+            Website:{' '}
+            <a
+              className="text-gray-400 hover:underline"
+              href="https://filecoin.services/warmstorage "
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              filecoin.services/warmstorage
+            </a>
+          </p>
+          <div className="flex flex-row gap-2 items-center">
+            <span className="text-sm text-muted-foreground">Lockup:</span>
+            <span className="text-sm font-bold">
+              {formatFraction({
+                value: operator.lockupUsed ?? 0n,
+              })}{' '}
+              /{' '}
+              {formatFraction({
+                value: operator.lockupAllowance ?? 0n,
+              })}
+            </span>
+
+            <Icons.Usdfc className="w-4 h-4" />
           </div>
-        ))}
-      </div>
-    </div>
+          <div className="flex flex-row gap-2 items-center">
+            <span className="text-sm text-muted-foreground">Rate:</span>
+            <span className="text-sm font-bold">
+              {formatFraction({
+                value: operator.rateUsed ?? 0n,
+              })}{' '}
+              /{' '}
+              {formatFraction({
+                value: operator.rateAllowance ?? 0n,
+              })}
+            </span>
+            <Icons.Usdfc className="w-4 h-4" />
+          </div>
+        </>
+      ) : (
+        <div>Not approved</div>
+      )}
+    </>
   )
 }

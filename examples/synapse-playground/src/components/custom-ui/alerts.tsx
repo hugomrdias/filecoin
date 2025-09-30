@@ -5,16 +5,18 @@ import { ExplorerLink } from '../explorer-link'
 
 export function ErrorAlert({ error }: { error?: Error | null }) {
   if (!error) return null
-  console.log(error)
+  console.error(error)
   return (
     <Alert variant="destructive">
       <AlertCircleIcon />
 
       <AlertTitle>
-        {error instanceof BaseError ? error.shortMessage : 'Error'}
+        {error instanceof BaseError ? error.name : 'Error'}
       </AlertTitle>
       <AlertDescription className="wrap-anywhere">
-        {error instanceof BaseError ? error.details : error.message}
+        {error instanceof BaseError
+          ? (error.details ?? error.message)
+          : error.message}
       </AlertDescription>
     </Alert>
   )

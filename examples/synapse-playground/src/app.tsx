@@ -1,15 +1,14 @@
 import { useAccount } from 'wagmi'
-import { ConnectWallet } from '@/components/connect-wallet'
 import * as Icons from '@/components/icons'
 import { NetworkSelector } from '@/components/network-selector'
 import { Toaster } from '@/components/ui/sonner'
+import { ConnectWallet } from './components/connect-wallet'
 import { PaymentsAccount } from './components/payments-account'
 import { Services } from './components/services'
 import { WalletMenu } from './components/wallet-menu'
 
 export function App() {
   const { isConnected } = useAccount()
-
   return (
     <div>
       <header>
@@ -21,7 +20,7 @@ export function App() {
             <a className="" href="/">
               <Icons.Filecoin className="w-8 h-8" />
             </a>
-            <span className="text-xl font-bold">Pay</span>
+            <span className="text-xl font-bold">Filecoin Onchain Cloud</span>
           </div>
           <div className="flex flex-row gap-2 items-center">
             {isConnected && <WalletMenu />}

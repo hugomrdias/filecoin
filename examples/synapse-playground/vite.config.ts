@@ -2,16 +2,16 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import { defineConfig } from 'vite'
-import { analyzer } from 'vite-bundle-analyzer'
+// import { analyzer } from 'vite-bundle-analyzer'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    analyzer({
-      enabled: true,
-    }),
+    // analyzer({
+    //   enabled: false,
+    // }),
   ],
   resolve: {
     alias: {
