@@ -60,7 +60,7 @@ export const fixtures = {
   ledger: {
     mainnet: {
       address0: 'f17levgrkmq7jeloew44ixqokvl4qdozvmacidp7i',
-      address1: 'f1wkozgbb4o5foj2kratibzmdxmf5w2h3t7vmddey',
+      address1: 'f1hoyzdc6dr55ej6fbh7p7jr5mjy7lbqf45ipcfxq',
       // ledger sign raw is different from HD
       sig: '014e1d0a18fe3c52f9b25600f847b781abfbf8819c222bb3facaf6cf1ecf6f3e8a116305b95b1a81bb070213b9f34dcbebc12906da5a32a1e8a221e22353b6948501',
       sigMessage:
