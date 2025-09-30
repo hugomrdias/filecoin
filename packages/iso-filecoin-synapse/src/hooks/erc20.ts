@@ -1,129 +1,103 @@
 import {
   type MutateOptions,
+  skipToken,
+  type UseQueryOptions,
   useMutation,
+  useQuery,
   useQueryClient,
 } from '@tanstack/react-query'
-import { simulateContract, writeContract } from '@wagmi/core'
-import { type Address, erc20Abi, type TransactionReceipt } from 'viem'
+import type { SetOptional } from 'type-fest'
+import type { TransactionReceipt } from 'viem'
 import { waitForTransactionReceipt } from 'viem/actions'
-import {
-  type UseReadContractsParameters,
-  useAccount,
-  useChainId,
-  useConfig,
-  useReadContracts,
-} from 'wagmi'
+import { useAccount, useChainId, useConfig } from 'wagmi'
+import { getConnectorClient } from 'wagmi/actions'
+import type {
+  ERC20BalanceOptions,
+  ERC20BalanceResult,
+} from '../actions/erc20.js'
+import * as erc20 from '../actions/erc20.js'
 import { getChain } from '../chains.js'
-import { invalidateQueries } from '../utils.js'
 
-type Props = {
-  address?: Address
-  /**
-   * The address of the ERC20 token to query.
-   * If not provided, the USDFC token address will be used.
-   */
-  token?: Address
-  query?: Omit<
-    UseReadContractsParameters['query'],
-    'enabled' | 'select' | 'scopeKey'
-  >
+interface UseBalanceProps extends SetOptional<ERC20BalanceOptions, 'address'> {
+  query?: Omit<UseQueryOptions<ERC20BalanceResult>, 'queryKey' | 'queryFn'>
 }
 
-export function useBalance(props: Props) {
+/**
+ * Get the balance and allowance of the ERC20 token.
+ *
+ * @param props - The props to use.
+ * @returns The balance and allowance of the ERC20 token.
+ */
+export function useBalance(props: UseBalanceProps) {
   const config = useConfig()
   const chain = getChain(config.state.chainId)
   const token = props.token ?? chain.contracts.usdfc.address
-  const scopeKey = `synapse-erc20-balance-${token}-${props.address}`
+  const address = props.address
 
-  return useReadContracts({
-    query: {
-      ...props.query,
-      enabled: !!props.address,
-      select(data) {
-        return {
-          value: data[0],
-          decimals: data[1],
-          symbol: data[2],
-          allowance: data[3],
+  const result = useQuery({
+    ...props.query,
+    queryKey: ['synapse-erc20-balance', address, token],
+    queryFn: address
+      ? async () => {
+          const result = await erc20.balance(config.getClient(), {
+            address,
+            token,
+          })
+
+          return result
         }
-      },
-    },
-    scopeKey,
-    allowFailure: false,
-    contracts: [
-      {
-        address: token,
-        abi: erc20Abi,
-        functionName: 'balanceOf',
-        args: [props.address!],
-      },
-      {
-        address: token,
-        abi: erc20Abi,
-        functionName: 'decimals',
-      },
-      {
-        address: token,
-        abi: erc20Abi,
-        functionName: 'symbol',
-      },
-      {
-        address: token,
-        abi: erc20Abi,
-        functionName: 'allowance',
-        args: [props.address!, chain.contracts.payments.address],
-      },
-    ],
+      : skipToken,
   })
+  return result
 }
 
-type ApproveAllowanceProps =
-  | {
-      /**
-       * The address of the ERC20 token to query.
-       * If not provided, the USDFC token address will be used.
-       * @default chain.contracts.usdfc.address
-       */
-      token?: Address
-      /**
-       * The mutation options.
-       */
-      mutation?: Omit<
-        MutateOptions<TransactionReceipt, Error, { amount: bigint }>,
-        'mutationFn'
-      >
-      onHash?: (hash: string) => void
-    }
-  | undefined
+type UseApproveAllowanceVariables = Pick<
+  erc20.ERC20ApproveAllowanceOptions,
+  'amount'
+>
+
+interface UseApproveAllowanceProps
+  extends Omit<erc20.ERC20ApproveAllowanceOptions, 'amount'> {
+  /**
+   * The mutation options.
+   */
+  mutation?: Omit<
+    MutateOptions<TransactionReceipt, Error, UseApproveAllowanceVariables>,
+    'mutationFn'
+  >
+  /**
+   * The callback to call when the hash is available.
+   */
+  onHash?: (hash: string) => void
+}
 
 /**
- * Approve the allowance of the USDFC token to the payments contract.
+ * Approve the allowance of the ERC20 token to the payments contract.
+ *
+ * @param props - The props to use.
+ * @returns The mutation to approve the allowance of the ERC20 token to the payments contract.
  */
-export function useApproveAllowance(props?: ApproveAllowanceProps) {
+export function useApproveAllowance(props?: UseApproveAllowanceProps) {
   const config = useConfig()
   const chainId = useChainId({ config })
-  const chain = getChain(chainId)
   const account = useAccount({ config })
   const queryClient = useQueryClient()
+  const chain = getChain(config.state.chainId)
   const token = props?.token ?? chain.contracts.usdfc.address
 
   return useMutation({
-    mutationFn: async ({ amount }: { amount: bigint }) => {
-      const scopeKey = `synapse-erc20-balance-${token}-${account.address}`
-
-      if (amount < 0n) {
-        throw new Error('Amount must be positive')
-      }
-
-      const simulateApprove = await simulateContract(config, {
+    ...props?.mutation,
+    mutationFn: async ({ amount }: UseApproveAllowanceVariables) => {
+      const client = await getConnectorClient(config, {
         account: account.address,
-        address: token,
-        abi: erc20Abi,
-        functionName: 'approve',
-        args: [chain.contracts.payments.address, amount],
+        chainId,
+        connector: account.connector,
       })
 
-      const approve = await writeContract(config, simulateApprove.request)
+      const approve = await erc20.approveAllowance(client, {
+        token: props?.token,
+        amount,
+      })
 
       props?.onHash?.(approve)
       const transactionReceipt = await waitForTransactionReceipt(
@@ -133,9 +107,10 @@ export function useApproveAllowance(props?: ApproveAllowanceProps) {
         }
       )
 
-      await invalidateQueries(queryClient, [scopeKey])
+      queryClient.invalidateQueries({
+        queryKey: ['synapse-erc20-balance', account.address, token],
+      })
       return transactionReceipt
     },
-    ...props?.mutation,
   })
 }

@@ -2,7 +2,7 @@ import type { QueryClient } from '@tanstack/react-query'
 import * as dn from 'dnum'
 import { BrowserProvider, JsonRpcSigner } from 'ethers'
 import { useMemo } from 'react'
-import type { Account, Chain, Client, Transport } from 'viem'
+import type { Account, Address, Chain, Client, Transport } from 'viem'
 import { type Config, useConnectorClient } from 'wagmi'
 
 export function formatBalance(
@@ -63,4 +63,30 @@ export function clientToSigner(client: Client<Transport, Chain, Account>) {
 export function useEthersSigner({ chainId }: { chainId?: number } = {}) {
   const { data: client } = useConnectorClient<Config>({ chainId })
   return useMemo(() => (client ? clientToSigner(client) : undefined), [client])
+}
+
+export function createPieceUrl(
+  cid: string,
+  cdn: boolean,
+  address: Address,
+  chainId: number,
+  pdpUrl: string
+) {
+  if (cdn) {
+    const endpoint =
+      chainId === 314
+        ? `https://${address}.filbeam.io`
+        : `https://${address}.calibration.filbeam.io`
+
+    const url = new URL(`/${cid}`, endpoint)
+    return url.toString()
+  } else {
+    return createPieceUrlPDP(cid, pdpUrl)
+  }
+}
+
+function createPieceUrlPDP(cid: string, pdpUrl: string) {
+  const endpoint = pdpUrl
+  const url = `piece/${cid}`
+  return new URL(url, endpoint).toString()
 }

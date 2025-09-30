@@ -18,15 +18,27 @@ export const mainnet = {
       abi: erc20Abi,
     },
     payments: {
-      address: '0x0000000000000000000000000000000000000000',
+      address: generated.paymentsAddress['314'],
       abi: generated.paymentsAbi,
     },
-    pandora: {
-      address: '0x0000000000000000000000000000000000000000',
-      abi: generated.warmStorageAbi,
+    storage: {
+      address: generated.filecoinWarmStorageServiceAddress['314'],
+      abi: generated.filecoinWarmStorageServiceAbi,
+    },
+    storageView: {
+      address: generated.filecoinWarmStorageServiceStateViewAddress['314'],
+      abi: generated.filecoinWarmStorageServiceStateViewAbi,
+    },
+    serviceProviderRegistry: {
+      address: generated.serviceProviderRegistryAddress['314'],
+      abi: generated.serviceProviderRegistryAbi,
+    },
+    sessionKeyRegistry: {
+      address: generated.sessionKeyRegistryAddress['314'],
+      abi: generated.sessionKeyRegistryAbi,
     },
     pdp: {
-      address: '0x0000000000000000000000000000000000000000',
+      address: generated.pdpVerifierAddress['314'],
       abi: generated.pdpVerifierAbi,
     },
   },
@@ -49,15 +61,27 @@ export const calibration = {
       abi: erc20Abi,
     },
     payments: {
-      address: '0x0E690D3e60B0576D01352AB03b258115eb84A047',
+      address: generated.paymentsAddress['314159'],
       abi: generated.paymentsAbi,
     },
-    pandora: {
-      address: '0xf49ba5eaCdFD5EE3744efEdf413791935FE4D4c5',
-      abi: generated.warmStorageAbi,
+    storage: {
+      address: generated.filecoinWarmStorageServiceAddress['314159'],
+      abi: generated.filecoinWarmStorageServiceAbi,
+    },
+    storageView: {
+      address: generated.filecoinWarmStorageServiceStateViewAddress['314159'],
+      abi: generated.filecoinWarmStorageServiceStateViewAbi,
+    },
+    serviceProviderRegistry: {
+      address: generated.serviceProviderRegistryAddress['314159'],
+      abi: generated.serviceProviderRegistryAbi,
+    },
+    sessionKeyRegistry: {
+      address: generated.sessionKeyRegistryAddress['314159'],
+      abi: generated.sessionKeyRegistryAbi,
     },
     pdp: {
-      address: '0x5A23b7df87f59A291C26A2A1d684AD03Ce9B68DC',
+      address: generated.pdpVerifierAddress['314159'],
       abi: generated.pdpVerifierAbi,
     },
   },
@@ -66,10 +90,14 @@ export const calibration = {
 /**
  * Get a chain by id
  *
- * @param {number} id
+ * @param {number} [id] - The chain id. Defaults to mainnet.
  * @returns {import('./types.js').Chain}
  */
 export function getChain(id) {
+  if (id == null) {
+    return mainnet
+  }
+
   switch (id) {
     case 314:
       return mainnet

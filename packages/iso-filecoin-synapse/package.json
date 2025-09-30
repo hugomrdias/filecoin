@@ -37,6 +37,10 @@
       "types": "./dist/src/index.d.ts",
       "default": "./dist/src/index.js"
     },
+    "./actions": {
+      "types": "./dist/src/actions/index.d.ts",
+      "default": "./dist/src/actions/index.js"
+    },
     "./gen": {
       "types": "./dist/src/gen.d.ts",
       "default": "./dist/src/gen.js"
@@ -54,6 +58,9 @@
       "chains": [
         "dist/src/chains"
       ],
+      "actions": [
+        "dist/src/actions/index"
+      ],
       "gen": [
         "dist/src/gen"
       ],
@@ -65,7 +72,7 @@
   "scripts": {
     "lint": "pnpm run build && biome check --no-errors-on-unmatched --files-ignore-unknown=true",
     "test": "playwright-test --runner mocha",
-    "build": "pnpm run generate && tsc --build",
+    "build": "tsc --build",
     "generate": "wagmi generate",
     "watch": "tsc --watch"
   },
@@ -74,30 +81,31 @@
     "wagmi": "2.x"
   },
   "dependencies": {
-    "@filoz/synapse-sdk": "^0.23.2",
-    "@tanstack/react-query": "^5.85.5",
-    "@wagmi/core": "2.19.0",
+    "@filoz/synapse-sdk": "^0.25.1",
+    "@tanstack/react-query": "^5.90.2",
+    "@wagmi/core": "2.21.2",
     "dnum": "^2.15.0",
     "ethers": "^6.15.0",
     "iso-filecoin": "workspace:*",
-    "iso-web": "^1.1.1",
-    "multiformats": "^13.4.0",
+    "iso-web": "^1.4.0",
+    "multiformats": "^13.4.1",
     "zod": "^3.25.0"
   },
   "devDependencies": {
     "@testing-library/react": "^16.2.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^24.2.1",
-    "@types/react": "^19.1.10",
+    "@types/node": "^24.6.0",
+    "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.7",
-    "@wagmi/cli": "^2.4.0",
+    "@wagmi/cli": "^2.6.0",
+    "abitype": "^1.1.1",
     "assert": "^2.1.0",
     "mocha": "^11.7.1",
     "playwright-test": "^14.1.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "type-fest": "^4.41.0",
-    "typescript": "5.8.3"
+    "type-fest": "^5.0.1",
+    "typescript": "5.9.2"
   },
   "publishConfig": {
     "provenance": false

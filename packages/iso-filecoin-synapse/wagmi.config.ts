@@ -1,74 +1,70 @@
 import { defineConfig } from '@wagmi/cli'
-import { actions, react } from '@wagmi/cli/plugins'
+import { fetch } from '@wagmi/cli/plugins'
 import type { Address } from 'viem'
-import { pandora, payments, pdp } from './src/abi.js'
 
-const config = defineConfig(() => {
+const config: ReturnType<typeof defineConfig> = defineConfig(() => {
   const contracts = [
     {
       name: 'Payments',
-      abi: payments,
       address: {
         314: '0x0000000000000000000000000000000000000000' as Address,
-        314159: '0x0E690D3e60B0576D01352AB03b258115eb84A047' as Address,
+        314159: '0x1096025c9D6B29E12E2f04965F6E64d564Ce0750' as Address,
       },
     },
     {
-      name: 'WarmStorage',
-      abi: pandora,
+      name: 'FilecoinWarmStorageService',
       address: {
         314: '0x0000000000000000000000000000000000000000' as Address,
-        314159: '0xf49ba5eaCdFD5EE3744efEdf413791935FE4D4c5' as Address,
+        314159: '0x80617b65FD2EEa1D7fDe2B4F85977670690ed348' as Address,
+      },
+    },
+    {
+      name: 'FilecoinWarmStorageServiceStateView',
+      address: {
+        314: '0x0000000000000000000000000000000000000000' as Address,
+        314159: '0x87EDE87cEF4BfeFE0374c3470cB3F5be18b739d5' as Address,
       },
     },
     {
       name: 'PDPVerifier',
-      abi: pdp,
       address: {
         314: '0x0000000000000000000000000000000000000000' as Address,
-        314159: '0x5A23b7df87f59A291C26A2A1d684AD03Ce9B68DC' as Address,
+        314159: '0x445238Eca6c6aB8Dff1Aa6087d9c05734D22f137' as Address,
+      },
+    },
+    {
+      name: 'ServiceProviderRegistry',
+      address: {
+        314: '0x0000000000000000000000000000000000000000' as Address,
+        314159: '0xA8a7e2130C27e4f39D1aEBb3D538D5937bCf8ddb' as Address,
+      },
+    },
+    {
+      name: 'SessionKeyRegistry',
+      address: {
+        314: '0x0000000000000000000000000000000000000000' as Address,
+        314159: '0x97Dd879F5a97A8c761B94746d7F5cfF50AAd4452' as Address,
       },
     },
   ]
 
-  // const removeAbis = fetch({
-  //   contracts: [
-  //     {
-  //       name: 'WarmStorage',
-  //       address: {
-  //         314: '0x0000000000000000000000000000000000000000' as Address,
-  //         314159: '0xf49ba5eaCdFD5EE3744efEdf413791935FE4D4c5' as Address,
-  //       },
-  //     },
-  //     {
-  //       name: 'PDPVerifier',
-  //       address: {
-  //         314: '0x0000000000000000000000000000000000000000' as Address,
-  //         314159: '0x5A23b7df87f59A291C26A2A1d684AD03Ce9B68DC' as Address,
-  //       },
-  //     },
-  //   ],
-  //   request(contract) {
-  //     switch (contract.name) {
-  //       case 'WarmStorage':
-  //         return {
-  //           url: 'https://raw.githubusercontent.com/pali101/filecoin-services/refs/heads/chore/abi-generation-ci/subgraph/abis/FilecoinWarmStorageService.json',
-  //         }
-  //       case 'PDPVerifier':
-  //         return {
-  //           url: 'https://raw.githubusercontent.com/pali101/filecoin-services/refs/heads/chore/abi-generation-ci/subgraph/abis/PDPVerifier.json',
-  //         }
-  //       default:
-  //         throw new Error(`Unknown contract: ${contract.name}`)
-  //     }
-  //   },
-  // })
-
   return [
     {
       out: 'src/gen.ts',
-      contracts,
-      plugins: [react(), actions()],
+      plugins: [
+        fetch({
+          contracts,
+          cacheDuration: 100,
+          request(contract) {
+            const baseUrl =
+              'https://raw.githubusercontent.com/FilOzone/filecoin-services/refs/tags/alpha/calibnet/0x80617b65FD2EEa1D7fDe2B4F85977670690ed348-v2/service_contracts/abi'
+
+            return {
+              url: `${baseUrl}/${contract.name}.abi.json`,
+            }
+          },
+        }),
+      ],
     },
   ]
 })

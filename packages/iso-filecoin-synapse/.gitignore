@@ -35,6 +35,3 @@ kv-data
 snapshots-tmp
 .wireit
 .wrangler
-
-# generated types
-src/gen.ts

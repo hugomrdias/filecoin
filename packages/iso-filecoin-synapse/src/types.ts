@@ -16,9 +16,21 @@ export interface Chain extends FilChain<number> {
       address: Address
       abi: typeof generated.paymentsAbi
     }
-    pandora: {
+    storage: {
       address: Address
-      abi: typeof generated.warmStorageAbi
+      abi: typeof generated.filecoinWarmStorageServiceAbi
+    }
+    storageView: {
+      address: Address
+      abi: typeof generated.filecoinWarmStorageServiceStateViewAbi
+    }
+    serviceProviderRegistry: {
+      address: Address
+      abi: typeof generated.serviceProviderRegistryAbi
+    }
+    sessionKeyRegistry: {
+      address: Address
+      abi: typeof generated.sessionKeyRegistryAbi
     }
     pdp: {
       address: Address
