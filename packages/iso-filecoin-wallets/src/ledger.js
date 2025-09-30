@@ -1,7 +1,6 @@
 import { LedgerFilecoin } from 'iso-filecoin/ledger'
 import { Message } from 'iso-filecoin/message'
 import { Signature } from 'iso-filecoin/signature'
-import { pathFromNetwork } from 'iso-filecoin/utils'
 import { TypedEventTarget } from 'iso-web/event-target'
 import { nanoid } from 'nanoid'
 import { WalletSupport } from './common.js'
@@ -20,6 +19,31 @@ const symbol = Symbol.for('wallet-adapter-ledger')
  * @typedef {import('iso-filecoin/types').MessageObj} MessageObj
  * @typedef {import('iso-filecoin/types').SignatureType} SignatureType
  */
+
+/**
+ * Derivation path from chain for Ledger
+ *
+ * @param {import('iso-filecoin/types').Network} network
+ * @param {number} [index=0] - Account index (default 0)
+ * @example
+ * ```ts twoslash
+ * import { pathFromNetwork } from 'iso-filecoin/utils'
+ *
+ * const path = pathFromNetwork('mainnet')
+ * // => 'm/44'/461'/0'/0/0'
+ */
+export function pathFromNetwork(network, index = 0) {
+  switch (network) {
+    case 'mainnet':
+      return `m/44'/461'/${index}'/0/0`
+
+    case 'testnet':
+      return `m/44'/1'/${index}'/0/0`
+
+    default:
+      throw new Error(`Unknown network: ${network}`)
+  }
+}
 
 /**
  * Ledger wallet implementation
