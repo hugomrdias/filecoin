@@ -1,14 +1,8 @@
-import {
-  erc20,
-  formatBalance,
-  formatFraction,
-  payments,
-} from 'iso-filecoin-synapse'
-import { payments as paymentsActions } from 'iso-filecoin-synapse/actions'
+import { erc20, formatFraction, payments } from 'iso-filecoin-synapse'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { parseEther } from 'viem'
-import { useAccount, useConnectorClient } from 'wagmi'
+import { useAccount } from 'wagmi'
 import { z } from 'zod/v4'
 import * as Icons from '@/components/icons'
 import {

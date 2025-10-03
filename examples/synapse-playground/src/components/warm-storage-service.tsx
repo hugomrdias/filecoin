@@ -12,13 +12,7 @@ import { parseEther } from 'viem'
 import { useAccount } from 'wagmi'
 import { z } from 'zod/v4'
 import * as Icons from '@/components/icons'
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { ErrorAlert, HashAlert, SuccessAlert } from './custom-ui/alerts'
 import { ButtonLoading } from './custom-ui/button-loading'
 import { Button } from './ui/button'
