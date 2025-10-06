@@ -144,7 +144,7 @@
     "zod": "^3.25.0"
   },
   "devDependencies": {
-    "@ledgerhq/hw-transport": "^6.31.11",
+    "@ledgerhq/hw-transport": "^6.31.12",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@types/assert": "^1.5.11",
