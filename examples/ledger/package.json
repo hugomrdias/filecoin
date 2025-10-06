@@ -17,7 +17,7 @@
   "dependencies": {
     "@acab/reset.css": "^0.11.0",
     "@ledgerhq/errors": "^6.23.0",
-    "@ledgerhq/hw-transport": "^6.31.11",
+    "@ledgerhq/hw-transport": "^6.31.12",
     "@ledgerhq/hw-transport-web-ble": "^6.29.11",
     "@ledgerhq/hw-transport-webhid": "^6.30.7",
     "@ledgerhq/logs": "^6.13.0",
