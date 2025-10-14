@@ -1,15 +1,8 @@
-import {
-  skipToken,
-  type UseQueryOptions,
-  useQuery,
-} from '@tanstack/react-query'
-import type { Address } from 'viem'
+import { type UseQueryOptions, useQuery } from '@tanstack/react-query'
 import { useConfig } from 'wagmi'
 import {
   type PDPProvider,
-  type ProviderWithDataSets,
   readProviders,
-  readProvidersWithDataSets,
 } from '../../actions/warm-storage/providers.js'
 
 export interface UseProvidersProps {
@@ -27,29 +20,5 @@ export function useProviders(props?: UseProvidersProps) {
     queryFn: () => {
       return readProviders(config.getClient())
     },
-  })
-}
-
-export type UseProvidersWithDataSetsResult = ProviderWithDataSets[]
-export interface UseProvidersWithDataSetsProps {
-  query?: Omit<UseQueryOptions<ProviderWithDataSets[]>, 'queryKey' | 'queryFn'>
-  address?: Address
-}
-
-export function useProvidersWithDataSets(props: UseProvidersWithDataSetsProps) {
-  const config = useConfig()
-  const address = props.address
-
-  return useQuery({
-    ...props?.query,
-    queryKey: ['synapse-warm-storage-providers-with-data-sets', address],
-    queryFn: address
-      ? async () => {
-          const data = await readProvidersWithDataSets(config.getClient(), {
-            address,
-          })
-          return data
-        }
-      : skipToken,
   })
 }

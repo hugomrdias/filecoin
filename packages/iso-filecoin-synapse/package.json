@@ -81,31 +81,33 @@
     "wagmi": "2.x"
   },
   "dependencies": {
-    "@filoz/synapse-sdk": "^0.25.1",
+    "@filoz/synapse-sdk": "^0.33.0",
     "@tanstack/react-query": "^5.90.2",
-    "@wagmi/core": "2.21.2",
+    "@wagmi/core": "2.22.1",
     "dnum": "^2.15.0",
     "ethers": "^6.15.0",
+    "filsnap-adapter": "^3.3.7",
     "iso-filecoin": "workspace:*",
     "iso-web": "^1.4.0",
     "multiformats": "^13.4.1",
+    "ox": "^0.9.10",
     "zod": "^3.25.0"
   },
   "devDependencies": {
     "@testing-library/react": "^16.2.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^24.6.0",
-    "@types/react": "^19.1.16",
-    "@types/react-dom": "^19.1.7",
-    "@wagmi/cli": "^2.6.0",
+    "@types/node": "^24.7.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
+    "@wagmi/cli": "^2.7.0",
     "abitype": "^1.1.1",
     "assert": "^2.1.0",
-    "mocha": "^11.7.1",
+    "mocha": "^11.7.4",
     "playwright-test": "^14.1.12",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "type-fest": "^5.0.1",
-    "typescript": "5.9.2"
+    "typescript": "5.9.3"
   },
   "publishConfig": {
     "provenance": false

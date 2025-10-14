@@ -3,11 +3,12 @@ import {
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query'
-import { readContract, waitForTransactionReceipt } from 'viem/actions'
+import { waitForTransactionReceipt } from 'viem/actions'
 import { useAccount, useChainId, useConfig } from 'wagmi'
 import { getConnectorClient } from 'wagmi/actions'
-import { pdp } from '../../actions/index.js'
+import { upload, waitForUpload } from '../../actions/warm-storage/upload.ts'
 import { getChain } from '../../chains.js'
+import type { SessionKey } from '../../session-keys/secp256k1.js'
 
 export interface UseUploadProps {
   /**
@@ -21,8 +22,9 @@ export interface UseUploadProps {
 }
 
 export interface UseUploadVariables {
-  file: File
+  files: File[]
   dataSetId: bigint
+  sessionKey?: SessionKey
 }
 export function useUpload(props: UseUploadProps) {
   const config = useConfig()
@@ -30,62 +32,42 @@ export function useUpload(props: UseUploadProps) {
   const chain = getChain(chainId)
   const account = useAccount({ config })
   const queryClient = useQueryClient()
+  const client = config.getClient()
+
   return useMutation({
     ...props?.mutation,
-    mutationFn: async ({ file, dataSetId }: UseUploadVariables) => {
-      const connectorClient = await getConnectorClient(config, {
+    mutationFn: async ({
+      files,
+      dataSetId,
+      sessionKey,
+    }: UseUploadVariables) => {
+      let connectorClient = await getConnectorClient(config, {
         account: account.address,
         chainId,
       })
+      if (
+        sessionKey &&
+        (await sessionKey.isExpired(connectorClient, 'AddPieces'))
+      ) {
+        const hash = await sessionKey.login(connectorClient)
+        console.log('🚀 ~ Registering session key:', hash)
+        const receipt1 = await waitForTransactionReceipt(client, {
+          hash: hash,
+        })
+        console.log('🚀 ~ Registration transaction receipt:', receipt1)
+        connectorClient = sessionKey.client(chain, client.transport)
+      }
 
-      const arrayBuffer = await file.arrayBuffer()
-
-      const dataSet = await readContract(config.getClient(), {
-        address: chain.contracts.storageView.address,
-        abi: chain.contracts.storageView.abi,
-        functionName: 'getDataSet',
-        args: [dataSetId],
+      const pieces = await upload(connectorClient, {
+        dataSetId,
+        data: files,
       })
-      const provider = await readContract(config.getClient(), {
-        address: chain.contracts.serviceProviderRegistry.address,
-        abi: chain.contracts.serviceProviderRegistry.abi,
-        functionName: 'getPDPService',
-        args: [dataSet.providerId],
-      })
-
-      const upload = await pdp.uploadPiece({
-        data: arrayBuffer,
-        endpoint: provider[0].serviceURL,
-      })
-
-      await pdp.findPiece({
-        pieceCid: upload.pieceCid,
-        endpoint: provider[0].serviceURL,
-      })
-
-      const nextPieceId = await readContract(config.getClient(), {
-        address: chain.contracts.pdp.address,
-        abi: chain.contracts.pdp.abi,
-        functionName: 'getNextPieceId',
-        args: [dataSetId],
-      })
-      const addPieces = await pdp.addPieces(connectorClient, {
-        dataSetId: dataSetId,
-        clientDataSetId: dataSet.clientDataSetId,
-        nextPieceId: nextPieceId,
-        pieceCids: [upload.pieceCid],
-        endpoint: provider[0].serviceURL,
-      })
-
-      // TODO: pull the status url from the addPieces response
 
       console.log('Waiting for transaction receipt...', {
-        hash: addPieces.txHash,
+        hash: pieces.txHash,
       })
-      props?.onHash?.(addPieces.txHash)
-      const receipt = await waitForTransactionReceipt(config.getClient(), {
-        hash: addPieces.txHash,
-      })
+      props?.onHash?.(pieces.txHash)
+      const receipt = await waitForUpload({ statusUrl: pieces.statusUrl })
       console.log('Transaction receipt received', {
         receipt,
       })

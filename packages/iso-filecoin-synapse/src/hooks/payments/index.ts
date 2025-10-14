@@ -8,24 +8,21 @@ import {
 } from '@tanstack/react-query'
 import type { SetOptional } from 'type-fest'
 import type { Address, TransactionReceipt } from 'viem'
-import {
-  simulateContract,
-  waitForTransactionReceipt,
-  writeContract,
-} from 'viem/actions'
+import { waitForTransactionReceipt } from 'viem/actions'
 import { useAccount, useBlock, useChainId, useConfig } from 'wagmi'
 import { getConnectorClient } from 'wagmi/actions'
 import { payments } from '../../actions/index.js'
 import type {
+  OperatorApprovalsOptions,
+  OperatorApprovalsResult,
+} from '../../actions/pay/operators.ts'
+import type {
   AccountInfoOptions,
   AccountInfoResult,
   DepositOptions,
-  OperatorApprovalsOptions,
-  OperatorApprovalsResult,
   WithdrawOptions,
-} from '../../actions/payments.js'
+} from '../../actions/pay/payments.js'
 import { getChain } from '../../chains.js'
-import { LOCKUP_PERIOD } from '../../constants.js'
 
 interface UseAccountInfoProps
   extends SetOptional<AccountInfoOptions, 'address'> {
@@ -85,7 +82,7 @@ export interface UseOperatorApprovalsProps
   query?: Omit<UseQueryOptions<OperatorApprovalsResult>, 'queryKey' | 'queryFn'>
 }
 
-export type { OperatorApprovalsResult } from '../../actions/payments.js'
+export type { OperatorApprovalsResult } from '../../actions/pay/index.js'
 
 /**
  * Get the operator approvals from the payments contract.
@@ -254,14 +251,7 @@ type ApproveOperatorProps =
       /**
        * The mutation options.
        */
-      mutation?: Omit<
-        MutateOptions<
-          TransactionReceipt,
-          Error,
-          { lockup: bigint; rate: bigint }
-        >,
-        'mutationFn'
-      >
+      mutation?: Omit<MutateOptions<TransactionReceipt, Error>, 'mutationFn'>
       onHash?: (hash: string) => void
     }
   | undefined
@@ -287,26 +277,17 @@ export function useApproveOperator(props?: ApproveOperatorProps) {
 
   return useMutation({
     ...props?.mutation,
-    mutationFn: async ({ lockup, rate }: { lockup: bigint; rate: bigint }) => {
-      if (lockup < 0n) {
-        throw new Error('Lockup must be positive')
-      }
-      if (rate < 0n) {
-        throw new Error('Rate must be positive')
-      }
-
+    mutationFn: async () => {
       const client = await getConnectorClient(config, {
         account: account.address,
         chainId,
       })
-      const { request } = await simulateContract(client, {
-        address: chain.contracts.payments.address,
-        abi: chain.contracts.payments.abi,
-        functionName: 'setOperatorApproval',
-        args: [token, operator, true, rate, lockup, LOCKUP_PERIOD],
+      const approve = await payments.setOperatorApproval(client, {
+        token: props?.token,
+        operator: props?.operator,
+        approve: true,
       })
 
-      const approve = await writeContract(client, request)
       props?.onHash?.(approve)
       const transactionReceipt = await waitForTransactionReceipt(
         config.getClient(),
@@ -324,7 +305,7 @@ export function useApproveOperator(props?: ApproveOperatorProps) {
         ],
       })
       queryClient.invalidateQueries({
-        queryKey: ['synapse-erc20-balance', account.address, token],
+        queryKey: ['synapse-payments-account-info', account.address, token],
       })
 
       return transactionReceipt
@@ -332,25 +313,25 @@ export function useApproveOperator(props?: ApproveOperatorProps) {
   })
 }
 
-// type RevokeOperatorProps =
-//   | {
-//       /**
-//        * The address of the operator to revoke.
-//        * If not provided, the operator will be the Warm Storage contract.
-//        */
-//       operator?: Address
-//       /**
-//        * The address of the ERC20 token to query.
-//        * If not provided, the USDFC token address will be used.
-//        */
-//       token?: Address
-//       /**
-//        * The mutation options.
-//        */
-//       mutation?: Omit<MutateOptions<TransactionReceipt, Error>, 'mutationFn'>
-//       onHash?: (hash: string) => void
-//     }
-//   | undefined
+type RevokeOperatorProps =
+  | {
+      /**
+       * The address of the operator to revoke.
+       * If not provided, the operator will be the Warm Storage contract.
+       */
+      operator?: Address
+      /**
+       * The address of the ERC20 token to query.
+       * If not provided, the USDFC token address will be used.
+       */
+      token?: Address
+      /**
+       * The mutation options.
+       */
+      mutation?: Omit<MutateOptions<TransactionReceipt, Error>, 'mutationFn'>
+      onHash?: (hash: string) => void
+    }
+  | undefined
 
 /**
  * Revoke the operator to deposit and withdraw ERC20 tokens from the payments contract.
@@ -362,40 +343,48 @@ export function useApproveOperator(props?: ApproveOperatorProps) {
  * @param props.onHash - The callback to call when the hash is available.
  * @returns The deposit mutation.
  */
-// export function useRevokeOperator(props?: RevokeOperatorProps) {
-//   const config = useConfig()
-//   const configChainId = useChainId({ config })
-//   const chain = getChain(configChainId)
-//   // const account = useAccount({ config })
-//   // const queryClient = useQueryClient()
-//   const token = props?.token ?? chain.contracts.usdfc.address
-//   const operator = props?.operator ?? chain.contracts.storage.address
+export function useRevokeOperator(props?: RevokeOperatorProps) {
+  const config = useConfig()
+  const configChainId = useChainId({ config })
+  const chain = getChain(configChainId)
+  const account = useAccount({ config })
+  const queryClient = useQueryClient()
+  const token = props?.token ?? chain.contracts.usdfc.address
+  const operator = props?.operator ?? chain.contracts.storage.address
 
-//   return useMutation({
-//     mutationFn: async () => {
-//       const simulateRevoke = await simulatePaymentsSetOperatorApproval(config, {
-//         args: [token, operator, false, 0n, 0n],
-//       })
-//       const revoke = await writePaymentsSetOperatorApproval(
-//         config,
-//         simulateRevoke.request
-//       )
-//       props?.onHash?.(revoke)
-//       const transactionReceipt = await waitForTransactionReceipt(
-//         config.getClient(),
-//         {
-//           hash: revoke,
-//         }
-//       )
-
-//       // await invalidateQueries(queryClient, [
-//       //   `synapse-payments-balance-${token}-${from}`,
-//       //   `synapse-erc20-balance-${token}-${from}`,
-//       // ])
-//       return transactionReceipt
-//     },
-//     ...props?.mutation,
-//   })
-// }
+  return useMutation({
+    ...props?.mutation,
+    mutationFn: async () => {
+      const client = await getConnectorClient(config, {
+        account: account.address,
+        chainId: chain.id,
+      })
+      const revoke = await payments.setOperatorApproval(client, {
+        token: props?.token,
+        operator: props?.operator,
+        approve: false,
+      })
+      props?.onHash?.(revoke)
+      const transactionReceipt = await waitForTransactionReceipt(
+        config.getClient(),
+        {
+          hash: revoke,
+        }
+      )
+      queryClient.invalidateQueries({
+        queryKey: [
+          'synapse-payments-operator-approvals',
+          account.address,
+          token,
+          operator,
+        ],
+      })
+      queryClient.invalidateQueries({
+        queryKey: ['synapse-payments-account-info', account.address, token],
+      })
+      return transactionReceipt
+    },
+  })
+}
 
 export * from './use-deposit-and-approve.js'

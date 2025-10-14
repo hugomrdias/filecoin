@@ -1,4 +1,4 @@
-import type { AbiError } from 'abitype'
+import { type AbiError, formatAbiItem } from 'abitype'
 import { AbiErrorSignatureNotFoundError, decodeErrorResult } from 'viem'
 import { filecoinWarmStorageServiceAbi, paymentsAbi } from '../gen.js'
 
@@ -13,7 +13,7 @@ export function decodePDPError(error: string) {
         data: extractedContent as `0x${string}`,
       })
 
-      return `Warm Storage Error: ${formatPDPError(value)}`
+      return `Warm Storage Error:\n ${formatPDPError(value)}`
     } catch (error) {
       if (error instanceof AbiErrorSignatureNotFoundError) {
         const value = decodeErrorResult({
@@ -41,7 +41,7 @@ function formatPDPError(error: {
   errorName: string
 }) {
   const data = JSON.stringify(
-    { inputs: error.abiItem.inputs, args: error.args },
+    error.args,
     (_key, value) => {
       if (typeof value === 'bigint') {
         return value.toString()
@@ -50,5 +50,5 @@ function formatPDPError(error: {
     },
     2
   )
-  return `${error.errorName}\n${data}`
+  return `${formatAbiItem(error.abiItem)}\n${data}`
 }

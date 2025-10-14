@@ -45,9 +45,13 @@ export function useCreateDataSet(props: UseCreateDataSetProps) {
       })
 
       const { hash, statusUrl } = await createDataSet(connectorClient, {
+        publicClient: config.getClient(),
         provider,
         cdn,
-        publicClient: config.getClient(),
+        // metadata: {
+        //   title: 'Test Data Set',
+        //   description: 'Test Description',
+        // },
       })
       props?.onHash?.(hash)
 

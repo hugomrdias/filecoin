@@ -12,6 +12,11 @@ import { multicall, readContract } from 'viem/actions'
 import { getChain } from '../../chains.js'
 import type { filecoinWarmStorageServiceStateViewAbi } from '../../gen.js'
 import { decodePDPError } from '../../utils/decode-pdp-errors.js'
+import {
+  datasetMetadataObjectToEntry,
+  type MetadataObject,
+  metadataArrayToObject,
+} from '../../utils/metadata.ts'
 import type { PDPProvider } from './providers.js'
 import { signCreateDataSet } from './signatures.js'
 
@@ -38,7 +43,7 @@ export interface DataSet extends ClientDataSet {
   live: boolean
   managed: boolean
   cdn: boolean
-  nextPieceId: bigint
+  metadata: MetadataObject
 }
 
 export interface GetDataSetsOptions {
@@ -57,7 +62,6 @@ export async function getDataSets(
 ): Promise<DataSet[]> {
   const chain = getChain(client.chain.id)
   const address = options.address
-
   const data = await readContract(client, {
     address: chain.contracts.storageView.address,
     abi: chain.contracts.storageView.abi,
@@ -73,7 +77,9 @@ export async function getDataSets(
       args: [dataSet.pdpRailId],
     })
 
-    const [live, listener] = await multicall(client, {
+    // const metadata = await getDataSetMetadata(client, pdpDatasetId)
+
+    const [live, listener, metadata] = await multicall(client, {
       allowFailure: false,
       contracts: [
         {
@@ -88,30 +94,48 @@ export async function getDataSets(
           functionName: 'getDataSetListener',
           args: [pdpDatasetId],
         },
+        {
+          address: chain.contracts.storageView.address,
+          abi: chain.contracts.storageView.abi,
+          functionName: 'getAllDataSetMetadata',
+          args: [pdpDatasetId],
+        },
       ],
     })
 
-    let nextPieceId = 0n
-    if (live) {
-      nextPieceId = await readContract(client, {
-        address: chain.contracts.pdp.address,
-        abi: chain.contracts.pdp.abi,
-        functionName: 'getNextPieceId',
-        args: [pdpDatasetId],
-      })
-    }
     return {
       ...dataSet,
       pdpDatasetId,
       live,
       managed: isAddressEqual(listener, chain.contracts.storage.address),
       cdn: dataSet.cdnRailId !== 0n,
-      nextPieceId,
+      metadata: metadataArrayToObject(metadata),
     }
   })
   const proofs = await Promise.all(promises)
 
   return proofs
+}
+
+/**
+ * Get the metadata for a data set
+ *
+ * @param client
+ * @param dataSetId
+ * @returns
+ */
+export async function getDataSetMetadata(
+  client: Client<Transport, Chain>,
+  dataSetId: bigint
+) {
+  const chain = getChain(client.chain.id)
+  const metadata = await readContract(client, {
+    address: chain.contracts.storageView.address,
+    abi: chain.contracts.storageView.abi,
+    functionName: 'getAllDataSetMetadata',
+    args: [dataSetId],
+  })
+  return metadataArrayToObject(metadata)
 }
 
 export type CreateDataSetOptions = {
@@ -121,6 +145,7 @@ export type CreateDataSetOptions = {
   provider: PDPProvider
   cdn: boolean
   publicClient?: Client<Transport, Chain>
+  metadata?: MetadataObject
 }
 
 export async function createDataSet(
@@ -138,11 +163,13 @@ export async function createDataSet(
     args: [client.account.address],
   })
 
-  // Sign and encodethe create data set message
+  // Sign and encode the create data set message
   const extraData = await signCreateDataSet(client, {
     clientDataSetId: nextClientDataSetId,
     payee: options.provider.payee,
-    metadata: options.cdn ? [{ key: 'withCDN', value: '' }] : [],
+    metadata: datasetMetadataObjectToEntry(options.metadata, {
+      cdn: options.cdn,
+    }),
   })
 
   // Send the create data set message to the PDP

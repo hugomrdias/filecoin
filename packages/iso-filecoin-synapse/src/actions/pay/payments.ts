@@ -19,13 +19,13 @@ import {
   type WriteContractErrorType,
   writeContract,
 } from 'viem/actions'
-import { getChain } from '../chains.js'
+import { getChain } from '../../chains.js'
 import {
   EIP712_TYPES,
   ERC20_WITH_PERMIT_ABI,
   LOCKUP_PERIOD,
-} from '../constants.js'
-import { erc20 } from './index.js'
+} from '../../constants.js'
+import { erc20 } from '../index.js'
 
 export type AccountInfoOptions = {
   /**
@@ -222,63 +222,6 @@ export async function withdraw(
   })
   const hash = await writeContract(client, request)
   return hash
-}
-
-export type OperatorApprovalsOptions = {
-  /**
-   * The address of the ERC20 token to query.
-   * If not provided, the USDFC token address will be used.
-   */
-  token?: Address
-  /**
-   * The address of the account to query.
-   */
-  address: Address
-  /**
-   * The address of the operator to query.
-   * If not provided, the Warm Storage contract address will be used.
-   */
-  operator?: Address
-}
-
-export type OperatorApprovalsResult = {
-  isApproved: boolean
-  rateAllowance: bigint
-  lockupAllowance: bigint
-  rateUsed: bigint
-  lockupUsed: bigint
-  maxLockupPeriod: bigint
-}
-
-/**
- * Get the operator approvals from the payments contract.
- * @param client - The client to use.
- * @param options - The options to use.
- * @returns The operator approvals.
- * @throws - {@link ReadContractErrorType} if the read contract fails.
- */
-export async function operatorApprovals(
-  client: Client<Transport, Chain>,
-  options: OperatorApprovalsOptions
-): Promise<OperatorApprovalsResult> {
-  const chain = getChain(client.chain.id)
-  const token = options.token ?? chain.contracts.usdfc.address
-  const operator = options.operator ?? chain.contracts.storage.address
-
-  const operatorApprovals = await readContract(client, {
-    address: chain.contracts.payments.address,
-    abi: chain.contracts.payments.abi,
-    functionName: 'operatorApprovals',
-    args: [token, options.address, operator],
-  })
-  return {
-    isApproved: operatorApprovals[0],
-    rateAllowance: operatorApprovals[1],
-    lockupAllowance: operatorApprovals[2],
-    rateUsed: operatorApprovals[3],
-    lockupUsed: operatorApprovals[4],
-    maxLockupPeriod: operatorApprovals[5],
-  }
 }
 
 export type DepositAndApproveOptions = {

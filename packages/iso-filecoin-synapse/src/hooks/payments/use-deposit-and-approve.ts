@@ -7,8 +7,8 @@ import type { TransactionReceipt } from 'viem'
 import { waitForTransactionReceipt } from 'viem/actions'
 import { useAccount, useChainId, useConfig } from 'wagmi'
 import { getConnectorClient } from 'wagmi/actions'
-import type { DepositAndApproveOptions } from '../../actions/payments.js'
-import * as payments from '../../actions/payments.js'
+import type { DepositAndApproveOptions } from '../../actions/pay/payments.js'
+import * as payments from '../../actions/pay/payments.js'
 import { getChain } from '../../chains.js'
 
 type UseDepositVariables = Pick<DepositAndApproveOptions, 'amount'>

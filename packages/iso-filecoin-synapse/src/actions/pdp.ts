@@ -2,54 +2,16 @@ import {
   calculate as calculatePieceCID,
   type PieceCID,
 } from '@filoz/synapse-sdk/piece'
-import { request } from 'iso-web/http'
+import { HttpError, request } from 'iso-web/http'
 import { CID } from 'multiformats/cid'
+import type { Account, Address, Chain, Client, Transport } from 'viem'
+import { decodePDPError } from '../utils/decode-pdp-errors.js'
 import {
-  type Account,
-  type Address,
-  type Chain,
-  type Client,
-  encodeAbiParameters,
-  type Transport,
-  toHex,
-} from 'viem'
-import { signTypedData } from 'viem/actions'
-import { getChain } from '../chains.js'
+  type MetadataObject,
+  pieceMetadataObjectToEntry,
+} from '../utils/metadata.ts'
 import { createPieceUrl } from '../utils.js'
-
-// EIP-712 Type definitions
-const EIP712_TYPES = {
-  MetadataEntry: [
-    { name: 'key', type: 'string' },
-    { name: 'value', type: 'string' },
-  ],
-  CreateDataSet: [
-    { name: 'clientDataSetId', type: 'uint256' },
-    { name: 'payee', type: 'address' },
-    { name: 'metadata', type: 'MetadataEntry[]' },
-  ],
-  Cid: [{ name: 'data', type: 'bytes' }],
-  PieceMetadata: [
-    { name: 'pieceIndex', type: 'uint256' },
-    { name: 'metadata', type: 'MetadataEntry[]' },
-  ],
-  AddPieces: [
-    { name: 'clientDataSetId', type: 'uint256' },
-    { name: 'firstAdded', type: 'uint256' },
-    { name: 'pieceData', type: 'Cid[]' },
-    { name: 'pieceMetadata', type: 'PieceMetadata[]' },
-  ],
-  SchedulePieceRemovals: [
-    { name: 'clientDataSetId', type: 'uint256' },
-    { name: 'pieceIds', type: 'uint256[]' },
-  ],
-  DeleteDataSet: [{ name: 'clientDataSetId', type: 'uint256' }],
-}
-
-export type MetadataEntry = {
-  key: string
-  value: string
-}
+import { signAddPieces } from './warm-storage/signatures.ts'
 
 export type UploadPieceOptions = {
   endpoint: string
@@ -101,7 +63,6 @@ export async function uploadPiece(
       headers: {
         'Content-Type': 'application/octet-stream',
         'Content-Length': uint8Data.length.toString(),
-        // No Authorization header needed
       },
       body: uint8Data as BufferSource,
     }
@@ -145,63 +106,13 @@ export async function findPiece(options: FindPieceOptions): Promise<PieceCID> {
   )
 
   if (response.error) {
+    if (response.error instanceof HttpError) {
+      throw new Error(decodePDPError(await response.error.response.text()))
+    }
     throw response.error
   }
   const data = response.result
   return CID.parse(data.pieceCid) as PieceCID
-}
-
-export type SignAddPiecesOptions = {
-  clientDataSetId: bigint
-  nextPieceId: bigint
-  pieceCids: PieceCID[]
-}
-
-export async function signAddPieces(
-  client: Client<Transport, Chain, Account>,
-  options: SignAddPiecesOptions
-) {
-  const chain = getChain(client.chain.id)
-  const signature = await signTypedData(client, {
-    account: client.account,
-    domain: {
-      name: 'FilecoinWarmStorageService',
-      version: '1',
-      chainId: client.chain.id,
-      verifyingContract: chain.contracts.storage.address,
-    },
-    types: {
-      AddPieces: EIP712_TYPES.AddPieces,
-      Cid: EIP712_TYPES.Cid,
-      PieceMetadata: EIP712_TYPES.PieceMetadata,
-      MetadataEntry: EIP712_TYPES.MetadataEntry,
-    },
-    primaryType: 'AddPieces',
-    message: {
-      clientDataSetId: options.clientDataSetId,
-      firstAdded: options.nextPieceId,
-      pieceData: options.pieceCids.map((pieceCid) => {
-        return {
-          data: toHex(pieceCid.bytes),
-        }
-      }),
-      pieceMetadata: options.pieceCids.map((_pieceCid, index) => ({
-        pieceIndex: index,
-        metadata: [],
-      })),
-    },
-  })
-
-  const me = [[]] as MetadataEntry[][]
-
-  const keys = me.map((item) => item.map((item) => item.key))
-  const values = me.map((item) => item.map((item) => item.value))
-
-  const extraData = encodeAbiParameters(
-    [{ type: 'bytes' }, { type: 'string[][]' }, { type: 'string[][]' }],
-    [signature, keys, values]
-  )
-  return extraData
 }
 
 export type AddPiecesOptions = {
@@ -209,14 +120,14 @@ export type AddPiecesOptions = {
   dataSetId: bigint
   clientDataSetId: bigint
   nextPieceId: bigint
-  pieceCids: PieceCID[]
+  pieces: { pieceCid: PieceCID; metadata: MetadataObject }[]
 }
 
 export async function addPieces(
   client: Client<Transport, Chain, Account>,
   options: AddPiecesOptions
 ) {
-  const { endpoint, dataSetId, pieceCids } = options
+  const { endpoint, dataSetId, pieces } = options
   const response = await fetch(
     new URL(`pdp/data-sets/${dataSetId}/pieces`, endpoint),
     {
@@ -225,18 +136,25 @@ export async function addPieces(
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        pieces: pieceCids.map((pieceCid) => ({
-          pieceCid: pieceCid.toString(),
-          subPieces: [{ subPieceCid: pieceCid.toString() }],
+        pieces: pieces.map((piece) => ({
+          pieceCid: piece.pieceCid.toString(),
+          subPieces: [{ subPieceCid: piece.pieceCid.toString() }],
         })),
-        extraData: await signAddPieces(client, options),
+        extraData: await signAddPieces(client, {
+          clientDataSetId: options.clientDataSetId,
+          nextPieceId: options.nextPieceId,
+          pieces: pieces.map((piece) => ({
+            pieceCid: piece.pieceCid,
+            metadata: pieceMetadataObjectToEntry(piece.metadata),
+          })),
+        }),
       }),
     }
   )
   if (response.status !== 201) {
     const errorText = await response.text()
     throw new Error(
-      `Failed to add pieces to data set: ${dataSetId} ${errorText}`
+      `Failed to add pieces to data set: ${dataSetId}\n${decodePDPError(errorText)}`
     )
   }
   const location = response.headers.get('Location') ?? ''
@@ -269,8 +187,7 @@ export interface PDPDataSetResponse {
 export interface Piece {
   pieceCid: string
   pieceId: number
-  subPiecesCid: string
-  subPiecesOffset: number
+  pieceUrl: string
 }
 export async function getPiecesForDataSet(options: GetPiecesOptions) {
   const { pdpUrl: endpoint, dataSetId } = options

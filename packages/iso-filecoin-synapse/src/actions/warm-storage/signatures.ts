@@ -1,3 +1,4 @@
+import type { PieceCID } from '@filoz/synapse-sdk/piece'
 import {
   type Account,
   type Address,
@@ -5,6 +6,7 @@ import {
   type Client,
   encodeAbiParameters,
   type Transport,
+  toHex,
 } from 'viem'
 import { signTypedData } from 'viem/actions'
 import { getChain } from '../../chains.js'
@@ -54,10 +56,7 @@ export async function signCreateDataSet(
   const signature = await signTypedData(client, {
     account: client.account,
     domain: getTypedDataDomain({ chain }),
-    types: {
-      MetadataEntry: EIP712_TYPES.MetadataEntry,
-      CreateDataSet: EIP712_TYPES.CreateDataSet,
-    },
+    types: EIP712_TYPES,
     primaryType: 'CreateDataSet',
     message: {
       clientDataSetId: options.clientDataSetId,
@@ -79,5 +78,57 @@ export async function signCreateDataSet(
     [client.account.address, keys, values, signature]
   )
 
+  return extraData
+}
+
+export type SignAddPiecesOptions = {
+  clientDataSetId: bigint
+  nextPieceId: bigint
+  pieces: { pieceCid: PieceCID; metadata: MetadataEntry[] }[]
+}
+
+/**
+ * Sign and abi encode the add pieces message
+ *
+ * @param client
+ * @param options
+ */
+export async function signAddPieces(
+  client: Client<Transport, Chain, Account>,
+  options: SignAddPiecesOptions
+) {
+  const chain = getChain(client.chain.id)
+  const signature = await signTypedData(client, {
+    account: client.account,
+    domain: getTypedDataDomain({ chain }),
+    types: EIP712_TYPES,
+    primaryType: 'AddPieces',
+    message: {
+      clientDataSetId: options.clientDataSetId,
+      firstAdded: options.nextPieceId,
+      pieceData: options.pieces.map((piece) => {
+        return {
+          data: toHex(piece.pieceCid.bytes),
+        }
+      }),
+      pieceMetadata: options.pieces.map((piece, index) => ({
+        pieceIndex: index,
+        metadata: piece.metadata,
+      })),
+    },
+  })
+
+  const metadataKV = Array.from(
+    options.pieces,
+    (piece) => piece.metadata
+  ) as MetadataEntry[][]
+
+  const keys = metadataKV.map((item) => item.map((item) => item.key))
+  const values = metadataKV.map((item) => item.map((item) => item.value))
+
+  const extraData = encodeAbiParameters(
+    [{ type: 'bytes' }, { type: 'string[][]' }, { type: 'string[][]' }],
+    [signature, keys, values]
+  )
   return extraData
 }
