@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.4.5](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.4.4...iso-filecoin-v7.4.5) (2025-10-14)
+
+
+### Bug Fixes
+
+* chains ([6a9026a](https://github.com/hugomrdias/filecoin/commit/6a9026ae4df62b5895e27a183b459761a71c733f))
+* update package dependencies and improve type handling ([4b1b975](https://github.com/hugomrdias/filecoin/commit/4b1b975da8645f292a95b512d69ffcbac448c2f0))
+
 ## [7.4.4](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.4.3...iso-filecoin-v7.4.4) (2025-08-19)
 
 
