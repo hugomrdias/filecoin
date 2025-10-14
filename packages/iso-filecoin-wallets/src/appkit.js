@@ -1,5 +1,8 @@
-import { AdapterBlueprint } from '@reown/appkit/adapters'
-import { CoreHelperUtil, StorageUtil } from '@reown/appkit-controllers'
+import {
+  AdapterBlueprint,
+  CoreHelperUtil,
+  StorageUtil,
+} from '@reown/appkit-controllers'
 import { RPC } from 'iso-filecoin/rpc'
 import { Token } from 'iso-filecoin/token'
 
@@ -98,11 +101,9 @@ export class FilecoinAppKitAdapter extends AdapterBlueprint {
   /**
    * Sync connectors
    *
-   * @param {AppKitOptions} _options
-   * @param {AppKit} _appKit
    * @returns {void | Promise<void>}
    */
-  syncConnectors(_options, _appKit) {
+  syncConnectors() {
     for (const adapter of this.adapters) {
       this.addConnector(new FilecoinConnector(adapter))
     }
