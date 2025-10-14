@@ -95,7 +95,7 @@
     "check": "biome check --no-errors-on-unmatched --files-ignore-unknown=true ."
   },
   "dependencies": {
-    "@reown/appkit": "1.8.8",
+    "@reown/appkit": "1.8.10",
     "@reown/appkit-common": "^1.8.8",
     "@reown/appkit-controllers": "^1.8.8",
     "iso-base": "^4.2.1",
@@ -103,17 +103,17 @@
     "nanoid": "^5.1.6"
   },
   "devDependencies": {
-    "@ledgerhq/hw-transport": "^6.31.11",
+    "@ledgerhq/hw-transport": "^6.31.12",
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^24.6.0",
+    "@types/node": "^24.7.1",
     "@zondax/zemu": "^0.55.0",
     "assert": "^2.1.0",
-    "mocha": "^11.7.1",
+    "mocha": "^11.7.4",
     "p-defer": "^4.0.1",
     "playwright-test": "^14.1.12",
     "rimraf": "^6.0.1",
-    "typescript": "5.9.2"
+    "typescript": "5.9.3"
   },
   "peerDependencies": {
     "filsnap-adapter": "^3.3.5",
