@@ -144,21 +144,21 @@
     "zod": "^3.25.0"
   },
   "devDependencies": {
-    "@ledgerhq/hw-transport": "^6.31.11",
-    "@rollup/plugin-commonjs": "^28.0.6",
+    "@ledgerhq/hw-transport": "^6.31.12",
+    "@rollup/plugin-commonjs": "^28.0.7",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^24.6.0",
+    "@types/node": "^24.7.1",
     "@zondax/zemu": "^0.55.0",
     "assert": "^2.1.0",
     "glob": "^11.0.3",
-    "mocha": "^11.7.1",
+    "mocha": "^11.7.4",
     "playwright-test": "^14.1.12",
     "rimraf": "^6.0.1",
-    "rollup": "^4.52.3",
+    "rollup": "^4.52.4",
     "type-fest": "^5.0.1",
-    "typescript": "5.9.2"
+    "typescript": "5.9.3"
   },
   "publishConfig": {
     "provenance": true
