@@ -112,17 +112,17 @@ importers:
         specifier: ^2.22.4
         version: 2.22.4(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       filsnap-adapter:
-        specifier: ^3.3.7
-        version: 3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0)
+        specifier: ^3.3.8
+        version: 3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0)
       iso-filecoin:
         specifier: ^7.4.3
         version: 7.4.4(typescript@5.9.3)
       iso-filecoin-react:
         specifier: ^2.2.0
-        version: 2.2.0(@tanstack/react-query@5.90.3(react@19.2.0))(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+        version: 2.2.0(@tanstack/react-query@5.90.3(react@19.2.0))(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       iso-filecoin-wallets:
         specifier: ^1.2.0
-        version: 1.2.0(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(lit@3.3.0)(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+        version: 1.2.0(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(lit@3.3.0)(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       react:
         specifier: 19.2.0
         version: 19.2.0
@@ -303,17 +303,17 @@ importers:
         specifier: ^2.1.0
         version: 2.1.1
       filsnap-adapter:
-        specifier: ^3.3.7
-        version: 3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0)
+        specifier: ^3.3.8
+        version: 3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0)
       iso-filecoin:
         specifier: ^7.4.3
         version: 7.4.4(typescript@5.9.3)
       iso-filecoin-react:
         specifier: ^2.2.0
-        version: 2.2.0(@tanstack/react-query@5.90.3(react@19.2.0))(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+        version: 2.2.0(@tanstack/react-query@5.90.3(react@19.2.0))(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       iso-filecoin-wallets:
         specifier: ^1.2.0
-        version: 1.2.0(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(lit@3.3.0)(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+        version: 1.2.0(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(lit@3.3.0)(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       react-dom:
         specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
@@ -457,8 +457,8 @@ importers:
         specifier: ^6.15.0
         version: 6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       filsnap-adapter:
-        specifier: ^3.3.7
-        version: 3.3.7(iso-filecoin@packages+iso-filecoin)(typescript@5.9.3)(webextension-polyfill@0.10.0)
+        specifier: ^3.3.8
+        version: 3.3.8(iso-filecoin@packages+iso-filecoin)(webextension-polyfill@0.10.0)
       iso-filecoin:
         specifier: workspace:*
         version: link:../../packages/iso-filecoin
@@ -703,8 +703,8 @@ importers:
         specifier: ^6.15.0
         version: 6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       filsnap-adapter:
-        specifier: ^3.3.7
-        version: 3.3.7(iso-filecoin@packages+iso-filecoin)(typescript@5.9.3)(webextension-polyfill@0.10.0)
+        specifier: ^3.3.8
+        version: 3.3.8(iso-filecoin@packages+iso-filecoin)(webextension-polyfill@0.10.0)
       iso-filecoin:
         specifier: workspace:*
         version: link:../iso-filecoin
@@ -783,7 +783,7 @@ importers:
         version: 1.8.10(@types/react@19.2.2)(bufferutil@4.0.9)(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
       filsnap-adapter:
         specifier: ^3.3.5
-        version: 3.3.7(iso-filecoin@packages+iso-filecoin)(typescript@5.9.3)(webextension-polyfill@0.10.0)
+        version: 3.3.8(iso-filecoin@packages+iso-filecoin)(webextension-polyfill@0.10.0)
       iso-base:
         specifier: ^4.2.1
         version: 4.2.1
@@ -5468,13 +5468,15 @@ packages:
     resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
     engines: {node: '>=8'}
 
-  filsnap-adapter@3.3.7:
-    resolution: {integrity: sha512-ih+BP/OT29hSOyP5KIFTCwMQmb5RaV51wUsCQYjjezIPNJatgLwLprC2oSrS2b4aSQz0lwLhCIPKnDayPoVe1w==}
+  filsnap-adapter@3.3.8:
+    resolution: {integrity: sha512-eMckRVm/ovj6HsjveHhGSx51+AQeWdPseEVtmY7XyNOs39yORJTd/jyqmlY5PmMIhyO3ScltnSy1kU31CfynbQ==}
     peerDependencies:
       iso-filecoin: 7.x
 
-  filsnap@1.9.1:
-    resolution: {integrity: sha512-ZEKJvvKJhNLyha3S0dozIc6NA2HQ2m7Zz2vfuhqLpNoPWXtrfs5VoifnNwyPv7RglMw2LIj8zDMNtlnyvmohMg==}
+  filsnap@1.9.3:
+    resolution: {integrity: sha512-6S9RNlqBp4kkM/lYgSszB4mIH5SVlZzYsg1wfhJuRw2UpKdoSh9SSd/Xr2SC/VMnI6Jhe23VhU7gi7nU1+FznQ==}
+    peerDependencies:
+      iso-filecoin: 7.x
 
   filter-obj@1.1.0:
     resolution: {integrity: sha512-8rXg1ZnX7xzy2NGDVkBVaAy+lSlPNwad13BtgSlLuxfIslyt5Vg64U7tFcCt4WS1R0hvtnQybT/IyCkGZ3DpXQ==}
@@ -17631,29 +17633,27 @@ snapshots:
     dependencies:
       to-regex-range: 5.0.1
 
-  filsnap-adapter@3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0):
+  filsnap-adapter@3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0):
     dependencies:
-      filsnap: 1.9.1(typescript@5.9.3)(webextension-polyfill@0.10.0)
+      filsnap: 1.9.3(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0)
       iso-base: 4.2.1
       iso-filecoin: 7.4.4(typescript@5.9.3)
       semver: 7.7.3
     transitivePeerDependencies:
       - supports-color
-      - typescript
       - webextension-polyfill
 
-  filsnap-adapter@3.3.7(iso-filecoin@packages+iso-filecoin)(typescript@5.9.3)(webextension-polyfill@0.10.0):
+  filsnap-adapter@3.3.8(iso-filecoin@packages+iso-filecoin)(webextension-polyfill@0.10.0):
     dependencies:
-      filsnap: 1.9.1(typescript@5.9.3)(webextension-polyfill@0.10.0)
+      filsnap: 1.9.3(iso-filecoin@packages+iso-filecoin)(webextension-polyfill@0.10.0)
       iso-base: 4.2.1
       iso-filecoin: link:packages/iso-filecoin
       semver: 7.7.3
     transitivePeerDependencies:
       - supports-color
-      - typescript
       - webextension-polyfill
 
-  filsnap@1.9.1(typescript@5.9.3)(webextension-polyfill@0.10.0):
+  filsnap@1.9.3(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0):
     dependencies:
       '@metamask/key-tree': 10.1.1
       '@metamask/snaps-sdk': 6.17.1(webextension-polyfill@0.10.0)
@@ -17663,7 +17663,18 @@ snapshots:
       merge-options: 3.0.4
     transitivePeerDependencies:
       - supports-color
-      - typescript
+      - webextension-polyfill
+
+  filsnap@1.9.3(iso-filecoin@packages+iso-filecoin)(webextension-polyfill@0.10.0):
+    dependencies:
+      '@metamask/key-tree': 10.1.1
+      '@metamask/snaps-sdk': 6.17.1(webextension-polyfill@0.10.0)
+      dequal: 2.0.3
+      iso-base: 4.2.1
+      iso-filecoin: link:packages/iso-filecoin
+      merge-options: 3.0.4
+    transitivePeerDependencies:
+      - supports-color
       - webextension-polyfill
 
   filter-obj@1.1.0: {}
@@ -18382,11 +18393,11 @@ snapshots:
       base-x: 5.0.1
       bigint-mod-arith: 3.3.1
 
-  iso-filecoin-react@2.2.0(@tanstack/react-query@5.90.3(react@19.2.0))(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76):
+  iso-filecoin-react@2.2.0(@tanstack/react-query@5.90.3(react@19.2.0))(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76):
     dependencies:
       '@tanstack/react-query': 5.90.3(react@19.2.0)
       iso-filecoin: 7.4.4(typescript@5.9.3)
-      iso-filecoin-wallets: 1.1.0(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+      iso-filecoin-wallets: 1.1.0(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       react: 19.2.0
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -18416,12 +18427,12 @@ snapshots:
       - utf-8-validate
       - zod
 
-  iso-filecoin-wallets@1.1.0(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76):
+  iso-filecoin-wallets@1.1.0(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76):
     dependencies:
       '@reown/appkit': 1.7.2(@types/react@19.2.2)(bufferutil@4.0.9)(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       '@reown/appkit-common': 1.8.10(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       '@reown/appkit-controllers': 1.8.10(@types/react@19.2.2)(bufferutil@4.0.9)(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
-      filsnap-adapter: 3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0)
+      filsnap-adapter: 3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0)
       iso-base: 4.2.1
       iso-filecoin: 7.4.4(typescript@5.9.3)
       iso-web: 1.4.0
@@ -18454,12 +18465,12 @@ snapshots:
       - utf-8-validate
       - zod
 
-  iso-filecoin-wallets@1.2.0(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(lit@3.3.0)(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76):
+  iso-filecoin-wallets@1.2.0(@types/react@19.2.2)(bufferutil@4.0.9)(filsnap-adapter@3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0))(iso-filecoin@7.4.4(typescript@5.9.3))(lit@3.3.0)(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76):
     dependencies:
       '@reown/appkit': 1.7.17(@types/react@19.2.2)(bufferutil@4.0.9)(lit@3.3.0)(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       '@reown/appkit-common': 1.8.10(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       '@reown/appkit-controllers': 1.8.10(@types/react@19.2.2)(bufferutil@4.0.9)(react@19.2.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
-      filsnap-adapter: 3.3.7(iso-filecoin@7.4.4(typescript@5.9.3))(typescript@5.9.3)(webextension-polyfill@0.10.0)
+      filsnap-adapter: 3.3.8(iso-filecoin@7.4.4(typescript@5.9.3))(webextension-polyfill@0.10.0)
       iso-base: 4.2.1
       iso-filecoin: 7.4.4(typescript@5.9.3)
       iso-web: 1.4.0
