@@ -1,5 +1,5 @@
-import { Plus } from 'lucide-react'
-
+import { payments } from 'iso-filecoin-synapse'
+import { useAccount } from 'wagmi'
 import {
   Card,
   CardAction,
@@ -9,57 +9,33 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from './ui/accordion'
-import { Button } from './ui/button'
+import { Skeleton } from './ui/skeleton'
+import { StorageApproveButton } from './warm-storage/storage-approve-button'
+import { StorageMenu } from './warm-storage/storage-menu'
 import { WarmStorageService } from './warm-storage-service'
 
 export function Services() {
+  const { address } = useAccount()
+  const { data, isLoading } = payments.useOperatorApprovals({
+    address,
+  })
   return (
     <Card className="my-4">
       <CardHeader>
-        <CardTitle>Services</CardTitle>
-        <CardDescription>Manage your services</CardDescription>
+        <CardTitle>Storage</CardTitle>
+        <CardDescription>Manage your storage service</CardDescription>
         <CardAction>
-          <Button className="size-8" size="icon" variant="secondary">
-            <Plus />
-          </Button>
+          <StorageMenu />
         </CardAction>
       </CardHeader>
       <CardContent>
-        <Accordion
-          className="w-full"
-          collapsible
-          defaultValue="item-1"
-          type="single"
-        >
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="items-center">
-              <div className="flex flex-col">
-                <p className=" font-bold">Warm Storage</p>
-                <p className="text-xs text-muted-foreground">
-                  Store your data on the Filecoin network.
-                </p>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="flex flex-col gap-4 text-balance">
-              <WarmStorageService />
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger>Stratus Cloud</AccordionTrigger>
-            <AccordionContent className="flex flex-col gap-4 text-balance">
-              <p>
-                Stratus Cloud is a service that allows you to store your data on
-                the Filecoin network.
-              </p>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        {isLoading ? (
+          <Skeleton className="w-full h-20" />
+        ) : data?.isApproved ? (
+          <WarmStorageService />
+        ) : (
+          <StorageApproveButton />
+        )}
       </CardContent>
       <CardFooter className="flex-col gap-2"></CardFooter>
     </Card>

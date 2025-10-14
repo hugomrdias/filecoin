@@ -1,4 +1,4 @@
-import { erc20 } from 'iso-filecoin-synapse'
+import { erc20, formatBalance, useWatchUsdfc } from 'iso-filecoin-synapse'
 import { ArrowUpRight, Copy, Wallet } from 'lucide-react'
 import { useAccount, useBalance, useDisconnect } from 'wagmi'
 import * as Icons from '@/components/icons'
@@ -13,24 +13,34 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { useAddUsdfc } from '@/hooks/use-add-usdfc'
 import { useCopyToClipboard } from '@/hooks/use-clipboard'
-import { formatBalance, truncateMiddle } from '@/lib/utils'
+import { truncateMiddle } from '@/lib/utils'
 
 export function WalletMenu() {
   const { address } = useAccount()
-  const { addUsdfc } = useAddUsdfc()
   const { disconnect } = useDisconnect()
   const [_, copyToClipboard] = useCopyToClipboard()
   const { data: balance } = useBalance({
     address,
   })
+
+  const { mutate: watchAsset } = useWatchUsdfc()
   const { data: erc20Balance } = erc20.useBalance({ address })
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size="icon" variant="outline">
+        <Button size="default" variant="outline">
+          {formatBalance({
+            value: balance?.value,
+            digits: 1,
+          })}
+          <Icons.Filecoin />
+          {formatBalance({
+            value: erc20Balance?.value,
+            digits: 1,
+          })}
+          <Icons.Usdfc />
           <Wallet />
         </Button>
       </DropdownMenuTrigger>
@@ -59,7 +69,11 @@ export function WalletMenu() {
         <DropdownMenuSeparator />
         <DropdownMenuLabel>Tools</DropdownMenuLabel>
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => addUsdfc()}>
+          <DropdownMenuItem
+            onClick={() => {
+              watchAsset()
+            }}
+          >
             Add USDFC Token
           </DropdownMenuItem>
           <DropdownMenuItem>

@@ -35,7 +35,7 @@ export function App() {
           {!isConnected && <ConnectWallet />}
         </div>
       </main>
-      <Toaster />
+      <Toaster richColors={true} theme="system" />
     </div>
   )
 }

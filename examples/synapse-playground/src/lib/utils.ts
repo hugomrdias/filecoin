@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from 'clsx'
-import * as dn from 'dnum'
+import { toast } from 'sonner'
 import { twMerge } from 'tailwind-merge'
+import { BaseError } from 'viem'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -29,12 +30,21 @@ export function truncateMiddle(
   return `${str.slice(0, startLen)}...${str.slice(-endLen)}`
 }
 
-export function formatBalance(
-  data: { value?: bigint; decimals?: number } | undefined,
-  options: { compact?: boolean; digits?: number } = {}
-) {
-  return dn.format([data?.value ?? 0n, data?.decimals ?? 18], {
-    compact: options.compact ?? true,
-    digits: options.digits ?? 4,
+export function formatErrorForToast(error: Error, title?: string) {
+  return {
+    title: title ?? (error instanceof BaseError ? error.name : 'Error'),
+    description:
+      error instanceof BaseError
+        ? (error.details ?? error.message)
+        : error.message,
+  }
+}
+
+export function toastError(error: Error, id: string, title?: string) {
+  console.error(error)
+  const formattedError = formatErrorForToast(error, title)
+  toast.error(formattedError.title, {
+    description: formattedError.description,
+    id,
   })
 }

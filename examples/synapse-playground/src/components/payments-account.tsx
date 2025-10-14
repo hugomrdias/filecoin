@@ -96,6 +96,7 @@ export function PaymentsAccount() {
           <span className="text-sm font-bold">
             {formatFraction({
               value: paymentsBalance?.lockupRate,
+              digits: 12,
             })}
           </span>
           <Icons.Usdfc className="w-4 h-4" />

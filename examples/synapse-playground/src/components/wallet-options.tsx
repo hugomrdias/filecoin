@@ -1,17 +1,17 @@
 import { useStore } from '@nanostores/react'
-// import { type EIP1193Provider, getOrInstallSnap } from 'filsnap-adapter'
+import { useFilsnap } from 'iso-filecoin-synapse'
 import { useEffect, useState } from 'react'
 import { type Connector, useConnect } from 'wagmi'
 import { filecoin, filecoinCalibration } from 'wagmi/chains'
 import { store } from '@/lib/store'
 import { Button } from './ui/button'
 
-// const SNAP_ID = 'npm:filsnap' //'local:http://localhost:8080'
-// const SNAP_ID = 'local:http://localhost:8080'
-
 export function WalletOptions() {
   const { connectors, connect } = useConnect()
   const { network } = useStore(store, { keys: ['network'] })
+  useFilsnap({
+    force: true,
+  })
 
   return connectors.map((connector) => {
     if (connector.id === 'injected') {
@@ -22,10 +22,6 @@ export function WalletOptions() {
         connector={connector}
         key={connector.uid}
         onClick={() => {
-          // const provider = (await connector.getProvider()) as EIP1193Provider
-          // if (provider.isMetaMask) {
-          //   await getOrInstallSnap(provider, SNAP_ID, '*')
-          // }
           connect({
             connector,
             chainId:

@@ -1,22 +1,65 @@
-import { warmStorage } from 'iso-filecoin-synapse'
-
-import { useAccount } from 'wagmi'
-import { PDPLink } from '../pdp-link'
+import type { warmStorage } from 'iso-filecoin-synapse'
+import {
+  CloudDownload,
+  FileAudio,
+  FileCode,
+  FilePlay,
+  FileText,
+  Globe,
+  Info,
+} from 'lucide-react'
+import { PDPDatasetLink, PDPPieceLink, PDPProviderLink } from '../pdp-link'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Button } from '../ui/button'
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from '../ui/item'
 import { Skeleton } from '../ui/skeleton'
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip'
 import { CreateDataSetDialog } from './create-data-set'
 
-export function DataSetsSection() {
-  const account = useAccount()
-  const { data: providers } = warmStorage.useProviders()
-
-  const { data: dataSets } = warmStorage.useDataSets({
-    address: account.address,
-  })
-
+export function DataSetsSection({
+  dataSets,
+  providers,
+}: {
+  dataSets?: warmStorage.DataSetWithPieces[]
+  providers?: warmStorage.UseProvidersResult
+}) {
   const providerWithDataSets = providers?.filter((p) =>
     dataSets?.some((d) => d.providerId === p.providerId)
   )
+
+  const imagesMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
+  const videosMimeTypes = ['video/mp4', 'video/quicktime', 'video/webm']
+  const audioMimeTypes = ['audio/mpeg', 'audio/ogg', 'audio/wav']
+  const documentsMimeTypes = [
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.ms-excel',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'application/vnd.ms-powerpoint',
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+    'image/svg+xml',
+  ]
+  const codeMimeTypes = [
+    'text/plain',
+    'text/html',
+    'text/css',
+    'text/javascript',
+    'application/json',
+    'application/xml',
+    'application/x-www-form-urlencoded',
+    'application/x-yaml',
+    'application/x-toml',
+    'application/x-ini',
+    'application/x-toml',
+  ]
 
   return providers ? (
     <div>
@@ -33,7 +76,12 @@ export function DataSetsSection() {
       <div className="flex flex-col gap-2 mt-6">
         {providerWithDataSets?.map((provider) => (
           <div className="flex flex-col gap-4" key={provider.providerId}>
-            <h4 className="text-lg font-bold">{provider.name}</h4>
+            <h4 className="text-lg font-bold">
+              <PDPProviderLink
+                address={provider.serviceProvider}
+                name={provider.name}
+              />
+            </h4>
             {dataSets
               ?.filter((dataSet) => dataSet.providerId === provider.providerId)
               .map((dataSet) => (
@@ -41,25 +89,91 @@ export function DataSetsSection() {
                   className="flex flex-col gap-2"
                   key={dataSet.clientDataSetId}
                 >
-                  <p>
-                    <PDPLink id={dataSet.pdpDatasetId.toString()} />{' '}
-                    {dataSet.cdn ? 'with CDN' : ''} ({dataSet.nextPieceId}{' '}
-                    pieces)
+                  <p className="flex flex-row gap-2 items-center">
+                    <PDPDatasetLink id={dataSet.pdpDatasetId.toString()} />
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <Info className="w-4" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Files: {dataSet.pieces.length}</p>
+                        {Object.keys(dataSet.metadata).map((key) => (
+                          <p key={key}>
+                            {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}
+                            {dataSet.metadata[key]}
+                          </p>
+                        ))}
+                      </TooltipContent>
+                    </Tooltip>
+                    {dataSet.cdn && (
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Globe className="w-4" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>This data set is using CDN</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    )}
                   </p>
+
                   {dataSet.pieces.map((piece) => (
-                    <div
-                      className="flex flex-row gap-2 justify-between items-center rounded-md py-2 px-4 bg-muted"
-                      key={piece.pieceId}
+                    <Item
+                      key={`${piece.pieceId}-${dataSet.pdpDatasetId}`}
+                      size="default"
+                      variant="muted"
                     >
-                      <p className="text-xs break-all">{piece.pieceCid}</p>
-                      <Button
-                        onClick={() => {
-                          window.open(piece.pieceUrl, '_blank')
-                        }}
+                      <ItemMedia
+                        variant={
+                          imagesMimeTypes.includes(piece.metadata.type)
+                            ? 'image'
+                            : piece.metadata.type
+                              ? 'icon'
+                              : 'default'
+                        }
                       >
-                        Download
-                      </Button>
-                    </div>
+                        {imagesMimeTypes.includes(piece.metadata.type) ? (
+                          <img
+                            alt={piece.metadata.name || piece.pieceCid}
+                            className="object-cover"
+                            height={48}
+                            src={piece.pieceUrl}
+                            width={48}
+                          />
+                        ) : videosMimeTypes.includes(piece.metadata.type) ? (
+                          <FilePlay className="w-10" />
+                        ) : audioMimeTypes.includes(piece.metadata.type) ? (
+                          <FileAudio className="w-10" />
+                        ) : documentsMimeTypes.includes(piece.metadata.type) ? (
+                          <FileText className="w-10" />
+                        ) : codeMimeTypes.includes(piece.metadata.type) ? (
+                          <FileCode className="w-10" />
+                        ) : (
+                          <Avatar className="size-10">
+                            <AvatarImage src={piece.pieceUrl} />
+                            <AvatarFallback>NA</AvatarFallback>
+                          </Avatar>
+                        )}
+                      </ItemMedia>
+                      <ItemContent>
+                        <ItemTitle className="break-all">
+                          <PDPPieceLink
+                            cid={piece.pieceCid}
+                            name={piece.metadata.name}
+                          />
+                        </ItemTitle>
+                        <ItemDescription>{piece.metadata.type}</ItemDescription>
+                      </ItemContent>
+                      <ItemActions>
+                        <Button
+                          onClick={() => {
+                            window.open(piece.pieceUrl, '_blank')
+                          }}
+                        >
+                          <CloudDownload />
+                        </Button>
+                      </ItemActions>
+                    </Item>
                   ))}
                 </div>
               ))}
