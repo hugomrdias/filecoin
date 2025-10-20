@@ -91,7 +91,7 @@
     "iso-web": "^1.4.0",
     "multiformats": "^13.4.1",
     "ox": "^0.9.10",
-    "zod": "^3.25.0"
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@testing-library/react": "^16.2.0",
