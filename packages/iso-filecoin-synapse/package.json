@@ -90,7 +90,7 @@
     "iso-filecoin": "workspace:*",
     "iso-web": "^1.4.0",
     "multiformats": "^13.4.1",
-    "ox": "^0.9.10",
+    "ox": "^0.9.13",
     "zod": "^3.25.0"
   },
   "devDependencies": {
