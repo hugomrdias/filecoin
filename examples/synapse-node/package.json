@@ -16,6 +16,6 @@
     "@wagmi/connectors": "^6.0.1",
     "@wagmi/core": "2.22.1",
     "iso-filecoin-synapse": "workspace:*",
-    "viem": "2.38.2"
+    "viem": "2.38.4"
   }
 }
