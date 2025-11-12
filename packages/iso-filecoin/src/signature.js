@@ -1,6 +1,6 @@
 import { base64pad, hex } from 'iso-base/rfc4648'
 import { concat, isUint8Array } from 'iso-base/utils'
-import { z } from 'zod/v4'
+import { z } from 'zod'
 
 export const SIGNATURE_TYPE = /** @type {const} */ ({
   SECP256K1: 1,

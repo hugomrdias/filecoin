@@ -1,5 +1,5 @@
 import { request } from 'iso-web/http'
-import * as z from 'zod/v4'
+import * as z from 'zod'
 import { Message } from './message.js'
 import { Signature } from './signature.js'
 import { getNetworkPrefix, isZodErrorLike } from './utils.js'
