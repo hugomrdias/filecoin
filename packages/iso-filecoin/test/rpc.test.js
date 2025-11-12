@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { ZodError } from 'zod/v4'
+import { ZodError } from 'zod'
 import { Address } from '../src/index.js'
 import { Message } from '../src/message.js'
 import { RPC, ValidationRpcError } from '../src/rpc.js'
