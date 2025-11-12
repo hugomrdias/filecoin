@@ -10,30 +10,30 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ledgerhq/hw-transport-webusb": "^6.29.12",
-    "@reown/appkit": "1.8.10",
-    "@reown/appkit-adapter-wagmi": "1.8.10",
-    "@reown/appkit-common": "^1.8.8",
-    "@reown/appkit-controllers": "^1.8.8",
-    "@tanstack/react-query": "^5.90.2",
-    "@walletconnect/universal-provider": "^2.22.4",
+    "@ledgerhq/hw-transport-webusb": "^6.29.13",
+    "@reown/appkit": "1.8.14",
+    "@reown/appkit-adapter-wagmi": "1.8.14",
+    "@reown/appkit-common": "^1.8.14",
+    "@reown/appkit-controllers": "^1.8.14",
+    "@tanstack/react-query": "^5.90.8",
+    "@walletconnect/universal-provider": "^2.23.0",
     "filsnap-adapter": "^3.3.8",
-    "iso-filecoin": "^7.4.3",
+    "iso-filecoin": "^7.4.5",
     "iso-filecoin-react": "^2.2.0",
     "iso-filecoin-wallets": "^1.2.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "viem": "2.38.2",
-    "wagmi": "2.18.1"
+    "viem": "2.39.0",
+    "wagmi": "2.19.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",
     "@hugomrdias/configs": "^1.1.2",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.1",
-    "@vitejs/plugin-react": "^5.0.4",
-    "globals": "^16.3.0",
+    "@types/react": "^19.2.4",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "globals": "^16.5.0",
     "typescript": "^5.9.3",
-    "vite": "^7.1.10"
+    "vite": "^7.2.2"
   }
 }
