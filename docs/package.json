@@ -20,7 +20,7 @@
   "devDependencies": {
     "@hugomrdias/docs": "^0.1.5",
     "@ledgerhq/hw-transport-webusb": "^6.29.13",
-    "@tanstack/react-query": "^5.90.8",
+    "@tanstack/react-query": "^5.90.10",
     "@types/react": "^19.2.4",
     "@types/react-dom": "^19.2.3",
     "iso-base": "^4.2.1",
