@@ -99,7 +99,7 @@
     "@reown/appkit-common": "^1.8.14",
     "@reown/appkit-controllers": "^1.8.14",
     "iso-base": "^4.2.1",
-    "iso-web": "^1.4.3",
+    "iso-web": "^2.1.0",
     "nanoid": "^5.1.6"
   },
   "devDependencies": {
@@ -112,7 +112,7 @@
     "mocha": "^11.7.5",
     "p-defer": "^4.0.1",
     "playwright-test": "^14.1.12",
-    "rimraf": "^6.1.0",
+    "rimraf": "^6.1.2",
     "typescript": "5.9.3"
   },
   "peerDependencies": {
