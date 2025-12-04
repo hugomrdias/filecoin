@@ -1,5 +1,5 @@
 {
   "packages/iso-filecoin": "7.4.7",
   "packages/iso-filecoin-react": "2.2.0",
-  "packages/iso-filecoin-wallets": "1.2.0"
+  "packages/iso-filecoin-wallets": "1.3.0"
 }
