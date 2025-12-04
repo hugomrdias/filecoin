@@ -419,8 +419,8 @@ importers:
         specifier: ^24.10.1
         version: 24.10.1
       '@zondax/zemu':
-        specifier: ^0.55.0
-        version: 0.55.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+        specifier: ^0.64.1
+        version: 0.64.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       assert:
         specifier: ^2.1.0
         version: 2.1.0
@@ -535,8 +535,8 @@ importers:
         specifier: ^24.10.1
         version: 24.10.1
       '@zondax/zemu':
-        specifier: ^0.55.0
-        version: 0.55.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+        specifier: ^0.64.1
+        version: 0.64.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       assert:
         specifier: ^2.1.0
         version: 2.1.0
@@ -3908,8 +3908,9 @@ packages:
   '@walletconnect/window-metadata@1.0.1':
     resolution: {integrity: sha512-9koTqyGrM2cqFRW517BPY/iEtUDx2r1+Pwwu5m7sJ7ka79wi3EyqhqcICk/yDmv6jAS1rjKgTKXlEhanYjijcA==}
 
-  '@zondax/zemu@0.55.3':
-    resolution: {integrity: sha512-1XWrcKZIt/0niu4A/mk4oyY4sdilJhr3vKd7imOXTsi6dQX/DTKt38HCSmSh1EP9hBk4eK0yHnoQ6d2ljIAPNw==}
+  '@zondax/zemu@0.64.1':
+    resolution: {integrity: sha512-NWQWtiOn66j9gf4dTqeLgO/0VG6LxuLqz3IxjFQMSsInePr7JXGduvPGdccptuLcbpPqDkWHuViQjpwUsKezZA==}
+    engines: {node: '>=22.0.0'}
 
   abitype@1.0.6:
     resolution: {integrity: sha512-MMSqYh4+C/aVqI2RQaWqbvI4Kxo5cQV40WQ4QFtDnNzCkqChm8MuENhElmynZlO0qUy/ObkEUaXtKqYnx1Kp3A==}
@@ -15525,10 +15526,11 @@ snapshots:
       '@walletconnect/window-getters': 1.0.1
       tslib: 1.14.1
 
-  '@zondax/zemu@0.55.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
+  '@zondax/zemu@0.64.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
     dependencies:
       '@grpc/grpc-js': 1.14.2
-      '@grpc/proto-loader': 0.7.15
+      '@grpc/proto-loader': 0.8.0
+      '@ledgerhq/errors': 6.27.0
       '@ledgerhq/hw-transport-http': 6.31.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       axios: 1.13.2
       axios-retry: 4.5.0(axios@1.13.2)
