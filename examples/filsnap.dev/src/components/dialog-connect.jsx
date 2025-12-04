@@ -12,13 +12,14 @@ import {
   TextField,
 } from '@radix-ui/themes'
 import * as bip39 from '@scure/bip39'
-import { wordlist } from '@scure/bip39/wordlists/english'
+import { wordlist } from '@scure/bip39/wordlists/english.js'
 import clsx from 'clsx'
 import { useConnect } from 'iso-filecoin-react'
 import { WalletAdapterHd } from 'iso-filecoin-wallets'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as Icons from './icons.jsx'
+
 /**
  *
  * @param {import('iso-filecoin-wallets/types').WalletAdapter} adapter
@@ -46,13 +47,13 @@ function descriptionFromAdapter(adapter) {
 function iconFromAdapter(adapter) {
   switch (adapter.id) {
     case 'filsnap':
-      return <Icons.MetaMask width={40} height={40} />
+      return <Icons.MetaMask height={40} width={40} />
     case 'ledger':
-      return <Icons.Ledger width={40} height={40} />
+      return <Icons.Ledger height={40} width={40} />
     case 'hd':
-      return <Icons.Burner width={40} height={40} />
+      return <Icons.Burner height={40} width={40} />
     default:
-      return <Icons.Wallet width={40} height={40} />
+      return <Icons.Wallet height={40} width={40} />
   }
 }
 
@@ -76,34 +77,34 @@ export function DialogConnect() {
 
   return (
     <Dialog.Root
-      open={isOpen}
       onOpenChange={(open) => {
         setIsOpen(open)
         if (!open) {
           reset()
         }
       }}
+      open={isOpen}
     >
       <Dialog.Trigger>
-        <Button onClick={() => setIsOpen(true)} loading={loading}>
+        <Button loading={loading} onClick={() => setIsOpen(true)}>
           <Link2Icon /> Connect
         </Button>
       </Dialog.Trigger>
 
       <Dialog.Content maxWidth="450px" onEscapeKeyDown={() => setIsOpen(false)}>
         <Dialog.Title>Connect a wallet</Dialog.Title>
-        <Dialog.Description size="2" mb="4">
+        <Dialog.Description mb="4" size="2">
           Choose your preferred Filecoin wallet.
         </Dialog.Description>
 
         <Flex direction="column" gap="3">
           {adapters.map((adapter) => (
             <AdapterItem
-              key={adapter.uid}
               adapter={adapter}
-              loading={loading}
-              isPending={isPending}
               connect={connect}
+              isPending={isPending}
+              key={adapter.uid}
+              loading={loading}
             />
           ))}
           {error && (
@@ -116,7 +117,7 @@ export function DialogConnect() {
           )}
         </Flex>
         <Dialog.Close>
-          <button type="button" className="IconButton" aria-label="Close">
+          <button aria-label="Close" className="IconButton" type="button">
             <Cross2Icon />
           </button>
         </Dialog.Close>
@@ -140,13 +141,13 @@ export function AdapterItem({ adapter, loading, isPending, connect }) {
   return (
     <Skeleton loading={loading || isPending}>
       <DialogHdBurner
-        isOpen={isHdBurnerOpen}
-        setIsOpen={setIsHdBurnerOpen}
         adapter={
           /** @type {import('iso-filecoin-wallets').WalletAdapterHd} */ (
             adapter
           )
         }
+        isOpen={isHdBurnerOpen}
+        setIsOpen={setIsHdBurnerOpen}
       />
       <Box>
         <Card
@@ -166,11 +167,11 @@ export function AdapterItem({ adapter, loading, isPending, connect }) {
               }
             }}
           >
-            <Flex gap="3" align="center">
+            <Flex align="center" gap="3">
               <Avatar
+                asChild
                 fallback={adapter.id.slice(0, 2)}
                 style={{ objectFit: 'contain' }}
-                asChild
               >
                 {iconFromAdapter(adapter)}
               </Avatar>
@@ -233,17 +234,17 @@ export function DialogHdBurner({ isOpen, adapter, setIsOpen }) {
 
   return (
     <Dialog.Root
-      open={isOpen}
       onOpenChange={(open) => {
         setIsOpen(open)
         if (!open) {
           reset()
         }
       }}
+      open={isOpen}
     >
       <Dialog.Content maxWidth="450px">
         <Dialog.Title>Connect a burner wallet</Dialog.Title>
-        <Dialog.Description size="2" mb="4">
+        <Dialog.Description mb="4" size="2">
           Enter the mnemonic of your hierarchical deterministic wallet burner
           wallet.
         </Dialog.Description>
@@ -251,14 +252,14 @@ export function DialogHdBurner({ isOpen, adapter, setIsOpen }) {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Flex direction="column" gap="3">
             <label htmlFor="Mnemonic">
-              <Text as="div" size="2" mb="1" weight="bold">
+              <Text as="div" mb="1" size="2" weight="bold">
                 Mnemonic
               </Text>
               <TextField.Root
-                size="3"
-                data-1p-ignore
                 autoComplete="off"
+                data-1p-ignore
                 placeholder="already turtle birth enroll since owner keep patch skirt drift any dinner"
+                size="3"
                 {...register('mnemonic', {
                   required: 'Mnemonic is required',
                   validate: (value) => {
@@ -278,42 +279,42 @@ export function DialogHdBurner({ isOpen, adapter, setIsOpen }) {
               </Callout.Root>
             )}
             <label htmlFor="Password">
-              <Text as="div" size="2" mb="1" weight="bold">
+              <Text as="div" mb="1" size="2" weight="bold">
                 Password (optional)
               </Text>
               <TextField.Root
-                size="3"
-                data-1p-ignore
                 autoComplete="off"
+                data-1p-ignore
                 placeholder="Enter your password"
+                size="3"
                 {...register('password')}
               />
             </label>
             <label htmlFor="Password">
-              <Text as="div" size="2" mb="1" weight="bold">
+              <Text as="div" mb="1" size="2" weight="bold">
                 Address Index
               </Text>
               <TextField.Root
-                type="number"
-                size="3"
                 defaultValue="0"
                 placeholder="0"
+                size="3"
+                type="number"
                 {...register('index')}
               />
             </label>
           </Flex>
 
-          <Flex gap="3" mt="4" justify="end">
+          <Flex gap="3" justify="end" mt="4">
             <Button
-              title="Generate Burner Wallet"
-              variant="soft"
               color="gray"
-              type="button"
               onClick={() => {
                 setValue('mnemonic', bip39.generateMnemonic(wordlist), {
                   shouldValidate: true,
                 })
               }}
+              title="Generate Burner Wallet"
+              type="button"
+              variant="soft"
             >
               Generate
             </Button>
@@ -327,7 +328,7 @@ export function DialogHdBurner({ isOpen, adapter, setIsOpen }) {
           </Flex>
         </form>
         <Dialog.Close>
-          <button type="button" className="IconButton" aria-label="Close">
+          <button aria-label="Close" className="IconButton" type="button">
             <Cross2Icon />
           </button>
         </Dialog.Close>
