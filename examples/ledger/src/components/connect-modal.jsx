@@ -1,5 +1,5 @@
 import * as bip39 from '@scure/bip39'
-import { wordlist } from '@scure/bip39/wordlists/english'
+import { wordlist } from '@scure/bip39/wordlists/english.js'
 import { useConnect } from 'iso-filecoin-react'
 import { WalletAdapterHd } from 'iso-filecoin-wallets/hd'
 import { useState } from 'react'
@@ -45,8 +45,8 @@ export function ConnectModal({ isOpen, setIsOpen }) {
     return (
       <HDModal
         adapter={HDAdapter}
-        isOpen={isOpen}
         handleClose={handleClose}
+        isOpen={isOpen}
         setHDAdpter={setHDAdapter}
       />
     )
@@ -57,14 +57,9 @@ export function ConnectModal({ isOpen, setIsOpen }) {
       <h4>Connect a wallet</h4>
       {adapters.map((adapter) => (
         <button
-          key={adapter.name}
-          title={
-            adapter.support === 'NotDetected' && adapter.name === 'Filsnap'
-              ? 'Install Metamask'
-              : adapter.name
-          }
-          type="button"
           className="modal-button"
+          disabled={isPending || adapter.support === 'NotDetected' || loading}
+          key={adapter.name}
           onClick={() => {
             if (WalletAdapterHd.is(adapter)) {
               setHDAdapter(adapter)
@@ -72,7 +67,12 @@ export function ConnectModal({ isOpen, setIsOpen }) {
               connect({ adapter })
             }
           }}
-          disabled={isPending || adapter.support === 'NotDetected' || loading}
+          title={
+            adapter.support === 'NotDetected' && adapter.name === 'Filsnap'
+              ? 'Install Metamask'
+              : adapter.name
+          }
+          type="button"
         >
           <span>{adapter.name}</span>
         </button>
@@ -127,11 +127,11 @@ function HDModal({ adapter, isOpen, handleClose, setHDAdpter }) {
         <label className="u-FullWidth">
           <span>Mnemonic</span>
           <input
-            data-1p-ignore
             autoComplete="off"
-            type="text"
-            placeholder="already turtle birth enroll since owner keep patch skirt drift any dinner"
             className="u-FullWidth"
+            data-1p-ignore
+            placeholder="already turtle birth enroll since owner keep patch skirt drift any dinner"
+            type="text"
             {...register('mnemonic', {
               required: 'Mnemonic is required',
               validate: (value) => {
@@ -146,40 +146,40 @@ function HDModal({ adapter, isOpen, handleClose, setHDAdpter }) {
         <label className="u-FullWidth">
           <span>Password (optional)</span>
           <input
-            data-1p-ignore
             autoComplete="off"
-            type="password"
-            placeholder="Enter your password"
             className="u-FullWidth"
+            data-1p-ignore
+            placeholder="Enter your password"
+            type="password"
             {...register('password')}
           />
         </label>
         <label className="u-FullWidth">
           <span>Address Index</span>
           <input
-            type="number"
-            placeholder="0"
             className="u-FullWidth"
+            placeholder="0"
+            type="number"
             {...register('index')}
           />
         </label>
         <button
-          title="Connect Burner Wallet"
-          type="submit"
           className="modal-button"
           disabled={!isValid}
+          title="Connect Burner Wallet"
+          type="submit"
         >
           Import
         </button>
         <button
-          title="Generate Burner Wallet"
-          type="button"
           className="modal-button"
           onClick={() => {
             setValue('mnemonic', bip39.generateMnemonic(wordlist), {
               shouldValidate: true,
             })
           }}
+          title="Generate Burner Wallet"
+          type="button"
         >
           Generate
         </button>
