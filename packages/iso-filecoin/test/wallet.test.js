@@ -158,6 +158,7 @@ describe('wallet', () => {
     const lotusSig = Signature.fromLotusHex(lotusHex)
 
     assert.deepStrictEqual(signature.data, lotusSig.data)
+
     assert.deepStrictEqual(signature.toLotusHex(), lotusHex)
 
     assert.ok(

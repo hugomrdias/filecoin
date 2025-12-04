@@ -132,9 +132,9 @@
   "dependencies": {
     "@ipld/dag-cbor": "^9.2.4",
     "@ledgerhq/errors": "^6.27.0",
-    "@noble/curves": "^1.9.6",
+    "@noble/curves": "^2.0.1",
     "@noble/hashes": "^2.0.1",
-    "@scure/bip32": "^1.7.0",
+    "@scure/bip32": "^2.0.1",
     "@scure/bip39": "^2.0.1",
     "abitype": "^1.1.1",
     "bignumber.js": "^9.3.1",
