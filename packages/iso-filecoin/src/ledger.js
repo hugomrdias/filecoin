@@ -1,5 +1,5 @@
 import { StatusCodes } from '@ledgerhq/errors'
-import { secp256k1 as secp } from '@noble/curves/secp256k1'
+import { secp256k1 as secp } from '@noble/curves/secp256k1.js'
 import { blake2b } from '@noble/hashes/blake2.js'
 import { hex } from 'iso-base/rfc4648'
 import { utf8 } from 'iso-base/utf8'
@@ -258,7 +258,10 @@ export function verifyRaw(signature, data, publicKey) {
     blake2b(cid, {
       dkLen: 32,
     }),
-    publicKey
+    publicKey,
+    {
+      prehash: false,
+    }
   )
 }
 

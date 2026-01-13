@@ -1,5 +1,5 @@
-import { bls12_381 as bls } from '@noble/curves/bls12-381'
-import { secp256k1 as secp } from '@noble/curves/secp256k1'
+import { bls12_381 as bls } from '@noble/curves/bls12-381.js'
+import { secp256k1 as secp } from '@noble/curves/secp256k1.js'
 import { blake2b } from '@noble/hashes/blake2.js'
 import { HDKey } from '@scure/bip32'
 import * as bip39 from '@scure/bip39'
@@ -163,11 +163,11 @@ export function accountFromLotus(lotusHex, network) {
 export function create(type, network) {
   switch (type) {
     case 'SECP256K1': {
-      return accountFromPrivateKey(secp.utils.randomPrivateKey(), type, network)
+      return accountFromPrivateKey(secp.utils.randomSecretKey(), type, network)
     }
 
     case 'BLS': {
-      return accountFromPrivateKey(bls.utils.randomPrivateKey(), type, network)
+      return accountFromPrivateKey(bls.utils.randomSecretKey(), type, network)
     }
     default: {
       throw new Error(
@@ -197,7 +197,9 @@ export function getPublicKey(privateKey, network, type) {
       }
     }
     case 'BLS': {
-      const publicKey = bls.getPublicKey(privateKey)
+      const publicKey = bls.longSignatures
+        .getPublicKey(privateKey)
+        .toBytes(true)
 
       return {
         type: 'BLS',
@@ -243,23 +245,22 @@ export function sign(privateKey, type, data) {
         blake2b(data, {
           dkLen: 32,
         }),
-        privateKey
+        privateKey,
+        { format: 'recovered', prehash: false }
       )
 
       return new Signature({
         type: 'SECP256K1',
-        data: concat([
-          signature.toBytes('compact'),
-          Uint8Array.from([signature.recovery]),
-        ]),
+        data: concat([signature.slice(1, 65), signature.slice(0, 1)]),
       })
     }
 
     case 'BLS': {
-      const signature = bls.sign(data, privateKey)
+      const hash = bls.longSignatures.hash(data)
+      const signature = bls.longSignatures.sign(hash, privateKey)
       return new Signature({
         type: 'BLS',
-        data: signature,
+        data: signature.toBytes(true),
       })
     }
     default: {
@@ -309,19 +310,20 @@ export function verify(signature, data, publicKey) {
   switch (signature.type) {
     case 'SECP256K1': {
       return secp.verify(
-        secp.Signature.fromBytes(
-          signature.data.subarray(0, 64),
-          'compact'
-        ).toBytes(),
+        signature.data.subarray(0, 64),
         blake2b(data, {
           dkLen: 32,
         }),
-        publicKey
+        publicKey,
+        {
+          prehash: false,
+        }
       )
     }
 
     case 'BLS': {
-      return bls.verify(signature.data, data, publicKey)
+      const hash = bls.longSignatures.hash(data)
+      return bls.longSignatures.verify(signature.data, hash, publicKey)
     }
     default: {
       throw new Error(
@@ -357,7 +359,7 @@ export function recoverPublicKey(signature, data) {
   return secp.Signature.fromBytes(signature.data.subarray(0, 64), 'compact')
     .addRecoveryBit(signature.data[64])
     .recoverPublicKey(hash)
-    .toRawBytes(false)
+    .toBytes(false)
 }
 
 /**
