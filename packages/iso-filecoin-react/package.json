@@ -1,7 +1,7 @@
 {
   "name": "iso-filecoin-react",
   "type": "module",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Context and hooks for Filecoin wallets.",
   "author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
   "funding": "https://github.com/sponsors/hugomrdias",

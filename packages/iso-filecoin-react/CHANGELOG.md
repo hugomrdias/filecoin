@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.2.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v2.2.0...iso-filecoin-react-v2.2.1) (2025-12-04)
+
+
+### Bug Fixes
+
+* simplify localStorage access in getDefaultStorage function ([e92a86b](https://github.com/hugomrdias/filecoin/commit/e92a86bb25eecb4a0dc2c0c8cfda56760e54a4d1))
+* update iso-filecoin-wallets ([4db28d3](https://github.com/hugomrdias/filecoin/commit/4db28d3f753b1f9b0104c6062174ca97d697bdb0))
+* update zod ([55df871](https://github.com/hugomrdias/filecoin/commit/55df871813ade26d430f421768f99d89aa4bb6ab))
+
 ## [2.2.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-react-v2.1.1...iso-filecoin-react-v2.2.0) (2025-04-11)
 
 
