@@ -2,6 +2,14 @@
   "name": "filecoin-monorepo",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm@12.14.0",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^24.0.0",
+      "onFail": "download"
+    }
+  },
   "workspaces": [
     "packages/*",
     "examples/*"
@@ -32,24 +40,5 @@
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec biome check --no-errors-on-unmatched --files-ignore-unknown=true --staged"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "@tailwindcss/oxide",
-      "esbuild",
-      "sharp",
-      "simple-git-hooks"
-    ],
-    "ignoredBuiltDependencies": [
-      "@reown/appkit",
-      "bufferutil",
-      "cpu-features",
-      "keccak",
-      "protobufjs",
-      "secp256k1",
-      "ssh2",
-      "utf-8-validate"
-    ]
   }
 }

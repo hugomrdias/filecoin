@@ -86,19 +86,24 @@ export const fixtures = {
  * @param {(() => any) } [options.beforeHook] - Before hook
  * @param {()=> Promise<void>} options.afterEachHook - After each hook
  * @param {()=> Promise<{wallet: import('../../src/types.js').WalletAdapter, sim?: import('@zondax/zemu').default}>} options.beforeEachHook - Before each hook
+ * @param {number} [options.beforeEachTimeout] - Setup timeout in milliseconds
  */
 export function connectorTests({
   walletName,
   network,
   afterEachHook,
   beforeEachHook,
+  beforeEachTimeout,
 }) {
   describe(`Wallet Adapter ${walletName}`, () => {
     /** @type {import('@zondax/zemu').default | undefined} */
     let sim
     /** @type {import('../../src/types.js').WalletAdapter} */
     let wallet
-    beforeEach(async () => {
+    beforeEach(async function () {
+      if (beforeEachTimeout !== undefined) {
+        this.timeout(beforeEachTimeout)
+      }
       if (beforeEachHook) {
         const r = await beforeEachHook()
         wallet = r.wallet

@@ -10,14 +10,10 @@ jobs:
     if: github.ref_name == 'main'
     steps:
       - uses: actions/checkout@v5
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/setup@v3
         with:
-          version: latest
-      - uses: actions/setup-node@v6
-        with:
-          node-version: lts/*
-          cache: pnpm
-      - run: pnpm install
+          cache: true
+          require-lockfile: true
       - run: pnpm -r --filter filsnap.dev run build
         env:
           GITHUB_WORKFLOW_ID: ${{ github.run_id }}

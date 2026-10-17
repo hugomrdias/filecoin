@@ -31,6 +31,7 @@ export const models = [
 
 export const DEFAULT_OPTIONS = {
   ...DEFAULT_START_OPTIONS,
+  disablePool: true,
   logging: false,
   custom: `-s "${SEED}"`,
   X11: false,
