@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.4.8](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.4.7...iso-filecoin-v7.4.8) (2026-10-17)
+
+
+### Bug Fixes
+
+* **ci:** migrate pnpm setup and stabilize integration tests ([#382](https://github.com/hugomrdias/filecoin/issues/382)) ([88508c9](https://github.com/hugomrdias/filecoin/commit/88508c9ba4d83ee5261c9d38579169a25137c3fe))
+
 ## [7.4.7](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-v7.4.6...iso-filecoin-v7.4.7) (2025-11-12)
 
 
