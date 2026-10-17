@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.3.0...iso-filecoin-wallets-v1.3.1) (2026-10-17)
+
+
+### Bug Fixes
+
+* **ci:** migrate pnpm setup and stabilize integration tests ([#382](https://github.com/hugomrdias/filecoin/issues/382)) ([88508c9](https://github.com/hugomrdias/filecoin/commit/88508c9ba4d83ee5261c9d38579169a25137c3fe))
+
 ## [1.3.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.2.0...iso-filecoin-wallets-v1.3.0) (2025-12-04)
 
 
