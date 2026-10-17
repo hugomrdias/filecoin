@@ -43,7 +43,18 @@ jobs:
           require-lockfile: true
       - run: pnpm run lint
       - run: pnpm run build
-      - run: pnpm -r --filter './packages/**' publish --access=public --no-git-checks
+      - name: Publish iso-filecoin
+        if: contains(fromJson(needs.release.outputs.paths_released), 'packages/iso-filecoin')
+        working-directory: packages/iso-filecoin
+        run: pnpm publish --access=public --no-git-checks --publish-wait-timeout 600000
+      - name: Publish iso-filecoin-wallets
+        if: contains(fromJson(needs.release.outputs.paths_released), 'packages/iso-filecoin-wallets')
+        working-directory: packages/iso-filecoin-wallets
+        run: pnpm publish --access=public --no-git-checks --publish-wait-timeout 600000
+      - name: Publish iso-filecoin-react
+        if: contains(fromJson(needs.release.outputs.paths_released), 'packages/iso-filecoin-react')
+        working-directory: packages/iso-filecoin-react
+        run: pnpm publish --access=public --no-git-checks --publish-wait-timeout 600000
   # docs:
   #   needs: release
   #   if: |
