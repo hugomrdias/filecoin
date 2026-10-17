@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.2.0...iso-filecoin-wallets-v1.3.0) (2025-12-04)
+
+
+### Features
+
+* add pathFromNetwork function for Ledger derivation paths ([a573daa](https://github.com/hugomrdias/filecoin/commit/a573daab676933a871e9dfee9967cd0fd00ccdf1))
+
+
+### Bug Fixes
+
+* **deps:** update package dependencies and improve type definitions ([c2d6833](https://github.com/hugomrdias/filecoin/commit/c2d6833e5cf5b049336f86facace9a8171b1698e))
+* update zod ([55df871](https://github.com/hugomrdias/filecoin/commit/55df871813ade26d430f421768f99d89aa4bb6ab))
+
 ## [1.2.0](https://github.com/hugomrdias/filecoin/compare/iso-filecoin-wallets-v1.1.0...iso-filecoin-wallets-v1.2.0) (2025-07-31)
 
 
