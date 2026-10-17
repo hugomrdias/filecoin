@@ -347,8 +347,25 @@ describe('lotus rpc', function () {
 })
 
 describe('lotus rpc errors', () => {
+  /** @type {typeof globalThis.fetch} */
+  const fetchUntilAbort = async (input) => {
+    assert.ok(input instanceof Request)
+    return new Promise((_resolve, reject) => {
+      input.signal.addEventListener(
+        'abort',
+        () => reject(input.signal.reason),
+        {
+          once: true,
+        }
+      )
+    })
+  }
+
   it('timeout', async () => {
-    const rpc = new RPC({ api: API }, { timeout: 100 })
+    const rpc = new RPC(
+      { api: 'https://rpc.invalid' },
+      { timeout: 100, fetch: fetchUntilAbort }
+    )
     const version = await rpc.version()
 
     assert.ok(version.error)
@@ -356,7 +373,10 @@ describe('lotus rpc errors', () => {
   })
 
   it('timeout on method', async () => {
-    const rpc = new RPC({ api: API }, { timeout: 100 })
+    const rpc = new RPC(
+      { api: 'https://rpc.invalid' },
+      { timeout: 100, fetch: fetchUntilAbort }
+    )
     const version = await rpc.version({ timeout: 10 })
 
     assert.ok(version.error)

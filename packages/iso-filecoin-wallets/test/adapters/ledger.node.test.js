@@ -18,6 +18,7 @@ for (const model of models) {
   connectorTests({
     walletName: `LEDGER ${model.name}`,
     network: 'mainnet',
+    beforeEachTimeout: 60_000,
     beforeEachHook: async () => {
       sim = new Zemu(model.path)
       await sim.start({

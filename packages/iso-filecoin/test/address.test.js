@@ -440,17 +440,43 @@ describe('address convert id<>fx<>0x', function () {
     )
   })
 
-  it('should convert from f2 address to ID and fail back to robust because its a storage miner', async () => {
+  it('should convert from f2 address to ID', async () => {
     const f2 = fromString('f2ptl534yxh7tpuyydlpnuchgpvy3ex2khzfzicgi')
     const id = await f2.toIdAddress({ rpc })
 
     assert.strictEqual(id.toString(), 'f01729')
-
-    await assert.rejects(() => id.toRobust({ rpc }), {
-      message:
-        'failed to get account actor state for f01729: actor code is not account: storageminer',
-    })
   })
+
+  for (const message of [
+    'failed to get account actor state for f01729: actor code is not account: storageminer',
+    'RPC error (-32603): Unknown actor code bafk2bzacead23tnh3ywx2cwudftngssfjgptsvr3nao7xv6mcfot7gvju4bak',
+  ]) {
+    it(`should propagate the RPC error when converting ID to robust: ${message}`, async () => {
+      const rpc = new RPC(
+        { api: 'https://rpc.invalid', network: 'mainnet' },
+        {
+          fetch: async (input) => {
+            assert.ok(input instanceof Request)
+            const request = await input.json()
+            assert.strictEqual(request.method, 'Filecoin.StateAccountKey')
+            assert.deepStrictEqual(request.params, ['f01729', null])
+            return Response.json({
+              jsonrpc: '2.0',
+              id: request.id,
+              error: { code: -32603, message },
+            })
+          },
+        }
+      )
+
+      await assert.rejects(
+        () => AddressId.fromString('f01729').toRobust({ rpc }),
+        {
+          message,
+        }
+      )
+    })
+  }
 
   it('should convert from f3 address to ID and back to robust', async () => {
     const rpc = new RPC({
